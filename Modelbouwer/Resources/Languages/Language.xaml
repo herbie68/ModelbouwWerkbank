@@ -1,0 +1,1521 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <!--#region Ribbon-->
+    <!--#region Tab pages-->
+    <system:String x:Key="mainRibbon.Tab.Workbench.Capture">Werkbank</system:String>
+    <system:String x:Key="mainRibbon.Tab.Metadata.Capture">Stambestanden</system:String>
+    <!--#endregion-->
+
+    <!--#region Time Management-->
+    <system:String x:Key="mainRibbon.Manage.Time.Button.Label">Tijdregistratie</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Group.Header">Tijdregistratie</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Edit.Header">Bewerken</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Edit.Tooltip">Registreren van de gewerkte uren en gebruikte materialen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Export.Header">Exporteer uren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Export.Tooltip">Exporteer de vastgelegde uren naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Import.Header">Importeer uren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Import.Tooltip">Importeer vastgelegde uren uit een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Report.Header">Urenrapportage</system:String>
+    <system:String x:Key="mainRibbon.Manage.Time.Report.Tooltip">Bekijk de vastgelijgde uren per projecte</system:String>
+    <!--#endregion-->
+
+    <!--#region Project Management-->
+    <system:String x:Key="mainRibbon.Manage.Project.Button.Label">Projecten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Group.Header">Projectenbeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Edit.Header">Beheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Edit.Tooltip">Registratie en beheer van alle modelbouw projecten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Export.Header">Exporteer projecten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Export.Tooltip">Exporteer de projecten naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Import.Header">Importeer projecten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Import.Tooltip">Importeer projecten uit een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Report.Header">Projectenoverzicht</system:String>
+    <system:String x:Key="mainRibbon.Manage.Project.Report.Tooltip">Overzicht van alle projecten</system:String>
+    <!--#endregion-->
+
+    <!--#region Storage Management-->
+    <system:String x:Key="mainRibbon.Manage.Storage.Button.Label">Beheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Group.Header">Voorraadbeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Mutations.Header">Voorraadbeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Mutations.Tooltip">Voorraad correcties doorvoeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Order.Header">Bestellingen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Order.Tooltip">Openstaande bestellingen beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Receipt.Header">Ontvangsten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Receipt.Tooltip">Ontvangsten boeken op lopende bestelling</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Header">Overzichten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Tooltip">Beschikbare overzichten betreffende de voorraad</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Orders.Header">Bestellingen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Orders.Tooltip">Overzicht van alle openstaande bestellingen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Storage.Header">Voorraadoverzicht</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Storage.Tooltip">Overzicht van de actuele voorraad</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Usage.Header">Verbruik</system:String>
+    <system:String x:Key="mainRibbon.Manage.Storage.Report.Usage.Tooltip">Overzicht van het product gebruik per project</system:String>
+    <!--#endregion-->
+
+    <!--#region Metadata Management-->
+    <!--#region Ribbon items-->
+    <system:String x:Key="mainRibbon.Manage.Metadata.Button.Label">Stambestanden</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Group.Header">Stambestanden</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Group.Header">Merken beheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Edit.Label">Merken</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Edit.Tooltip">Merken beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Export.Tooltip">Exporteer alle merken naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Brand.Import.Tooltip">Importeer alle merken uit een CSV bestand</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Group.Header">Categoriebeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Edit.Label">Categorieën</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Edit.Tooltip">Categorieën beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Export.Tooltip">Exporteer alle categorieën naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Category.Import.Tooltip">Importeer alle categorieën uit een CSV bestand, maak eerst een export van het huidige CSV bestand zodat alle Id`s overeenkomen</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Group.Header">Landen beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Edit.Label">Landen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Edit.Tooltip">Landen beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Export.Tooltip">Exporteer landen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Import.Tooltip">Importeer landen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Country.Report.Header">Overzicht landen</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Group.Header">Valuta beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Edit.Label">Valuta</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Edit.Tooltip">Valuta</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Export.Tooltip">Exporteer valuta</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Currency.Import.Tooltip">Importeer valuta</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Group.Header">Artikelbeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Edit.Label">Artikelen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Edit.Tooltip">Artikelen beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Export.Tooltip">Exporteer alle artikelen naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Product.Import.Tooltip">Importeer artikelen uit een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.ProductSupplier.Export.Header">(per leverancier)</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.ProductSupplier.Export.Tooltip">Exporteer alle artikelen per leverancier naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.ProductSupplier.Import.Header">(per leverancier)</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.ProductSupplier.Import.Tooltip">Importeer alle artikelen per leverancier uit een CSV bestand</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Group.Header">Voorraadlocatiebeheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Edit.Label">Locaties</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Edit.Tooltip">Het beheren van de voorraad locaties</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Export.Tooltip">Exporteer locaties</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.StorageLocation.Import.Tooltip">Importeer locaties</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Group.Header">Leveranciers beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Edit.Label">Leveranciers</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Edit.Tooltip">Leveranciers beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Export.Tooltip">Exporteer leveranciers</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Import.Tooltip">Importeer leveranciers</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Report.Header">Overzicht</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Supplier.Report.Tooltip">Overzicht producten per leverancier</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Edit.Label">Contacten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Edit.Tooltip">Contactpersonen per leverancier beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Export.Tooltip">Exporteer contactpersonen per leverancier</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContact.Import.Tooltip">Importeer contactpersonen per leveranciers</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Edit.Label">Functies</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Edit.Tooltip">Functies voor contactpersonen beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Export.Tooltip">Exporteer contact functies</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Import.Header">Importerens</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.SupplierContactType.Import.Tooltip">Importeer contact functies</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Group.Header">Eenheden beheer</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Edit.Label">Eenheden</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Edit.Tooltip">Beheer Eenheden</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Export.Tooltip">Exporteer eenheden naar een CSV bestand</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Unit.Import.Tooltip">Importeer eenheden uit een CSV bestand</system:String>
+
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Group.Header">Werksoorten beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Edit.Label">Werksoorten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Edit.Tooltip">Werksoorten beheren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Export.Header">Exporteren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Export.Tooltip">Exporteer werksoorten</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Import.Header">Importeren</system:String>
+    <system:String x:Key="mainRibbon.Manage.Metadata.Worktype.Import.Tooltip">Importeer werksoorten</system:String>
+    <!--#endregion-->
+
+    <!--#region General-->
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Button.Label">Exporteer</system:String>
+    <system:String x:Key="Export.Button.Tooltip">Selecteer de map waarin het, te exporteren, CSV bestand komt te staan</system:String>
+    <system:String x:Key="Export.Button.Foldername">Geen map geselecteerd!</system:String>
+    <system:String x:Key="Import.Button.Filename">Geen CSV-bestand geselecteerd!</system:String>
+    <system:String x:Key="Import.Button.Prepare.Label">CSV voorbereiden</system:String>
+    <system:String x:Key="Import.Button.Prepare.Tooltip">Creëer een (leeg) CSV bestand met alleen de noodzakelijke headers voor import, dit bestand kan onder de header worden aangevuld met de te importeren data</system:String>
+    <system:String x:Key="Import.Button.Label">CSV importeren</system:String>
+    <system:String x:Key="Import.Button.Tooltip">Importeer een CSV bestand</system:String>
+    <!--#endregion-->
+
+    <!--#region General labels-->
+    <system:String x:Key="Messagebox.Default.Title">Mededeling</system:String>
+    <system:String x:Key="Import.FileDialog.Description">Map voor voorbereide csv bestand, met noodzakelijke velden</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Unknown">Onbekende fout</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Unknown.Long">Er is een onbekende fout opgetreden</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Inline">van regel</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Line">Fout in regel</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Message">Fouten gevonden tijdens importeren</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Existing.Long">Bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Messagebox.Error.Existing.Short">Bestaat al</system:String>
+    <system:String x:Key="TimeFormatJaar">jaar</system:String>
+    <system:String x:Key="TimeFormatJaren">jaren</system:String>
+    <system:String x:Key="TimeFormatMonth">maand</system:String>
+    <system:String x:Key="TimeFormatMonths">maanden</system:String>
+    <system:String x:Key="TimeFormatWeek">week</system:String>
+    <system:String x:Key="TimeFormatWeeks">weken</system:String>
+    <system:String x:Key="TimeFormatDay">dag</system:String>
+    <system:String x:Key="TimeFormatDays">dagen</system:String>
+    <system:String x:Key="TimeFormatHour">uur</system:String>
+    <system:String x:Key="TimeFormatHours">uren</system:String>
+    <system:String x:Key="TimeFormatMinute">minuut</system:String>
+    <system:String x:Key="TimeFormatMinutes">minuten</system:String>
+    <system:String x:Key="TimeFormatAnd">en</system:String>
+    <system:String x:Key="TimeFormatNoTime">Geen totaaltijd beschikbaar</system:String>
+    <!--#endregion-->
+
+    <!--#region Status Line messages-->
+    <system:String x:Key="Export.Statusline.Text">Status:</system:String>
+    <system:String x:Key="Export.Statusline.Prefix.Error">Fout in regel</system:String>
+    <system:String x:Key="Export.Statusline.Prefix.Added">Toegevoegd:</system:String>
+    <system:String x:Key="Export.Statusline.Description">Geen regels weggeschreven</system:String>
+    <system:String x:Key="Export.Statusline.Completed.Single">regel verwerkt</system:String>
+    <system:String x:Key="Export.Statusline.Completed.Ok.Single">regels correct weggeschreven</system:String>
+    <system:String x:Key="Export.Statusline.Completed.Ok">regels correct weggeschreven</system:String>
+    <system:String x:Key="Export.Statusline.Completed.Error.Single">regel overgeslagen vanwege fouten</system:String>
+    <system:String x:Key="Export.Statusline.Completed.Error">regels overgeslagen vanwege fouten</system:String>
+    <system:String x:Key="Export.Statusline.Completed">regels verwerkt</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Prepare">CSV Bestand voorbereid in:</system:String>
+
+    <system:String x:Key="Import.Statusline.Completed">regels verwerkt</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Single">regel verwerkt</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Error.Single">regel overgeslagen vanwege fouten</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Error">regels overgeslagen vanwege fouten</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Ok">regels correct ingelezen</system:String>
+    <system:String x:Key="Import.Statusline.Completed.Ok.Single">regel correct ingelezen</system:String>
+    <system:String x:Key="Import.Statusline.Description">Geen regels ingelezen</system:String>
+    <system:String x:Key="Import.Statusline.Prefix.Added">Toegevoegd:</system:String>
+    <system:String x:Key="Import.Statusline.Prefix.Error">Fout in regel</system:String>
+    <system:String x:Key="Import.Statusline.Text">Status:</system:String>
+    <system:String x:Key="Import.Statusline.None">Geen</system:String>
+
+    <system:String x:Key="Maintanance.Statusline.Read.None">Geen regels ingelezen</system:String>
+    <system:String x:Key="Maintanance.Statusline.Read.Single">Regel ingelezen</system:String>
+    <system:String x:Key="Maintanance.Statusline.Read">Regels ingelezen</system:String>
+
+    <system:String x:Key="Maintanance.Statusline.None">Geen</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.AlreadyExcists">Niet opgeslagen, bestaat al</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.AlreadyExcists.Prefix">Niet opgeslagen,</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.AlreadyExcists.Concat">en</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.AlreadyExcists.Suffix">bestaan al</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.AlreadyExcists.SuffixSingle">bestaat al</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.Unchanged">Niet opgeslagen, niets gewijzigd of bestaat al</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.Empty">Niet opgeslagen, niets ingevoerd</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.Added">is toegevoegd</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.Changed">zijn gewijzigd</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotSaved.DataOf">De gegevens van</system:String>
+    <system:String x:Key="Maintanance.Statusline.Deleted">Regel is verwijderd</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotDeleted">Regel is niet verwijderd</system:String>
+    <system:String x:Key="Maintanance.Statusline.Updated">is gewijzigd</system:String>
+    <system:String x:Key="Maintanance.Statusline.NotUpdated">is niet gewijzigd</system:String>
+
+    <system:String x:Key="Maintanance.Mail.Subject">Verzoek om informatie</system:String>
+    <system:String x:Key="Maintanance.Mail.Salution">Beste</system:String>
+    <system:String x:Key="Maintanance.Mail.Salution.Morning">Goedenmorgen</system:String>
+    <system:String x:Key="Maintanance.Mail.Salution.Afternoon">Goedenmiddag</system:String>
+    <system:String x:Key="Maintanance.Mail.Salution.Evening">Goedenavond</system:String>
+    <system:String x:Key="Maintanance.Mail.Salution.Night">Goedennacht</system:String>
+    <!--#endregion-->
+
+    <!--#region Image Toolbar buttons-->
+    <system:String x:Key="ToolBar.Button.Image.Add.Label">Afbeelding laden</system:String>
+    <system:String x:Key="ToolBar.Button.Image.Remove.Label">Afbeelding verwijderen</system:String>
+    <system:String x:Key="ToolBar.Button.Image.Rotate.Label">Afbeelding 45° draaien</system:String>
+    <!--#endregion-->
+
+    <!--#region Syncfusion SfDataGrid Group Box Area-->
+    <system:String x:Key="SfDataGrid.GroupBox.Tooltip">Sleep de kolomkop hier naartoe om op te groeperen, meerdere kolommen zijn mogelijk</system:String>
+    <system:String x:Key="SfDataGrid.GroupBox.Text">Sleep kolomkoppen hier naartoe om op te groeperen</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Brand-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Brand.Title">Merken Exporteren</system:String>
+    <system:String x:Key="Export.Brand.Subtitle">Exporteer merken naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Brand.Filename">Merken</system:String>
+    <system:String x:Key="Export.Brand.Button.Label">Merk</system:String>
+    <system:String x:Key="Export.Brand.Button.Tooltip">Selecteer het te importeren CSV bestand met merken</system:String>
+    <system:String x:Key="Export.Brand.Empty">Er zijn geen merken beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Brand.Button.Text">Merken</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Brand.Title">Merken Importeren</system:String>
+    <system:String x:Key="Import.Brand.Subtitle">Importeer merken uit een CSV bestand, hierin staan uitsluitend merknamen</system:String>
+    <system:String x:Key="Import.Brand.Filename">Merken</system:String>
+    <system:String x:Key="Import.Brand.Messagebox.Error.Existing.Long">Merk bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Brand.Messagebox.Error.Existing.Short">Merk Bestaat al</system:String>
+    <system:String x:Key="Import.Brand.Button.Label">Merk</system:String>
+    <system:String x:Key="Import.Brand.Button.Tooltip">Selecteer het te importeren CSV bestand met merken (bestand moet een geldige header bevatten, gebruik de kop CSV voorbereiden voor een bestand met de header)</system:String>
+    <system:String x:Key="Import.Brand.FileDialog.Description">Selecteer het te importeren CSV bestand met merken</system:String>
+    <system:String x:Key="Import.Brand.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Button-->
+    <system:String x:Key="Import.Brand.Button.Text">Merken</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Brand.Title">Merken beheren</system:String>
+    <system:String x:Key="Edit.Brand.Subtitle">Wijzig een merk, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Brand.Name.Label">Merknaam:</system:String>
+    <system:String x:Key="Edit.Brand.Name.Tag">Merknaam</system:String>
+    <system:String x:Key="Edit.Brand.Action.Tooltip.Add">Merk toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Brand.Action.Tooltip.Delete">Geselecteerde merk verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Brand.Action.Tooltip.Save">Gewijzigde merk opslaan</system:String>
+    <system:String x:Key="Edit.Brand.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Brand.DataGrid.Header.Name">Merknaam</system:String>
+
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Category-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Category.Title">Categoriën Exporteren</system:String>
+    <system:String x:Key="Export.Category.Subtitle">Exporteer categoriën naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Category.Filename">Categoriën</system:String>
+    <system:String x:Key="Export.Category.Button.Label">Categorie</system:String>
+    <system:String x:Key="Export.Category.Button.Tooltip">Selecteer het te importeren CSV bestand met categoriën</system:String>
+    <system:String x:Key="Export.Category.Empty">Er zijn geen categoriën beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Category.Button.Text">Categoriën</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Category.Title">Categoriën Importeren</system:String>
+    <system:String x:Key="Import.Category.Subtitle">Importeer categoriën uit een CSV bestand</system:String>
+    <system:String x:Key="Import.Category.Filename">Categorie</system:String>
+    <system:String x:Key="Import.Category.Messagebox.Error.Existing.Long">Ingelezen categorie bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Category.Messagebox.Error.Existing.Short">Categorie Bestaat al</system:String>
+    <system:String x:Key="Import.Category.Button.Label">Categorie</system:String>
+    <system:String x:Key="Import.Category.Button.Tooltip">Selecteer het te importeren CSV bestand met categoriën</system:String>
+    <system:String x:Key="Import.Category.FileDialog.Description">Selecteer het te importeren CSV bestand met categorieën</system:String>
+    <system:String x:Key="Import.Category.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Category.Button.Text">Categoriën</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Category.Title">Categorieen beheren</system:String>
+    <system:String x:Key="Edit.Category.Subtitle">Wijzig een categorie, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Category.Name.Label">Categorienaam:</system:String>
+    <system:String x:Key="Edit.Category.Name.Tag">Categorienaam</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.AddTask">Categorie toevoegen aan de tabe, op niveau van geselecteerde categoriel</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.AddSubTask">Categorie toevoegen aan de tabel, met geselecteerde categorie als hoofdcategorie</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.Delete">Geselecteerde categorie, en onderliggende subcategoriën, verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.Save">Gewijzigde categorie opslaan</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.Expand">Categoriën openklappen</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.Collapse">Categoriën dichtklappen</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.Save">Wijzigingen opslaan</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.AddTask">Categorie toevoegen</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.AddSubTask">Subcategorie toevoegen</system:String>
+    <system:String x:Key="Edit.Category.Action.ContextMenu.Label.DeleteTask">Verwijder categorie</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.Expand">Alle (sub)categoriën openklappen</system:String>
+    <system:String x:Key="Edit.Category.Action.Tooltip.Collapse">Alle (sub)categoriën dicktklappen</system:String>
+    <system:String x:Key="Edit.Category.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Category.DataGrid.Header.ParentId">Ouder Id</system:String>
+    <system:String x:Key="Edit.Category.DataGrid.Header.Fullpath">Volledig pad</system:String>
+    <system:String x:Key="Edit.Category.DataGrid.Header.Name">Categorienaam</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Country-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Country.Title">Landen Exporteren</system:String>
+    <system:String x:Key="Export.Country.Subtitle">Exporteer landen naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Country.Filename">Landen</system:String>
+    <system:String x:Key="Export.Country.Button.Label">Land</system:String>
+    <system:String x:Key="Export.Country.Button.Tooltip">Selecteer het te importeren CSV bestand met landen</system:String>
+    <system:String x:Key="Export.Country.Empty">Er zijn geen landen beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Country.Button.Text">Landen</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Country.Title">Landen Importeren</system:String>
+    <system:String x:Key="Import.Country.Subtitle">Importeer landen uit een CSV bestand, hierin staan uitsluitend landnamen</system:String>
+    <system:String x:Key="Import.Country.Filename">Importeer landen</system:String>
+    <system:String x:Key="Import.Country.Messagebox.Error.Existing.Long">Ingelezen land bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Country.Messagebox.Error.Existing.Short">Land Bestaat al</system:String>
+    <system:String x:Key="Import.Country.Button.Label">Land</system:String>
+    <system:String x:Key="Import.Country.Button.Tooltip">Selecteer het te importeren CSV bestand met landen</system:String>
+    <system:String x:Key="Import.Country.FileDialog.Description">Selecteer het te importeren CSV bestand met landen</system:String>
+    <system:String x:Key="Import.Country.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Country.Button.Text">Landen</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Country.Title">Landen beheren</system:String>
+    <system:String x:Key="Edit.Country.Subtitle">Wijzig een land, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Country.Code.Label">Zoekcode:</system:String>
+    <system:String x:Key="Edit.Country.Code.Tag">Zoekcode</system:String>
+    <system:String x:Key="Edit.Country.Name.Label">Landnaam:</system:String>
+    <system:String x:Key="Edit.Country.Name.Tag">Landnaam</system:String>
+    <system:String x:Key="Edit.Country.Currency.Label">Standaard valuta:</system:String>
+    <system:String x:Key="Edit.Country.Currency.Tag">Selecteer valuta</system:String>
+    <system:String x:Key="Edit.Country.Action.Tooltip.Add">Land toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Country.Action.Tooltip.Delete">Geselecteerde land verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Country.Action.Tooltip.Save">Gewijzigde land opslaan</system:String>
+    <system:String x:Key="Edit.Country.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Country.DataGrid.Header.Name">Landnaam</system:String>
+    <system:String x:Key="Edit.Country.DataGrid.Header.Code">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Country.DataGrid.Header.CurrencyId">ValutaId</system:String>
+    <system:String x:Key="Edit.Country.DataGrid.Header.CurrencySymbol">Valuta</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Currency-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Currency.Title">Valuta Exporteren</system:String>
+    <system:String x:Key="Export.Currency.Subtitle">Exporteer valuta naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Currency.Filename">Valuta</system:String>
+    <system:String x:Key="Export.Currency.Button.Label">Valuta</system:String>
+    <system:String x:Key="Export.Currency.Button.Tooltip">Selecteer het te importeren CSV bestand met valuta</system:String>
+    <system:String x:Key="Export.Currency.Empty">Er zijn geen valuta beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Currency.Button.Text">Valuta</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Currency.Title">Valuta Importeren</system:String>
+    <system:String x:Key="Import.Currency.Subtitle">Importeer valuta uit een CSV bestand, hierin staan uitsluitend valutanamen</system:String>
+    <system:String x:Key="Import.Currency.Filename">Importeer valuta</system:String>
+    <system:String x:Key="Import.Currency.Messagebox.Error.Existing.Long">Ingelezen valuta bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Currency.Messagebox.Error.Existing.Short">Valuta Bestaat al</system:String>
+    <system:String x:Key="Import.Currency.Button.Label">Valuta</system:String>
+    <system:String x:Key="Import.Currency.Button.Tooltip">Selecteer het te importeren CSV bestand met valuta</system:String>
+    <system:String x:Key="Import.Currency.FileDialog.Description">Selecteer het te importeren CSV bestand met valuta</system:String>
+    <system:String x:Key="Import.Currency.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Currency.Button.Text">Valuta</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Currency.Title">Valuta beheren</system:String>
+    <system:String x:Key="Edit.Currency.Subtitle">Wijzig een valuta, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Currency.Code.Label">Zoeknaam:</system:String>
+    <system:String x:Key="Edit.Currency.Code.Tag">ZOEK</system:String>
+    <system:String x:Key="Edit.Currency.Code.Tooltip">Verkorte naam om deze valuta te kunnen vinden</system:String>
+    <system:String x:Key="Edit.Currency.Name.Label">Valutanaam:</system:String>
+    <system:String x:Key="Edit.Currency.Name.Tag">Valuta</system:String>
+    <system:String x:Key="Edit.Currency.Name.Tooltip">Naam voor deze valuta</system:String>
+    <system:String x:Key="Edit.Currency.Symbol.Label">Symbool:</system:String>
+    <system:String x:Key="Edit.Currency.Symbol.Tag">Symbool</system:String>
+    <system:String x:Key="Edit.Currency.Symbol.Tooltip">Valuta symbool</system:String>
+    <system:String x:Key="Edit.Currency.Rate.Label">Wisselkoers:</system:String>
+    <system:String x:Key="Edit.Currency.Rate.Tag">Koers</system:String>
+    <system:String x:Key="Edit.Currency.Rate.Tooltip">Gemiddelde wisselkoers naar euro</system:String>
+    <system:String x:Key="Edit.Currency.Action.Tooltip.Add">Valuta toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Currency.Action.Tooltip.Delete">Geselecteerde valuta verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Currency.Action.Tooltip.Save">Gewijzigde valuta opslaan</system:String>
+    <system:String x:Key="Edit.Currency.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Currency.DataGrid.Header.Code">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Currency.DataGrid.Header.Name">Naam</system:String>
+    <system:String x:Key="Edit.Currency.DataGrid.Header.ConversionRate">Koers</system:String>
+    <system:String x:Key="Edit.Currency.DataGrid.Header.CurrencySymbol">Valuta</system:String>
+
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Storage Location-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.StorageLocation.Title">Voorraadlocaties Exporteren</system:String>
+    <system:String x:Key="Export.StorageLocation.Subtitle">Exporteer voorraadlocaties naar een CSV bestand</system:String>
+    <system:String x:Key="Export.StorageLocation.Filename">Voorraadlocaties</system:String>
+    <system:String x:Key="Export.StorageLocation.Button.Label">Voorraadlocatie</system:String>
+    <system:String x:Key="Export.StorageLocation.Button.Tooltip">Selecteer het te importeren CSV bestand met voorraadlocaties</system:String>
+    <system:String x:Key="Export.StorageLocation.Empty">Er zijn geen voorraadlocaties beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.StorageLocation.Button.Text">Voorraadlocaties</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.StorageLocation.Title">Voorraadlocaties Importeren</system:String>
+    <system:String x:Key="Import.StorageLocation.Subtitle">Importeer voorraadlocaties uit een CSV bestand, hierin staan uitsluitend voorraadlocatienamen</system:String>
+    <system:String x:Key="Import.StorageLocation.Filename">Importeer voorraadlocaties</system:String>
+    <system:String x:Key="Import.StorageLocation.Messagebox.Error.Existing.Long">Ingelezen voorraadlocatie bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.StorageLocation.Messagebox.Error.Existing.Short">Voorraadlocatie Bestaat al</system:String>
+    <system:String x:Key="Import.StorageLocation.Button.Label">Voorraadlocatie</system:String>
+    <system:String x:Key="Import.StorageLocation.Button.Tooltip">Selecteer het te importeren CSV bestand met voorraadlocaties</system:String>
+    <system:String x:Key="Import.StorageLocation.FileDialog.Description">Selecteer het te importeren CSV bestand met voorraadlocaties</system:String>
+    <system:String x:Key="Import.StorageLocation.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.StorageLocation.Button.Text">Voorraadlocaties</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Storage.Title">Voorraad locaties beheren</system:String>
+    <system:String x:Key="Edit.Storage.Subtitle">Wijzig een locatie, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Storage.Name.Label">Locatienaam:</system:String>
+    <system:String x:Key="Edit.Storage.Name.Tag">Locatienaam</system:String>
+    <system:String x:Key="Edit.Storage.Name.Tooltip">Omschrijving van de opslaglocaties</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.AddTask">Locatie toevoegen aan de tabel, op niveau van geselecteerde locatie</system:String>
+    <system:String x:Key="Edit.Storage.Id.Label">Id:</system:String>
+    <system:String x:Key="Edit.Storage.Id.Tag">Id</system:String>
+    <system:String x:Key="Edit.Storage.Id.Tooltip">Id</system:String>
+    <system:String x:Key="Edit.Storage.ParentId.Label">ParentId:</system:String>
+    <system:String x:Key="Edit.Storage.ParentId.Tag">ParentId</system:String>
+    <system:String x:Key="Edit.Storage.ParentId.Tooltip">ParentId</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.AddSubTask">Locatie toevoegen aan de tabel, met geselecteerde locatie als hoofdlocatie</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.Delete">Geselecteerde locatie, en onderliggende locaties, verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.Save">Gewijzigde locatie opslaan</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.Expand">Locaties openklappen</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.Collapse">Locaties dichtklappen</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.Save">Wijzigingen opslaan</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.AddTask">Locatie toevoegen</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.AddSubTask">Sublocatie toevoegen</system:String>
+    <system:String x:Key="Edit.Storage.Action.ContextMenu.Label.DeleteTask">Verwijder locatie</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.Expand">Alle (sub)locaties openklappen</system:String>
+    <system:String x:Key="Edit.Storage.Action.Tooltip.Collapse">Alle (sub)locaties dicktklappen</system:String>
+    <system:String x:Key="Edit.Storage.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Storage.DataGrid.Header.Name">Locatienaam</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Product-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Product.Title">Artikelen Exporteren</system:String>
+    <system:String x:Key="Export.Product.Subtitle">Exporteer artikelen naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Product.Filename">Artikelen</system:String>
+    <system:String x:Key="Export.Product.Button.Label">Artikel</system:String>
+    <system:String x:Key="Export.Product.Button.Tooltip">Selecteer het te importeren CSV bestand met artikelen</system:String>
+    <system:String x:Key="Export.Product.Empty">Er zijn geen artikelen beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Product.Button.Text">Artikelen</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Product.Title">Artikelen Importeren</system:String>
+    <system:String x:Key="Import.Product.Subtitle">Importeer artikelen uit een CSV bestand, hierin staan uitsluitend Artikelnamen</system:String>
+    <system:String x:Key="Import.Product.Filename">Importeer artikelen</system:String>
+    <system:String x:Key="Import.Product.Messagebox.Error.Existing.Long">Ingelezen artikel bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Product.Messagebox.Error.Existing.Short">Artikel Bestaat al</system:String>
+    <system:String x:Key="Import.Product.Button.Label">Artikel</system:String>
+    <system:String x:Key="Import.Product.Button.Tooltip">Selecteer het te importeren CSV bestand met artikelen</system:String>
+    <system:String x:Key="Import.Product.FileDialog.Description">Selecteer het te importeren CSV bestand met artikelen</system:String>
+    <system:String x:Key="Import.Product.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Product.Button.Text">Artikelen</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Product.Title">Produkten beheren</system:String>
+    <system:String x:Key="Edit.Product.Subtitle">Wijzig een produkt, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Product.Name.Label">Produktnaam:</system:String>
+    <system:String x:Key="Edit.Product.Name.Tag">Produktnaam</system:String>
+    <system:String x:Key="Edit.Product.Action.Tooltip.Add">Produkt toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Product.Action.Tooltip.Delete">Geselecteerde produkt verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Product.Action.Tooltip.Save">Gewijzigde produkt opslaan</system:String>
+    <system:String x:Key="Edit.Product.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Product.DataGrid.Header.Name">Produktnaam</system:String>
+    <system:String x:Key="Edit.Product.DataGrid.Header.Category">Categorie</system:String>
+    <system:String x:Key="Edit.Product.DataGrid.Header.Code">Zoeknaam</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.General.Label">Produkt gegevens</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Text">Produkt gegevens</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Code.Label">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Code.Tag">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Code.Tooltip">Geef de zoeknaam voor dit produkt</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Brand.Label">Merk</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Brand.Tag">Selecteer merk</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Brand.Tooltip">Welk merk</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Name.Label">Produkt naam</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Name.Tag">Produktnaam</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Name.Tooltip">Geef de naam van dit produkt</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Category.Label">Categorie</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Category.Tag">Categorie</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.General.Category.Tooltip">Tot welke categorie behoort dit produkt</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.NewProduct.Warning">Let op dit product is nog niet opgeslagen</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.Statusline.Deleted">is verwijderd</system:String>
+    <system:String x:Key="Edit.Product.Tab.Statusline.Hidden">is verborgen (voor behoud history)</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Text">Voorraad gegevens</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.MinStock.Label">Minimale voorraad</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.MinStock.Tag">Minimale voorraad</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.MinStock.Tooltip">Vanaf welke hoeveelheid moet dit produkt worden besteld</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Quantity.Label">Bestel per</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Quantity.Tag">Hoeveelheid</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Quantity.Tooltip">Per hoeveel dient dit produkt te worden besteld</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.PackingUnit.Label">Eenheid</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.PackingUnit.Tag">Eenheid</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.PackingUnit.Tooltip">Wordt dit produkt bijvoorbeeld per stuk, per fles of per liter verkocht</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Dimensions.Label">Afmetingen</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Dimensions.Tag">Afmeting</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Dimensions.Tooltip">Wat zijn de maten van dit product</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Location.Label">Voorraad lokatie</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Location.Tag">Lokatie</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Inventory.Location.Tooltip">Waar wordt dit product opgeslagen</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.Text">Projekt gegevens</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.Price.Label">Kostprijs</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.Price.Sufix.Label">per</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.Price.Tag">Kostprijs</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.Price.Tooltip">Wat is de kostprijs van dit produkt, voor de calculaties</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.PackagePrice.Label">Kostprijs per verpakking</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.PackagePrice.Prefix.Label">Kostprijs per</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.PackagePrice.Tag">Verpakkingsprijs</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.PackagePrice.Tooltip">Wat is de kostprijs ver verpakking (Kostprijs x besteld per) van dit produkt, voor de calculaties</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.ProjectCosts.Label">Project kosten</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.ProjectCosts.Tag">Project Kosten</system:String>
+    <system:String x:Key="Edit.Product.Tab.General.Group.Project.ProjectCosts.Tooltip">Moet dit produkt worden meegerekend bij de project kosten</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.Memo.Label">Aanvullende informatie</system:String>
+
+    <system:String x:Key="Edit.Product.Tab.Supplier.Label">Leveranciers</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Action.Tooltip.Add">Produkt leverancier toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Action.Tooltip.Delete">Geselecteerde leverancier verwijderen uit de tabel (voor het geselecteerde product)</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Action.Tooltip.Save">Gewijzigde produkt leverancier opslaan</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Id.Header">Id</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.ProductId.Header">ProductId</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.SupplierId.Header">LeverancierId</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.CurrencyId.Header">ValutaId</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.DefaultSupplier.Header">Std</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Supplier.Header">Leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.ProductNumber.Header">Artikelnummer</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Price.Header">Prijs</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Title.Header">Product informatie per leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Supplier.Label">Leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Supplier.Tag">Selecteer leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Supplier.Tooltip">Selecteer de leverancier die dit product levert</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.SupplierOrder.Tag">Selecteer bestelling</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.SupplierOrder.Tooltip">Selecteer eventueel een bestaande bestelling</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.ProductNumberSupplier.Label">Artikelnummer leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.ProductNumberSupplier.Tag">Artikelnummer leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.ProductNumberSupplier.Tooltip">Selecteer de leverancier die dit product levert</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Description.Label">Omschrijving</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Description.Tag">Omschrijving</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Description.Tooltip">Product omschrijving van de leverancier (Laat leeg voor standaard omschrijving)</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Price.Label">Prijs</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Price.Tag">0,00</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Price.Tooltip">Wat kost dit product bij deze leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Url.Label">Product website</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Url.Tag">Website</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.Url.Tooltip">Link naar de website van dit product bij deze leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.UrlButton.Tooltip">Open de website van dit product bij deze leverancier in de browser</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.DefaultSupplier.Label">Standaard leverancier</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.DefaultSupplier.Tag">Strandaard</system:String>
+    <system:String x:Key="Edit.Product.Tab.Supplier.Group.General.DefaultSupplier.Tooltip">Moet dit product standaard bij deze leverancier worden besteld</system:String>
+
+
+    <system:String x:Key="Edit.Product.Tab.Inventory.Label">Voorraad</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Inventory-->
+    <!--#region  Inventory management-->
+    <system:String x:Key="Edit.Inventory.Title">Voorraadbeheer</system:String>
+    <system:String x:Key="Edit.Inventory.Subtitle">Voorraadoverzicht van alle artikelen</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Code">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Name">Produkt</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Price">Prijs</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.MinStock">Minimaal</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Category">Categorie</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Location">Lokatie</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Inventory">Voorraad</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Value">Waarde</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.InOrder">Besteld</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.VirtualInventory">Virtuele voorraad</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.VirtualValue">Virtuele waarde</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.Short">Tekort</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Header.TempShort">Tijdelijk tekort</system:String>
+
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Search.Tag">Zoek in de lijst naar...</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Search.Tooltip">Zoek en markeer de hier ingevoerde tekst in onderstaande lijst en markeer</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Search.Clear.Tooltip">Verwijder het zoek criterium</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Filter.Tag">Filter de lijst op...</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Filter.Tooltip">Filter onderstaande lijstZoek met de hier ingevoerde tekst toon en markeer alleen regels met dit criterium</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.FilterSearch.Filter.Clear.Tooltip">Verwijder het filter criterium en toon de volledige lijst</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Search.Tooltip">Schakel om naar Filteren</system:String>
+    <system:String x:Key="Edit.Inventory.DataGrid.Filter.Tooltip">Schakel om naar Zoeken</system:String>
+
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Text">Leverancier</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Tag">Selecteer leverancier</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Tooltip">Selecteer de leverancier die dit product levert</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrder.Text">Bestelling</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrder.Tag">Selecteer bestelling</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrder.Tooltip">Selecteer eventueel een bestaande bestelling</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderCosts.Text">Ordergrootte</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderNumber.Text">Bestelnummer</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderNumber.Tooltip.Text">Het bestelnummer is een verplicht veld</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderDate.Text">Besteldatum</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderDate.Tooltip.Text">De besteldatum is een verplicht veld</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderSendCosts.Text">Verzendkosten</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderOrderCosts.Text">Orderkosten</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.SupplierOrderTotalCosts.Text">Totaal</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Toolbar.Clear.Tooltip">Reset de bestelling</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Toolbar.Save.Tooltip">Sla de bestelling op en werk, indien nodig, de artikelen per leverancier bij</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Toolbar.Delete.Tooltip">Verwijder deze geselecteerde bestelling</system:String>
+    <system:String x:Key="Edit.Inventory.Orders.Supplier.Toolbar.NoDelete.Tooltip">Bij de geselecteerde besteling zijn al ontvangsten geboekt, verwijderen niet mogelijk</system:String>
+    <!--#endregion-->
+
+    <!--#region Order products-->
+    <system:String x:Key="Edit.Order.Title">Bestelling</system:String>
+    <system:String x:Key="Edit.Order.Subtitle">Registreer bestelling bij een leverancier</system:String>
+    <system:String x:Key="Edit.Order.SelectOrderRows.Text">Selecteer, in de lijst hieronder, de productregels die besteld moeten worden</system:String>
+    <system:String x:Key="Edit.Order.OrderRows.Text">Geef de bestelde aantallen en prijzen</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Code">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.SupplierCode">Bestelnummer</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Name">Produkt</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Price">Stukprijs</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.SupplierPrice">Inkoopprijs</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.MinStock">Minimaal</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.OrderPer">Bestel per</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.ToOrder">Bestellen</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Category">Categorie</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Inventory">Voorraad</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.InOrder">Besteld</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Short">Tekort</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Header.Order">Besteld</system:String>
+
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Search.Tag">Zoek in de lijst naar...</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Search.Tooltip">Zoek en markeer de hier ingevoerde tekst in onderstaande lijst en markeer</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Search.Clear.Tooltip">Verwijder het zoek criterium</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Filter.Tag">Filter de lijst op...</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Filter.Tooltip">Filter onderstaande lijstZoek met de hier ingevoerde tekst toon en markeer alleen regels met dit criterium</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.FilterSearch.Filter.Clear.Tooltip">Verwijder het filter criterium en toon de volledige lijst</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Search.Tooltip">Schakel om naar Filteren</system:String>
+    <system:String x:Key="Edit.Order.DataGrid.Filter.Tooltip">Schakel om naar Zoeken</system:String>
+    <!--#endregion-->
+
+    <!--#region Recieve orders-->
+    <system:String x:Key="Edit.Receipt.Title">Ontvangen bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.Subtitle">Registreer binnengekomen bestellingen</system:String>
+    <system:String x:Key="Edit.Receipt.Supplier.Text">Leverancier</system:String>
+    <system:String x:Key="Edit.Receipt.Supplier.Tag">Selecteer leverancier</system:String>
+    <system:String x:Key="Edit.Receipt.Supplier.Tooltip">Selecteer de leverancier waarvan de bestelling is ontvangen</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrder.Text">Bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrder.Tag">Selecteer bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrder.Tooltip">Selecteer de ontvangen bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderCosts.Text">Ordergrootte</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderNumber.Text">Bestelnummer</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderDate.Text">Besteldatum</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierReceiptDate.Text">Ontvangstdatum</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderSendCosts.Text">Verzendkosten</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderOrderCosts.Text">Orderkosten</system:String>
+    <system:String x:Key="Edit.Receipt.SupplierOrderTotalCosts.Text">Totaal</system:String>
+    <system:String x:Key="Edit.Receipt.Toolbar.Clear.Tooltip">Reset de bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.Toolbar.Save.Tooltip">Sla de bestelling op en werk, indien nodig, de artikelen per leverancier bij</system:String>
+    <system:String x:Key="Edit.Receipt.Toolbar.Delete.Tooltip">Verwijder deze geselecteerde bestelling</system:String>
+    <system:String x:Key="Edit.Receipt.Toolbar.NoDelete.Tooltip">Bij de geselecteerde besteling zijn al ontvangsten geboekt, verwijderen niet mogelijk</system:String>
+
+
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.SupplierCode">Bestelnummer</system:String>
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.SupplierDescription">Omschrijving leverancier</system:String>
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.Ordered">Besteld</system:String>
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.Received">Eerder ontvangen</system:String>
+    <system:String x:Key="Edit.Receipt.DataGrid.Header.ToReceive">Ontvangen</system:String>
+
+    <system:String x:Key="Edit.Receipt.Switch.Complete.Tooltip">De gehele bestelling is compleet geleverd</system:String>
+    <system:String x:Key="Edit.Receipt.Switch.Complete.Tag">Compleet</system:String>
+    <system:String x:Key="Edit.Receipt.Switch.Incomplete.Tooltip">De bestelling is nog niet compleet geleverd</system:String>
+    <system:String x:Key="Edit.Receipt.Switch.Incomplete.Tag">Incompleet</system:String>
+    <!--#endregion-->
+
+    <!--#region Order report-->
+    <system:String x:Key="Edit.OrderReport.Title">Bestellingen</system:String>
+    <system:String x:Key="Edit.OrderReport.Subtitle">Overzicht van alle bestellingen</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.OrderId">BestelId</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.OrderNumber">Bestelnummer</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.OrderDate">Besteldatum</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.SupplierId">LeverancierId</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.Supplier">Leverancier</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.ProductId">ArtikelId</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.ProductCode">Zoeknaam</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.ProductName">Artikel</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.UnitPrice">Stuk prijs</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.Ordered">Besteld</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.Received">Ontvangen</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.Expected">Nalevering</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.Closed">Compleet</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Header.ClosedDate">Datum compleet</system:String>
+
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Search.Tag">Zoek in de lijst naar...</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Search.Tooltip">Zoek en markeer de hier ingevoerde tekst in onderstaande lijst en markeer</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Search.Clear.Tooltip">Verwijder het zoek criterium</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Filter.Tag">Filter de lijst op...</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Filter.Tooltip">Filter onderstaande lijstZoek met de hier ingevoerde tekst toon en markeer alleen regels met dit criterium</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.FilterSearch.Filter.Clear.Tooltip">Verwijder het filter criterium en toon de volledige lijst</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Search.Tooltip">Schakel om naar Filteren</system:String>
+    <system:String x:Key="Edit.OrderReport.DataGrid.Filter.Tooltip">Schakel om naar Zoeken</system:String>
+    <!--#endregion-->
+
+    <!--#region Receipt report-->
+    <system:String x:Key="Edit.ReceiptReport.Title">Leveringen</system:String>
+    <system:String x:Key="Edit.ReceiptReport.Subtitle">Overzicht van alle (deels) geleverde bestellingen</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.RowClosed">Volledig</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.OrderDate">BestelId</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.OrderNumber">Bestelnummer</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.Supplier">Leverancier</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.ProductCode">Zoeknaam</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.ProductName">Artikelomschrijving</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.Ordered">Besteld</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.ReceivedDate">Datum</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.Received">Geleverd</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Header.IsOrderLine">IsOrderRegel</system:String>
+
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Search.Tag">Zoek in de lijst naar...</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Search.Tooltip">Zoek en markeer de hier ingevoerde tekst in onderstaande lijst en markeer</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Search.Clear.Tooltip">Verwijder het zoek criterium</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Filter.Tag">Filter de lijst op...</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Filter.Tooltip">Filter onderstaande lijstZoek met de hier ingevoerde tekst toon en markeer alleen regels met dit criterium</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.FilterSearch.Filter.Clear.Tooltip">Verwijder het filter criterium en toon de volledige lijst</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Search.Tooltip">Schakel om naar Filteren</system:String>
+    <system:String x:Key="Edit.ReceiptReport.DataGrid.Filter.Tooltip">Schakel om naar Zoeken</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Product Supplier-->
+    <!--#region ProductMaintanance-->
+    <system:String x:Key="Edit.Product.ProductSupplier.UnSavedChanges">"Let de wijzigingen zijn nog niet opgelagen</system:String>
+    <!--#endregion-->
+
+    <!--#region Export page-->
+    <system:String x:Key="Export.ProductSupplier.Title">Leveranciers per product Exporteren</system:String>
+    <system:String x:Key="Export.ProductSupplier.Subtitle">Exporteer leveranciers per product naar een CSV bestand</system:String>
+    <system:String x:Key="Export.ProductSupplier.Filename">Leveranciers per product</system:String>
+    <system:String x:Key="Export.ProductSupplier.Button.Label">Productleverancier</system:String>
+    <system:String x:Key="Export.ProductSupplier.Button.Tooltip">Selecteer het te importeren CSV bestand met leveranciers per product</system:String>
+    <system:String x:Key="Export.ProductSupplier.Empty">Er zijn geen leveranciers per product beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.ProductSupplier.Button.Text">Leveranciers pp</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.ProductSupplier.Title">Leveranciers per product Importeren</system:String>
+    <system:String x:Key="Import.ProductSupplier.Subtitle">Importeer leveranciers per product uit een CSV bestand, hierin staan uitsluitend Leveranciernamen</system:String>
+    <system:String x:Key="Import.ProductSupplier.Filename">Importeer leveranciers per product</system:String>
+    <system:String x:Key="Import.ProductSupplier.Messagebox.Error.Existing.Long">Ingelezen leverancier bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.ProductSupplier.Messagebox.Error.Existing.Short">Leverancier Bestaat al</system:String>
+    <system:String x:Key="Import.ProductSupplier.Button.Label">Productleverancier</system:String>
+    <system:String x:Key="Import.ProductSupplier.Button.Tooltip">Selecteer het te importeren CSV bestand met leveranciers per product</system:String>
+    <system:String x:Key="Import.ProductSupplier.FileDialog.Description">Selecteer het te importeren CSV bestand met leveranciers per product</system:String>
+    <system:String x:Key="Import.ProductSupplier.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.ProductSupplier.Button.Text">Leveranciers pp</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Supplier.Title">Leveranciers beheren</system:String>
+    <system:String x:Key="Edit.Supplier.Subtitle">Wijzig een leverancier, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Supplier.Name.Label">Leveranciernaam:</system:String>
+    <system:String x:Key="Edit.Supplier.Name.Tag">Leveranciernaam</system:String>
+    <system:String x:Key="Edit.Supplier.Action.Tooltip.Add">Leverancier toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Supplier.Action.Tooltip.Delete">Geselecteerde leverancier verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Supplier.Action.Tooltip.Save">Gewijzigde leverancier opslaan</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.Name">Leverancier</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.Mail">E-mail adres</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.Phone">Telefoonnummer</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.Type">Functie</system:String>
+    <system:String x:Key="Edit.Supplier.DataGrid.Header.TypeId">Functie Id</system:String>
+
+    <system:String x:Key="Edit.Supplier.Tab.General.Label">Basisgegevens</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.GroupLabel">Leverancier gegevens</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Name.Label">Naam:</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Name.Tag">Leveranciernaam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Name.Tooltip">Volledige naam van de leverancier</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Code.Label">Zoekcode:</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Code.Tag">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Code.Tooltip">Korte unieke code om de leverancier te kunnen zoeken/</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Address.Label">Adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Address.Tag">Adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Address.Tooltip">Adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.City.Label">Plaats</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.City.Tag">Plaats</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.City.Tooltip">Plaats</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Country.Label">Land</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Country.Tag">Land</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Country.Tooltip">Land</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Url.Label">Website</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Url.Tag">Website</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Url.Tooltip">Website van de leverancier</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Url.Button.Tooltip">Open de website van de leverancier in je browser</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Zip.Label">Postcode</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Zip.Tag">Postcode</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Address.Zip.Tooltip">Postcode</system:String>
+
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.GroupLabel">Financiële gegevens</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.Currency.Label">Standaard valuta</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.Currency.Tag">Standaard valuta</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.Currency.Tooltip">Standaard valuta</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.MaxValue.Label">Tot bedrag</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.MaxValue.Tag">Tot bedrag</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.MaxValue.Tooltip">Tot bedrag</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.OrderCosts.Label">Order kosten</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.OrderCosts.Tag">Order kosten</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.OrderCosts.Tooltip">Order kosten</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.SendCosts.Label">Verzendkosten</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.SendCosts.Tag">Verzendkosten</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.General.Group.Finance.SendCosts.Tooltip">Verzendkosten</system:String>
+
+    <system:String x:Key="Edit.Supplier.Tab.Contacts.Action.Delete.Tooltip">Verwijder geselekteerde contactpersoon</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contacts.Action.New.Tooltip">Contact(persoon) bij leverancier toevoegen</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contacts.Action.Reset.Tooltip">Maak alle ingevulde velden leeg</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contacts.Action.Save.Tooltip">Wijzigingen opslaan</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contacts.Label">Contactpersonen</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.GroupLabel">Contact gegevens</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Mail.Label">E-mail adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Mail.Tag">E-mail adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Mail.Tooltip">E-mail adres</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Name.Label">Volledige naam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Name.Tag">Volledige naam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Name.Tooltip">Volledige naam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Phone.Label">Telefoonnummer</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Phone.Tag">Telefoonnummer</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Phone.Tooltip">Telefoonnummer</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Type.Label">Functie</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Type.Tag">Functie</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Type.Tooltip">Functie</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.Group.Contact.Label">Communicatiekanalen per leverancier</system:String>
+
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.Name">Naam</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.Mail">E-mail</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.Phone">Telefoon</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.Type">Functie</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.Contact.DataGrid.Header.TypeId">Functie Id</system:String>
+
+    <system:String x:Key="Edit.Supplier.Tab.Memo.Label">Aanvullende informatie</system:String>
+    <system:String x:Key="Edit.Supplier.Tab.History.Label">Order historie</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Supplier Contact Type-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.ContactType.Title">Functies van contactpersonen Exporteren</system:String>
+    <system:String x:Key="Export.ContactType.Subtitle">Exporteer functies van contactpersonen naar een CSV bestand</system:String>
+    <system:String x:Key="Export.ContactType.Filename">Functies van contactpersonen</system:String>
+    <system:String x:Key="Export.ContactType.Button.Label">Functies</system:String>
+    <system:String x:Key="Export.ContactType.Button.Tooltip">Selecteer het te importeren CSV bestand met functies van contactpersonen</system:String>
+    <system:String x:Key="Export.ContactType.Empty">Er zijn geen functies van contactpersonen beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.ContactType.Button.Text">Functies</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.ContactType.Title">Functies van contactpersonen Importeren</system:String>
+    <system:String x:Key="Import.ContactType.Subtitle">Importeer functies van contactpersonen uit een CSV bestand, hierin staan uitsluitend Leveranciernamen</system:String>
+    <system:String x:Key="Import.ContactType.Filename">Importeer functies van contactpersonen</system:String>
+    <system:String x:Key="Import.ContactType.Messagebox.Error.Existing.Long">Ingelezen functie bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.ContactType.Messagebox.Error.Existing.Short">Functie Bestaat al</system:String>
+    <system:String x:Key="Import.ContactType.Button.Label">Persoonsfunctie</system:String>
+    <system:String x:Key="Import.ContactType.Button.Tooltip">Selecteer het te importeren CSV bestand met functies van contactpersonen</system:String>
+    <system:String x:Key="Import.ContactType.FileDialog.Description">Selecteer het te importeren CSV bestand met functies van contactpersonen</system:String>
+    <system:String x:Key="Import.ContactType.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.ContactType.Button.Text">Functies</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.ContactType.Title">Functies van contactpersonen beheren</system:String>
+    <system:String x:Key="Edit.ContactType.Subtitle">Wijzig een functie van contactpersonen, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.ContactType.Name.Label">Functie:</system:String>
+    <system:String x:Key="Edit.ContactType.Name.Tag">Functie van contactpersonen</system:String>
+    <system:String x:Key="Edit.ContactType.Name.Tooltip">De functie die een contactpersoon kan bekleden</system:String>
+    <system:String x:Key="Edit.ContactType.Action.Tooltip.Add">Functie toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.ContactType.Action.Tooltip.Delete">Geselecteerde functie verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.ContactType.Action.Tooltip.Save">Gewijzigde functie opslaan</system:String>
+    <system:String x:Key="Edit.ContactType.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.ContactType.DataGrid.Header.Name">Functie</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Project-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Project.Title">Projecten Exporteren</system:String>
+    <system:String x:Key="Export.Project.Subtitle">Exporteer projecten naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Project.Filename">Projecten</system:String>
+    <system:String x:Key="Export.Project.Button.Label">Project</system:String>
+    <system:String x:Key="Export.Project.Button.Tooltip">Selecteer het te importeren CSV bestand met projecten</system:String>
+    <system:String x:Key="Export.Project.Empty">Er zijn geen projecten beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Project.Button.Text">Projecten</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Project.Title">Projecten Importeren</system:String>
+    <system:String x:Key="Import.Project.Subtitle">Importeer projecten uit een CSV bestand, hierin staan uitsluitend projectnamen</system:String>
+    <system:String x:Key="Import.Project.Filename">Importeer projecten</system:String>
+    <system:String x:Key="Import.Project.Messagebox.Error.Existing.Long">Ingelezen project bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Project.Messagebox.Error.Existing.Short">Project Bestaat al</system:String>
+    <system:String x:Key="Import.Project.Button.Label">Project</system:String>
+    <system:String x:Key="Import.Project.Button.Tooltip">Selecteer het te importeren CSV bestand met projecten</system:String>
+    <system:String x:Key="Import.Project.FileDialog.Description">Selecteer het te importeren CSV bestand met projecten</system:String>
+    <system:String x:Key="Import.Project.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Project.Button.Text">Projecten</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Maintanance-->
+    <system:String x:Key="Edit.Project.Title">Projekten beheren</system:String>
+    <system:String x:Key="Edit.Project.Subtitle">Wijzig een projekt, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Project.Name.Label">Projektnaam:</system:String>
+    <system:String x:Key="Edit.Project.Name.Tag">Projektnaam</system:String>
+    <system:String x:Key="Edit.Project.Action.Tooltip.Add">Projekt toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Project.Action.Tooltip.Delete">Geselecteerde projekt verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Project.Action.Tooltip.Save">Gewijzigde projekt opslaan</system:String>
+
+    <!--#region Datagrid-->
+    <system:String x:Key="Edit.Project.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Project.DataGrid.Header.Code">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Project.DataGrid.Header.Name">Projektnaam</system:String>
+    <system:String x:Key="Edit.Project.DataGrid.Header.StartDate">Startdatum</system:String>
+    <system:String x:Key="Edit.Project.DataGrid.Header.EndDate">Einddatum</system:String>
+    <system:String x:Key="Edit.Project.DataGrid.Header.Completed">Gereed</system:String>
+    <!--#endregion-->
+
+    <!--#region Tab pages-->
+    <!--#region Tab: General-->
+    <system:String x:Key="Edit.Project.Tab.General.Label">Projekt gegevens</system:String>
+    <!--#region Region Details-->
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Text">Project details</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Code.Label">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Code.Tag">Zoeknaam</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Code.Tooltip">Geef de zoeknaam voor dit projekt</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Description.Label">Projectnaam</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Description.Tag">Projectnaam</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Description.Tooltip">Geef dit project een naam</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Startdate.Label">Startdatum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Startdate.Tag">Selecteer datum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Startdate.Tooltip">Startdatum van dit projekt</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.ExpectedEnddate.Label">Verwachte einddatum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.ExpectedEnddate.Tag">Selecteer datum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.ExpectedEnddate.Tooltip">Verwachte datum gereed</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Enddate.Label">Einddatum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Enddate.Tag">Selecteer datum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Enddate.Tooltip">Datum gereed</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Completed.Label">Project status</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Completed.Tag">Gereed</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.Completed.Tooltip">Meld het het project niet gereed</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.NotCompleted.Tag">Mee bezig</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Details.NotCompleted.Tooltip">Meld het project gereed</system:String>
+
+    <!--#endregion-->
+
+    <!--#region Region Build time-->
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Text">Bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Text">Voortgang</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Construction.Label">Bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Construction.Short.Tag">Bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Construction.Short.Tooltip">Bouwtijd in uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Construction.Long.Tag">Bouwtijd (lang)</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Construction.Long.Tooltip">Bouwtijd uitgebreide notatie</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Businessdays.Label">Werkdagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Businessdays.Tag">Werkdagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Businessdays.Tooltip">Bouwtijd in werkdagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.ShortestDay.Label">Kortste werkdag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.ShortestDay.Date.Tag">Datum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.ShortestDay.Date.Tooltip">Datum dag met de kortste bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.ShortestDay.Time.Tag">Bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.ShortestDay.Time.Tooltip">Bestede uren op de kortste bouwdag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.LongestDay.Label">Langste werkdag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.LongestDay.Date.Tag">Datum</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.LongestDay.Date.Tooltip">Datum dag met de langste bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.LongestDay.Time.Tag">Bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.LongestDay.Time.Tooltip">Bestede uren op de langste bouwdag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Average.Label">Uren per dag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Average.Tag">Uren per dag</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Progress.Average.Tooltip">Gemiddelde bouwtijd per dag (uren:minuten)</system:String>
+
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Text">Verwachting</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expecation.Time.Label">Verwachte bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expecation.Time.Tag">Uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expecation.Time.Tooltip">Verwachte bouwtijd in uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expecation.Time.Suffix">(uren)</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Businessdays.Label">Werkdagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Businessdays.Tag">Dagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Businessdays.Tooltip">Verwachte bouwtijd in werkdagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Businessdays.Long.Tag">Dagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Expectation.Businessdays.Long.Tooltip">Verwachte bouwtijd</system:String>
+
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Text">Nog te gaan</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Hours.Label">Uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Hours.Tag">Uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Hours.Tooltip">Resterende bouwtijd</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Days.Label">In dagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Days.Tag">Dagen</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Togo.Days.Tooltip">Resterende bouwtijd in dagen</system:String>
+
+    <system:String x:Key="Edit.Project.Tab.General.Group.Time.Error.InvalidTime">Nog geen werktijden ingevoerd</system:String>
+
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.Year">Jaar</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.YearDay">Jaar/dag</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.YearMonth">Jaar/maand</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.WorkedMinutes">Gewerkte minuten</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.WorktypeName">Werksoort</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.Day">Dag</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.WorkDate">Werkdag</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.Month">Maand</system:String>
+    <system:String x:Key="Edit.Project.Tab.Time.DataGrid.Header.WorkTime">Besteed</system:String>
+
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Category">Categorie</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Product">Artikel</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Amount">Aantal</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Price">Stukprijs</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Cost">Toraal</system:String>
+    <system:String x:Key="Edit.Project.Tab.Costs.DataGrid.Header.Comment">Opmerkingen</system:String>
+
+
+
+
+    <!--#endregion-->
+
+    <!--#region Region Costs-->
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Text">Kosten</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Material.Label">Materiaal kosten</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Material.Tag">Materiaal</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Material.Tooltip">Welke materiaalkosten zijn gemaakt voor dit projekt</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Hours.Label">Doorberekende uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Hours.Tag">Uren</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Hours.Tooltip">Wat zijn de gedeclareerde bouw kosten voor dit projekt</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Total.Label">Totale kosten</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Total.Tag">Totaal</system:String>
+    <system:String x:Key="Edit.Project.Tab.General.Group.Costs.Total.Tooltip">Totale klosten van dit projekt</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Tab: Memo-->
+    <system:String x:Key="Edit.Project.Tab.Memo.Label">Aanvullende informatie</system:String>
+    <!--#endregion-->
+
+    <!--#region Tab:Build Time-->
+    <system:String x:Key="Edit.Project.Tab.BuildTime.Label">Bouw tijd</system:String>
+
+    <!--#endregion-->
+
+    <!--#region Tab: Project Expenses-->
+    <system:String x:Key="Edit.Project.Tab.BuildCosts.Label">Project kosten</system:String>
+
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Unit>-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Unit.Title">Eenheden Exporteren</system:String>
+    <system:String x:Key="Export.Unit.Subtitle">Exporteer eenheden naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Unit.Filename">Eenheden</system:String>
+    <system:String x:Key="Export.Unit.Button.Label">Eenheden</system:String>
+    <system:String x:Key="Export.Unit.Button.Tooltip">Selecteer het te importeren CSV bestand met eenheden</system:String>
+    <system:String x:Key="Export.Unit.Empty">Er zijn geen eenheden beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Unit.Button.Text">Eenheden</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Unit.Title">Eenheden Importeren</system:String>
+    <system:String x:Key="Import.Unit.Subtitle">Importeer eenheden uit een CSV bestand, hierin staan uitsluitend eenhedennamen</system:String>
+    <system:String x:Key="Import.Unit.Filename">Importeer eenheden</system:String>
+    <system:String x:Key="Import.Unit.Messagebox.Error.Existing.Long">Ingelezen eenheden bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Unit.Messagebox.Error.Existing.Short">Eenheden Bestaat al</system:String>
+    <system:String x:Key="Import.Unit.Button.Label">Eenheden</system:String>
+    <system:String x:Key="Import.Unit.Button.Tooltip">Selecteer het te importeren CSV bestand met eenheden</system:String>
+    <system:String x:Key="Import.Unit.FileDialog.Description">Selecteer het te importeren CSV bestand met eenheden</system:String>
+    <system:String x:Key="Import.Unit.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Unit.Button.Text">Eenheden</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.Unit.Title">Eenheden beheren</system:String>
+    <system:String x:Key="Edit.Unit.Subtitle">Wijzig een eenheid, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Unit.Name.Label">Eenheid:</system:String>
+    <system:String x:Key="Edit.Unit.Name.Tag">Eenheid</system:String>
+    <system:String x:Key="Edit.Unit.Name.Tooltip">Geeef de naam van de eenheid in</system:String>
+    <system:String x:Key="Edit.Unit.Action.Tooltip.Add">Eenheid toevoegen aan de tabel</system:String>
+    <system:String x:Key="Edit.Unit.Action.Tooltip.Delete">Geselecteerde eenheid verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Unit.Action.Tooltip.Save">Gewijzigde eenheid opslaan</system:String>
+    <system:String x:Key="Edit.Unit.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Unit.DataGrid.Header.Name">Eenheid</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Work type-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.WorkType.Title">Werksoorten Exporteren</system:String>
+    <system:String x:Key="Export.WorkType.Subtitle">Exporteer werksoorten naar een CSV bestand</system:String>
+    <system:String x:Key="Export.WorkType.Filename">Werksoorten</system:String>
+    <system:String x:Key="Export.WorkType.Button.Label">Werksoorten</system:String>
+    <system:String x:Key="Export.WorkType.Button.Tooltip">Selecteer het te importeren CSV bestand met werksoorten</system:String>
+    <system:String x:Key="Export.WorkType.Empty">Er zijn geen werksoorten beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.WorkType.Button.Text">Werksoorten</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.WorkType.Title">Werksoorten Importeren</system:String>
+    <system:String x:Key="Import.WorkType.Subtitle">Importeer werksoorten uit een CSV bestand, hierin staan uitsluitend werksoortennamen</system:String>
+    <system:String x:Key="Import.WorkType.Filename">Importeer werksoorten</system:String>
+    <system:String x:Key="Import.WorkType.Messagebox.Error.Existing.Long">Ingelezen werksoorten bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.WorkType.Messagebox.Error.Existing.Short">Werksoorten Bestaat al</system:String>
+    <system:String x:Key="Import.WorkType.Button.Label">Werksoorten</system:String>
+    <system:String x:Key="Import.WorkType.Button.Tooltip">Selecteer het te importeren CSV bestand met werksoorten</system:String>
+    <system:String x:Key="Import.WorkType.FileDialog.Description">Selecteer het te importeren CSV bestand met werksoortenn</system:String>
+    <system:String x:Key="Import.WorkType.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.WorkType.Button.Text">Werksoorten</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintanance-->
+    <system:String x:Key="Edit.Worktype.Title">Werksoorten beheren</system:String>
+    <system:String x:Key="Edit.Worktype.Subtitle">Wijzig een werksoort, voeg toe of verwijder</system:String>
+    <system:String x:Key="Edit.Worktype.Name.Label">Werksoort:</system:String>
+    <system:String x:Key="Edit.Worktype.Name.Tag">Werksoort</system:String>
+    <system:String x:Key="Edit.Worktype.Name.Tooltip">Omschrijving van het soort werkzaamheden (waar heb je aan gewerkt?)</system:String>
+    <system:String x:Key="Edit.Worktype.Id.Label">Id:</system:String>
+    <system:String x:Key="Edit.Worktype.Id.Tag">Id</system:String>
+    <system:String x:Key="Edit.Worktype.Id.Tooltip">Id</system:String>
+    <system:String x:Key="Edit.Worktype.ParentId.Label">ParentId:</system:String>
+    <system:String x:Key="Edit.Worktype.ParentId.Tag">ParentId</system:String>
+    <system:String x:Key="Edit.Worktype.ParentId.Tooltip">ParentId</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.AddTask">Werksoort toevoegen aan de tabel, op niveau van geselecteerde werksoort</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.AddSubTask">Werksoort toevoegen aan de tabel, met geselecteerde werksoort als hoofdwerksoort</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.Delete">Geselecteerde werksoort, en onderliggende werksoorten, verwijderen uit de tabel</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.Save">Gewijzigde werksoort opslaan</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.Expand">Werksoorten openklappen</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.Collapse">Werksoorten dichtklappen</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.Save">Wijzigingen opslaan</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.AddTask">Werksoort toevoegen</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.AddSubTask">Subwerksoort toevoegen</system:String>
+    <system:String x:Key="Edit.Worktype.Action.ContextMenu.Label.DeleteTask">Verwijder werksoort</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.Expand">Alle (sub)werksoorten openklappen</system:String>
+    <system:String x:Key="Edit.Worktype.Action.Tooltip.Collapse">Alle (sub)werksoorten dicktklappen</system:String>
+    <system:String x:Key="Edit.Worktype.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Edit.Worktype.DataGrid.Header.ParentId">ParentId</system:String>
+    <system:String x:Key="Edit.Worktype.DataGrid.Header.Name">Werksoortnaam</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Supplier-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Supplier.Title">Leveranciers Exporteren</system:String>
+    <system:String x:Key="Export.Supplier.Subtitle">Exporteer leveranciers naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Supplier.Filename">Leveranciers</system:String>
+    <system:String x:Key="Export.Supplier.Button.Label">Leverancier</system:String>
+    <system:String x:Key="Export.Supplier.Button.Tooltip">Selecteer het te importeren CSV bestand met leveranciers</system:String>
+    <system:String x:Key="Export.Supplier.Empty">Er zijn geen leveranciers beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Supplier.Button.Text">Leveranciers</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Supplier.Title">Leveranciers Importeren</system:String>
+    <system:String x:Key="Import.Supplier.Subtitle">Importeer leveranciers uit een CSV bestand, hierin staan uitsluitend leveranciernamen</system:String>
+    <system:String x:Key="Import.Supplier.Filename">Importeer leveranciers</system:String>
+    <system:String x:Key="Import.Supplier.Messagebox.Error.Existing.Long">Ingelezen leverancier bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Supplier.Messagebox.Error.Existing.Short">Leverancier Bestaat al</system:String>
+    <system:String x:Key="Import.Supplier.Button.Label">Leverancier</system:String>
+    <system:String x:Key="Import.Supplier.Button.Tooltip">Selecteer het te importeren CSV bestand met leveranciers</system:String>
+    <system:String x:Key="Import.Supplier.FileDialog.Description">Selecteer het te importeren CSV bestand met leveranciers</system:String>
+    <system:String x:Key="Import.Supplier.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Supplier.Button.Text">Leveranciers</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Edit.SupplierContact.NoContactSelected.Error">Geen contactpersoon geselecteerd</system:String>
+    <system:String x:Key="Edit.Supplier.NoSupplierSelected.Error">Geen leverancier geselecteerd</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierCode.Empty">Niet opgeslagen, geen zoeknaam voor de leverancier ingegeven</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierName.Empty">Niet opgeslagen, geen naam voor de leverancier ingegeven</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierCodeAndName.Empty">Niet opgeslagen, geen zoeknaam en naam voor de leverancier ingegeven</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierCode.Excist">Niet opgeslagen, zoeknaam bestaat al</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierName.Excist">Niet opgeslagen, naam bestaat al</system:String>
+    <system:String x:Key="Edit.Supplier.SupplierCodeAndName.Excist">Niet opgeslagen, zoeknaam en naam bestaan al</system:String>
+    <system:String x:Key="Edit.Supplier.Added">Niewe leverancier opgeslagen</system:String>
+    <system:String x:Key="Edit.Supplier.Changed">Leverancier gegevens aangepast</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Supplier Contact-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.SupplierContact.Title">Contact personen per leverancier Exporteren</system:String>
+    <system:String x:Key="Export.SupplierContact.Subtitle">Exporteer contact personen per leverancier naar een CSV bestand</system:String>
+    <system:String x:Key="Export.SupplierContact.Filename">Contact personen per leverancier</system:String>
+    <system:String x:Key="Export.SupplierContact.Button.Label">Contact personen</system:String>
+    <system:String x:Key="Export.SupplierContact.Button.Tooltip">Selecteer het te importeren CSV bestand met contact personen per leverancier</system:String>
+    <system:String x:Key="Export.SupplierContact.Empty">Er zijn geen contact personen per leverancier beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.SupplierContact.Button.Text">Contact p.l.</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.SupplierContact.Title">Contact personen per leverancier Importeren</system:String>
+    <system:String x:Key="Import.SupplierContact.Subtitle">Importeer contact personen per leverancier uit een CSV bestand, hierin staan uitsluitend contact personennamen</system:String>
+    <system:String x:Key="Import.SupplierContact.Filename">Importeer contact personen per leverancier</system:String>
+    <system:String x:Key="Import.SupplierContact.Messagebox.Error.Existing.Long">Ingelezen contact personen bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.SupplierContact.Messagebox.Error.Existing.Short">Contact personen Bestaat al</system:String>
+    <system:String x:Key="Import.SupplierContact.Button.Label">Contact personen</system:String>
+    <system:String x:Key="Import.SupplierContact.Button.Tooltip">Selecteer het te importeren CSV bestand met contact personen per leverancier</system:String>
+    <system:String x:Key="Import.SupplierContact.FileDialog.Description">Selecteer het te importeren CSV bestand met contactpersonen per leverancier</system:String>
+    <system:String x:Key="Import.SupplierContact.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.SupplierContact.Button.Text">Contact p.l.</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Supplier Contact Function-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.SupplierContactFunction.Title">Functies Exporteren</system:String>
+    <system:String x:Key="Export.SupplierContactFunction.Subtitle">Exporteer functies naar een CSV bestand</system:String>
+    <system:String x:Key="Export.SupplierContactFunction.Filename">Functies</system:String>
+    <system:String x:Key="Export.SupplierContactFunction.Button.Label">Functies</system:String>
+    <system:String x:Key="Export.SupplierContactFunction.Button.Tooltip">Selecteer het te importeren CSV bestand met functies</system:String>
+    <system:String x:Key="Export.SupplierContactFunction.Empty">Er zijn geen functies beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.SupplierContactFunction.Button.Text">Functies</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.SupplierContactFunction.Title">Functies Importeren</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Subtitle">Importeer functies uit een CSV bestand, hierin staan uitsluitend functiesnamen</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Filename">Importeer functies</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Messagebox.Error.Existing.Long">Ingelezen functies bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Messagebox.Error.Existing.Short">Functies Bestaat al</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Button.Label">Functies</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.Button.Tooltip">Selecteer het te importeren CSV bestand met functies</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.FileDialog.Description">Selecteer het te importeren CSV bestand met functies</system:String>
+    <system:String x:Key="Import.SupplierContactFunction.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.SupplierContactFunction.Button.Text">Functies</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Time registration-->
+    <!--#region Export page-->
+    <system:String x:Key="Export.Time.Title">Urenregistratie Exporteren</system:String>
+    <system:String x:Key="Export.Time.Subtitle">Exporteer urenregistratie naar een CSV bestand</system:String>
+    <system:String x:Key="Export.Time.Filename">Urenregistratie</system:String>
+    <system:String x:Key="Export.Time.Button.Label">Urenregistratie</system:String>
+    <system:String x:Key="Export.Time.Button.Tooltip">Selecteer het te importeren CSV bestand met urenregistratie</system:String>
+    <system:String x:Key="Export.Time.Empty">Er zijn geen urenregistratie beschikbaar om te exporteren</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Export.Time.Button.Text">Urenregistratie</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Import page-->
+    <system:String x:Key="Import.Time.Title">Urenregistratie Importeren</system:String>
+    <system:String x:Key="Import.Time.Subtitle">Importeer urenregistratie uit een CSV bestand, hierin staan uitsluitend urenregistratienamen</system:String>
+    <system:String x:Key="Import.Time.Filename">Importeer urenregistratie</system:String>
+    <system:String x:Key="Import.Time.Messagebox.Error.Existing.Long">Ingelezen urenregistratie bestaat al in de tabel</system:String>
+    <system:String x:Key="Import.Time.Messagebox.Error.Existing.Short">Urenregistratie Bestaat al</system:String>
+    <system:String x:Key="Import.Time.Button.Label">Urenregistratie</system:String>
+    <system:String x:Key="Import.Time.Button.Tooltip">Selecteer het te importeren CSV bestand met urenregistratie</system:String>
+    <system:String x:Key="Import.Time.FileDialog.Description">Selecteer het te importeren CSV bestand met urenregistratie</system:String>
+    <system:String x:Key="Import.Time.FileDialog.FilterText">CSV Bestanden</system:String>
+
+    <!--#region Buttons-->
+    <system:String x:Key="Import.Time.Button.Text">Urenregistratie</system:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Maintenance page-->
+    <system:String x:Key="Time.Title">Bouwlogboek</system:String>
+    <system:String x:Key="Time.Subtitle">Beheer de gewerkte bouwtijd en gebruikte materialen</system:String>
+    <system:String x:Key="Time.Name.Label">Tijdnaam:</system:String>
+    <system:String x:Key="Time.Name.Tag">Tijdnaam</system:String>
+    <system:String x:Key="Time.Action.Tooltip.Add">Tijd toevoegen aan de tabel</system:String>
+    <system:String x:Key="Time.Action.Tooltip.Delete">Geselecteerde tijd verwijderen uit de tabel</system:String>
+    <system:String x:Key="Time.Action.Tooltip.Save">Gewijzigde tijd opslaan</system:String>
+    <system:String x:Key="Time.DataGrid.Header.Id">Id</system:String>
+    <system:String x:Key="Time.DataGrid.Header.Name">Tijdnaam</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Label">Werktijden</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.Text">Project</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.Project.Label">Project:</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.Project.Text">Project</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.Project.Tooltip">Selecteer het project waaraan gewerkt is</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.Project.Tag">Selecteer project</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.TotalTime.Label">Totale tijd:</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.TotalTime.Text">Totale tijd</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.TotalTime.Tooltip">De totale tijd, tot nu toe, wat aan het project besteed is</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Project.TotalTime.Tag">werktijd</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.Text">Tijdregistratie</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.WorkingDate.Text">Datum</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.WorkingDate.Tag">Datum</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.WorkingDate.Tooltip">Datum van de werkzaamheden</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.WorkingType.Text">Werksoort</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.StartTime.Text">Start tijd</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.EndTime.Text">Eind tijd</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Group.Time.ElapsedTime.Text">Gewerkte tijd</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Toolbar.AddNewRow.Tooltip">Voeg een niewe tijdsregistratie toe</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Toolbar.Save.Tooltip">Opslaan mutaties</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Toolbar.AddNewProductUsageRow.Tooltip">Voeg een niewe tijdsregistratie toe</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.Toolbar.SaveProductUsage.Tooltip">Opslaan mutaties</system:String>
+
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Title">Artikel gebruik</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Product.Label">Artikel</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Product.Tag">Selecteer artikel</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Product.Tooltip">Selecteer het gebruikte artikel</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Amount.Label">Hoeveelheid</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Amount.Tag">Hoeveelheid</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Amount.Tooltip">Hoeveel van dit artikel verbruikt</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Date.Label">Datum</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Date.Tag">Selecteer datum</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Date.Tooltip">Verbuiksdatum</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Comment.Label">Opmerkingen</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Comment.Tag">Opmerkingen</system:String>
+    <system:String x:Key="Time.Tab.TimeManagement.ProductUsage.Group.Comment.Tooltip">Opmerkingen</system:String>
+
+
+    <system:String x:Key="Time.Tab.ProductManagement.Label">Materiaalverbruik</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Rtf Toolbar items-->
+    <system:String x:Key="rtfToolbar.Action.Indent">Inspringen</system:String>
+    <system:String x:Key="rtfToolbar.Action.Copy">Kopieer</system:String>
+    <system:String x:Key="rtfToolbar.Action.Cut">Knippen</system:String>
+    <system:String x:Key="rtfToolbar.Action.Paste">Plak</system:String>
+    <system:String x:Key="rtfToolbar.Action.Bold">Vet</system:String>
+    <system:String x:Key="rtfToolbar.Action.Italic">Cursief</system:String>
+    <system:String x:Key="rtfToolbar.Action.Redo">Opnieuw</system:String>
+    <system:String x:Key="rtfToolbar.Action.Underline">Onderstrepen</system:String>
+    <system:String x:Key="rtfToolbar.Action.Undo">Ongedaan maken</system:String>
+    <system:String x:Key="rtfToolbar.Action.ListBullet">Lijst</system:String>
+    <system:String x:Key="rtfToolbar.Action.ListNumber">Genummerde lijst</system:String>
+    <system:String x:Key="rtfToolbar.Action.Outdent">Terugspringen</system:String>
+    <!--#endregion-->
+    <!--#endregion-->
+
+    <!--#region Settings-->
+    <system:String x:Key="mainRibbon.Manage.Settings.Button.Label">Instellingen</system:String>
+    <system:String x:Key="mainRibbon.Manage.Settings.Group.Header">Instellingen</system:String>
+    <!--#endregion-->
+
+    <!--#region Regional settings-->
+    <system:String x:Key="Region.Month.Name.01">Januari</system:String>
+    <system:String x:Key="Region.Month.Name.02">Febuari</system:String>
+    <system:String x:Key="Region.Month.Name.03">Maart</system:String>
+    <system:String x:Key="Region.Month.Name.04">April</system:String>
+    <system:String x:Key="Region.Month.Name.05">Mei</system:String>
+    <system:String x:Key="Region.Month.Name.06">Juni</system:String>
+    <system:String x:Key="Region.Month.Name.07">Juli</system:String>
+    <system:String x:Key="Region.Month.Name.08">Augustus</system:String>
+    <system:String x:Key="Region.Month.Name.09">September</system:String>
+    <system:String x:Key="Region.Month.Name.10">Oktober</system:String>
+    <system:String x:Key="Region.Month.Name.11">November</system:String>
+    <system:String x:Key="Region.Month.Name.12">December</system:String>
+
+    <system:String x:Key="Region.Month.Error">Niet bestaande maand</system:String>
+    <system:String x:Key="Region.Day.Error">Niet bestaande dag</system:String>
+
+    <system:String x:Key="Region.Day.Name.01">Zondag</system:String>
+    <system:String x:Key="Region.Day.Name.02">Maandag</system:String>
+    <system:String x:Key="Region.Day.Name.03">Dinsdag</system:String>
+    <system:String x:Key="Region.Day.Name.04">Woensdag</system:String>
+    <system:String x:Key="Region.Day.Name.05">Donderdag</system:String>
+    <system:String x:Key="Region.Day.Name.06">Vrijdag</system:String>
+    <system:String x:Key="Region.Day.Name.07">Vrijdag</system:String>
+    <!--#endregion-->
+
+    <!--#region Default DateTime watermarks-->
+    <system:String x:Key="General.DatePicker.Watermark">Selecteer datum</system:String>
+    <system:String x:Key="General.TimePicker.Watermark">Selecteer tijdstip</system:String>
+
+    <!--#endregion-->
+</ResourceDictionary>

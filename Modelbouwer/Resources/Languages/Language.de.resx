@@ -1,0 +1,3061 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDeveloper" xml:space="preserve">
+    <value>HN -Softwareentwicklung</value>
+  </data>
+  <data name="metadataCategoryPageTitle" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCountryPageTitle" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="metadataCurrencyPageTitle" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataProductPageTitle" xml:space="preserve">
+    <value>Produkte</value>
+  </data>
+  <data name="metadataProjectPageTitle" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderGeneral" xml:space="preserve">
+    <value>Projektdaten</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderMemo" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderProjectCosts" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderTimeManagement" xml:space="preserve">
+    <value>Bauzeiten</value>
+  </data>
+  <data name="metadataStoragePageTitle" xml:space="preserve">
+    <value>Speicherorte</value>
+  </data>
+  <data name="metadataSupplierPageTitle" xml:space="preserve">
+    <value>Lieferanten</value>
+  </data>
+  <data name="metadataWorktypePageTitle" xml:space="preserve">
+    <value>Art der Arbeit</value>
+  </data>
+  <data name="OrderPageTitle" xml:space="preserve">
+    <value>Befehl</value>
+  </data>
+  <data name="OrderPageSubTitle" xml:space="preserve">
+    <value>Geben Sie die Bestellung pro Lieferant ein, sie kann pro Regel angegeben werden, ob ein Artikel in die Projektkosten enthalten ist</value>
+  </data>
+  <data name="OrderTabItemHeaderMemo" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="OrderTabItemHeaderGeneral" xml:space="preserve">
+    <value>Befehl</value>
+  </data>
+  <data name="toolbarButtonTextCopy" xml:space="preserve">
+    <value>Kopie</value>
+  </data>
+  <data name="toolbarButtonTextCut" xml:space="preserve">
+    <value>Zu schneiden</value>
+  </data>
+  <data name="toolbarButtonTextPaste" xml:space="preserve">
+    <value>Platte</value>
+  </data>
+  <data name="toolbarButtonFontBold" xml:space="preserve">
+    <value>Fett</value>
+  </data>
+  <data name="toolbarButtonFontItalic" xml:space="preserve">
+    <value>Kursiv</value>
+  </data>
+  <data name="toolbarButtonTextRedo" xml:space="preserve">
+    <value>Wieder</value>
+  </data>
+  <data name="toolbarButtonFontUnderline" xml:space="preserve">
+    <value>Unterstreichen</value>
+  </data>
+  <data name="toolbarButtonTextUndo" xml:space="preserve">
+    <value>Rückgängig machen</value>
+  </data>
+  <data name="toolbarButtonListBullet" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="toolbarButtonListNumber" xml:space="preserve">
+    <value>Nummerierte Liste</value>
+  </data>
+  <data name="toolbarButtonIndentDecrease" xml:space="preserve">
+    <value>Zurückspringen</value>
+  </data>
+  <data name="toolbarButtonIndentIncrease" xml:space="preserve">
+    <value>Einzug</value>
+  </data>
+  <data name="OrderOrderFieldClosed" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderFieldClosedDate" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRate" xml:space="preserve">
+    <value>Wechselkurs</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbol" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="OrderOrderFieldOrderCosts" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="OrderOrderFieldSupplier" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="OrderOrderFieldOrderDate" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="OrderOrderFieldShippingCosts" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="OrderOrderlineFieldCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="OrderOrderlineFieldClosed" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDate" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldNumber" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="OrderOrderlineFieldPrice" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlineFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderGroupOrderinformation" xml:space="preserve">
+    <value>Datenbestelldaten</value>
+  </data>
+  <data name="OrderOrderGroupOrderline" xml:space="preserve">
+    <value>Befehl</value>
+  </data>
+  <data name="toolbarButtonActionNew" xml:space="preserve">
+    <value>Zeile hinzufügen</value>
+  </data>
+  <data name="toolbarButtonActionDelete" xml:space="preserve">
+    <value>Entfernen Sie die ausgewählte Regel</value>
+  </data>
+  <data name="toolbarButtonActionSave" xml:space="preserve">
+    <value>Geänderte Daten speichern</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCode" xml:space="preserve">
+    <value>Währungscode</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyName" xml:space="preserve">
+    <value>Währungsbeschreibung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbol" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRate" xml:space="preserve">
+    <value>Umbaupreis</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShort" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Währung hinzufügen</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Unterstützte Währung</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="OrderOrderGroupOrderlist" xml:space="preserve">
+    <value>Bestellregeln</value>
+  </data>
+  <data name="OrderOrderlistFieldPrice" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlistFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProject" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltip" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlineFieldTotal" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="OrderOrderlineTotalsGrandTotal" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="OrderOrderlineTotalsOrdercosts" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="OrderOrderlineTotalsRowTotal" xml:space="preserve">
+    <value>Gesamtbestellregeln</value>
+  </data>
+  <data name="OrderOrderlineTotalsShippingCosts" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="OrderOrderlineTotals" xml:space="preserve">
+    <value>Völlig</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonDelete" xml:space="preserve">
+    <value>Entfernen Sie die ausgewählte Bestellregel</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonNew" xml:space="preserve">
+    <value>Fügen Sie eine neue Auftragszeile hinzu</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonSave" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="OrderToolbarButtonSave" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="OrderToolbarButtonNew" xml:space="preserve">
+    <value>Bestellung hinzufügen</value>
+  </data>
+  <data name="OrderToolbarButtonDelete" xml:space="preserve">
+    <value>Ausgewählte Reihenfolge löschen</value>
+  </data>
+  <data name="OrderDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderCompleted" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderDate" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="OrderDatagridHeaderSupplierId" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="OrderDatagridHeaderSupplierName" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumber" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderNumber" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="OrderTabItemHeaderOrderrows" xml:space="preserve">
+    <value>Bestellregeln</value>
+  </data>
+  <data name="ReceiptPageTitle" xml:space="preserve">
+    <value>Rezeption</value>
+  </data>
+  <data name="ReceiptPageSubTitle" xml:space="preserve">
+    <value>Registrierung von Lieferungen pro Bestellregel</value>
+  </data>
+  <data name="ReceiptTabItemHeaderMemo" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="ReceiptTabItemHeaderGeneral" xml:space="preserve">
+    <value>Bestellung/Empfang</value>
+  </data>
+  <data name="ReceiptButtonApply" xml:space="preserve">
+    <value>Verfahren</value>
+  </data>
+  <data name="ReceiptButtonCancel" xml:space="preserve">
+    <value>Abgelaufen</value>
+  </data>
+  <data name="ReceiptButtonTooltipApply" xml:space="preserve">
+    <value>Verarbeiten Sie die eingegebenen Einnahmen</value>
+  </data>
+  <data name="ReceiptButtonTooltipCancel" xml:space="preserve">
+    <value>Lassen Sie die ausstehende Bestellregel nicht mehr geliefert werden.</value>
+  </data>
+  <data name="ReceiptGroupReceiptline" xml:space="preserve">
+    <value>Lieferungen</value>
+  </data>
+  <data name="ReceiptGroupReceipts" xml:space="preserve">
+    <value>Herausragende Bestellungen</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="generalAmount" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmount" xml:space="preserve">
+    <value>Erhalten</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDate" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocation" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="ReceiptConfirmCancelTitle" xml:space="preserve">
+    <value>Späte Bestellung</value>
+  </data>
+  <data name="ReceiptConfirmCancelMessage" xml:space="preserve">
+    <value>Möchten Sie den ausstehenden Teil der geklärten Bestellung ablehnen? Alle gebuchten Empfänge werden gespeichert</value>
+  </data>
+  <data name="storageStockDatagridHeaderAmount" xml:space="preserve">
+    <value>Auf Lager</value>
+  </data>
+  <data name="storageStockDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="storageStockDatagridHeaderProductId" xml:space="preserve">
+    <value>Produktid</value>
+  </data>
+  <data name="storageStockDatagridHeaderStorageId" xml:space="preserve">
+    <value>Speicher -ID</value>
+  </data>
+  <data name="storageStockDatagridHeaderUnitId" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="storageStockDatagridHeaderUnitName" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="storageStockDatagridHeaderStorageName" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="storageStockDatagridHeaderProductName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="storageStockPageSubTitle" xml:space="preserve">
+    <value>Geben Sie den richtigen Bestand pro Artikel ein</value>
+  </data>
+  <data name="storageStockPageTitle" xml:space="preserve">
+    <value>Aktienmanagement</value>
+  </data>
+  <data name="StatusRead" xml:space="preserve">
+    <value>lesen</value>
+  </data>
+  <data name="StatusStockAmount" xml:space="preserve">
+    <value>Menge für</value>
+  </data>
+  <data name="StatusStockChanged" xml:space="preserve">
+    <value>geändert</value>
+  </data>
+  <data name="StatusStockProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="StatusStockProducts" xml:space="preserve">
+    <value>Und</value>
+  </data>
+  <data name="mainRibbonExitTooltip" xml:space="preserve">
+    <value>Programm</value>
+  </data>
+  <data name="mainRibbonHelpTooltip" xml:space="preserve">
+    <value>Hilfe beim Programm</value>
+  </data>
+  <data name="mainRibbonPrintTooltip" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="mainRibbonRedoTooltip" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="mainRibbonSaveTooltip" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="mainRibbonUndoTooltip" xml:space="preserve">
+    <value>Rückgängig machen</value>
+  </data>
+  <data name="mainRibbonExitHeader" xml:space="preserve">
+    <value>Zu blockieren</value>
+  </data>
+  <data name="mainRibbonHelpHeader" xml:space="preserve">
+    <value>Helfen</value>
+  </data>
+  <data name="mainRibbonPrintHeader" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="mainRibbonRedoHeader" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="mainRibbonSaveHeader" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="mainRibbonUndoHeader" xml:space="preserve">
+    <value>Rückgängig gemacht</value>
+  </data>
+  <data name="mainRibbonAboutHeader" xml:space="preserve">
+    <value>Um ...</value>
+  </data>
+  <data name="mainRibbonAboutTooltip" xml:space="preserve">
+    <value>Informationen über die Anwendung</value>
+  </data>
+  <data name="mainRibbonSettingsHeader" xml:space="preserve">
+    <value>Institut</value>
+  </data>
+  <data name="mainRibbonSettingsTooltip" xml:space="preserve">
+    <value>Anwendungseinstellungen</value>
+  </data>
+  <data name="mainTitle" xml:space="preserve">
+    <value>Modellhersteller Management</value>
+  </data>
+  <data name="mainRibbonTabConfigHeader" xml:space="preserve">
+    <value>Institutionen</value>
+  </data>
+  <data name="mainRibbonTabManageHeader" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="mainRibbonTabConfigButtonLabel" xml:space="preserve">
+    <value>Institutionen</value>
+  </data>
+  <data name="mainRibbonTabManageTimeGroupHeader" xml:space="preserve">
+    <value>Zeitregistrierung</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeButtonLabel" xml:space="preserve">
+    <value>Zeitregistrierung</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeEditHeader" xml:space="preserve">
+    <value>Zeitregistrierung</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeExportHeader" xml:space="preserve">
+    <value>Exportstunden</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeReportHeader" xml:space="preserve">
+    <value>Stündlicher Bericht</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeImportHeader" xml:space="preserve">
+    <value>Stunden importieren</value>
+  </data>
+  <data name="mainRibbonTabManageProjectGroupHeader" xml:space="preserve">
+    <value>Projektmanagement</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectButtonLabel" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectEditHeader" xml:space="preserve">
+    <value>Projektmanagement</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectReportHeader" xml:space="preserve">
+    <value>Projektübersicht</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectExportHeader" xml:space="preserve">
+    <value>Exportprojekte</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectImportHeader" xml:space="preserve">
+    <value>Projekte importieren</value>
+  </data>
+  <data name="mainRibbonTabManageStorageGroupHeader" xml:space="preserve">
+    <value>Aktienmanagement</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageButtonLabel" xml:space="preserve">
+    <value>Aktienmanagement</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageOrderHeader" xml:space="preserve">
+    <value>Befehl</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReceiptHeader" xml:space="preserve">
+    <value>Rezeption</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageEditHeader" xml:space="preserve">
+    <value>Aktienmutationen</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageEditTooltip" xml:space="preserve">
+    <value>Aktienkorrekturen implementieren</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportStorageHeader" xml:space="preserve">
+    <value>Aktienübersicht</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportOrdersHeader" xml:space="preserve">
+    <value>Herausragende Bestellungen</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportUsageHeader" xml:space="preserve">
+    <value>Verbrauch pro Projekt</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataGroupHeader" xml:space="preserve">
+    <value>Stammesdateien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataButtonLabel" xml:space="preserve">
+    <value>Stammesdateien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductEditLabel" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductReportHeader" xml:space="preserve">
+    <value>Übersicht Artikel</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductImportHeader" xml:space="preserve">
+    <value>Artikel importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductExportHeader" xml:space="preserve">
+    <value>Artikel exportieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryEditLabel" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryReportHeader" xml:space="preserve">
+    <value>Übersichtskategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryImportHeader" xml:space="preserve">
+    <value>Importkategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryExportHeader" xml:space="preserve">
+    <value>Exportkategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryEditLabel" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryReportHeader" xml:space="preserve">
+    <value>Landung Übersicht</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryImportHeader" xml:space="preserve">
+    <value>Länder importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryExportHeader" xml:space="preserve">
+    <value>Exportländer</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierEditLabel" xml:space="preserve">
+    <value>Lieferanten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierReportHeader" xml:space="preserve">
+    <value>Übersicht Lieferanten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierImportHeader" xml:space="preserve">
+    <value>Lieferanten importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierExportHeader" xml:space="preserve">
+    <value>Exportlieferanten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationEditLabel" xml:space="preserve">
+    <value>Standorte</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationReportHeader" xml:space="preserve">
+    <value>Übersichtsstandorte</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationImportHeader" xml:space="preserve">
+    <value>Standorte importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationExportHeader" xml:space="preserve">
+    <value>Exportstandorte</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyEditLabel" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyReportHeader" xml:space="preserve">
+    <value>Übersichtswährung</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyImportHeader" xml:space="preserve">
+    <value>Importwährung</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyExportHeader" xml:space="preserve">
+    <value>Exportwährung</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeEditLabel" xml:space="preserve">
+    <value>Arbeitstypen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeReportHeader" xml:space="preserve">
+    <value>Überblick über die Arbeitstypen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeImportHeader" xml:space="preserve">
+    <value>Arbeitstypen importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeExportHeader" xml:space="preserve">
+    <value>Arbeitstypen exportieren</value>
+  </data>
+  <data name="TimeManagementPageTitle" xml:space="preserve">
+    <value>Stunde Registrierung</value>
+  </data>
+  <data name="TimeManagementPageSubTitle" xml:space="preserve">
+    <value>Registrieren Sie die Anzahl der nach Arbeitstypen bearbeiteten Arbeitsstunden. Jeder Materialverbrauch kann auf dieser Registerkarte registriert werden
+Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und ein Projekt ausgewählt werden</value>
+  </data>
+  <data name="TimeManagementTabItemHeaderProduct" xml:space="preserve">
+    <value>Materialverbrauch</value>
+  </data>
+  <data name="TimeManagementTabItemHeaderTime" xml:space="preserve">
+    <value>Zeitregistrierung</value>
+  </data>
+  <data name="TimeManagementFieldDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderCategoryId" xml:space="preserve">
+    <value>Kategorie -ID</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProductId" xml:space="preserve">
+    <value>Produkt -ID</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProjectId" xml:space="preserve">
+    <value>Projekt ID</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStorageId" xml:space="preserve">
+    <value>Speicherort -ID</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderWorktypeId" xml:space="preserve">
+    <value>Lorngings ID</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderCategoryName" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProductName" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProjectName" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStorageName" xml:space="preserve">
+    <value>Speicherort</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderWorktypeName" xml:space="preserve">
+    <value>Arbeiten</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderTotalTime" xml:space="preserve">
+    <value>Gesamtstunden funktionieren</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderAmountUsed" xml:space="preserve">
+    <value>Gebraucht</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderComment" xml:space="preserve">
+    <value>Bemerkung</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderElapsedTime" xml:space="preserve">
+    <value>Zeit</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderEndTime" xml:space="preserve">
+    <value>Endzeit</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStartTime" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
+  <data name="generalStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="generalTimeEntrie" xml:space="preserve">
+    <value>Zeitregistrierungsregel</value>
+  </data>
+  <data name="generalTimeEntries" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="generalProductUsageEntrie" xml:space="preserve">
+    <value>Produktnutzungsregel</value>
+  </data>
+  <data name="generalProductUsageEntries" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="generalRead" xml:space="preserve">
+    <value>lesen</value>
+  </data>
+  <data name="TimeEntryToolbarButtonDelete" xml:space="preserve">
+    <value>Entfernen Sie die unterstützte Regel</value>
+  </data>
+  <data name="TimeEntryToolbarButtonNew" xml:space="preserve">
+    <value>Fügen Sie eine neue Regel hinzu</value>
+  </data>
+  <data name="ProductEntryToolbarButtonDelete" xml:space="preserve">
+    <value>Entfernen Sie die ausgewählte Regel</value>
+  </data>
+  <data name="ProductEntryToolbarButtonNew" xml:space="preserve">
+    <value>Fügen Sie eine neue Regel hinzu</value>
+  </data>
+  <data name="TimeEntryToolbarButtonSave" xml:space="preserve">
+    <value>Speichern Sie eingegebene Daten</value>
+  </data>
+  <data name="TimeManagementTimeEntryError" xml:space="preserve">
+    <value>Die Endzeit ist vor der Startzeit</value>
+  </data>
+  <data name="TimemanagementDatagridFooterTotalElapsedTime" xml:space="preserve">
+    <value>Gesamtarbeitszeit:</value>
+  </data>
+  <data name="TimeEntryToolbarButtonReset" xml:space="preserve">
+    <value>Wieder mit der Eingabe beginnen</value>
+  </data>
+  <data name="TimeManagementTimeEntryStartTimeExistError" xml:space="preserve">
+    <value>Die Startzeit wurde bereits als Arbeitszeit verwendet</value>
+  </data>
+  <data name="TimeManagementTimeEntryEndTimeExistError" xml:space="preserve">
+    <value>Frühzeit wurde als Arbeitszeit verwendet</value>
+  </data>
+  <data name="TimeManagementTabGroupTimeEntry" xml:space="preserve">
+    <value>Zeit -in -it</value>
+  </data>
+  <data name="TimeManagementTabGroupGeneral" xml:space="preserve">
+    <value>Arbeitsdatum und Projekt</value>
+  </data>
+  <data name="TimeManagementTabGroupProductUsage" xml:space="preserve">
+    <value>Verbrauchsregistrierung</value>
+  </data>
+  <data name="ProductEntryToolbarButtonSave" xml:space="preserve">
+    <value>Speichern Sie eingegebene Daten</value>
+  </data>
+  <data name="ProductEntryToolbarButtonReset" xml:space="preserve">
+    <value>Wieder mit der Eingabe beginnen</value>
+  </data>
+  <data name="ImportTimeEntryTitle" xml:space="preserve">
+    <value>Zeitregistrierung der Einfuhr</value>
+  </data>
+  <data name="ImportTimeEntrySubTitle" xml:space="preserve">
+    <value>Importieren Sie Daten aus einer CSV -Datei, die Projektname, Arbeitsdatum, Startzeit, Endzeit und Arbeitstyp enthält. Der Projektname und der Arbeitstyp müssen vorhandenen Projekt- und Arbeitstypen übereinstimmen</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonLabel" xml:space="preserve">
+    <value>Datei auswählen</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Zeitregistrierungen importiert werden soll</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonFilename" xml:space="preserve">
+    <value>Keine Datei ausgewählt</value>
+  </data>
+  <data name="ImportTimeEntryProjectLabel" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="ImportTimeEntryProjectName" xml:space="preserve">
+    <value>Kein Projekt</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ImportTimeEntryFileDialogFiltertext" xml:space="preserve">
+    <value>Betanden, um importiert zu werden</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorEndtime" xml:space="preserve">
+    <value>Endzeit früher oder dasselbe als in der Startzeit</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorProjectcode" xml:space="preserve">
+    <value>Falscher Projektcode</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorUnknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorWorktypename" xml:space="preserve">
+    <value>Falscher Arbeitsart Name</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorInline" xml:space="preserve">
+    <value>Regel</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorMessage" xml:space="preserve">
+    <value>Fehler beim Import gefunden</value>
+  </data>
+  <data name="TimeReportButtonGroupDay" xml:space="preserve">
+    <value>Pro Tag</value>
+  </data>
+  <data name="TimeReportButtonGroupProject" xml:space="preserve">
+    <value>Auf Projekt</value>
+  </data>
+  <data name="TimeReportButtonGroupWorktype" xml:space="preserve">
+    <value>Auf Arbeitstyp</value>
+  </data>
+  <data name="TimeReportButtonGroupYear" xml:space="preserve">
+    <value>Pro Jahr</value>
+  </data>
+  <data name="TimeReportButtonGroupYearDay" xml:space="preserve">
+    <value>Pro Jahr am Tag</value>
+  </data>
+  <data name="TimeReportButtonGroupYearMonth" xml:space="preserve">
+    <value>Pro Jahr und Monat</value>
+  </data>
+  <data name="TimeReportButtonNoGroup" xml:space="preserve">
+    <value>Gegönnt</value>
+  </data>
+  <data name="TimeReportHeaderDay" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="TimeReportHeaderMonth" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="TimeReportHeaderProjectName" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="TimeReportHeaderWorkDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TimeReportHeaderWorkedMinutes" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="TimeReportHeaderWorkTime" xml:space="preserve">
+    <value>Arbeitszeit</value>
+  </data>
+  <data name="TimeReportHeaderWorktypeName" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="TimeReportHeaderYear" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="TimeReportHeaderYearDay" xml:space="preserve">
+    <value>Jahr/Tag</value>
+  </data>
+  <data name="TimeReportHeaderYearMonth" xml:space="preserve">
+    <value>Jahr/Monat</value>
+  </data>
+  <data name="TimeReportSelectProject" xml:space="preserve">
+    <value>Projekt auswählen</value>
+  </data>
+  <data name="TimeReportButtonGroupMonth" xml:space="preserve">
+    <value>Pro Monat</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusText" xml:space="preserve">
+    <value>Nummer:</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTitle" xml:space="preserve">
+    <value>Grundinformationen</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralTitle" xml:space="preserve">
+    <value>Lieferantendaten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZip" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrency" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrl" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCosts" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValue" xml:space="preserve">
+    <value>Bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="metadataSupplierTabMemoTitle" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="metadataSupplierTabOrderHistoryTitle" xml:space="preserve">
+    <value>Auftragsgeschichte</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="metadataProductStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="metadataProductStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="metadataProductStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="metadataProductStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderProductId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
+    <value>Ein solcher Name</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
+    <value>Disreibung</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
+    <value>Gamois</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
+    <value>Lauch</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Produkt hinzufügen</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Entfernen Sie ausgewähltes Produkt</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Alle abgeschlossenen Felder leeren</value>
+  </data>
+  <data name="metadataProductTabGeneralTitle" xml:space="preserve">
+    <value>Grundinformationen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductTitle" xml:space="preserve">
+    <value>Produktdaten</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrand" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageTitle" xml:space="preserve">
+    <value>Inventar</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorage" xml:space="preserve">
+    <value>Mindestbestand</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantity" xml:space="preserve">
+    <value>Bestellmenge</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnit" xml:space="preserve">
+    <value>Verpackungseinheit</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensions" xml:space="preserve">
+    <value>Abmessungen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocation" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectTitle" xml:space="preserve">
+    <value>Projektdaten</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldProjectCosts" xml:space="preserve">
+    <value>Projektkosten</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
+    <value>Bild Hinzufügen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
+    <value>Lösche Bild</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
+    <value>Bild um ein</value>
+  </data>
+  <data name="metadataProductTabMemoTitle" xml:space="preserve">
+    <value>Detaillierte Beschreibung</value>
+  </data>
+  <data name="metadataProductTabSupplierTitle" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralTitle" xml:space="preserve">
+    <value>Artikelinformationen pro Lieferant</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplier" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCode" xml:space="preserve">
+    <value>Artikelnummer am Lieferanten</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescription" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplier" xml:space="preserve">
+    <value>Standardlieferant</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderProductId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderSupplierId" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>CurrencyId</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderDefault" xml:space="preserve">
+    <value>Std</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderSupplier" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderProductNumber" xml:space="preserve">
+    <value>Artikel Nr.</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderDescription" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderCurrency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Produktlieferant hinzufügen</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Entfernen Sie das ausgewählte Produkt aus dem Lieferanten</value>
+  </data>
+  <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
+    <value>Aktiengeschichte</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderAddress" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCity" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCountryId" xml:space="preserve">
+    <value>Land -ID</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCurrency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>Währungs -ID</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderSupplierId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderZip" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Entfernen Sie ausgewählten Lieferanten</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Lieferant hinzufügen</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Alle abgeschlossenen Felder leeren</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderMail" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderPhone" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderType" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderTypeId" xml:space="preserve">
+    <value>Funktion ID</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMail" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldName" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhone" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldType" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralTitle" xml:space="preserve">
+    <value>Kommunikationskanäle pro Lieferant</value>
+  </data>
+  <data name="metadataSupplierTabContactTitle" xml:space="preserve">
+    <value>Kontakte</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Löschen Sie die ausgewählte Kontaktperson</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Fügen Sie dem Lieferanten Kontakt (Person) hinzu</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Alle abgeschlossenen Felder leeren</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddress" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCity" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="toolbarButtonParagraphIndent" xml:space="preserve">
+    <value>Einzug</value>
+  </data>
+  <data name="toolbarButtonParagraphOutdent" xml:space="preserve">
+    <value>Zurückspringen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPrice" xml:space="preserve">
+    <value>Kostenpreis</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldProjectCostsTooltip" xml:space="preserve">
+    <value>Die Kosten dieses Artikels müssen in die Projektkosten enthalten sein (nein, wenn beispielsweise Tools oder Inventar)</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltip" xml:space="preserve">
+    <value>Website -Produkt</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrl" xml:space="preserve">
+    <value>Website -Produkt</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderProjectId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderStartDate" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderEndDate" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderCompleted" xml:space="preserve">
+    <value>Vollendet</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Projekt hinzufügen</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Löschen Sie das ausgewählte Projekt</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Alle abgeschlossenen Felder leeren</value>
+  </data>
+  <data name="metadataProjectTabBuildTimeTitle" xml:space="preserve">
+    <value>Bauzeiten</value>
+  </data>
+  <data name="metadataProjectTabCostsTitle" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTitle" xml:space="preserve">
+    <value>Projektdaten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTitle" xml:space="preserve">
+    <value>Bauzeit</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationTitle" xml:space="preserve">
+    <value>Erwartung</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHours" xml:space="preserve">
+    <value>(Std)</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTime" xml:space="preserve">
+    <value>Erwartete Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdays" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressTitle" xml:space="preserve">
+    <value>Fortschritt</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTime" xml:space="preserve">
+    <value>Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDays" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDay" xml:space="preserve">
+    <value>Krustiger Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDay" xml:space="preserve">
+    <value>Längster Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhours" xml:space="preserve">
+    <value>Stunden am Tag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoTitle" xml:space="preserve">
+    <value>Gehen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDays" xml:space="preserve">
+    <value>Dawn:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHours" xml:space="preserve">
+    <value>Std:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsTitle" xml:space="preserve">
+    <value>Baukosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbol" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCosts" xml:space="preserve">
+    <value>Materialkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCosts" xml:space="preserve">
+    <value>Uhr</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCosts" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralTitle" xml:space="preserve">
+    <value>Allgemeine Projektdaten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDate" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDate" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDate" xml:space="preserve">
+    <value>Erwartete Enddatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldClosed" xml:space="preserve">
+    <value>Projekt abgeschlossen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Bild hinzufügen/ändern</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Entfernen Sie das Bild</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonRotateTooltip" xml:space="preserve">
+    <value>Zahlen der Viertelwendung</value>
+  </data>
+  <data name="metadataProjectTabMemoTitle" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="metadataWorktypePageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie die Arbeit, wählen Sie dafür einen Arbeitstyp und verwenden Sie die rechte Maustaste</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktype" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="metadataWorktypeEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Speichern geänderter Kategorie Name</value>
+  </data>
+  <data name="metadataWorktypeTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Hauptarbeitstyp hinzufügen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Fügen Sie Sub-Work-Arten hinzu</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Hauptarbeitstyp hinzufügen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Fügen Sie Sub-Work-Arten hinzu</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Entfernen Sie diese und alle unterstreichenden Arbeitsarten</value>
+  </data>
+  <data name="metadataCategoryPageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie die Kategorien, wählen Sie hier eine Kategorie aus und verwenden Sie die rechte Maustaste</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Speichern geänderter Kategorie Name</value>
+  </data>
+  <data name="metadataCategoryTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Kopfkategorie hinzufügen</value>
+  </data>
+  <data name="metadataCategoryTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Unterkategorie hinzufügen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Kopfkategorie hinzufügen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Unterkategorie hinzufügen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Entfernen Sie diese und alle Unterstreichungskategorien</value>
+  </data>
+  <data name="metadataStoragePageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie die Positionen, wählen Sie dafür einen Speicherort und verwenden Sie die rechte Maustaste</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorage" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="metadataStorageEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Speichern geänderter Standort</value>
+  </data>
+  <data name="metadataStorageTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Hauptort</value>
+  </data>
+  <data name="metadataStorageTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-Location</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Hauptort</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-Location</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Entfernen Sie diese und alle unterstreichenden Standorte</value>
+  </data>
+  <data name="metadataCountryEntryFieldCode" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="metadataCountryEntryFieldName" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrency" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataCountryToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Land zum Tisch hinzufügen</value>
+  </data>
+  <data name="metadataCountryToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Land aus dem Tisch entfernen</value>
+  </data>
+  <data name="metadataCountryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCode" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>Valute ID</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCurrency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderName" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderAmountOrdered" xml:space="preserve">
+    <value>Bestellt</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderAmountUsed" xml:space="preserve">
+    <value>Gebraucht</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderPrice" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderProductName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderProject" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderTotal" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="ProjectCostsReportButtonNoGroup" xml:space="preserve">
+    <value>Gegönnt</value>
+  </data>
+  <data name="ProjectCostsReportButtonGroupCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ProjectCostsReportButtonGroupProject" xml:space="preserve">
+    <value>Auf Projekt</value>
+  </data>
+  <data name="ProjectCostsDataGridGroupTotalsNumber" xml:space="preserve">
+    <value>Anzahl der Produkte:</value>
+  </data>
+  <data name="ProjectCostsDataGridGroupTotalsTotals" xml:space="preserve">
+    <value>Gesamtkosten:</value>
+  </data>
+  <data name="ProjectTimeEntriesDataGridGroupTotalsNumber" xml:space="preserve">
+    <value>Anzahl der halben Tage:</value>
+  </data>
+  <data name="ProjectTimeEntriesDataGridGroupTotalsTotals" xml:space="preserve">
+    <value>Gesamtstunden bearbeitet:</value>
+  </data>
+  <data name="generalDateTimeMonth4Short" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="generalDateTimeMonth4" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="generalDateTimeMonth8Short" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="generalDateTimeMonth8" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="generaldatetimeDayShort" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="generaldatetimeDay" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="generaldatetimeDays" xml:space="preserve">
+    <value>Dämmerung</value>
+  </data>
+  <data name="generalDateTimeMonth12Short" xml:space="preserve">
+    <value>Deck</value>
+  </data>
+  <data name="generalDateTimeMonth12" xml:space="preserve">
+    <value>Dezember</value>
+  </data>
+  <data name="generaldatetimeDay2Short" xml:space="preserve">
+    <value>Ide</value>
+  </data>
+  <data name="generaldatetimeDay2" xml:space="preserve">
+    <value>Dienstag</value>
+  </data>
+  <data name="generaldatetimeDay4Short" xml:space="preserve">
+    <value>Tun</value>
+  </data>
+  <data name="generaldatetimeDay4" xml:space="preserve">
+    <value>Donnerstag</value>
+  </data>
+  <data name="generalDateTimeMonth2Short" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="generalDateTimeMonth2" xml:space="preserve">
+    <value>Februar</value>
+  </data>
+  <data name="generaldatetimeYearShort" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="generaldatetimeYear" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="generalDateTimeMonth1Short" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="generalDateTimeMonth1" xml:space="preserve">
+    <value>Januar</value>
+  </data>
+  <data name="generaldatetimeYears" xml:space="preserve">
+    <value>Jahre</value>
+  </data>
+  <data name="generalDateTimeMonth7Short" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="generalDateTimeMonth7" xml:space="preserve">
+    <value>Juli</value>
+  </data>
+  <data name="generalDateTimeMonth6Short" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="generalDateTimeMonth6" xml:space="preserve">
+    <value>Juni</value>
+  </data>
+  <data name="generaldatetimeMinuteShort" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="generaldatetimeMonthShort" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="generaldatetimeDay1Short" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="generaldatetimeMonth" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="generaldatetimeDay1" xml:space="preserve">
+    <value>Montag</value>
+  </data>
+  <data name="generaldatetimeMonths" xml:space="preserve">
+    <value>Monate</value>
+  </data>
+  <data name="generalDateTimeMonth3" xml:space="preserve">
+    <value>Marsch</value>
+  </data>
+  <data name="generalDateTimeMonth5" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="generalDateTimeMonth5Short" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="generaldatetimeMinutes" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="generaldatetimeMinute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="generalDateTimeMonth3Short" xml:space="preserve">
+    <value>MRT</value>
+  </data>
+  <data name="generalDateTimeMonth11Short" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="generalDateTimeMonth11" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="generalDateTimeMonth10Short" xml:space="preserve">
+    <value>Okt</value>
+  </data>
+  <data name="generalDateTimeMonth10" xml:space="preserve">
+    <value>Oktober</value>
+  </data>
+  <data name="generalDateTimeMonth9Short" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="generalDateTimeMonth9" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="generaldatetimeHourShort" xml:space="preserve">
+    <value>Du</value>
+  </data>
+  <data name="generaldatetimeHours" xml:space="preserve">
+    <value>Uhr</value>
+  </data>
+  <data name="generaldatetimeHour" xml:space="preserve">
+    <value>Uhr</value>
+  </data>
+  <data name="generaldatetimeDay5Short" xml:space="preserve">
+    <value>Fr</value>
+  </data>
+  <data name="generaldatetimeDay5" xml:space="preserve">
+    <value>Freitag</value>
+  </data>
+  <data name="generaldatetimeWeekShort" xml:space="preserve">
+    <value>w</value>
+  </data>
+  <data name="generaldatetimeWeek" xml:space="preserve">
+    <value>Woche</value>
+  </data>
+  <data name="generaldatetimeWeeks" xml:space="preserve">
+    <value>Erweichen</value>
+  </data>
+  <data name="generaldatetimeDay3Short" xml:space="preserve">
+    <value>Wo</value>
+  </data>
+  <data name="generaldatetimeDay3" xml:space="preserve">
+    <value>Mittwoch</value>
+  </data>
+  <data name="generaldatetimeDay6Short" xml:space="preserve">
+    <value>Sa</value>
+  </data>
+  <data name="generaldatetimeDay6" xml:space="preserve">
+    <value>Samstag</value>
+  </data>
+  <data name="generaldatetimeDay0Short" xml:space="preserve">
+    <value>So was</value>
+  </data>
+  <data name="generaldatetimeDay0" xml:space="preserve">
+    <value>Sonntag</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategoryTag" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategoryTooltip" xml:space="preserve">
+    <value>Geben Sie die Kategorie an, in der das Produkt fällt</value>
+  </data>
+  <data name="metadataCountryEntryFieldCodeTag" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="metadataCountryEntryFieldCodeTooltip" xml:space="preserve">
+    <value>Ein Code, für den das Land leicht zu erkennen ist</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrencyTag" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrencyTooltip" xml:space="preserve">
+    <value>Die Standardwährung für dieses Land</value>
+  </data>
+  <data name="metadataCountryEntryFieldNameTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataCountryEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geben Sie den Namen des Landes an</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyTag" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyTooltip" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCodeTag" xml:space="preserve">
+    <value>Währungscode</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCodeTooltip" xml:space="preserve">
+    <value>Kurzwährungsname</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyNameTag" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyNameTooltip" xml:space="preserve">
+    <value>Vollständiger Name der Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateTag" xml:space="preserve">
+    <value>Umbaupreis</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateTooltip" xml:space="preserve">
+    <value>Der Umbaupreis für die Währung auf €</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShortTag" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShortTooltip" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTag" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrandTag" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrandTooltip" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTag" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTooltip" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCodeTag" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCodeTooltip" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldNameTag" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldNameTooltip" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPriceTag" xml:space="preserve">
+    <value>Kostenpreis</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPriceTooltip" xml:space="preserve">
+    <value>Kostenpreis</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensionsTag" xml:space="preserve">
+    <value>Abmessungen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensionsTooltip" xml:space="preserve">
+    <value>Abmessungen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorageTag" xml:space="preserve">
+    <value>Mindestbestand</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorageTooltip" xml:space="preserve">
+    <value>Mindestbestand</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantityTag" xml:space="preserve">
+    <value>Bestellmenge</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantityTooltip" xml:space="preserve">
+    <value>Bestellmenge</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocationTag" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocationTooltip" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnitTag" xml:space="preserve">
+    <value>Verpackungseinheit</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnitTooltip" xml:space="preserve">
+    <value>Verpackungseinheit</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplierTag" xml:space="preserve">
+    <value>Standardlieferant</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplierTooltip" xml:space="preserve">
+    <value>Standardlieferant</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierTag" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierTooltip" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCodeTag" xml:space="preserve">
+    <value>Artikelnummer am Lieferanten</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCodeTooltip" xml:space="preserve">
+    <value>Artikelnummer am Lieferanten</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescriptionTag" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescriptionTooltip" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPriceTag" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPriceTooltip" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTag" xml:space="preserve">
+    <value>Website -Produkt</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltipTag" xml:space="preserve">
+    <value>Website -Produkt bei Lieferanten</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltipTooltip" xml:space="preserve">
+    <value>Website -Produkt bei Lieferanten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTimeTag" xml:space="preserve">
+    <value>Erwartete Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTimeTooltip" xml:space="preserve">
+    <value>Erwartete Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHoursTag" xml:space="preserve">
+    <value>Std ...</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHoursTooltip" xml:space="preserve">
+    <value>Wie viele Stunden erwarten Sie, an dem Projekt zu arbeiten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdaysTag" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdaysTooltip" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhoursTag" xml:space="preserve">
+    <value>Stunden am Tag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhoursTooltip" xml:space="preserve">
+    <value>Stunden am Tag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDaysTag" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDaysTooltip" xml:space="preserve">
+    <value>Arbeitstage:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDayTag" xml:space="preserve">
+    <value>Längster Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDayTooltip" xml:space="preserve">
+    <value>Längster Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDayTag" xml:space="preserve">
+    <value>Krustiger Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDayTooltip" xml:space="preserve">
+    <value>Krustiger Arbeitstag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTimeTag" xml:space="preserve">
+    <value>Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTimeTooltip" xml:space="preserve">
+    <value>Bauzeit:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDaysTag" xml:space="preserve">
+    <value>Dawn:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDaysTooltip" xml:space="preserve">
+    <value>Dawn:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHoursTag" xml:space="preserve">
+    <value>Std:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHoursTooltip" xml:space="preserve">
+    <value>Std:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbolTag" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCostsTag" xml:space="preserve">
+    <value>Materialkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCostsTooltip" xml:space="preserve">
+    <value>Materialkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCostsTag" xml:space="preserve">
+    <value>Uhr</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCostsTooltip" xml:space="preserve">
+    <value>Uhr</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCostsTag" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCostsTooltip" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldClosedTooltip" xml:space="preserve">
+    <value>Projekt abgeschlossen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
+    <value>Suchname, um das Projekt einfach zu finden, kann der Suchname möglicherweise keine Leerzeichen enthalten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTag" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTooltip" xml:space="preserve">
+    <value>Wann wird das Projekt abgeschlossen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTag" xml:space="preserve">
+    <value>Erwartete Enddatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTooltip" xml:space="preserve">
+    <value>Was ist das erwartete Enddatum für das Projekt</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Projektname</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Wie lautet der vollständige Name des Projekts</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDateTag" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDateTooltip" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorageTag" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorageTooltip" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTag" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTooltip" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTag" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTag" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTooltip" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTag" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTag" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag" xml:space="preserve">
+    <value>Bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip" xml:space="preserve">
+    <value>Bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTag" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTag" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktypeTag" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktypeTooltip" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="OrderOrderFieldClosedTag" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderFieldClosedTooltip" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderFieldClosedDateTag" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderFieldClosedDateTooltip" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRateTag" xml:space="preserve">
+    <value>Wechselkurs</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRateTooltip" xml:space="preserve">
+    <value>Wechselkurs</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbolTag" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="OrderOrderFieldOrderCostsTag" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="OrderOrderFieldOrderCostsTooltip" xml:space="preserve">
+    <value>Bestellung bestellen</value>
+  </data>
+  <data name="OrderOrderFieldOrderDateTag" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="OrderOrderFieldOrderDateTooltip" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumberTag" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumberTooltip" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="OrderOrderFieldShippingCostsTag" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="OrderOrderFieldShippingCostsTooltip" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="OrderOrderFieldSupplierTag" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="OrderOrderFieldSupplierTooltip" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="OrderOrderlineFieldCategoryTag" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="OrderOrderlineFieldCategoryTooltip" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedTag" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedTooltip" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDateTag" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDateTooltip" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldNumberTag" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="OrderOrderlineFieldNumberTooltip" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTag" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltipTag" xml:space="preserve">
+    <value>Stückpreis in der Währung des Lieferanten</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltipTooltip" xml:space="preserve">
+    <value>Stückpreis in der Währung des Lieferanten</value>
+  </data>
+  <data name="OrderOrderlineFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProjectTag" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="OrderOrderlineFieldProjectTooltip" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="OrderOrderlineFieldTotalTag" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="OrderOrderlineFieldTotalTooltip" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="OrderOrderlistFieldPriceTag" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlistFieldPriceTooltip" xml:space="preserve">
+    <value>Klammer</value>
+  </data>
+  <data name="OrderOrderlistFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlistFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmountTag" xml:space="preserve">
+    <value>Erhalten</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmountTooltip" xml:space="preserve">
+    <value>Erhalten</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDateTag" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDateTooltip" xml:space="preserve">
+    <value>Liverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocationTag" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocationTooltip" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="generalDatePickerText" xml:space="preserve">
+    <value>Datum auswählen ...</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitEditLabel" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitExportHeader" xml:space="preserve">
+    <value>Exporteinheiten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitImportHeader" xml:space="preserve">
+    <value>Importeinheiten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitReportHeader" xml:space="preserve">
+    <value>Übersichtseinheiten</value>
+  </data>
+  <data name="metadataUnitPageTitle" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="metadataUnitPageSubtitle" xml:space="preserve">
+    <value>Einheiten werden zum Beispiel verwendet, um die Standardverpackungseinheiten zurückzugewinnen (Beispiele: Stück pro 10)</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="ImportUnitsImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Einheiten importiert werden soll</value>
+  </data>
+  <data name="ImportUnitsSubTitle" xml:space="preserve">
+    <value>Importieren Sie Daten aus einer CSV -Datei, die Projektname, Arbeitsdatum, Startzeit, Endzeit und Arbeitstyp enthält. Der Projektname und der Arbeitstyp müssen vorhandenen Projekt- und Arbeitstypen übereinstimmen</value>
+  </data>
+  <data name="ImportUnitsTitle" xml:space="preserve">
+    <value>Zeitregistrierung der Einfuhr</value>
+  </data>
+  <data name="ImportFileDialogFiltertext" xml:space="preserve">
+    <value>Betanden, um importiert zu werden</value>
+  </data>
+  <data name="ImportImportButtonFilename" xml:space="preserve">
+    <value>Keine Datei ausgewählt</value>
+  </data>
+  <data name="ImportImportButtonLabel" xml:space="preserve">
+    <value>Datei auswählen</value>
+  </data>
+  <data name="ImportImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die zu importierende CSV -Datei aus</value>
+  </data>
+  <data name="ImportMessageboxErrorInline" xml:space="preserve">
+    <value>Regel</value>
+  </data>
+  <data name="ImportMessageboxErrorMessage" xml:space="preserve">
+    <value>Fehler beim Import gefunden</value>
+  </data>
+  <data name="ImportMessageboxErrorUnknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ImportStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="ImportStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="ImportStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="ImportStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="ImportStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ImportUnitsLabel" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="ImportUnitsMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Existiert bereits</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedSingle" xml:space="preserve">
+    <value>verarbeitet</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedOkSingle" xml:space="preserve">
+    <value>REGIERT RICHTIGE LESEN</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedErrorSingle" xml:space="preserve">
+    <value>Regel wegen Fehlern übersprungen</value>
+  </data>
+  <data name="ImportUnitsMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Lesen Sie die Einheit bereits in der Tabelle</value>
+  </data>
+  <data name="ExportUnitsFolderDialogFiltertext" xml:space="preserve">
+    <value>Ordner für die Exportdatei</value>
+  </data>
+  <data name="ExportUnitsExportButtonFoldername" xml:space="preserve">
+    <value>Kein Ordner ausgewählt</value>
+  </data>
+  <data name="ExportUnitsExportButtonLabel" xml:space="preserve">
+    <value>MAP auswählen</value>
+  </data>
+  <data name="ExportUnitsExportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie den Ordner aus, in dem die zu exportierende CSV -Datei geschrieben werden muss</value>
+  </data>
+  <data name="ExportUnitsSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Daten in eine CSV -Datei, die nur die Beschreibung des Geräts enthält</value>
+  </data>
+  <data name="ExportUnitsTitle" xml:space="preserve">
+    <value>Exporteinheiten</value>
+  </data>
+  <data name="ExportUnitsFileName" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="ExportFolderDialogFiltertext" xml:space="preserve">
+    <value>Exportieren zur Karte</value>
+  </data>
+  <data name="ExportExportButtonFoldername" xml:space="preserve">
+    <value>Kein Ordner ausgewählt</value>
+  </data>
+  <data name="ExportExportButtonLabel" xml:space="preserve">
+    <value>MAP auswählen</value>
+  </data>
+  <data name="ExportExportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie den Ordner für die exportierende CSV -Datei aus</value>
+  </data>
+  <data name="ExportMessageboxErrorInline" xml:space="preserve">
+    <value>Regel</value>
+  </data>
+  <data name="ExportMessageboxErrorMessage" xml:space="preserve">
+    <value>Fehler beim Exportieren</value>
+  </data>
+  <data name="ExportMessageboxErrorUnknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ExportStatuslineStatusCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedErrorSingle" xml:space="preserve">
+    <value>Regel wegen Fehlern übersprungen</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>Regeln richtig geschrieben</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedOkSingle" xml:space="preserve">
+    <value>Regeln richtig geschrieben</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedSingle" xml:space="preserve">
+    <value>verarbeitet</value>
+  </data>
+  <data name="ExportStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln weggeschrieben</value>
+  </data>
+  <data name="ExportStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="ExportStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="ExportStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ExportUnitsStatuslineStatusDescription" xml:space="preserve">
+    <value>Keine Regeln weggeschrieben</value>
+  </data>
+  <data name="ExportUnitsMessageboxErrorMessage" xml:space="preserve">
+    <value>Fehler beim Exportieren</value>
+  </data>
+  <data name="ExportTimeEntriesSubTitle" xml:space="preserve">
+    <value>Exportieren Sie die Zeitregistrierung in eine CSV -Datei</value>
+  </data>
+  <data name="ExportTimeEntriesTitle" xml:space="preserve">
+    <value>Exportzeitregistrierungen</value>
+  </data>
+  <data name="ExportTimeEntriesFileName" xml:space="preserve">
+    <value>Zeitregistrierungen</value>
+  </data>
+  <data name="ExportProjectsSubTitle" xml:space="preserve">
+    <value>Projektdaten in eine CSV -Datei exportieren, Bild und Memoveld werden nicht exportiert</value>
+  </data>
+  <data name="ExportProjectsTitle" xml:space="preserve">
+    <value>Projektdaten exportieren</value>
+  </data>
+  <data name="ExportProjectsFileName" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="ExportProductsSubTitle" xml:space="preserve">
+    <value>Artikel in eine CSV -Datei exportieren</value>
+  </data>
+  <data name="ExportProductsTitle" xml:space="preserve">
+    <value>Artikel exportieren</value>
+  </data>
+  <data name="ExportProductsFileName" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="ExportStorageSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Speicherorte in eine CSV -Datei</value>
+  </data>
+  <data name="ExportStorageTitle" xml:space="preserve">
+    <value>Speicherorte exportieren</value>
+  </data>
+  <data name="ExportStorageFileName" xml:space="preserve">
+    <value>Speicherorte</value>
+  </data>
+  <data name="ExportCategoriesSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Kategorien in eine CSV -Datei</value>
+  </data>
+  <data name="ExportCategoriesTitle" xml:space="preserve">
+    <value>Exportkategorien</value>
+  </data>
+  <data name="ExportCategoriesFileName" xml:space="preserve">
+    <value>Kategorisiert</value>
+  </data>
+  <data name="ExportCountriesSubTitle" xml:space="preserve">
+    <value>Exportländer in eine CSV -Datei exportieren</value>
+  </data>
+  <data name="ExportCountriesTitle" xml:space="preserve">
+    <value>Exportländer</value>
+  </data>
+  <data name="ExportCountriesFileName" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="ExportSuppliersSubTitle" xml:space="preserve">
+    <value>Exportieren von Lieferanten in eine CSV -Datei</value>
+  </data>
+  <data name="ExportSuppliersTitle" xml:space="preserve">
+    <value>Exportlieferanten</value>
+  </data>
+  <data name="ExportSuppliersFileName" xml:space="preserve">
+    <value>Lieferanten</value>
+  </data>
+  <data name="ExportCurrenciesSubTitle" xml:space="preserve">
+    <value>Exportwährung in eine CSV -Datei exportieren</value>
+  </data>
+  <data name="ExportCurrenciesTitle" xml:space="preserve">
+    <value>Exportwährung</value>
+  </data>
+  <data name="ExportCurrenciesFileName" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="ExportWorktypesSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Arbeitstypen in eine CSV -Datei</value>
+  </data>
+  <data name="ExportWorktypesTitle" xml:space="preserve">
+    <value>Arbeitstypen exportieren</value>
+  </data>
+  <data name="ExportWorktypesFileName" xml:space="preserve">
+    <value>Arbeitstypen</value>
+  </data>
+  <data name="ExportBrandFileName" xml:space="preserve">
+    <value>Zu bemerken</value>
+  </data>
+  <data name="ExportBrandSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Marken in eine CSV -Datei</value>
+  </data>
+  <data name="ExportBrandTitle" xml:space="preserve">
+    <value>Exportmarken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandEditLabel" xml:space="preserve">
+    <value>Zu bemerken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandExportHeader" xml:space="preserve">
+    <value>Exportmarken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandImportHeader" xml:space="preserve">
+    <value>Importieren Marken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandReportHeader" xml:space="preserve">
+    <value>Übersichtsmarken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierContactsExportHeader" xml:space="preserve">
+    <value>Kontakte für Lieferanten exportieren</value>
+  </data>
+  <data name="ExportSupplierContactsFileName" xml:space="preserve">
+    <value>Kontaktlieferant</value>
+  </data>
+  <data name="ExportSupplierContactsTitle" xml:space="preserve">
+    <value>Kontakte Lieferanten</value>
+  </data>
+  <data name="ExportSupplierContactsSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Kontaktpersonen in eine CSV -Datei</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeEditLabel" xml:space="preserve">
+    <value>Kontaktfunktionen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeExportHeader" xml:space="preserve">
+    <value>Kontaktfunktionen exportieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeImportHeader" xml:space="preserve">
+    <value>Kontaktfunktionen importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeReportHeader" xml:space="preserve">
+    <value>Übersichtskontaktfunktionen</value>
+  </data>
+  <data name="ExportContactTypesFileName" xml:space="preserve">
+    <value>Kontaktfunktionen</value>
+  </data>
+  <data name="ExportContactTypesSubTitle" xml:space="preserve">
+    <value>Exportieren Sie Kontaktfunktionen in eine CSV -Datei</value>
+  </data>
+  <data name="ExportContactTypesTitle" xml:space="preserve">
+    <value>Kontaktfunktionen exportieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierExportHeader" xml:space="preserve">
+    <value>Artikel pro Lieferant exportieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierImportHeader" xml:space="preserve">
+    <value>Artikel pro Lieferant importieren</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierReportHeader" xml:space="preserve">
+    <value>Übersichtselemente pro Lieferant</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductsSupplierEditLabel" xml:space="preserve">
+    <value>Artikel pro Lieferant</value>
+  </data>
+  <data name="ExportProductsSupplierFileName" xml:space="preserve">
+    <value>Artikel pro Kreditgeber</value>
+  </data>
+  <data name="ExportProductsSupplierSubTitle" xml:space="preserve">
+    <value>Exportieren Sie die Elemente pro Lieferant in eine CSV -Datei</value>
+  </data>
+  <data name="ExportProductsSupplierTitle" xml:space="preserve">
+    <value>Artikel pro Lieferant exportieren</value>
+  </data>
+  <data name="ImportBrandTitle" xml:space="preserve">
+    <value>Importieren Marken</value>
+  </data>
+  <data name="ImportBrandSubTitle" xml:space="preserve">
+    <value>Importieren Sie Daten aus einer CSV -Datei, die nur die Beschreibung der Marken enthält</value>
+  </data>
+  <data name="ImportBrandMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Markenmarke existiert bereits im Tisch</value>
+  </data>
+  <data name="ImportBrandMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Marke existiert bereits</value>
+  </data>
+  <data name="ImportBrandLabel" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="ImportBrandImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Marken importiert werden soll</value>
+  </data>
+  <data name="ImportContactTypesTitle" xml:space="preserve">
+    <value>Funktionen importieren</value>
+  </data>
+  <data name="ImportContactTypesSubTitle" xml:space="preserve">
+    <value>Importieren Sie Daten aus einer CSV -Datei, die nur die Beschreibung der Funktionen für Kontaktpersonen enthält</value>
+  </data>
+  <data name="ImportContactTypesMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Die beabsichtigte Funktion gibt es bereits in der Tabelle</value>
+  </data>
+  <data name="ImportContactTypesMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Funktion existiert bereits</value>
+  </data>
+  <data name="ImportContactTypesLabel" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="ImportContactTypesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Funktionen für Kontaktpersonen importiert werden soll</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierContactsImportHeader" xml:space="preserve">
+    <value>Kontakte importieren Lieferanten</value>
+  </data>
+  <data name="ImportProductsTitle" xml:space="preserve">
+    <value>Artikel importieren</value>
+  </data>
+  <data name="ImportProductsSubTitle" xml:space="preserve">
+    <value>Artikeldaten aus einer CSV -Datei importieren</value>
+  </data>
+  <data name="ImportProductsMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Lesen Sie den Artikel bereits in der Tabelle</value>
+  </data>
+  <data name="ImportProductsMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Artikel existiert bereits</value>
+  </data>
+  <data name="ImportProductsLabel" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="ImportProductsImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Artikeln importiert werden soll</value>
+  </data>
+  <data name="ImportMessageboxErrorHeaderError" xml:space="preserve">
+    <value>Falsche Anzahl von Feldern in der CSV -Datei</value>
+  </data>
+  <data name="ImportMessageboxErrorProductAlreadyExists" xml:space="preserve">
+    <value>Artikel existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorProductAlreadyExistsLong" xml:space="preserve">
+    <value>Lesen Sie den Artikel bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeAlreadyExists" xml:space="preserve">
+    <value>Arbeitspezies existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeAlreadyExistsLong" xml:space="preserve">
+    <value>Die Art der Arbeit gibt es bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandAlreadyExists" xml:space="preserve">
+    <value>Marke existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandAlreadyExistsLong" xml:space="preserve">
+    <value>Markenmarke existiert bereits im Tisch</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitAlreadyExists" xml:space="preserve">
+    <value>Hilfe existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitAlreadyExistsLong" xml:space="preserve">
+    <value>Lesen Sie die Einheit bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExists" xml:space="preserve">
+    <value>Kategorie existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExistsLong" xml:space="preserve">
+    <value>Angestellte Kategorie gibt es bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageAlreadyExists" xml:space="preserve">
+    <value>Speicher existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageAlreadyExistsLong" xml:space="preserve">
+    <value>Der beabsichtigte Speicher gibt es bereits im Tisch</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectAlreadyExists" xml:space="preserve">
+    <value>Projekt existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectAlreadyExistsLong" xml:space="preserve">
+    <value>Das Projekt ist bereits in der Tabelle vorhanden</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeAlreadyExists" xml:space="preserve">
+    <value>Funktion existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeAlreadyExistsLong" xml:space="preserve">
+    <value>Die beabsichtigte Funktion gibt es bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorProductNotExists" xml:space="preserve">
+    <value>Artikel existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorProductNotExistsLong" xml:space="preserve">
+    <value>Artikelcode existiert nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeNotExists" xml:space="preserve">
+    <value>Falscher Arbeitsart Name</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeNotExistsLong" xml:space="preserve">
+    <value>Der Arbeitsartenname erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandNotExists" xml:space="preserve">
+    <value>Marke existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandNotExistsLong" xml:space="preserve">
+    <value>Marke erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitNotExists" xml:space="preserve">
+    <value>Einheit existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitNotExistsLong" xml:space="preserve">
+    <value>Einheit tritt in der Tabelle nicht auf</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExists" xml:space="preserve">
+    <value>Kategorie existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExistsLong" xml:space="preserve">
+    <value>Kategorie tritt in der Tabelle nicht auf</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageNotExists" xml:space="preserve">
+    <value>Speicher existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageNotExistsLong" xml:space="preserve">
+    <value>Die Speicherung tritt nicht in der Tabelle auf</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectNotExists" xml:space="preserve">
+    <value>Falscher Projektcode</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectNotExistsLong" xml:space="preserve">
+    <value>Der Projektcode erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeNotExists" xml:space="preserve">
+    <value>Funktion existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeNotExistsLong" xml:space="preserve">
+    <value>Die Funktions -ID wird in der Tabelle nicht angezeigt</value>
+  </data>
+  <data name="ImportMessageboxErrorStartEndTimeError" xml:space="preserve">
+    <value>Endzeit früher oder dasselbe als in der Startzeit</value>
+  </data>
+  <data name="ImportMessageboxErrorDefault" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ImportMessageboxErrorDefaultLong" xml:space="preserve">
+    <value>Es ist ein unbekannter Fehler aufgetreten</value>
+  </data>
+  <data name="ImportMessageboxErrorStartEndTimeErrorLong" xml:space="preserve">
+    <value>Endzeit früher oder dasselbe als in der Startzeit</value>
+  </data>
+  <data name="ImportMessageboxErrorHeaderErrorLong" xml:space="preserve">
+    <value>Falsche Anzahl von Feldern in der CSV -Datei</value>
+  </data>
+  <data name="ImportMessageboxErrorDefaultLabel" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ImportWorktypesLabel" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="ImportCategoriesLabel" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ImportStoragesLabel" xml:space="preserve">
+    <value>Lagerung</value>
+  </data>
+  <data name="ImportProjectsLabel" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="ImportSuppliersImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Lieferanten importiert werden soll</value>
+  </data>
+  <data name="ImportSuppliersLabel" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="ImportSuppliersSubTitle" xml:space="preserve">
+    <value>Importieren von Lieferanten aus einer CSV -Datei</value>
+  </data>
+  <data name="ImportSuppliersTitle" xml:space="preserve">
+    <value>Lieferanten importieren</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierAlreadyExists" xml:space="preserve">
+    <value>Lieferant existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierAlreadyExistsLong" xml:space="preserve">
+    <value>Lieferant, der sich bereits in der Tabelle befindet</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyAlreadyExists" xml:space="preserve">
+    <value>Währung existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyAlreadyExistsLong" xml:space="preserve">
+    <value>Währung, die sich bereits in der Tabelle befindet</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryAlreadyExists" xml:space="preserve">
+    <value>Land existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryAlreadyExistsLong" xml:space="preserve">
+    <value>Land, das bereits im Tisch ist</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyNotExists" xml:space="preserve">
+    <value>Falsche Währungs -ID</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyNotExistsLong" xml:space="preserve">
+    <value>Die Währungs -ID erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryNotExists" xml:space="preserve">
+    <value>Unbestimmte Landausweise</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryNotExistsLong" xml:space="preserve">
+    <value>Land -ID erscheint nicht im Tisch</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierNotExists" xml:space="preserve">
+    <value>Falsche Lieferanten -ID</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierNotExistsLong" xml:space="preserve">
+    <value>Die Lieferanten -ID erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ImportCurrenciesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Währung importiert werden soll</value>
+  </data>
+  <data name="ImportCurrenciesLabel" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="ImportCurrenciesSubTitle" xml:space="preserve">
+    <value>Importieren Sie Währungsdatendaten aus einer CSV -Datei</value>
+  </data>
+  <data name="ImportCurrenciesTitle" xml:space="preserve">
+    <value>Importwährung</value>
+  </data>
+  <data name="ImportCountriesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Ländern importiert werden soll</value>
+  </data>
+  <data name="ImportCountriesLabel" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="ImportCountriesSubTitle" xml:space="preserve">
+    <value>Importieren Sie Länderdaten aus einer CSV -Datei</value>
+  </data>
+  <data name="ImportCountriesTitle" xml:space="preserve">
+    <value>Länder importieren</value>
+  </data>
+  <data name="ImportProductSuppliersImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Artikeln pro Lieferanten importiert werden soll</value>
+  </data>
+  <data name="ImportProductSuppliersLabel" xml:space="preserve">
+    <value>Artikel pro Lieferant</value>
+  </data>
+  <data name="ImportProductSuppliersSubTitle" xml:space="preserve">
+    <value>Importieren Sie Produkte pro Lieferant aus einer CSV -Datei. Die CSV -Datei enthält die Codespalte (Kurzname -Artikel) anstelle der Artikel -ID, um den Artikel zu finden</value>
+  </data>
+  <data name="ImportProductSuppliersTitle" xml:space="preserve">
+    <value>Artikel bei Lieferanten</value>
+  </data>
+  <data name="ImportGenerateCSVButtonLabel" xml:space="preserve">
+    <value>Bereiten Sie die CSV -Datei vor</value>
+  </data>
+  <data name="ImportGenerateCSVButtonTooltip" xml:space="preserve">
+    <value>Erstellen Sie eine (leere) CSV -Datei mit nur dem erforderlichen Header für den Import</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedPreparedCSV" xml:space="preserve">
+    <value>CSV -Datei erstellt in:</value>
+  </data>
+  <data name="ImportCategoriesTitle" xml:space="preserve">
+    <value>Importkategorien</value>
+  </data>
+  <data name="ImportCategoriesSubTitle" xml:space="preserve">
+    <value>Daten aus einer CSV -Datei importieren</value>
+  </data>
+  <data name="ImportCategoriesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die zu importierende CSV -Datei aus</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdAlreadyExists" xml:space="preserve">
+    <value>Die Kategorie -Kopf -ID gibt es bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdAlreadyExistsLong" xml:space="preserve">
+    <value>Der Kategorieführer der Kategorie gibt es bereits in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdNotExists" xml:space="preserve">
+    <value>Die Kategorie -Kopf -ID existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdNotExistsLong" xml:space="preserve">
+    <value>Die Kategorie -Kopf -ID befindet sich nicht in der Tabelle</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdAlreadyExists" xml:space="preserve">
+    <value>Arbeitsart Kopf -ID existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdAlreadyExistsLong" xml:space="preserve">
+    <value>ID -Arbeiten sind bereits in der Tabelle vorhanden</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdNotExists" xml:space="preserve">
+    <value>Falsche Arbeitstyp -Kopf -ID</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdNotExistsLong" xml:space="preserve">
+    <value>Arbeitspezieskopf -ID ist nicht in der Tabelle</value>
+  </data>
+  <data name="ImportWorktypesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Arbeitstypen importiert werden soll</value>
+  </data>
+  <data name="ImportWorktypesSubTitle" xml:space="preserve">
+    <value>Daten aus einer CSV -Datei importieren</value>
+  </data>
+  <data name="ImportWorktypesTitle" xml:space="preserve">
+    <value>Arbeitstypen importieren</value>
+  </data>
+  <data name="ImportSuppliersContactsTitle" xml:space="preserve">
+    <value>Kontakte bei Lieferanten importieren</value>
+  </data>
+  <data name="ImportSuppliersContactsSubTitle" xml:space="preserve">
+    <value>Importieren Sie Kontakte bei Lieferanten aus einer CSV -Datei</value>
+  </data>
+  <data name="ImportSuppliersContactsImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Kontakten bei Lieferanten importiert werden soll</value>
+  </data>
+  <data name="ImportStoragesImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV -Datei aus, die mit Speicherorten importiert werden soll</value>
+  </data>
+  <data name="ImportStoragesTitle" xml:space="preserve">
+    <value>Speicherorte importieren</value>
+  </data>
+  <data name="ImportStoragesSubTitle" xml:space="preserve">
+    <value>Speicherorte aus einer CSV -Datei importieren</value>
+  </data>
+  <data name="metadataBrandPageTitle" xml:space="preserve">
+    <value>Zu bemerken</value>
+  </data>
+  <data name="metadataBrandPageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie alle Produktmarken</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderName" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandEntryFieldId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataBrandEntryFieldName" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="navigation.Time.MainItem.Label" xml:space="preserve">
+    <value>Stunde Registrierung</value>
+  </data>
+  <data name="navigation.Time.MainItem.Tooltip" xml:space="preserve">
+    <value>Den Überblick über die Stunden pro Projekt behalten</value>
+  </data>
+  <data name="navigation.Time.SubItem.Export.Label" xml:space="preserve">
+    <value>Exportstunden</value>
+  </data>
+  <data name="navigation.Time.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exportieren Sie die Stunden nach CSV oder Excel</value>
+  </data>
+  <data name="navigation.Time.SubItem.Import.Label" xml:space="preserve">
+    <value>Stunden importieren</value>
+  </data>
+  <data name="navigation.Time.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importieren Sie die Stunden aus einer CSV-Datei</value>
+  </data>
+  <data name="navigation.Time.SubItem.Report.Label" xml:space="preserve">
+    <value>Stundenübersicht</value>
+  </data>
+  <data name="navigation.Time.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Übersicht über die für dieses Projekt aufgewendeten Stunden</value>
+  </data>
+  <data name="navigation.Inventory.MainItem.Label" xml:space="preserve">
+    <value>Aktienmanagement</value>
+  </data>
+  <data name="navigation.Inventory.MainItem.Tooltip" xml:space="preserve">
+    <value>Bestände verwalten</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Order.Label" xml:space="preserve">
+    <value>Bestellungen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Order.Tooltip" xml:space="preserve">
+    <value>Verwaltung der Bestellungen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Receipt.Label" xml:space="preserve">
+    <value>Rezeption</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Receipt.Tooltip" xml:space="preserve">
+    <value>Verwaltung der eingehenden Bestellungen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Report.Label" xml:space="preserve">
+    <value>Aktienübersicht</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Übersicht über den aktuellen Lagerbestand</value>
+  </data>
+  <data name="navigation.Projects.MainItem.Label" xml:space="preserve">
+    <value>Projektmanagement</value>
+  </data>
+  <data name="navigation.Projects.MainItem.Tooltip" xml:space="preserve">
+    <value>Leitung aller Projekte</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Export.Label" xml:space="preserve">
+    <value>Exportprojekte</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exportieren Sie die Projekte nach CSV oder Excel</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Import.Label" xml:space="preserve">
+    <value>Projekte importieren</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importieren Sie Projekte aus einer CSV-Datei</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Report.Label" xml:space="preserve">
+    <value>Projektübersicht</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Übersicht über Stunden und Kosten dieses Projekts</value>
+  </data>
+  <data name="navigation.Settings.MainItem.Label" xml:space="preserve">
+    <value>Institutionen</value>
+  </data>
+  <data name="navigation.Settings.MainItem.Tooltip" xml:space="preserve">
+    <value>Benutzereinstellungen</value>
+  </data>
+  <data name="navigation.Resources.MainItem.Label" xml:space="preserve">
+    <value>Stamdateien</value>
+  </data>
+  <data name="navigation.Resources.MainItem.Tooltip" xml:space="preserve">
+    <value>Basisdateien für die Anwendung</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.Label" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.Tooltip" xml:space="preserve">
+    <value>Verwaltung der verfügbaren Währung</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Export.Label" xml:space="preserve">
+    <value>Exportwährung</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exportieren Sie die Währung nach CSV oder Excel</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Import.Label" xml:space="preserve">
+    <value>Importwährung</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Währung aus einer CSV-Datei importieren</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Export.Label" xml:space="preserve">
+    <value>Exportländer</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exportieren Sie die Länder nach CSV oder Excel</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Import.Label" xml:space="preserve">
+    <value>Länder importieren</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importieren Sie Länder aus einer CSV-Datei</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.Label" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.Tooltip" xml:space="preserve">
+    <value>Verwaltung der verfügbaren Länder</value>
+  </data>
+  <data name="metadataCountryHeaderTitel" xml:space="preserve">
+    <value>Verwaltung der Ländertabelle</value>
+  </data>
+  <data name="metadataCountryHeaderSubtitle" xml:space="preserve">
+    <value>Länder verwalten</value>
+  </data>
+</root>

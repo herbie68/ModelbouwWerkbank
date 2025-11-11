@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--#region No image available-->
+	<!--  Leave ClipGeometry and Transform settings in place for correct display  -->
+	<Geometry x:Key="noimageGeometry1">F1 M252.89989,227.42934z M0,0z M89,20.938C88.447,20.938,88,21.386,88,21.938L88,68.063C88,70.485,86.865,72.644,85.102,74.046L62.328,50.71C61.958,50.331,61.355,50.306,60.956,50.653L45.058,64.479 42.196,61.537C41.811,61.141 41.177,61.132 40.782,61.517 40.386,61.902 40.377,62.536 40.762,62.931L44.283,66.551C44.653,66.931,45.255,66.956,45.656,66.609L61.555,52.783 83.338,75.103C82.42,75.494,81.41,75.711,80.351,75.711L24.7,75.711C24.148,75.711 23.7,76.158 23.7,76.711 23.7,77.264 24.148,77.711 24.7,77.711L80.351,77.711C85.671,77.711,89.999,73.383,89.999,68.064L89.999,21.938C90,21.386,89.553,20.938,89,20.938z</Geometry>
+	<Geometry x:Key="noimageGeometry2">F1 M252.89989,227.42934z M0,0z M89.744,4.864C89.375,4.453,88.742,4.42,88.332,4.787L79.969,12.289 9.648,12.289C4.328,12.29,0,16.618,0,21.938L0,68.063C0,72.591,3.141,76.391,7.356,77.424L0.332,83.724C-0.0790000000000001,84.092 -0.113,84.725 0.255,85.136 0.453,85.356 0.726,85.468 1,85.468 1.238,85.468 1.476,85.384 1.667,85.212L89.667,6.277C90.079,5.908,90.113,5.275,89.744,4.864z M9.648,14.29L77.739,14.29 34.215,53.33 23.428,42.239C23.054,41.854,22.443,41.835,22.043,42.193L2,60.201 2,21.938C2,17.721,5.431,14.29,9.648,14.29z M2,68.063L2,62.891 22.665,44.323 32.726,54.668 9.286,75.692C5.238,75.501,2,72.157,2,68.063z</Geometry>
+	<Geometry x:Key="noimageGeometry3">F1 M252.89989,227.42934z M0,0z M32.607,35.608C28.563,35.608 25.272,32.317 25.272,28.273 25.272,24.229 28.563,20.938 32.607,20.938 36.651,20.938 39.942,24.229 39.942,28.273 39.942,32.317 36.652,35.608 32.607,35.608z M32.607,22.938C29.665,22.938 27.272,25.331 27.272,28.273 27.272,31.215 29.665,33.608 32.607,33.608 35.549,33.608 37.942,31.215 37.942,28.273 37.942,25.331 35.549,22.938 32.607,22.938z</Geometry>
+	<DrawingGroup x:Key="noimageDrawingGroup" ClipGeometry="M0,0 V227.42934 H252.89989 V0 H0 Z">
+		<DrawingGroup Transform="2.81,0,0,2.81,0.00029972098,-12.735743">
+			<GeometryDrawing Brush="{DynamicResource NotAvailableColor}" Geometry="{StaticResource noimageGeometry1}" />
+			<GeometryDrawing Brush="{DynamicResource NotAvailableColor}" Geometry="{StaticResource noimageGeometry2}" />
+			<GeometryDrawing Brush="{DynamicResource NotAvailableColor}" Geometry="{StaticResource noimageGeometry3}" />
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="noimage" Drawing="{StaticResource noimageDrawingGroup}" />
+	<!--#endregion-->
+</ResourceDictionary>

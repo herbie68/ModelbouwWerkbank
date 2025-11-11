@@ -1,0 +1,22 @@
+﻿<Application
+    x:Class="Modelbouwer.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Modelbouwer"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="Resources/Icons/ApplicationIcons.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Icons/ButtonIcons.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Icons/DefaultIcons.xaml" />-->
+                <ResourceDictionary Source="Resources/Icons/NavigationIcons.xaml" />
+                <!--<ResourceDictionary Source="Resources/Icons/RibbonIcons.xaml" /> -->
+                <!--<ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" /> -->
+
+                <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

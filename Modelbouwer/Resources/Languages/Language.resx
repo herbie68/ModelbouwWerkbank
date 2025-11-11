@@ -1,0 +1,3041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDeveloper" xml:space="preserve">
+    <value>HN Software Development</value>
+  </data>
+  <data name="metadataCategoryPageTitle" xml:space="preserve">
+    <value>Categoriën</value>
+  </data>
+  <data name="metadataCountryPageTitle" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="metadataCurrencyPageTitle" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataProductPageTitle" xml:space="preserve">
+    <value>Producten</value>
+  </data>
+  <data name="metadataProjectPageTitle" xml:space="preserve">
+    <value>Projecten</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderGeneral" xml:space="preserve">
+    <value>Projectgegevens</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderMemo" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderProjectCosts" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="metadataProjectTabItemHeaderTimeManagement" xml:space="preserve">
+    <value>Bouwtijden</value>
+  </data>
+  <data name="metadataStoragePageTitle" xml:space="preserve">
+    <value>Opslag locaties</value>
+  </data>
+  <data name="metadataSupplierPageTitle" xml:space="preserve">
+    <value>Leveranciers</value>
+  </data>
+  <data name="metadataWorktypePageTitle" xml:space="preserve">
+    <value>Soort werkzaamheden</value>
+  </data>
+  <data name="OrderPageTitle" xml:space="preserve">
+    <value>Bestelling</value>
+  </data>
+  <data name="OrderPageSubTitle" xml:space="preserve">
+    <value>Voer de bestelling in per leverancier, per regel kan worden aangegeven of een artikel wordt meegenomen in de project kosten</value>
+  </data>
+  <data name="OrderTabItemHeaderMemo" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="OrderTabItemHeaderGeneral" xml:space="preserve">
+    <value>Bestelling</value>
+  </data>
+  <data name="toolbarButtonTextCopy" xml:space="preserve">
+    <value>Kopieer</value>
+  </data>
+  <data name="toolbarButtonTextCut" xml:space="preserve">
+    <value>Knippen</value>
+  </data>
+  <data name="toolbarButtonTextPaste" xml:space="preserve">
+    <value>Plak</value>
+  </data>
+  <data name="toolbarButtonFontBold" xml:space="preserve">
+    <value>Vet</value>
+  </data>
+  <data name="toolbarButtonFontItalic" xml:space="preserve">
+    <value>Cursief</value>
+  </data>
+  <data name="toolbarButtonTextRedo" xml:space="preserve">
+    <value>Opnieuw</value>
+  </data>
+  <data name="toolbarButtonFontUnderline" xml:space="preserve">
+    <value>Onderstrepen</value>
+  </data>
+  <data name="toolbarButtonTextUndo" xml:space="preserve">
+    <value>Ongedaan maken</value>
+  </data>
+  <data name="toolbarButtonListBullet" xml:space="preserve">
+    <value>Lijst</value>
+  </data>
+  <data name="toolbarButtonListNumber" xml:space="preserve">
+    <value>Genummerde lijst</value>
+  </data>
+  <data name="toolbarButtonIndentDecrease" xml:space="preserve">
+    <value>Terugspringen</value>
+  </data>
+  <data name="toolbarButtonIndentIncrease" xml:space="preserve">
+    <value>Inspringen</value>
+  </data>
+  <data name="OrderOrderFieldClosed" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="OrderOrderFieldClosedDate" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRate" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbol" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="OrderOrderFieldOrderCosts" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="OrderOrderFieldSupplier" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="OrderOrderFieldOrderDate" xml:space="preserve">
+    <value>Order datum</value>
+  </data>
+  <data name="OrderOrderFieldShippingCosts" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="OrderOrderlineFieldCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="OrderOrderlineFieldClosed" xml:space="preserve">
+    <value>Afgeleverd</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDate" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldNumber" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="OrderOrderlineFieldPrice" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlineFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderGroupOrderinformation" xml:space="preserve">
+    <value>Bestelgegevens</value>
+  </data>
+  <data name="OrderOrderGroupOrderline" xml:space="preserve">
+    <value>Bestelregel</value>
+  </data>
+  <data name="toolbarButtonActionNew" xml:space="preserve">
+    <value>Regel toevoegen</value>
+  </data>
+  <data name="toolbarButtonActionDelete" xml:space="preserve">
+    <value>Geselecteerde regel verwijderen</value>
+  </data>
+  <data name="toolbarButtonActionSave" xml:space="preserve">
+    <value>Gewijzigde gegevens opslaan</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCode" xml:space="preserve">
+    <value>Valuta code</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyName" xml:space="preserve">
+    <value>Valuta omschrijving</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbol" xml:space="preserve">
+    <value>Valuta symbool</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRate" xml:space="preserve">
+    <value>Omrekenkoers</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShort" xml:space="preserve">
+    <value>Koers</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Valuta toevoegen</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Geslecteerde valuta</value>
+  </data>
+  <data name="metadataCurrencyToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="OrderOrderGroupOrderlist" xml:space="preserve">
+    <value>Bestelregels</value>
+  </data>
+  <data name="OrderOrderlistFieldPrice" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlistFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltip" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlineFieldTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="OrderOrderlineTotalsGrandTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="OrderOrderlineTotalsOrdercosts" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="OrderOrderlineTotalsRowTotal" xml:space="preserve">
+    <value>Totaal bestelregels</value>
+  </data>
+  <data name="OrderOrderlineTotalsShippingCosts" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="OrderOrderlineTotals" xml:space="preserve">
+    <value>Totalen</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonDelete" xml:space="preserve">
+    <value>Verwijder geselkteerde bestelregel</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonNew" xml:space="preserve">
+    <value>Nieuwe bestelregel toevoegen</value>
+  </data>
+  <data name="OrderOrderlistToolbarButtonSave" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="OrderToolbarButtonSave" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="OrderToolbarButtonNew" xml:space="preserve">
+    <value>Bestelling toevoegen</value>
+  </data>
+  <data name="OrderToolbarButtonDelete" xml:space="preserve">
+    <value>Verwijder geselecteerde bestelling</value>
+  </data>
+  <data name="OrderDatagridHeaderId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderCompleted" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderDate" xml:space="preserve">
+    <value>Besteldatum</value>
+  </data>
+  <data name="OrderDatagridHeaderSupplierId" xml:space="preserve">
+    <value>SupplierID</value>
+  </data>
+  <data name="OrderDatagridHeaderSupplierName" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumber" xml:space="preserve">
+    <value>Ordernummer</value>
+  </data>
+  <data name="OrderDatagridHeaderOrderNumber" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
+  <data name="OrderTabItemHeaderOrderrows" xml:space="preserve">
+    <value>Bestelregels</value>
+  </data>
+  <data name="ReceiptPageTitle" xml:space="preserve">
+    <value>Ontvangsten</value>
+  </data>
+  <data name="ReceiptPageSubTitle" xml:space="preserve">
+    <value>Registratie van de leveringen per orderregel</value>
+  </data>
+  <data name="ReceiptTabItemHeaderMemo" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="ReceiptTabItemHeaderGeneral" xml:space="preserve">
+    <value>Bestelling/Ontvangst</value>
+  </data>
+  <data name="ReceiptButtonApply" xml:space="preserve">
+    <value>Verwerken</value>
+  </data>
+  <data name="ReceiptButtonCancel" xml:space="preserve">
+    <value>Vervallen</value>
+  </data>
+  <data name="ReceiptButtonTooltipApply" xml:space="preserve">
+    <value>Verwerk de ingevoerde ontvangsten</value>
+  </data>
+  <data name="ReceiptButtonTooltipCancel" xml:space="preserve">
+    <value>Laat de openstaande bestelregel vervallen, wordt niet meer geleverd.</value>
+  </data>
+  <data name="ReceiptGroupReceiptline" xml:space="preserve">
+    <value>Leveringen</value>
+  </data>
+  <data name="ReceiptGroupReceipts" xml:space="preserve">
+    <value>Openstaande bestellingen</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="generalAmount" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmount" xml:space="preserve">
+    <value>Ontvangen</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDate" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocation" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="ReceiptConfirmCancelTitle" xml:space="preserve">
+    <value>Laat bestelregel vervallen</value>
+  </data>
+  <data name="ReceiptConfirmCancelMessage" xml:space="preserve">
+    <value>Wil je het openstaande deel van de geslelecteerde bestelling laten vervallen? Eventueel geboekte ontvangsten blijven  wel bewaard</value>
+  </data>
+  <data name="storageStockDatagridHeaderAmount" xml:space="preserve">
+    <value>Op voorraad</value>
+  </data>
+  <data name="storageStockDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="storageStockDatagridHeaderProductId" xml:space="preserve">
+    <value>ProduktId</value>
+  </data>
+  <data name="storageStockDatagridHeaderStorageId" xml:space="preserve">
+    <value>OpslagId</value>
+  </data>
+  <data name="storageStockDatagridHeaderUnitId" xml:space="preserve">
+    <value>EenheidId</value>
+  </data>
+  <data name="storageStockDatagridHeaderUnitName" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="storageStockDatagridHeaderStorageName" xml:space="preserve">
+    <value>Voorraadlokatie</value>
+  </data>
+  <data name="storageStockDatagridHeaderProductName" xml:space="preserve">
+    <value>Productnaam</value>
+  </data>
+  <data name="storageStockPageSubTitle" xml:space="preserve">
+    <value>Geef per artikel de correcte voorraad in</value>
+  </data>
+  <data name="storageStockPageTitle" xml:space="preserve">
+    <value>Voorraad beheer</value>
+  </data>
+  <data name="StatusRead" xml:space="preserve">
+    <value>ingelezen</value>
+  </data>
+  <data name="StatusStockAmount" xml:space="preserve">
+    <value>Hoeveelheid voor</value>
+  </data>
+  <data name="StatusStockChanged" xml:space="preserve">
+    <value>gewijzigd</value>
+  </data>
+  <data name="StatusStockProduct" xml:space="preserve">
+    <value>product</value>
+  </data>
+  <data name="StatusStockProducts" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="mainRibbonExitTooltip" xml:space="preserve">
+    <value>Programma afsluiten</value>
+  </data>
+  <data name="mainRibbonHelpTooltip" xml:space="preserve">
+    <value>Hulp bij het programma</value>
+  </data>
+  <data name="mainRibbonPrintTooltip" xml:space="preserve">
+    <value>Afdrukken</value>
+  </data>
+  <data name="mainRibbonRedoTooltip" xml:space="preserve">
+    <value>Herhalen</value>
+  </data>
+  <data name="mainRibbonSaveTooltip" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="mainRibbonUndoTooltip" xml:space="preserve">
+    <value>Ongedaan maken</value>
+  </data>
+  <data name="mainRibbonExitHeader" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="mainRibbonHelpHeader" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="mainRibbonPrintHeader" xml:space="preserve">
+    <value>Afdrukken</value>
+  </data>
+  <data name="mainRibbonRedoHeader" xml:space="preserve">
+    <value>Herhalen</value>
+  </data>
+  <data name="mainRibbonSaveHeader" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="mainRibbonUndoHeader" xml:space="preserve">
+    <value>Ongedaan</value>
+  </data>
+  <data name="mainRibbonAboutHeader" xml:space="preserve">
+    <value>Over...</value>
+  </data>
+  <data name="mainRibbonAboutTooltip" xml:space="preserve">
+    <value>Informatie over de applicatie</value>
+  </data>
+  <data name="mainRibbonSettingsHeader" xml:space="preserve">
+    <value>Instelligen</value>
+  </data>
+  <data name="mainRibbonSettingsTooltip" xml:space="preserve">
+    <value>Applicatie instellingen</value>
+  </data>
+  <data name="mainTitle" xml:space="preserve">
+    <value>Modelbouwer beheer</value>
+  </data>
+  <data name="mainRibbonTabConfigHeader" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="mainRibbonTabManageHeader" xml:space="preserve">
+    <value>Beheer</value>
+  </data>
+  <data name="mainRibbonTabConfigButtonLabel" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="mainRibbonTabManageTimeGroupHeader" xml:space="preserve">
+    <value>Tijdregistratie</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeButtonLabel" xml:space="preserve">
+    <value>Tijdregistratie</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeEditHeader" xml:space="preserve">
+    <value>Tijdregistratie</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeExportHeader" xml:space="preserve">
+    <value>Exporteer uren</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeReportHeader" xml:space="preserve">
+    <value>Urenrapportage</value>
+  </data>
+  <data name="mainRibbonTabManageTimeTimeImportHeader" xml:space="preserve">
+    <value>Importeer uren</value>
+  </data>
+  <data name="mainRibbonTabManageProjectGroupHeader" xml:space="preserve">
+    <value>Projectenbeheer</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectButtonLabel" xml:space="preserve">
+    <value>Projecten</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectEditHeader" xml:space="preserve">
+    <value>Projectbeheer</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectReportHeader" xml:space="preserve">
+    <value>Projectenoverzicht</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectExportHeader" xml:space="preserve">
+    <value>Exporteer projecten</value>
+  </data>
+  <data name="mainRibbonTabManageProjectProjectImportHeader" xml:space="preserve">
+    <value>Importeer projecten</value>
+  </data>
+  <data name="mainRibbonTabManageStorageGroupHeader" xml:space="preserve">
+    <value>Voorraadbeheer</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageButtonLabel" xml:space="preserve">
+    <value>Voorraad beheer</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageOrderHeader" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReceiptHeader" xml:space="preserve">
+    <value>Ontvangsten</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageEditHeader" xml:space="preserve">
+    <value>Voorraadmutaties</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageEditTooltip" xml:space="preserve">
+    <value>Voorraad correcties doorvoeren</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportStorageHeader" xml:space="preserve">
+    <value>Voorraadoverzicht</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportOrdersHeader" xml:space="preserve">
+    <value>Openstaande bestellingen</value>
+  </data>
+  <data name="mainRibbonTabManageStorageStorageReportUsageHeader" xml:space="preserve">
+    <value>Verbruik per project</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataGroupHeader" xml:space="preserve">
+    <value>Stambestanden</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataButtonLabel" xml:space="preserve">
+    <value>Stambestanden</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductEditLabel" xml:space="preserve">
+    <value>Artikelen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductReportHeader" xml:space="preserve">
+    <value>Overzicht artikelen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductImportHeader" xml:space="preserve">
+    <value>Importeer artikelen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductExportHeader" xml:space="preserve">
+    <value>Exporteer artikelen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryEditLabel" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryReportHeader" xml:space="preserve">
+    <value>Overzicht categorieën</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryImportHeader" xml:space="preserve">
+    <value>Importeer categorieën</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryExportHeader" xml:space="preserve">
+    <value>Exporteer categorieën</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryEditLabel" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryReportHeader" xml:space="preserve">
+    <value>Overzicht landen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryImportHeader" xml:space="preserve">
+    <value>Importeer landen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCountryExportHeader" xml:space="preserve">
+    <value>Exporteer landen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierEditLabel" xml:space="preserve">
+    <value>Leveranciers</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierReportHeader" xml:space="preserve">
+    <value>Overzicht leveranciers</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierImportHeader" xml:space="preserve">
+    <value>Importeer leveranciers</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierExportHeader" xml:space="preserve">
+    <value>Exporteer leveranciers</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationEditLabel" xml:space="preserve">
+    <value>Locaties</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationReportHeader" xml:space="preserve">
+    <value>Overzicht locaties</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationImportHeader" xml:space="preserve">
+    <value>Importeer locaties</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataStorageLocationExportHeader" xml:space="preserve">
+    <value>Exporteer locaties</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyEditLabel" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyReportHeader" xml:space="preserve">
+    <value>Overzicht valuta</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyImportHeader" xml:space="preserve">
+    <value>Importeer valuta</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCurrencyExportHeader" xml:space="preserve">
+    <value>Exporteer valuta</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeEditLabel" xml:space="preserve">
+    <value>Werksoorten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeReportHeader" xml:space="preserve">
+    <value>Overzicht werksoorten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeImportHeader" xml:space="preserve">
+    <value>Importeer werksoorten</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataWorktypeExportHeader" xml:space="preserve">
+    <value>Exporteer werksoorten</value>
+  </data>
+  <data name="TimeManagementPageTitle" xml:space="preserve">
+    <value>Urenregistratie</value>
+  </data>
+  <data name="TimeManagementPageSubTitle" xml:space="preserve">
+    <value>Registreer het aantal gewerkte uren op datum, per soort werkzaamheden. Eventueel materiaalverbruik kan op dat tabblad worden geregistreerd
+Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en project worden geselecteerd</value>
+  </data>
+  <data name="TimeManagementTabItemHeaderProduct" xml:space="preserve">
+    <value>Materiaalverbruik</value>
+  </data>
+  <data name="TimeManagementTabItemHeaderTime" xml:space="preserve">
+    <value>Tijdregistratie</value>
+  </data>
+  <data name="TimeManagementFieldDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderCategoryId" xml:space="preserve">
+    <value>Categorie Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProductId" xml:space="preserve">
+    <value>Product Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProjectId" xml:space="preserve">
+    <value>Project Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStorageId" xml:space="preserve">
+    <value>Opslaglocatie Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderWorktypeId" xml:space="preserve">
+    <value>Werzaamheden Id</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderCategoryName" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProductName" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStorageName" xml:space="preserve">
+    <value>Opslaglocatie</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderWorktypeName" xml:space="preserve">
+    <value>Werkzaamheden</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderTotalTime" xml:space="preserve">
+    <value>Totaal gewerkte uren</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderAmountUsed" xml:space="preserve">
+    <value>Gebruikt</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderComment" xml:space="preserve">
+    <value>Opmerking</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderElapsedTime" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderEndTime" xml:space="preserve">
+    <value>Eindtijd</value>
+  </data>
+  <data name="TimemanagementDatagridHeaderStartTime" xml:space="preserve">
+    <value>Starttijd</value>
+  </data>
+  <data name="generalStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="generalTimeEntrie" xml:space="preserve">
+    <value>tijdregistratieregel</value>
+  </data>
+  <data name="generalTimeEntries" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="generalProductUsageEntrie" xml:space="preserve">
+    <value>product gebruik regel</value>
+  </data>
+  <data name="generalProductUsageEntries" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="generalRead" xml:space="preserve">
+    <value>ingelezen</value>
+  </data>
+  <data name="TimeEntryToolbarButtonDelete" xml:space="preserve">
+    <value>Verwijder geslecteerde regel</value>
+  </data>
+  <data name="TimeEntryToolbarButtonNew" xml:space="preserve">
+    <value>Nieuwe regel toevoegen</value>
+  </data>
+  <data name="ProductEntryToolbarButtonDelete" xml:space="preserve">
+    <value>Verwijder geselecteerde regel</value>
+  </data>
+  <data name="ProductEntryToolbarButtonNew" xml:space="preserve">
+    <value>Nieuwe regel toevoegen</value>
+  </data>
+  <data name="TimeEntryToolbarButtonSave" xml:space="preserve">
+    <value>Ingevoerde gegevens opslaan</value>
+  </data>
+  <data name="TimeManagementTimeEntryError" xml:space="preserve">
+    <value>Eindtijd ligt voor de starttijd</value>
+  </data>
+  <data name="TimemanagementDatagridFooterTotalElapsedTime" xml:space="preserve">
+    <value>Totale werktijd:</value>
+  </data>
+  <data name="TimeEntryToolbarButtonReset" xml:space="preserve">
+    <value>Opnieuw beginnen met de invoer</value>
+  </data>
+  <data name="TimeManagementTimeEntryStartTimeExistError" xml:space="preserve">
+    <value>Start tijd is al als werktijd gebruikt</value>
+  </data>
+  <data name="TimeManagementTimeEntryEndTimeExistError" xml:space="preserve">
+    <value>Eind tijd is al als werktijd gebruikt</value>
+  </data>
+  <data name="TimeManagementTabGroupTimeEntry" xml:space="preserve">
+    <value>Tijdinvoer</value>
+  </data>
+  <data name="TimeManagementTabGroupGeneral" xml:space="preserve">
+    <value>Werkdatum en project</value>
+  </data>
+  <data name="TimeManagementTabGroupProductUsage" xml:space="preserve">
+    <value>Verbruiksregistratie</value>
+  </data>
+  <data name="ProductEntryToolbarButtonSave" xml:space="preserve">
+    <value>Ingevoerde gegevens opslaan</value>
+  </data>
+  <data name="ProductEntryToolbarButtonReset" xml:space="preserve">
+    <value>Opnieuw beginnen met de invoer</value>
+  </data>
+  <data name="ImportTimeEntryTitle" xml:space="preserve">
+    <value>Importeer tijdregistratie</value>
+  </data>
+  <data name="ImportTimeEntrySubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand, deze bevat Projectnaam, werkdatum, starttijd, eindtijd en werksoort. Project naam en werksoort dienen overeen te komen met bestaand project en werksoort</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonLabel" xml:space="preserve">
+    <value>Selecteer bestand</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met tijdregistraties</value>
+  </data>
+  <data name="ImportTimeEntryImportButtonFilename" xml:space="preserve">
+    <value>Geen bestand geselecteerd</value>
+  </data>
+  <data name="ImportTimeEntryProjectLabel" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ImportTimeEntryProjectName" xml:space="preserve">
+    <value>Geen project ingelezen</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ImportTimeEntryFileDialogFiltertext" xml:space="preserve">
+    <value>Te importeren betanden</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="ImportTimeEntryStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorEndtime" xml:space="preserve">
+    <value>Eindtijd eerder of gelijk dan de starttijd</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorProjectcode" xml:space="preserve">
+    <value>Foutieve project code</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorUnknown" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorWorktypename" xml:space="preserve">
+    <value>Foutieve Werksoort naam</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorInline" xml:space="preserve">
+    <value>in regel</value>
+  </data>
+  <data name="ImportTimeEntryMessageboxErrorMessage" xml:space="preserve">
+    <value>Fouten gevonden tijdens importeren</value>
+  </data>
+  <data name="TimeReportButtonGroupDay" xml:space="preserve">
+    <value>Per dag</value>
+  </data>
+  <data name="TimeReportButtonGroupProject" xml:space="preserve">
+    <value>Op Project</value>
+  </data>
+  <data name="TimeReportButtonGroupWorktype" xml:space="preserve">
+    <value>Op Werksoort</value>
+  </data>
+  <data name="TimeReportButtonGroupYear" xml:space="preserve">
+    <value>Per jaar</value>
+  </data>
+  <data name="TimeReportButtonGroupYearDay" xml:space="preserve">
+    <value>Per Jaar per Dag</value>
+  </data>
+  <data name="TimeReportButtonGroupYearMonth" xml:space="preserve">
+    <value>Per Jaar per Maand</value>
+  </data>
+  <data name="TimeReportButtonNoGroup" xml:space="preserve">
+    <value>Ongegroepeerd</value>
+  </data>
+  <data name="TimeReportHeaderDay" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="TimeReportHeaderMonth" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="TimeReportHeaderProjectName" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="TimeReportHeaderWorkDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TimeReportHeaderWorkedMinutes" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="TimeReportHeaderWorkTime" xml:space="preserve">
+    <value>Werktijd</value>
+  </data>
+  <data name="TimeReportHeaderWorktypeName" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="TimeReportHeaderYear" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+  <data name="TimeReportHeaderYearDay" xml:space="preserve">
+    <value>Jaar/Dag</value>
+  </data>
+  <data name="TimeReportHeaderYearMonth" xml:space="preserve">
+    <value>Jaar/Maand</value>
+  </data>
+  <data name="TimeReportSelectProject" xml:space="preserve">
+    <value>Selecteer project</value>
+  </data>
+  <data name="TimeReportButtonGroupMonth" xml:space="preserve">
+    <value>Per Maand</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="metadataSupplierStatuslineStatusText" xml:space="preserve">
+    <value>Aantal:</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTitle" xml:space="preserve">
+    <value>Basisgegevens</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralTitle" xml:space="preserve">
+    <value>Leverancier gegevens</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZip" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrency" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrl" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCosts" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValue" xml:space="preserve">
+    <value>Tot bedrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierTabMemoTitle" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="metadataSupplierTabOrderHistoryTitle" xml:space="preserve">
+    <value>Order historie</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="metadataProductStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="metadataProductStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="metadataProductStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="metadataProductStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="metadataProductStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderProductId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Product toevoegen</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Verwijder geselekteerde product</value>
+  </data>
+  <data name="metadataProductProductToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Maak alle ingevulde velden leeg</value>
+  </data>
+  <data name="metadataProductTabGeneralTitle" xml:space="preserve">
+    <value>Basisgegevens</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductTitle" xml:space="preserve">
+    <value>Productgegevens</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldName" xml:space="preserve">
+    <value>Product naam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrand" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageTitle" xml:space="preserve">
+    <value>Voorraadgegevens</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorage" xml:space="preserve">
+    <value>Minimale voorraad</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantity" xml:space="preserve">
+    <value>Bestel hoeveelheid</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnit" xml:space="preserve">
+    <value>Verpakkingseenheid</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensions" xml:space="preserve">
+    <value>Afmetingen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocation" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectTitle" xml:space="preserve">
+    <value>Projectgegevens</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldProjectCosts" xml:space="preserve">
+    <value>Projektkosten</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
+    <value>Bild hinzufügen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
+    <value>Lösche Bild</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
+    <value>Bild um eine Vierteldrehung drehen</value>
+  </data>
+  <data name="metadataProductTabMemoTitle" xml:space="preserve">
+    <value>Uitgebreide omschrijving</value>
+  </data>
+  <data name="metadataProductTabSupplierTitle" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralTitle" xml:space="preserve">
+    <value>Artikelinformatie per leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplier" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCode" xml:space="preserve">
+    <value>Artikelnummer bij leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescription" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplier" xml:space="preserve">
+    <value>Standaard leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderProductId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderSupplierId" xml:space="preserve">
+    <value>Supplier_Id</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>Currency_Id</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderDefault" xml:space="preserve">
+    <value>Std</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderSupplier" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderProductNumber" xml:space="preserve">
+    <value>Artikelnr.</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderDescription" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderCurrency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataProductTabSupplierDatagridHeaderPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Product Leverancier toevoegen</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataProductTabSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Verwijder geselekteerde product bij leverancier</value>
+  </data>
+  <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
+    <value>Voorraadhistorie</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderAddress" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCity" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCountry" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCountryId" xml:space="preserve">
+    <value>Land ID</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCurrency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>Valuta ID</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderSupplierId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataSupplierSupplierDatagridHeaderZip" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Verwijder geselekteerde leverancier</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Leverancier toevoegen</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Maak alle ingevulde velden leeg</value>
+  </data>
+  <data name="metadataSupplierSupplierToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderMail" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderPhone" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderType" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierTabContactDatagridHeaderTypeId" xml:space="preserve">
+    <value>Functie Id</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMail" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldName" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhone" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldType" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralTitle" xml:space="preserve">
+    <value>Communicatiekanalen per leverancier</value>
+  </data>
+  <data name="metadataSupplierTabContactTitle" xml:space="preserve">
+    <value>Contactpersonen</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Verwijder geselekteerde contactpersoon</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Contact(persoon) bij leverancier toevoegen</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Maak alle ingevulde velden leeg</value>
+  </data>
+  <data name="metadataSupplierTabContactToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddress" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCity" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="toolbarButtonParagraphIndent" xml:space="preserve">
+    <value>Inspringen</value>
+  </data>
+  <data name="toolbarButtonParagraphOutdent" xml:space="preserve">
+    <value>Terugspringen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPrice" xml:space="preserve">
+    <value>Kostprijs</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldProjectCostsTooltip" xml:space="preserve">
+    <value>Moeten de kosten van dit artikel mee worden gerekend in de projectkosten (nee indien bijvoorbeeld gereedschap of inventaris)</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltip" xml:space="preserve">
+    <value>Website product</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrl" xml:space="preserve">
+    <value>Website product</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="metadataProjectStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderProjectId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderStartDate" xml:space="preserve">
+    <value>Start datum</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderEndDate" xml:space="preserve">
+    <value>Eind datum</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderCompleted" xml:space="preserve">
+    <value>Voltooid</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Project toevoegen</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Verwijder geselekteerde Project</value>
+  </data>
+  <data name="metadataProjectProjectToolbarButtonResetTooltip" xml:space="preserve">
+    <value>Maak alle ingevulde velden leeg</value>
+  </data>
+  <data name="metadataProjectTabBuildTimeTitle" xml:space="preserve">
+    <value>Bouwtijden</value>
+  </data>
+  <data name="metadataProjectTabCostsTitle" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTitle" xml:space="preserve">
+    <value>Projectgegevens</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTitle" xml:space="preserve">
+    <value>Bouw tijd</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationTitle" xml:space="preserve">
+    <value>Verwachting</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHours" xml:space="preserve">
+    <value>(uren)</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTime" xml:space="preserve">
+    <value>Verwachte bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdays" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressTitle" xml:space="preserve">
+    <value>Voortgang</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTime" xml:space="preserve">
+    <value>Bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDays" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDay" xml:space="preserve">
+    <value>Korste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDay" xml:space="preserve">
+    <value>Langste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhours" xml:space="preserve">
+    <value>Uren per dag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoTitle" xml:space="preserve">
+    <value>Nog te gaan</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDays" xml:space="preserve">
+    <value>Dagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHours" xml:space="preserve">
+    <value>Uren:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsTitle" xml:space="preserve">
+    <value>Bouw kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbol" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCosts" xml:space="preserve">
+    <value>Materiaalkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCosts" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCosts" xml:space="preserve">
+    <value>Totale kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralTitle" xml:space="preserve">
+    <value>Algemene projectgegevens</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDate" xml:space="preserve">
+    <value>Start datum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDate" xml:space="preserve">
+    <value>Eind datum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDate" xml:space="preserve">
+    <value>Verwachte einddatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldClosed" xml:space="preserve">
+    <value>Project voltooid</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Afbeelding toevoegen/wijzigen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Afbeelding verwijderen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemImageToolbarButtonRotateTooltip" xml:space="preserve">
+    <value>Afbeelding kwartslag draaien</value>
+  </data>
+  <data name="metadataProjectTabMemoTitle" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="metadataWorktypePageSubTitle" xml:space="preserve">
+    <value>Beheer de werkzaamheden, selecteer hiervoor een werksoort en gebruik de rechtermuisknop</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktype" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="metadataWorktypeEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Gewijzigde categorienaam opslaan</value>
+  </data>
+  <data name="metadataWorktypeTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-werksoort toevoegen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-werksoort toevoegen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-werksoort toevoegen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-werksoort toevoegen</value>
+  </data>
+  <data name="metadataWorktypeTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Verwijder deze EN ALLE onderligende werksoorten</value>
+  </data>
+  <data name="metadataCategoryPageSubTitle" xml:space="preserve">
+    <value>Beheer de categoriën, selecteer hiervoor een categorie en gebruik de rechtermuisknop</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataCategoryEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Gewijzigde categorienaam opslaan</value>
+  </data>
+  <data name="metadataCategoryTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-categorie toevoegen</value>
+  </data>
+  <data name="metadataCategoryTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-categorie toevoegen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-categorie toevoegen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-categorie toevoegen</value>
+  </data>
+  <data name="metadataCategoryTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Verwijder deze EN ALLE onderligende categoriën</value>
+  </data>
+  <data name="metadataStoragePageSubTitle" xml:space="preserve">
+    <value>Beheer de locaties, selecteer hiervoor een locatie en gebruik de rechtermuisknop</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorage" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="metadataStorageEntryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Gewijzigde locatie opslaan</value>
+  </data>
+  <data name="metadataStorageTreeviewSolutionContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-locatie toevoegen</value>
+  </data>
+  <data name="metadataStorageTreeviewSolutionContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-locatie toevoegen</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemAddMain" xml:space="preserve">
+    <value>Hoofd-locatie toevoegen</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemAddSub" xml:space="preserve">
+    <value>Sub-locatie toevoegen</value>
+  </data>
+  <data name="metadataStorageTreeviewFolderContextMenuItemDelete" xml:space="preserve">
+    <value>Verwijder deze EN ALLE onderligende locaties</value>
+  </data>
+  <data name="metadataCountryEntryFieldCode" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="metadataCountryEntryFieldName" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrency" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataCountryToolbarButtonNewTooltip" xml:space="preserve">
+    <value>Land toevoegen aan de tabel</value>
+  </data>
+  <data name="metadataCountryToolbarButtonDeleteTooltip" xml:space="preserve">
+    <value>Land verwijderen uit de tabel</value>
+  </data>
+  <data name="metadataCountryToolbarButtonSaveTooltip" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCode" xml:space="preserve">
+    <value>Land code</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCurrencyId" xml:space="preserve">
+    <value>Valute ID</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderCurrency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataCountryDatagridHeaderName" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderAmountOrdered" xml:space="preserve">
+    <value>Besteld</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderAmountUsed" xml:space="preserve">
+    <value>Gebruikt</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderPrice" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderProductName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ProjectCostsDategridHeaderTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="ProjectCostsReportButtonNoGroup" xml:space="preserve">
+    <value>Ongegroepeerd</value>
+  </data>
+  <data name="ProjectCostsReportButtonGroupCategory" xml:space="preserve">
+    <value>Op categorie</value>
+  </data>
+  <data name="ProjectCostsReportButtonGroupProject" xml:space="preserve">
+    <value>Op project</value>
+  </data>
+  <data name="ProjectCostsDataGridGroupTotalsNumber" xml:space="preserve">
+    <value>Aantal producten:</value>
+  </data>
+  <data name="ProjectCostsDataGridGroupTotalsTotals" xml:space="preserve">
+    <value>Totale kosten:</value>
+  </data>
+  <data name="ProjectTimeEntriesDataGridGroupTotalsNumber" xml:space="preserve">
+    <value>Aantal dagdelen:</value>
+  </data>
+  <data name="ProjectTimeEntriesDataGridGroupTotalsTotals" xml:space="preserve">
+    <value>Totaal gewerkte uren:</value>
+  </data>
+  <data name="generalDateTimeMonth4Short" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="generalDateTimeMonth4" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="generalDateTimeMonth8Short" xml:space="preserve">
+    <value>Aug</value>
+  </data>
+  <data name="generalDateTimeMonth8" xml:space="preserve">
+    <value>Augustus</value>
+  </data>
+  <data name="generaldatetimeDayShort" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="generaldatetimeDay" xml:space="preserve">
+    <value>dag</value>
+  </data>
+  <data name="generaldatetimeDays" xml:space="preserve">
+    <value>dagen</value>
+  </data>
+  <data name="generalDateTimeMonth12Short" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="generalDateTimeMonth12" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="generaldatetimeDay2Short" xml:space="preserve">
+    <value>Di</value>
+  </data>
+  <data name="generaldatetimeDay2" xml:space="preserve">
+    <value>Dinsdag</value>
+  </data>
+  <data name="generaldatetimeDay4Short" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="generaldatetimeDay4" xml:space="preserve">
+    <value>Donderdag</value>
+  </data>
+  <data name="generalDateTimeMonth2Short" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="generalDateTimeMonth2" xml:space="preserve">
+    <value>Februari</value>
+  </data>
+  <data name="generaldatetimeYearShort" xml:space="preserve">
+    <value>j</value>
+  </data>
+  <data name="generaldatetimeYear" xml:space="preserve">
+    <value>jaar</value>
+  </data>
+  <data name="generalDateTimeMonth1Short" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="generalDateTimeMonth1" xml:space="preserve">
+    <value>Januari</value>
+  </data>
+  <data name="generaldatetimeYears" xml:space="preserve">
+    <value>jaren</value>
+  </data>
+  <data name="generalDateTimeMonth7Short" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="generalDateTimeMonth7" xml:space="preserve">
+    <value>Juli</value>
+  </data>
+  <data name="generalDateTimeMonth6Short" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="generalDateTimeMonth6" xml:space="preserve">
+    <value>Juni</value>
+  </data>
+  <data name="generaldatetimeMinuteShort" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="generaldatetimeMonthShort" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="generaldatetimeDay1Short" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="generaldatetimeMonth" xml:space="preserve">
+    <value>maand</value>
+  </data>
+  <data name="generaldatetimeDay1" xml:space="preserve">
+    <value>Maandag</value>
+  </data>
+  <data name="generaldatetimeMonths" xml:space="preserve">
+    <value>maanden</value>
+  </data>
+  <data name="generalDateTimeMonth3" xml:space="preserve">
+    <value>Maart</value>
+  </data>
+  <data name="generalDateTimeMonth5" xml:space="preserve">
+    <value>Mei</value>
+  </data>
+  <data name="generalDateTimeMonth5Short" xml:space="preserve">
+    <value>Mei</value>
+  </data>
+  <data name="generaldatetimeMinutes" xml:space="preserve">
+    <value>minuten</value>
+  </data>
+  <data name="generaldatetimeMinute" xml:space="preserve">
+    <value>minuut</value>
+  </data>
+  <data name="generalDateTimeMonth3Short" xml:space="preserve">
+    <value>Mrt</value>
+  </data>
+  <data name="generalDateTimeMonth11Short" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="generalDateTimeMonth11" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="generalDateTimeMonth10Short" xml:space="preserve">
+    <value>Okt</value>
+  </data>
+  <data name="generalDateTimeMonth10" xml:space="preserve">
+    <value>Oktober</value>
+  </data>
+  <data name="generalDateTimeMonth9Short" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="generalDateTimeMonth9" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="generaldatetimeHourShort" xml:space="preserve">
+    <value>u</value>
+  </data>
+  <data name="generaldatetimeHours" xml:space="preserve">
+    <value>uren</value>
+  </data>
+  <data name="generaldatetimeHour" xml:space="preserve">
+    <value>uur</value>
+  </data>
+  <data name="generaldatetimeDay5Short" xml:space="preserve">
+    <value>Vr</value>
+  </data>
+  <data name="generaldatetimeDay5" xml:space="preserve">
+    <value>Vrijdag</value>
+  </data>
+  <data name="generaldatetimeWeekShort" xml:space="preserve">
+    <value>w</value>
+  </data>
+  <data name="generaldatetimeWeek" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="generaldatetimeWeeks" xml:space="preserve">
+    <value>weken</value>
+  </data>
+  <data name="generaldatetimeDay3Short" xml:space="preserve">
+    <value>Wo</value>
+  </data>
+  <data name="generaldatetimeDay3" xml:space="preserve">
+    <value>Woensdag</value>
+  </data>
+  <data name="generaldatetimeDay6Short" xml:space="preserve">
+    <value>Za</value>
+  </data>
+  <data name="generaldatetimeDay6" xml:space="preserve">
+    <value>Zaterdag</value>
+  </data>
+  <data name="generaldatetimeDay0Short" xml:space="preserve">
+    <value>Zo</value>
+  </data>
+  <data name="generaldatetimeDay0" xml:space="preserve">
+    <value>Zondag</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategoryTag" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataCategoryEntryFieldCategoryTooltip" xml:space="preserve">
+    <value>Geef de categorie aan waarin het product valt</value>
+  </data>
+  <data name="metadataCountryEntryFieldCodeTag" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="metadataCountryEntryFieldCodeTooltip" xml:space="preserve">
+    <value>Een code waaraan het land eenvoudig te herkennen is</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrencyTag" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataCountryEntryFieldCurrencyTooltip" xml:space="preserve">
+    <value>De standaard valuta voor dit land</value>
+  </data>
+  <data name="metadataCountryEntryFieldNameTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataCountryEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geef de naam van het land</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyTag" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyTooltip" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCodeTag" xml:space="preserve">
+    <value>Valuta code</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyCodeTooltip" xml:space="preserve">
+    <value>Verkorte valuta naam</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyNameTag" xml:space="preserve">
+    <value>Valuta naam</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyNameTooltip" xml:space="preserve">
+    <value>Volledige naam van de valuta</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateTag" xml:space="preserve">
+    <value>Omrekenkoers</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateTooltip" xml:space="preserve">
+    <value>De omrekenkoers voor de valuta naar €</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShortTag" xml:space="preserve">
+    <value>Koers</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencyRateShortTooltip" xml:space="preserve">
+    <value>Koers</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTag" xml:space="preserve">
+    <value>Valuta symbool</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>Valuta symbool</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrandTag" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldBrandTooltip" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTag" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTooltip" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCodeTag" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCodeTooltip" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldNameTag" xml:space="preserve">
+    <value>Product naam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldNameTooltip" xml:space="preserve">
+    <value>Product naam</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPriceTag" xml:space="preserve">
+    <value>Kostprijs</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProjectFieldCostPriceTooltip" xml:space="preserve">
+    <value>Kostprijs</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensionsTag" xml:space="preserve">
+    <value>Afmetingen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldDimensionsTooltip" xml:space="preserve">
+    <value>Afmetingen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorageTag" xml:space="preserve">
+    <value>Minimale voorraad</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldMinimalStorageTooltip" xml:space="preserve">
+    <value>Minimale voorraad</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantityTag" xml:space="preserve">
+    <value>Bestel hoeveelheid</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldOrderQuantityTooltip" xml:space="preserve">
+    <value>Bestel hoeveelheid</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocationTag" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldStorageLocationTooltip" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnitTag" xml:space="preserve">
+    <value>Verpakkingseenheid</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageFieldUnitTooltip" xml:space="preserve">
+    <value>Verpakkingseenheid</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplierTag" xml:space="preserve">
+    <value>Standaard leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldDefaultSupplierTooltip" xml:space="preserve">
+    <value>Standaard leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierTag" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierTooltip" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCodeTag" xml:space="preserve">
+    <value>Artikelnummer bij leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierCodeTooltip" xml:space="preserve">
+    <value>Artikelnummer bij leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescriptionTag" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierDescriptionTooltip" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPriceTag" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldSupplierPriceTooltip" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTag" xml:space="preserve">
+    <value>Website product</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltipTag" xml:space="preserve">
+    <value>Website product bij leverancier</value>
+  </data>
+  <data name="metadataProductTabSupplierTabItemGeneralFieldUrlTooltipTooltip" xml:space="preserve">
+    <value>Website product bij leverancier</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTimeTag" xml:space="preserve">
+    <value>Verwachte bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldBuildTimeTooltip" xml:space="preserve">
+    <value>Verwachte bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHoursTag" xml:space="preserve">
+    <value>Uren...</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldHoursTooltip" xml:space="preserve">
+    <value>Hoeveel uren verwacht je aan het project te werken</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdaysTag" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeExpectationFieldWorkdaysTooltip" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhoursTag" xml:space="preserve">
+    <value>Uren per dag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDailyhoursTooltip" xml:space="preserve">
+    <value>Uren per dag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDaysTag" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldDaysTooltip" xml:space="preserve">
+    <value>Werkdagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDayTag" xml:space="preserve">
+    <value>Langste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldLongestDayTooltip" xml:space="preserve">
+    <value>Langste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDayTag" xml:space="preserve">
+    <value>Korste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldShortestDayTooltip" xml:space="preserve">
+    <value>Korste werkdag:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTimeTag" xml:space="preserve">
+    <value>Bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeProgressFieldTimeTooltip" xml:space="preserve">
+    <value>Bouwtijd:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDaysTag" xml:space="preserve">
+    <value>Dagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldDaysTooltip" xml:space="preserve">
+    <value>Dagen:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHoursTag" xml:space="preserve">
+    <value>Uren:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemBuildTimeTodoFieldHoursTooltip" xml:space="preserve">
+    <value>Uren:</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbolTag" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCostsTag" xml:space="preserve">
+    <value>Materiaalkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldProductCostsTooltip" xml:space="preserve">
+    <value>Materiaalkosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCostsTag" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTimeCostsTooltip" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCostsTag" xml:space="preserve">
+    <value>Totale kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemCostsFieldTotalCostsTooltip" xml:space="preserve">
+    <value>Totale kosten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldClosedTooltip" xml:space="preserve">
+    <value>Project voltooid</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
+    <value>Zoeknaam om het project eenvoudig te vinden, zoeknaam mag geen spaties bevatten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTag" xml:space="preserve">
+    <value>Eind datum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTooltip" xml:space="preserve">
+    <value>Wanneer is het project voltooid</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTag" xml:space="preserve">
+    <value>Verwachte einddatum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTooltip" xml:space="preserve">
+    <value>Wat is de verwachte einddatum voor het project</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Projectnaam</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Wat is de volledige naam van het project</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDateTag" xml:space="preserve">
+    <value>Start datum</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStartDateTooltip" xml:space="preserve">
+    <value>Start datum</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorageTag" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="metadataStorageEntryFieldStorageTooltip" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTag" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTooltip" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTag" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTag" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTooltip" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTag" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTag" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag" xml:space="preserve">
+    <value>Tot bedrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip" xml:space="preserve">
+    <value>Tot bedrag</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTag" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTag" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktypeTag" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="metadataWorktypeEntryFieldWorktypeTooltip" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="OrderOrderFieldClosedTag" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="OrderOrderFieldClosedTooltip" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="OrderOrderFieldClosedDateTag" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderFieldClosedDateTooltip" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRateTag" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="OrderOrderFieldCurrencyRateTooltip" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbolTag" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="OrderOrderFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="OrderOrderFieldOrderCostsTag" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="OrderOrderFieldOrderCostsTooltip" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="OrderOrderFieldOrderDateTag" xml:space="preserve">
+    <value>Order datum</value>
+  </data>
+  <data name="OrderOrderFieldOrderDateTooltip" xml:space="preserve">
+    <value>Order datum</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumberTag" xml:space="preserve">
+    <value>Ordernummer</value>
+  </data>
+  <data name="OrderOrderFieldOrderNumberTooltip" xml:space="preserve">
+    <value>Ordernummer</value>
+  </data>
+  <data name="OrderOrderFieldShippingCostsTag" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="OrderOrderFieldShippingCostsTooltip" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="OrderOrderFieldSupplierTag" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="OrderOrderFieldSupplierTooltip" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="OrderOrderlineFieldCategoryTag" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="OrderOrderlineFieldCategoryTooltip" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedTag" xml:space="preserve">
+    <value>Afgeleverd</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedTooltip" xml:space="preserve">
+    <value>Afgeleverd</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDateTag" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldClosedDateTooltip" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="OrderOrderlineFieldNumberTag" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="OrderOrderlineFieldNumberTooltip" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTag" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltipTag" xml:space="preserve">
+    <value>Stukprijs in de valuta van de leverancier</value>
+  </data>
+  <data name="OrderOrderlineFieldPriceTooltipTooltip" xml:space="preserve">
+    <value>Stukprijs in de valuta van de leverancier</value>
+  </data>
+  <data name="OrderOrderlineFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlineFieldProjectTag" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="OrderOrderlineFieldProjectTooltip" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="OrderOrderlineFieldTotalTag" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="OrderOrderlineFieldTotalTooltip" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="OrderOrderlistFieldPriceTag" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlistFieldPriceTooltip" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="OrderOrderlistFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="OrderOrderlistFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmountTag" xml:space="preserve">
+    <value>Ontvangen</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldAmountTooltip" xml:space="preserve">
+    <value>Ontvangen</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDateTag" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldDateTooltip" xml:space="preserve">
+    <value>Leverdatum</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocationTag" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldLocationTooltip" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProductTag" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="ReceiptGroupReceiptlineFieldProductTooltip" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="generalDatePickerText" xml:space="preserve">
+    <value>Selecteer datum...</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitEditLabel" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitExportHeader" xml:space="preserve">
+    <value>Exporteer eenheden</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitImportHeader" xml:space="preserve">
+    <value>Importeer eenheden</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataUnitReportHeader" xml:space="preserve">
+    <value>Overzicht eenheden</value>
+  </data>
+  <data name="metadataUnitPageTitle" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="metadataUnitPageSubtitle" xml:space="preserve">
+    <value>Eenheden worden gebruikt om bijvoorbeeld standaard verpakkingseenheden weer te genen (voorbeelden: Stuk, Per 10)</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="ImportUnitsImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met eenheden</value>
+  </data>
+  <data name="ImportUnitsSubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand, deze bevat Projectnaam, werkdatum, starttijd, eindtijd en werksoort. Project naam en werksoort dienen overeen te komen met bestaand project en werksoort</value>
+  </data>
+  <data name="ImportUnitsTitle" xml:space="preserve">
+    <value>Importeer tijdregistratie</value>
+  </data>
+  <data name="ImportFileDialogFiltertext" xml:space="preserve">
+    <value>Te importeren betanden</value>
+  </data>
+  <data name="ImportImportButtonFilename" xml:space="preserve">
+    <value>Geen bestand geselecteerd</value>
+  </data>
+  <data name="ImportImportButtonLabel" xml:space="preserve">
+    <value>Selecteer bestand</value>
+  </data>
+  <data name="ImportImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand</value>
+  </data>
+  <data name="ImportMessageboxErrorInline" xml:space="preserve">
+    <value>in regel</value>
+  </data>
+  <data name="ImportMessageboxErrorMessage" xml:space="preserve">
+    <value>Fouten gevonden tijdens importeren</value>
+  </data>
+  <data name="ImportMessageboxErrorUnknown" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="ImportStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="ImportStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="ImportStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="ImportStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="ImportStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ImportUnitsLabel" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="ImportUnitsMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Bestaat al</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedSingle" xml:space="preserve">
+    <value>regel verwerkt</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedOkSingle" xml:space="preserve">
+    <value>regel correct ingelezen</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedErrorSingle" xml:space="preserve">
+    <value>regel overgeslagen vanwege fouten</value>
+  </data>
+  <data name="ImportUnitsMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Ingelezen eenheid bestaat al in de tabel</value>
+  </data>
+  <data name="ExportUnitsFolderDialogFiltertext" xml:space="preserve">
+    <value>Map voor het exportbestand</value>
+  </data>
+  <data name="ExportUnitsExportButtonFoldername" xml:space="preserve">
+    <value>Geen map geselecteerd</value>
+  </data>
+  <data name="ExportUnitsExportButtonLabel" xml:space="preserve">
+    <value>Selecteer map</value>
+  </data>
+  <data name="ExportUnitsExportButtonTooltip" xml:space="preserve">
+    <value>Selecteer de map waar het te exporteren CSV bestand met eenheden moet worden weggeschreven</value>
+  </data>
+  <data name="ExportUnitsSubTitle" xml:space="preserve">
+    <value>Exporteer data naar een CSV bestand, deze bevat alleen de omschrijving van de eenheid</value>
+  </data>
+  <data name="ExportUnitsTitle" xml:space="preserve">
+    <value>Exporteer eenheden</value>
+  </data>
+  <data name="ExportUnitsFileName" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="ExportFolderDialogFiltertext" xml:space="preserve">
+    <value>Exporteren naar map</value>
+  </data>
+  <data name="ExportExportButtonFoldername" xml:space="preserve">
+    <value>Geen map geselecteerd</value>
+  </data>
+  <data name="ExportExportButtonLabel" xml:space="preserve">
+    <value>Selecteer map</value>
+  </data>
+  <data name="ExportExportButtonTooltip" xml:space="preserve">
+    <value>Selecteer de map voor het te exporteren CSV bestand</value>
+  </data>
+  <data name="ExportMessageboxErrorInline" xml:space="preserve">
+    <value>in regel</value>
+  </data>
+  <data name="ExportMessageboxErrorMessage" xml:space="preserve">
+    <value>Fouten gevonden tijdens exporteren</value>
+  </data>
+  <data name="ExportMessageboxErrorUnknown" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="ExportStatuslineStatusCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedErrorSingle" xml:space="preserve">
+    <value>regel overgeslagen vanwege fouten</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedOk" xml:space="preserve">
+    <value>regels correct weggeschreven</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedOkSingle" xml:space="preserve">
+    <value>regels correct weggeschreven</value>
+  </data>
+  <data name="ExportStatuslineStatusCompletedSingle" xml:space="preserve">
+    <value>regel verwerkt</value>
+  </data>
+  <data name="ExportStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels weggeschreven</value>
+  </data>
+  <data name="ExportStatuslineStatusPrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="ExportStatuslineStatusPrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="ExportStatuslineStatusText" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="ExportUnitsStatuslineStatusDescription" xml:space="preserve">
+    <value>Geen regels weggeschreven</value>
+  </data>
+  <data name="ExportUnitsMessageboxErrorMessage" xml:space="preserve">
+    <value>Fouten gevonden tijdens exporteren</value>
+  </data>
+  <data name="ExportTimeEntriesSubTitle" xml:space="preserve">
+    <value>Exporteer tijdregistratie naar een CSV bestand</value>
+  </data>
+  <data name="ExportTimeEntriesTitle" xml:space="preserve">
+    <value>Exporteer tijdregistraties</value>
+  </data>
+  <data name="ExportTimeEntriesFileName" xml:space="preserve">
+    <value>Tijdregistraties</value>
+  </data>
+  <data name="ExportProjectsSubTitle" xml:space="preserve">
+    <value>Exporteer projectgegevens naar een CSV bestand, afbeelding en memoveld wordt niet geëxporteerd</value>
+  </data>
+  <data name="ExportProjectsTitle" xml:space="preserve">
+    <value>Exporteer projectgegevens</value>
+  </data>
+  <data name="ExportProjectsFileName" xml:space="preserve">
+    <value>Projecten</value>
+  </data>
+  <data name="ExportProductsSubTitle" xml:space="preserve">
+    <value>Exporteer artikel naar een CSV bestand</value>
+  </data>
+  <data name="ExportProductsTitle" xml:space="preserve">
+    <value>Exporteer artikelen</value>
+  </data>
+  <data name="ExportProductsFileName" xml:space="preserve">
+    <value>Artikelen</value>
+  </data>
+  <data name="ExportStorageSubTitle" xml:space="preserve">
+    <value>Exporteer opslaglocaties naar een CSV bestand</value>
+  </data>
+  <data name="ExportStorageTitle" xml:space="preserve">
+    <value>Exporteer opslaglocaties</value>
+  </data>
+  <data name="ExportStorageFileName" xml:space="preserve">
+    <value>Opslaglocaties</value>
+  </data>
+  <data name="ExportCategoriesSubTitle" xml:space="preserve">
+    <value>Exporteer categorieën naar een CSV bestand</value>
+  </data>
+  <data name="ExportCategoriesTitle" xml:space="preserve">
+    <value>Exporteer categorieën</value>
+  </data>
+  <data name="ExportCategoriesFileName" xml:space="preserve">
+    <value>Categorien</value>
+  </data>
+  <data name="ExportCountriesSubTitle" xml:space="preserve">
+    <value>Exporteer landen naar een CSV bestand</value>
+  </data>
+  <data name="ExportCountriesTitle" xml:space="preserve">
+    <value>Exporteer landen</value>
+  </data>
+  <data name="ExportCountriesFileName" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="ExportSuppliersSubTitle" xml:space="preserve">
+    <value>Exporteer leveranciers naar een CSV bestand</value>
+  </data>
+  <data name="ExportSuppliersTitle" xml:space="preserve">
+    <value>Exporteer leveranciers</value>
+  </data>
+  <data name="ExportSuppliersFileName" xml:space="preserve">
+    <value>Leveranciers</value>
+  </data>
+  <data name="ExportCurrenciesSubTitle" xml:space="preserve">
+    <value>Exporteer valuta naar een CSV bestand</value>
+  </data>
+  <data name="ExportCurrenciesTitle" xml:space="preserve">
+    <value>Exporteer valuta</value>
+  </data>
+  <data name="ExportCurrenciesFileName" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="ExportWorktypesSubTitle" xml:space="preserve">
+    <value>Exporteer werksoorten naar een CSV bestand</value>
+  </data>
+  <data name="ExportWorktypesTitle" xml:space="preserve">
+    <value>Exporteer werksoorten</value>
+  </data>
+  <data name="ExportWorktypesFileName" xml:space="preserve">
+    <value>Werksoorten</value>
+  </data>
+  <data name="ExportBrandFileName" xml:space="preserve">
+    <value>Merken</value>
+  </data>
+  <data name="ExportBrandSubTitle" xml:space="preserve">
+    <value>Exporteer merken naar een CSV bestand</value>
+  </data>
+  <data name="ExportBrandTitle" xml:space="preserve">
+    <value>Exporteer merken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandEditLabel" xml:space="preserve">
+    <value>Merken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandExportHeader" xml:space="preserve">
+    <value>Exporteer merken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandImportHeader" xml:space="preserve">
+    <value>Importeer merken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataBrandReportHeader" xml:space="preserve">
+    <value>Overzicht merken</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierContactsExportHeader" xml:space="preserve">
+    <value>Exporteer contactpersonen leveranciers</value>
+  </data>
+  <data name="ExportSupplierContactsFileName" xml:space="preserve">
+    <value>ContactpersonenLeverancier</value>
+  </data>
+  <data name="ExportSupplierContactsTitle" xml:space="preserve">
+    <value>Contactpersonen leveranciers</value>
+  </data>
+  <data name="ExportSupplierContactsSubTitle" xml:space="preserve">
+    <value>Exporteer contactpersonen naar een CSV bestand</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeEditLabel" xml:space="preserve">
+    <value>Contact functies</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeExportHeader" xml:space="preserve">
+    <value>Exporteer contact functies</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeImportHeader" xml:space="preserve">
+    <value>Importeer contact functies</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataContactTypeReportHeader" xml:space="preserve">
+    <value>Overzicht contact functies</value>
+  </data>
+  <data name="ExportContactTypesFileName" xml:space="preserve">
+    <value>Contact functies</value>
+  </data>
+  <data name="ExportContactTypesSubTitle" xml:space="preserve">
+    <value>Exporteer contact funkties naar een CSV bestand</value>
+  </data>
+  <data name="ExportContactTypesTitle" xml:space="preserve">
+    <value>Exporteer contact functies</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierExportHeader" xml:space="preserve">
+    <value>Exporteer artikelen per leverancier</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierImportHeader" xml:space="preserve">
+    <value>Importeer artikelen per leverancier</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductSupplierReportHeader" xml:space="preserve">
+    <value>Overzicht artikelen per leverancier</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataProductsSupplierEditLabel" xml:space="preserve">
+    <value>Artikelen per leverancier</value>
+  </data>
+  <data name="ExportProductsSupplierFileName" xml:space="preserve">
+    <value>ArtikelenPerLeverancier</value>
+  </data>
+  <data name="ExportProductsSupplierSubTitle" xml:space="preserve">
+    <value>Exporteer artikelen per leverancier naar een CSV bestand</value>
+  </data>
+  <data name="ExportProductsSupplierTitle" xml:space="preserve">
+    <value>Exporteer artikelen per leverancier</value>
+  </data>
+  <data name="ImportBrandTitle" xml:space="preserve">
+    <value>Importeer merken</value>
+  </data>
+  <data name="ImportBrandSubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand, deze bevat alleen de omschrijving van de merken</value>
+  </data>
+  <data name="ImportBrandMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Ingelezen merk bestaat al in de tabel</value>
+  </data>
+  <data name="ImportBrandMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Merk Bestaat al</value>
+  </data>
+  <data name="ImportBrandLabel" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="ImportBrandImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met merken</value>
+  </data>
+  <data name="ImportContactTypesTitle" xml:space="preserve">
+    <value>Importeer functies</value>
+  </data>
+  <data name="ImportContactTypesSubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand, deze bevat alleen de omschrijving van de functies voor contactpersonen</value>
+  </data>
+  <data name="ImportContactTypesMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Ingelezen functie bestaat al in de tabel</value>
+  </data>
+  <data name="ImportContactTypesMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Functie Bestaat al</value>
+  </data>
+  <data name="ImportContactTypesLabel" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="ImportContactTypesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met functies voor contactpersonen</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataSupplierContactsImportHeader" xml:space="preserve">
+    <value>Importeer contactpersonen leveranciers</value>
+  </data>
+  <data name="ImportProductsTitle" xml:space="preserve">
+    <value>Importeer artikelen</value>
+  </data>
+  <data name="ImportProductsSubTitle" xml:space="preserve">
+    <value>Importeer artikeldata vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportProductsMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Ingelezen artikel bestaat al in de tabel</value>
+  </data>
+  <data name="ImportProductsMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Artikel bestaat al</value>
+  </data>
+  <data name="ImportProductsLabel" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="ImportProductsImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met artikelen</value>
+  </data>
+  <data name="ImportMessageboxErrorHeaderError" xml:space="preserve">
+    <value>Onjuist aantal velden in CSV bestand</value>
+  </data>
+  <data name="ImportMessageboxErrorProductAlreadyExists" xml:space="preserve">
+    <value>Artikel bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorProductAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen artikel bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeAlreadyExists" xml:space="preserve">
+    <value>Werksoort bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen werksoort bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandAlreadyExists" xml:space="preserve">
+    <value>Merk Bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen merk bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitAlreadyExists" xml:space="preserve">
+    <value>Eeneid bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen eenheid bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExists" xml:space="preserve">
+    <value>Categorie bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen categorie bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageAlreadyExists" xml:space="preserve">
+    <value>Opslag bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen opslag bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectAlreadyExists" xml:space="preserve">
+    <value>Project bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen project bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeAlreadyExists" xml:space="preserve">
+    <value>Functie Bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen functie bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorProductNotExists" xml:space="preserve">
+    <value>Artikel bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorProductNotExistsLong" xml:space="preserve">
+    <value>Artikelcode bestaat niet in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeNotExists" xml:space="preserve">
+    <value>Foutieve Werksoort naam</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeNotExistsLong" xml:space="preserve">
+    <value>Werksoortnaam komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandNotExists" xml:space="preserve">
+    <value>Merk bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorBrandNotExistsLong" xml:space="preserve">
+    <value>Merk komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitNotExists" xml:space="preserve">
+    <value>Eenheid bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorUnitNotExistsLong" xml:space="preserve">
+    <value>Eenheid komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExists" xml:space="preserve">
+    <value>Categorie bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExistsLong" xml:space="preserve">
+    <value>Categorie komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageNotExists" xml:space="preserve">
+    <value>Opslag bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorStorageNotExistsLong" xml:space="preserve">
+    <value>Opslag komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectNotExists" xml:space="preserve">
+    <value>Foutieve project code</value>
+  </data>
+  <data name="ImportMessageboxErrorProjectNotExistsLong" xml:space="preserve">
+    <value>Project code komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeNotExists" xml:space="preserve">
+    <value>Functie bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorContacttypeNotExistsLong" xml:space="preserve">
+    <value>Functie Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorStartEndTimeError" xml:space="preserve">
+    <value>Eindtijd eerder of gelijk dan de starttijd</value>
+  </data>
+  <data name="ImportMessageboxErrorDefault" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="ImportMessageboxErrorDefaultLong" xml:space="preserve">
+    <value>Er is een onbekende fout opgetreden</value>
+  </data>
+  <data name="ImportMessageboxErrorStartEndTimeErrorLong" xml:space="preserve">
+    <value>Eindtijd eerder of gelijk dan de starttijd</value>
+  </data>
+  <data name="ImportMessageboxErrorHeaderErrorLong" xml:space="preserve">
+    <value>Onjuist aantal velden in CSV bestand</value>
+  </data>
+  <data name="ImportMessageboxErrorDefaultLabel" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="ImportWorktypesLabel" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="ImportCategoriesLabel" xml:space="preserve">
+    <value>Categoie</value>
+  </data>
+  <data name="ImportStoragesLabel" xml:space="preserve">
+    <value>Opslag</value>
+  </data>
+  <data name="ImportProjectsLabel" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ImportSuppliersImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met leveranciers</value>
+  </data>
+  <data name="ImportSuppliersLabel" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="ImportSuppliersSubTitle" xml:space="preserve">
+    <value>Importeer leveranciers vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportSuppliersTitle" xml:space="preserve">
+    <value>Importeer leveranciers</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierAlreadyExists" xml:space="preserve">
+    <value>Leverancier bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen leverancier bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyAlreadyExists" xml:space="preserve">
+    <value>Valuta bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen valuta bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryAlreadyExists" xml:space="preserve">
+    <value>Land bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen land bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyNotExists" xml:space="preserve">
+    <value>Incorrect Valuta Id</value>
+  </data>
+  <data name="ImportMessageboxErrorCurrencyNotExistsLong" xml:space="preserve">
+    <value>Valuta Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryNotExists" xml:space="preserve">
+    <value>Incorrent Land Id</value>
+  </data>
+  <data name="ImportMessageboxErrorCountryNotExistsLong" xml:space="preserve">
+    <value>Land Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierNotExists" xml:space="preserve">
+    <value>Incorrect Leverancier Id</value>
+  </data>
+  <data name="ImportMessageboxErrorSupplierNotExistsLong" xml:space="preserve">
+    <value>Leverancier Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportCurrenciesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met valuta</value>
+  </data>
+  <data name="ImportCurrenciesLabel" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="ImportCurrenciesSubTitle" xml:space="preserve">
+    <value>Importeer valutadata data vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportCurrenciesTitle" xml:space="preserve">
+    <value>Importeer valuta</value>
+  </data>
+  <data name="ImportCountriesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met landen</value>
+  </data>
+  <data name="ImportCountriesLabel" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="ImportCountriesSubTitle" xml:space="preserve">
+    <value>Importeer landendata data vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportCountriesTitle" xml:space="preserve">
+    <value>Importeer landen</value>
+  </data>
+  <data name="ImportProductSuppliersImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met Artikelen per leveranciers</value>
+  </data>
+  <data name="ImportProductSuppliersLabel" xml:space="preserve">
+    <value>Artikel per leverancier</value>
+  </data>
+  <data name="ImportProductSuppliersSubTitle" xml:space="preserve">
+    <value>Importeer Producten per leverancier vanuit een CSV bestand. Het CSV bestand bevat de kolom Code (verkorte naam artikel) in plaats van Artikel Id om het artikel te kunnen vinden</value>
+  </data>
+  <data name="ImportProductSuppliersTitle" xml:space="preserve">
+    <value>Artikelen bij leveranciers</value>
+  </data>
+  <data name="ImportGenerateCSVButtonLabel" xml:space="preserve">
+    <value>CSV bestand voorbereiden</value>
+  </data>
+  <data name="ImportGenerateCSVButtonTooltip" xml:space="preserve">
+    <value>Creëer een (leeg) CSV bestand met alleen de noodzakelijke header voor import</value>
+  </data>
+  <data name="ImportStatuslineStatusCompletedPreparedCSV" xml:space="preserve">
+    <value>CSV Bestand voorbereid in:</value>
+  </data>
+  <data name="ImportCategoriesTitle" xml:space="preserve">
+    <value>Importeer categorieën</value>
+  </data>
+  <data name="ImportCategoriesSubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportCategoriesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdAlreadyExists" xml:space="preserve">
+    <value>Categorie hoofd Id bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen hoofd Id van de categorie bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdNotExists" xml:space="preserve">
+    <value>Categorie hoofd Id bestaat niet</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryParentIdNotExistsLong" xml:space="preserve">
+    <value>Categorie Hoofd Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdAlreadyExists" xml:space="preserve">
+    <value>Werksoort hoofd Id bestaat al</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdAlreadyExistsLong" xml:space="preserve">
+    <value>Ingelezen werksoort Id bestaat al in de tabel</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdNotExists" xml:space="preserve">
+    <value>Foutief Werksoort hoofd Id</value>
+  </data>
+  <data name="ImportMessageboxErrorWorktypeParentIdNotExistsLong" xml:space="preserve">
+    <value>Werksoort hoofd Id komt niet voor in de tabel</value>
+  </data>
+  <data name="ImportWorktypesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met werksoorten</value>
+  </data>
+  <data name="ImportWorktypesSubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportWorktypesTitle" xml:space="preserve">
+    <value>Importeer werksoorten</value>
+  </data>
+  <data name="ImportSuppliersContactsTitle" xml:space="preserve">
+    <value>Importeer contactpersonen bij leveranciers</value>
+  </data>
+  <data name="ImportSuppliersContactsSubTitle" xml:space="preserve">
+    <value>Importeer contactpersonen bij leveranciers vanuit een CSV bestand</value>
+  </data>
+  <data name="ImportSuppliersContactsImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met contactpersonen bij leveranciers</value>
+  </data>
+  <data name="ImportStoragesImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met opslaglocaties</value>
+  </data>
+  <data name="ImportStoragesTitle" xml:space="preserve">
+    <value>Importeer opslag locaties</value>
+  </data>
+  <data name="ImportStoragesSubTitle" xml:space="preserve">
+    <value>Importeer opslaglocaties vanuit een CSV bestand</value>
+  </data>
+  <data name="metadataBrandPageTitle" xml:space="preserve">
+    <value>Merken</value>
+  </data>
+  <data name="metadataBrandPageSubTitle" xml:space="preserve">
+    <value>Beheer alle productmerken</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderName" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="metadataBrandEntryFieldId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataBrandEntryFieldName" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="navigation.Time.MainItem.Label" xml:space="preserve">
+    <value>Urenregistratie</value>
+  </data>
+  <data name="navigation.Time.MainItem.Tooltip" xml:space="preserve">
+    <value>Bijhouden van de uren per project</value>
+  </data>
+  <data name="navigation.Time.SubItem.Export.Label" xml:space="preserve">
+    <value>Exporteer uren</value>
+  </data>
+  <data name="navigation.Time.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exporteer de uren naar CSV of Excel</value>
+  </data>
+  <data name="navigation.Time.SubItem.Import.Label" xml:space="preserve">
+    <value>Importeer uren</value>
+  </data>
+  <data name="navigation.Time.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importeer uren vanuit een CSV bestand</value>
+  </data>
+  <data name="navigation.Time.SubItem.Report.Label" xml:space="preserve">
+    <value>Urenoverzicht</value>
+  </data>
+  <data name="navigation.Time.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Overzicht van de bestede uren voor dit project</value>
+  </data>
+  <data name="navigation.Inventory.MainItem.Label" xml:space="preserve">
+    <value>Voorraadbeheer</value>
+  </data>
+  <data name="navigation.Inventory.MainItem.Tooltip" xml:space="preserve">
+    <value>Beheren van de voorraden</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Order.Label" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Order.Tooltip" xml:space="preserve">
+    <value>Beheren van de bestellingen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Receipt.Label" xml:space="preserve">
+    <value>Ontvangsten</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Receipt.Tooltip" xml:space="preserve">
+    <value>Beheren van de binnengekomen bestellingen</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Report.Label" xml:space="preserve">
+    <value>Voorraadoverzicht</value>
+  </data>
+  <data name="navigation.Inventory.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Overzicht van de actuele voorraad</value>
+  </data>
+  <data name="navigation.Projects.MainItem.Label" xml:space="preserve">
+    <value>Projectenbeheer</value>
+  </data>
+  <data name="navigation.Projects.MainItem.Tooltip" xml:space="preserve">
+    <value>Het beheren van alle projecten</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Export.Label" xml:space="preserve">
+    <value>Exporteer projecten</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exporteer de projecten naar CSV of Excel</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Import.Label" xml:space="preserve">
+    <value>Importeer projecten</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importeer projecten vanuit een CSV bestand</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Report.Label" xml:space="preserve">
+    <value>Projectenoverzicht</value>
+  </data>
+  <data name="navigation.Projects.SubItem.Report.Tooltip" xml:space="preserve">
+    <value>Overzicht van uren en kosten van dit project</value>
+  </data>
+  <data name="navigation.Settings.MainItem.Label" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="navigation.Settings.MainItem.Tooltip" xml:space="preserve">
+    <value>Gebruikersinstellingen</value>
+  </data>
+  <data name="navigation.Resources.MainItem.Label" xml:space="preserve">
+    <value>Stambestanden</value>
+  </data>
+  <data name="navigation.Resources.MainItem.Tooltip" xml:space="preserve">
+    <value>Basisbestanden voor de applicatie</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.Label" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.Tooltip" xml:space="preserve">
+    <value>Beheer van de beschikbare valuta</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Export.Label" xml:space="preserve">
+    <value>Exporteer valuta</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exporteer de valuta naar CSV of Excel</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Import.Label" xml:space="preserve">
+    <value>Importeer valuta</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Currency.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importeer valuta vanuit een CSV bestand</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Export.Label" xml:space="preserve">
+    <value>Exporteer landen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Export.Tooltip" xml:space="preserve">
+    <value>Exporteer de landen naar CSV of Excel</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Import.Label" xml:space="preserve">
+    <value>Importeer landen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.SubItem.Import.Tooltip" xml:space="preserve">
+    <value>Importeer landen vanuit een CSV bestand</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.Label" xml:space="preserve">
+    <value>Landen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Country.Tooltip" xml:space="preserve">
+    <value>Beheer van de beschikbare landen</value>
+  </data>
+  <data name="metadataCountryHeaderTitel" xml:space="preserve">
+    <value>Beheer van de landen tabel</value>
+  </data>
+  <data name="metadataCountryHeaderSubtitle" xml:space="preserve">
+    <value>Landen beheren</value>
+  </data>
+</root>

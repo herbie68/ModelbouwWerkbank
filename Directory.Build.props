@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Default setting for all projects -->
+    <BaseIntermediateOutputPath>$(SolutionDir)Builds\Obj\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(SolutionDir)Builds\</BaseOutputPath>
+  </PropertyGroup>
+</Project>
