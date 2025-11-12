@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Primary colors-->
+    <SolidColorBrush x:Key="PrimaryBlueColor" Color="#263FAA" />
+    <SolidColorBrush x:Key="PrimaryGrayColor" Color="#64677A" />
+    <!--#endregion Primary colors-->
+
+    <!--#region  Secondary colors-->
+    <SolidColorBrush x:Key="SecondaryBlueColor" Color="#004BFF" />
+    <SolidColorBrush x:Key="SecondaryGrayColor" Color="#9296A5" />
+    <!--#endregion Secondary colors-->
+
+    <!--#region Tertiary colors-->
+    <SolidColorBrush x:Key="TertiaryBlueColor" Color="#496FFF" />
+    <SolidColorBrush x:Key="TertiaryGrayColor" Color="#CECECE" />
+    <!--#endregion Tertiary colors-->
+
+    <!--#region Text colors-->
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryCheckedColor" Color="Black" />
+    <SolidColorBrush x:Key="PrimaryUnCheckedColor" Color="#9296A5" />
+    <!--#endregion Text colors-->
+
+    <!--#region Background colors-->
+    <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#FFEEEEEE" />
+    <!--#endregion Background colors-->
+    
+    <!--#region DataEntry pages-->
+    <SolidColorBrush x:Key="HeaderBackground" Color="#d7e3fc"/>
+    <SolidColorBrush x:Key="HeaderFontBrush" Color="DarkBlue" />
+    <SolidColorBrush x:Key="EntryFontBrush" Color="DarkBlue" />
+    <!--#endregion-->
+
+    <!--#region Box -->
+    <Color x:Key="Default.Box.Border">#FFABADB3</Color>
+    <Color x:Key="Default.Box.Background">Transparent</Color>
+    <!--#endregion-->
+
+    <!--#region TextBoxes-->
+    <SolidColorBrush x:Key="TextBox.Border.Focus" Color="#FF569DE5" />
+    <SolidColorBrush x:Key="TextBox.Border.MouseOver" Color="#FF7EB4EA" />
+    <SolidColorBrush x:Key="TextBox.Border.Static" Color="{DynamicResource Default.Box.Border}" />
+    <!--#endregion-->
+
+    <!--#region ComboBox -->
+    <SolidColorBrush x:Key="ComboBox.Border.Focus" Color="#FF569DE5" />
+    <SolidColorBrush x:Key="ComboBox.Border.MouseOver" Color="#FF7EB4EA" />
+    <SolidColorBrush x:Key="ComboBox.Border" Color="{DynamicResource Default.Box.Border}" />
+    <SolidColorBrush x:Key="ComboBox.Background" Color="{DynamicResource Default.Box.Background}" />
+    <!--#endregion-->
+
+    <!--#region SfDatagrid -->
+    <SolidColorBrush x:Key="DataGridHeaderBackground" Color="#003366" />
+    <SolidColorBrush x:Key="DataGridHeaderBrush" Color="#F0F0F0" />
+    <SolidColorBrush x:Key="DataGridHeaderForeground" Color="#F0F0F0" />
+    <!--#endregion-->
+</ResourceDictionary>

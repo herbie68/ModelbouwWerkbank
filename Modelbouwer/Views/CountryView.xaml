@@ -1,34 +1,174 @@
-﻿<Page x:Class="Modelbouwer.Views.CountryView"
+﻿<UserControl x:Class="Modelbouwer.Views.CountryView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Modelbouwer.Views"
       xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+      xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels" 
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      d:DataContext="{d:DesignInstance Type=viewmodels:CountryPageViewModel}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CountryView">
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewmodels:CountryPageViewModel />
+    </UserControl.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="95" />   <!-- Header -->
-            <RowDefinition Height="96" />   <!-- Detail fields -->
-            <RowDefinition Height="40" />   <!-- Toolbar -->
-            <RowDefinition Height="*" />    <!-- DataGrid -->
-            <RowDefinition Height="20" />   <!-- Footer -->
+            <RowDefinition Height="85" />
+            <RowDefinition Height="96" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <!--#region Page header -->
         <StackPanel
-            Grid.Row="0"
-            Margin="0,0,0,0"
-            Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" >
-            <TextBlock Style="{DynamicResource DefaultTitle}" Text="{x:Static language:Language.metadataCountryHeaderTitel}" />
+            Grid.Row="0" 
+            VerticalAlignment="Center"
+            Background="{DynamicResource HeaderBackground}" >
+            <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataCountryHeaderTitel}" />
             <Canvas>
-                <Path Style="{DynamicResource DefaultTitleLine}" />
+                <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
-            <TextBlock Style="{DynamicResource DefaultSubTitle}" Text="{x:Static language:Language.metadataCountryHeaderSubtitle}" />
+            <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataCountryHeaderSubtitle}" />
         </StackPanel>
         <!--#endregion-->
+
+        <!--#region Detail fields -->
+        <Grid 
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="32" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Country code -->
+            <Label 
+                Grid.Row="0"
+                Grid.Column="0"
+                Content="{x:Static language:Language.metadataCountryEntryFieldCode}"
+                Style="{DynamicResource EntryLabel}"/>
+
+            <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{DynamicResource EntrySemicolon}"/>
+
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="2"
+                Width="200"
+                Style="{DynamicResource DefaultTextBox}" 
+                Tag="{x:Static language:Language.metadataCountryEntryFieldCodeTag}"
+                Text="{Binding SelectedCountry.CountryCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="{x:Static language:Language.metadataCountryEntryFieldCodeTooltip}"/>
+
+            <!-- Country name -->
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                Content="{x:Static language:Language.metadataCountryEntryFieldName}"
+                Style="{DynamicResource EntryLabel}"/>
+
+            <Label 
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{DynamicResource EntrySemicolon}"/>
+
+            <TextBox 
+                Grid.Row="1"
+                Grid.Column="2"
+                Width="500"
+                Style="{DynamicResource DefaultTextBox}" 
+                Tag="{x:Static language:Language.metadataCountryEntryFieldNameTag}"
+                Text="{Binding SelectedCountry.CountryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="{x:Static language:Language.metadataCountryEntryFieldNameTooltip}"/>
+
+            <!-- Default currency -->
+            <Label 
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="{x:Static language:Language.metadataCountryEntryFieldCurrency}"
+                Style="{DynamicResource EntryLabel}"/>
+
+            <Label 
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{DynamicResource EntrySemicolon}"/>
+
+            <syncfusion:ComboBoxAdv
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="50"
+                HorizontalAlignment="Left" HorizontalContentAlignment="Center"
+                Tag="{x:Static language:Language.metadataCountryEntryFieldCurrencyTag}"
+                SelectedValuePath="CurrencySymbol"
+                SelectedValue="{Binding SelectedCountry.CountryCurrencySymbol, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding Currencies}"
+                ToolTip="{x:Static language:Language.metadataCountryEntryFieldCurrencyTooltip}">
+
+                    <!--#region Column definition of the dropdown list-->
+                    <syncfusion:ComboBoxAdv.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="35" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding CurrencySymbol}" />
+                                <TextBlock Grid.Column="1" Text="{Binding CurrencyCode}" />
+                                <TextBlock Grid.Column="2" Text="{Binding CurrencyName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:ComboBoxAdv.ItemTemplate>
+                    <!--#endregion-->
+
+                <syncfusion:ComboBoxAdv.SelectionBoxTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CurrencySymbol}" HorizontalAlignment="Center" />
+                    </DataTemplate>
+                </syncfusion:ComboBoxAdv.SelectionBoxTemplate>
+
+            </syncfusion:ComboBoxAdv>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Toolbar -->
+        <!--#endregion-->
+
+        <!--#region Datagrid-->
+        <syncfusion:SfDataGrid Style="{DynamicResource SfDataGridStyle1}" HeaderStyle="{DynamicResource SfDataGridHeaderStyle}" 
+            Grid.Row="3" AllowDraggingColumns="True" AllowFiltering="True" AllowGrouping="True" AllowSorting="True" AllowTriStateSorting="True"
+            HorizontalAlignment="Stretch" AutoGenerateColumns="False"
+            VerticalAlignment="Top" ColumnSizer="Star"
+            ItemsSource="{Binding Countries}"
+            SelectedItem="{Binding SelectedCountry, Mode=TwoWay}">
+
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn Width="0" HeaderText="ID" MappingName="CountryId" IsHidden="True"/>
+                <syncfusion:GridTextColumn Width="0" HeaderText="ID" MappingName="CountryCurrencyId" IsHidden="True"/>
+                <syncfusion:GridTextColumn Width="120" HeaderText="{x:Static language:Language.metadataCountryDatagridHeaderCountryCode_Label}" MappingName="CountryCode" />
+                <syncfusion:GridTextColumn HeaderText="{x:Static language:Language.metadataCountryDatagridHeaderCountryName_Label}" MappingName="CountryName" />
+                <syncfusion:GridTextColumn Width="120" HeaderText="{x:Static language:Language.metadataCountryDatagridHeaderCountryCurrency_Label}" MappingName="CountryCurrencySymbol" />
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <!--#endregion-->
+
+        <!--#region Footer-->
+        <!--#endregion-->
     </Grid>
-</Page>
+</UserControl>

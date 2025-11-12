@@ -1481,19 +1481,19 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataCountryToolbarButtonSaveTooltip" xml:space="preserve">
     <value>Wijzigingen opslaan</value>
   </data>
-  <data name="metadataCountryDatagridHeaderId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryId.Label" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCode" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCode.Label" xml:space="preserve">
     <value>Land code</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrencyId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrencyId.Label" xml:space="preserve">
     <value>Valute ID</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrency" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrency.Label" xml:space="preserve">
     <value>Valuta</value>
   </data>
-  <data name="metadataCountryDatagridHeaderName" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryName.Label" xml:space="preserve">
     <value>Land</value>
   </data>
   <data name="ProjectCostsDategridHeaderAmountOrdered" xml:space="preserve">
@@ -3037,5 +3037,11 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="metadataCountryHeaderSubtitle" xml:space="preserve">
     <value>Landen beheren</value>
+  </data>
+  <data name="datagridGroupBox.Text" xml:space="preserve">
+    <value>Sleep kolomkoppen hier naartoe om op te groeperen</value>
+  </data>
+  <data name="datagridGroupBox.Tooltip" xml:space="preserve">
+    <value>Sleep de kolomkop hier naartoe om op te groeperen, meerdere kolommen zijn mogelijk</value>
   </data>
 </root>

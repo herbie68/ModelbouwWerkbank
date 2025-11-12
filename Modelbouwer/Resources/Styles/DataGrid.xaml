@@ -1,0 +1,48 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="clr-namespace:System.Data;assembly=System.Data"
+    xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+    xmlns:local="clr-namespace:Syncfusion.Windows.Tools.Controls;assembly=Syncfusion.Shared.WPF"
+    xmlns:skin="clr-namespace:Syncfusion.Windows.Shared;assembly=Syncfusion.Shared.WPF"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
+
+    <Style x:Key="SfDataGridGroupDropAreaStyle1" TargetType="{x:Type syncfusion:GroupDropArea}">
+        <Setter Property="Background" Value="#FFF5F2CC" />
+        <Setter Property="Foreground" Value="DarkSlateBlue" />
+        <Setter Property="GroupDropAreaText" Value="{x:Static language:Language.datagridGroupBox_Text}" />
+        <Setter Property="Height" Value="65" />
+        <Setter Property="ToolTip" Value="{x:Static language:Language.datagridGroupBox_Tooltip}" />
+    </Style>
+
+    <Style x:Key="EditableCellStyle" TargetType="syncfusion:GridCell">
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value=".25" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style x:Key="NonEditableCellStyle" TargetType="syncfusion:GridCell">
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value=".25" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="FontWeight" Value="Light" />
+    </Style>
+
+    <!--  Style for GroupSummaryRowControl (RowTotals)  -->
+    <Style x:Key="GroupSummaryTotalRowStyle" TargetType="syncfusion:GroupSummaryRowControl">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="Foreground" Value="DarkSlateBlue" />
+    </Style>
+
+    <!--  Style for TableSummaryRowControl (RowHeaders)  -->
+    <Style x:Key="TableSummaryHeaderRowStyle" TargetType="syncfusion:TableSummaryRowControl">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="DarkBlue" />
+    </Style>
+
+
+</ResourceDictionary>

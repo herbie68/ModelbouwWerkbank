@@ -70,6 +70,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sleep kolomkoppen hier naartoe om op te groeperen.
+        /// </summary>
+        public static string datagridGroupBox_Text {
+            get {
+                return ResourceManager.GetString("datagridGroupBox.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sleep de kolomkop hier naartoe om op te groeperen, meerdere kolommen zijn mogelijk.
+        /// </summary>
+        public static string datagridGroupBox_Tooltip {
+            get {
+                return ResourceManager.GetString("datagridGroupBox.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merken.
         /// </summary>
         public static string ExportBrandFileName {
@@ -3591,45 +3609,45 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Land code.
         /// </summary>
-        public static string metadataCountryDatagridHeaderCode {
+        public static string metadataCountryDatagridHeaderCountryCode_Label {
             get {
-                return ResourceManager.GetString("metadataCountryDatagridHeaderCode", resourceCulture);
+                return ResourceManager.GetString("metadataCountryDatagridHeaderCountryCode.Label", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Valuta.
         /// </summary>
-        public static string metadataCountryDatagridHeaderCurrency {
+        public static string metadataCountryDatagridHeaderCountryCurrency_Label {
             get {
-                return ResourceManager.GetString("metadataCountryDatagridHeaderCurrency", resourceCulture);
+                return ResourceManager.GetString("metadataCountryDatagridHeaderCountryCurrency.Label", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Valute ID.
         /// </summary>
-        public static string metadataCountryDatagridHeaderCurrencyId {
+        public static string metadataCountryDatagridHeaderCountryCurrencyId_Label {
             get {
-                return ResourceManager.GetString("metadataCountryDatagridHeaderCurrencyId", resourceCulture);
+                return ResourceManager.GetString("metadataCountryDatagridHeaderCountryCurrencyId.Label", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
-        public static string metadataCountryDatagridHeaderId {
+        public static string metadataCountryDatagridHeaderCountryId_Label {
             get {
-                return ResourceManager.GetString("metadataCountryDatagridHeaderId", resourceCulture);
+                return ResourceManager.GetString("metadataCountryDatagridHeaderCountryId.Label", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Land.
         /// </summary>
-        public static string metadataCountryDatagridHeaderName {
+        public static string metadataCountryDatagridHeaderCountryName_Label {
             get {
-                return ResourceManager.GetString("metadataCountryDatagridHeaderName", resourceCulture);
+                return ResourceManager.GetString("metadataCountryDatagridHeaderCountryName.Label", resourceCulture);
             }
         }
         

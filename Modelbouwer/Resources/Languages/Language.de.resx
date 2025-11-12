@@ -1501,19 +1501,19 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataCountryToolbarButtonSaveTooltip" xml:space="preserve">
     <value>Änderungen speichern</value>
   </data>
-  <data name="metadataCountryDatagridHeaderId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryId.Label" xml:space="preserve">
     <value>Leerlauf</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCode" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCode.Label" xml:space="preserve">
     <value>Landcode</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrencyId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrencyId.Label" xml:space="preserve">
     <value>Valute ID</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrency" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrency.Label" xml:space="preserve">
     <value>Währung</value>
   </data>
-  <data name="metadataCountryDatagridHeaderName" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryName.Label" xml:space="preserve">
     <value>Land</value>
   </data>
   <data name="ProjectCostsDategridHeaderAmountOrdered" xml:space="preserve">
@@ -3057,5 +3057,11 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataCountryHeaderSubtitle" xml:space="preserve">
     <value>Länder verwalten</value>
+  </data>
+  <data name="datagridGroupBox.Text" xml:space="preserve">
+    <value>Ziehen Sie die Spaltenüberschriften hierher, um sie zu gruppieren</value>
+  </data>
+  <data name="datagridGroupBox.Tooltip" xml:space="preserve">
+    <value>Ziehen Sie die Spaltenüberschrift hierher, um zu gruppieren. Mehrere Spalten sind möglich</value>
   </data>
 </root>

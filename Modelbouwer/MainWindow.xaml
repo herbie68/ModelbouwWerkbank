@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Modelbouwer"
         xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
+        xmlns:views="clr-namespace:Modelbouwer.Views"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="Moderlbouwers Werkbank" Height="450" Width="800">
@@ -12,13 +13,20 @@
     <Window.DataContext>
         <viewmodels:NavigationViewModel />
     </Window.DataContext>
+    
     <Window.Resources>
         <Style x:Key="ItemStyle" TargetType="syncfusion:NavigationItem">
             <Setter Property="Icon" Value="{Binding NavigationIcon}" />
             <Setter Property="DisplayMemberPath" Value="NavigationItem" />
             <Setter Property="ToolTip" Value="{Binding NavigationTooltip}" /> 
             <Setter Property="ItemsSource" Value="{Binding SubItems}" />
+            <Setter Property="Command" Value="{Binding Command}" />
+            <Setter Property="CommandParameter" Value="{Binding}" />
         </Style>
+        
+        <DataTemplate DataType="{x:Type views:CountryView}">
+            <views:CountryView />
+        </DataTemplate>
     </Window.Resources>
     <syncfusion:SfNavigationDrawer
         x:Name="navigationDrawer"
@@ -27,12 +35,7 @@
         ItemContainerStyle="{StaticResource ItemStyle}"
         ItemsSource="{Binding NavigationItems}">
         <syncfusion:SfNavigationDrawer.ContentView>
-            <Label
-                Width="Auto"
-                Height="Auto"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content="Content View" />
+            <ContentControl Content="{Binding CurrentView}" />
         </syncfusion:SfNavigationDrawer.ContentView>
     </syncfusion:SfNavigationDrawer>
 </Window>

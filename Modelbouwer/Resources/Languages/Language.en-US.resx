@@ -1501,19 +1501,19 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataCountryToolbarButtonSaveTooltip" xml:space="preserve">
     <value>Save changes</value>
   </data>
-  <data name="metadataCountryDatagridHeaderId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryId.Label" xml:space="preserve">
     <value>Idle</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCode" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCode.Label" xml:space="preserve">
     <value>Land code</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrencyId" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrencyId.Label" xml:space="preserve">
     <value>Valute ID</value>
   </data>
-  <data name="metadataCountryDatagridHeaderCurrency" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryCurrency.Label" xml:space="preserve">
     <value>Currency</value>
   </data>
-  <data name="metadataCountryDatagridHeaderName" xml:space="preserve">
+  <data name="metadataCountryDatagridHeaderCountryName.Label" xml:space="preserve">
     <value>Land</value>
   </data>
   <data name="ProjectCostsDategridHeaderAmountOrdered" xml:space="preserve">
@@ -3057,5 +3057,11 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataCountryHeaderSubtitle" xml:space="preserve">
     <value>Manage countries</value>
+  </data>
+  <data name="datagridGroupBox.Text" xml:space="preserve">
+    <value>Drag column headings here to group by</value>
+  </data>
+  <data name="datagridGroupBox.Tooltip" xml:space="preserve">
+    <value>Drag the column header here to group by, multiple columns are possible</value>
   </data>
 </root>
