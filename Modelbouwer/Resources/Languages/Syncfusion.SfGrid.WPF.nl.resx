@@ -289,7 +289,7 @@
     <value>Rij met fout</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Zoeken</value>
+    <value>Zoek...</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>(Alles selecteren)</value>

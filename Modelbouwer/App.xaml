@@ -7,20 +7,23 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="Resources/Icons/ApplicationIcons.xaml" />-->
+                <ResourceDictionary Source="Resources/Icons/ApplicationIcons.xaml" />
                 <!--<ResourceDictionary Source="Resources/Icons/ButtonIcons.xaml" />-->
                 <!--<ResourceDictionary Source="Resources/Icons/DefaultIcons.xaml" />-->
                 <ResourceDictionary Source="Resources/Icons/NavigationIcons.xaml" />
                 <!--<ResourceDictionary Source="Resources/Icons/RibbonIcons.xaml" /> -->
-                <!--<ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" /> -->
+                <ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" />
 
                 <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/GeneralStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Button.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
-
+                <ResourceDictionary Source="Resources/Styles/ToolbarStyles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Toolbar.xaml" />
+                
                 <ResourceDictionary Source="Resources/Theme/DefaultTheme.xaml" />
 
             </ResourceDictionary.MergedDictionaries>

@@ -1488,7 +1488,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Land code</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryCurrencyId.Label" xml:space="preserve">
-    <value>Valute ID</value>
+    <value>Valuta ID</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryCurrency.Label" xml:space="preserve">
     <value>Valuta</value>
@@ -3043,5 +3043,50 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="datagridGroupBox.Tooltip" xml:space="preserve">
     <value>Sleep de kolomkop hier naartoe om op te groeperen, meerdere kolommen zijn mogelijk</value>
+  </data>
+  <data name="SearchGridTag" xml:space="preserve">
+    <value>Zoek...</value>
+  </data>
+  <data name="SearchGridTooltip" xml:space="preserve">
+    <value>Filter de lijst op...</value>
+  </data>
+  <data name="toolbarButtonActionImport" xml:space="preserve">
+    <value>Externe gegevens importeren</value>
+  </data>
+  <data name="toolbarButtonActionExport" xml:space="preserve">
+    <value>Lijst exporteren</value>
+  </data>
+  <data name="AppMessageExportComplete" xml:space="preserve">
+    <value>Export voltooid!</value>
+  </data>
+  <data name="ImportMessagboxCompletedRead" xml:space="preserve">
+    <value>Regels ingelezen</value>
+  </data>
+  <data name="ImportMessagboxCompletedImported" xml:space="preserve">
+    <value>Geïmporteerd</value>
+  </data>
+  <data name="ImportMessagboxCompletedSkipped" xml:space="preserve">
+    <value>Overgeslagen</value>
+  </data>
+  <data name="ImportMessagboxCompletedModified" xml:space="preserve">
+    <value>Aangepast</value>
+  </data>
+  <data name="ImportMessagboxCompletedTitle" xml:space="preserve">
+    <value>Resultaat import</value>
+  </data>
+  <data name="ImportCSVFilter" xml:space="preserve">
+    <value>CSV Bestanden (*.csv)|*.csv</value>
+  </data>
+  <data name="ExportCSVFilter" xml:space="preserve">
+    <value>CSV Bestanden (*.csv)|*.csv</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCountry" xml:space="preserve">
+    <value>Aantal getoonde landen</value>
+  </data>
+  <data name="toolbarVisibleRowLabelNumberSeperator" xml:space="preserve">
+    <value>van</value>
+  </data>
+  <data name="toolbarButtonActionCanNotDelete" xml:space="preserve">
+    <value>Geselecteerde regel kan niet worden verwijderd, deze wordt gebruikt</value>
   </data>
 </root>

@@ -350,7 +350,7 @@
     <comment>Error Indication by INotifyDataErrorInfo</comment>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>Zoek...</value>
     <comment>Search water mark</comment>
   </data>
   <data name="SelectAll" xml:space="preserve">

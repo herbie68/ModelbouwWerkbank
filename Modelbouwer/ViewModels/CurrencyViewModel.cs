@@ -1,6 +1,10 @@
-﻿namespace Modelbouwer.ViewModels;
+﻿using Modelbouwer.Services;
+
+namespace Modelbouwer.ViewModels;
 public partial class CurrencyViewModel : ObservableObject
 {
+	private readonly CurrencyService _currencyService;
+
 	[ObservableProperty]
 	public int currencyId;
 
@@ -19,6 +23,11 @@ public partial class CurrencyViewModel : ObservableObject
 	[ObservableProperty]
 	private CurrencyModel? _selectedCurrency;
 
+	[ObservableProperty]
+	public CurrencyModel? selectedItem;
+
+	private ObservableCollection<CurrencyModel> _currency = [];
+
 	public ObservableCollection<CurrencyModel> Currency
 	{
 		get => _currency;
@@ -31,21 +40,20 @@ public partial class CurrencyViewModel : ObservableObject
 			}
 		}
 	}
-	private ObservableCollection<CurrencyModel>? _currency;
 
-	[ObservableProperty]
-	public CurrencyModel? selectedItem;
+	public CurrencyViewModel( CurrencyService = currencyService)
+	{
+		_CurrencyService = CurrencyService;
+		_Currency = new ObservableCollection<CurrencyModel>();
+	}
 
-	//public CurrencyViewModel()
-	//{
-	//	DBCommands dbCommands = new();
-	//	Currency = [ .. DBCommands.GetCurrencyList() ];
-	//}
-
-	//public void Refresh()
-	//{
-	//	DBCommands dbCommands = new();
-	//	Currency = [ .. DBCommands.GetCurrencyList() ];
-	//	OnPropertyChanged( nameof( Currency ) );
-	//}
+	public void Refresh()
+	{
+		_currency.Clear();
+		foreach ( var currency in DBCommands.GetCurrencyList() )
+		{
+			_currency.Add( currency );
+		}
+		OnPropertyChanged( nameof( Currency ) );
+	}
 }

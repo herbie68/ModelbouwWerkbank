@@ -1484,7 +1484,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Entfernen Sie diese und alle unterstreichenden Standorte</value>
   </data>
   <data name="metadataCountryEntryFieldCode" xml:space="preserve">
-    <value>Landcode</value>
+    <value>Ländercode</value>
   </data>
   <data name="metadataCountryEntryFieldName" xml:space="preserve">
     <value>Land</value>
@@ -1502,13 +1502,13 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Änderungen speichern</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryId.Label" xml:space="preserve">
-    <value>Leerlauf</value>
+    <value>ID</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryCode.Label" xml:space="preserve">
-    <value>Landcode</value>
+    <value>Ländercode</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryCurrencyId.Label" xml:space="preserve">
-    <value>Valute ID</value>
+    <value>Währung ID</value>
   </data>
   <data name="metadataCountryDatagridHeaderCountryCurrency.Label" xml:space="preserve">
     <value>Währung</value>
@@ -1733,7 +1733,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Geben Sie die Kategorie an, in der das Produkt fällt</value>
   </data>
   <data name="metadataCountryEntryFieldCodeTag" xml:space="preserve">
-    <value>Landcode</value>
+    <value>Ländercode</value>
   </data>
   <data name="metadataCountryEntryFieldCodeTooltip" xml:space="preserve">
     <value>Ein Code, für den das Land leicht zu erkennen ist</value>
@@ -3063,5 +3063,50 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="datagridGroupBox.Tooltip" xml:space="preserve">
     <value>Ziehen Sie die Spaltenüberschrift hierher, um zu gruppieren. Mehrere Spalten sind möglich</value>
+  </data>
+  <data name="SearchGridTag" xml:space="preserve">
+    <value>Suche...</value>
+  </data>
+  <data name="SearchGridTooltip" xml:space="preserve">
+    <value>Filtern Sie die Liste nach...</value>
+  </data>
+  <data name="toolbarButtonActionImport" xml:space="preserve">
+    <value>Externe Daten importieren</value>
+  </data>
+  <data name="toolbarButtonActionExport" xml:space="preserve">
+    <value>Liste exportieren</value>
+  </data>
+  <data name="AppMessageExportComplete" xml:space="preserve">
+    <value>Export abgeschlossen!</value>
+  </data>
+  <data name="ImportMessagboxCompletedRead" xml:space="preserve">
+    <value>Regeln eingelesen</value>
+  </data>
+  <data name="ImportMessagboxCompletedImported" xml:space="preserve">
+    <value>Importiert</value>
+  </data>
+  <data name="ImportMessagboxCompletedSkipped" xml:space="preserve">
+    <value>Übersprungen</value>
+  </data>
+  <data name="ImportMessagboxCompletedModified" xml:space="preserve">
+    <value>Geändert</value>
+  </data>
+  <data name="ImportMessagboxCompletedTitle" xml:space="preserve">
+    <value>Ergebnisimport</value>
+  </data>
+  <data name="ImportCSVFilter" xml:space="preserve">
+    <value>CSV-Dateien (*.csv)|*.csv</value>
+  </data>
+  <data name="ExportCSVFilter" xml:space="preserve">
+    <value>CSV-Dateien (*.csv)|*.csv</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCountry" xml:space="preserve">
+    <value>Anzahl der angezeigten Länder</value>
+  </data>
+  <data name="toolbarVisibleRowLabelNumberSeperator" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="toolbarButtonActionCanNotDelete" xml:space="preserve">
+    <value>Die ausgewählte Zeile kann nicht gelöscht werden, sie wird verwendet</value>
   </data>
 </root>

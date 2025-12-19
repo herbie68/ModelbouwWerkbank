@@ -1,6 +1,16 @@
-﻿namespace Modelbouwer.ViewModels;
+﻿using System.ComponentModel;
+
+using Modelbouwer.Services;
+
+using Mysqlx.Session;
+
+using MySqlX.XDevAPI.Common;
+
+namespace Modelbouwer.ViewModels;
 public partial class CountryViewModel : ObservableObject
 {
+	private readonly CountryService _countryService;
+
 	[ObservableProperty]
 	public int countryCurrencyId;
 
@@ -16,7 +26,7 @@ public partial class CountryViewModel : ObservableObject
 	[ObservableProperty]
 	public string? countryName;
 
-	private ObservableCollection<CountryModel>? _country;
+	private ObservableCollection<CountryModel> _country = [ ];
 
 	public ObservableCollection<CountryModel> Country
 	{
@@ -31,8 +41,9 @@ public partial class CountryViewModel : ObservableObject
 		}
 	}
 
-	public CountryViewModel()
+	public CountryViewModel(CountryService countryService)
 	{
-		Country = new ObservableCollection<CountryModel>( DBCommands.GetCountryList() );
+		_countryService = countryService;
+		_country = new ObservableCollection<CountryModel>();
 	}
 }

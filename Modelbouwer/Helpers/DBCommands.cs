@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-
-namespace Modelbouwer.Helpers;
+﻿namespace Modelbouwer.Helpers;
 
 public class DBCommands
 {
@@ -105,45 +100,6 @@ public class DBCommands
 	#endregion
 
 	#region Fill lists
-	#region CountryList
-	public static ObservableCollection<CountryModel> GetCountryList( ObservableCollection<CountryModel>? countryList = null )
-	{
-		countryList ??= [ ];
-		DataTable? _dt = GetData( DBNames.CountryView, DBNames.CountryFieldNameName );
-
-		for ( int i = 0; i < _dt.Rows.Count; i++ )
-		{
-			countryList.Add( new CountryModel
-			{
-				CountryId = DatabaseValueConverter.GetInt( _dt.Rows [ i ] [ 0 ] ),
-				CountryCode = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 1 ] ),
-				CountryName = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 2 ] ),
-				CountryCurrencyId = DatabaseValueConverter.GetInt( _dt.Rows [ i ] [ 3 ] ),
-				CountryCurrencySymbol = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 4 ] )
-			} );
-		}
-		return countryList;
-	}
-	public static ObservableCollection<CountryViewModel> GetCountryViewList( ObservableCollection<CountryViewModel>? countryList = null )
-	{
-		countryList ??= [ ];
-		DataTable? _dt = GetData( DBNames.CountryView, DBNames.CountryFieldNameName );
-
-		for ( int i = 0; i < _dt.Rows.Count; i++ )
-		{
-			countryList.Add( new CountryViewModel
-			{
-				CountryId = DatabaseValueConverter.GetInt( _dt.Rows [ i ] [ 0 ] ),
-				CountryCode = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 1 ] ),
-				CountryName = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 2 ] ),
-				CountryCurrencyId = DatabaseValueConverter.GetInt( _dt.Rows [ i ] [ 3 ] ),
-				CountryCurrencySymbol = DatabaseValueConverter.GetString( _dt.Rows [ i ] [ 4 ] )
-			} );
-		}
-		return countryList;
-	}
-	#endregion CountryList
-
 	#region CurrencyList
 	public static ObservableCollection<CurrencyModel> GetCurrencyList( ObservableCollection<CurrencyModel>? _list = null )
 	{
@@ -164,6 +120,11 @@ public class DBCommands
 		return _list;
 	}
 	#endregion CurrencyList
+
+	#endregion
+
+	#region Country table
+	
 
 	#endregion
 }

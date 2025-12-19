@@ -7,4 +7,5 @@ public class CurrencyModel
 	public string? CurrencyCode { get; set; }
 	public string? CurrencyName { get; set; }
 	public string? CurrencySymbol { get; set; }
+	public override string? ToString() => CurrencySymbol;
 }

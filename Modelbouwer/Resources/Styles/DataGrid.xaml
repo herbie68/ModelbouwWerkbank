@@ -44,5 +44,65 @@
         <Setter Property="Foreground" Value="DarkBlue" />
     </Style>
 
+    <!--#region Order History styles -->
+    <!-- Style for Even rows -->
+    <Style x:Key="OrderLineRowStyle" TargetType="syncfusion:VirtualizingCellsControl">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+    </Style>
 
+    <!--~Style for Odd rows -->
+    <Style x:Key="OrderLineAltRowStyle" TargetType="syncfusion:VirtualizingCellsControl">
+        <Setter Property="Background" Value="#FFF0F0F0"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+    </Style>
+
+    <!-- Style for Indent column expander (+) -->
+    <Style TargetType="syncfusion:GridDetailsViewExpanderCell">
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Style for space between expander and first column -->
+    <Style TargetType="syncfusion:GridDetailsViewIndentCell">
+        <Setter Property="Background" Value="LightYellow"/>
+    </Style>
+
+    <!-- Style for header indentcell (space above expander column -->
+    <Style TargetType="syncfusion:GridHeaderIndentCell">
+        <Setter Property="Background" Value="LightYellow"/>
+    </Style>
+
+    <!-- Style for Syncfusion SfDataGrid Summary header (Order History) -->
+    <Style x:Key="OrderSummaryCellStyle" TargetType="syncfusion:GridCell">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="OrderSummaryRowStyle" TargetType="syncfusion:VirtualizingCellsControl">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <!-- Style for Syncfusion SfDataGrid detailed rows (Order History) -->
+    <Style x:Key="OrderDetailHeaderStyle" TargetType="syncfusion:GridHeaderCellControl">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <!--#endregion-->
 </ResourceDictionary>

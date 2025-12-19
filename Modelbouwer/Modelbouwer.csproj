@@ -13,6 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
+    <AssemblyVersion>25.12.100.0</AssemblyVersion>
+    <FileVersion>25.12.100.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,11 +28,11 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="MySql.Data" Version="9.5.0" />
-    <PackageReference Include="Syncfusion.Licensing" Version="31.2.5" />
-    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="31.2.5" />
-    <PackageReference Include="Syncfusion.SfNavigationDrawer.WPF" Version="31.2.5" />
-    <PackageReference Include="Syncfusion.Shared.WPF" Version="31.2.5" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="31.2.5" />
+    <PackageReference Include="Syncfusion.Licensing" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.SfNavigationDrawer.WPF" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="32.1.19" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,7 +45,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Languages\Language.resx">
-      <Generator>publicResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Modelbouwer.Resources.Languages</CustomToolNamespace>
     </EmbeddedResource>

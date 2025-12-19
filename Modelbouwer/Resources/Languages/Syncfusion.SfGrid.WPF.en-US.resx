@@ -292,7 +292,7 @@
     <value>Row containing error</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>Search...</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>(Select All)</value>

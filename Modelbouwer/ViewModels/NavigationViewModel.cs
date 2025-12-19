@@ -24,13 +24,10 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
-	public event PropertyChangedEventHandler PropertyChanged;
+	public event PropertyChangedEventHandler? PropertyChanged;
 
 	// Raises PropertyChanged event
-	protected void OnPropertyChanged( [CallerMemberName] string propertyName = null )
-	{
-		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
-	}
+	protected void OnPropertyChanged( [CallerMemberName] string? propertyName = null ) => PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 
 	public NavigationViewModel()
 	{
@@ -209,7 +206,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 				Source = Application.Current.FindResource( "Countries" ) as ImageSource
 			},
 			NavigationTooltip = Language.navigation_Resources_SubItem_Country_Tooltip,
-			Command = new RelayCommand( _ => CurrentView = new CountryView() ),
+			Command = new Helpers.RelayCommand( _ => CurrentView = new CountryView() ),
 			SubItems = MetadataCountriesSubItems
 		} );
 
@@ -225,7 +222,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 				Source = Application.Current.FindResource( "Import" ) as ImageSource
 			},
 			NavigationTooltip = Language.navigation_Resources_SubItem_Country_SubItem_Import_Tooltip,
-			Command = new RelayCommand( _ => CurrentView = new CountryView() )
+			Command = new Helpers.RelayCommand( _ => CurrentView = new CountryView() )
 		}
 		);
 		MetadataCountriesSubItems.Add( new()

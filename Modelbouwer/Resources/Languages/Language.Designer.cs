@@ -70,6 +70,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export voltooid!.
+        /// </summary>
+        public static string AppMessageExportComplete {
+            get {
+                return ResourceManager.GetString("AppMessageExportComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sleep kolomkoppen hier naartoe om op te groeperen.
         /// </summary>
         public static string datagridGroupBox_Text {
@@ -192,6 +201,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportCountriesTitle {
             get {
                 return ResourceManager.GetString("ExportCountriesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV Bestanden (*.csv)|*.csv.
+        /// </summary>
+        public static string ExportCSVFilter {
+            get {
+                return ResourceManager.GetString("ExportCSVFilter", resourceCulture);
             }
         }
         
@@ -1429,6 +1447,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CSV Bestanden (*.csv)|*.csv.
+        /// </summary>
+        public static string ImportCSVFilter {
+            get {
+                return ResourceManager.GetString("ImportCSVFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selecteer het te importeren CSV bestand met valuta.
         /// </summary>
         public static string ImportCurrenciesImportButtonTooltip {
@@ -1515,6 +1542,51 @@ namespace Modelbouwer.Resources.Languages {
         public static string ImportImportButtonTooltip {
             get {
                 return ResourceManager.GetString("ImportImportButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geïmporteerd.
+        /// </summary>
+        public static string ImportMessagboxCompletedImported {
+            get {
+                return ResourceManager.GetString("ImportMessagboxCompletedImported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aangepast.
+        /// </summary>
+        public static string ImportMessagboxCompletedModified {
+            get {
+                return ResourceManager.GetString("ImportMessagboxCompletedModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regels ingelezen.
+        /// </summary>
+        public static string ImportMessagboxCompletedRead {
+            get {
+                return ResourceManager.GetString("ImportMessagboxCompletedRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overgeslagen.
+        /// </summary>
+        public static string ImportMessagboxCompletedSkipped {
+            get {
+                return ResourceManager.GetString("ImportMessagboxCompletedSkipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resultaat import.
+        /// </summary>
+        public static string ImportMessagboxCompletedTitle {
+            get {
+                return ResourceManager.GetString("ImportMessagboxCompletedTitle", resourceCulture);
             }
         }
         
@@ -3625,7 +3697,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valute ID.
+        ///   Looks up a localized string similar to Valuta ID.
         /// </summary>
         public static string metadataCountryDatagridHeaderCountryCurrencyId_Label {
             get {
@@ -8143,6 +8215,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zoek....
+        /// </summary>
+        public static string SearchGridTag {
+            get {
+                return ResourceManager.GetString("SearchGridTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter de lijst op....
+        /// </summary>
+        public static string SearchGridTooltip {
+            get {
+                return ResourceManager.GetString("SearchGridTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ingelezen.
         /// </summary>
         public static string StatusRead {
@@ -8747,11 +8837,38 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geselecteerde regel kan niet worden verwijderd, deze wordt gebruikt.
+        /// </summary>
+        public static string toolbarButtonActionCanNotDelete {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionCanNotDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geselecteerde regel verwijderen.
         /// </summary>
         public static string toolbarButtonActionDelete {
             get {
                 return ResourceManager.GetString("toolbarButtonActionDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lijst exporteren.
+        /// </summary>
+        public static string toolbarButtonActionExport {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Externe gegevens importeren.
+        /// </summary>
+        public static string toolbarButtonActionImport {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionImport", resourceCulture);
             }
         }
         
@@ -8896,6 +9013,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonTextUndo {
             get {
                 return ResourceManager.GetString("toolbarButtonTextUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde landen.
+        /// </summary>
+        public static string toolbarVisibleRowLabelCountry {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to van.
+        /// </summary>
+        public static string toolbarVisibleRowLabelNumberSeperator {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelNumberSeperator", resourceCulture);
             }
         }
     }

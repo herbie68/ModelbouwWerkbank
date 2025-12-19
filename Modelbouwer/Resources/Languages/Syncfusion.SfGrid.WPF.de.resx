@@ -292,7 +292,7 @@
     <value>Zeile enthält Fehler</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Suchen</value>
+    <value>Suchen...</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>(Wählen Sie alle aus)</value>
