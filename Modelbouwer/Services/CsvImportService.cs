@@ -24,7 +24,8 @@ public static class CsvImportService
 		string filePath,
 		List<T> existingRecords,
 		Dictionary<string, string [ ]> columnMappings,
-		string uniqueProperty ) where T : class, new()
+		string uniqueProperty,
+		bool showMessageBox = false ) where T : class, new()
 	{
 		var result = new CsvImportResult();
 		if ( !File.Exists( filePath ) )
@@ -137,7 +138,9 @@ public static class CsvImportService
 			}
 		}
 
-		MessageBox.Show(
+		if ( showMessageBox )
+		{
+			MessageBox.Show(
 					$"{Lang.ImportMessagboxCompletedRead}: {result.TotalRows}\n" +
 					$"{Lang.ImportMessagboxCompletedImported}: {result.Imported}\n" +
 					$"{Lang.ImportMessagboxCompletedSkipped}: {result.Skipped}\n" +
@@ -146,7 +149,7 @@ public static class CsvImportService
 					MessageBoxButton.OK,
 					MessageBoxImage.Information
 				);
-
+		}
 		return result;
 	}
 }

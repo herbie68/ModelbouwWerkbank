@@ -10,13 +10,9 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:CountryPageViewModel}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
     mc:Ignorable="d">
-
-    <UserControl.DataContext>
-        <viewmodels:CountryPageViewModel />
-    </UserControl.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -122,8 +118,7 @@
                 HorizontalAlignment="Left"
                 HorizontalContentAlignment="Center"
                 ItemsSource="{Binding Currencies}"
-                SelectedValue="{Binding SelectedCountry.CountryCurrencyId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                SelectedValuePath="CurrencyId"
+                SelectedItem="{Binding SelectedCountry.DefaultCurrency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Tag="{x:Static language:Language.metadataCountryEntryFieldCurrencyTag}"
                 ToolTip="{x:Static language:Language.metadataCountryEntryFieldCurrencyTooltip}">
 
@@ -171,6 +166,19 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
+                <TextBlock 
+                    Text="{Binding ImportStatus}" 
+                    Foreground="Gray"
+                    FontStyle="Italic"
+                    Margin="5"
+                    Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                    TextWrapping="Wrap"/>
+                <TextBlock 
+                    Text="{Binding ImportStatus}" 
+                    Foreground="Gray"
+                    FontStyle="Italic"
+                    Margin="5"
+                    TextWrapping="Wrap"/>
                 <!--#region Toolbar-->
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                     <Button
@@ -190,7 +198,7 @@
                     
                     <Button 
                         Style="{StaticResource ActionBarButtonStyle}"
-                        Click="ButtonSave" 
+                        Command="{Binding SaveCountryCommand}"
                         ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
                         <Image Style="{DynamicResource ToolBarSaveIcon}" />
                     </Button>
@@ -206,9 +214,16 @@
 
                     <Button 
                         Style="{StaticResource ActionBarButtonStyle}"
-                        Click="ButtonExport" 
-                        ToolTip="{x:Static language:Language.toolbarButtonActionExport}">
-                        <Image Style="{DynamicResource ToolBarExportIcon}" />
+                        Click="ButtonCSVExport"
+                        ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
+                        <Image Style="{DynamicResource ToolBarCSVExportIcon}" />
+                    </Button>
+
+                    <Button 
+                        Style="{StaticResource ActionBarButtonStyle}"
+                        Click="ButtonExcelExport" 
+                        ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
+                        <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
                     </Button>
                 </StackPanel>
                 <!--#endregion-->
@@ -355,7 +370,7 @@
         <!--#region Footer-->
         <Border Grid.Row="5" BorderBrush="{DynamicResource DefaultBorderForeground}" Background="{DynamicResource DefaultBorderBackground}" BorderThickness="1" CornerRadius="5">
             <Grid>
-                <TextBlock Text="Status"/>
+                <!-- If needed a status line can be implemented here-->
             </Grid>
         </Border>
         <!--#endregion-->

@@ -187,6 +187,33 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Landcode.
+        /// </summary>
+        public static string ExportCountriesHeaderCountryCode {
+            get {
+                return ResourceManager.GetString("ExportCountriesHeaderCountryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutateken.
+        /// </summary>
+        public static string ExportCountriesHeaderCountryCurrencySymbol {
+            get {
+                return ResourceManager.GetString("ExportCountriesHeaderCountryCurrencySymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string ExportCountriesHeaderCountryName {
+            get {
+                return ResourceManager.GetString("ExportCountriesHeaderCountryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporteer landen naar een CSV bestand.
         /// </summary>
         public static string ExportCountriesSubTitle {
@@ -196,20 +223,29 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Succesvol.
+        /// </summary>
+        public static string ExportCountriesSuccessPrefix {
+            get {
+                return ResourceManager.GetString("ExportCountriesSuccessPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to landen geëxporteerd naar CSV.
+        /// </summary>
+        public static string ExportCountriesSuccessSuffix {
+            get {
+                return ResourceManager.GetString("ExportCountriesSuccessSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporteer landen.
         /// </summary>
         public static string ExportCountriesTitle {
             get {
                 return ResourceManager.GetString("ExportCountriesTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CSV Bestanden (*.csv)|*.csv.
-        /// </summary>
-        public static string ExportCSVFilter {
-            get {
-                return ResourceManager.GetString("ExportCSVFilter", resourceCulture);
             }
         }
         
@@ -273,6 +309,186 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportFolderDialogFiltertext {
             get {
                 return ResourceManager.GetString("ExportFolderDialogFiltertext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annuleren.
+        /// </summary>
+        public static string ExportGeneralButtonCancel {
+            get {
+                return ResourceManager.GetString("ExportGeneralButtonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporteren.
+        /// </summary>
+        public static string ExportGeneralButtonOk {
+            get {
+                return ResourceManager.GetString("ExportGeneralButtonOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporteren voltooid.
+        /// </summary>
+        public static string ExportGeneralCompletedMessageboxTitle {
+            get {
+                return ResourceManager.GetString("ExportGeneralCompletedMessageboxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV Bestanden (*.csv)|*.csv|Alle Bestanden (*.*)|*.*.
+        /// </summary>
+        public static string ExportGeneralCSVFilter {
+            get {
+                return ResourceManager.GetString("ExportGeneralCSVFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UTF-8 encoding met BOM.
+        /// </summary>
+        public static string ExportGeneralEncryption {
+            get {
+                return ResourceManager.GetString("ExportGeneralEncryption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*.
+        /// </summary>
+        public static string ExportGeneralExcelFilter {
+            get {
+                return ResourceManager.GetString("ExportGeneralExcelFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV Export instellingen.
+        /// </summary>
+        public static string ExportGeneralExportSettings {
+            get {
+                return ResourceManager.GetString("ExportGeneralExportSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encoder:.
+        /// </summary>
+        public static string ExportGeneralExportSettingsEncoding {
+            get {
+                return ResourceManager.GetString("ExportGeneralExportSettingsEncoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inclusief kopregel.
+        /// </summary>
+        public static string ExportGeneralExportSettingsHeaders {
+            get {
+                return ResourceManager.GetString("ExportGeneralExportSettingsHeaders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export IDs.
+        /// </summary>
+        public static string ExportGeneralExportSettingsIDs {
+            get {
+                return ResourceManager.GetString("ExportGeneralExportSettingsIDs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scheidingsteken:.
+        /// </summary>
+        public static string ExportGeneralExportSettingsSeperator {
+            get {
+                return ResourceManager.GetString("ExportGeneralExportSettingsSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niet gelukt te exporteren naar CSV:.
+        /// </summary>
+        public static string ExportGeneralFailed {
+            get {
+                return ResourceManager.GetString("ExportGeneralFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details:.
+        /// </summary>
+        public static string ExportGeneralFailedDetails {
+            get {
+                return ResourceManager.GetString("ExportGeneralFailedDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export fout.
+        /// </summary>
+        public static string ExportGeneralFailedMessageboxTitle {
+            get {
+                return ResourceManager.GetString("ExportGeneralFailedMessageboxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestand:.
+        /// </summary>
+        public static string ExportGeneralFile {
+            get {
+                return ResourceManager.GetString("ExportGeneralFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder:.
+        /// </summary>
+        public static string ExportGeneralLocation {
+            get {
+                return ResourceManager.GetString("ExportGeneralLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dubbele aanhalingstekens voor waarden met speciale tekens.
+        /// </summary>
+        public static string ExportGeneralQuotes {
+            get {
+                return ResourceManager.GetString("ExportGeneralQuotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puntkomma (;) als scheidingsteken.
+        /// </summary>
+        public static string ExportGeneralSeperator {
+            get {
+                return ResourceManager.GetString("ExportGeneralSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successvol {count} items geëxporteerd naar {file}.
+        /// </summary>
+        public static string ExportGeneralSuccess {
+            get {
+                return ResourceManager.GetString("ExportGeneralSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het bestand gebruikt:.
+        /// </summary>
+        public static string ExportGeneralUsage {
+            get {
+                return ResourceManager.GetString("ExportGeneralUsage", resourceCulture);
             }
         }
         
@@ -660,6 +876,186 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportUnitsTitle {
             get {
                 return ResourceManager.GetString("ExportUnitsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere landcode.
+        /// </summary>
+        public static string ExportValidationCountryCodeExists {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryCodeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het verwijderen dit land.
+        /// </summary>
+        public static string ExportValidationCountryDeleteError {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig verwijderen.
+        /// </summary>
+        public static string ExportValidationCountryDeleteMessageCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryDeleteMessageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weet je zeker dat je het volgende land wilt verwijderen.
+        /// </summary>
+        public static string ExportValidationCountryDeleteMessageText {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryDeleteMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere landcode of naam.
+        /// </summary>
+        public static string ExportValidationCountryExistsAdvice {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryExistsAdvice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of naam.
+        /// </summary>
+        public static string ExportValidationCountryExistsMiddle {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryExistsMiddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land met code.
+        /// </summary>
+        public static string ExportValidationCountryExistsPrefix {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryExistsPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bestaat al.
+        /// </summary>
+        public static string ExportValidationCountryExistsSufix {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryExistsSufix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land bestaat al.
+        /// </summary>
+        public static string ExportValidationCountryExistsTitle {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryExistsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere land naam.
+        /// </summary>
+        public static string ExportValidationCountryNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationCountryNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het opslaan van het land.
+        /// </summary>
+        public static string ExportValidationCountrySaveError {
+            get {
+                return ResourceManager.GetString("ExportValidationCountrySaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land succesvol toegevoegd.
+        /// </summary>
+        public static string ExportValidationCountrySuccessAdded {
+            get {
+                return ResourceManager.GetString("ExportValidationCountrySuccessAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelukt.
+        /// </summary>
+        public static string ExportValidationCountrySuccessCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationCountrySuccessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land succesvol bijgewerkt.
+        /// </summary>
+        public static string ExportValidationCountrySuccessUpdated {
+            get {
+                return ResourceManager.GetString("ExportValidationCountrySuccessUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landcode mag niet groter zijn dan 10 tekens.
+        /// </summary>
+        public static string ExportValidationMessageCodeLength {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageCodeLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landcode is verpicht.
+        /// </summary>
+        public static string ExportValidationMessageCodeRequirered {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageCodeRequirered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutasymbool moet zijn geselecteerd.
+        /// </summary>
+        public static string ExportValidationMessageCurrencyRequired {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageCurrencyRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landnaam mag niet groter zijn dan 100 tekens.
+        /// </summary>
+        public static string ExportValidationMessageNameLength {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landnaam is verplicht.
+        /// </summary>
+        public static string ExportValidationMessageNameRequirered {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageNameRequirered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controle fout.
+        /// </summary>
+        public static string ExportValidationMessageTitle {
+            get {
+                return ResourceManager.GetString("ExportValidationMessageTitle", resourceCulture);
             }
         }
         
@@ -1497,6 +1893,42 @@ namespace Modelbouwer.Resources.Languages {
         public static string ImportFileDialogFiltertext {
             get {
                 return ResourceManager.GetString("ImportFileDialogFiltertext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import fout.
+        /// </summary>
+        public static string ImportGeneralErrorCaption {
+            get {
+                return ResourceManager.GetString("ImportGeneralErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het importeren van landen.
+        /// </summary>
+        public static string ImportGeneralErrorMessage {
+            get {
+                return ResourceManager.GetString("ImportGeneralErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import mislukt.
+        /// </summary>
+        public static string ImportGeneralErrorStatus {
+            get {
+                return ResourceManager.GetString("ImportGeneralErrorStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Landen importeren.
+        /// </summary>
+        public static string ImportGeneralMessage {
+            get {
+                return ResourceManager.GetString("ImportGeneralMessage", resourceCulture);
             }
         }
         
@@ -8855,11 +9287,20 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lijst exporteren.
+        ///   Looks up a localized string similar to Complete lijst exporteren naar een CSV bestand.
         /// </summary>
-        public static string toolbarButtonActionExport {
+        public static string toolbarButtonActionExportCSV {
             get {
-                return ResourceManager.GetString("toolbarButtonActionExport", resourceCulture);
+                return ResourceManager.GetString("toolbarButtonActionExportCSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete lijst exporteren naar een Excel bestand.
+        /// </summary>
+        public static string toolbarButtonActionExportExcel {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionExportExcel", resourceCulture);
             }
         }
         

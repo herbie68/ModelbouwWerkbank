@@ -36,11 +36,6 @@
     <Color x:Key="Default.Box.Border">#FFABADB3</Color>
     <Color x:Key="Default.Box.Background">Transparent</Color>
     <!--#endregion-->
-    
-    <!--#region Border-->
-    <SolidColorBrush x:Key="DefaultBorderForeground" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="DefaultBorderBackground" Color="#FFEEEEEE"/>
-    <!--#endregion-->
 
     <!--#region TextBoxes-->
     <SolidColorBrush x:Key="TextBox.Border.Focus" Color="#FF569DE5" />

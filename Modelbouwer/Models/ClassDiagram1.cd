@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Modelbouwer.Models.CountryModel">
+    <Position X="6" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAAAAAAAAAAAAgAAAAAAAQAABAAAgQAAAAAAA=</HashCode>
+      <FileName>Models\CountryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Models.AppSettings" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAABAAAAQAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AppSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Models.CurrencyModel">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAEIQAAAAAAAAAAAAAAAAAAAAQAAAI=</HashCode>
+      <FileName>Models\CurrencyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Models.NavigationModel" Collapsed="true">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAAAAAAAAAAACAAABAgAAAAAAAAAAAAAAQABAAE=</HashCode>
+      <FileName>Models\NavigationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.ViewModels.CountryPageViewModel">
+    <Position X="5.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JACAIAAABgAAAAABMAAAAQQAgAAAIACCBAAEAAEgAAQ=</HashCode>
+      <FileName>ViewModels\CountryPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Views.CountryView">
+    <Position X="9.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAIgAAAAAAAAEAAAAAAAAgAAAAIIAAAAQBAAA=</HashCode>
+      <FileName>Views\CountryView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Modelbouwer.Services.CountryService">
+    <Position X="7" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAACAAAAAAAAAAAAIAAAAAQCAAAACAgQAEAAAABAA=</HashCode>
+      <FileName>Services\CountryService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.CsvImportResult" Collapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAQAAAAAABAAA=</HashCode>
+      <FileName>Services\CsvImportService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.CsvImportService" Collapsed="true">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Services\CsvImportService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.CurrencyService" Collapsed="true">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAIAAAAAAAgAAIAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\CurrencyService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.DataGridExportService" Collapsed="true">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAA=</HashCode>
+      <FileName>Services\DataGridExportService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.GenericDataService" Collapsed="true">
+    <Position X="1" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAIAAAAAAAQAAAABAAEAAAAAACAAAAAAAAADAA=</HashCode>
+      <FileName>Services\GenericDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.HeaderMappingService" Collapsed="true">
+    <Position X="12.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAABAAQAAAAgAAAAAAABAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\HeaderMappingService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelbouwer.Services.SettingsService" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAEAAAAAAAAAAAABAAAAAAAAAAAAEwAAAAAAAAAA=</HashCode>
+      <FileName>Services\SettingsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

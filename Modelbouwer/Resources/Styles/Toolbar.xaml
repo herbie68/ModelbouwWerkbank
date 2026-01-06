@@ -59,14 +59,21 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="ToolBarExportIcon" TargetType="Image">
+    <Style x:Key="ToolBarCSVExportIcon" TargetType="Image">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
-        <Setter Property="Source" Value="{StaticResource export}" />
+        <Setter Property="Source" Value="{StaticResource csvexport}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="ToolBarExcelExportIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource excelexport}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
     <!--#endregion-->
 
 

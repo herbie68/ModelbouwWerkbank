@@ -1,59 +1,91 @@
-﻿using Modelbouwer.Services;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+using Modelbouwer.Models;
+using Modelbouwer.Services;
+
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Modelbouwer.ViewModels;
+
 public partial class CurrencyViewModel : ObservableObject
 {
 	private readonly CurrencyService _currencyService;
 
 	[ObservableProperty]
-	public int currencyId;
+	private int _currencyId;
 
 	[ObservableProperty]
-	public double currencyConversionRate;
+	private double _currencyConversionRate;
 
 	[ObservableProperty]
-	public string? currencyCode;
+	private string? _currencyCode;
 
 	[ObservableProperty]
-	public string? currencySymbol;
+	private string? _currencySymbol;
 
 	[ObservableProperty]
-	public string? currencyName;
+	private string? _currencyName;
 
 	[ObservableProperty]
 	private CurrencyModel? _selectedCurrency;
 
 	[ObservableProperty]
-	public CurrencyModel? selectedItem;
+	private CurrencyModel? _selectedItem;
 
-	private ObservableCollection<CurrencyModel> _currency = [];
+	[ObservableProperty]
+	private bool _isLoading;
 
-	public ObservableCollection<CurrencyModel> Currency
+	private ObservableCollection<CurrencyModel> _currencies = [];
+
+	public ObservableCollection<CurrencyModel> Currencies
 	{
-		get => _currency;
-		set
+		get => _currencies;
+		set => SetProperty( ref _currencies, value );
+	}
+
+	public CurrencyViewModel( CurrencyService currencyService )
+	{
+		_currencyService = currencyService ?? throw new ArgumentNullException( nameof( currencyService ) );
+		_currencies = new ObservableCollection<CurrencyModel>();
+
+		// Load data asynchronously
+		LoadDataAsync();
+	}
+
+	private async void LoadDataAsync()
+	{
+		await LoadCurrenciesAsync();
+	}
+
+	[RelayCommand]
+	private async Task LoadCurrenciesAsync()
+	{
+		IsLoading = true;
+		try
 		{
-			if ( _currency != value )
+			var currencies = await _currencyService.GetAllCurrenciesAsync();
+			Currencies.Clear();
+			foreach ( var currency in currencies )
 			{
-				_currency = value;
-				OnPropertyChanged( nameof( Currency ) );
+				Currencies.Add( currency );
 			}
 		}
-	}
-
-	public CurrencyViewModel( CurrencyService = currencyService)
-	{
-		_CurrencyService = CurrencyService;
-		_Currency = new ObservableCollection<CurrencyModel>();
-	}
-
-	public void Refresh()
-	{
-		_currency.Clear();
-		foreach ( var currency in DBCommands.GetCurrencyList() )
+		catch ( Exception ex )
 		{
-			_currency.Add( currency );
+			// Handle exception
+			System.Diagnostics.Debug.WriteLine( $"Error loading currencies: {ex.Message}" );
 		}
-		OnPropertyChanged( nameof( Currency ) );
+		finally
+		{
+			IsLoading = false;
+		}
+	}
+
+	[RelayCommand]
+	private async Task RefreshAsync()
+	{
+		await LoadCurrenciesAsync();
 	}
 }

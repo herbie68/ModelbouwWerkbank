@@ -3073,9 +3073,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarButtonActionImport" xml:space="preserve">
     <value>Externe Daten importieren</value>
   </data>
-  <data name="toolbarButtonActionExport" xml:space="preserve">
-    <value>Liste exportieren</value>
-  </data>
   <data name="AppMessageExportComplete" xml:space="preserve">
     <value>Export abgeschlossen!</value>
   </data>
@@ -3097,9 +3094,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ImportCSVFilter" xml:space="preserve">
     <value>CSV-Dateien (*.csv)|*.csv</value>
   </data>
-  <data name="ExportCSVFilter" xml:space="preserve">
-    <value>CSV-Dateien (*.csv)|*.csv</value>
-  </data>
   <data name="toolbarVisibleRowLabelCountry" xml:space="preserve">
     <value>Anzahl der angezeigten Länder</value>
   </data>
@@ -3108,5 +3102,158 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="toolbarButtonActionCanNotDelete" xml:space="preserve">
     <value>Die ausgewählte Zeile kann nicht gelöscht werden, sie wird verwendet</value>
+  </data>
+  <data name="toolbarButtonActionExportCSV" xml:space="preserve">
+    <value>Vollständige Liste in eine CSV-Datei exportieren</value>
+  </data>
+  <data name="toolbarButtonActionExportExcel" xml:space="preserve">
+    <value>Vollständige Liste in eine Excel-Datei exportieren</value>
+  </data>
+  <data name="ExportGeneralCSVFilter" xml:space="preserve">
+    <value>CSV-Dateien (*.csv)|*.csv|Alle Dateien (*.*)|*.*</value>
+  </data>
+  <data name="ExportCountriesSuccessPrefix" xml:space="preserve">
+    <value>Erfolgreich</value>
+  </data>
+  <data name="ExportCountriesSuccessSuffix" xml:space="preserve">
+    <value>Länder, die nach CSV exportiert wurden</value>
+  </data>
+  <data name="ExportGeneralFile" xml:space="preserve">
+    <value>Datei:</value>
+  </data>
+  <data name="ExportGeneralLocation" xml:space="preserve">
+    <value>Verzeichnis:</value>
+  </data>
+  <data name="ExportGeneralUsage" xml:space="preserve">
+    <value>Die Datei verwendet:</value>
+  </data>
+  <data name="ExportGeneralEncryption" xml:space="preserve">
+    <value>UTF-8 encoding mit BOM</value>
+  </data>
+  <data name="ExportGeneralSeperator" xml:space="preserve">
+    <value>Semikolon (;) als Trennzeichen</value>
+  </data>
+  <data name="ExportGeneralQuotes" xml:space="preserve">
+    <value>Doppelte Anführungszeichen für Werte mit Sonderzeichen</value>
+  </data>
+  <data name="ExportGeneralCompletedMessageboxTitle" xml:space="preserve">
+    <value>Export abgeschlossen</value>
+  </data>
+  <data name="ExportGeneralFailed" xml:space="preserve">
+    <value>Export in CSV fehlgeschlagen:</value>
+  </data>
+  <data name="ExportGeneralFailedDetails" xml:space="preserve">
+    <value>Einzelheiten:</value>
+  </data>
+  <data name="ExportGeneralFailedMessageboxTitle" xml:space="preserve">
+    <value>Exportfehler</value>
+  </data>
+  <data name="ExportGeneralExportSettingsEncoding" xml:space="preserve">
+    <value>Encoding:</value>
+  </data>
+  <data name="ExportGeneralExportSettings" xml:space="preserve">
+    <value>CSV-Exporteinstellungen</value>
+  </data>
+  <data name="ExportGeneralExportSettingsSeperator" xml:space="preserve">
+    <value>Separator:</value>
+  </data>
+  <data name="ExportGeneralExportSettingsHeaders" xml:space="preserve">
+    <value>Inklusive Überschrift</value>
+  </data>
+  <data name="ExportGeneralExportSettingsIDs" xml:space="preserve">
+    <value>Export-IDs</value>
+  </data>
+  <data name="ExportGeneralButtonOk" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportGeneralButtonCancel" xml:space="preserve">
+    <value>Stornieren</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryCode" xml:space="preserve">
+    <value>Ländercode</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryCurrencySymbol" xml:space="preserve">
+    <value>Währungszeichen</value>
+  </data>
+  <data name="ExportGeneralSuccess" xml:space="preserve">
+    <value>{count} Elemente erfolgreich nach {file} exportiert</value>
+  </data>
+  <data name="ExportGeneralExcelFilter" xml:space="preserve">
+    <value>Excel-Dateien (*.xlsx)|*.xlsx|Alle Dateien (*.*)|*.*</value>
+  </data>
+  <data name="ExportValidationMessageCodeRequirered" xml:space="preserve">
+    <value>Ländercode ist erforderlich</value>
+  </data>
+  <data name="ExportValidationMessageCodeLength" xml:space="preserve">
+    <value>Der Ländercode darf 10 Zeichen nicht überschreiten</value>
+  </data>
+  <data name="ExportValidationMessageNameRequirered" xml:space="preserve">
+    <value>Ländername ist erforderlich</value>
+  </data>
+  <data name="ExportValidationMessageNameLength" xml:space="preserve">
+    <value>Der Ländername darf 100 Zeichen nicht überschreiten</value>
+  </data>
+  <data name="ExportValidationMessageCurrencyRequired" xml:space="preserve">
+    <value>Währungssymbol muss ausgewählt werden</value>
+  </data>
+  <data name="ExportValidationMessageTitle" xml:space="preserve">
+    <value>Kontrollfehler</value>
+  </data>
+  <data name="ExportValidationCountryExistsPrefix" xml:space="preserve">
+    <value>Land mit Code</value>
+  </data>
+  <data name="ExportValidationCountryExistsMiddle" xml:space="preserve">
+    <value>oder Name</value>
+  </data>
+  <data name="ExportValidationCountryExistsSufix" xml:space="preserve">
+    <value>existiert bereits</value>
+  </data>
+  <data name="ExportValidationCountryExistsAdvice" xml:space="preserve">
+    <value>Verwenden Sie einen anderen Ländercode oder Namen</value>
+  </data>
+  <data name="ExportValidationCountryExistsTitle" xml:space="preserve">
+    <value>Land existiert bereits</value>
+  </data>
+  <data name="ExportValidationCountrySuccessCaption" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="ExportValidationCountrySuccessAdded" xml:space="preserve">
+    <value>Land erfolgreich hinzugefügt</value>
+  </data>
+  <data name="ExportValidationCountrySuccessUpdated" xml:space="preserve">
+    <value>Land erfolgreich aktualisiert</value>
+  </data>
+  <data name="ExportValidationCountryDeleteMessageCaption" xml:space="preserve">
+    <value>Bestätigen Sie das Löschen</value>
+  </data>
+  <data name="ExportValidationCountryDeleteMessageText" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie das folgende Land löschen möchten?</value>
+  </data>
+  <data name="ExportValidationCountryDeleteError" xml:space="preserve">
+    <value>Fehler beim Entfernen dieses Landes</value>
+  </data>
+  <data name="ImportGeneralMessage" xml:space="preserve">
+    <value>Importländer</value>
+  </data>
+  <data name="ImportGeneralErrorStatus" xml:space="preserve">
+    <value>Der Import ist fehlgeschlagen</value>
+  </data>
+  <data name="ImportGeneralErrorMessage" xml:space="preserve">
+    <value>Fehler beim Importieren von Ländern</value>
+  </data>
+  <data name="ImportGeneralErrorCaption" xml:space="preserve">
+    <value>Importfehler</value>
+  </data>
+  <data name="ExportValidationCountrySaveError" xml:space="preserve">
+    <value>Fehler beim Speichern des Landes</value>
+  </data>
+  <data name="ExportValidationCountryCodeExists" xml:space="preserve">
+    <value>Verwenden Sie einen anderen Ländercode</value>
+  </data>
+  <data name="ExportValidationCountryNameExists" xml:space="preserve">
+    <value>Verwenden Sie einen anderen Ländernamen</value>
   </data>
 </root>

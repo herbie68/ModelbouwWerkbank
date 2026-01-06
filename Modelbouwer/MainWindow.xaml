@@ -3,39 +3,60 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Modelbouwer"
-        xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
-        xmlns:views="clr-namespace:Modelbouwer.Views"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="Moderlbouwers Werkbank" Height="450" Width="800">
+        Title="Modelbouwer Werkbank"
+        Height="600"
+        Width="900"
+        WindowStartupLocation="CenterScreen">
 
-    <Window.DataContext>
-        <viewmodels:NavigationViewModel />
-    </Window.DataContext>
-    
     <Window.Resources>
         <Style x:Key="ItemStyle" TargetType="syncfusion:NavigationItem">
             <Setter Property="Icon" Value="{Binding NavigationIcon}" />
             <Setter Property="DisplayMemberPath" Value="NavigationItem" />
-            <Setter Property="ToolTip" Value="{Binding NavigationTooltip}" /> 
+            <Setter Property="ToolTip" Value="{Binding NavigationTooltip}" />
             <Setter Property="ItemsSource" Value="{Binding SubItems}" />
             <Setter Property="Command" Value="{Binding Command}" />
             <Setter Property="CommandParameter" Value="{Binding}" />
         </Style>
-        
-        <DataTemplate DataType="{x:Type views:CountryView}">
-            <views:CountryView />
-        </DataTemplate>
     </Window.Resources>
-    <syncfusion:SfNavigationDrawer
-        x:Name="navigationDrawer"
-        DisplayMemberPath="NavigationItem"
-        DisplayMode="Expanded"
-        ItemContainerStyle="{StaticResource ItemStyle}"
-        ItemsSource="{Binding NavigationItems}">
-        <syncfusion:SfNavigationDrawer.ContentView>
-            <ContentControl Content="{Binding CurrentView}" />
-        </syncfusion:SfNavigationDrawer.ContentView>
-    </syncfusion:SfNavigationDrawer>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Navigation -->
+            <ColumnDefinition Width="Auto" />
+
+            <!-- Main content -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Loading indicator -->
+        <TextBlock Grid.ColumnSpan="2"
+                   Text="Loading navigation..."
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Visibility="{Binding IsNavigationLoaded,
+                                        Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
+
+        <!-- Navigation drawer -->
+        <syncfusion:SfNavigationDrawer
+            Grid.Column="0"
+            DisplayMode="Expanded"
+            DisplayMemberPath="NavigationItem"
+            DrawerWidth="260"
+            ItemContainerStyle="{StaticResource ItemStyle}"
+            ItemsSource="{Binding NavigationItems}"
+            Visibility="{Binding IsNavigationLoaded,
+                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <!-- Main content host -->
+        <Border Grid.Column="1"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+            <ContentControl x:Name="ContentHost"
+                            Content="{Binding CurrentView}"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch" />
+        </Border>
+    </Grid>
 </Window>

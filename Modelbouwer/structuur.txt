@@ -1,0 +1,101 @@
+01-12-2025  15:50    <DIR>          Converters
+                                    |
+01-12-2025  12:24               825 -- NullOrEmptyImageConverter.cs
+
+19-12-2025  08:56    <DIR>          Helpers
+                                    |
+19-12-2025  08:47             1.254 -- DatabaseValueConverter.cs
+18-12-2025  17:21             4.542 -- DBCommands.cs
+19-12-2025  08:47               548 -- DBConnect.cs
+18-12-2025  15:58            56.457 -- DBNames.cs
+19-12-2025  08:47             1.029 -- IpHelper.cs
+19-12-2025  08:47               741 -- RelayCommand.cs
+01-12-2025  12:01             1.556 -- TextBlockHelper.cs
+
+19-12-2025  15:26    <DIR>          Models
+                                    |
+01-12-2025  15:32               339 -- AppSettings.cs
+19-12-2025  15:22                60 -- ClassDiagram1.cd
+16-12-2025  16:18               968 -- CountryModel.cs
+16-12-2025  16:18               349 -- CurrencyModel.cs
+19-12-2025  08:47               640 -- NavigationModel.cs
+
+19-12-2025  08:47    <DIR>          Resources
+                                    |
+19-12-2025  08:47    <DIR>          -- Config
+                                       |
+19-12-2025  08:47            46.723    -- licentieovereenkomst.rtf
+19-12-2025  08:47                22    -- modelbouwer.config
+19-12-2025  08:47                22    -- modelbouwer.config.external
+19-12-2025  08:47                22    -- modelbouwer.config.local
+
+19-12-2025  09:00    <DIR>          -- Icons
+                                       |
+19-12-2025  08:47           250.334    -- appicon.ico
+01-12-2025  07:01            10.707    -- ApplicationIcons.xaml
+19-12-2025  08:47            35.008    -- AppLogo.png
+19-12-2025  08:47           178.929    -- NavigationIcons.xaml
+01-12-2025  15:32             9.140    -- ToolbarIcons.xaml
+
+19-12-2025  08:47    <DIR>          -- Languages
+                                       |
+18-12-2025  13:46           359.513    -- Language.Designer.cs
+18-12-2025  13:46           131.434    -- Language.en-US.resx
+18-12-2025  13:46           133.250    -- Language.nl.resx
+18-12-2025  13:46           132.014    -- Language.resx
+01-12-2025  07:01           126.117    -- Language.xaml
+01-12-2025  07:01            13.738    -- Syncfusion.SfGrid.WPF.de.resx
+01-12-2025  07:01            23.767    -- Syncfusion.SfGrid.WPF.Designer.cs
+01-12-2025  07:01            13.391    -- Syncfusion.SfGrid.WPF.en-US.resx
+01-12-2025  07:01            13.610    -- Syncfusion.SfGrid.WPF.nl.resx
+01-12-2025  07:01            17.793    -- Syncfusion.SfGrid.WPF.resx
+
+19-12-2025  09:03    <DIR>          -- Styles
+                                       |
+17-12-2025  13:48             5.993    -- Button.xaml
+17-12-2025  09:27             1.038    -- ComboBox.xaml
+01-12-2025  10:50             5.384    -- DataGrid.xaml
+12-11-2025  13:08             2.430    -- DefaultViewStyle.xaml
+12-11-2025  13:08             4.825    -- GeneralStyle.xaml
+10-11-2025  13:18               577    -- NavigationStyle.xaml
+12-11-2025  16:52               977    -- SfDataGridStyle.xaml
+17-12-2025  13:48             3.086    -- Toolbar.xaml
+17-12-2025  13:48             5.300    -- ToolbarStyles.xaml
+
+19-12-2025  08:47    <DIR>          -- Theme
+                                       |
+16-12-2025  08:14             2.863    -- DefaultTheme.xaml
+
+18-12-2025  17:21    <DIR>          Services
+                                    |
+18-12-2025  17:21             4.533 -- CountryService.cs
+16-12-2025  11:41             4.305 -- CsvImportService.cs
+18-12-2025  17:21             1.750 -- CurrencyService.cs
+03-12-2025  15:38             1.523 -- DataGridExportService.cs
+18-12-2025  14:15             4.659 -- GenericDataService.cs
+03-12-2025  16:39             2.135 -- HeaderMappingService.cs
+16-12-2025  09:15             1.938 -- SettingsService.cs
+
+19-12-2025  15:19    <DIR>          ViewModels
+                                    |
+19-12-2025  13:32             4.424 -- CountryPageViewModel.cs
+19-12-2025  12:00               874 -- CountryViewModel.cs
+19-12-2025  12:00             1.054 -- CurrencyViewModel.cs
+19-12-2025  15:19            10.200 -- NavigationViewModel.cs
+
+19-12-2025  14:13    <DIR>          Views
+                                    |
+19-12-2025  14:13            16.446 -- CountryView.xaml
+19-12-2025  14:13             5.253 -- CountryView.xaml.cs
+
+
+
+17-12-2025  13:25             1.878 App.xaml
+19-12-2025  14:13             1.159 App.xaml.cs
+19-12-2025  08:47               644 AssemblyInfo.cs
+19-12-2025  08:47               478 GlobalSuppressions.cs
+18-12-2025  14:28             1.411 GlobalUsings.cs
+12-11-2025  09:19             1.951 MainWindow.xaml
+10-11-2025  10:52               560 MainWindow.xaml.cs
+19-12-2025  14:13             2.311 Modelbouwer.csproj
+11-11-2025  16:12               296 Modelbouwer.csproj.user

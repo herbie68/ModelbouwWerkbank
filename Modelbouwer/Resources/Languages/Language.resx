@@ -3053,8 +3053,8 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarButtonActionImport" xml:space="preserve">
     <value>Externe gegevens importeren</value>
   </data>
-  <data name="toolbarButtonActionExport" xml:space="preserve">
-    <value>Lijst exporteren</value>
+  <data name="toolbarButtonActionExportCSV" xml:space="preserve">
+    <value>Complete lijst exporteren naar een CSV bestand</value>
   </data>
   <data name="AppMessageExportComplete" xml:space="preserve">
     <value>Export voltooid!</value>
@@ -3077,8 +3077,8 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ImportCSVFilter" xml:space="preserve">
     <value>CSV Bestanden (*.csv)|*.csv</value>
   </data>
-  <data name="ExportCSVFilter" xml:space="preserve">
-    <value>CSV Bestanden (*.csv)|*.csv</value>
+  <data name="ExportGeneralCSVFilter" xml:space="preserve">
+    <value>CSV Bestanden (*.csv)|*.csv|Alle Bestanden (*.*)|*.*</value>
   </data>
   <data name="toolbarVisibleRowLabelCountry" xml:space="preserve">
     <value>Aantal getoonde landen</value>
@@ -3088,5 +3088,152 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="toolbarButtonActionCanNotDelete" xml:space="preserve">
     <value>Geselecteerde regel kan niet worden verwijderd, deze wordt gebruikt</value>
+  </data>
+  <data name="toolbarButtonActionExportExcel" xml:space="preserve">
+    <value>Complete lijst exporteren naar een Excel bestand</value>
+  </data>
+  <data name="ExportCountriesSuccessPrefix" xml:space="preserve">
+    <value>Succesvol</value>
+  </data>
+  <data name="ExportCountriesSuccessSuffix" xml:space="preserve">
+    <value>landen geëxporteerd naar CSV</value>
+  </data>
+  <data name="ExportGeneralFile" xml:space="preserve">
+    <value>Bestand:</value>
+  </data>
+  <data name="ExportGeneralLocation" xml:space="preserve">
+    <value>Folder:</value>
+  </data>
+  <data name="ExportGeneralUsage" xml:space="preserve">
+    <value>Het bestand gebruikt:</value>
+  </data>
+  <data name="ExportGeneralEncryption" xml:space="preserve">
+    <value>UTF-8 encoding met BOM</value>
+  </data>
+  <data name="ExportGeneralSeperator" xml:space="preserve">
+    <value>Puntkomma (;) als scheidingsteken</value>
+  </data>
+  <data name="ExportGeneralQuotes" xml:space="preserve">
+    <value>Dubbele aanhalingstekens voor waarden met speciale tekens</value>
+  </data>
+  <data name="ExportGeneralCompletedMessageboxTitle" xml:space="preserve">
+    <value>Exporteren voltooid</value>
+  </data>
+  <data name="ExportGeneralFailed" xml:space="preserve">
+    <value>Niet gelukt te exporteren naar CSV:</value>
+  </data>
+  <data name="ExportGeneralFailedDetails" xml:space="preserve">
+    <value>Details:</value>
+  </data>
+  <data name="ExportGeneralFailedMessageboxTitle" xml:space="preserve">
+    <value>Export fout</value>
+  </data>
+  <data name="ExportGeneralExportSettings" xml:space="preserve">
+    <value>CSV Export instellingen</value>
+  </data>
+  <data name="ExportGeneralExportSettingsSeperator" xml:space="preserve">
+    <value>Scheidingsteken:</value>
+  </data>
+  <data name="ExportGeneralExportSettingsEncoding" xml:space="preserve">
+    <value>Encoder:</value>
+  </data>
+  <data name="ExportGeneralExportSettingsHeaders" xml:space="preserve">
+    <value>Inclusief kopregel</value>
+  </data>
+  <data name="ExportGeneralExportSettingsIDs" xml:space="preserve">
+    <value>Export IDs</value>
+  </data>
+  <data name="ExportGeneralButtonOk" xml:space="preserve">
+    <value>Exporteren</value>
+  </data>
+  <data name="ExportGeneralButtonCancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryCode" xml:space="preserve">
+    <value>Landcode</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="ExportCountriesHeaderCountryCurrencySymbol" xml:space="preserve">
+    <value>Valutateken</value>
+  </data>
+  <data name="ExportGeneralSuccess" xml:space="preserve">
+    <value>Successvol {count} items geëxporteerd naar {file}</value>
+  </data>
+  <data name="ExportGeneralExcelFilter" xml:space="preserve">
+    <value>Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*</value>
+  </data>
+  <data name="ExportValidationMessageCodeRequirered" xml:space="preserve">
+    <value>Landcode is verpicht</value>
+  </data>
+  <data name="ExportValidationMessageCodeLength" xml:space="preserve">
+    <value>Landcode mag niet groter zijn dan 10 tekens</value>
+  </data>
+  <data name="ExportValidationMessageNameRequirered" xml:space="preserve">
+    <value>Landnaam is verplicht</value>
+  </data>
+  <data name="ExportValidationMessageNameLength" xml:space="preserve">
+    <value>Landnaam mag niet groter zijn dan 100 tekens</value>
+  </data>
+  <data name="ExportValidationMessageCurrencyRequired" xml:space="preserve">
+    <value>Valutasymbool moet zijn geselecteerd</value>
+  </data>
+  <data name="ExportValidationMessageTitle" xml:space="preserve">
+    <value>Controle fout</value>
+  </data>
+  <data name="ExportValidationCountryExistsPrefix" xml:space="preserve">
+    <value>Land met code</value>
+  </data>
+  <data name="ExportValidationCountryExistsMiddle" xml:space="preserve">
+    <value>of naam</value>
+  </data>
+  <data name="ExportValidationCountryExistsSufix" xml:space="preserve">
+    <value>bestaat al</value>
+  </data>
+  <data name="ExportValidationCountryExistsAdvice" xml:space="preserve">
+    <value>Gebruik een andere landcode of naam</value>
+  </data>
+  <data name="ExportValidationCountryExistsTitle" xml:space="preserve">
+    <value>Land bestaat al</value>
+  </data>
+  <data name="ExportValidationCountrySuccessCaption" xml:space="preserve">
+    <value>Gelukt</value>
+  </data>
+  <data name="ExportValidationCountrySuccessAdded" xml:space="preserve">
+    <value>Land succesvol toegevoegd</value>
+  </data>
+  <data name="ExportValidationCountrySuccessUpdated" xml:space="preserve">
+    <value>Land succesvol bijgewerkt</value>
+  </data>
+  <data name="ExportValidationCountryDeleteMessageCaption" xml:space="preserve">
+    <value>Bevestig verwijderen</value>
+  </data>
+  <data name="ExportValidationCountryDeleteMessageText" xml:space="preserve">
+    <value>Weet je zeker dat je het volgende land wilt verwijderen</value>
+  </data>
+  <data name="ExportValidationCountryDeleteError" xml:space="preserve">
+    <value>Fout bij het verwijderen dit land</value>
+  </data>
+  <data name="ImportGeneralMessage" xml:space="preserve">
+    <value>Landen importeren</value>
+  </data>
+  <data name="ImportGeneralErrorStatus" xml:space="preserve">
+    <value>Import mislukt</value>
+  </data>
+  <data name="ImportGeneralErrorMessage" xml:space="preserve">
+    <value>Fout bij het importeren van landen</value>
+  </data>
+  <data name="ImportGeneralErrorCaption" xml:space="preserve">
+    <value>Import fout</value>
+  </data>
+  <data name="ExportValidationCountrySaveError" xml:space="preserve">
+    <value>Fout bij het opslaan van het land</value>
+  </data>
+  <data name="ExportValidationCountryCodeExists" xml:space="preserve">
+    <value>Gebruik een andere landcode</value>
+  </data>
+  <data name="ExportValidationCountryNameExists" xml:space="preserve">
+    <value>Gebruik een andere land naam</value>
   </data>
 </root>

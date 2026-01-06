@@ -1,11 +1,28 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using Modelbouwer.Helpers;
+using Modelbouwer.Models;
+using Modelbouwer.Views;
 
 namespace Modelbouwer.ViewModels;
 
 public class NavigationViewModel : INotifyPropertyChanged
 {
+	private readonly IServiceProvider _serviceProvider;
+
 	public ObservableCollection<NavigationModel> NavigationItems { get; set; }
+
 	readonly ObservableCollection<NavigationModel> TimeSubItems = [];
 	readonly ObservableCollection<NavigationModel> InventorySubItems = [];
 	readonly ObservableCollection<NavigationModel> ProjectSubItems = [];
@@ -24,60 +41,143 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private bool _isNavigationLoaded;
+	public bool IsNavigationLoaded
+	{
+		get => _isNavigationLoaded;
+		set
+		{
+			if ( _isNavigationLoaded != value )
+			{
+				_isNavigationLoaded = value;
+				OnPropertyChanged();
+			}
+		}
+	}
+
 	public event PropertyChangedEventHandler? PropertyChanged;
 
-	// Raises PropertyChanged event
-	protected void OnPropertyChanged( [CallerMemberName] string? propertyName = null ) => PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
+	protected void OnPropertyChanged( [CallerMemberName] string? propertyName = null ) =>
+		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 
-	public NavigationViewModel()
+	public NavigationViewModel( IServiceProvider serviceProvider )
 	{
-		NavigationItems = [];
+		_serviceProvider = serviceProvider ?? throw new ArgumentNullException( nameof( serviceProvider ) );
+		NavigationItems = [ ];
+
+		LoadNavigationItemsAsync();
+	}
+
+	private async void LoadNavigationItemsAsync()
+	{
+		// Wacht tot de applicatie volledig is geladen
+		await Task.Delay( 100 );
+
+		if ( Application.Current == null )
+			return;
+
+		await Application.Current.Dispatcher.InvokeAsync( () =>
+		{
+			try
+			{
+				BuildNavigationItems();
+				IsNavigationLoaded = true;
+			}
+			catch ( Exception ex )
+			{
+				Debug.WriteLine( $"Error loading navigation: {ex.Message}" );
+				// Fallback: minimaal navigatie-item
+				AddFallbackNavigation();
+				IsNavigationLoaded = true;
+			}
+		} );
+	}
+
+	private void AddFallbackNavigation()
+	{
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Country_Label}",
+			NavigationIcon = CreateNavigationImage( "Countries" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Country_Tooltip}",
+			Command = new SimpleCommand( () => LoadCountryView() )
+		} );
+	}
+
+	private static Image? CreateNavigationImage( string resourceKey )
+	{
+		try
+		{
+			if ( Application.Current == null )
+				return null;
+
+			var style = Application.Current.FindResource("NavigationIconStyle") as Style;
+			var source = Application.Current.FindResource(resourceKey) as ImageSource;
+
+			if ( source == null )
+			{
+				Debug.WriteLine( $"Resource not found: {resourceKey}" );
+				return null;
+			}
+
+			return new Image
+			{
+				Style = style,
+				Source = source
+			};
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error creating image for {resourceKey}: {ex.Message}" );
+			return null;
+		}
+	}
+
+	private void LoadCountryView()
+	{
+		try
+		{
+			var countryView = _serviceProvider.GetRequiredService<CountryView>();
+			CurrentView = countryView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading CountryView: {ex.Message}" );
+		}
+	}
+
+	private void BuildNavigationItems()
+	{
+		NavigationItems.Clear();
 
 		#region Time section
 		#region Subitems
-		TimeSubItems.Add( new()
+		TimeSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Time_SubItem_Import_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Import" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Import" ),
 			NavigationTooltip = Language.navigation_Time_SubItem_Import_Tooltip
-		}
-		);
-		TimeSubItems.Add( new()
+		} );
+
+		TimeSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Time_SubItem_Export_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Export" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Export" ),
 			NavigationTooltip = Language.navigation_Time_SubItem_Export_Tooltip
-		}
-		);
-		TimeSubItems.Add( new()
+		} );
+
+		TimeSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Time_SubItem_Report_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Report" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Report" ),
 			NavigationTooltip = Language.navigation_Time_SubItem_Report_Tooltip
-		}
-		);
+		} );
 		#endregion
 
-		NavigationItems.Add(new()
+		NavigationItems.Add( new NavigationModel
 		{
-			NavigationItem = Language.navigation_Time_MainItem_Label ,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource("NavigationIconStyle") as Style,
-				Source = Application.Current.FindResource("Time") as ImageSource
-			},
+			NavigationItem = Language.navigation_Time_MainItem_Label,
+			NavigationIcon = CreateNavigationImage( "Time" ),
 			NavigationTooltip = Language.navigation_Time_MainItem_Label,
 			SubItems = TimeSubItems
 		} );
@@ -85,49 +185,32 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		#region Inventory section
 		#region Subitems
-		InventorySubItems.Add( new()
+		InventorySubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Order_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Order" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Order" ),
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Order_Tooltip
-		}
-		);
-		InventorySubItems.Add( new()
+		} );
+
+		InventorySubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Receipt_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Recieve" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Recieve" ),
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Receipt_Tooltip
-		}
-		);
-		InventorySubItems.Add( new()
+		} );
+
+		InventorySubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Report_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Report" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Report" ),
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Report_Tooltip
-		}
-		);
+		} );
 		#endregion
 
-		NavigationItems.Add( new()
+		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Inventory_MainItem_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Inventory" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Inventory" ),
 			NavigationTooltip = Language.navigation_Inventory_MainItem_Tooltip,
 			SubItems = InventorySubItems
 		} );
@@ -135,49 +218,32 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		#region Projects section
 		#region Subitems
-		ProjectSubItems.Add( new()
+		ProjectSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Projects_SubItem_Import_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Import" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Import" ),
 			NavigationTooltip = Language.navigation_Projects_SubItem_Import_Tooltip
-		}
-		);
-		ProjectSubItems.Add( new()
+		} );
+
+		ProjectSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Projects_SubItem_Export_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Export" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Export" ),
 			NavigationTooltip = Language.navigation_Projects_SubItem_Export_Tooltip
-		}
-		);
-		ProjectSubItems.Add( new()
+		} );
+
+		ProjectSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Projects_SubItem_Report_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Report" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Report" ),
 			NavigationTooltip = Language.navigation_Projects_SubItem_Report_Tooltip
-		}
-		);
+		} );
 		#endregion
 
-		NavigationItems.Add( new()
+		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Projects_MainItem_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Projects" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Projects" ),
 			NavigationTooltip = Language.navigation_Projects_MainItem_Tooltip,
 			SubItems = ProjectSubItems
 		} );
@@ -185,108 +251,72 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		#region Metadata section
 		#region Subitems
-		MetadataSubItems.Add( new()
+		MetadataSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_SubItem_Currency_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Currency" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Currency" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_Tooltip,
 			SubItems = MetadataCurrenciesSubItems
 		} );
 
-		MetadataSubItems.Add( new()
+		MetadataSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_SubItem_Country_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Countries" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Countries" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Country_Tooltip,
-			Command = new Helpers.RelayCommand( _ => CurrentView = new CountryView() ),
-			SubItems = MetadataCountriesSubItems
+			Command = new SimpleCommand( () => LoadCountryView() )
 		} );
-
-		#endregion
-
-		#region CountrySubitems
-		MetadataCountriesSubItems.Add( new()
-		{
-			NavigationItem = Language.navigation_Resources_SubItem_Country_SubItem_Import_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Import" ) as ImageSource
-			},
-			NavigationTooltip = Language.navigation_Resources_SubItem_Country_SubItem_Import_Tooltip,
-			Command = new Helpers.RelayCommand( _ => CurrentView = new CountryView() )
-		}
-		);
-		MetadataCountriesSubItems.Add( new()
-		{
-			NavigationItem = Language.navigation_Resources_SubItem_Country_SubItem_Export_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Export" ) as ImageSource
-			},
-			NavigationTooltip = Language.navigation_Resources_SubItem_Country_SubItem_Export_Tooltip
-		}
-		);
 		#endregion
 
 		#region CurrencySubitems
-		MetadataCurrenciesSubItems.Add( new()
+		MetadataCurrenciesSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_SubItem_Currency_SubItem_Import_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Import" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Import" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_SubItem_Import_Tooltip
-		}
-		);
-		MetadataCurrenciesSubItems.Add( new()
+		} );
+
+		MetadataCurrenciesSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_SubItem_Currency_SubItem_Export_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Export" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Export" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_SubItem_Export_Tooltip
-		}
-		);
+		} );
 		#endregion
 
-		NavigationItems.Add( new()
+		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_MainItem_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Resources" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Resources" ),
 			NavigationTooltip = Language.navigation_Resources_MainItem_Tooltip,
 			SubItems = MetadataSubItems
 		} );
 		#endregion
 
 		#region Settings section
-		NavigationItems.Add( new()
+		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Settings_MainItem_Label,
-			NavigationIcon = new Image()
-			{
-				Style = Application.Current.FindResource( "NavigationIconStyle" ) as Style,
-				Source = Application.Current.FindResource( "Settings" ) as ImageSource
-			},
+			NavigationIcon = CreateNavigationImage( "Settings" ),
 			NavigationTooltip = Language.navigation_Settings_MainItem_Tooltip
 		} );
 		#endregion
+	}
+
+	// Simple command implementation zonder parameter conflicts
+	private class SimpleCommand : ICommand
+	{
+		private readonly Action _execute;
+
+		public event EventHandler? CanExecuteChanged;
+
+		public SimpleCommand( Action execute )
+		{
+			_execute = execute ?? throw new ArgumentNullException( nameof( execute ) );
+		}
+
+		public bool CanExecute( object? parameter ) => true;
+
+		public void Execute( object? parameter ) => _execute();
 	}
 }

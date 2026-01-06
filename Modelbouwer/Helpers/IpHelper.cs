@@ -2,7 +2,7 @@
 
 public class IpHelper
 {
-	private static readonly string filePath = @".\Resources\Config\Modelbouwer.Config";
+	private static readonly string filePath = @".\Resources\Config\modelbouwer.config";
 	private static readonly string defaultContent = "3924, 2400, 2400, 2412";
 
 	public static string GetIP( string _forcelocal = "" )

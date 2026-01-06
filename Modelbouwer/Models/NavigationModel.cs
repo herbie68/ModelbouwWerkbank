@@ -1,28 +1,32 @@
-﻿namespace Modelbouwer.Models;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace Modelbouwer.Models;
 
 public class NavigationModel
 {
 	public ObservableCollection<NavigationModel>? SubItems { get; set; }
 	public ICommand? Command { get; set; }
 
-	private string navigationItem = "";
+	private string _navigationItem = "";
 	public string NavigationItem
 	{
-		get { return navigationItem; }
-		set { navigationItem = value; }
+		get => _navigationItem;
+		set => _navigationItem = value;
 	}
 
-	private object navigationIcon = "";
-	public object NavigationIcon
+	private Image? _navigationIcon;
+	public Image? NavigationIcon
 	{
-		get { return navigationIcon; }
-		set { navigationIcon = value; }
+		get => _navigationIcon;
+		set => _navigationIcon = value;
 	}
 
-	private object navigationTooltip = "";
-	public object NavigationTooltip
+	private string _navigationTooltip = "";
+	public string NavigationTooltip
 	{
-		get { return navigationTooltip; }
-		set { navigationTooltip = value; }
+		get => _navigationTooltip;
+		set => _navigationTooltip = value;
 	}
 }

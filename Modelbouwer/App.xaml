@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Modelbouwer"
-    StartupUri="MainWindow.xaml">
+    xmlns:converters="clr-namespace:Modelbouwer.Converters">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,16 +17,18 @@
                 <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/GeneralStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Button.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />/
+                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" /> /
                 <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ToolbarStyles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Toolbar.xaml" />
-                
-                <ResourceDictionary Source="Resources/Theme/DefaultTheme.xaml" />
 
+                <ResourceDictionary Source="Resources/Theme/DefaultTheme.xaml" />
+                <ResourceDictionary Source="Resources/Theme/DefaultColors.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" IsInverted="True" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--#region Base Colors-->
+	<SolidColorBrush x:Key="WarningBackgroundColor" Color="#FFFFCC00" />
+	<SolidColorBrush x:Key="WarningBorderColor" Color="Black" />
+	<SolidColorBrush x:Key="HamburgerBrushColor" Color="#FF2F37AF" />
+	<SolidColorBrush x:Key="MailBlue" Color="#FF293475" />
+	<SolidColorBrush x:Key="White" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="Black" Color="Black" />
+
+	<Color x:Key="Default.Box.Border">#FFABADB3</Color>
+	<Color x:Key="Default.Box.Background">Transparent</Color>
+	<!--#endregion-->
+
+	<!--#region OptionMark Colors-->
+	<SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6" />
+	<SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC" />
+	<SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070" />
+	<SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF" />
+	<SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF" />
+	<SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121" />
+	<SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF" />
+	<SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD" />
+	<SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121" />
+	<SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070" />
+	<SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121" />
+	<!--#endregion OptionMark Colors-->
+
+	<!--#region Textbox Colors-->
+	<SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5" />
+	<SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA" />
+	<SolidColorBrush x:Key="TextBox.Static.Border" Color="{DynamicResource Default.Box.Border}" />
+	<!--#endregion-->
+
+	<!--#region ComboBox Colorss-->
+	<SolidColorBrush x:Key="ComboBox.Focus.Border" Color="#FF569DE5" />
+	<SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF7EB4EA" />
+	<SolidColorBrush x:Key="ComboBox.Border" Color="{DynamicResource Default.Box.Border}" />
+	<SolidColorBrush x:Key="ComboBox.Background" Color="{DynamicResource Default.Box.Background}" />
+	<!--#endregion-->
+
+	<!--#region DatePicker colors-->
+	<SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF" />
+	<!--#endregion-->
+
+	<!--#region Primary colors-->
+	<SolidColorBrush x:Key="PrimaryBlueColor" Color="#263FAA" />
+	<SolidColorBrush x:Key="PrimaryGrayColor" Color="#64677A" />
+	<!--#endregion-->
+
+	<!--#region  Secondary colors-->
+	<SolidColorBrush x:Key="SecondaryBlueColor" Color="#004BFF" />
+	<SolidColorBrush x:Key="SecondaryGrayColor" Color="#9296A5" />
+	<!--#endregion-->
+
+	<!--#region Tertiary colors-->
+	<SolidColorBrush x:Key="TertiaryBlueColor" Color="#496FFF" />
+	<SolidColorBrush x:Key="TertiaryGrayColor" Color="#CECECE" />
+	<!--#endregion-->
+
+	<!--#region Text colors-->
+	<SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF" />
+	<SolidColorBrush x:Key="PrimaryCheckedColor" Color="Black" />
+	<SolidColorBrush x:Key="PrimaryUnCheckedColor" Color="#9296A5" />
+	<!--#endregion-->
+
+	<!--#region Background colors-->
+	<SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#FFEEEEEE" />
+	<!--#endregion-->
+    
+    <!--#region Toolbar colors -->
+    <SolidColorBrush x:Key="ToolbarBackgroundBrush" Color="{DynamicResource Default.Box.Background}"/>
+    <SolidColorBrush x:Key="ToolbarBorderBrush" Color="{DynamicResource Default.Box.Border}"/>
+    <!--#endregion-->
+</ResourceDictionary>

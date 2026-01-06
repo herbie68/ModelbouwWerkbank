@@ -34,6 +34,7 @@ public class DBNames
 	public static readonly string SqlSelect = "SELECT ";
 	public static readonly string SqlSelectAll = "SELECT *";
 	public static readonly string SqlSelectDistinct = "SELECT DISTINCT ";
+	public static readonly string SqlSelectLastId = "SELECT LAST_INSERT_ID();";
 	public static readonly string SqlSet = " SET ";
 	public static readonly string SqlSum = " SUM( ";
 	public static readonly string SqlSubString = " SUBSTRING( ";

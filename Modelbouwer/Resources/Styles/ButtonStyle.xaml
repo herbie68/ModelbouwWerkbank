@@ -75,7 +75,7 @@
                         CornerRadius="4"
                         >
                         <Grid>
-                            <!--  Define two columns 1 for the text and one for the downarrow  -->
+                            <!--  Define two columns 1 for the text and one for the image  -->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="25" />
@@ -91,8 +91,8 @@
 
                             <Image
                                 Grid.Column="1"
-                                Width="18"
-                                Height="18" Margin="0,0,3,0"
+                                Width="16"
+                                Height="16" Margin="0,0,3,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Source="{StaticResource clear}"

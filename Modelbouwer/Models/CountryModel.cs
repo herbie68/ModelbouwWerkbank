@@ -1,6 +1,6 @@
 ﻿namespace Modelbouwer.Models;
 
-public class CountryModel
+public class CountryModel : ObservableObject
 {
 	public int CountryCurrencyId { get; set; }
 	public int CountryId { get; set; }
@@ -8,7 +8,20 @@ public class CountryModel
 	public string? CountryCurrencySymbol { get; set; }
 	public string? CountryName { get; set; }
 
-	public CurrencyModel? DefaultCurrency { get; set; }
+	private CurrencyModel? _defaultCurrency;
+
+	public CurrencyModel? DefaultCurrency
+	{
+		get => _defaultCurrency;
+		set
+		{
+			if ( SetProperty( ref _defaultCurrency, value ) )
+			{
+				CountryCurrencyId = value?.CurrencyId ?? 0;
+				CountryCurrencySymbol = value?.CurrencySymbol;
+			}
+		}
+	}
 
 	/// <summary>
 	/// Gives the mapping between CSV column headers and model property names, for 3 languages Dutch, English, German.

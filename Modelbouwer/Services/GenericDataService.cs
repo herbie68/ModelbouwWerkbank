@@ -1,4 +1,6 @@
-﻿using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+﻿using System.Data.Common;
+
+using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
 
 namespace Modelbouwer.Services;
 
