@@ -86,19 +86,51 @@ public partial class CountryView : UserControl
 		}
 	}
 
-	private async void ButtonSave( object sender, RoutedEventArgs e )
-	{
-		if ( DataContext is CountryPageViewModel vm )
-		{
-			await vm.SaveCountryCommand.ExecuteAsync( null );
-		}
-	}
+	//private async void ButtonSave( object sender, RoutedEventArgs e )
+	//{
+	//	if ( DataContext is CountryPageViewModel vm )
+	//	{
+	//		await vm.SaveCountryCommand.ExecuteAsync( null );
+	//	}
+	//}
 
-	private async void ButtonImport( object sender, RoutedEventArgs e )
+	private void ButtonImport( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is CountryPageViewModel vm )
+		var dialog = new Microsoft.Win32.OpenFileDialog
 		{
-			await vm.ImportCountriesCommand.ExecuteAsync( null );
+			Filter = $"{Lang.ImportCSVFilter}",
+		};
+
+		if ( dialog.ShowDialog() == true )
+		{
+			// Haal de lijst op uit de DataGrid
+			if ( SfDataGrid.ItemsSource is List<CountryModel> countries )
+			{
+				// Voer de import uit
+				var result = CsvImportService.ImportCsv(
+				filePath: dialog.FileName,
+				existingRecords: countries,
+				columnMappings: CountryModel.ColumnMappings, // mapping van UI naar property
+                uniqueProperty: nameof(CountryModel.CountryName) // unieke kolom
+            );
+
+				MessageBox.Show(
+					$"{Lang.ImportMessagboxCompletedRead}: {result.TotalRows}\n" +
+					$"{Lang.ImportMessagboxCompletedImported}: {result.Imported}\n" +
+					$"{Lang.ImportMessagboxCompletedSkipped}: {result.Skipped}\n" +
+					$"{Lang.ImportMessagboxCompletedModified}: {result.Updated}",
+					$"{Lang.ImportMessagboxCompletedTitle}",
+					MessageBoxButton.OK,
+					MessageBoxImage.Information
+				);
+
+				// Forceer datagrid refresh
+				SfDataGrid.View.Refresh();
+			}
+			else
+			{
+				MessageBox.Show( "De ItemsSource van de DataGrid is geen List<CountryModel>.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error );
+			}
 		}
 	}
 
@@ -132,4 +164,5 @@ public partial class CountryView : UserControl
 			$"{Lang.ExportCountriesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx",
 			columnHeaders );
 	}
+
 }

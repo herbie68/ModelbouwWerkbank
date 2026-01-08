@@ -21,7 +21,7 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="35" />
         </Grid.RowDefinitions>
 
         <!--#region Page header-->
@@ -162,7 +162,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="255" />
+                    <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
@@ -173,12 +173,7 @@
                     Margin="5"
                     Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}" 
                     TextWrapping="Wrap"/>
-                <TextBlock 
-                    Text="{Binding ImportStatus}" 
-                    Foreground="Gray"
-                    FontStyle="Italic"
-                    Margin="5"
-                    TextWrapping="Wrap"/>
+
                 <!--#region Toolbar-->
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                     <Button
@@ -190,9 +185,8 @@
                     
                     <Button 
                         Style="{StaticResource ActionBarButtonStyle}"
-                        Click="ButtonDelete"
-                        IsEnabled="{Binding CanDeleteCountry}"
-                        ToolTip="{Binding DeleteDisabledReason}">
+                        Command="{Binding DeleteCountryCommand}"
+                        ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
                         <Image Style="{DynamicResource ToolBarDeleteIcon}" />
                     </Button>
                     
@@ -239,7 +233,7 @@
                     <Run Text=": " />
                     <Run
                         FontSize="16"
-                        Text="{Binding VisibleCountryCount, StringFormat={}{0:N0}}"
+                        Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
                         FontStyle="Italic" />
                     <Run Text=" " />
                     <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
@@ -368,11 +362,9 @@
         <!--#endregion-->
 
         <!--#region Footer-->
-        <Border Grid.Row="5" BorderBrush="{DynamicResource DefaultBorderForeground}" Background="{DynamicResource DefaultBorderBackground}" BorderThickness="1" CornerRadius="5">
-            <Grid>
-                <!-- If needed a status line can be implemented here-->
-            </Grid>
-        </Border>
+        <!--<Border Grid.Row="5" BorderBrush="{DynamicResource DefaultBorderForeground}" Background="{DynamicResource DefaultBorderBackground}" BorderThickness="1" CornerRadius="5">
+            --><!-- If needed a status line can be implemented here--><!--
+        </Border>-->
         <!--#endregion-->
     </Grid>
 </UserControl>

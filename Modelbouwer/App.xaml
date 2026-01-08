@@ -17,8 +17,8 @@
                 <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/GeneralStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />/
-                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" /> /
+                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
