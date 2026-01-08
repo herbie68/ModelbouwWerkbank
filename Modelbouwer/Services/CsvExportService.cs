@@ -18,16 +18,16 @@ namespace Modelbouwer.Services
 		public bool IncludeHeaders { get; set; } = true;
 
 		// Language provider
-		private readonly ILanguageProvider _languageProvider;
+		private readonly ILanguageProvider? _languageProvider;
 
-		public CsvExportService( ILanguageProvider languageProvider = null )
+		public CsvExportService( ILanguageProvider? languageProvider = null )
 		{
 			_languageProvider = languageProvider;
 		}
 
 		public async Task ExportToCsvAsync<T>( SfDataGrid dataGrid, string defaultFileName,
-			Dictionary<string, string> columnHeaderOverrides = null,
-			Func<T,sfGridColumn, string> customValueFormatter = null )
+			Dictionary<string, string>? columnHeaderOverrides = null,
+			Func<T,sfGridColumn, string>? customValueFormatter = null )	
 		{
 			var dialog = new SaveFileDialog
 			{
@@ -41,41 +41,31 @@ namespace Modelbouwer.Services
 
 			try
 			{
-				Debug.WriteLine( "Starting CSV export process..." );
-
-				// Alle UI operaties in één Dispatcher.Invoke
-				ExportData<T> exportData = null;
+				ExportData<T>? exportData = null;
 				await dataGrid.Dispatcher.InvokeAsync( () =>
 				{
-					Debug.WriteLine( "Preparing export data in UI thread..." );
 					exportData = PrepareExportData<T>( dataGrid, columnHeaderOverrides );
 				} );
 
-				Debug.WriteLine( $"Export data prepared: {exportData?.Items?.Count ?? 0} items" );
+				if ( exportData == null ) return;
 
-				// CSV genereren en opslaan in background thread
 				await Task.Run( () =>
 				{
-					Debug.WriteLine( "Generating CSV in background thread..." );
 					var csvContent = GenerateCsvContent<T>(exportData, customValueFormatter);
 					File.WriteAllText( dialog.FileName, csvContent, Encoding );
-					Debug.WriteLine( $"CSV saved to: {dialog.FileName}" );
 				} );
 
-				Debug.WriteLine( "Showing success message..." );
 				ShowSuccessMessage( dialog.FileName, exportData.Items.Count );
-				Debug.WriteLine( "CSV export completed successfully." );
 			}
 			catch ( Exception ex )
 			{
-				Debug.WriteLine( $"CSV export failed with error: {ex}" );
 				ShowErrorMessage( ex, "CSV" );
 			}
 		}
 
 		public async Task ExportToExcelAsync<T>( SfDataGrid dataGrid, string defaultFileName,
-			Dictionary<string, string> columnHeaderOverrides = null,
-			Func<T,sfGridColumn, string> customValueFormatter = null )
+			Dictionary<string, string>? columnHeaderOverrides = null,
+			Func<T,sfGridColumn, string>? customValueFormatter = null )
 		{
 			// Doe niets voor Excel in CSV service
 			await Task.CompletedTask;
@@ -86,7 +76,7 @@ namespace Modelbouwer.Services
 		}
 
 		private ExportData<T> PrepareExportData<T>( SfDataGrid dataGrid,
-			Dictionary<string, string> columnHeaderOverrides )
+			Dictionary<string, string>? columnHeaderOverrides )
 		{
 			var exportData = new ExportData<T>();
 
@@ -151,7 +141,7 @@ namespace Modelbouwer.Services
 		}
 
 		private string GenerateCsvContent<T>( ExportData<T> exportData,
-			Func<T,sfGridColumn, string> customValueFormatter )
+			Func<T,sfGridColumn, string>? customValueFormatter )
 		{
 			if ( exportData == null || exportData.Items == null || exportData.ColumnInfos == null )
 			{
@@ -225,7 +215,7 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private string GetColumnHeader(sfGridColumn column, Dictionary<string, string> columnHeaderOverrides )
+		private string GetColumnHeader(sfGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
 		{
 			var mappingName = column.MappingName;
 
@@ -245,7 +235,7 @@ namespace Modelbouwer.Services
 			return mappingName ?? string.Empty;
 		}
 
-		private string FormatValueToString( object value )
+		private string FormatValueToString( object? value )
 		{
 			if ( value == null )
 				return string.Empty;
@@ -265,8 +255,8 @@ namespace Modelbouwer.Services
 			if ( value is decimal decimalValue )
 				return decimalValue.ToString( System.Globalization.CultureInfo.InvariantCulture );
 
-			if ( value is double || value is float || value is int || value is long )
-				return value.ToString();
+			if ( value is IFormattable formattable )
+				return formattable.ToString( null, CultureInfo.InvariantCulture );
 
 			return value.ToString() ?? string.Empty;
 		}

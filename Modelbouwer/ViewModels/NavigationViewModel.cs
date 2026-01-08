@@ -308,7 +308,9 @@ public class NavigationViewModel : INotifyPropertyChanged
 	{
 		private readonly Action _execute;
 
+		#pragma warning disable CS0067
 		public event EventHandler? CanExecuteChanged;
+		#pragma warning restore CS0067
 
 		public SimpleCommand( Action execute )
 		{

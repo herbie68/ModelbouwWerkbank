@@ -70,30 +70,6 @@ public partial class CountryView : UserControl
 		);
 	}
 
-	private void ButtonNew( object sender, RoutedEventArgs e )
-	{
-		if ( DataContext is CountryPageViewModel vm )
-		{
-			vm.AddCountryCommand.Execute( null );
-		}
-	}
-
-	private void ButtonDelete( object sender, RoutedEventArgs e )
-	{
-		if ( DataContext is CountryPageViewModel vm )
-		{
-			vm.DeleteCountryCommand.Execute( null );
-		}
-	}
-
-	//private async void ButtonSave( object sender, RoutedEventArgs e )
-	//{
-	//	if ( DataContext is CountryPageViewModel vm )
-	//	{
-	//		await vm.SaveCountryCommand.ExecuteAsync( null );
-	//	}
-	//}
-
 	private void ButtonImport( object sender, RoutedEventArgs e )
 	{
 		var dialog = new Microsoft.Win32.OpenFileDialog

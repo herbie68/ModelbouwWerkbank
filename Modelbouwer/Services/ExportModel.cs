@@ -15,10 +15,10 @@ public class ExportData<T>
 
 public class ColumnInfo
 {
-	public string MappingName { get; set; }
-	public string HeaderText { get; set; }
-	public GridColumn Column { get; set; }
-	public string ColumnType { get; set; }
+	public required string MappingName { get; set; }
+	public required string HeaderText { get; set; }
+	public required GridColumn Column { get; set; }
+	public required string ColumnType { get; set; }
 	public double Width { get; set; }
 	public TextAlignment TextAlignment { get; set; } = TextAlignment.Left;
 }

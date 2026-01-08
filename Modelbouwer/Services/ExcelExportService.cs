@@ -20,24 +20,24 @@ namespace Modelbouwer.Services
 		public string WorksheetName { get; set; } = "Data";
 
 		// Language provider
-		private readonly ILanguageProvider _languageProvider;
+		private readonly ILanguageProvider? _languageProvider;
 
-		public ExcelExportService( ILanguageProvider languageProvider = null )
+		public ExcelExportService( ILanguageProvider? languageProvider = null )
 		{
 			_languageProvider = languageProvider;
 		}
 
-		public async Task ExportToCsvAsync<T>( SfDataGrid dataGrid, string defaultFileName,
-			Dictionary<string, string> columnHeaderOverrides = null,
-			Func<T, sfGridColumn, string> customValueFormatter = null )
+		public async Task ExportToCsvAsync<T>( SfDataGrid? dataGrid, string? defaultFileName,
+			Dictionary<string, string>? columnHeaderOverrides = null,
+			Func<T, sfGridColumn, string>? customValueFormatter = null )
 		{
 			// Doe niets voor CSV in Excel service
 			await Task.CompletedTask;
 		}
 
 		public async Task ExportToExcelAsync<T>( SfDataGrid dataGrid, string defaultFileName,
-			Dictionary<string, string> columnHeaderOverrides = null,
-			Func<T, sfGridColumn, string> customValueFormatter = null )
+			Dictionary<string, string>? columnHeaderOverrides = null,
+			Func<T, sfGridColumn, string>? customValueFormatter = null )
 		{
 			var dialog = new SaveFileDialog
 			{
@@ -51,39 +51,29 @@ namespace Modelbouwer.Services
 
 			try
 			{
-				Debug.WriteLine( "Starting Excel export process..." );
-
-				// Alle UI operaties in één Dispatcher.Invoke
-				ExportData<T> exportData = null;
+				ExportData<T>? exportData = null;
 				await dataGrid.Dispatcher.InvokeAsync( () =>
 				{
-					Debug.WriteLine( "Preparing export data in UI thread..." );
 					exportData = PrepareExportData<T>( dataGrid, columnHeaderOverrides );
 				} );
 
-				Debug.WriteLine( $"Export data prepared: {exportData?.Items?.Count ?? 0} items" );
-
-				// Excel genereren en opslaan in background thread
+				if ( exportData == null ) return;
+				
 				await Task.Run( () =>
 				{
-					Debug.WriteLine( "Generating Excel in background thread..." );
 					GenerateExcelFile<T>( exportData, dialog.FileName, customValueFormatter );
-					Debug.WriteLine( $"Excel saved to: {dialog.FileName}" );
 				} );
 
-				Debug.WriteLine( "Showing success message..." );
 				ShowSuccessMessage( dialog.FileName, exportData.Items.Count );
-				Debug.WriteLine( "Excel export completed successfully." );
 			}
 			catch ( Exception ex )
 			{
-				Debug.WriteLine( $"Excel export failed with error: {ex}" );
 				ShowErrorMessage( ex, "Excel" );
 			}
 		}
 
 		private ExportData<T> PrepareExportData<T>( SfDataGrid dataGrid,
-			Dictionary<string, string> columnHeaderOverrides )
+			Dictionary<string, string>? columnHeaderOverrides )
 		{
 			var exportData = new ExportData<T>();
 
@@ -149,8 +139,8 @@ namespace Modelbouwer.Services
 			return exportData;
 		}
 
-		private void GenerateExcelFile<T>( ExportData<T> exportData, string filePath,
-			Func<T, sfGridColumn, string> customValueFormatter )
+		private void GenerateExcelFile<T>( ExportData<T> exportData, string? filePath,
+			Func<T, sfGridColumn, string>? customValueFormatter )
 		{
 			using ( var workbook = new XLWorkbook() )
 			{
@@ -246,7 +236,7 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private void SetCellValueWithFormatting( IXLCell cell, string stringValue, object item, string mappingName )
+		private void SetCellValueWithFormatting( IXLCell cell, string stringValue, object? item, string mappingName )
 		{
 			if ( item == null || string.IsNullOrEmpty( mappingName ) )
 			{
@@ -305,7 +295,7 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private bool IsNumericType( Type type )
+		private bool IsNumericType( Type? type )
 		{
 			return type == typeof( int ) || type == typeof( double ) || type == typeof( decimal ) ||
 				   type == typeof( long ) || type == typeof( float ) || type == typeof( short ) ||
@@ -313,7 +303,7 @@ namespace Modelbouwer.Services
 				   type == typeof( ushort ) || type == typeof( sbyte );
 		}
 
-		private string GetCellValueSafely<T>( T item, string mappingName )
+		private string GetCellValueSafely<T>( T? item, string? mappingName )
 		{
 			try
 			{
@@ -336,7 +326,7 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private string GetColumnHeader( sfGridColumn column, Dictionary<string, string> columnHeaderOverrides )
+		private string GetColumnHeader( sfGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
 		{
 			var mappingName = column.MappingName;
 
@@ -356,7 +346,7 @@ namespace Modelbouwer.Services
 			return mappingName ?? string.Empty;
 		}
 
-		private string FormatValueToString( object value )
+		private string FormatValueToString( object? value )
 		{
 			if ( value == null )
 				return string.Empty;
@@ -376,8 +366,8 @@ namespace Modelbouwer.Services
 			if ( value is decimal decimalValue )
 				return decimalValue.ToString( System.Globalization.CultureInfo.InvariantCulture );
 
-			if ( value is double || value is float || value is int || value is long )
-				return value.ToString();
+			if ( value is IFormattable formattable )
+				return formattable.ToString( null, CultureInfo.InvariantCulture );
 
 			return value.ToString() ?? string.Empty;
 		}
@@ -392,7 +382,7 @@ namespace Modelbouwer.Services
 			return _languageProvider?.GetTranslation( "ExportGeneralExcelFilter" ) ?? "Excel Files (*.xlsx)|*.xlsx";
 		}
 
-		private void ShowSuccessMessage( string filePath, int recordCount )
+		private void ShowSuccessMessage( string? filePath, int? recordCount )
 		{
 			try
 			{
@@ -421,7 +411,7 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private void ShowErrorMessage( Exception ex, string exportType )
+		private void ShowErrorMessage( Exception ex, string? exportType )
 		{
 			try
 			{

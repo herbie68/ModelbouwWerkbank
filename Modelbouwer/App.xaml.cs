@@ -61,7 +61,7 @@ public partial class App : Application
 		services.AddSingleton<IExportService, ExcelExportService>();
 		services.AddSingleton<CsvExportService>();
 		services.AddSingleton<ExcelExportService>();
-		services.AddSingleton<IExportService>(provider => provider.GetService<CsvExportService>() );
+		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
 	}

@@ -9287,6 +9287,33 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verwijder.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageButtonText {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weet je zeker dat je.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageQuestionPrefix {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to wilt verwijderen?.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageQuestionSuffix {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete lijst exporteren naar een CSV bestand.
         /// </summary>
         public static string toolbarButtonActionExportCSV {

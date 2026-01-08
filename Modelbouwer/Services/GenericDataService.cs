@@ -25,7 +25,7 @@ public class GenericDataService
 	#endregion
 
 	public async Task<List<T>> ExecuteQueryAsync<T>(
-        string query,
+        string? query,
     Func<DbDataReader, T> mapFunc,
     Dictionary<string, object>? parameters = null)
     {
@@ -55,7 +55,7 @@ public class GenericDataService
     }
 
     public async Task<int> ExecuteNonQueryAsync(
-    string query,
+    string? query,
     Dictionary<string, object>? parameters = null)
     {
         await using MySqlConnection connection = new(_connection.ConnectionString);
@@ -74,7 +74,7 @@ public class GenericDataService
         return await cmd.ExecuteNonQueryAsync();
     }
 
-    public async Task<T> ExecuteScalarAsync<T>(string query, Dictionary<string, object>? parameters = null)
+    public async Task<T> ExecuteScalarAsync<T>(string? query, Dictionary<string, object>? parameters = null)
     {
         await using MySqlConnection connection = new(_connection.ConnectionString);
         await connection.OpenAsync();
@@ -96,7 +96,7 @@ public class GenericDataService
             : default!;
     }
 
-    public T ExecuteScalarQuery<T>(string sql, Dictionary<string, object> parameters)
+	public T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters)
     {
         using var connection = new MySqlConnection(_connection.ConnectionString);
         using var command = new MySqlCommand(sql, connection);
@@ -110,10 +110,10 @@ public class GenericDataService
         object result = command.ExecuteScalar();
         connection.Close();
 
-        if (result == null || result == DBNull.Value)
-            return default;
+		if ( result == null || result == DBNull.Value )
+			return default;
 
-        return (T)Convert.ChangeType(result, typeof(T));
+		return ( T ) Convert.ChangeType( result, typeof( T ) );
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class GenericDataService
     /// Accepts parameters as Dictionary<string, object> for convenience.
     /// </summary>
     public async Task ExecuteReaderAsync(
-        string sql,
+        string? sql,
         Func<DbDataReader, Task> map)
     {
         // Redirect to the overload with parameters = null
@@ -130,9 +130,9 @@ public class GenericDataService
     }
 
     public async Task ExecuteReaderAsync(
-        string sql,
+        string? sql,
         Func<DbDataReader, Task> map,
-        Dictionary<string, object> parameters)
+        Dictionary<string, object>? parameters)
     {
         using var connection = new MySqlConnection(_connection.ConnectionString);
         await connection.OpenAsync();

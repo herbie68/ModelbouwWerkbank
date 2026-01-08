@@ -3256,4 +3256,13 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ExportValidationCountryNameExists" xml:space="preserve">
     <value>Use a different country name</value>
   </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionPrefix" xml:space="preserve">
+    <value>Are you sure you</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionSuffix" xml:space="preserve">
+    <value>want to delete?</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageButtonText" xml:space="preserve">
+    <value>Remove</value>
+  </data>
 </root>

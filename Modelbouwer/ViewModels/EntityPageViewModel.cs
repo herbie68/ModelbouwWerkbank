@@ -1,11 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.ObjectModel;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-using System.Collections.ObjectModel;
-
 using Modelbouwer.Interfaces;
-
-using RelayCommand = CommunityToolkit.Mvvm.Input.RelayCommand;
 
 namespace Modelbouwer.ViewModels;
 
@@ -18,44 +16,10 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		Validator = validator;
 	}
 
-	// Collections
-	public ObservableCollection<T> Items { get; } = [ ];
-
-	// State
-	[ObservableProperty] protected bool _isLoading;
-	[ObservableProperty] protected bool _isSaving;
-
-	[ObservableProperty] protected string _searchText = string.Empty;
-
-	[ObservableProperty] public int _visibleItemCount;
-
-	public int TotalItemCount => Items.Count;
-
-	// Grid / filtering
-	public Action? RefreshGridFilter { get; set; }
-
-	// Commands (EXACT hetzelfde patroon als nu)
-	public IRelayCommand AddCommand => _addCommand ??= new RelayCommand( Add );
-	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync );
-	public IAsyncRelayCommand ReloadCommand => _reloadCommand ??= new AsyncRelayCommand( ReloadAsync );
-	public IAsyncRelayCommand DeleteCommand => _deleteCommand ??= new AsyncRelayCommand( DeleteItemAsync );
-	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( ClearSearch );
-
-	private IRelayCommand? _addCommand;
-	private IRelayCommand? _clearSearchCommand;
-	private IAsyncRelayCommand? _deleteCommand;
-	private IAsyncRelayCommand? _saveCommand;
-	private IAsyncRelayCommand? _reloadCommand;
-
-	// Abstract hooks
-	protected abstract Task<List<T>> LoadItemsAsync();
-	protected abstract Task<int> InsertAsync( T item );
-	protected abstract Task UpdateAsync( T item );
-	protected abstract Task DeleteAsync( T item );
-	protected abstract int GetId( T item );
-	protected abstract void SetId( T item, int id );
-
-	protected abstract T CreateNewItem();
+	// -----------------------------
+	// Collections & selection
+	// -----------------------------
+	public ObservableCollection<T> Items { get; } = new();
 
 	private T? _selectedItem;
 	public T? SelectedItem
@@ -70,15 +34,53 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		}
 	}
 
-	protected virtual void OnSelectedItemChanged( T? value )
-	{
-	}
+	// -----------------------------
+	// State
+	// -----------------------------
+	[ObservableProperty] protected bool _isLoading;
+	[ObservableProperty] protected bool _isSaving;
+	[ObservableProperty] protected string _searchText = string.Empty;
+	[ObservableProperty] protected int _visibleItemCount;
 
-	// ---- default implementations ----
+	public int TotalItemCount => Items.Count;
 
+	// Grid filtering hook
+	public Action? RefreshGridFilter { get; set; }
+
+	// -----------------------------
+	// Commands
+	// -----------------------------
+	public IRelayCommand AddCommand => _addCommand ??= new RelayCommand( Add );
+	public IRelayCommand DeleteCommand => _deleteCommand ??= new RelayCommand( Delete );
+	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync );
+	public IAsyncRelayCommand ReloadCommand => _reloadCommand ??= new AsyncRelayCommand( ReloadAsync );
+	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
+
+	private IRelayCommand? _addCommand;
+	private IRelayCommand? _deleteCommand;
+	private IAsyncRelayCommand? _saveCommand;
+	private IAsyncRelayCommand? _reloadCommand;
+	private IRelayCommand? _clearSearchCommand;
+
+	// -----------------------------
+	// Abstract hooks for child
+	// -----------------------------
+	protected abstract Task<List<T>> LoadItemsAsync();
+	protected abstract Task<int> InsertAsync( T item );
+	protected abstract Task UpdateAsync( T item );
+	protected abstract Task DeleteAsync( T item );
+	protected abstract int GetId( T item );
+	protected abstract void SetId( T item, int id );
+	protected abstract T CreateNewItem();
+
+	protected virtual void OnSelectedItemChanged( T? value ) { }
+
+	// -----------------------------
+	// Default implementations
+	// -----------------------------
 	private void Add()
 	{
-		var existing = Items.FirstOrDefault( i => GetId( i ) == 0 );
+		var existing = Items.FirstOrDefault(i => GetId(i) == 0);
 		if ( existing != null )
 		{
 			SelectedItem = existing;
@@ -95,17 +97,16 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		if ( SelectedItem == null )
 			return;
 
-		var validation = await Validator.ValidateAsync( SelectedItem );
+		var validation = await Validator.ValidateAsync(SelectedItem);
 		if ( !validation.IsValid )
-			throw new InvalidOperationException(
-				string.Join( "\n", validation.Errors ) );
+			throw new InvalidOperationException( string.Join( "\n", validation.Errors ) );
 
 		IsSaving = true;
 		try
 		{
 			if ( GetId( SelectedItem ) == 0 )
 			{
-				var id = await InsertAsync( SelectedItem );
+				var id = await InsertAsync(SelectedItem);
 				SetId( SelectedItem, id );
 			}
 			else
@@ -142,22 +143,21 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		}
 	}
 
-	private async Task DeleteItemAsync()
+	private async void Delete()
 	{
-		if ( SelectedItem != null )
-			await DeleteAsync( SelectedItem );
+		if ( SelectedItem == null )
+			return;
+
+		await DeleteAsync( SelectedItem );
+
+		await ReloadAsync();
 	}
+
 
 	partial void OnSearchTextChanged( string value )
 	{
 		RefreshGridFilter?.Invoke();
-		OnPropertyChanged( nameof( VisibleItemCount ) );
-	}
-
-	private void ClearSearch()
-	{
-		SearchText = string.Empty;
-		RefreshGridFilter?.Invoke();
+		OnPropertyChanged( nameof( _visibleItemCount ) );
 	}
 
 	protected virtual void OnItemsLoaded()

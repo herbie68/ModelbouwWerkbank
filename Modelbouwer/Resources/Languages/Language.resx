@@ -3236,4 +3236,13 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ExportValidationCountryNameExists" xml:space="preserve">
     <value>Gebruik een andere land naam</value>
   </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionPrefix" xml:space="preserve">
+    <value>Weet je zeker dat je</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionSuffix" xml:space="preserve">
+    <value>wilt verwijderen?</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageButtonText" xml:space="preserve">
+    <value>Verwijder</value>
+  </data>
 </root>

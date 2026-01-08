@@ -3256,4 +3256,13 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ExportValidationCountryNameExists" xml:space="preserve">
     <value>Verwenden Sie einen anderen Ländernamen</value>
   </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionPrefix" xml:space="preserve">
+    <value>Bist du dir sicher du möchtest</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionSuffix" xml:space="preserve">
+    <value>löschen?</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageButtonText" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
 </root>
