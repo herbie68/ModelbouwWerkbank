@@ -1,12 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 using Modelbouwer.Interfaces;
-using Modelbouwer.Models;
 using Modelbouwer.Services;
 
 namespace Modelbouwer.ViewModels;

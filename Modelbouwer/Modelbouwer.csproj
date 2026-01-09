@@ -13,8 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <AssemblyVersion>26.1.105.0</AssemblyVersion>
-    <FileVersion>26.1.105.0</FileVersion>
+    <AssemblyVersion>26.1.134.0</AssemblyVersion>
+    <FileVersion>26.1.134.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,6 +40,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
     <PackageReference Include="Syncfusion.XlsIO.Wpf" Version="32.1.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Cursors\exporting.ani" />
   </ItemGroup>
 
   <ItemGroup>

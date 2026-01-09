@@ -25,41 +25,35 @@ namespace Modelbouwer.Services
 			_languageProvider = languageProvider;
 		}
 
-		public async Task ExportToCsvAsync<T>( SfDataGrid dataGrid, string defaultFileName,
+		public async Task ExportToCsvAsync<T>(
+			SfDataGrid dataGrid,
+			string filePath,
 			Dictionary<string, string>? columnHeaderOverrides = null,
-			Func<T,sfGridColumn, string>? customValueFormatter = null )	
+			Func<T, GridColumn, string>? customValueFormatter = null )
 		{
-			var dialog = new SaveFileDialog
-			{
-				Filter = GetFilterString(),
-				FileName = defaultFileName,
-				DefaultExt = ".csv"
-			};
-
-			if ( dialog.ShowDialog() != true )
-				return;
-
 			try
 			{
 				ExportData<T>? exportData = null;
-				await dataGrid.Dispatcher.InvokeAsync( () =>
+
+				await dataGrid.Dispatcher.InvokeAsync(() =>
 				{
-					exportData = PrepareExportData<T>( dataGrid, columnHeaderOverrides );
-				} );
+					exportData = PrepareExportData<T>(dataGrid, columnHeaderOverrides);
+				});
 
-				if ( exportData == null ) return;
+				if (exportData == null)
+					return;
 
-				await Task.Run( () =>
+				await Task.Run(() =>
 				{
 					var csvContent = GenerateCsvContent<T>(exportData, customValueFormatter);
-					File.WriteAllText( dialog.FileName, csvContent, Encoding );
-				} );
+					File.WriteAllText(filePath, csvContent, Encoding);
+				});
 
-				ShowSuccessMessage( dialog.FileName, exportData.Items.Count );
+				ShowSuccessMessage(filePath, exportData.Items.Count);
 			}
-			catch ( Exception ex )
+			catch (Exception ex)
 			{
-				ShowErrorMessage( ex, "CSV" );
+				ShowErrorMessage(ex, "CSV");
 			}
 		}
 

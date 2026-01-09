@@ -97,6 +97,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 	{
 		NavigationItems.Add( new NavigationModel
 		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
+			NavigationIcon = CreateNavigationImage( "Currencies" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Currency_Tooltip}",
+			Command = new SimpleCommand( () => LoadCurrencyView() )
+		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Country_Label}",
 			NavigationIcon = CreateNavigationImage( "Countries" ),
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Country_Tooltip}",
@@ -143,6 +151,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		catch ( Exception ex )
 		{
 			Debug.WriteLine( $"Error loading CountryView: {ex.Message}" );
+		}
+	}
+
+	private void LoadCurrencyView()
+	{
+		try
+		{
+			var currencyView = _serviceProvider.GetRequiredService<CurrencyView>();
+			CurrentView = currencyView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading CurrencyView: {ex.Message}" );
 		}
 	}
 
@@ -253,10 +274,18 @@ public class NavigationViewModel : INotifyPropertyChanged
 		#region Subitems
 		MetadataSubItems.Add( new NavigationModel
 		{
+			NavigationItem = "Voorbeeld",
+			NavigationIcon = CreateNavigationImage( "Resources" ),
+			NavigationTooltip = "Een voorbeeld van een menu met sub menu's",
+			SubItems = MetadataCurrenciesSubItems
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
 			NavigationItem = Language.navigation_Resources_SubItem_Currency_Label,
 			NavigationIcon = CreateNavigationImage( "Currency" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_Tooltip,
-			SubItems = MetadataCurrenciesSubItems
+			Command = new SimpleCommand( () => LoadCurrencyView() )
 		} );
 
 		MetadataSubItems.Add( new NavigationModel

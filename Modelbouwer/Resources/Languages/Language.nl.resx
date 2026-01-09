@@ -268,10 +268,10 @@
     <value>Valuta omschrijving</value>
   </data>
   <data name="metadataCurrencyFieldCurrencySymbol" xml:space="preserve">
-    <value>Valuta symbool</value>
+    <value>Valutalteken</value>
   </data>
   <data name="metadataCurrencyFieldCurrencyRate" xml:space="preserve">
-    <value>Omrekenkoers</value>
+    <value>Wisselkoers</value>
   </data>
   <data name="metadataCurrencyFieldCurrency" xml:space="preserve">
     <value>Valuta</value>
@@ -1769,10 +1769,10 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Volledige naam van de valuta</value>
   </data>
   <data name="metadataCurrencyFieldCurrencyRateTag" xml:space="preserve">
-    <value>Omrekenkoers</value>
+    <value>Wisselkoers</value>
   </data>
   <data name="metadataCurrencyFieldCurrencyRateTooltip" xml:space="preserve">
-    <value>De omrekenkoers voor de valuta naar €</value>
+    <value>De wisselkoers voor de valuta naar €</value>
   </data>
   <data name="metadataCurrencyFieldCurrencyRateShortTag" xml:space="preserve">
     <value>Koers</value>
@@ -1781,10 +1781,10 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Koers</value>
   </data>
   <data name="metadataCurrencyFieldCurrencySymbolTag" xml:space="preserve">
-    <value>Valuta symbool</value>
+    <value>Valutalteken</value>
   </data>
   <data name="metadataCurrencyFieldCurrencySymbolTooltip" xml:space="preserve">
-    <value>Valuta symbool</value>
+    <value>Valutalteken</value>
   </data>
   <data name="metadataProductTabGeneralTabItemProductFieldBrandTag" xml:space="preserve">
     <value>Merk</value>
@@ -3264,5 +3264,86 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="toolbarButtonActionDeleteMessageQuestionPrefix" xml:space="preserve">
     <value>Weet je zeker dat je</value>
+  </data>
+  <data name="ExportValidationCurrencyNameExists" xml:space="preserve">
+    <value>Valutanaam bestaat al, gebruik een andere naam</value>
+  </data>
+  <data name="ExportValidationCurrencyCodeExists" xml:space="preserve">
+    <value>Gebruik een andere valutacode, deze bestaat al</value>
+  </data>
+  <data name="ExportCurrenciesHeaderCode" xml:space="preserve">
+    <value>Valutacode</value>
+  </data>
+  <data name="ExportCurrenciesHeaderName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="ExportCurrenciesHeaderSymbol" xml:space="preserve">
+    <value>Valutateken</value>
+  </data>
+  <data name="ExportCurrenciesHeaderConversionRate" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderCode.Label" xml:space="preserve">
+    <value>Valuta code</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderSymbol.Label" xml:space="preserve">
+    <value>Valutalteken</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderCurrencyId.Label" xml:space="preserve">
+    <value>Valuta ID</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderId.Label" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderName.Label" xml:space="preserve">
+    <value>Valuta naam</value>
+  </data>
+  <data name="metadataCurrencyHeaderSubtitle" xml:space="preserve">
+    <value>Valuta beheren</value>
+  </data>
+  <data name="metadataCurrencyHeaderTitel" xml:space="preserve">
+    <value>Beheer van de valuta tabel</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCode" xml:space="preserve">
+    <value>Valutacode</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCodeTag" xml:space="preserve">
+    <value>Valutacode</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCodeTooltip" xml:space="preserve">
+    <value>Een code waaraan de valuta eenvoudig te herkennen is</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbol" xml:space="preserve">
+    <value>Valutalteken</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbolTag" xml:space="preserve">
+    <value>Valutalteken</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbolTooltip" xml:space="preserve">
+    <value>Het valutateken</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldName" xml:space="preserve">
+    <value>Valuta naam</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldNameTag" xml:space="preserve">
+    <value>Valuta naam</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geef de naam van de valuta</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRate" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRateTag" xml:space="preserve">
+    <value>Koers</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRateTooltip" xml:space="preserve">
+    <value>De wisselkoers naar Euro</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderRate.Label" xml:space="preserve">
+    <value>Wisselkoers</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCurrency" xml:space="preserve">
+    <value>Aantal getoonde valuta</value>
   </data>
 </root>

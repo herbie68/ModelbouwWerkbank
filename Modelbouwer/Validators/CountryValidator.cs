@@ -11,10 +11,7 @@ public class CountryValidator : IEntityValidator<CountryModel>
 {
 	private readonly ICountryService _countryService;
 
-	public CountryValidator( ICountryService countryService )
-	{
-		_countryService = countryService;
-	}
+	public CountryValidator( ICountryService countryService ) => _countryService = countryService;
 
 	public async Task<ValidationResult> ValidateAsync( CountryModel country )
 	{
@@ -22,19 +19,19 @@ public class CountryValidator : IEntityValidator<CountryModel>
 
 		// Code
 		if ( string.IsNullOrWhiteSpace( country.CountryCode ) )
+		{
 			result.Errors.Add( Lang.ExportValidationMessageCodeRequirered );
+		}
 		else if ( country.CountryCode.Length > 10 )
+		{
 			result.Errors.Add( Lang.ExportValidationMessageCodeLength );
+		}
 
 		// Name
 		if ( string.IsNullOrWhiteSpace( country.CountryName ) )
 			result.Errors.Add( Lang.ExportValidationMessageNameRequirered );
 		else if ( country.CountryName.Length > 100 )
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
-
-		// Currency
-		if ( country.CountryCurrencyId <= 0 )
-			result.Errors.Add( Lang.ExportValidationMessageCurrencyRequired );
 
 		// ❗ Duplicate checks (alleen bij nieuw)
 		if ( country.CountryId == 0 )

@@ -259,6 +259,42 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valutacode.
+        /// </summary>
+        public static string ExportCurrenciesHeaderCode {
+            get {
+                return ResourceManager.GetString("ExportCurrenciesHeaderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wisselkoers.
+        /// </summary>
+        public static string ExportCurrenciesHeaderConversionRate {
+            get {
+                return ResourceManager.GetString("ExportCurrenciesHeaderConversionRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string ExportCurrenciesHeaderName {
+            get {
+                return ResourceManager.GetString("ExportCurrenciesHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutateken.
+        /// </summary>
+        public static string ExportCurrenciesHeaderSymbol {
+            get {
+                return ResourceManager.GetString("ExportCurrenciesHeaderSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporteer valuta naar een CSV bestand.
         /// </summary>
         public static string ExportCurrenciesSubTitle {
@@ -1002,6 +1038,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportValidationCountrySuccessUpdated {
             get {
                 return ResourceManager.GetString("ExportValidationCountrySuccessUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere valutacode, deze bestaat al.
+        /// </summary>
+        public static string ExportValidationCurrencyCodeExists {
+            get {
+                return ResourceManager.GetString("ExportValidationCurrencyCodeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutanaam bestaat al, gebruik een andere naam.
+        /// </summary>
+        public static string ExportValidationCurrencyNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationCurrencyNameExists", resourceCulture);
             }
         }
         
@@ -4291,6 +4345,168 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valuta code.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderCode_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderCode.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta ID.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderCurrencyId_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderCurrencyId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderId_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta naam.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderName_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wisselkoers.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderRate_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderRate.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutalteken.
+        /// </summary>
+        public static string metadataCurrencyDatagridHeaderSymbol_Label {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDatagridHeaderSymbol.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutacode.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldCode {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutacode.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldCodeTag {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldCodeTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Een code waaraan de valuta eenvoudig te herkennen is.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldCodeTooltip {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldCodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta naam.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta naam.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geef de naam van de valuta.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wisselkoers.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldRate {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koers.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldRateTag {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldRateTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De wisselkoers naar Euro.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldRateTooltip {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldRateTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutalteken.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldSymbol {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valutalteken.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldSymbolTag {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldSymbolTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het valutateken.
+        /// </summary>
+        public static string metadataCurrencyEntryFieldSymbolTooltip {
+            get {
+                return ResourceManager.GetString("metadataCurrencyEntryFieldSymbolTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valuta.
         /// </summary>
         public static string metadataCurrencyFieldCurrency {
@@ -4354,7 +4570,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Omrekenkoers.
+        ///   Looks up a localized string similar to Wisselkoers.
         /// </summary>
         public static string metadataCurrencyFieldCurrencyRate {
             get {
@@ -4390,7 +4606,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Omrekenkoers.
+        ///   Looks up a localized string similar to Wisselkoers.
         /// </summary>
         public static string metadataCurrencyFieldCurrencyRateTag {
             get {
@@ -4399,7 +4615,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to De omrekenkoers voor de valuta naar €.
+        ///   Looks up a localized string similar to De wisselkoers voor de valuta naar €.
         /// </summary>
         public static string metadataCurrencyFieldCurrencyRateTooltip {
             get {
@@ -4408,7 +4624,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valuta symbool.
+        ///   Looks up a localized string similar to Valutalteken.
         /// </summary>
         public static string metadataCurrencyFieldCurrencySymbol {
             get {
@@ -4417,7 +4633,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valuta symbool.
+        ///   Looks up a localized string similar to Valutalteken.
         /// </summary>
         public static string metadataCurrencyFieldCurrencySymbolTag {
             get {
@@ -4426,7 +4642,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valuta symbool.
+        ///   Looks up a localized string similar to Valutalteken.
         /// </summary>
         public static string metadataCurrencyFieldCurrencySymbolTooltip {
             get {
@@ -4449,6 +4665,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataCurrencyFieldCurrencyTooltip {
             get {
                 return ResourceManager.GetString("metadataCurrencyFieldCurrencyTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta beheren.
+        /// </summary>
+        public static string metadataCurrencyHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataCurrencyHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de valuta tabel.
+        /// </summary>
+        public static string metadataCurrencyHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataCurrencyHeaderTitel", resourceCulture);
             }
         }
         
@@ -9490,6 +9724,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelCountry {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde valuta.
+        /// </summary>
+        public static string toolbarVisibleRowLabelCurrency {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelCurrency", resourceCulture);
             }
         }
         

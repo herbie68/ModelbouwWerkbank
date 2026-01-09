@@ -35,20 +35,12 @@ namespace Modelbouwer.Services
 			await Task.CompletedTask;
 		}
 
-		public async Task ExportToExcelAsync<T>( SfDataGrid dataGrid, string defaultFileName,
+		public async Task ExportToExcelAsync<T>( 
+			SfDataGrid dataGrid, 
+			string filePath,
 			Dictionary<string, string>? columnHeaderOverrides = null,
 			Func<T, sfGridColumn, string>? customValueFormatter = null )
 		{
-			var dialog = new SaveFileDialog
-			{
-				Filter = GetFilterString(),
-				FileName = defaultFileName,
-				DefaultExt = ".xlsx"
-			};
-
-			if ( dialog.ShowDialog() != true )
-				return;
-
 			try
 			{
 				ExportData<T>? exportData = null;
@@ -61,10 +53,10 @@ namespace Modelbouwer.Services
 				
 				await Task.Run( () =>
 				{
-					GenerateExcelFile<T>( exportData, dialog.FileName, customValueFormatter );
+					GenerateExcelFile<T>( exportData, filePath, customValueFormatter );
 				} );
 
-				ShowSuccessMessage( dialog.FileName, exportData.Items.Count );
+				ShowSuccessMessage( filePath, exportData.Items.Count );
 			}
 			catch ( Exception ex )
 			{
@@ -236,9 +228,13 @@ namespace Modelbouwer.Services
 			}
 		}
 
-		private void SetCellValueWithFormatting( IXLCell cell, string stringValue, object? item, string mappingName )
+		private void SetCellValueWithFormatting(
+	IXLCell cell,
+	string stringValue,
+	object? item,
+	string mappingName )
 		{
-			if ( item == null || string.IsNullOrEmpty( mappingName ) )
+			if ( item == null || string.IsNullOrWhiteSpace( mappingName ) )
 			{
 				cell.Value = stringValue;
 				return;
@@ -246,47 +242,46 @@ namespace Modelbouwer.Services
 
 			try
 			{
-				var property = item.GetType().GetProperty(mappingName);
-				if ( property != null )
+				var property = item.GetType().GetProperty( mappingName );
+				if ( property == null )
 				{
-					var originalValue = property.GetValue(item);
+					cell.Value = stringValue;
+					return;
+				}
 
-					if ( originalValue == null )
-					{
-						cell.Value = stringValue;
-					}
-					else if ( originalValue is DateTime dateTime )
-					{
+				var originalValue = property.GetValue( item );
+
+				if ( originalValue == null )
+				{
+					cell.Value = stringValue;
+					return;
+				}
+
+				switch ( originalValue )
+				{
+					case DateTime dateTime:
 						cell.Value = dateTime;
 						cell.Style.DateFormat.Format = "yyyy-mm-dd hh:mm:ss";
 						cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
-					}
-					else if ( originalValue is bool boolValue )
-					{
+						break;
+
+					case bool boolValue:
 						cell.Value = boolValue;
 						cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-					}
-					else if ( IsNumericType( originalValue.GetType() ) )
-					{
-						if ( double.TryParse( stringValue, out double numericValue ) )
+						break;
+
+					default:
+						if ( IsNumericType( originalValue.GetType() ) )
 						{
-							cell.Value = numericValue;
-							cell.Style.NumberFormat.Format = "#,##0.00";
+							cell.Value = Convert.ToDouble( originalValue, CultureInfo.InvariantCulture );
+							cell.Style.NumberFormat.Format = "0.####";
 							cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
 						}
 						else
 						{
 							cell.Value = stringValue;
 						}
-					}
-					else
-					{
-						cell.Value = stringValue;
-					}
-				}
-				else
-				{
-					cell.Value = stringValue;
+						break;
 				}
 			}
 			catch

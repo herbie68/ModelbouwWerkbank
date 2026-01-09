@@ -43,7 +43,7 @@ public partial class App : Application
 		services.AddSingleton<CountryService>();
 
 		// Register ViewModels
-		services.AddTransient<CurrencyViewModel>();
+		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
 
 		// Register NavigationViewModel
@@ -51,6 +51,7 @@ public partial class App : Application
 
 		// Register Views
 		services.AddTransient<CountryView>();
+		services.AddTransient<CurrencyView>();
 
 		// Register MainWindow
 		services.AddSingleton<MainWindow>();
@@ -63,7 +64,9 @@ public partial class App : Application
 		services.AddSingleton<ExcelExportService>();
 		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
 		services.AddScoped<ICountryService, CountryService>();
+		services.AddScoped<ICurrencyService, CurrencyService>();
 		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
+		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
 	}
 
 	protected override async void OnStartup( StartupEventArgs e )

@@ -1,59 +1,55 @@
-﻿using System.Windows.Controls;
-using System.Windows.Threading;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
 using Modelbouwer.Services;
 
 using Syncfusion.UI.Xaml.Grid;
-using Syncfusion.UI.Xaml.ScrollAxis;
-using Syncfusion.XlsIO;
 
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for CountryView.xaml
+/// Interaction logic for CurrencyView.xaml
 /// </summary>
-public partial class CountryView : UserControl
+public partial class CurrencyView : UserControl
 {
 	private readonly CsvExportService _csvExportService;
 	private readonly ExcelExportService _excelExportService;
+
 
 	public bool ExportIds { get; set; } = true;
 	public string CsvSeparator { get; set; } = ";";
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	public CountryView( CountryPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
+	public CurrencyView( CurrencyPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
-		Loaded += CountryView_Loaded;
+		Loaded += CurrencyView_Loaded;
 	}
 
-	private void CountryView_Loaded( object sender, RoutedEventArgs e )
+	private void CurrencyView_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is CountryPageViewModel vm )
+		if ( DataContext is CurrencyPageViewModel vm )
 		{
 			vm.RefreshGridFilter = () =>
 			{
 				SfDataGrid.View?.RefreshFilter();
 				SfDataGrid.UpdateLayout();
-				vm.VisibleCountryCount = SfDataGrid.View?.Records.Count ?? 0;
+				vm.VisibleCurrencyCount = SfDataGrid.View?.Records.Count ?? 0;
 			};
 		}
 	}
 
-	private void CountryDataGrid_Loaded( object sender, RoutedEventArgs e )
+	private void CurrencyDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( sender is not SfDataGrid grid )
 			return;
 
-		if ( DataContext is not CountryPageViewModel vm )
+		if ( DataContext is not CurrencyPageViewModel vm )
 			return;
 
 		grid.Dispatcher.BeginInvoke(
@@ -62,9 +58,9 @@ public partial class CountryView : UserControl
 				if ( grid.View == null )
 					return;
 
-				grid.View.Filter = vm.FilterCountry;
+				grid.View.Filter = vm.FilterCurrency;
 				grid.View.RefreshFilter();
-				vm.VisibleCountryCount = grid.View.Records.Count;
+				vm.VisibleCurrencyCount = grid.View.Records.Count;
 			} ),
 			DispatcherPriority.Loaded
 		);
@@ -80,14 +76,14 @@ public partial class CountryView : UserControl
 		if ( dialog.ShowDialog() == true )
 		{
 			// Haal de lijst op uit de DataGrid
-			if ( SfDataGrid.ItemsSource is List<CountryModel> countries )
+			if ( SfDataGrid.ItemsSource is List<CurrencyModel> currencies )
 			{
 				// Voer de import uit
 				var result = CsvImportService.ImportCsv(
 				filePath: dialog.FileName,
-				existingRecords: countries,
-				columnMappings: CountryModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(CountryModel.CountryName) // unieke kolom
+				existingRecords: currencies,
+				columnMappings: CurrencyModel.ColumnMappings, // mapping van UI naar property
+                uniqueProperty: nameof(CurrencyModel.CurrencyName) // unieke kolom
             );
 
 				MessageBox.Show(
@@ -105,7 +101,7 @@ public partial class CountryView : UserControl
 			}
 			else
 			{
-				MessageBox.Show( "De ItemsSource van de DataGrid is geen List<CountryModel>.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "De ItemsSource van de DataGrid is geen List<CurrencyModel>.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 	}
@@ -125,14 +121,15 @@ public partial class CountryView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "CountryCode", Lang.ExportCountriesHeaderCountryCode },
-			{ "CountryName", Lang.ExportCountriesHeaderCountryName },
-			{ "CountryCurrencySymbol", Lang.ExportCountriesHeaderCountryCurrencySymbol }
+			{ "CurrencyCode", Lang.ExportCurrenciesHeaderCode },
+			{ "CurrencyName", Lang.ExportCurrenciesHeaderName },
+			{ "CurrencySymbol", Lang.ExportCurrenciesHeaderSymbol },
+			{ "CurrencyConversionRate",  Lang.ExportCurrenciesHeaderConversionRate }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _csvExportService.ExportToCsvAsync<CountryModel>(
+			await _csvExportService.ExportToCsvAsync<CurrencyModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );
@@ -153,9 +150,10 @@ public partial class CountryView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "CountryCode", Lang.ExportCountriesHeaderCountryCode },
-			{ "CountryName", Lang.ExportCountriesHeaderCountryName },
-			{ "CountryCurrencySymbol", Lang.ExportCountriesHeaderCountryCurrencySymbol }
+			{ "CurrencyCode", Lang.ExportCurrenciesHeaderCode },
+			{ "CurrencyName", Lang.ExportCurrenciesHeaderName },
+			{ "CurrencySymbol", Lang.ExportCurrenciesHeaderSymbol },
+			{ "CurrencyConversionRate",  Lang.ExportCurrenciesHeaderConversionRate }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
@@ -165,6 +163,5 @@ public partial class CountryView : UserControl
 			dialog.FileName,
 			columnHeaders );
 		}
-
 	}
 }

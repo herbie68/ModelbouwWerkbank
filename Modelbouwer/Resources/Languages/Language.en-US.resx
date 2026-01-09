@@ -267,9 +267,6 @@
   <data name="metadataCurrencyFieldCurrencyName" xml:space="preserve">
     <value>Currency description</value>
   </data>
-  <data name="metadataCurrencyFieldCurrencySymbol" xml:space="preserve">
-    <value>Currency</value>
-  </data>
   <data name="metadataCurrencyFieldCurrencyRate" xml:space="preserve">
     <value>Conversion price</value>
   </data>
@@ -1780,12 +1777,6 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataCurrencyFieldCurrencyRateShortTooltip" xml:space="preserve">
     <value>Course</value>
   </data>
-  <data name="metadataCurrencyFieldCurrencySymbolTag" xml:space="preserve">
-    <value>Currency</value>
-  </data>
-  <data name="metadataCurrencyFieldCurrencySymbolTooltip" xml:space="preserve">
-    <value>Currency</value>
-  </data>
   <data name="metadataProductTabGeneralTabItemProductFieldBrandTag" xml:space="preserve">
     <value>Brand</value>
   </data>
@@ -3264,5 +3255,95 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="toolbarButtonActionDeleteMessageButtonText" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="ExportValidationCurrencyCodeExists" xml:space="preserve">
+    <value>Use a different currency code, it already exists</value>
+  </data>
+  <data name="ExportValidationCurrencyNameExists" xml:space="preserve">
+    <value>Currency name already exists, use a different name</value>
+  </data>
+  <data name="ExportCurrenciesHeaderCode" xml:space="preserve">
+    <value>Currency code</value>
+  </data>
+  <data name="ExportCurrenciesHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ExportCurrenciesHeaderSymbol" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="ExportCurrenciesHeaderConversionRate" xml:space="preserve">
+    <value>Exchange rate</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderCode.Label" xml:space="preserve">
+    <value>Currency code</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderSymbol.Label" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderCurrencyId.Label" xml:space="preserve">
+    <value>Currency ID</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderId.Label" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderName.Label" xml:space="preserve">
+    <value>Currency name</value>
+  </data>
+  <data name="metadataCurrencyHeaderSubtitle" xml:space="preserve">
+    <value>Manage currency</value>
+  </data>
+  <data name="metadataCurrencyHeaderTitel" xml:space="preserve">
+    <value>Management of the currency table</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCode" xml:space="preserve">
+    <value>Currency code</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCodeTag" xml:space="preserve">
+    <value>Currency code</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldCodeTooltip" xml:space="preserve">
+    <value>A code that makes it easy to recognize the currency</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldName" xml:space="preserve">
+    <value>Currency name</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldNameTooltip" xml:space="preserve">
+    <value>Enter the name of the currency</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRate" xml:space="preserve">
+    <value>Exchange rate</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRateTag" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldRateTooltip" xml:space="preserve">
+    <value>The exchange rate to Euro</value>
+  </data>
+  <data name="metadataCurrencyDatagridHeaderRate.Label" xml:space="preserve">
+    <value>Exchange rate</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCurrency" xml:space="preserve">
+    <value>Number of currencies shown</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbol" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTag" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyFieldCurrencySymbolTooltip" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbol" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbolTag" xml:space="preserve">
+    <value>Currency sign</value>
+  </data>
+  <data name="metadataCurrencyEntryFieldSymbolTooltip" xml:space="preserve">
+    <value>The currency sign</value>
   </data>
 </root>

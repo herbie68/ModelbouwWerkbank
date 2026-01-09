@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Interfaces;
+﻿namespace Modelbouwer.Interfaces;
 
 public interface ICountryService
 {
