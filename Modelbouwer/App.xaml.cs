@@ -39,10 +39,12 @@ public partial class App : Application
 
 		// Register services
 		services.AddSingleton<GenericDataService>();
+		services.AddSingleton<BrandService>();
 		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<CountryService>();
 
 		// Register ViewModels
+		services.AddTransient<BrandPageViewModel>();
 		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
 
@@ -50,6 +52,7 @@ public partial class App : Application
 		services.AddSingleton<NavigationViewModel>();
 
 		// Register Views
+		services.AddTransient<BrandView>();
 		services.AddTransient<CountryView>();
 		services.AddTransient<CurrencyView>();
 
@@ -63,8 +66,10 @@ public partial class App : Application
 		services.AddSingleton<CsvExportService>();
 		services.AddSingleton<ExcelExportService>();
 		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
+		services.AddScoped<IBrandService, BrandService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
+		services.AddScoped<IEntityValidator<BrandModel>, BrandValidator>();
 		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
 		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
 	}

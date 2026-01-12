@@ -3326,4 +3326,115 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelCurrency" xml:space="preserve">
     <value>Aantal getoonde valuta</value>
   </data>
+  <data name="metadataCountryDeleteError" xml:space="preserve">
+    <value>Dit land wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="metadataCurrencyDeleteError" xml:space="preserve">
+    <value>Deze valuta wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="metadataBrandDeleteError" xml:space="preserve">
+    <value>Dit merk wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="generalMessageboxWarningTitle" xml:space="preserve">
+    <value>Let op!</value>
+  </data>
+  <data name="generalMessageboxDeleteError" xml:space="preserve">
+    <value>Er ging iets mis bij verwijderen</value>
+  </data>
+  <data name="ExportValidationBrandNameExists" xml:space="preserve">
+    <value>Dit merk bestaat al</value>
+  </data>
+  <data name="ExportValidationBrandDeleteError" xml:space="preserve">
+    <value>Fout bij het verwijderen dit merk</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageCaption" xml:space="preserve">
+    <value>Bevestig verwijderen</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageText" xml:space="preserve">
+    <value>Weet je zeker dat je het volgende merk wilt verwijderen</value>
+  </data>
+  <data name="ExportValidationBrandExistsAdvice" xml:space="preserve">
+    <value>Gebruik een andere naam</value>
+  </data>
+  <data name="ExportValidationBrandExistsPrefix" xml:space="preserve">
+    <value>Een merk met de naam</value>
+  </data>
+  <data name="ExportValidationBrandExistsSufix" xml:space="preserve">
+    <value>bestaat al</value>
+  </data>
+  <data name="ExportValidationBrandExistsTitle" xml:space="preserve">
+    <value>Merk bestaat al</value>
+  </data>
+  <data name="ExportValidationBrandSaveError" xml:space="preserve">
+    <value>Fout bij het opslaan van het merk</value>
+  </data>
+  <data name="ExportValidationBrandSuccessAdded" xml:space="preserve">
+    <value>Merk succesvol toegevoegd</value>
+  </data>
+  <data name="ExportValidationBrandSuccessUpdated" xml:space="preserve">
+    <value>Merk succesvol bijgewerkt</value>
+  </data>
+  <data name="ExportValidationBrandSuccessCaption" xml:space="preserve">
+    <value>Gelukt</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderBrandId.Label" xml:space="preserve">
+    <value>Merk ID</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderId.Label" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderName.Label" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTag" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geef de naam van het merk</value>
+  </data>
+  <data name="metadataBrandFieldBrand" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataBrandFieldBrandName" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTag" xml:space="preserve">
+    <value>Merknaam</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTooltip" xml:space="preserve">
+    <value>Volledige naam van het merk</value>
+  </data>
+  <data name="metadataBrandFieldBrandTag" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataBrandFieldBrandTooltip" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="metadataBrandHeaderSubtitle" xml:space="preserve">
+    <value>Merk beheren</value>
+  </data>
+  <data name="metadataBrandHeaderTitel" xml:space="preserve">
+    <value>Beheer van de merken tabel</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Merk toevoegen</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Geslecteerde merk</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="toolbarVisibleRowLabelBrand" xml:space="preserve">
+    <value>Aantal getoonde merken</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Label" xml:space="preserve">
+    <value>Merken</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Tooltip" xml:space="preserve">
+    <value>Beheer van de beschikbare merken</value>
+  </data>
+  <data name="ExportBrandHeaderName" xml:space="preserve">
+    <value>Merk</value>
+  </data>
 </root>

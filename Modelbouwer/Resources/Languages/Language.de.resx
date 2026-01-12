@@ -2905,9 +2905,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ImportStoragesSubTitle" xml:space="preserve">
     <value>Speicherorte aus einer CSV -Datei importieren</value>
   </data>
-  <data name="metadataBrandPageTitle" xml:space="preserve">
-    <value>Zu bemerken</value>
-  </data>
   <data name="metadataBrandPageSubTitle" xml:space="preserve">
     <value>Verwalten Sie alle Produktmarken</value>
   </data>
@@ -2919,9 +2916,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataBrandEntryFieldId" xml:space="preserve">
     <value>Leerlauf</value>
-  </data>
-  <data name="metadataBrandEntryFieldName" xml:space="preserve">
-    <value>Marke</value>
   </data>
   <data name="navigation.Time.MainItem.Label" xml:space="preserve">
     <value>Stunde Registrierung</value>
@@ -3345,5 +3339,122 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataCurrencyEntryFieldSymbolTooltip" xml:space="preserve">
     <value>Das Währungszeichen</value>
+  </data>
+  <data name="metadataCountryDeleteError" xml:space="preserve">
+    <value>Dieses Land wird noch genutzt und kann nicht entfernt werden</value>
+  </data>
+  <data name="metadataCurrencyDeleteError" xml:space="preserve">
+    <value>Diese Währung wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="metadataBrandDeleteError" xml:space="preserve">
+    <value>Diese Marke wird noch verwendet und kann nicht entfernt werden</value>
+  </data>
+  <data name="generalMessageboxWarningTitle" xml:space="preserve">
+    <value>Warnung!</value>
+  </data>
+  <data name="generalMessageboxDeleteError" xml:space="preserve">
+    <value>Beim Löschen ist ein Fehler aufgetreten</value>
+  </data>
+  <data name="ExportValidationBrandNameExists" xml:space="preserve">
+    <value>Diese Marke existiert bereits</value>
+  </data>
+  <data name="ExportValidationBrandDeleteError" xml:space="preserve">
+    <value>Beim Entfernen dieser Marke ist ein Fehler aufgetreten</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageCaption" xml:space="preserve">
+    <value>Bestätigen Sie das Löschen</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageText" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die folgende Marke löschen möchten</value>
+  </data>
+  <data name="ExportValidationBrandExistsAdvice" xml:space="preserve">
+    <value>Verwenden Sie einen anderen Namen</value>
+  </data>
+  <data name="ExportValidationBrandExistsPrefix" xml:space="preserve">
+    <value>Eine Marke mit dem Namen</value>
+  </data>
+  <data name="ExportValidationBrandExistsSufix" xml:space="preserve">
+    <value>existiert bereits</value>
+  </data>
+  <data name="ExportValidationBrandExistsTitle" xml:space="preserve">
+    <value>Marke existiert bereits</value>
+  </data>
+  <data name="ExportValidationBrandSaveError" xml:space="preserve">
+    <value>Fehler beim Speichern der Marke</value>
+  </data>
+  <data name="ExportValidationBrandSuccessAdded" xml:space="preserve">
+    <value>Marke erfolgreich hinzugefügt</value>
+  </data>
+  <data name="ExportValidationBrandSuccessUpdated" xml:space="preserve">
+    <value>Marke erfolgreich aktualisiert</value>
+  </data>
+  <data name="ExportValidationBrandSuccessCaption" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="metadataBrandPageTitle" xml:space="preserve">
+    <value>Marken</value>
+  </data>
+  <data name="metadataBrandEntryFieldName" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderBrandId.Label" xml:space="preserve">
+    <value>Marken-ID</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderId.Label" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderName.Label" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTag" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geben Sie den Namen der Marke ein</value>
+  </data>
+  <data name="metadataBrandFieldBrand" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandFieldBrandName" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTag" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTooltip" xml:space="preserve">
+    <value>Vollständiger Name der Marke</value>
+  </data>
+  <data name="metadataBrandFieldBrandTag" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandFieldBrandTooltip" xml:space="preserve">
+    <value>Marke</value>
+  </data>
+  <data name="metadataBrandHeaderSubtitle" xml:space="preserve">
+    <value>Marke verwalten</value>
+  </data>
+  <data name="metadataBrandHeaderTitel" xml:space="preserve">
+    <value>Verwaltung der Markentabelle</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Marke hinzufügen</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Ausgewählte Marke</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="toolbarVisibleRowLabelBrand" xml:space="preserve">
+    <value>Anzahl der angezeigten Marken</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Label" xml:space="preserve">
+    <value>Marken</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Tooltip" xml:space="preserve">
+    <value>Verwaltung der verfügbaren Marken</value>
+  </data>
+  <data name="ExportBrandHeaderName" xml:space="preserve">
+    <value>Marke</value>
   </data>
 </root>

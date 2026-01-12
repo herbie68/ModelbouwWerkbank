@@ -2905,9 +2905,6 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ImportStoragesSubTitle" xml:space="preserve">
     <value>Import storage locations from a CSV file</value>
   </data>
-  <data name="metadataBrandPageTitle" xml:space="preserve">
-    <value>To notice</value>
-  </data>
   <data name="metadataBrandPageSubTitle" xml:space="preserve">
     <value>Manage all product brands</value>
   </data>
@@ -2919,9 +2916,6 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataBrandEntryFieldId" xml:space="preserve">
     <value>Idle</value>
-  </data>
-  <data name="metadataBrandEntryFieldName" xml:space="preserve">
-    <value>Brand</value>
   </data>
   <data name="navigation.Time.MainItem.Label" xml:space="preserve">
     <value>Hour registration</value>
@@ -3345,5 +3339,122 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataCurrencyEntryFieldSymbolTooltip" xml:space="preserve">
     <value>The currency sign</value>
+  </data>
+  <data name="metadataCountryDeleteError" xml:space="preserve">
+    <value>This land is still in use and cannot be removed</value>
+  </data>
+  <data name="metadataCurrencyDeleteError" xml:space="preserve">
+    <value>This currency is still in use and cannot be deleted</value>
+  </data>
+  <data name="metadataBrandDeleteError" xml:space="preserve">
+    <value>This brand is still in use and cannot be removed</value>
+  </data>
+  <data name="generalMessageboxWarningTitle" xml:space="preserve">
+    <value>Attention!</value>
+  </data>
+  <data name="generalMessageboxDeleteError" xml:space="preserve">
+    <value>Something went wrong while deleting</value>
+  </data>
+  <data name="ExportValidationBrandNameExists" xml:space="preserve">
+    <value>This brand already exists</value>
+  </data>
+  <data name="ExportValidationBrandDeleteError" xml:space="preserve">
+    <value>Error removing this brand</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageCaption" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
+  <data name="ExportValidationBrandDeleteMessageText" xml:space="preserve">
+    <value>Are you sure you want to delete the following brand</value>
+  </data>
+  <data name="ExportValidationBrandExistsAdvice" xml:space="preserve">
+    <value>Use a different name</value>
+  </data>
+  <data name="ExportValidationBrandExistsPrefix" xml:space="preserve">
+    <value>A brand with the name</value>
+  </data>
+  <data name="ExportValidationBrandExistsSufix" xml:space="preserve">
+    <value>already exists</value>
+  </data>
+  <data name="ExportValidationBrandExistsTitle" xml:space="preserve">
+    <value>Brand already exists</value>
+  </data>
+  <data name="ExportValidationBrandSaveError" xml:space="preserve">
+    <value>Error saving the brand</value>
+  </data>
+  <data name="ExportValidationBrandSuccessAdded" xml:space="preserve">
+    <value>Brand added successfully</value>
+  </data>
+  <data name="ExportValidationBrandSuccessUpdated" xml:space="preserve">
+    <value>Brand updated successfully</value>
+  </data>
+  <data name="ExportValidationBrandSuccessCaption" xml:space="preserve">
+    <value>Succcess</value>
+  </data>
+  <data name="metadataBrandPageTitle" xml:space="preserve">
+    <value>Brands</value>
+  </data>
+  <data name="metadataBrandEntryFieldName" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderBrandId.Label" xml:space="preserve">
+    <value>Brand ID</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderId.Label" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="metadataBrandDatagridHeaderName.Label" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTag" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandEntryFieldNameTooltip" xml:space="preserve">
+    <value>Enter the name of the brand</value>
+  </data>
+  <data name="metadataBrandFieldBrand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandFieldBrandName" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTag" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandFieldBrandNameTooltip" xml:space="preserve">
+    <value>Full name of the brand</value>
+  </data>
+  <data name="metadataBrandFieldBrandTag" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandFieldBrandTooltip" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="metadataBrandHeaderSubtitle" xml:space="preserve">
+    <value>Manage brand</value>
+  </data>
+  <data name="metadataBrandHeaderTitel" xml:space="preserve">
+    <value>Management of the brands table</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Add brand</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Selected brand</value>
+  </data>
+  <data name="metadataBrandToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="toolbarVisibleRowLabelBrand" xml:space="preserve">
+    <value>Number of brands shown</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Label" xml:space="preserve">
+    <value>Brands</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Brand.Tooltip" xml:space="preserve">
+    <value>Management of the available brands</value>
+  </data>
+  <data name="ExportBrandHeaderName" xml:space="preserve">
+    <value>Brand</value>
   </data>
 </root>

@@ -1,17 +1,27 @@
-﻿using System.Windows.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 
 using Microsoft.Win32;
-
-using Modelbouwer.Services;
 
 using Syncfusion.UI.Xaml.Grid;
 
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for CurrencyView.xaml
+/// Interaction logic for BrandView.xaml
 /// </summary>
-public partial class CurrencyView : UserControl
+public partial class BrandView : UserControl
 {
 	private readonly CsvExportService _csvExportService;
 	private readonly ExcelExportService _excelExportService;
@@ -20,34 +30,34 @@ public partial class CurrencyView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	public CurrencyView( CurrencyPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
+	public BrandView( BrandPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
-		Loaded += CurrencyView_Loaded;
+		Loaded += BrandView_Loaded;
 	}
 
-	private void CurrencyView_Loaded( object sender, RoutedEventArgs e )
+	private void BrandView_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is CurrencyPageViewModel vm )
+		if ( DataContext is BrandPageViewModel vm )
 		{
 			vm.RefreshGridFilter = () =>
 			{
 				SfDataGrid.View?.RefreshFilter();
 				SfDataGrid.UpdateLayout();
-				vm.VisibleCurrencyCount = SfDataGrid.View?.Records.Count ?? 0;
+				vm.VisibleBrandCount = SfDataGrid.View?.Records.Count ?? 0;
 			};
 		}
 	}
 
-	private void CurrencyDataGrid_Loaded( object sender, RoutedEventArgs e )
+	private void BrandDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( sender is not SfDataGrid grid )
 			return;
 
-		if ( DataContext is not CurrencyPageViewModel vm )
+		if ( DataContext is not BrandPageViewModel vm )
 			return;
 
 		grid.Dispatcher.BeginInvoke(
@@ -56,9 +66,9 @@ public partial class CurrencyView : UserControl
 				if ( grid.View == null )
 					return;
 
-				grid.View.Filter = vm.FilterCurrency;
+				grid.View.Filter = vm.FilterBrand;
 				grid.View.RefreshFilter();
-				vm.VisibleCurrencyCount = grid.View.Records.Count;
+				vm.VisibleBrandCount = grid.View.Records.Count;
 			} ),
 			DispatcherPriority.Loaded
 		);
@@ -74,14 +84,14 @@ public partial class CurrencyView : UserControl
 		if ( dialog.ShowDialog() == true )
 		{
 			// Haal de lijst op uit de DataGrid
-			if ( SfDataGrid.ItemsSource is List<CurrencyModel> currencies )
+			if ( SfDataGrid.ItemsSource is List<BrandModel> currencies )
 			{
 				// Voer de import uit
 				var result = CsvImportService.ImportCsv(
 				filePath: dialog.FileName,
 				existingRecords: currencies,
-				columnMappings: CurrencyModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(CurrencyModel.CurrencyName) // unieke kolom
+				columnMappings: BrandModel.ColumnMappings, // mapping van UI naar property
+                uniqueProperty: nameof(BrandModel.BrandName) // unieke kolom
             );
 
 				MessageBox.Show(
@@ -99,7 +109,7 @@ public partial class CurrencyView : UserControl
 			}
 			else
 			{
-				MessageBox.Show( "De ItemsSource van de DataGrid is geen List<CurrencyModel>.", "Fout", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<BrandModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 	}
@@ -110,7 +120,7 @@ public partial class CurrencyView : UserControl
 		{
 			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
 			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportCurrenciesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -119,15 +129,12 @@ public partial class CurrencyView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "CurrencyCode", Lang.ExportCurrenciesHeaderCode },
-			{ "CurrencyName", Lang.ExportCurrenciesHeaderName },
-			{ "CurrencySymbol", Lang.ExportCurrenciesHeaderSymbol },
-			{ "CurrencyConversionRate",  Lang.ExportCurrenciesHeaderConversionRate }
+			{ "BrandName", Lang.ExportCurrenciesHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _csvExportService.ExportToCsvAsync<CurrencyModel>(
+			await _csvExportService.ExportToCsvAsync<BrandModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );
@@ -140,7 +147,7 @@ public partial class CurrencyView : UserControl
 		{
 			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
 			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportCurrenciesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -148,15 +155,12 @@ public partial class CurrencyView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "CurrencyCode", Lang.ExportCurrenciesHeaderCode },
-			{ "CurrencyName", Lang.ExportCurrenciesHeaderName },
-			{ "CurrencySymbol", Lang.ExportCurrenciesHeaderSymbol },
-			{ "CurrencyConversionRate",  Lang.ExportCurrenciesHeaderConversionRate }
+			{ "BrandName", Lang.ExportBrandHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _excelExportService.ExportToExcelAsync<CurrencyModel>(
+			await _excelExportService.ExportToExcelAsync<BrandModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );

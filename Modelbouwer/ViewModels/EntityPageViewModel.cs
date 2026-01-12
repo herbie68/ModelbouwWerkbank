@@ -148,9 +148,16 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		if ( SelectedItem == null )
 			return;
 
-		await DeleteAsync( SelectedItem );
-
-		await ReloadAsync();
+		try
+		{
+			await DeleteAsync( SelectedItem );
+			await ReloadAsync();
+		}
+		catch ( Exception ex )
+		{
+			// fallback logging, mocht er toch iets misgaan
+			MessageBox.Show( $"{Lang.generalMessageboxDeleteError}: {ex.Message}" );
+		}
 	}
 
 

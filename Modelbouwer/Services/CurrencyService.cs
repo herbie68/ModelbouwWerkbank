@@ -108,7 +108,15 @@ public class CurrencyService : ICurrencyService
 			{ $"@{DBNames.CurrencyFieldNameId}", currencyId }
 		};
 
-		await _dataService.ExecuteScalarAsync<uint>( DeleteCurrencyQuery, parameters );
+		try
+		{
+			await _dataService.ExecuteScalarAsync<uint>( DeleteCurrencyQuery, parameters );
+		}
+		catch ( MySqlException ex ) when ( ex.Number == 1451 )
+		{
+			throw new EntityInUseException(
+				$"{Lang.metadataCurrencyDeleteError}." );
+		}
 	}
 
 	public async Task<bool> IsCurrencyUsedAsync( int currencyId )

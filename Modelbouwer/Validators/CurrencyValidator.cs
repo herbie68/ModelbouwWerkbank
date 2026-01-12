@@ -8,9 +8,9 @@ namespace Modelbouwer.Validators;
 
 public class CurrencyValidator : IEntityValidator<CurrencyModel>
 {
-	private readonly ICurrencyService _currencyService;
+	private readonly ICurrencyService _dataService;
 
-	public CurrencyValidator( ICurrencyService currencyService ) => _currencyService = currencyService;
+	public CurrencyValidator( ICurrencyService dataService ) => _dataService = dataService;
 
 	public async Task<ValidationResult> ValidateAsync( CurrencyModel currency )
 	{
@@ -40,13 +40,13 @@ public class CurrencyValidator : IEntityValidator<CurrencyModel>
 		if ( currency.CurrencyId <= 0 )
 			result.Errors.Add( Lang.ExportValidationMessageCurrencyRequired );
 
-		// ❗ Duplicate checks (alleen bij nieuw)
+		// ❗ Duplicate checks
 		if ( currency.CurrencyId == 0 )
 		{
-			if ( await _currencyService.CodeExistsAsync( currency.CurrencyCode ) )
+			if ( await _dataService.CodeExistsAsync( currency.CurrencyCode ) )
 				result.Errors.Add( Lang.ExportValidationCurrencyCodeExists );
 
-			if ( await _currencyService.NameExistsAsync( currency.CurrencyName ) )
+			if ( await _dataService.NameExistsAsync( currency.CurrencyName ) )
 				result.Errors.Add( Lang.ExportValidationCurrencyNameExists );
 		}
 

@@ -106,6 +106,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merk.
+        /// </summary>
+        public static string ExportBrandHeaderName {
+            get {
+                return ResourceManager.GetString("ExportBrandHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporteer merken naar een CSV bestand.
         /// </summary>
         public static string ExportBrandSubTitle {
@@ -916,6 +925,114 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fout bij het verwijderen dit merk.
+        /// </summary>
+        public static string ExportValidationBrandDeleteError {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig verwijderen.
+        /// </summary>
+        public static string ExportValidationBrandDeleteMessageCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandDeleteMessageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weet je zeker dat je het volgende merk wilt verwijderen.
+        /// </summary>
+        public static string ExportValidationBrandDeleteMessageText {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandDeleteMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere naam.
+        /// </summary>
+        public static string ExportValidationBrandExistsAdvice {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandExistsAdvice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Een merk met de naam.
+        /// </summary>
+        public static string ExportValidationBrandExistsPrefix {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandExistsPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bestaat al.
+        /// </summary>
+        public static string ExportValidationBrandExistsSufix {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandExistsSufix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk bestaat al.
+        /// </summary>
+        public static string ExportValidationBrandExistsTitle {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandExistsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit merk bestaat al.
+        /// </summary>
+        public static string ExportValidationBrandNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het opslaan van het merk.
+        /// </summary>
+        public static string ExportValidationBrandSaveError {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk succesvol toegevoegd.
+        /// </summary>
+        public static string ExportValidationBrandSuccessAdded {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandSuccessAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelukt.
+        /// </summary>
+        public static string ExportValidationBrandSuccessCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandSuccessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk succesvol bijgewerkt.
+        /// </summary>
+        public static string ExportValidationBrandSuccessUpdated {
+            get {
+                return ResourceManager.GetString("ExportValidationBrandSuccessUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gebruik een andere landcode.
         /// </summary>
         public static string ExportValidationCountryCodeExists {
@@ -1659,6 +1776,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string generaldatetimeYearShort {
             get {
                 return ResourceManager.GetString("generaldatetimeYearShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Er ging iets mis bij verwijderen.
+        /// </summary>
+        public static string generalMessageboxDeleteError {
+            get {
+                return ResourceManager.GetString("generalMessageboxDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let op!.
+        /// </summary>
+        public static string generalMessageboxWarningTitle {
+            get {
+                return ResourceManager.GetString("generalMessageboxWarningTitle", resourceCulture);
             }
         }
         
@@ -4012,6 +4147,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merk ID.
+        /// </summary>
+        public static string metadataBrandDatagridHeaderBrandId_Label {
+            get {
+                return ResourceManager.GetString("metadataBrandDatagridHeaderBrandId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         public static string metadataBrandDatagridHeaderId {
@@ -4021,11 +4165,38 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataBrandDatagridHeaderId_Label {
+            get {
+                return ResourceManager.GetString("metadataBrandDatagridHeaderId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merknaam.
         /// </summary>
         public static string metadataBrandDatagridHeaderName {
             get {
                 return ResourceManager.GetString("metadataBrandDatagridHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merknaam.
+        /// </summary>
+        public static string metadataBrandDatagridHeaderName_Label {
+            get {
+                return ResourceManager.GetString("metadataBrandDatagridHeaderName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit merk wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataBrandDeleteError {
+            get {
+                return ResourceManager.GetString("metadataBrandDeleteError", resourceCulture);
             }
         }
         
@@ -4048,6 +4219,96 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merknaam.
+        /// </summary>
+        public static string metadataBrandEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataBrandEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geef de naam van het merk.
+        /// </summary>
+        public static string metadataBrandEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataBrandEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk.
+        /// </summary>
+        public static string metadataBrandFieldBrand {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merknaam.
+        /// </summary>
+        public static string metadataBrandFieldBrandName {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrandName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merknaam.
+        /// </summary>
+        public static string metadataBrandFieldBrandNameTag {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrandNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam van het merk.
+        /// </summary>
+        public static string metadataBrandFieldBrandNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrandNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk.
+        /// </summary>
+        public static string metadataBrandFieldBrandTag {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrandTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk.
+        /// </summary>
+        public static string metadataBrandFieldBrandTooltip {
+            get {
+                return ResourceManager.GetString("metadataBrandFieldBrandTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk beheren.
+        /// </summary>
+        public static string metadataBrandHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataBrandHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de merken tabel.
+        /// </summary>
+        public static string metadataBrandHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataBrandHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beheer alle productmerken.
         /// </summary>
         public static string metadataBrandPageSubTitle {
@@ -4062,6 +4323,33 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataBrandPageTitle {
             get {
                 return ResourceManager.GetString("metadataBrandPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merk toevoegen.
+        /// </summary>
+        public static string metadataBrandToolbarButtonTooltipAdd {
+            get {
+                return ResourceManager.GetString("metadataBrandToolbarButtonTooltipAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geslecteerde merk.
+        /// </summary>
+        public static string metadataBrandToolbarButtonTooltipDelete {
+            get {
+                return ResourceManager.GetString("metadataBrandToolbarButtonTooltipDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wijzigingen opslaan.
+        /// </summary>
+        public static string metadataBrandToolbarButtonTooltipSave {
+            get {
+                return ResourceManager.GetString("metadataBrandToolbarButtonTooltipSave", resourceCulture);
             }
         }
         
@@ -4206,6 +4494,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataCountryDatagridHeaderCountryName_Label {
             get {
                 return ResourceManager.GetString("metadataCountryDatagridHeaderCountryName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit land wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataCountryDeleteError {
+            get {
+                return ResourceManager.GetString("metadataCountryDeleteError", resourceCulture);
             }
         }
         
@@ -4395,6 +4692,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataCurrencyDatagridHeaderSymbol_Label {
             get {
                 return ResourceManager.GetString("metadataCurrencyDatagridHeaderSymbol.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze valuta wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataCurrencyDeleteError {
+            get {
+                return ResourceManager.GetString("metadataCurrencyDeleteError", resourceCulture);
             }
         }
         
@@ -7549,6 +7855,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merken.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Brand_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Brand.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de beschikbare merken.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Brand_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Brand.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Landen.
         /// </summary>
         public static string navigation_Resources_SubItem_Country_Label {
@@ -9715,6 +10039,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonTextUndo {
             get {
                 return ResourceManager.GetString("toolbarButtonTextUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde merken.
+        /// </summary>
+        public static string toolbarVisibleRowLabelBrand {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelBrand", resourceCulture);
             }
         }
         

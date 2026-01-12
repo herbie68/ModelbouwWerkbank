@@ -97,6 +97,13 @@ public class NavigationViewModel : INotifyPropertyChanged
 	{
 		NavigationItems.Add( new NavigationModel
 		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Brand_Label}",
+			NavigationIcon = CreateNavigationImage( "Brands" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Brand_Tooltip}",
+			Command = new SimpleCommand( () => LoadBrandView() )
+		} );
+		NavigationItems.Add( new NavigationModel
+		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
 			NavigationIcon = CreateNavigationImage( "Currencies" ),
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Currency_Tooltip}",
@@ -138,6 +145,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			Debug.WriteLine( $"Error creating image for {resourceKey}: {ex.Message}" );
 			return null;
+		}
+	}
+
+	private void LoadBrandView()
+	{
+		try
+		{
+			var brandView = _serviceProvider.GetRequiredService<BrandView>();
+			CurrentView = brandView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading BrandView: {ex.Message}" );
 		}
 	}
 
@@ -278,6 +298,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationIcon = CreateNavigationImage( "Resources" ),
 			NavigationTooltip = "Een voorbeeld van een menu met sub menu's",
 			SubItems = MetadataCurrenciesSubItems
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_Brand_Label,
+			NavigationIcon = CreateNavigationImage( "Brands" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Brand_Tooltip,
+			Command = new SimpleCommand( () => LoadBrandView() )
 		} );
 
 		MetadataSubItems.Add( new NavigationModel

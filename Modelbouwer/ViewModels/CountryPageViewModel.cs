@@ -107,10 +107,10 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 	protected override Task<List<CountryModel>> LoadItemsAsync() => _countryService.GetAllCountriesAsync();
 	protected override Task<int> InsertAsync( CountryModel item ) => _countryService.InsertNewCountryAsync( CreateParameters( item ) );
 	protected override Task UpdateAsync( CountryModel item ) => _countryService.UpdateCountryAsync( CreateParameters( item ) );
-	protected override Task DeleteAsync( CountryModel item )
+	protected override async Task DeleteAsync( CountryModel item )
 	{
 		if ( item == null )
-			return Task.CompletedTask;
+			return;
 
 		var result = MessageBox.Show(
 			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.CountryName}' {Lang.toolbarButtonActionDeleteMessageQuestionSuffix}",
@@ -120,10 +120,25 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 		);
 
 		if ( result != MessageBoxResult.Yes )
-			return Task.CompletedTask;
+			return;
 
-		return _countryService.DeleteCountryAsync( item.CountryId );
+		try
+		{
+			await _countryService.DeleteCountryAsync( item.CountryId );
+		}
+		catch ( EntityInUseException ex )
+		{
+			MessageBox.Show(
+				ex.Message,
+				Lang.generalMessageboxWarningTitle,
+				MessageBoxButton.OK,
+				MessageBoxImage.Information
+			);
+		}
 	}
+
+		//return _countryService.DeleteCountryAsync( item.CountryId );
+	//}
 
 	protected override int GetId( CountryModel item ) => item.CountryId;
 	protected override void SetId( CountryModel item, int id ) => item.CountryId = id;

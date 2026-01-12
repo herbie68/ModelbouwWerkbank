@@ -690,6 +690,58 @@
     </DrawingGroup>
     <DrawingImage x:Key="Resources" Drawing="{StaticResource ResourcesDrawingGroup}" />
     <!--#endregion-->
+    
+    <!--#region Brands icon -->
+    <Geometry x:Key="brandsGeometry1">F1 M25,25z M0,0z M195,170C195,194.853 174.853,215 150,215 125.147,215 105,194.853 105,170 105,145.147 125.147,125 150,125 174.853,125 195,145.147 195,170z</Geometry>
+    <Geometry x:Key="brandsGeometry2">F1 M25,25z M0,0z M195,170C195,194.853 174.853,215 150,215 125.147,215 105,194.853 105,170 105,153.58222 113.79188,139.21807 126.92438,131.35881 133.67167,127.32084 141.56478,125 150,125 174.853,125 195,145.147 195,170z</Geometry>
+    <Geometry x:Key="brandsGeometry3">F1 M25,25z M0,0z M195,170C195,194.853 174.853,215 150,215 125.147,215 105,194.853 105,170 105,145.147 125.147,125 150,125 174.853,125 195,145.147 195,170z</Geometry>
+    <Geometry x:Key="brandsGeometry4">F1 M25,25z M0,0z M474.2,458.99L474.2,470.99 499.2,466.99 499.2,462.99z</Geometry>
+    <Geometry x:Key="brandsGeometry5">F1 M25,25z M0,0z M470.78,444.96L473.8858,456.551 496.9988,446.217 495.9635,442.3533z</Geometry>
+    <Geometry x:Key="brandsGeometry6">F1 M25,25z M0,0z M473.88,473.43L470.7742,485.021 495.9572,487.6278 496.9925,483.7641z</Geometry>
+    <Geometry x:Key="brandsGeometry7">F1 M25,25z M0,0z M413.2,409.99L425.2,409.99 421.2,384.99 417.2,384.99z</Geometry>
+    <Geometry x:Key="brandsGeometry8">F1 M25,25z M0,0z M399.17,413.41L410.761,410.3042 400.427,387.1912 396.5633,388.2265z</Geometry>
+    <Geometry x:Key="brandsGeometry9">F1 M25,25z M0,0z M427.64,410.31L439.231,413.4158 441.8378,388.2328 437.9741,387.1975z</Geometry>
+    <Geometry x:Key="brandsGeometry10">F1 M25,25z M0,0z M364.2,470.99L364.2,458.99 339.2,462.99 339.2,466.99z</Geometry>
+    <Geometry x:Key="brandsGeometry11">F1 M25,25z M0,0z M367.63,485.02L364.5242,473.429 341.4112,483.763 342.4465,487.6267z</Geometry>
+    <Geometry x:Key="brandsGeometry12">F1 M25,25z M0,0z M364.52,456.55L367.6258,444.959 342.4428,442.3522 341.4075,446.2159z</Geometry>
+    <Geometry x:Key="brandsGeometry13">F1 M25,25z M0,0z M425.2,519.99L413.2,519.99 417.2,544.99 421.2,544.99z</Geometry>
+    <Geometry x:Key="brandsGeometry14">F1 M25,25z M0,0z M439.23,516.56L427.639,519.6658 437.973,542.7788 441.8367,541.7435z</Geometry>
+    <Geometry x:Key="brandsGeometry15">F1 M25,25z M0,0z M410.76,519.67L399.169,516.5642 396.5622,541.7472 400.4259,542.7825z</Geometry>
+    <Geometry x:Key="brandsGeometry16">F1 M25,25z M0,0z M387.2,474.99C387.2,478.014 386.87164,478.622 386.53564,479.006 386.10364,479.534 384.41604,479.99 381.92004,479.99L381.20004,479.99 381.20004,482.99 401.20004,482.99 401.20004,479.99 400.48004,479.99C397.98404,479.99 396.27964,479.534 395.84764,479.006 395.51164,478.622 395.2,478.06199 395.2,474.99L395.2,454.99C395.2,451.918 395.51164,451.358 395.84764,450.974 396.27964,450.446 397.98404,449.99 400.48004,449.99L401.20004,449.99 401.20004,446.99 381.20004,446.99 381.20004,449.99 381.92004,449.99C384.41604,449.99 386.10364,450.446 386.53564,450.974 386.87164,451.358 387.2,451.966 387.2,454.99L387.2,474.99</Geometry>
+    <Geometry x:Key="brandsGeometry17">F1 M25,25z M0,0z M443.2,474.99C443.2,478.014 442.87164,478.622 442.53564,479.006 442.10364,479.534 440.41604,479.99 437.92004,479.99L437.20004,479.99 437.20004,482.99 457.20004,482.99 457.20004,479.99 456.48004,479.99C453.98404,479.99 452.27964,479.534 451.84764,479.006 451.51164,478.622 451.2,478.06199 451.2,474.99L451.2,454.99C451.2,451.918 451.51164,451.358 451.84764,450.974 452.27964,450.446 453.98404,449.99 456.48004,449.99L457.20004,449.99 457.20004,446.99 437.20004,446.99 437.20004,449.99 437.92004,449.99C440.41604,449.99 442.10364,450.446 442.53564,450.974 442.87164,451.358 443.2,451.966 443.2,454.99L443.2,474.99</Geometry>
+    <Geometry x:Key="brandsGeometry18">F1 M25,25z M0,0z M429.48,453.68C431.64,451.136,434.712,450.176,437.208,449.984L437.208,446.984C437.208,446.984 431.208,446.98402 428.208,446.984 425.208,446.98398 408.12,475.136 408.12,475.136 405.336,478.544 403.992,479.888 401.208,479.984L401.208,482.984C401.208,482.984 406.208,482.98398 409.208,482.98398 412.208,482.98398 429.48,453.67998 429.48,453.67998z</Geometry>
+    <Geometry x:Key="brandsGeometry19">F1 M25,25z M0,0z M408.93,453.68C406.77,451.136,403.698,450.176,401.202,449.984L401.202,446.984C401.202,446.984 407.202,446.98402 410.202,446.984 413.202,446.98398 430.29,475.136 430.29,475.136 433.074,478.544 434.418,479.888 437.202,479.984L437.202,482.984C437.202,482.984 432.202,482.98398 429.202,482.98398 426.202,482.98398 408.93,453.67998 408.93,453.67998z</Geometry>
+    <DrawingGroup x:Key="brandsDrawingGroup" ClipGeometry="M0,0 V25 H25 V0 H0 Z">
+        <DrawingGroup Opacity="1" Transform="0.13888889,0,0,0.13888889,-45.722223,-52.081945">
+            <DrawingGroup Transform="2,0,0,2,119.2,124.99">
+                <GeometryDrawing Brush="#FF008080" Geometry="{StaticResource brandsGeometry1}" />
+            </DrawingGroup>
+            <DrawingGroup Transform="1.8889,0,0,1.8889,135.87,143.88">
+                <GeometryDrawing Brush="#FFF9F9F9" Geometry="{StaticResource brandsGeometry2}" />
+            </DrawingGroup>
+            <DrawingGroup Transform="1.1111,0,0,1.1111,252.54,276.1">
+                <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry3}" />
+            </DrawingGroup>
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry4}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry5}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry6}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry7}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry8}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry9}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry10}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry11}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry12}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry13}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry14}" />
+            <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource brandsGeometry15}" />
+            <GeometryDrawing Brush="#FFFFFF00" Geometry="{StaticResource brandsGeometry16}" />
+            <GeometryDrawing Brush="#FFFFFF00" Geometry="{StaticResource brandsGeometry17}" />
+            <GeometryDrawing Brush="#FFFFFF00" Geometry="{StaticResource brandsGeometry18}" />
+            <GeometryDrawing Brush="#FFFFFF00" Geometry="{StaticResource brandsGeometry19}" />
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="Brands" Drawing="{StaticResource brandsDrawingGroup}" />
+    <!--#endregion-->
 
     <!--#region Currency Icon-->
     <Geometry x:Key="CurrencyGeometry">F1 M9.7109368,9.7109375z M0,0z M5.80606,8.3039375C4.721637,8.3039375,3.771581,7.6215313,3.255574,6.6062813L6.668243,6.6062813 6.668243,5.1993125 2.85896,5.1993125C2.84946,5.0855 2.84435,4.9715 2.84435,4.8550625 2.84435,4.7397187 2.84945,4.6243125 2.85896,4.5120312L6.66831,4.5120312 6.66831,3.1047812 3.255608,3.1047812C3.771614,2.089625 4.721637,1.4074375 5.806093,1.4074375 6.842585,1.4074375 7.818579,2.0561563 8.353036,3.0996875L9.710937,2.492875C8.923758,0.9548125 7.427613,0 5.80606,0 4.58707,0 3.449302,0.52078125 2.602294,1.4676875 2.176299,1.9440312 1.850812,2.4998438 1.636828,3.1047812L0,3.1047812 0,4.512 1.350013,4.512C1.342713,4.6250312 1.339013,4.7404687 1.339013,4.8550312 1.339013,4.9707812 1.342713,5.08475 1.350013,5.1992812L0,5.1992812 0,6.60625 1.636828,6.60625C1.850812,7.211125 2.176299,7.7663125 2.602327,8.2422187 3.449336,9.1891875 4.587104,9.7109375 5.806093,9.7109375 7.42768,9.7109375 8.923758,8.75625 9.710937,7.2182187L8.353036,6.6102812C7.818546,7.6551562,6.842552,8.3039375,5.80606,8.3039375z</Geometry>

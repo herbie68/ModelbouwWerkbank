@@ -7,10 +7,10 @@ namespace Modelbouwer.ViewModels;
 
 public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 {
-	private readonly ICurrencyService _currencyService;
+	private readonly ICurrencyService _dataService;
 
 	// Collections
-	public ObservableCollection<CurrencyModel> Currencies { get; } = new();
+	public ObservableCollection<CurrencyModel> Currencies { get; } = [];
 
 	// SelectedCurrency als type-safe alias
 	public CurrencyModel? SelectedCurrency
@@ -29,11 +29,11 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 
 	// Constructor
 	public CurrencyPageViewModel(
-		ICurrencyService currencyService,
+		ICurrencyService dataService,
 		IEntityValidator<CurrencyModel> validator
 	) : base( validator )
 	{
-		_currencyService = currencyService;
+		_dataService = dataService;
 
 		_ = LoadCurrenciesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
@@ -56,7 +56,7 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	// Async currencies laden
 	private async Task LoadCurrenciesAsync()
 	{
-		var currencyList = await _currencyService.GetAllCurrenciesAsync();
+		var currencyList = await _dataService.GetAllCurrenciesAsync();
 
 		Currencies.Clear();
 		foreach ( var c in currencyList )
@@ -87,13 +87,13 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	}
 
 	// Abstract overrides voor CRUD
-	protected override Task<List<CurrencyModel>> LoadItemsAsync() => _currencyService.GetAllCurrenciesAsync();
-	protected override Task<int> InsertAsync( CurrencyModel item ) => _currencyService.InsertNewCurrencyAsync( CreateParameters( item ) );
-	protected override Task UpdateAsync( CurrencyModel item ) => _currencyService.UpdateCurrencyAsync( CreateParameters( item ) );
-	protected override Task DeleteAsync( CurrencyModel item )
+	protected override Task<List<CurrencyModel>> LoadItemsAsync() => _dataService.GetAllCurrenciesAsync();
+	protected override Task<int> InsertAsync( CurrencyModel item ) => _dataService.InsertNewCurrencyAsync( CreateParameters( item ) );
+	protected override Task UpdateAsync( CurrencyModel item ) => _dataService.UpdateCurrencyAsync( CreateParameters( item ) );
+	protected override async Task DeleteAsync( CurrencyModel item )
 	{
 		if ( item == null )
-			return Task.CompletedTask;
+			return;
 
 		var result = MessageBox.Show(
 			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.CurrencyName}' {Lang.toolbarButtonActionDeleteMessageQuestionSuffix}",
@@ -103,9 +103,20 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 		);
 
 		if ( result != MessageBoxResult.Yes )
-			return Task.CompletedTask;
-
-		return _currencyService.DeleteCurrencyAsync( item.CurrencyId );
+			return;
+		try
+		{
+			await _dataService.DeleteCurrencyAsync( item.CurrencyId );
+		}
+		catch ( EntityInUseException ex )
+		{
+			MessageBox.Show(
+				ex.Message,
+				Lang.generalMessageboxWarningTitle,
+				MessageBoxButton.OK,
+				MessageBoxImage.Information
+			);
+		}
 	}
 
 	protected override int GetId( CurrencyModel item ) => item.CurrencyId;

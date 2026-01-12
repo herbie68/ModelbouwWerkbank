@@ -94,7 +94,15 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 			{ $"@{DBNames.CountryFieldNameId}", countryId }
 		};
 
-		await _dataService.ExecuteScalarAsync<uint>( DeleteCountryQuery, parameters );
+		try
+		{
+			await _dataService.ExecuteScalarAsync<uint>( DeleteCountryQuery, parameters );
+		}
+		catch ( MySqlException ex ) when ( ex.Number == 1451 )
+		{
+			throw new EntityInUseException(
+				$"{Lang.metadataCountryDeleteError}." );
+		}
 	}
 
 	public async Task<bool> IsCountryUsedAsync( int countryId )
