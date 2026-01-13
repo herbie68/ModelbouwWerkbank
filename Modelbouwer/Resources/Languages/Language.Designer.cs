@@ -160,6 +160,42 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categorieën.
+        /// </summary>
+        public static string ExportCategoryFileName {
+            get {
+                return ResourceManager.GetString("ExportCategoryFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string ExportCategoryHeaderName {
+            get {
+                return ResourceManager.GetString("ExportCategoryHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporteer categorieën naar een CSV bestand.
+        /// </summary>
+        public static string ExportCategorySubTitle {
+            get {
+                return ResourceManager.GetString("ExportCategorySubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporteer categorieën.
+        /// </summary>
+        public static string ExportCategoryTitle {
+            get {
+                return ResourceManager.GetString("ExportCategoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact functies.
         /// </summary>
         public static string ExportContactTypesFileName {
@@ -1029,6 +1065,114 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportValidationBrandSuccessUpdated {
             get {
                 return ResourceManager.GetString("ExportValidationBrandSuccessUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het verwijderen deze categorie.
+        /// </summary>
+        public static string ExportValidationCategoryDeleteError {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig verwijderen.
+        /// </summary>
+        public static string ExportValidationCategoryDeleteMessageCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryDeleteMessageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weet je zeker dat je de volgende categorie wilt verwijderen.
+        /// </summary>
+        public static string ExportValidationCategoryDeleteMessageText {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryDeleteMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruik een andere naam.
+        /// </summary>
+        public static string ExportValidationCategoryExistsAdvice {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryExistsAdvice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Een categorie met de naam.
+        /// </summary>
+        public static string ExportValidationCategoryExistsPrefix {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryExistsPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bestaat al.
+        /// </summary>
+        public static string ExportValidationCategoryExistsSufix {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryExistsSufix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie bestaat al.
+        /// </summary>
+        public static string ExportValidationCategoryExistsTitle {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryExistsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze categorie bestaat al.
+        /// </summary>
+        public static string ExportValidationCategoryNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationCategoryNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fout bij het opslaan van de categorie.
+        /// </summary>
+        public static string ExportValidationCategorySaveError {
+            get {
+                return ResourceManager.GetString("ExportValidationCategorySaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie succesvol toegevoegd.
+        /// </summary>
+        public static string ExportValidationCategorySuccessAdded {
+            get {
+                return ResourceManager.GetString("ExportValidationCategorySuccessAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gelukt.
+        /// </summary>
+        public static string ExportValidationCategorySuccessCaption {
+            get {
+                return ResourceManager.GetString("ExportValidationCategorySuccessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie succesvol bijgewerkt.
+        /// </summary>
+        public static string ExportValidationCategorySuccessUpdated {
+            get {
+                return ResourceManager.GetString("ExportValidationCategorySuccessUpdated", resourceCulture);
             }
         }
         
@@ -1938,6 +2082,60 @@ namespace Modelbouwer.Resources.Languages {
         public static string ImportCategoriesTitle {
             get {
                 return ResourceManager.GetString("ImportCategoriesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer het te importeren CSV bestand met categorieën.
+        /// </summary>
+        public static string ImportCategoryImportButtonTooltip {
+            get {
+                return ResourceManager.GetString("ImportCategoryImportButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string ImportCategoryLabel {
+            get {
+                return ResourceManager.GetString("ImportCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie bestaat al.
+        /// </summary>
+        public static string ImportCategoryMessageboxErrorAlreadyExists {
+            get {
+                return ResourceManager.GetString("ImportCategoryMessageboxErrorAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingelezen categorie bestaat al in de tabel.
+        /// </summary>
+        public static string ImportCategoryMessageboxErrorExistingUnit {
+            get {
+                return ResourceManager.GetString("ImportCategoryMessageboxErrorExistingUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importeer data vanuit een CSV bestand, deze bevat alleen de omschrijving van de categorieën.
+        /// </summary>
+        public static string ImportCategorySubTitle {
+            get {
+                return ResourceManager.GetString("ImportCategorySubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importeer categorieën.
+        /// </summary>
+        public static string ImportCategoryTitle {
+            get {
+                return ResourceManager.GetString("ImportCategoryTitle", resourceCulture);
             }
         }
         
@@ -4354,6 +4552,78 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categorie ID.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderCategoryId_Label {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderCategoryId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderId {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderId_Label {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderName {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderName_Label {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ParentId.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderParentId {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderParentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent Id.
+        /// </summary>
+        public static string metadataCategoryDatagridHeaderParentId_Label {
+            get {
+                return ResourceManager.GetString("metadataCategoryDatagridHeaderParentId.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze categorie wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataCategoryDeleteError {
+            get {
+                return ResourceManager.GetString("metadataCategoryDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categorie.
         /// </summary>
         public static string metadataCategoryEntryFieldCategory {
@@ -4381,6 +4651,51 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataCategoryEntryFieldId {
+            get {
+                return ResourceManager.GetString("metadataCategoryEntryFieldId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataCategoryEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataCategoryEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geef de naam van het categorie.
+        /// </summary>
+        public static string metadataCategoryEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataCategoryEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ParentId.
+        /// </summary>
+        public static string metadataCategoryEntryFieldParentId {
+            get {
+                return ResourceManager.GetString("metadataCategoryEntryFieldParentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gewijzigde categorienaam opslaan.
         /// </summary>
         public static string metadataCategoryEntryToolbarButtonSaveTooltip {
@@ -4390,7 +4705,106 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beheer de categoriën, selecteer hiervoor een categorie en gebruik de rechtermuisknop.
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string metadataCategoryFieldCategory {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryName {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorienaam.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryNameTag {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam van de categorie.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OuderId.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryParentId {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryParentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OiderId.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryParentIdTag {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryParentIdTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bovenliggende categorie.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryParentIdTooltip {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryParentIdTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryTag {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string metadataCategoryFieldCategoryTooltip {
+            get {
+                return ResourceManager.GetString("metadataCategoryFieldCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorieën beheren.
+        /// </summary>
+        public static string metadataCategoryHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataCategoryHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de categorieën tabel.
+        /// </summary>
+        public static string metadataCategoryHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataCategoryHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer alle productcategorieën.
         /// </summary>
         public static string metadataCategoryPageSubTitle {
             get {
@@ -4399,11 +4813,38 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categoriën.
+        ///   Looks up a localized string similar to Categorieën.
         /// </summary>
         public static string metadataCategoryPageTitle {
             get {
                 return ResourceManager.GetString("metadataCategoryPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie toevoegen.
+        /// </summary>
+        public static string metadataCategoryToolbarButtonTooltipAdd {
+            get {
+                return ResourceManager.GetString("metadataCategoryToolbarButtonTooltipAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geslecteerde categorie.
+        /// </summary>
+        public static string metadataCategoryToolbarButtonTooltipDelete {
+            get {
+                return ResourceManager.GetString("metadataCategoryToolbarButtonTooltipDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wijzigingen opslaan.
+        /// </summary>
+        public static string metadataCategoryToolbarButtonTooltipSave {
+            get {
+                return ResourceManager.GetString("metadataCategoryToolbarButtonTooltipSave", resourceCulture);
             }
         }
         
@@ -7873,6 +8314,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categorieën.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Category_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Category.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de beschikbare categorieën.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Category_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Category.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Landen.
         /// </summary>
         public static string navigation_Resources_SubItem_Country_Label {
@@ -10048,6 +10507,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelBrand {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde categorieën.
+        /// </summary>
+        public static string toolbarVisibleRowLabelCategory {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelCategory", resourceCulture);
             }
         }
         

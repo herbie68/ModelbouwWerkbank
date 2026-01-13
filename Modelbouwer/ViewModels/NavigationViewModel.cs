@@ -102,6 +102,15 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Brand_Tooltip}",
 			Command = new SimpleCommand( () => LoadBrandView() )
 		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Category_Label}",
+			NavigationIcon = CreateNavigationImage( "Category" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Category_Tooltip}",
+			Command = new SimpleCommand( () => LoadCategoryView() )
+		} );
+
 		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
@@ -158,6 +167,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		catch ( Exception ex )
 		{
 			Debug.WriteLine( $"Error loading BrandView: {ex.Message}" );
+		}
+	}
+
+	private void LoadCategoryView()
+	{
+		try
+		{
+			var categoryView = _serviceProvider.GetRequiredService<CategoryView>();
+			CurrentView = categoryView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading CategoryView: {ex.Message}" );
 		}
 	}
 
@@ -306,6 +328,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationIcon = CreateNavigationImage( "Brands" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Brand_Tooltip,
 			Command = new SimpleCommand( () => LoadBrandView() )
+		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Category_Label}",
+			NavigationIcon = CreateNavigationImage( "Category" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Category_Tooltip}",
+			Command = new SimpleCommand( () => LoadCategoryView() )
 		} );
 
 		MetadataSubItems.Add( new NavigationModel

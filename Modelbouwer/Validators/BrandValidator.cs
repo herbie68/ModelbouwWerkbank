@@ -33,5 +33,4 @@ public class BrandValidator : IEntityValidator<BrandModel>
 
 		return result;
 	}
-
 }

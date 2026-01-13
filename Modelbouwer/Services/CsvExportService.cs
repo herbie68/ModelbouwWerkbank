@@ -1,351 +1,312 @@
-﻿using Syncfusion.UI.Xaml.Grid;
-using System.Text;
-using Microsoft.Win32;
-using System.Windows;
-using System.Collections;
-using System.Diagnostics;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.TreeGrid;
+
 using sfGridColumn = Syncfusion.UI.Xaml.Grid.GridColumn;
 
-namespace Modelbouwer.Services
+namespace Modelbouwer.Services;
+
+public class CsvExportService : IExportService
 {
-	public class CsvExportService : IExportService
+	public string Separator { get; set; } = ";";
+	public Encoding Encoding { get; set; } = Encoding.UTF8;
+	public bool IncludeBom { get; set; } = true;
+	public bool IncludeHeaders { get; set; } = true;
+
+	private readonly ILanguageProvider? _languageProvider;
+
+	public CsvExportService( ILanguageProvider? languageProvider = null )
 	{
-		// Configuratie properties
-		public string Separator { get; set; } = ";";
-		public Encoding Encoding { get; set; } = Encoding.UTF8;
-		public bool IncludeBom { get; set; } = true;
-		public bool IncludeHeaders { get; set; } = true;
-
-		// Language provider
-		private readonly ILanguageProvider? _languageProvider;
-
-		public CsvExportService( ILanguageProvider? languageProvider = null )
-		{
-			_languageProvider = languageProvider;
-		}
-
-		public async Task ExportToCsvAsync<T>(
-			SfDataGrid dataGrid,
-			string filePath,
-			Dictionary<string, string>? columnHeaderOverrides = null,
-			Func<T, GridColumn, string>? customValueFormatter = null )
-		{
-			try
-			{
-				ExportData<T>? exportData = null;
-
-				await dataGrid.Dispatcher.InvokeAsync(() =>
-				{
-					exportData = PrepareExportData<T>(dataGrid, columnHeaderOverrides);
-				});
-
-				if (exportData == null)
-					return;
-
-				await Task.Run(() =>
-				{
-					var csvContent = GenerateCsvContent<T>(exportData, customValueFormatter);
-					File.WriteAllText(filePath, csvContent, Encoding);
-				});
-
-				ShowSuccessMessage(filePath, exportData.Items.Count);
-			}
-			catch (Exception ex)
-			{
-				ShowErrorMessage(ex, "CSV");
-			}
-		}
-
-		public async Task ExportToExcelAsync<T>( SfDataGrid dataGrid, string defaultFileName,
-			Dictionary<string, string>? columnHeaderOverrides = null,
-			Func<T,sfGridColumn, string>? customValueFormatter = null )
-		{
-			// Doe niets voor Excel in CSV service
-			await Task.CompletedTask;
-
-			// Optioneel: toon een bericht
-			// MessageBox.Show("Please use ExcelExportService for Excel exports.", 
-			//     "Export Not Available", MessageBoxButton.OK, MessageBoxImage.Information);
-		}
-
-		private ExportData<T> PrepareExportData<T>( SfDataGrid dataGrid,
-			Dictionary<string, string>? columnHeaderOverrides )
-		{
-			var exportData = new ExportData<T>();
-
-			// 1. Haal kolom informatie op
-			var columnInfos = new List<ColumnInfo>();
-			foreach ( var column in dataGrid.Columns )
-			{
-				if ( ShouldExportColumn( column ) )
-				{
-					var columnInfo = new ColumnInfo
-					{
-						MappingName = column.MappingName,
-						HeaderText = column.HeaderText,
-						Column = column,
-						ColumnType = column.GetType().Name
-					};
-					columnInfos.Add( columnInfo );
-
-					// 2. Haal header op voor deze kolom
-					string header = GetColumnHeader(column, columnHeaderOverrides);
-					exportData.Headers.Add( header );
-				}
-			}
-			exportData.ColumnInfos = columnInfos;
-
-			// 3. Haal items op
-			if ( dataGrid.ItemsSource != null )
-			{
-				var items = new List<T>();
-
-				if ( dataGrid.ItemsSource is IEnumerable enumerable )
-				{
-					foreach ( var item in enumerable )
-					{
-						if ( item is T typedItem )
-						{
-							items.Add( typedItem );
-						}
-						else
-						{
-							try
-							{
-								if ( item != null )
-								{
-									var converted = (T)Convert.ChangeType(item, typeof(T));
-									items.Add( converted );
-								}
-							}
-							catch
-							{
-								Debug.WriteLine( $"Warning: Could not convert item of type {item?.GetType().Name} to {typeof( T ).Name}" );
-							}
-						}
-					}
-				}
-				exportData.Items = items;
-			}
-
-			Debug.WriteLine( $"Prepared {exportData.Items.Count} items, {exportData.ColumnInfos.Count} columns" );
-
-			return exportData;
-		}
-
-		private string GenerateCsvContent<T>( ExportData<T> exportData,
-			Func<T,sfGridColumn, string>? customValueFormatter )
-		{
-			if ( exportData == null || exportData.Items == null || exportData.ColumnInfos == null )
-			{
-				return string.Empty;
-			}
-
-			var csvBuilder = new StringBuilder();
-
-			if ( IncludeBom )
-				csvBuilder.Append( '\uFEFF' );
-
-			// Headers
-			if ( IncludeHeaders && exportData.Headers != null )
-			{
-				csvBuilder.AppendLine( FormatCsvLine( exportData.Headers ) );
-			}
-
-			// Data rows
-			foreach ( var item in exportData.Items )
-			{
-				var rowValues = new List<string>();
-
-				foreach ( var columnInfo in exportData.ColumnInfos )
-				{
-					string value;
-					if ( customValueFormatter != null )
-					{
-						try
-						{
-							value = customValueFormatter( item, columnInfo.Column );
-						}
-						catch ( InvalidOperationException )
-						{
-							value = GetCellValueSafely( item, columnInfo.MappingName );
-						}
-					}
-					else
-					{
-						value = GetCellValueSafely( item, columnInfo.MappingName );
-					}
-
-					rowValues.Add( FormatValueForCsv( value ) );
-				}
-
-				csvBuilder.AppendLine( FormatCsvLine( rowValues ) );
-			}
-
-			return csvBuilder.ToString();
-		}
-
-		private string GetCellValueSafely<T>( T item, string mappingName )
-		{
-			try
-			{
-				if ( !string.IsNullOrWhiteSpace( mappingName ) )
-				{
-					var property = typeof(T).GetProperty(mappingName);
-					if ( property != null )
-					{
-						var value = property.GetValue(item);
-						return FormatValueToString( value );
-					}
-				}
-
-				return string.Empty;
-			}
-			catch ( Exception ex )
-			{
-				Debug.WriteLine( $"Error getting cell value for {mappingName}: {ex.Message}" );
-				return string.Empty;
-			}
-		}
-
-		private string GetColumnHeader(sfGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
-		{
-			var mappingName = column.MappingName;
-
-			if ( columnHeaderOverrides?.ContainsKey( mappingName ) == true )
-				return columnHeaderOverrides [ mappingName ];
-
-			if ( _languageProvider != null )
-			{
-				var translatedHeader = _languageProvider.GetTranslation($"ExportHeader_{mappingName}");
-				if ( !string.IsNullOrEmpty( translatedHeader ) )
-					return translatedHeader;
-			}
-
-			if ( !string.IsNullOrWhiteSpace( column.HeaderText ) )
-				return column.HeaderText;
-
-			return mappingName ?? string.Empty;
-		}
-
-		private string FormatValueToString( object? value )
-		{
-			if ( value == null )
-				return string.Empty;
-
-			if ( value is DependencyObject )
-			{
-				Debug.WriteLine( "Warning: Attempting to export UI element" );
-				return string.Empty;
-			}
-
-			if ( value is DateTime dateTime )
-				return dateTime.ToString( "yyyy-MM-dd HH:mm:ss" );
-
-			if ( value is bool boolValue )
-				return boolValue ? "1" : "0";
-
-			if ( value is decimal decimalValue )
-				return decimalValue.ToString( System.Globalization.CultureInfo.InvariantCulture );
-
-			if ( value is IFormattable formattable )
-				return formattable.ToString( null, CultureInfo.InvariantCulture );
-
-			return value.ToString() ?? string.Empty;
-		}
-
-		private bool ShouldExportColumn(sfGridColumn column )
-		{
-			return !column.IsHidden && column.MappingName != null;
-		}
-
-		private string FormatValueForCsv( string value )
-		{
-			if ( string.IsNullOrEmpty( value ) )
-				return string.Empty;
-
-			if ( NeedsEscaping( value ) )
-			{
-				return $"\"{value.Replace( "\"", "\"\"" )}\"";
-			}
-
-			return value;
-		}
-
-		private bool NeedsEscaping( string value )
-		{
-			return value.Contains( Separator ) ||
-				   value.Contains( "\"" ) ||
-				   value.Contains( "\n" ) ||
-				   value.Contains( "\r" ) ||
-				   value.StartsWith( " " ) ||
-				   value.EndsWith( " " );
-		}
-
-		private string FormatCsvLine( List<string> values )
-		{
-			return string.Join( Separator, values );
-		}
-
-		private string GetFilterString()
-		{
-			return _languageProvider?.GetTranslation( "ExportGeneralCSVFilter" ) ?? "CSV Files (*.csv)|*.csv";
-		}
-
-		private void ShowSuccessMessage( string filePath, int recordCount )
-		{
-			try
-			{
-				var message = _languageProvider?.GetTranslation("ExportGeneralSuccess")
-					?.Replace("{count}", recordCount.ToString())
-					?.Replace("{file}", Path.GetFileName(filePath))
-					?? $"Exported {recordCount} records to {Path.GetFileName(filePath)}";
-
-				if ( Application.Current != null )
-				{
-					Application.Current.Dispatcher.BeginInvoke( new Action( () =>
-					{
-						MessageBox.Show( message, "Export Complete",
-							MessageBoxButton.OK, MessageBoxImage.Information );
-					} ) );
-				}
-				else
-				{
-					MessageBox.Show( message, "Export Complete",
-						MessageBoxButton.OK, MessageBoxImage.Information );
-				}
-			}
-			catch ( Exception ex )
-			{
-				Debug.WriteLine( $"Error showing success message: {ex}" );
-			}
-		}
-
-		private void ShowErrorMessage( Exception ex, string exportType )
-		{
-			try
-			{
-				var message = $"{exportType} export failed: {ex.Message}\n\nStackTrace:\n{ex.StackTrace}";
-
-				if ( Application.Current != null )
-				{
-					Application.Current.Dispatcher.BeginInvoke( new Action( () =>
-					{
-						MessageBox.Show( message, "Export Error",
-							MessageBoxButton.OK, MessageBoxImage.Error );
-					} ) );
-				}
-				else
-				{
-					MessageBox.Show( message, "Export Error",
-						MessageBoxButton.OK, MessageBoxImage.Error );
-				}
-			}
-			catch ( Exception showEx )
-			{
-				Debug.WriteLine( $"Error showing error message: {showEx}" );
-			}
-		}
+		_languageProvider = languageProvider;
 	}
+
+	#region Public Export Methods
+
+	public Task ExportToCsvAsync<T>(
+		SfDataGrid dataGrid,
+		string filePath,
+		Dictionary<string, string>? columnHeaderOverrides = null,
+		Func<T, sfGridColumn, string>? customValueFormatter = null )
+	{
+		return ExportSfDataGridAsync( dataGrid, filePath, columnHeaderOverrides, customValueFormatter );
+	}
+
+	public Task ExportToCsvAsync<T>(
+		SfTreeGrid treeGrid,
+		string filePath,
+		Dictionary<string, string>? columnHeaderOverrides = null,
+		Func<T, TreeGridColumn, string>? customValueFormatter = null )
+	{
+		return ExportSfTreeGridAsync( treeGrid, filePath, columnHeaderOverrides, customValueFormatter );
+	}
+
+	#endregion
+
+	#region Internal Export Implementations
+
+	private async Task ExportSfDataGridAsync<T>(
+		SfDataGrid dataGrid,
+		string filePath,
+		Dictionary<string, string>? columnHeaderOverrides,
+		Func<T, sfGridColumn, string>? customValueFormatter )
+	{
+		ExportData<T> exportData = null;
+
+		await dataGrid.Dispatcher.InvokeAsync( () =>
+		{
+			exportData = PrepareDataGridExportData<T>( dataGrid, columnHeaderOverrides );
+		} );
+
+		if ( exportData == null )
+			return;
+
+		await Task.Run( () =>
+		{
+			var csv = GenerateCsvContent<T, sfGridColumn>(exportData, customValueFormatter);
+			File.WriteAllText( filePath, csv, Encoding );
+		} );
+
+		ShowSuccessMessage( filePath, exportData.Items.Count );
+	}
+
+	private async Task ExportSfTreeGridAsync<T>(
+		SfTreeGrid treeGrid,
+		string filePath,
+		Dictionary<string, string>? columnHeaderOverrides,
+		Func<T, TreeGridColumn, string>? customValueFormatter )
+	{
+		ExportData<T> exportData = null;
+
+		await treeGrid.Dispatcher.InvokeAsync( () =>
+		{
+			exportData = PrepareTreeGridExportData<T>( treeGrid, columnHeaderOverrides );
+		} );
+
+		if ( exportData == null )
+			return;
+
+		await Task.Run( () =>
+		{
+			var csv = GenerateCsvContent<T, TreeGridColumn>(exportData, customValueFormatter);
+			File.WriteAllText( filePath, csv, Encoding );
+		} );
+
+		ShowSuccessMessage( filePath, exportData.Items.Count );
+	}
+
+	#endregion
+
+	#region Prepare Export Data
+
+	private ExportData<T> PrepareDataGridExportData<T>(
+		SfDataGrid grid,
+		Dictionary<string, string>? columnHeaderOverrides )
+	{
+		var exportData = new ExportData<T>();
+
+		foreach ( var column in grid.Columns )
+		{
+			if ( !column.IsHidden && column.MappingName != null )
+			{
+				exportData.ColumnInfos.Add( new ColumnInfo
+				{
+					MappingName = column.MappingName,
+					HeaderText = GetColumnHeader( column, columnHeaderOverrides ),
+					Column = column
+				} );
+				exportData.Headers.Add( GetColumnHeader( column, columnHeaderOverrides ) );
+			}
+		}
+
+		foreach ( var record in grid.View.Records )
+		{
+			if ( record.Data is T item )
+				exportData.Items.Add( item );
+		}
+
+		return exportData;
+	}
+
+	private ExportData<T> PrepareTreeGridExportData<T>(
+		SfTreeGrid grid,
+		Dictionary<string, string>? columnHeaderOverrides )
+	{
+		var exportData = new ExportData<T>();
+
+		foreach ( var column in grid.Columns )
+		{
+			if ( !column.IsHidden && column.MappingName != null )
+			{
+				exportData.ColumnInfos.Add( new ColumnInfo
+				{
+					MappingName = column.MappingName,
+					HeaderText = GetColumnHeader( column, columnHeaderOverrides ),
+					Column = column
+				} );
+				exportData.Headers.Add( GetColumnHeader( column, columnHeaderOverrides ) );
+			}
+		}
+
+		foreach ( var node in grid.View.Nodes )
+		{
+			if ( node.Item is T item )
+				exportData.Items.Add( item );
+		}
+
+		return exportData;
+	}
+
+	#endregion
+
+	#region CSV Generation
+
+	private string GenerateCsvContent<T, TColumn>(
+		ExportData<T> exportData,
+		Func<T, TColumn, string>? customValueFormatter )
+		where TColumn : class
+	{
+		var csvBuilder = new StringBuilder();
+
+		if ( IncludeBom )
+			csvBuilder.Append( '\uFEFF' );
+
+		if ( IncludeHeaders )
+			csvBuilder.AppendLine( string.Join( Separator, exportData.Headers ) );
+
+		foreach ( var item in exportData.Items )
+		{
+			var rowValues = new List<string>();
+
+			foreach ( var columnInfo in exportData.ColumnInfos )
+			{
+				string value;
+				try
+				{
+					if ( customValueFormatter != null && columnInfo.Column is TColumn col )
+						value = customValueFormatter( item, col );
+					else
+						value = GetCellValueSafely( item, columnInfo.MappingName );
+				}
+				catch
+				{
+					value = GetCellValueSafely( item, columnInfo.MappingName );
+				}
+
+				rowValues.Add( FormatValueForCsv( value ) );
+			}
+
+			csvBuilder.AppendLine( string.Join( Separator, rowValues ) );
+		}
+
+		return csvBuilder.ToString();
+	}
+
+	private string GetCellValueSafely<T>( T item, string mappingName )
+	{
+		try
+		{
+			var prop = typeof(T).GetProperty(mappingName);
+			if ( prop != null )
+			{
+				var val = prop.GetValue(item);
+				return val?.ToString() ?? string.Empty;
+			}
+		}
+		catch { }
+
+		return string.Empty;
+	}
+
+	#endregion
+
+	#region Column Headers
+
+	private string GetColumnHeader( sfGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
+	{
+		var name = column.MappingName;
+		if ( columnHeaderOverrides?.ContainsKey( name ) == true )
+			return columnHeaderOverrides [ name ];
+
+		if ( _languageProvider != null )
+		{
+			var translated = _languageProvider.GetTranslation($"ExportHeader_{name}");
+			if ( !string.IsNullOrEmpty( translated ) )
+				return translated;
+		}
+
+		return !string.IsNullOrWhiteSpace( column.HeaderText ) ? column.HeaderText : name ?? string.Empty;
+	}
+
+	private string GetColumnHeader( TreeGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
+	{
+		var name = column.MappingName;
+		if ( columnHeaderOverrides?.ContainsKey( name ) == true )
+			return columnHeaderOverrides [ name ];
+
+		if ( _languageProvider != null )
+		{
+			var translated = _languageProvider.GetTranslation($"ExportHeader_{name}");
+			if ( !string.IsNullOrEmpty( translated ) )
+				return translated;
+		}
+
+		return !string.IsNullOrWhiteSpace( column.HeaderText ) ? column.HeaderText : name ?? string.Empty;
+	}
+
+	#endregion
+
+	#region Helpers
+
+	private string FormatValueForCsv( string value )
+	{
+		if ( string.IsNullOrEmpty( value ) )
+			return string.Empty;
+
+		if ( value.Contains( Separator ) || value.Contains( "\"" ) || value.Contains( "\n" ) || value.Contains( "\r" ) )
+			return $"\"{value.Replace( "\"", "\"\"" )}\"";
+
+		return value;
+	}
+
+	private void ShowSuccessMessage( string filePath, int recordCount )
+	{
+		try
+		{
+			var message = _languageProvider?.GetTranslation("ExportGeneralSuccess")
+						  ?.Replace("{count}", recordCount.ToString())
+						  ?.Replace("{file}", Path.GetFileName(filePath))
+						  ?? $"Exported {recordCount} records to {Path.GetFileName(filePath)}";
+
+			if ( Application.Current != null )
+			{
+				Application.Current.Dispatcher.BeginInvoke( new Action( () =>
+				{
+					MessageBox.Show( message, "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information );
+				} ) );
+			}
+		}
+		catch { }
+	}
+
+	#endregion
+}
+
+public class ColumnInfo
+{
+	public string MappingName { get; set; } = string.Empty;
+	public string HeaderText { get; set; } = string.Empty;
+	public dynamic? Column { get; set; } // nullable to remove CS8618 warning
+}
+
+public class ExportData<T>
+{
+	public List<ColumnInfo> ColumnInfos { get; set; } = new();
+	public List<string> Headers { get; set; } = new();
+	public List<T> Items { get; set; } = new();
 }

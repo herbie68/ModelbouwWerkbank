@@ -120,9 +120,6 @@
   <data name="AppDeveloper" xml:space="preserve">
     <value>HN -Softwareentwicklung</value>
   </data>
-  <data name="metadataCategoryPageTitle" xml:space="preserve">
-    <value>Kategorie</value>
-  </data>
   <data name="metadataCountryPageTitle" xml:space="preserve">
     <value>Landen</value>
   </data>
@@ -597,18 +594,6 @@
   <data name="mainRibbonTabManageMetadataMetadataProductExportHeader" xml:space="preserve">
     <value>Artikel exportieren</value>
   </data>
-  <data name="mainRibbonTabManageMetadataMetadataCategoryEditLabel" xml:space="preserve">
-    <value>Kategorien</value>
-  </data>
-  <data name="mainRibbonTabManageMetadataMetadataCategoryReportHeader" xml:space="preserve">
-    <value>Übersichtskategorien</value>
-  </data>
-  <data name="mainRibbonTabManageMetadataMetadataCategoryImportHeader" xml:space="preserve">
-    <value>Importkategorien</value>
-  </data>
-  <data name="mainRibbonTabManageMetadataMetadataCategoryExportHeader" xml:space="preserve">
-    <value>Exportkategorien</value>
-  </data>
   <data name="mainRibbonTabManageMetadataMetadataCountryEditLabel" xml:space="preserve">
     <value>Landen</value>
   </data>
@@ -1045,9 +1030,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProductTabGeneralTabItemProductFieldBrand" xml:space="preserve">
     <value>Marke</value>
   </data>
-  <data name="metadataProductTabGeneralTabItemProductFieldCategory" xml:space="preserve">
-    <value>Kategorie</value>
-  </data>
   <data name="metadataProductTabGeneralTabItemStorageTitle" xml:space="preserve">
     <value>Inventar</value>
   </data>
@@ -1432,9 +1414,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataWorktypeTreeviewFolderContextMenuItemDelete" xml:space="preserve">
     <value>Entfernen Sie diese und alle unterstreichenden Arbeitsarten</value>
   </data>
-  <data name="metadataCategoryPageSubTitle" xml:space="preserve">
-    <value>Verwalten Sie die Kategorien, wählen Sie hier eine Kategorie aus und verwenden Sie die rechte Maustaste</value>
-  </data>
   <data name="metadataCategoryEntryFieldCategory" xml:space="preserve">
     <value>Kategorie</value>
   </data>
@@ -1782,12 +1761,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataProductTabGeneralTabItemProductFieldBrandTooltip" xml:space="preserve">
     <value>Marke</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTag" xml:space="preserve">
-    <value>Kategorie</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTooltip" xml:space="preserve">
-    <value>Kategorie</value>
   </data>
   <data name="metadataProductTabGeneralTabItemProductFieldCodeTag" xml:space="preserve">
     <value>Suchname</value>
@@ -2650,12 +2623,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ImportMessageboxErrorUnitAlreadyExistsLong" xml:space="preserve">
     <value>Lesen Sie die Einheit bereits in der Tabelle</value>
   </data>
-  <data name="ImportMessageboxErrorCategoryAlreadyExists" xml:space="preserve">
-    <value>Kategorie existiert bereits</value>
-  </data>
-  <data name="ImportMessageboxErrorCategoryAlreadyExistsLong" xml:space="preserve">
-    <value>Angestellte Kategorie gibt es bereits in der Tabelle</value>
-  </data>
   <data name="ImportMessageboxErrorStorageAlreadyExists" xml:space="preserve">
     <value>Speicher existiert bereits</value>
   </data>
@@ -2697,12 +2664,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="ImportMessageboxErrorUnitNotExistsLong" xml:space="preserve">
     <value>Einheit tritt in der Tabelle nicht auf</value>
-  </data>
-  <data name="ImportMessageboxErrorCategoryNotExists" xml:space="preserve">
-    <value>Kategorie existiert nicht</value>
-  </data>
-  <data name="ImportMessageboxErrorCategoryNotExistsLong" xml:space="preserve">
-    <value>Kategorie tritt in der Tabelle nicht auf</value>
   </data>
   <data name="ImportMessageboxErrorStorageNotExists" xml:space="preserve">
     <value>Speicher existiert nicht</value>
@@ -3456,5 +3417,200 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="ExportBrandHeaderName" xml:space="preserve">
     <value>Marke</value>
+  </data>
+  <data name="metadataCategoryPageTitle" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryEditLabel" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryReportHeader" xml:space="preserve">
+    <value>Übersicht der Kategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryImportHeader" xml:space="preserve">
+    <value>Importkategorien</value>
+  </data>
+  <data name="mainRibbonTabManageMetadataMetadataCategoryExportHeader" xml:space="preserve">
+    <value>Exportkategorien</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryPageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie alle Produktkategorien</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTag" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductFieldCategoryTooltip" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExists" xml:space="preserve">
+    <value>Kategorie existiert bereits</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryAlreadyExistsLong" xml:space="preserve">
+    <value>Die importierte Kategorie ist bereits in der Tabelle vorhanden</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExists" xml:space="preserve">
+    <value>Kategorie existiert nicht</value>
+  </data>
+  <data name="ImportMessageboxErrorCategoryNotExistsLong" xml:space="preserve">
+    <value>Die Kategorie erscheint nicht in der Tabelle</value>
+  </data>
+  <data name="ExportCategoryFileName" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="ExportCategoryHeaderName" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ExportCategorySubTitle" xml:space="preserve">
+    <value>Exportieren Sie Kategorien in eine CSV -Datei</value>
+  </data>
+  <data name="ExportCategoryTitle" xml:space="preserve">
+    <value>Exportkategorien</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteError" xml:space="preserve">
+    <value>Fehler beim Entfernen dieser Kategorie</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteMessageCaption" xml:space="preserve">
+    <value>Bestätigen Sie das Löschen</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteMessageText" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die folgende Kategorie löschen möchten</value>
+  </data>
+  <data name="ExportValidationCategoryExistsAdvice" xml:space="preserve">
+    <value>Verwenden Sie einen anderen Namen</value>
+  </data>
+  <data name="ExportValidationCategoryExistsPrefix" xml:space="preserve">
+    <value>Eine Kategorie mit dem Namen</value>
+  </data>
+  <data name="ExportValidationCategoryExistsSufix" xml:space="preserve">
+    <value>existiert bereits</value>
+  </data>
+  <data name="ExportValidationCategoryExistsTitle" xml:space="preserve">
+    <value>Kategorie existiert bereits</value>
+  </data>
+  <data name="ExportValidationCategoryNameExists" xml:space="preserve">
+    <value>Diese Kategorie existiert bereits</value>
+  </data>
+  <data name="ExportValidationCategorySaveError" xml:space="preserve">
+    <value>Fehler beim Speichern der Kategorie</value>
+  </data>
+  <data name="ExportValidationCategorySuccessAdded" xml:space="preserve">
+    <value>Kategorie erfolgreich hinzugefügt</value>
+  </data>
+  <data name="ExportValidationCategorySuccessCaption" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="ExportValidationCategorySuccessUpdated" xml:space="preserve">
+    <value>Kategorie erfolgreich aktualisiert</value>
+  </data>
+  <data name="ImportCategoryImportButtonTooltip" xml:space="preserve">
+    <value>Wählen Sie die CSV-Datei mit den zu importierenden Kategorien aus</value>
+  </data>
+  <data name="ImportCategoryLabel" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ImportCategoryMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Kategorie existiert bereits</value>
+  </data>
+  <data name="ImportCategoryMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Die importierte Kategorie ist bereits in der Tabelle vorhanden</value>
+  </data>
+  <data name="ImportCategorySubTitle" xml:space="preserve">
+    <value>Importieren Sie Daten aus einer CSV-Datei, die nur die Beschreibung der Kategorien enthält</value>
+  </data>
+  <data name="ImportCategoryTitle" xml:space="preserve">
+    <value>Importkategorien</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderCategoryId.Label" xml:space="preserve">
+    <value>Kategorie-ID</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderId.Label" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderName" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderName.Label" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderParentId" xml:space="preserve">
+    <value>ParentId</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderParentId.Label" xml:space="preserve">
+    <value>Eltern-ID</value>
+  </data>
+  <data name="metadataCategoryDeleteError" xml:space="preserve">
+    <value>Diese Kategorie wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="metadataCategoryEntryFieldId" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataCategoryEntryFieldName" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryEntryFieldNameTag" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geben Sie den Namen der Kategorie ein</value>
+  </data>
+  <data name="metadataCategoryEntryFieldParentId" xml:space="preserve">
+    <value>ParentId</value>
+  </data>
+  <data name="metadataCategoryFieldCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryName" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryNameTag" xml:space="preserve">
+    <value>Kategoriename</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryNameTooltip" xml:space="preserve">
+    <value>Vollständiger Name der Kategorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentId" xml:space="preserve">
+    <value>ParentId</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentIdTag" xml:space="preserve">
+    <value>OiderId</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentIdTooltip" xml:space="preserve">
+    <value>Übergeordnete Kategorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryTag" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryTooltip" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataCategoryHeaderSubtitle" xml:space="preserve">
+    <value>Kategorien verwalten</value>
+  </data>
+  <data name="metadataCategoryHeaderTitel" xml:space="preserve">
+    <value>Verwaltung der Kategorientabelle</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Kategorie hinzufügen</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Ausgewählte Kategorie</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Category.Label" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Category.Tooltip" xml:space="preserve">
+    <value>Verwaltung der verfügbaren Kategorien</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCategory" xml:space="preserve">
+    <value>Anzahl der angezeigten Kategorien</value>
   </data>
 </root>

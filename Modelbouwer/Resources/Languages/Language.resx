@@ -101,7 +101,7 @@
     <value>HN Software Development</value>
   </data>
   <data name="metadataCategoryPageTitle" xml:space="preserve">
-    <value>Categoriën</value>
+    <value>Categorieën</value>
   </data>
   <data name="metadataCountryPageTitle" xml:space="preserve">
     <value>Landen</value>
@@ -1416,7 +1416,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Verwijder deze EN ALLE onderligende werksoorten</value>
   </data>
   <data name="metadataCategoryPageSubTitle" xml:space="preserve">
-    <value>Beheer de categoriën, selecteer hiervoor een categorie en gebruik de rechtermuisknop</value>
+    <value>Beheer alle productcategorieën</value>
   </data>
   <data name="metadataCategoryEntryFieldCategory" xml:space="preserve">
     <value>Categorie</value>
@@ -3436,5 +3436,161 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="ExportBrandHeaderName" xml:space="preserve">
     <value>Merk</value>
+  </data>
+  <data name="ExportCategoryFileName" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="ExportCategoryHeaderName" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="ExportCategorySubTitle" xml:space="preserve">
+    <value>Exporteer categorieën naar een CSV bestand</value>
+  </data>
+  <data name="ExportCategoryTitle" xml:space="preserve">
+    <value>Exporteer categorieën</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteError" xml:space="preserve">
+    <value>Fout bij het verwijderen deze categorie</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteMessageCaption" xml:space="preserve">
+    <value>Bevestig verwijderen</value>
+  </data>
+  <data name="ExportValidationCategoryDeleteMessageText" xml:space="preserve">
+    <value>Weet je zeker dat je de volgende categorie wilt verwijderen</value>
+  </data>
+  <data name="ExportValidationCategoryExistsAdvice" xml:space="preserve">
+    <value>Gebruik een andere naam</value>
+  </data>
+  <data name="ExportValidationCategoryExistsPrefix" xml:space="preserve">
+    <value>Een categorie met de naam</value>
+  </data>
+  <data name="ExportValidationCategoryExistsSufix" xml:space="preserve">
+    <value>bestaat al</value>
+  </data>
+  <data name="ExportValidationCategoryExistsTitle" xml:space="preserve">
+    <value>Categorie bestaat al</value>
+  </data>
+  <data name="ExportValidationCategoryNameExists" xml:space="preserve">
+    <value>Deze categorie bestaat al</value>
+  </data>
+  <data name="ExportValidationCategorySaveError" xml:space="preserve">
+    <value>Fout bij het opslaan van de categorie</value>
+  </data>
+  <data name="ExportValidationCategorySuccessAdded" xml:space="preserve">
+    <value>Categorie succesvol toegevoegd</value>
+  </data>
+  <data name="ExportValidationCategorySuccessCaption" xml:space="preserve">
+    <value>Gelukt</value>
+  </data>
+  <data name="ExportValidationCategorySuccessUpdated" xml:space="preserve">
+    <value>Categorie succesvol bijgewerkt</value>
+  </data>
+  <data name="ImportCategoryImportButtonTooltip" xml:space="preserve">
+    <value>Selecteer het te importeren CSV bestand met categorieën</value>
+  </data>
+  <data name="ImportCategoryLabel" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="ImportCategoryMessageboxErrorAlreadyExists" xml:space="preserve">
+    <value>Categorie bestaat al</value>
+  </data>
+  <data name="ImportCategoryMessageboxErrorExistingUnit" xml:space="preserve">
+    <value>Ingelezen categorie bestaat al in de tabel</value>
+  </data>
+  <data name="ImportCategorySubTitle" xml:space="preserve">
+    <value>Importeer data vanuit een CSV bestand, deze bevat alleen de omschrijving van de categorieën</value>
+  </data>
+  <data name="ImportCategoryTitle" xml:space="preserve">
+    <value>Importeer categorieën</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderCategoryId.Label" xml:space="preserve">
+    <value>Categorie ID</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderId.Label" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderName" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderName.Label" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderParentId" xml:space="preserve">
+    <value>ParentId</value>
+  </data>
+  <data name="metadataCategoryDatagridHeaderParentId.Label" xml:space="preserve">
+    <value>Parent Id</value>
+  </data>
+  <data name="metadataCategoryDeleteError" xml:space="preserve">
+    <value>Deze categorie wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="metadataCategoryEntryFieldId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="metadataCategoryEntryFieldName" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryEntryFieldNameTag" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geef de naam van het categorie</value>
+  </data>
+  <data name="metadataCategoryEntryFieldParentId" xml:space="preserve">
+    <value>ParentId</value>
+  </data>
+  <data name="metadataCategoryFieldCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryName" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryNameTag" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryNameTooltip" xml:space="preserve">
+    <value>Volledige naam van de categorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentId" xml:space="preserve">
+    <value>OuderId</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentIdTag" xml:space="preserve">
+    <value>OiderId</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryParentIdTooltip" xml:space="preserve">
+    <value>Bovenliggende categorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryTag" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataCategoryFieldCategoryTooltip" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataCategoryHeaderSubtitle" xml:space="preserve">
+    <value>Categorieën beheren</value>
+  </data>
+  <data name="metadataCategoryHeaderTitel" xml:space="preserve">
+    <value>Beheer van de categorieën tabel</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipAdd" xml:space="preserve">
+    <value>Categorie toevoegen</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipDelete" xml:space="preserve">
+    <value>Geslecteerde categorie</value>
+  </data>
+  <data name="metadataCategoryToolbarButtonTooltipSave" xml:space="preserve">
+    <value>Wijzigingen opslaan</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Category.Label" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Category.Tooltip" xml:space="preserve">
+    <value>Beheer van de beschikbare categorieën</value>
+  </data>
+  <data name="toolbarVisibleRowLabelCategory" xml:space="preserve">
+    <value>Aantal getoonde categorieën</value>
   </data>
 </root>
