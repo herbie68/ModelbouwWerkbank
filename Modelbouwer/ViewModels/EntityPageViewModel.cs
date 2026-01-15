@@ -99,7 +99,14 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 
 		var validation = await Validator.ValidateAsync(SelectedItem);
 		if ( !validation.IsValid )
-			throw new InvalidOperationException( string.Join( "\n", validation.Errors ) );
+		{
+			var result = MessageBox.Show(
+				string.Join( "\n", validation.Errors ),
+				Lang.ExportValidationCategoryNameExists,
+				MessageBoxButton.OK,
+				MessageBoxImage.Error, MessageBoxResult.Abort );
+			return;
+		}
 
 		IsSaving = true;
 		try

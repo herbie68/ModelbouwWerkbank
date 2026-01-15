@@ -9682,6 +9682,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Klap eerst de lijst open voor zoeken.
+        /// </summary>
+        public static string SearchTreeTag {
+            get {
+                return ResourceManager.GetString("SearchTreeTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Als niet de hele lijst is opengeklapt zul je niet alle resultaten zien.
+        /// </summary>
+        public static string SearchTreeTooltip {
+            get {
+                return ResourceManager.GetString("SearchTreeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ingelezen.
         /// </summary>
         public static string StatusRead {
@@ -10295,6 +10313,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sluit alle categorieën.
+        /// </summary>
+        public static string toolbarButtonActionCollapse {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionCollapse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geselecteerde regel verwijderen.
         /// </summary>
         public static string toolbarButtonActionDelete {
@@ -10313,6 +10340,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to en alle eventueel onderliggende categorieën wilt verwijderen?.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageQuestionCategorySuffix {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionCategorySuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weet je zeker dat je.
         /// </summary>
         public static string toolbarButtonActionDeleteMessageQuestionPrefix {
@@ -10327,6 +10363,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonActionDeleteMessageQuestionSuffix {
             get {
                 return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klap alle categorieën open.
+        /// </summary>
+        public static string toolbarButtonActionExpand {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionExpand", resourceCulture);
             }
         }
         
@@ -10363,6 +10408,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonActionNew {
             get {
                 return ResourceManager.GetString("toolbarButtonActionNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuwe categorie op zelfde niveau als de geselecteerde categorie.
+        /// </summary>
+        public static string toolbarButtonActionNewRoot {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionNewRoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuwe categorie als sub-niveau van de geselecteerde categorie.
+        /// </summary>
+        public static string toolbarButtonActionNewSub {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionNewSub", resourceCulture);
             }
         }
         

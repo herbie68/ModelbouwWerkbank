@@ -24,12 +24,17 @@ public class CategoryValidator : IEntityValidator<CategoryModel>
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
 		}
 
-		// ❗ Duplicate checks
-		if ( category.CategoryId == 0 )
+		if ( await _dataService.NameExistsAsync(category.CategoryName, category.ParentId ) )
 		{
-			if ( await _dataService.NameExistsAsync( category.CategoryName ) )
-				result.Errors.Add( Lang.ExportValidationCategoryNameExists );
+			result.Errors.Add( Lang.ExportValidationCategoryNameExists );
 		}
+
+		// ❗ Duplicate checks
+		//if ( category.CategoryId == 0 )
+		//{
+		//	if ( await _dataService.NameExistsAsync( category.CategoryName ) )
+		//		result.Errors.Add( Lang.ExportValidationCategoryNameExists );
+		//}
 
 		return result;
 	}

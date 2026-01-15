@@ -330,7 +330,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Command = new SimpleCommand( () => LoadBrandView() )
 		} );
 
-		NavigationItems.Add( new NavigationModel
+		MetadataSubItems.Add( new NavigationModel
 		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Category_Label}",
 			NavigationIcon = CreateNavigationImage( "Category" ),

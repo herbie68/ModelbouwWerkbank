@@ -134,11 +134,9 @@ public class DBNames
 	public static readonly string CategoryFieldNameId = "Id";
 	public static readonly string CategoryFieldNameParentId = "ParentId";
 	public static readonly string CategoryFieldNameName = "Name";
-	public static readonly string CategoryFieldNameFullpath = "Fullpath";
 	public static readonly string CategoryFieldTypeId = "int";
 	public static readonly string CategoryFieldTypeParentId = "int";
 	public static readonly string CategoryFieldTypeName = "string";
-	public static readonly string CategoryFieldTypeFullpath = "string";
 
 	#endregion Category table
 

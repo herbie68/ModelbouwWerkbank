@@ -3613,4 +3613,25 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="toolbarVisibleRowLabelCategory" xml:space="preserve">
     <value>Number of categories shown</value>
   </data>
+  <data name="toolbarButtonActionNewRoot" xml:space="preserve">
+    <value>New category at the same level as the selected category</value>
+  </data>
+  <data name="toolbarButtonActionNewSub" xml:space="preserve">
+    <value>New category as a sub-level of the selected category</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionCategorySuffix" xml:space="preserve">
+    <value>and want to delete any underlying categories?</value>
+  </data>
+  <data name="toolbarButtonActionExpand" xml:space="preserve">
+    <value>Expand all categories</value>
+  </data>
+  <data name="toolbarButtonActionCollapse" xml:space="preserve">
+    <value>Close all categories</value>
+  </data>
+  <data name="SearchTreeTag" xml:space="preserve">
+    <value>First open the list for searching</value>
+  </data>
+  <data name="SearchTreeTooltip" xml:space="preserve">
+    <value>If the entire list is not expanded, you will not see all the results</value>
+  </data>
 </root>

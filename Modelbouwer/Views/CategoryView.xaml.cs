@@ -16,6 +16,7 @@ using Microsoft.Win32;
 
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.TreeGrid;
+using Syncfusion.UI.Xaml.TreeGrid.Helpers;
 
 namespace Modelbouwer.Views;
 
@@ -31,12 +32,31 @@ public partial class CategoryView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
+	private bool _wasFiltering;
+
 	public CategoryView( CategoryPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
+
+		if ( DataContext is CategoryPageViewModel vm )
+		{
+			vm.filterChanged += () =>
+			{
+				if ( SfGridTree.View == null )
+					return;
+
+				if ( string.IsNullOrWhiteSpace( vm.SearchText ) )
+					SfGridTree.View.Filter = null;
+				else
+					SfGridTree.View.Filter = vm.FilterRecords;
+
+				SfGridTree.View.RefreshFilter();
+			};
+		}
+
 		Loaded += CategoryView_Loaded;
 	}
 
@@ -48,7 +68,6 @@ public partial class CategoryView : UserControl
 			{
 				SfGridTree.View?.RefreshFilter();
 				SfGridTree.UpdateLayout();
-				vm.VisibleCategoryCount = SfGridTree.View?.Nodes.Count ?? 0;
 			};
 		}
 	}
@@ -69,7 +88,6 @@ public partial class CategoryView : UserControl
 
 				grid.View.Filter = vm.FilterCategory;
 				grid.View.RefreshFilter();
-				vm.VisibleCategoryCount = SfGridTree.View?.Nodes.Count ?? 0;
 			} ),
 			DispatcherPriority.Loaded
 		);

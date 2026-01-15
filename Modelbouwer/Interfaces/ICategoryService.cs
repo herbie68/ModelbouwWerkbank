@@ -11,5 +11,5 @@ public interface ICategoryService
 	Task UpdateCategoryAsync( Dictionary<string, object?> queryParameters );
 	Task DeleteCategoryAsync( int categoryId );
 	Task<bool> IsCategoryUsedAsync( int categoryId );
-	Task<bool> NameExistsAsync( string? categoryName );
+	Task<bool> NameExistsAsync( string? categoryName, int? parentId );
 }

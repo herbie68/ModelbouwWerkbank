@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/SfTreeGridStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/TextboxStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Toolbar.xaml" />

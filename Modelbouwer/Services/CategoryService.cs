@@ -18,20 +18,22 @@ public class CategoryService : ICategoryService
 	public string CompleteCategoryList = $"" +
 		$"SELECT " +
 		$"{DBNames.CategoryFieldNameId} AS {DBNames.CategoryFieldNameId}, " +
+		$"{DBNames.CategoryFieldNameParentId} AS {DBNames.CategoryFieldNameParentId}, " +
 		$"{DBNames.CategoryFieldNameName} AS {DBNames.CategoryFieldNameName}" +
 		$" FROM {DBNames.Database}.{DBNames.CategoryTable};";
 
 	public string AddNewCategoryQuery =
 		$"INSERT INTO {DBNames.Database}.{DBNames.CategoryTable} " +
-		$"({DBNames.CategoryFieldNameName}) " +
+		$"({DBNames.CategoryFieldNameParentId}, {DBNames.CategoryFieldNameName}) " +
 		$"VALUES " +
-		$"(@{DBNames.CategoryFieldNameName});" +
+		$"(@{DBNames.CategoryFieldNameParentId}, @{DBNames.CategoryFieldNameName});" +
 		$"{DBNames.SqlSelectLastId}";
 
 	public string UpdateCategoryQuery =
 		$"UPDATE {DBNames.Database}.{DBNames.CategoryTable} " +
 		$"SET " +
-		$"{DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName}" +
+		$"{DBNames.CategoryFieldNameParentId} = @{DBNames.CategoryFieldNameParentId}, " +
+		$"{DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName}" +     
 		$"WHERE {DBNames.CategoryFieldNameId} = @{DBNames.CategoryFieldNameId};";
 
 	public string DeleteCategoryQuery =
@@ -39,11 +41,15 @@ public class CategoryService : ICategoryService
 		$"WHERE {DBNames.CategoryFieldNameId} = @{DBNames.CategoryFieldNameId};";
 
 	public string CategoryNameExistsQuery =
-		$"SELECT COUNT({DBNames.CategoryFieldNameId}) " +
+		$"SELECT COUNT(*) " +
 		$"FROM {DBNames.Database}.{DBNames.CategoryTable} " +
-		$"WHERE {DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName}";
+		$"WHERE {DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName} " +
+		$"AND ( " +
+		$"( {DBNames.CategoryFieldNameParentId} = @{DBNames.CategoryFieldNameParentId} ) " +
+		$"OR ( {DBNames.CategoryFieldNameParentId} IS NULL AND @{DBNames.CategoryFieldNameParentId} IS NULL ) );";
 
-	public string CategoryUsedQuery = $"SELECT COUNT({DBNames.ProductFieldNameCategoryId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.ProductFieldNameCategoryId} = @CategoryId";
+	public string CategoryUsedQuery = 
+		$"SELECT COUNT(*){DBNames.ProductFieldNameCategoryId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.ProductFieldNameCategoryId} = @CategoryId";
 	#endregion
 
 	public Task<List<CategoryModel>> GetAllCategorysAsync()
@@ -53,6 +59,7 @@ public class CategoryService : ICategoryService
 			return new CategoryModel
 			{
 				CategoryId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.CategoryFieldNameId}" ] ),
+				ParentId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.CategoryFieldNameParentId}" ] ),
 				CategoryName = DatabaseValueConverter.GetString( reader [ $"{DBNames.CategoryFieldNameName}" ] )
 			};
 		} );
@@ -62,6 +69,7 @@ public class CategoryService : ICategoryService
 	{
 		Dictionary<string, object> parameters = new()
 		{
+			{ $"@{DBNames.CategoryFieldNameParentId}", queryParameters[$"@{DBNames.CategoryFieldNameParentId}"] ?? DBNull.Value },
 			{ $"@{DBNames.CategoryFieldNameName}", queryParameters[$"@{DBNames.CategoryFieldNameName}"] ?? DBNull.Value }
 		};
 
@@ -75,6 +83,7 @@ public class CategoryService : ICategoryService
 		Dictionary<string, object> parameters = new()
 		{
 			{ $"@{DBNames.CategoryFieldNameId}", queryParameters[$"@{DBNames.CategoryFieldNameId}"] ?? DBNull.Value },
+			{ $"@{DBNames.CategoryFieldNameParentId}", queryParameters[$"@{DBNames.CategoryFieldNameParentId}"] ?? DBNull.Value },
 			{ $"@{DBNames.CategoryFieldNameName}", queryParameters[$"@{DBNames.CategoryFieldNameName}"] ?? DBNull.Value }
 		};
 
@@ -113,14 +122,22 @@ public class CategoryService : ICategoryService
 		return usedCount > 0;
 	}
 
-	public async Task<bool> NameExistsAsync( string? categoryName )
+	public async Task<bool> NameExistsAsync( string? categoryName, int? parentId )
 	{
 		if ( string.IsNullOrWhiteSpace( categoryName ) )
 			return false;
 
-		var categorys = await GetAllCategorysAsync();
+		if ( parentId == 0 )
+			parentId = null;
 
-		return categorys.Any( c =>
-			string.Equals( c.CategoryName, categoryName, StringComparison.OrdinalIgnoreCase ) );
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.CategoryFieldNameParentId}", parentId },
+			{ $"@{DBNames.CategoryFieldNameName}", categoryName }
+		};
+
+
+		var count = await _dataService.ExecuteScalarAsync<int>( CategoryNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

@@ -12,7 +12,7 @@
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              mc:Ignorable="d">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
             <RowDefinition Height="96" />
@@ -43,7 +43,6 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="32" />
-                <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -52,40 +51,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <!-- Category parent -->
+              <!--  Category name  -->
             <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Content="{x:Static language:Language.metadataCategoryFieldCategoryParentId}"
-                Style="{DynamicResource EntryLabel}" />
-
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
-            
-            <ComboBox
-                Grid.Row="0"
-                Grid.Column="2"
-                ItemsSource="{Binding AllCategories}"
-                SelectedValuePath="Id"
-                DisplayMemberPath="Name"
-                SelectedValue="{Binding SelectedCategory.ParentId}" />
-
-            <!--  Category name  -->
-            <Label
-                Grid.Row="1"
                 Grid.Column="0"
                 Content="{x:Static language:Language.metadataCategoryEntryFieldName}"
                 Style="{DynamicResource EntryLabel}" />
 
             <Label
-                Grid.Row="1"
                 Grid.Column="1"
                 Style="{DynamicResource EntrySemicolon}" />
 
             <TextBox
-                Grid.Row="1"
                 Grid.Column="2"
                 Width="250"
                 Style="{DynamicResource DefaultTextBox}"
@@ -120,21 +96,28 @@
             <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                 <Button
                        Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding AddCountryCommand}" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
-                    <Image Style="{DynamicResource ToolBarAddIcon}" />
+                       Command="{Binding AddCategoryCommand}" 
+                       ToolTip="{x:Static language:Language.toolbarButtonActionNewRoot}">
+                    <Image Style="{DynamicResource ToolBarAddRootIcon}" />
+                </Button>
+
+                <Button
+                       Style="{StaticResource ActionBarButtonStyle}"
+                       Command="{Binding AddSubCategoryCommand}" 
+                       ToolTip="{x:Static language:Language.toolbarButtonActionNewSub}">
+                    <Image Style="{DynamicResource ToolBarAddSubIcon}" />
                 </Button>
 
                 <Button 
                Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding DeleteCountryCommand}"
+                       Command="{Binding DeleteCategoryCommand}"
                        ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
                     <Image Style="{DynamicResource ToolBarDeleteIcon}" />
                 </Button>
 
                 <Button 
                        Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding SaveCountryCommand}"
+                       Command="{Binding SaveCategoryCommand}"
                        ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
                     <Image Style="{DynamicResource ToolBarSaveIcon}" />
                 </Button>
@@ -161,28 +144,25 @@
                        ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
                     <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
                 </Button>
-            </StackPanel>
-            <!--#endregion-->
 
-            <!--#region Record Count Section -->
-            <TextBlock
-                   Grid.Column="1"
-                   Width="250"
-                   Height="23" FontSize="14" FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-           
-                   <Run Text="{x:Static language:Language.toolbarVisibleRowLabelCategory}" />
-                   <Run Text=": " />
-                   <Run
-                       FontSize="16"
-                       Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
-                       FontStyle="Italic" />
-                   <Run Text=" " />
-                   <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
-                   <Run Text=" " />
-                   <Run Text="{Binding TotalCategoryCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
-            </TextBlock>
+                <Border Style="{StaticResource ActionBarSeparatorStyle}" />
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding ExpandCommand}"
+                    CommandParameter="{Binding ElementName=SfGridTree}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExpand}">
+                    <Image Style="{DynamicResource ToolBarExpandIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding CollapseCommand}"
+                    CommandParameter="{Binding ElementName=SfGridTree}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionCollapse}">
+                    <Image Style="{DynamicResource ToolBarCollapseIcon}" />
+                </Button>
+            </StackPanel>
             <!--#endregion-->
 
             <!--#region Search field-->
@@ -217,9 +197,9 @@
                    Width="250"
                    VerticalAlignment="Center"
                    Style="{DynamicResource DefaultTextBox}"
-                   Tag="{x:Static language:Language.SearchGridTag}"
+                   Tag="{x:Static language:Language.SearchTreeTag}"
                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                   ToolTip="{x:Static language:Language.SearchGridTooltip}" />
+                   ToolTip="{x:Static language:Language.SearchTreeTooltip}" />
 
             <!--  Clear button  -->
             <Button
@@ -234,26 +214,25 @@
             <!--#endregion-->
         </Grid>
         <!--#endregion-->
-
+        <!--#endregion-->
+        
         <!--#region Data grid-->
         <syncfusion:SfTreeGrid
             x:Name="SfGridTree"
             Grid.Row="4"
             Margin="15,3,15,5"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
-            AllowSorting="True"
-            AllowTriStateSorting="True"
+            AllowFiltering="True"
             AutoGenerateColumns="False"
             ColumnSizer="Star"
-            ItemsSource="{Binding Categories}"
+            ItemsSource="{Binding CategoryTree}"
             ChildPropertyName="Children"
             SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
             AutoExpandMode="RootNodesExpanded">
 
             <syncfusion:SfTreeGrid.Columns>
                 <syncfusion:TreeGridTextColumn
-                    MappingName="Name"
+                    MappingName="CategoryName"
                     HeaderText="Category" />
             </syncfusion:SfTreeGrid.Columns>
 

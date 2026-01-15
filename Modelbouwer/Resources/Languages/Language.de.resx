@@ -3613,4 +3613,25 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarVisibleRowLabelCategory" xml:space="preserve">
     <value>Anzahl der angezeigten Kategorien</value>
   </data>
+  <data name="toolbarButtonActionNewRoot" xml:space="preserve">
+    <value>Neue Kategorie auf derselben Ebene wie die ausgewählte Kategorie</value>
+  </data>
+  <data name="toolbarButtonActionNewSub" xml:space="preserve">
+    <value>Neue Kategorie als Unterebene der ausgewählten Kategorie</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionCategorySuffix" xml:space="preserve">
+    <value>und möchten alle zugrunde liegenden Kategorien löschen?</value>
+  </data>
+  <data name="toolbarButtonActionExpand" xml:space="preserve">
+    <value>Erweitern Sie alle Kategorien</value>
+  </data>
+  <data name="toolbarButtonActionCollapse" xml:space="preserve">
+    <value>Alle Kategorien schließen</value>
+  </data>
+  <data name="SearchTreeTag" xml:space="preserve">
+    <value>Öffnen Sie zunächst die Liste zur Suche</value>
+  </data>
+  <data name="SearchTreeTooltip" xml:space="preserve">
+    <value>Wenn nicht die gesamte Liste erweitert wird, werden nicht alle Ergebnisse angezeigt</value>
+  </data>
 </root>

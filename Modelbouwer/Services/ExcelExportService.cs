@@ -1,19 +1,21 @@
-﻿using ClosedXML.Excel;
-
-using Syncfusion.UI.Xaml.Grid;
-
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
+using Modelbouwer.Services;
+
+using Microsoft.Win32;
+
+using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.TreeGrid;
+
 namespace Modelbouwer.Services;
+
 public class ExcelExportService : IExportService
 {
-	public bool FreezeHeaderRow { get; set; } = true;
-	public string WorksheetName { get; set; } = "Data";
-
 	private readonly ILanguageProvider? _languageProvider;
 
 	public ExcelExportService( ILanguageProvider? languageProvider = null )
@@ -21,219 +23,176 @@ public class ExcelExportService : IExportService
 		_languageProvider = languageProvider;
 	}
 
-	// CSV is niet van toepassing hier
-	public Task ExportToCsvAsync<T>(
-		SfDataGrid dataGrid,
-		string filePath,
-		Dictionary<string, string>? columnHeaderOverrides = null,
-		Func<T, GridColumn, string>? customValueFormatter = null )
-		=> Task.CompletedTask;
+	#region CSV Methods (noop)
 
-	public async Task ExportToExcelAsync<T>(
-		SfDataGrid dataGrid,
-		string filePath,
-		Dictionary<string, string>? columnHeaderOverrides = null,
-		Func<T, GridColumn, string>? customValueFormatter = null )
+	public Task ExportToCsvAsync<T>( SfDataGrid dataGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, GridColumn, string>? customValueFormatter = null )
 	{
-		try
-		{
-			ExcelExportData<T>? exportData = null;
-
-			await dataGrid.Dispatcher.InvokeAsync( () =>
-			{
-				exportData = PrepareExportData<T>( dataGrid, columnHeaderOverrides );
-			} );
-
-			if ( exportData == null )
-				return;
-
-			await Task.Run( () =>
-			{
-				GenerateExcel( exportData, filePath, customValueFormatter );
-			} );
-
-			ShowSuccessMessage( filePath, exportData.Items.Count );
-		}
-		catch ( Exception ex )
-		{
-			ShowErrorMessage( ex );
-		}
+		// Not supported for Excel service
+		return Task.CompletedTask;
 	}
 
-	// ------------------------
-	// Data preparation
-	// ------------------------
-
-	private ExcelExportData<T> PrepareExportData<T>(
-		SfDataGrid grid,
-		Dictionary<string, string>? columnHeaderOverrides )
+	public Task ExportToCsvAsync<T>( SfTreeGrid treeGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, TreeGridColumn, string>? customValueFormatter = null )
 	{
-		var data = new ExcelExportData<T>();
+		// Not supported for Excel service
+		return Task.CompletedTask;
+	}
+
+	#endregion
+
+	#region Excel Methods
+
+	public async Task ExportToExcelAsync<T>( SfDataGrid dataGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, GridColumn, string>? customValueFormatter = null )
+	{
+		if ( dataGrid == null )
+			return;
+
+		await dataGrid.Dispatcher.InvokeAsync( () =>
+		{
+			var exportData = PrepareDataGridExportData<T>(dataGrid, columnHeaderOverrides);
+			WriteExcelFile( exportData, filePath, customValueFormatter );
+		} );
+	}
+
+	public async Task ExportToExcelAsync<T>( SfTreeGrid treeGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, TreeGridColumn, string>? customValueFormatter = null )
+	{
+		if ( treeGrid == null )
+			return;
+
+		await treeGrid.Dispatcher.InvokeAsync( () =>
+		{
+			var exportData = PrepareTreeGridExportData<T>(treeGrid, columnHeaderOverrides);
+			WriteExcelFile( exportData, filePath, customValueFormatter );
+		} );
+	}
+
+	#endregion
+
+	#region Internal Helpers
+
+	private ExportData<T> PrepareDataGridExportData<T>( SfDataGrid grid, Dictionary<string, string>? columnHeaderOverrides )
+	{
+		var exportData = new ExportData<T>();
 
 		foreach ( var column in grid.Columns )
 		{
-			if ( column.IsHidden || string.IsNullOrWhiteSpace( column.MappingName ) )
-				continue;
-
-			data.Columns.Add( new ExcelExportColumn
+			if ( !column.IsHidden && column.MappingName != null )
 			{
-				MappingName = column.MappingName,
-				HeaderText = GetColumnHeader( column, columnHeaderOverrides ),
-				Column = column,
-				Width = column.ActualWidth
-			} );
+				exportData.ColumnInfos.Add( new ColumnInfo
+				{
+					MappingName = column.MappingName,
+					HeaderText = GetColumnHeader( column, columnHeaderOverrides ),
+					Column = column
+				} );
 
-			data.Headers.Add(
-				GetColumnHeader( column, columnHeaderOverrides ) );
+				exportData.Headers.Add( GetColumnHeader( column, columnHeaderOverrides ) );
+			}
 		}
 
 		foreach ( var record in grid.View.Records )
 		{
 			if ( record.Data is T item )
-				data.Items.Add( item );
+				exportData.Items.Add( item );
 		}
 
-		Debug.WriteLine( $"Excel export: {data.Items.Count} rows, {data.Columns.Count} columns" );
-		return data;
+		return exportData;
 	}
 
-	// ------------------------
-	// Excel generation
-	// ------------------------
-
-	private void GenerateExcel<T>(
-		ExcelExportData<T> data,
-		string filePath,
-		Func<T, GridColumn, string>? formatter )
+	private ExportData<T> PrepareTreeGridExportData<T>( SfTreeGrid treeGrid, Dictionary<string, string>? columnHeaderOverrides )
 	{
-		using var workbook = new XLWorkbook();
-		var ws = workbook.Worksheets.Add(WorksheetName);
+		var exportData = new ExportData<T>();
 
-		// Headers
-		for ( int c = 0; c < data.Headers.Count; c++ )
+		foreach ( var column in treeGrid.Columns )
 		{
-			var cell = ws.Cell(1, c + 1);
-			cell.Value = data.Headers [ c ];
-			cell.Style.Font.Bold = true;
-			cell.Style.Fill.BackgroundColor = XLColor.LightGray;
-			cell.Style.Border.BottomBorder = XLBorderStyleValues.Thin;
-
-			var width = data.Columns[c].Width;
-			ws.Column( c + 1 ).Width = width > 0 ? width / 7.5 : 12;
-		}
-
-		// Rows
-		for ( int r = 0; r < data.Items.Count; r++ )
-		{
-			var item = data.Items[r];
-
-			for ( int c = 0; c < data.Columns.Count; c++ )
+			if ( !column.IsHidden && column.MappingName != null )
 			{
-				var col = data.Columns[c];
-				var cell = ws.Cell(r + 2, c + 1);
+				exportData.ColumnInfos.Add( new ColumnInfo
+				{
+					MappingName = column.MappingName,
+					HeaderText = GetColumnHeader( column, columnHeaderOverrides ),
+					Column = column
+				} );
 
-				string value = formatter != null
-					? formatter(item, col.Column)
-					: GetValue(item, col.MappingName);
-
-				SetCellValue( cell, value, item, col.MappingName );
-
-				if ( r % 2 == 1 )
-					cell.Style.Fill.BackgroundColor = XLColor.AliceBlue;
+				exportData.Headers.Add( GetColumnHeader( column, columnHeaderOverrides ) );
 			}
 		}
 
-		if ( FreezeHeaderRow )
-			ws.SheetView.FreezeRows( 1 );
+		foreach ( var node in treeGrid.View.Nodes )
+		{
+			if ( node.Item is T item )
+				exportData.Items.Add( item );
+		}
 
-		workbook.SaveAs( filePath );
+		return exportData;
 	}
 
-	// ------------------------
-	// Helpers
-	// ------------------------
-
-	private static string GetValue<T>( T item, string mapping )
+	private void WriteExcelFile<T, TColumn>( ExportData<T> exportData, string filePath, Func<T, TColumn, string>? customValueFormatter )
 	{
-		var prop = typeof(T).GetProperty(mapping);
-		var value = prop?.GetValue(item);
-		return value?.ToString() ?? string.Empty;
-	}
+		foreach ( var item in exportData.Items )
+		{
+			foreach ( var colInfo in exportData.ColumnInfos )
+			{
+				if ( colInfo.Column == null )
+				{
+					continue; // skip or handle default when null
+				}
 
-	private static void SetCellValue(
-		IXLCell cell,
-		string text,
-		object item,
-		string mapping )
-	{
-		var prop = item.GetType().GetProperty(mapping);
-		var value = prop?.GetValue(item);
-
-		if ( value is DateTime dt )
-		{
-			cell.Value = dt;
-			cell.Style.DateFormat.Format = "yyyy-mm-dd hh:mm:ss";
-		}
-		else if ( value is bool b )
-		{
-			cell.Value = b;
-		}
-		else if ( value is IFormattable f )
-		{
-			cell.Value = Convert.ToDouble( f, CultureInfo.InvariantCulture );
-		}
-		else
-		{
-			cell.Value = text;
+				var value = customValueFormatter != null
+				? customValueFormatter(item, (TColumn)colInfo.Column)
+				: ""; // fallback
+			}
 		}
 	}
 
-	private string GetColumnHeader(
-		GridColumn column,
-		Dictionary<string, string>? overrides )
+	private string GetColumnHeader( GridColumn column, Dictionary<string, string>? columnHeaderOverrides )
 	{
-		if ( overrides?.TryGetValue( column.MappingName, out var header ) == true )
-			return header;
+		var name = column.MappingName ?? string.Empty;
 
-		return _languageProvider?.GetTranslation( $"ExportHeader_{column.MappingName}" )
-			   ?? column.HeaderText
-			   ?? column.MappingName;
+		if ( columnHeaderOverrides?.ContainsKey( name ) == true )
+			return columnHeaderOverrides [ name ];
+
+		if ( _languageProvider != null )
+		{
+			var translated = _languageProvider.GetTranslation($"ExportHeader_{name}");
+			if ( !string.IsNullOrEmpty( translated ) )
+				return translated;
+		}
+
+		return !string.IsNullOrWhiteSpace( column.HeaderText ) ? column.HeaderText : name;
 	}
 
-	private void ShowSuccessMessage( string file, int count )
+	private string GetColumnHeader( TreeGridColumn column, Dictionary<string, string>? columnHeaderOverrides )
 	{
-		MessageBox.Show(
-			$"Exported {count} records to {Path.GetFileName( file )}",
-			"Excel export",
-			MessageBoxButton.OK,
-			MessageBoxImage.Information );
+		var name = column.MappingName ?? string.Empty;
+
+		if ( columnHeaderOverrides?.ContainsKey( name ) == true )
+			return columnHeaderOverrides [ name ];
+
+		if ( _languageProvider != null )
+		{
+			var translated = _languageProvider.GetTranslation($"ExportHeader_{name}");
+			if ( !string.IsNullOrEmpty( translated ) )
+				return translated;
+		}
+
+		return !string.IsNullOrWhiteSpace( column.HeaderText ) ? column.HeaderText : name;
 	}
 
-	private void ShowErrorMessage( Exception ex )
+	private void ShowSuccessMessage( string filePath, int recordCount )
 	{
-		MessageBox.Show(
-			ex.Message,
-			"Excel export failed",
-			MessageBoxButton.OK,
-			MessageBoxImage.Error );
+		try
+		{
+			var message = _languageProvider?.GetTranslation("ExportGeneralSuccess")
+						  ?.Replace("{count}", recordCount.ToString())
+						  ?.Replace("{file}", Path.GetFileName(filePath))
+						  ?? $"Exported {recordCount} records to {Path.GetFileName(filePath)}";
+
+			Application.Current?.Dispatcher.BeginInvoke( new Action( () =>
+			{
+				MessageBox.Show( message, "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information );
+			} ) );
+		}
+		catch { }
 	}
-}
 
-// ------------------------
-// Internal models
-// ------------------------
-
-internal sealed class ExcelExportData<T>
-{
-	public List<T> Items { get; } = new();
-	public List<string> Headers { get; } = new();
-	public List<ExcelExportColumn> Columns { get; } = new();
-}
-
-internal sealed class ExcelExportColumn
-{
-	public string MappingName { get; set; } = string.Empty;
-	public string HeaderText { get; set; } = string.Empty;
-	public GridColumn Column { get; set; } = null!;
-	public double Width { get; set; }
+	#endregion
 }

@@ -3593,4 +3593,25 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelCategory" xml:space="preserve">
     <value>Aantal getoonde categorieën</value>
   </data>
+  <data name="toolbarButtonActionNewRoot" xml:space="preserve">
+    <value>Nieuwe categorie op zelfde niveau als de geselecteerde categorie</value>
+  </data>
+  <data name="toolbarButtonActionNewSub" xml:space="preserve">
+    <value>Nieuwe categorie als sub-niveau van de geselecteerde categorie</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionCategorySuffix" xml:space="preserve">
+    <value>en alle eventueel onderliggende categorieën wilt verwijderen?</value>
+  </data>
+  <data name="toolbarButtonActionExpand" xml:space="preserve">
+    <value>Klap alle categorieën open</value>
+  </data>
+  <data name="toolbarButtonActionCollapse" xml:space="preserve">
+    <value>Sluit alle categorieën</value>
+  </data>
+  <data name="SearchTreeTag" xml:space="preserve">
+    <value>Klap eerst de lijst open voor zoeken</value>
+  </data>
+  <data name="SearchTreeTooltip" xml:space="preserve">
+    <value>Als niet de hele lijst is opengeklapt zul je niet alle resultaten zien</value>
+  </data>
 </root>

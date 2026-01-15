@@ -34,6 +34,22 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="ToolBarAddRootIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource addroot}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolBarAddSubIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource addsub}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
     <Style x:Key="ToolBarDeleteIcon" TargetType="Image">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
@@ -71,6 +87,22 @@
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
         <Setter Property="Source" Value="{StaticResource excelexport}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolBarExpandIcon" TargetType="Image">
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Source" Value="{StaticResource expand}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolBarCollapseIcon" TargetType="Image">
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Source" Value="{StaticResource collapse}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>

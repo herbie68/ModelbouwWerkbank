@@ -56,7 +56,7 @@ public class CsvExportService : IExportService
 		Dictionary<string, string>? columnHeaderOverrides,
 		Func<T, sfGridColumn, string>? customValueFormatter )
 	{
-		ExportData<T> exportData = null;
+		ExportData<T>? exportData = null;
 
 		await dataGrid.Dispatcher.InvokeAsync( () =>
 		{
@@ -81,7 +81,7 @@ public class CsvExportService : IExportService
 		Dictionary<string, string>? columnHeaderOverrides,
 		Func<T, TreeGridColumn, string>? customValueFormatter )
 	{
-		ExportData<T> exportData = null;
+		ExportData<T>? exportData = null;
 
 		await treeGrid.Dispatcher.InvokeAsync( () =>
 		{
@@ -295,18 +295,4 @@ public class CsvExportService : IExportService
 	}
 
 	#endregion
-}
-
-public class ColumnInfo
-{
-	public string MappingName { get; set; } = string.Empty;
-	public string HeaderText { get; set; } = string.Empty;
-	public dynamic? Column { get; set; } // nullable to remove CS8618 warning
-}
-
-public class ExportData<T>
-{
-	public List<ColumnInfo> ColumnInfos { get; set; } = new();
-	public List<string> Headers { get; set; } = new();
-	public List<T> Items { get; set; } = new();
 }
