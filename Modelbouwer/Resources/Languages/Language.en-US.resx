@@ -1390,7 +1390,7 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataProjectTabMemoTitle" xml:space="preserve">
     <value>Additional information</value>
   </data>
-  <data name="metadataWorktypePageSubTitle" xml:space="preserve">
+  <data name="metadataWorktypePageSubtitle" xml:space="preserve">
     <value>Manage the work, select a type of work for this and use the right mouse button</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktype" xml:space="preserve">
@@ -1434,9 +1434,6 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataCategoryTreeviewFolderContextMenuItemDelete" xml:space="preserve">
     <value>Remove these and all underlining categories</value>
-  </data>
-  <data name="metadataStoragePageSubTitle" xml:space="preserve">
-    <value>Manage the locations, select a location for this and use the right mouse button</value>
   </data>
   <data name="metadataStorageEntryFieldStorage" xml:space="preserve">
     <value>Location</value>
@@ -3672,5 +3669,101 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="toolbarVisibleRowLabelContactType" xml:space="preserve">
     <value>Number of functions shown</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Label" xml:space="preserve">
+    <value>Stock locations</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Tooltip" xml:space="preserve">
+    <value>Management of stock locations</value>
+  </data>
+  <data name="toolbarVisibleRowLabelStorageLocation" xml:space="preserve">
+    <value>Stock location</value>
+  </data>
+  <data name="ExportValidationStorageLocationNameExists" xml:space="preserve">
+    <value>This stock location already exists</value>
+  </data>
+  <data name="metadataStorageLocationDeleteError" xml:space="preserve">
+    <value>This stock location is still in use and cannot be deleted</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix" xml:space="preserve">
+    <value>and want to delete any underlying storagelocations?</value>
+  </data>
+  <data name="ExportStorageLocationFileName" xml:space="preserve">
+    <value>Stocklocations</value>
+  </data>
+  <data name="ExportStorageLocationHeaderName" xml:space="preserve">
+    <value>Stocklocation</value>
+  </data>
+  <data name="metadataStorageLocationHeaderTitel" xml:space="preserve">
+    <value>Management of the stock location table</value>
+  </data>
+  <data name="metadataStorageLocationHeaderSubtitle" xml:space="preserve">
+    <value>Manage inventory locations</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldName" xml:space="preserve">
+    <value>Stock location</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTag" xml:space="preserve">
+    <value>Stock location</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTooltip" xml:space="preserve">
+    <value>Enter the name for the stock location</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Tooltip" xml:space="preserve">
+    <value>Management of used units</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Tooltip" xml:space="preserve">
+    <value>Management of the types of work</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Label" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Label" xml:space="preserve">
+    <value>Work types</value>
+  </data>
+  <data name="ExportValidationUnitNameExists" xml:space="preserve">
+    <value>This unit already exists</value>
+  </data>
+  <data name="metadataUnitDeleteError" xml:space="preserve">
+    <value>This description is still used for at least 1 product and cannot be removed</value>
+  </data>
+  <data name="ExportUnitFileName" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="ExportUnitHeaderName" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="metadataStoragePageSubTitle" xml:space="preserve">
+    <value>Manage the locations, first select a location to add a new location below</value>
+  </data>
+  <data name="metadataUnitHeaderTitel" xml:space="preserve">
+    <value>Management of the units</value>
+  </data>
+  <data name="metadataUnitHeaderSubtitle" xml:space="preserve">
+    <value>Usage units</value>
+  </data>
+  <data name="toolbarVisibleRowLabelUnit" xml:space="preserve">
+    <value>Number of units shown</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTag" xml:space="preserve">
+    <value>Usage unit</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTooltip" xml:space="preserve">
+    <value>Units are used, for example, to regain standard packaging units (examples: piece, per 10)</value>
+  </data>
+  <data name="metadataUnitEntryFieldName" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderName.Label" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="metadataWorkTypeDeleteError" xml:space="preserve">
+    <value>This work type is still used for at least 1 time registration and cannot be deleted</value>
+  </data>
+  <data name="ExportValidationWorkTypeNameExists" xml:space="preserve">
+    <value>This type of work already exists</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
+    <value>and want to delete any underlying work types?</value>
   </data>
 </root>

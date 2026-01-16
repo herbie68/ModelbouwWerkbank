@@ -29,13 +29,6 @@ public class CategoryValidator : IEntityValidator<CategoryModel>
 			result.Errors.Add( Lang.ExportValidationCategoryNameExists );
 		}
 
-		// ❗ Duplicate checks
-		//if ( category.CategoryId == 0 )
-		//{
-		//	if ( await _dataService.NameExistsAsync( category.CategoryName ) )
-		//		result.Errors.Add( Lang.ExportValidationCategoryNameExists );
-		//}
-
 		return result;
 	}
 }

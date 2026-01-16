@@ -44,6 +44,8 @@ public partial class App : Application
 		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<ContactTypeService>();
 		services.AddSingleton<CountryService>();
+		services.AddSingleton<StorageLocationService>();
+		services.AddSingleton<UnitService>();
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
@@ -51,6 +53,8 @@ public partial class App : Application
 		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<ContactTypePageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
+		services.AddTransient<StorageLocationPageViewModel>();
+		services.AddTransient<UnitPageViewModel>();
 
 		// Register NavigationViewModel
 		services.AddSingleton<NavigationViewModel>();
@@ -61,6 +65,8 @@ public partial class App : Application
 		services.AddTransient<CountryView>();
 		services.AddTransient<ContactTypeView>();
 		services.AddTransient<CurrencyView>();
+		services.AddTransient<StorageLocationView>();
+		services.AddTransient<UnitView>();
 
 		// Register MainWindow
 		services.AddSingleton<MainWindow>();
@@ -72,16 +78,22 @@ public partial class App : Application
 		services.AddSingleton<CsvExportService>();
 		services.AddSingleton<ExcelExportService>();
 		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
+
 		services.AddScoped<IBrandService, BrandService>();
 		services.AddScoped<ICategoryService, CategoryService>();
 		services.AddScoped<IContactTypeService, ContactTypeService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
+		services.AddScoped<IStorageLocationService, StorageLocationService>();
+		services.AddScoped<IUnitService, UnitService>();
+
 		services.AddScoped<IEntityValidator<BrandModel>, BrandValidator>();
 		services.AddScoped<IEntityValidator<CategoryModel>, CategoryValidator>();
 		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
 		services.AddScoped<IEntityValidator<ContactTypeModel>, ContactTypeValidator>();
 		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
+		services.AddScoped<IEntityValidator<StorageLocationModel>, StorageLocationValidator>();
+		services.AddScoped<IEntityValidator<UnitModel>, UnitValidator>();
 	}
 
 	protected override async void OnStartup( StartupEventArgs e )

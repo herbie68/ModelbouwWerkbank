@@ -130,11 +130,26 @@ public class NavigationViewModel : INotifyPropertyChanged
 		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
-			NavigationIcon = CreateNavigationImage( "Currencies" ),
+			NavigationIcon = CreateNavigationImage( "Currency" ),
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Currency_Tooltip}",
 			Command = new SimpleCommand( () => LoadCurrencyView() )
 		} );
 
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_StorageLocation_Label}",
+			NavigationIcon = CreateNavigationImage( "StorageLocation" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_StorageLocation_Tooltip}",
+			Command = new SimpleCommand( () => LoadStorageLocationView() )
+		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Unit_Label}",
+			NavigationIcon = CreateNavigationImage( "Unit" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Unit_Tooltip}",
+			Command = new SimpleCommand( () => LoadUnitView() )
+		} );
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -228,6 +243,32 @@ public class NavigationViewModel : INotifyPropertyChanged
 		catch ( Exception ex )
 		{
 			Debug.WriteLine( $"Error loading CurrencyView: {ex.Message}" );
+		}
+	}
+
+	private void LoadStorageLocationView()
+	{
+		try
+		{
+			var storagelocationView = _serviceProvider.GetRequiredService<StorageLocationView>();
+			CurrentView = storagelocationView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading StorageLocationView: {ex.Message}" );
+		}
+	}
+
+	private void LoadUnitView()
+	{
+		try
+		{
+			var unitView = _serviceProvider.GetRequiredService<UnitView>();
+			CurrentView = unitView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading UnitView: {ex.Message}" );
 		}
 	}
 
@@ -383,6 +424,22 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_Tooltip,
 			Command = new SimpleCommand( () => LoadCurrencyView() )
 		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_StorageLocation_Label,
+			NavigationIcon = CreateNavigationImage( "StorageLocation" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_StorageLocation_Tooltip,
+			Command = new SimpleCommand( () => LoadStorageLocationView() )
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_Unit_Label,
+			NavigationIcon = CreateNavigationImage( "Unit" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Unit_Tooltip,
+			Command = new SimpleCommand( () => LoadUnitView() )
+		} );			
 		#endregion
 
 		#region CurrencySubitems

@@ -1391,7 +1391,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProjectTabMemoTitle" xml:space="preserve">
     <value>Aanvullende informatie</value>
   </data>
-  <data name="metadataWorktypePageSubTitle" xml:space="preserve">
+  <data name="metadataWorktypePageSubtitle" xml:space="preserve">
     <value>Beheer de werkzaamheden, selecteer hiervoor een werksoort en gebruik de rechtermuisknop</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktype" xml:space="preserve">
@@ -1440,7 +1440,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Verwijder deze EN ALLE onderligende categoriën</value>
   </data>
   <data name="metadataStoragePageSubTitle" xml:space="preserve">
-    <value>Beheer de locaties, selecteer hiervoor een locatie en gebruik de rechtermuisknop</value>
+    <value>Beheer de locaties, selecteer eerst een locatie  om daaronder een nieuwe locatie toe te voegen</value>
   </data>
   <data name="metadataStorageEntryFieldStorage" xml:space="preserve">
     <value>Locatie</value>
@@ -3652,5 +3652,98 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="navigation.Resources.SubItem.ContactType.Tooltip" xml:space="preserve">
     <value>Beheer van functies van contatpersonen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Label" xml:space="preserve">
+    <value>Voorraadlocaties</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Tooltip" xml:space="preserve">
+    <value>Beheer van de voorraadlocaties</value>
+  </data>
+  <data name="toolbarVisibleRowLabelStorageLocation" xml:space="preserve">
+    <value>Voorraad locatie</value>
+  </data>
+  <data name="ExportValidationStorageLocationNameExists" xml:space="preserve">
+    <value>Deze voorraad locatie bestaat al</value>
+  </data>
+  <data name="metadataStorageLocationDeleteError" xml:space="preserve">
+    <value>Deze voorraad locatie wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix" xml:space="preserve">
+    <value>en alle eventueel onderliggende locaties wilt verwijderen?</value>
+  </data>
+  <data name="ExportStorageLocationFileName" xml:space="preserve">
+    <value>Voorraadlocaties</value>
+  </data>
+  <data name="ExportStorageLocationHeaderName" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataStorageLocationHeaderTitel" xml:space="preserve">
+    <value>Beheer van de voorraad locatie tabel</value>
+  </data>
+  <data name="metadataStorageLocationHeaderSubtitle" xml:space="preserve">
+    <value>Voorraadlocaties beheren</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldName" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTag" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geef de naam voor de voorraadlocatie</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Tooltip" xml:space="preserve">
+    <value>Beheer van gebruikte eenheden</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Tooltip" xml:space="preserve">
+    <value>Beheer van de soorten werkzaamheden</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Label" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Label" xml:space="preserve">
+    <value>Werksoorten</value>
+  </data>
+  <data name="ExportValidationUnitNameExists" xml:space="preserve">
+    <value>Deze eenheid bestaat al</value>
+  </data>
+  <data name="metadataUnitDeleteError" xml:space="preserve">
+    <value>Deze omschrijving wordt nog gebruikt bij minimaal 1 product en kan niet worden verwijderd</value>
+  </data>
+  <data name="ExportUnitFileName" xml:space="preserve">
+    <value>Eenheden</value>
+  </data>
+  <data name="ExportUnitHeaderName" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="metadataUnitHeaderTitel" xml:space="preserve">
+    <value>Beheer van de eenheden</value>
+  </data>
+  <data name="metadataUnitHeaderSubtitle" xml:space="preserve">
+    <value>Gebruikseenheden</value>
+  </data>
+  <data name="toolbarVisibleRowLabelUnit" xml:space="preserve">
+    <value>Aantal getoonde eenheden</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTag" xml:space="preserve">
+    <value>Gebruikseenheid</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTooltip" xml:space="preserve">
+    <value>Eenheden worden gebruikt om bijvoorbeeld standaard verpakkingseenheden weer te genen (voorbeelden: Stuk, Per 10)</value>
+  </data>
+  <data name="metadataUnitEntryFieldName" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderName.Label" xml:space="preserve">
+    <value>Eenheid</value>
+  </data>
+  <data name="metadataWorkTypeDeleteError" xml:space="preserve">
+    <value>Deze werksoort wordt nog gebruikt bij minimaal 1 tijdsregistratie en kan niet worden verwijderd</value>
+  </data>
+  <data name="ExportValidationWorkTypeNameExists" xml:space="preserve">
+    <value>Deze werksoort bestaat al</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
+    <value>en alle eventueel onderliggende werksoorten wilt verwijderen?</value>
   </data>
 </root>

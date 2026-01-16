@@ -799,6 +799,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocaties.
+        /// </summary>
+        public static string ExportStorageLocationFileName {
+            get {
+                return ResourceManager.GetString("ExportStorageLocationFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocatie.
+        /// </summary>
+        public static string ExportStorageLocationHeaderName {
+            get {
+                return ResourceManager.GetString("ExportStorageLocationHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporteer opslaglocaties naar een CSV bestand.
         /// </summary>
         public static string ExportStorageSubTitle {
@@ -894,6 +912,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportTimeEntriesTitle {
             get {
                 return ResourceManager.GetString("ExportTimeEntriesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eenheden.
+        /// </summary>
+        public static string ExportUnitFileName {
+            get {
+                return ResourceManager.GetString("ExportUnitFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eenheid.
+        /// </summary>
+        public static string ExportUnitHeaderName {
+            get {
+                return ResourceManager.GetString("ExportUnitHeaderName", resourceCulture);
             }
         }
         
@@ -1398,6 +1434,33 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportValidationMessageTitle {
             get {
                 return ResourceManager.GetString("ExportValidationMessageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze voorraad locatie bestaat al.
+        /// </summary>
+        public static string ExportValidationStorageLocationNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationStorageLocationNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze eenheid bestaat al.
+        /// </summary>
+        public static string ExportValidationUnitNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationUnitNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze werksoort bestaat al.
+        /// </summary>
+        public static string ExportValidationWorkTypeNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationWorkTypeNameExists", resourceCulture);
             }
         }
         
@@ -7279,7 +7342,61 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beheer de locaties, selecteer hiervoor een locatie en gebruik de rechtermuisknop.
+        ///   Looks up a localized string similar to Deze voorraad locatie wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataStorageLocationDeleteError {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocatie.
+        /// </summary>
+        public static string metadataStorageLocationEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocatie.
+        /// </summary>
+        public static string metadataStorageLocationEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geef de naam voor de voorraadlocatie.
+        /// </summary>
+        public static string metadataStorageLocationEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocaties beheren.
+        /// </summary>
+        public static string metadataStorageLocationHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de voorraad locatie tabel.
+        /// </summary>
+        public static string metadataStorageLocationHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer de locaties, selecteer eerst een locatie  om daaronder een nieuwe locatie toe te voegen.
         /// </summary>
         public static string metadataStoragePageSubTitle {
             get {
@@ -8107,6 +8224,69 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eenheid.
+        /// </summary>
+        public static string metadataUnitDatagridHeaderName_Label {
+            get {
+                return ResourceManager.GetString("metadataUnitDatagridHeaderName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze omschrijving wordt nog gebruikt bij minimaal 1 product en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataUnitDeleteError {
+            get {
+                return ResourceManager.GetString("metadataUnitDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eenheid.
+        /// </summary>
+        public static string metadataUnitEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataUnitEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikseenheid.
+        /// </summary>
+        public static string metadataUnitEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataUnitEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eenheden worden gebruikt om bijvoorbeeld standaard verpakkingseenheden weer te genen (voorbeelden: Stuk, Per 10).
+        /// </summary>
+        public static string metadataUnitEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataUnitEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikseenheden.
+        /// </summary>
+        public static string metadataUnitHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataUnitHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de eenheden.
+        /// </summary>
+        public static string metadataUnitHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataUnitHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eenheden worden gebruikt om bijvoorbeeld standaard verpakkingseenheden weer te genen (voorbeelden: Stuk, Per 10).
         /// </summary>
         public static string metadataUnitPageSubtitle {
@@ -8121,6 +8301,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataUnitPageTitle {
             get {
                 return ResourceManager.GetString("metadataUnitPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze werksoort wordt nog gebruikt bij minimaal 1 tijdsregistratie en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataWorkTypeDeleteError {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeDeleteError", resourceCulture);
             }
         }
         
@@ -8163,9 +8352,9 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Beheer de werkzaamheden, selecteer hiervoor een werksoort en gebruik de rechtermuisknop.
         /// </summary>
-        public static string metadataWorktypePageSubTitle {
+        public static string metadataWorktypePageSubtitle {
             get {
-                return ResourceManager.GetString("metadataWorktypePageSubTitle", resourceCulture);
+                return ResourceManager.GetString("metadataWorktypePageSubtitle", resourceCulture);
             }
         }
         
@@ -8544,6 +8733,60 @@ namespace Modelbouwer.Resources.Languages {
         public static string navigation_Resources_SubItem_Currency_Tooltip {
             get {
                 return ResourceManager.GetString("navigation.Resources.SubItem.Currency.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocaties.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StorageLocation_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StorageLocation.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de voorraadlocaties.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StorageLocation_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StorageLocation.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eenheden.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Unit_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Unit.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van gebruikte eenheden.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Unit_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Unit.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoorten.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Worktype_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Worktype.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de soorten werkzaamheden.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Worktype_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Worktype.Tooltip", resourceCulture);
             }
         }
         
@@ -10466,11 +10709,29 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to en alle eventueel onderliggende locaties wilt verwijderen?.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to wilt verwijderen?.
         /// </summary>
         public static string toolbarButtonActionDeleteMessageQuestionSuffix {
             get {
                 return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to en alle eventueel onderliggende werksoorten wilt verwijderen?.
+        /// </summary>
+        public static string toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix", resourceCulture);
             }
         }
         
@@ -10723,6 +10984,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelNumberSeperator {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelNumberSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraad locatie.
+        /// </summary>
+        public static string toolbarVisibleRowLabelStorageLocation {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelStorageLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde eenheden.
+        /// </summary>
+        public static string toolbarVisibleRowLabelUnit {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelUnit", resourceCulture);
             }
         }
     }

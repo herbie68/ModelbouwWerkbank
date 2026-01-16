@@ -1390,7 +1390,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProjectTabMemoTitle" xml:space="preserve">
     <value>Weitere Informationen</value>
   </data>
-  <data name="metadataWorktypePageSubTitle" xml:space="preserve">
+  <data name="metadataWorktypePageSubtitle" xml:space="preserve">
     <value>Verwalten Sie die Arbeit, wählen Sie dafür einen Arbeitstyp und verwenden Sie die rechte Maustaste</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktype" xml:space="preserve">
@@ -1434,9 +1434,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataCategoryTreeviewFolderContextMenuItemDelete" xml:space="preserve">
     <value>Entfernen Sie diese und alle Unterstreichungskategorien</value>
-  </data>
-  <data name="metadataStoragePageSubTitle" xml:space="preserve">
-    <value>Verwalten Sie die Positionen, wählen Sie dafür einen Speicherort und verwenden Sie die rechte Maustaste</value>
   </data>
   <data name="metadataStorageEntryFieldStorage" xml:space="preserve">
     <value>Standort</value>
@@ -3672,5 +3669,101 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="toolbarVisibleRowLabelContactType" xml:space="preserve">
     <value>Anzahl der angezeigten Funktionen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Label" xml:space="preserve">
+    <value>Lagerstandorte</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StorageLocation.Tooltip" xml:space="preserve">
+    <value>Verwaltung der Lagerstandorte</value>
+  </data>
+  <data name="toolbarVisibleRowLabelStorageLocation" xml:space="preserve">
+    <value>Lagerort</value>
+  </data>
+  <data name="ExportValidationStorageLocationNameExists" xml:space="preserve">
+    <value>Dieser Lagerort existiert bereits</value>
+  </data>
+  <data name="metadataStorageLocationDeleteError" xml:space="preserve">
+    <value>Dieser Lagerort wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix" xml:space="preserve">
+    <value>und möchten alle zugrunde liegenden Lagerorte löschen?</value>
+  </data>
+  <data name="ExportStorageLocationFileName" xml:space="preserve">
+    <value>Lagerstandorte</value>
+  </data>
+  <data name="ExportStorageLocationHeaderName" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataStorageLocationHeaderTitel" xml:space="preserve">
+    <value>Verwaltung der Lagerorttabelle</value>
+  </data>
+  <data name="metadataStorageLocationHeaderSubtitle" xml:space="preserve">
+    <value>Lagerstandorte verwalten</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldName" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTag" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="metadataStorageLocationEntryFieldNameTooltip" xml:space="preserve">
+    <value>Geben Sie den Namen für den Lagerort ein</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Tooltip" xml:space="preserve">
+    <value>Verwaltung gebrauchter Einheiten</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Tooltip" xml:space="preserve">
+    <value>Verwaltung der Arbeitsarten</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Unit.Label" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Worktype.Label" xml:space="preserve">
+    <value>Arbeitstypen</value>
+  </data>
+  <data name="ExportValidationUnitNameExists" xml:space="preserve">
+    <value>Diese Einheit existiert bereits</value>
+  </data>
+  <data name="metadataUnitDeleteError" xml:space="preserve">
+    <value>Diese Beschreibung wird noch für mindestens ein Produkt verwendet und kann nicht entfernt werden</value>
+  </data>
+  <data name="ExportUnitFileName" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="ExportUnitHeaderName" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="metadataStoragePageSubTitle" xml:space="preserve">
+    <value>Verwalten Sie die Standorte. Wählen Sie zunächst einen Standort aus, um unten einen neuen Standort hinzuzufügen</value>
+  </data>
+  <data name="metadataUnitHeaderTitel" xml:space="preserve">
+    <value>Leitung der Einheiten</value>
+  </data>
+  <data name="metadataUnitHeaderSubtitle" xml:space="preserve">
+    <value>Nutzungseinheiten</value>
+  </data>
+  <data name="toolbarVisibleRowLabelUnit" xml:space="preserve">
+    <value>Anzahl der angezeigten Einheiten</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTag" xml:space="preserve">
+    <value>Nutzungseinheit</value>
+  </data>
+  <data name="metadataUnitEntryFieldNameTooltip" xml:space="preserve">
+    <value>Einheiten werden zum Beispiel verwendet, um die Standardverpackungseinheiten zurückzugewinnen (Beispiele: Stück pro 10)</value>
+  </data>
+  <data name="metadataUnitEntryFieldName" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="metadataUnitDatagridHeaderName.Label" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="metadataWorkTypeDeleteError" xml:space="preserve">
+    <value>Dieser Arbeitstyp wird noch für mindestens eine einmalige Registrierung verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="ExportValidationWorkTypeNameExists" xml:space="preserve">
+    <value>Diese Art von Arbeit gibt es bereits</value>
+  </data>
+  <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
+    <value>und möchten alle zugrunde liegenden Arbeitstypen löschen?</value>
   </data>
 </root>

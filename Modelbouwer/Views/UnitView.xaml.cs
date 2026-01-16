@@ -19,9 +19,9 @@ using Syncfusion.UI.Xaml.Grid;
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for BrandView.xaml
+/// Interaction logic for UnitView.xaml
 /// </summary>
-public partial class BrandView : UserControl
+public partial class UnitView : UserControl
 {
 	private readonly CsvExportService _csvExportService;
 	private readonly ExcelExportService _excelExportService;
@@ -30,34 +30,34 @@ public partial class BrandView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	public BrandView( BrandPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
+	public UnitView( UnitPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
-		Loaded += BrandView_Loaded;
+		Loaded += UnitView_Loaded;
 	}
 
-	private void BrandView_Loaded( object sender, RoutedEventArgs e )
+	private void UnitView_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is BrandPageViewModel vm )
+		if ( DataContext is UnitPageViewModel vm )
 		{
 			vm.RefreshGridFilter = () =>
 			{
 				SfDataGrid.View?.RefreshFilter();
 				SfDataGrid.UpdateLayout();
-				vm.VisibleBrandCount = SfDataGrid.View?.Records.Count ?? 0;
+				vm.VisibleUnitCount = SfDataGrid.View?.Records.Count ?? 0;
 			};
 		}
 	}
 
-	private void BrandDataGrid_Loaded( object sender, RoutedEventArgs e )
+	private void UnitDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( sender is not SfDataGrid grid )
 			return;
 
-		if ( DataContext is not BrandPageViewModel vm )
+		if ( DataContext is not UnitPageViewModel vm )
 			return;
 
 		grid.Dispatcher.BeginInvoke(
@@ -66,9 +66,9 @@ public partial class BrandView : UserControl
 				if ( grid.View == null )
 					return;
 
-				grid.View.Filter = vm.FilterBrand;
+				grid.View.Filter = vm.FilterUnit;
 				grid.View.RefreshFilter();
-				vm.VisibleBrandCount = grid.View.Records.Count;
+				vm.VisibleUnitCount = grid.View.Records.Count;
 			} ),
 			DispatcherPriority.Loaded
 		);
@@ -84,14 +84,14 @@ public partial class BrandView : UserControl
 		if ( dialog.ShowDialog() == true )
 		{
 			// Haal de lijst op uit de DataGrid
-			if ( SfDataGrid.ItemsSource is List<BrandModel> brands )
+			if ( SfDataGrid.ItemsSource is List<UnitModel> units )
 			{
 				// Voer de import uit
 				var result = CsvImportService.ImportCsv(
 				filePath: dialog.FileName,
-				existingRecords: brands,
-				columnMappings: BrandModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(BrandModel.BrandName) // unieke kolom
+				existingRecords: units,
+				columnMappings: UnitModel.ColumnMappings, // mapping van UI naar property
+                uniqueProperty: nameof(UnitModel.UnitName) // unieke kolom
             );
 
 				MessageBox.Show(
@@ -109,7 +109,7 @@ public partial class BrandView : UserControl
 			}
 			else
 			{
-				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<BrandModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<UnitModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 	}
@@ -120,7 +120,7 @@ public partial class BrandView : UserControl
 		{
 			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
 			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			FileName = $"{Lang.ExportUnitFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -129,12 +129,12 @@ public partial class BrandView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "BrandName", Lang.ExportCurrenciesHeaderName }
+			{ "UnitName", Lang.ExportCurrenciesHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _csvExportService.ExportToCsvAsync<BrandModel>(
+			await _csvExportService.ExportToCsvAsync<UnitModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );
@@ -147,7 +147,7 @@ public partial class BrandView : UserControl
 		{
 			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
 			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			FileName = $"{Lang.ExportUnitFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -155,12 +155,12 @@ public partial class BrandView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "BrandName", Lang.ExportBrandHeaderName }
+			{ "UnitName", Lang.ExportUnitHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _excelExportService.ExportToExcelAsync<BrandModel>(
+			await _excelExportService.ExportToExcelAsync<UnitModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );

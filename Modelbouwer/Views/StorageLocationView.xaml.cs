@@ -14,14 +14,14 @@ using System.Windows.Threading;
 
 using Microsoft.Win32;
 
-using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.TreeGrid;
 
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for BrandView.xaml
+/// Interaction logic for StorageLocationView.xaml
 /// </summary>
-public partial class BrandView : UserControl
+public partial class StorageLocationView : UserControl
 {
 	private readonly CsvExportService _csvExportService;
 	private readonly ExcelExportService _excelExportService;
@@ -30,34 +30,52 @@ public partial class BrandView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	public BrandView( BrandPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
+	private bool _wasFiltering;
+
+	public StorageLocationView( StorageLocationPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
-		Loaded += BrandView_Loaded;
+
+		if ( DataContext is StorageLocationPageViewModel vm )
+		{
+			vm.filterChanged += () =>
+			{
+				if ( SfGridTree.View == null )
+					return;
+
+				if ( string.IsNullOrWhiteSpace( vm.SearchText ) )
+					SfGridTree.View.Filter = null;
+				else
+					SfGridTree.View.Filter = vm.FilterRecords;
+
+				SfGridTree.View.RefreshFilter();
+			};
+		}
+
+		Loaded += StorageLocationView_Loaded;
 	}
 
-	private void BrandView_Loaded( object sender, RoutedEventArgs e )
+	private void StorageLocationView_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is BrandPageViewModel vm )
+		if ( DataContext is StorageLocationPageViewModel vm )
 		{
 			vm.RefreshGridFilter = () =>
 			{
-				SfDataGrid.View?.RefreshFilter();
-				SfDataGrid.UpdateLayout();
-				vm.VisibleBrandCount = SfDataGrid.View?.Records.Count ?? 0;
+				SfGridTree.View?.RefreshFilter();
+				SfGridTree.UpdateLayout();
 			};
 		}
 	}
 
-	private void BrandDataGrid_Loaded( object sender, RoutedEventArgs e )
+	private void StorageLocationDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( sender is not SfDataGrid grid )
+		if ( sender is not SfTreeGrid grid )
 			return;
 
-		if ( DataContext is not BrandPageViewModel vm )
+		if ( DataContext is not StorageLocationPageViewModel vm )
 			return;
 
 		grid.Dispatcher.BeginInvoke(
@@ -66,9 +84,8 @@ public partial class BrandView : UserControl
 				if ( grid.View == null )
 					return;
 
-				grid.View.Filter = vm.FilterBrand;
+				grid.View.Filter = vm.FilterStorageLocation;
 				grid.View.RefreshFilter();
-				vm.VisibleBrandCount = grid.View.Records.Count;
 			} ),
 			DispatcherPriority.Loaded
 		);
@@ -84,14 +101,14 @@ public partial class BrandView : UserControl
 		if ( dialog.ShowDialog() == true )
 		{
 			// Haal de lijst op uit de DataGrid
-			if ( SfDataGrid.ItemsSource is List<BrandModel> brands )
+			if ( SfGridTree.ItemsSource is List<StorageLocationModel> currencies )
 			{
 				// Voer de import uit
 				var result = CsvImportService.ImportCsv(
 				filePath: dialog.FileName,
-				existingRecords: brands,
-				columnMappings: BrandModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(BrandModel.BrandName) // unieke kolom
+				existingRecords: currencies,
+				columnMappings: StorageLocationModel.ColumnMappings,
+                uniqueProperty: nameof(StorageLocationModel.StorageName)
             );
 
 				MessageBox.Show(
@@ -105,11 +122,11 @@ public partial class BrandView : UserControl
 				);
 
 				// Forceer datagrid refresh
-				SfDataGrid.View.Refresh();
+				SfGridTree.View.Refresh();
 			}
 			else
 			{
-				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<BrandModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<StorageLocationModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 	}
@@ -120,7 +137,7 @@ public partial class BrandView : UserControl
 		{
 			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
 			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			FileName = $"{Lang.ExportStorageLocationFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -129,15 +146,16 @@ public partial class BrandView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "BrandName", Lang.ExportCurrenciesHeaderName }
+			{ "StorageLocationName", Lang.ExportCurrenciesHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _csvExportService.ExportToCsvAsync<BrandModel>(
-			SfDataGrid,
+			await _csvExportService.ExportToCsvAsync<StorageLocationModel>(
+			SfGridTree,
 			dialog.FileName,
-			columnHeaders );
+			columnHeaders,
+			null );
 		}
 	}
 
@@ -147,7 +165,7 @@ public partial class BrandView : UserControl
 		{
 			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
 			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportBrandFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			FileName = $"{Lang.ExportStorageLocationFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -155,13 +173,13 @@ public partial class BrandView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "BrandName", Lang.ExportBrandHeaderName }
+			{ "StorageLocationName", Lang.ExportStorageLocationHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _excelExportService.ExportToExcelAsync<BrandModel>(
-			SfDataGrid,
+			await _excelExportService.ExportToExcelAsync<StorageLocationModel>(
+			SfGridTree,
 			dialog.FileName,
 			columnHeaders );
 		}
