@@ -3614,4 +3614,43 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="SearchTreeTooltip" xml:space="preserve">
     <value>Als niet de hele lijst is opengeklapt zul je niet alle resultaten zien</value>
   </data>
+  <data name="ExportValidationContactTypeNameExists" xml:space="preserve">
+    <value>Dit type bestaat al</value>
+  </data>
+  <data name="metadataContactTypeDeleteError" xml:space="preserve">
+    <value>Deze contactpersoon functie wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="ExportContactTypeFileName" xml:space="preserve">
+    <value>Contacttype</value>
+  </data>
+  <data name="ExportContactTypeHeaderName" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataContactTypeHeaderTitel" xml:space="preserve">
+    <value>Beheer van de functie tabel</value>
+  </data>
+  <data name="metadataContactTypeHeaderSubtitle" xml:space="preserve">
+    <value>Beheer alle contactpersoon functies</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldName" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldNameTag" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldNameTooltip" xml:space="preserve">
+    <value>De functie van een contactpersoon</value>
+  </data>
+  <data name="toolbarVisibleRowLabelContactType" xml:space="preserve">
+    <value>Aantal getoonde functies</value>
+  </data>
+  <data name="metadataContactTypeDatagridHeaderName.Label" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="navigation.Resources.SubItem.ContactType.Label" xml:space="preserve">
+    <value>Functies</value>
+  </data>
+  <data name="navigation.Resources.SubItem.ContactType.Tooltip" xml:space="preserve">
+    <value>Beheer van functies van contatpersonen</value>
+  </data>
 </root>

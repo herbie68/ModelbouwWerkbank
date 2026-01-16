@@ -10,9 +10,6 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 {
 	private readonly IBrandService _dataService;
 
-	// Collections
-	public ObservableCollection<BrandModel> Brands { get; } = [];
-
 	// SelectedBrand als type-safe alias
 	public BrandModel? SelectedBrand
 	{
@@ -36,7 +33,7 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadBrandsAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 	}
 
@@ -51,8 +48,8 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 		OnPropertyChanged( nameof( SelectedBrand.BrandId ) );
 	}
 
-	// Async currencies laden
-	private async Task LoadCurrenciesAsync()
+	// Async brands laden
+	private async Task LoadBrandsAsync()
 	{
 		var brandList = await _dataService.GetAllBrandsAsync();
 
@@ -62,7 +59,7 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 	}
 
 	// Properties voor UI binding
-	public ObservableCollection<BrandModel> Countries => Items;
+	public ObservableCollection<BrandModel> Brands => Items;
 	public int TotalBrandCount => TotalItemCount;
 	public int VisibleBrandCount
 	{

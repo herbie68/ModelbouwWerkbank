@@ -3634,4 +3634,43 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="SearchTreeTooltip" xml:space="preserve">
     <value>Wenn nicht die gesamte Liste erweitert wird, werden nicht alle Ergebnisse angezeigt</value>
   </data>
+  <data name="ExportValidationContactTypeNameExists" xml:space="preserve">
+    <value>Dieser Typ existiert bereits</value>
+  </data>
+  <data name="metadataContactTypeDeleteError" xml:space="preserve">
+    <value>Dieser Kontakttyp wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="ExportContactTypeFileName" xml:space="preserve">
+    <value>Kontakttyp</value>
+  </data>
+  <data name="ExportContactTypeHeaderName" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataContactTypeHeaderTitel" xml:space="preserve">
+    <value>Verwaltung der Funktionstabelle</value>
+  </data>
+  <data name="metadataContactTypeHeaderSubtitle" xml:space="preserve">
+    <value>Verwalten Sie alle Kontaktfunktionen</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldName" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldNameTag" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataContactTypeEntryFieldNameTooltip" xml:space="preserve">
+    <value>Die Funktion eines Ansprechpartners</value>
+  </data>
+  <data name="metadataContactTypeDatagridHeaderName.Label" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="navigation.Resources.SubItem.ContactType.Label" xml:space="preserve">
+    <value>Funktionen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.ContactType.Tooltip" xml:space="preserve">
+    <value>Verwaltung von Kontaktfunktionen</value>
+  </data>
+  <data name="toolbarVisibleRowLabelContactType" xml:space="preserve">
+    <value>Anzahl der angezeigten Funktionen</value>
+  </data>
 </root>

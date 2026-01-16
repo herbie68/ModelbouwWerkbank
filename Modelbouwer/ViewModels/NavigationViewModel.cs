@@ -113,10 +113,10 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		NavigationItems.Add( new NavigationModel
 		{
-			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
-			NavigationIcon = CreateNavigationImage( "Currencies" ),
-			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Currency_Tooltip}",
-			Command = new SimpleCommand( () => LoadCurrencyView() )
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_ContactType_Label}",
+			NavigationIcon = CreateNavigationImage( "contacttype" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_ContactType_Tooltip}",
+			Command = new SimpleCommand( () => LoadContactTypeView() )
 		} );
 
 		NavigationItems.Add( new NavigationModel
@@ -126,6 +126,15 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Country_Tooltip}",
 			Command = new SimpleCommand( () => LoadCountryView() )
 		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Currency_Label}",
+			NavigationIcon = CreateNavigationImage( "Currencies" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Currency_Tooltip}",
+			Command = new SimpleCommand( () => LoadCurrencyView() )
+		} );
+
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -180,6 +189,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		catch ( Exception ex )
 		{
 			Debug.WriteLine( $"Error loading CategoryView: {ex.Message}" );
+		}
+	}
+
+	private void LoadContactTypeView()
+	{
+		try
+		{
+			var contacttypeView = _serviceProvider.GetRequiredService<ContactTypeView>();
+			CurrentView = contacttypeView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading ContactTypeView: {ex.Message}" );
 		}
 	}
 
@@ -340,10 +362,10 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		MetadataSubItems.Add( new NavigationModel
 		{
-			NavigationItem = Language.navigation_Resources_SubItem_Currency_Label,
-			NavigationIcon = CreateNavigationImage( "Currency" ),
-			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_Tooltip,
-			Command = new SimpleCommand( () => LoadCurrencyView() )
+			NavigationItem = Language.navigation_Resources_SubItem_ContactType_Label,
+			NavigationIcon = CreateNavigationImage( "contacttype" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_ContactType_Tooltip,
+			Command = new SimpleCommand( () => LoadContactTypeView() )
 		} );
 
 		MetadataSubItems.Add( new NavigationModel
@@ -352,6 +374,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationIcon = CreateNavigationImage( "Countries" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Country_Tooltip,
 			Command = new SimpleCommand( () => LoadCountryView() )
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_Currency_Label,
+			NavigationIcon = CreateNavigationImage( "Currency" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Currency_Tooltip,
+			Command = new SimpleCommand( () => LoadCurrencyView() )
 		} );
 		#endregion
 

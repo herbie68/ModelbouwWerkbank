@@ -1099,6 +1099,84 @@
             Drawing="{StaticResource CountriesDrawingGroup}"/>
     <!--#endregion-->
     <!--#endregion-->
+    
+    <!--#region Contact function/type icon -->
+    <Geometry x:Key="contacttypeGeometry1">F1 M26.028736,25z M0,0z M25.510514,1.1079696C17.179733,1.1079696 8.8489517,1.1079696 0.51817058,1.1079696 -0.25404326,1.3120984 0.06990142,2.2602423 0,2.854504 0,10.015059 0,17.175613 0,24.336168 0.01543893,25.243468 1.0102571,24.954197 1.6008736,25 9.5707537,25 17.540634,25 25.510514,25 26.282787,24.795925 25.958838,23.847735 26.028737,23.253465 26.028737,16.09291 26.028737,8.9323557 26.028737,1.771801 26.035737,1.4756437 25.844681,1.1130672 25.510514,1.1079696z</Geometry>
+    <Geometry x:Key="contacttypeGeometry2">F1 M26.028736,25z M0,0z M16.428681,3.6354767C14.127419,3.6207361 11.818014,3.6649266 9.5218291,3.6134379 9.2458226,3.197961 9.3469668,2.3250159 10.033137,2.5585115 12.190038,2.5732585 14.355085,2.5290535 16.506908,2.5805505 16.662727,2.8187543 16.748771,3.4899689 16.428678,3.6354769z</Geometry>
+    <Geometry x:Key="contacttypeGeometry3">F1 M26.028736,25z M0,0z M15.59373,0C13.817375,0.02406749 12.031025,-0.04830259 10.260962,0.03647081 10.096496,0.59311727 10.234162,1.2576574 10.188872,1.8568622 10.237482,2.2498535 9.9726638,2.9562737 10.621953,2.748586 12.361258,2.748586 14.100564,2.748586 15.839869,2.748586 15.839869,1.8739121 15.839869,0.99923813 15.839869,0.1245642L15.767759,0.03648422z</Geometry>
+    <Geometry x:Key="contacttypeGeometry4">F1 M26.028736,25z M0,0z M13.200169,0.70738003C14.564744,0.73949866 13.6904,2.9396708 12.558382,1.9778879 11.472014,1.0576953 14.062237,3.4281935 14.097804,1.507608 14.10319,1.0404832 13.64233,0.69520376 13.200169,0.70738003z</Geometry>
+    <Geometry x:Key="contacttypeGeometry5">F1 M26.028736,25z M0,0z M115.211,292.818C80.377972,291.89098 49.086254,323.18055 50.013,358.014 93.477667,358.014 136.94233,358.014 180.407,358.014 181.10175,322.9004 150.35787,292.12729 115.211,292.818z</Geometry>
+    <DrawingGroup x:Key="contacttypeDrawingGroup" ClipGeometry="M0,0 V25 H26.028736 V0 H0 Z">
+        <DrawingGroup.Transform>
+            <TranslateTransform X="0.0099679706618189812" Y="0.0060594049282372" />
+        </DrawingGroup.Transform>
+        <GeometryDrawing Brush="#FF64798A" Geometry="{StaticResource contacttypeGeometry1}" />
+        <GeometryDrawing Brush="#FFE1E6E9">
+            <GeometryDrawing.Geometry>
+                <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.2239,4.308,23.581,20.0993" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FFFFFFFF">
+            <GeometryDrawing.Geometry>
+                <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.4845,4.6712,23.0598,19.3728" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FF3A556A" Geometry="{StaticResource contacttypeGeometry2}" />
+        <GeometryDrawing Brush="#FFEBF0F3" Geometry="{StaticResource contacttypeGeometry3}" />
+        <GeometryDrawing Brush="#FFE1E6E9">
+            <GeometryDrawing.Geometry>
+                <RectangleGeometry RadiusX="0" RadiusY="0" Rect="10.2438,2.1268,5.6509,1.5528" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FF64798A">
+            <GeometryDrawing.Geometry>
+                <EllipseGeometry RadiusX="1.1946" RadiusY="1.0651" Center="13.2002,1.5076" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#FF3A556A" Geometry="{StaticResource contacttypeGeometry4}" />
+        <GeometryDrawing Brush="#FF27A2DB">
+            <GeometryDrawing.Geometry>
+                <RectangleGeometry RadiusX="0" RadiusY="0" Rect="2.6435,8.6384,6.9149,10.3011" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <DrawingGroup Opacity="1" Transform="0.0529556,0,0,0.05954407,0,-2.3798898">
+            <GeometryDrawing Brush="#FFFFFFFF">
+                <GeometryDrawing.Geometry>
+                    <EllipseGeometry RadiusX="27.356" RadiusY="27.356" Center="115.21,252.723" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource contacttypeGeometry5}" />
+        </DrawingGroup>
+        <GeometryDrawing Brush="#FFE56353">
+            <GeometryDrawing.Geometry>
+                <RectangleGeometry RadiusX="0" RadiusY="0" Rect="11.8816,8.6532,11.2222,1.0898" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <DrawingGroup Opacity="1" Transform="0.0529556,0,0,0.0739014,0,-7.5200132">
+            <GeometryDrawing Brush="#FF64798A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="224.369,267.776,211.917,9.83" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF64798A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="224.369,314.317,211.917,9.83" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF64798A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="224.369,360.806,211.917,9.83" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF64798A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="65.014,393.011,96.579,9.83" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="contacttype" Drawing="{StaticResource contacttypeDrawingGroup}" />
+    <!--#endregion-->
 
 
     <!--#region Settings Entries-->

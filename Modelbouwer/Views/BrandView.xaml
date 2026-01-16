@@ -251,6 +251,5 @@
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
         <!--#endregion-->
-
     </Grid>
 </UserControl>

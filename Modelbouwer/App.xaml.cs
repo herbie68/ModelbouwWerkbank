@@ -42,12 +42,14 @@ public partial class App : Application
 		services.AddSingleton<BrandService>();
 		services.AddSingleton<CategoryService>();
 		services.AddSingleton<CurrencyService>();
+		services.AddSingleton<ContactTypeService>();
 		services.AddSingleton<CountryService>();
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
 		services.AddTransient<CategoryPageViewModel>();
 		services.AddTransient<CurrencyPageViewModel>();
+		services.AddTransient<ContactTypePageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
 
 		// Register NavigationViewModel
@@ -57,6 +59,7 @@ public partial class App : Application
 		services.AddTransient<BrandView>();
 		services.AddTransient<CategoryView>();
 		services.AddTransient<CountryView>();
+		services.AddTransient<ContactTypeView>();
 		services.AddTransient<CurrencyView>();
 
 		// Register MainWindow
@@ -71,11 +74,13 @@ public partial class App : Application
 		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
 		services.AddScoped<IBrandService, BrandService>();
 		services.AddScoped<ICategoryService, CategoryService>();
+		services.AddScoped<IContactTypeService, ContactTypeService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
 		services.AddScoped<IEntityValidator<BrandModel>, BrandValidator>();
 		services.AddScoped<IEntityValidator<CategoryModel>, CategoryValidator>();
 		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
+		services.AddScoped<IEntityValidator<ContactTypeModel>, ContactTypeValidator>();
 		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
 	}
 

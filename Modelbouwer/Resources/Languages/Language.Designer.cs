@@ -196,6 +196,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacttype.
+        /// </summary>
+        public static string ExportContactTypeFileName {
+            get {
+                return ResourceManager.GetString("ExportContactTypeFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string ExportContactTypeHeaderName {
+            get {
+                return ResourceManager.GetString("ExportContactTypeHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact functies.
         /// </summary>
         public static string ExportContactTypesFileName {
@@ -1173,6 +1191,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportValidationCategorySuccessUpdated {
             get {
                 return ResourceManager.GetString("ExportValidationCategorySuccessUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit type bestaat al.
+        /// </summary>
+        public static string ExportValidationContactTypeNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationContactTypeNameExists", resourceCulture);
             }
         }
         
@@ -4894,6 +4921,69 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataContactTypeDatagridHeaderName_Label {
+            get {
+                return ResourceManager.GetString("metadataContactTypeDatagridHeaderName.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze contactpersoon functie wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataContactTypeDeleteError {
+            get {
+                return ResourceManager.GetString("metadataContactTypeDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataContactTypeEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataContactTypeEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataContactTypeEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataContactTypeEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De functie van een contactpersoon.
+        /// </summary>
+        public static string metadataContactTypeEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataContactTypeEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer alle contactpersoon functies.
+        /// </summary>
+        public static string metadataContactTypeHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataContactTypeHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de functie tabel.
+        /// </summary>
+        public static string metadataContactTypeHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataContactTypeHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Land code.
         /// </summary>
         public static string metadataCountryDatagridHeaderCountryCode_Label {
@@ -8332,6 +8422,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Functies.
+        /// </summary>
+        public static string navigation_Resources_SubItem_ContactType_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.ContactType.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van functies van contatpersonen.
+        /// </summary>
+        public static string navigation_Resources_SubItem_ContactType_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.ContactType.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Landen.
         /// </summary>
         public static string navigation_Resources_SubItem_Country_Label {
@@ -10579,6 +10687,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelCategory {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde functies.
+        /// </summary>
+        public static string toolbarVisibleRowLabelContactType {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelContactType", resourceCulture);
             }
         }
         
