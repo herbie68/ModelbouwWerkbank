@@ -18,14 +18,19 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	public ObservableCollection<CategoryModel> CategoryTree { get; } = [ ];
 
 	// SelectedCategory als type-safe alias
+	private CategoryModel? _selectedCategory;
+
 	public CategoryModel? SelectedCategory
 	{
-		get => SelectedItem;
+		get => ._selectedCategory;
 		set
 		{
-			SelectedItem = value;
-			OnPropertyChanged();
-			AddSubCategoryCommand.NotifyCanExecuteChanged();
+			if ( _selectedCategory != value )
+			{
+				_selectedCategory = value;
+				OnPropertyChanged();
+				AddSubCategoryCommand.NotifyCanExecuteChanged();
+			}
 		}
 	}
 
@@ -82,7 +87,7 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 		if ( value == null )
 			return;
 
-		OnPropertyChanged( nameof( SelectedCategory ) );
+		SelectedCategory = value;
 	}
 
 	// Async categories laden
