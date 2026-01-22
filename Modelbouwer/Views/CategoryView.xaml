@@ -50,8 +50,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-              <!--  Category name  -->
+
+            <!--  Category name  -->
             <Label
                 Grid.Column="0"
                 Content="{x:Static language:Language.metadataCategoryEntryFieldName}"
@@ -66,14 +66,14 @@
                 Width="250"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCategoryEntryFieldNameTag}"
-                Text="{Binding SelectedCategory.CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SelectedCategory.CategoryName, TargetNullValue='',Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataCategoryEntryFieldNameTooltip}" />
         </Grid>
         <!--#endregion-->
 
         <!--#region Toolbar section-->
-        <Grid Grid.Row="3" 
-              Margin="15,2,15,2"  
+        <Grid Grid.Row="3"
+              Margin="15,2,15,2"
               VerticalAlignment="Center">
 
             <Grid.ColumnDefinitions>
@@ -84,64 +84,64 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock 
-                   Text="{Binding ImportStatus}" 
-                   Foreground="Gray"
-                   FontStyle="Italic"
-                   Margin="5"
-                   Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                   TextWrapping="Wrap"/>
+            <TextBlock
+                Text="{Binding ImportStatus}"
+                Foreground="Gray"
+                FontStyle="Italic"
+                Margin="5"
+                Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}"
+                TextWrapping="Wrap"/>
 
             <!--#region Toolbar-->
             <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                 <Button
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding AddCategoryCommand}" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionNewRoot}">
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding AddCategoryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionNewRoot}">
                     <Image Style="{DynamicResource ToolBarAddRootIcon}" />
                 </Button>
 
                 <Button
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding AddSubCategoryCommand}" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionNewSub}">
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding AddSubCategoryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionNewSub}">
                     <Image Style="{DynamicResource ToolBarAddSubIcon}" />
                 </Button>
 
-                <Button 
-               Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding DeleteCategoryCommand}"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding DeleteCategoryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
                     <Image Style="{DynamicResource ToolBarDeleteIcon}" />
                 </Button>
 
-                <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding SaveCategoryCommand}"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding SaveCategoryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
                     <Image Style="{DynamicResource ToolBarSaveIcon}" />
                 </Button>
 
                 <Border Style="{StaticResource ActionBarSeparatorStyle}" />
 
-                <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonImport" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionImport}">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonImport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionImport}">
                     <Image Style="{DynamicResource ToolBarImportIcon}" />
                 </Button>
 
-                <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonCSVExport"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonCSVExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
                     <Image Style="{DynamicResource ToolBarCSVExportIcon}" />
                 </Button>
 
-                <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonExcelExport" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonExcelExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
                     <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
                 </Button>
 
@@ -168,23 +168,23 @@
             <!--#region Search field-->
             <!--  Icon  -->
             <Image
-                   x:Name="FilterIcon"
-                   Grid.Column="2"
-                   Width="20"
-                   Height="20"
-                   Margin="5"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   Source="{StaticResource search}">
+                x:Name="FilterIcon"
+                Grid.Column="2"
+                Width="20"
+                Height="20"
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Source="{StaticResource search}">
                 <Image.Triggers>
                     <EventTrigger RoutedEvent="Image.Loaded">
                         <BeginStoryboard>
                             <Storyboard AutoReverse="True" RepeatBehavior="Forever">
                                 <DoubleAnimation
-                                       Storyboard.TargetProperty="Opacity"
-                                       From="1.0"
-                                       To="0.3"
-                                       Duration="0:0:1" />
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0"
+                                    To="0.3"
+                                    Duration="0:0:1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -193,29 +193,29 @@
 
             <!--  Input field  -->
             <TextBox
-                   Grid.Column="3"
-                   Width="250"
-                   VerticalAlignment="Center"
-                   Style="{DynamicResource DefaultTextBox}"
-                   Tag="{x:Static language:Language.SearchTreeTag}"
-                   Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                   ToolTip="{x:Static language:Language.SearchTreeTooltip}" />
+                Grid.Column="3"
+                Width="250"
+                VerticalAlignment="Center"
+                Style="{DynamicResource DefaultTextBox}"
+                Tag="{x:Static language:Language.SearchTreeTag}"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="{x:Static language:Language.SearchTreeTooltip}" />
 
             <!--  Clear button  -->
             <Button
-                   Grid.Column="4"
-                   Width="24"
-                   Height="24"
-                   Margin="5"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Command="{Binding ClearSearchCommand}"
-                   Style="{DynamicResource ClearButtonStyle}" />
+                Grid.Column="4"
+                Width="24"
+                Height="24"
+                Margin="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding ClearSearchCommand}"
+                Style="{DynamicResource ClearButtonStyle}" />
             <!--#endregion-->
         </Grid>
         <!--#endregion-->
         <!--#endregion-->
-        
+
         <!--#region Data grid-->
         <syncfusion:SfTreeGrid
             x:Name="SfGridTree"
@@ -227,7 +227,7 @@
             ColumnSizer="Star"
             ItemsSource="{Binding CategoryTree}"
             ChildPropertyName="Children"
-            SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+            SelectionChanged="SelectionChanged"
             AutoExpandMode="RootNodesExpanded">
 
             <syncfusion:SfTreeGrid.Columns>

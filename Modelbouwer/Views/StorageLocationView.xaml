@@ -67,7 +67,7 @@
                 Width="250"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataStorageLocationEntryFieldNameTag}"
-                Text="{Binding SelectedStorageLocation.StorageLocationName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SelectedStorageLocation.StorageLocationName, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataStorageLocationEntryFieldNameTooltip}" />
         </Grid>
         <!--#endregion-->

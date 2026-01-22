@@ -1,22 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.TreeGrid;
-using Syncfusion.UI.Xaml.TreeGrid.Helpers;
 
 namespace Modelbouwer.Views;
 
@@ -156,7 +143,7 @@ public partial class CategoryView : UserControl
 			await _csvExportService.ExportToCsvAsync<CategoryModel>(
 			SfGridTree,
 			dialog.FileName,
-			columnHeaders, 
+			columnHeaders,
 			null );
 		}
 	}
@@ -184,6 +171,16 @@ public partial class CategoryView : UserControl
 			SfGridTree,
 			dialog.FileName,
 			columnHeaders );
+		}
+	}
+
+	private void SelectionChanged( object sender, GridSelectionChangedEventArgs e )
+	{
+		if ( sender is SfTreeGrid treeGrid &&
+				 treeGrid.SelectedItem is CategoryModel selected &&
+				 DataContext is CategoryPageViewModel vm )
+		{
+			vm.SelectedCategory = selected;
 		}
 	}
 }
