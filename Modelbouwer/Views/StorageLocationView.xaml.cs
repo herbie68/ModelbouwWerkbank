@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
@@ -41,7 +29,7 @@ public partial class StorageLocationView : UserControl
 
 		if ( DataContext is StorageLocationPageViewModel vm )
 		{
-			vm._filterChanged += () =>
+			vm.filterChanged += () =>
 			{
 				if ( SfGridTree.View == null )
 					return;
@@ -108,8 +96,8 @@ public partial class StorageLocationView : UserControl
 				filePath: dialog.FileName,
 				existingRecords: currencies,
 				columnMappings: StorageLocationModel.ColumnMappings,
-                uniqueProperty: nameof(StorageLocationModel.StorageLocationName)
-            );
+				uniqueProperty: nameof(StorageLocationModel.StorageName)
+			);
 
 				MessageBox.Show(
 					$"{Lang.ImportMessagboxCompletedRead}: {result.TotalRows}\n" +
@@ -146,7 +134,7 @@ public partial class StorageLocationView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "StorageLocationName", Lang.ExportCurrenciesHeaderName }
+			{ "StorageName", Lang.ExportCurrenciesHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
@@ -173,7 +161,7 @@ public partial class StorageLocationView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "StorageLocationName", Lang.ExportStorageLocationHeaderName }
+			{ "StorageName", Lang.ExportStorageLocationHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )

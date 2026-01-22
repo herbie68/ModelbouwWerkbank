@@ -1,40 +1,45 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Modelbouwer.Models;
 
-public class StorageLocationModel : INotifyPropertyChanged
+public class StorageLocationModel
 {
 	public int StorageId { get; set; }
 	public int? ParentId { get; set; }
+	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
 
-	private string? _storageLocationName;
-	public string? StorageLocationName
+	private string _storageName;
+
+	public string StorageName
 	{
-		get => _storageLocationName;
+		get => _storageName;
 		set
 		{
-			if ( _storageLocationName != value )
+			if ( _storageName != value )
 			{
-				_storageLocationName = value;
-				OnPropertyChanged();
+				_storageName = value;
+				OnPropertyChanged( nameof( StorageName ) );
 			}
 		}
 	}
 
-	public event PropertyChangedEventHandler? PropertyChanged;
-	protected void OnPropertyChanged( [CallerMemberName] string? name = null )
-		=> PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( name ) );
+	private StorageLocationModel? _parent;
 
-
-	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
+	public StorageLocationModel Parent
+	{
+		get => _parent;
+		set
+		{
+			_parent = value;
+		}
+	}
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
 	{
 		{ DBNames.StorageFieldNameId, "StorageId" },
 		{ DBNames.StorageFieldNameParentId, "ParentId" },
-		{ DBNames.StorageFieldNameName, "StorageLocationName" },
+		{ DBNames.StorageFieldNameName, "StorageName" },
 	};
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
@@ -42,10 +47,17 @@ public class StorageLocationModel : INotifyPropertyChanged
 		[nameof(StorageId)] = [ "ID" ],
 		[nameof(ParentId)] = [ "Parent" ],
 
-		[nameof(StorageLocationName)] = [
+		[nameof(StorageName)] = [
 			"Voorraad locatie",
 			"Stock location",
 			"Lagerort" ]
 	};
+
+	public event PropertyChangedEventHandler? PropertyChanged;
+
+	protected virtual void OnPropertyChanged( string propertyName )
+	{
+		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
+	}
 
 }

@@ -429,7 +429,7 @@
   <data name="storageStockDatagridHeaderUnitName" xml:space="preserve">
     <value>Eenheid</value>
   </data>
-  <data name="storageStockDatagridHeaderStorageLocationName" xml:space="preserve">
+  <data name="storageStockDatagridHeaderStorageName" xml:space="preserve">
     <value>Voorraadlokatie</value>
   </data>
   <data name="storageStockDatagridHeaderProductName" xml:space="preserve">
@@ -700,7 +700,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="TimemanagementDatagridHeaderProjectName" xml:space="preserve">
     <value>Project</value>
   </data>
-  <data name="TimemanagementDatagridHeaderStorageLocationName" xml:space="preserve">
+  <data name="TimemanagementDatagridHeaderStorageName" xml:space="preserve">
     <value>Opslaglocatie</value>
   </data>
   <data name="TimemanagementDatagridHeaderWorktypeName" xml:space="preserve">
@@ -3679,7 +3679,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelStorageLocation" xml:space="preserve">
     <value>Voorraad locatie</value>
   </data>
-  <data name="ExportValidationStorageLocationNameExists" xml:space="preserve">
+  <data name="ExportValidationStorageNameExists" xml:space="preserve">
     <value>Deze voorraad locatie bestaat al</value>
   </data>
   <data name="metadataStorageLocationDeleteError" xml:space="preserve">

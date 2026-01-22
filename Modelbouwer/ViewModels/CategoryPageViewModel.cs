@@ -17,23 +17,6 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	public ObservableCollection<CategoryModel> Categories { get; } = [ ];
 	public ObservableCollection<CategoryModel> CategoryTree { get; } = [ ];
 
-	// SelectedCategory als type-safe alias
-	private CategoryModel? _selectedCategory;
-
-	public CategoryModel? SelectedCategory
-	{
-		get => ._selectedCategory;
-		set
-		{
-			if ( _selectedCategory != value )
-			{
-				_selectedCategory = value;
-				OnPropertyChanged();
-				AddSubCategoryCommand.NotifyCanExecuteChanged();
-			}
-		}
-	}
-
 	// Commands
 	public IRelayCommand AddCategoryCommand => AddCommand;
 	public IAsyncRelayCommand SaveCategoryCommand => SaveCommand;
@@ -43,20 +26,20 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand _expandCommand;
+	private ICommand expandCommand;
 
 	public ICommand ExpandCommand
 	{
-		get { return _expandCommand; }
-		set { _expandCommand = value; }
+		get { return expandCommand; }
+		set { expandCommand = value; }
 	}
 
-	private ICommand _collapseCommand;
+	private ICommand collapseCommand;
 
 	public ICommand CollapseCommand
 	{
-		get { return _collapseCommand; }
-		set { _collapseCommand = value; }
+		get { return collapseCommand; }
+		set { collapseCommand = value; }
 	}
 
 
@@ -68,13 +51,13 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	{
 		_dataService = dataService;
 
-		_ = LoadCategoriesAsync();
+		_ = LoadCurrenciesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubCategoryCommand = new RelayCommand(
-			AddSubCategory,
-			() => SelectedCategory != null
-		);
+	AddSubCategory,
+	() => SelectedItem != null  // Changed from SelectedCategory
+);
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
 		CollapseCommand = new DelegateCommand<object>( CollapseExecute );
@@ -84,14 +67,11 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	// Override SelectedItem changed om DefaultCategory te zetten
 	protected override void OnSelectedItemChanged( CategoryModel? value )
 	{
-		if ( value == null )
-			return;
-
-		SelectedCategory = value;
+		AddSubCategoryCommand.NotifyCanExecuteChanged();
 	}
 
 	// Async categories laden
-	private async Task LoadCategoriesAsync()
+	private async Task LoadCurrenciesAsync()
 	{
 		var categoryList = await _dataService.GetAllCategorysAsync();
 
@@ -150,17 +130,17 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	private void ExpandExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid?.ExpandAllNodes();
+		treeGrid.ExpandAllNodes();
 	}
 
 	private void CollapseExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid?.CollapseAllNodes();
+		treeGrid.CollapseAllNodes();
 	}
 
 
-	public static ObservableCollection<CategoryModel> BuildTree( IEnumerable<CategoryModel> flatList )
+	public ObservableCollection<CategoryModel> BuildTree( IEnumerable<CategoryModel> flatList )
 	{
 		var lookup = flatList.ToDictionary(c => c.CategoryId);
 
@@ -205,35 +185,35 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 	private void AddSubCategory()
 	{
-		if ( SelectedCategory == null )
+		if ( SelectedItem == null )  // Changed from SelectedCategory
 			return;
 
 		var newCategory = new CategoryModel
 		{
 			CategoryName = string.Empty,
-			ParentId = SelectedCategory.CategoryId
+			ParentId = SelectedItem.CategoryId  // Changed from SelectedCategory
 		};
 
-		SelectedCategory.Children.Add( newCategory );
-		SelectedCategory = newCategory;
+		SelectedItem.Children.Add( newCategory );  // Changed from SelectedCategory
+		SelectedItem = newCategory;  // Changed from SelectedCategory
 	}
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged _filterChanged;
+	internal FilterChanged filterChanged;
 
-	private string _searchText = string.Empty;
+	private string searchText = string.Empty;
 	public string SearchText
 	{
-		get => _searchText;
+		get => searchText;
 		set
 		{
-			if ( _searchText != value )
+			if ( searchText != value )
 			{
-				_searchText = value;
+				searchText = value;
 				RaisePropertyChanged();
 
-				_filterChanged?.Invoke();
+				filterChanged?.Invoke();
 			}
 		}
 	}

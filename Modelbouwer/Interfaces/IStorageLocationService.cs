@@ -11,5 +11,5 @@ public interface IStorageLocationService
 	Task UpdateStorageLocationAsync( Dictionary<string, object?> queryParameters );
 	Task DeleteStorageLocationAsync( int storagelocationId );
 	Task<bool> IsStorageLocationUsedAsync( int storagelocationId );
-	Task<bool> NameExistsAsync( string? storagelocationName, int? parentId );
+	Task<bool> NameExistsAsync( string? StorageName, int? parentId );
 }

@@ -36,7 +36,7 @@ public class StorageLocationService : IStorageLocationService
 		$"DELETE FROM {DBNames.Database}.{DBNames.StorageTable} " +
 		$"WHERE {DBNames.StorageFieldNameId} = @{DBNames.StorageFieldNameId};";
 
-	public string StorageLocationNameExistsQuery =
+	public string StorageNameExistsQuery =
 		$"SELECT COUNT(*) " +
 		$"FROM {DBNames.Database}.{DBNames.StorageTable} " +
 		$"WHERE {DBNames.StorageFieldNameName} = @{DBNames.StorageFieldNameName} " +
@@ -56,7 +56,7 @@ public class StorageLocationService : IStorageLocationService
 			{
 				StorageId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.StorageFieldNameId}" ] ),
 				ParentId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.StorageFieldNameParentId}" ] ),
-				StorageLocationName = DatabaseValueConverter.GetString( reader [ $"{DBNames.StorageFieldNameName}" ] )
+				StorageName = DatabaseValueConverter.GetString( reader [ $"{DBNames.StorageFieldNameName}" ] )
 			};
 		} );
 	}
@@ -118,9 +118,9 @@ public class StorageLocationService : IStorageLocationService
 		return usedCount > 0;
 	}
 
-	public async Task<bool> NameExistsAsync( string? storagelocationName, int? parentId )
+	public async Task<bool> NameExistsAsync( string? StorageName, int? parentId )
 	{
-		if ( string.IsNullOrWhiteSpace( storagelocationName ) )
+		if ( string.IsNullOrWhiteSpace( StorageName ) )
 			return false;
 
 		if ( parentId == 0 )
@@ -129,11 +129,11 @@ public class StorageLocationService : IStorageLocationService
 		var parameters = new Dictionary<string, object>
 		{
 			{ $"@{DBNames.StorageFieldNameParentId}", parentId },
-			{ $"@{DBNames.StorageFieldNameName}", storagelocationName }
+			{ $"@{DBNames.StorageFieldNameName}", StorageName }
 		};
 
 
-		var count = await _dataService.ExecuteScalarAsync<int>( StorageLocationNameExistsQuery, parameters );
+		var count = await _dataService.ExecuteScalarAsync<int>( StorageNameExistsQuery, parameters );
 		return count > 0;
 	}
 }

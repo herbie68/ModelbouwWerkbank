@@ -1,32 +1,16 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Modelbouwer.Models;
 
-public class CategoryModel : INotifyPropertyChanged
+public class CategoryModel
 {
 	public int CategoryId { get; set; }
 	public int? ParentId { get; set; }
-	private string? _categoryName;
-	public string? CategoryName
-	{
-		get => _categoryName;
-		set
-		{
-			if ( _categoryName != value )
-			{
-				_categoryName = value;
-				OnPropertyChanged();
-			}
-		}
-	}
+	public string CategoryName { get; set; } = string.Empty;
 
-	public event PropertyChangedEventHandler? PropertyChanged;
-	protected void OnPropertyChanged( [CallerMemberName] string? name = null )
-		=> PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( name ) );
-
-
-	public ObservableCollection<CategoryModel> Children { get; set; } = [ ];
+	public ObservableCollection<CategoryModel> Children { get; set; } = [];
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{

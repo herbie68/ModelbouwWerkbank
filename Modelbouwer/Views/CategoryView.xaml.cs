@@ -2,7 +2,6 @@
 
 using Microsoft.Win32;
 
-using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.TreeGrid;
 
 namespace Modelbouwer.Views;
@@ -30,7 +29,7 @@ public partial class CategoryView : UserControl
 
 		if ( DataContext is CategoryPageViewModel vm )
 		{
-			vm._filterChanged += () =>
+			vm.filterChanged += () =>
 			{
 				if ( SfGridTree.View == null )
 					return;
@@ -171,16 +170,6 @@ public partial class CategoryView : UserControl
 			SfGridTree,
 			dialog.FileName,
 			columnHeaders );
-		}
-	}
-
-	private void SelectionChanged( object sender, GridSelectionChangedEventArgs e )
-	{
-		if ( sender is SfTreeGrid treeGrid &&
-				 treeGrid.SelectedItem is CategoryModel selected &&
-				 DataContext is CategoryPageViewModel vm )
-		{
-			vm.SelectedCategory = selected;
 		}
 	}
 }

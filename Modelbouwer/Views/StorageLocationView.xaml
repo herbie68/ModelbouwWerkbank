@@ -62,13 +62,13 @@
                 Grid.Column="1"
                 Style="{DynamicResource EntrySemicolon}" />
 
-            <TextBox
-                Grid.Column="2"
-                Width="250"
-                Style="{DynamicResource DefaultTextBox}"
-                Tag="{x:Static language:Language.metadataStorageLocationEntryFieldNameTag}"
-                Text="{Binding SelectedStorageLocation.StorageLocationName, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                ToolTip="{x:Static language:Language.metadataStorageLocationEntryFieldNameTooltip}" />
+            <TextBox x:Name="StorageLocationNameTextBox"
+                     Grid.Column="2"
+                     Width="250"
+                     Style="{DynamicResource DefaultTextBox}"
+                     Tag="{x:Static language:Language.metadataStorageLocationEntryFieldNameTag}"
+                     Text="{Binding SelectedItem.StorageName, TargetNullValue='', Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{x:Static language:Language.metadataStorageLocationEntryFieldNameTooltip}" />
         </Grid>
         <!--#endregion-->
 
@@ -85,13 +85,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Text="{Binding ImportStatus}"
-                Foreground="Gray"
-                FontStyle="Italic"
-                Margin="5"
-                Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}"
-                TextWrapping="Wrap"/>
+            <!--<TextBlock
+            Text="{Binding ImportStatus}"
+            Foreground="Gray"
+            FontStyle="Italic"
+            Margin="5"
+            Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}"
+            TextWrapping="Wrap"/>-->
 
             <!--#region Toolbar-->
             <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
@@ -227,12 +227,12 @@
             ColumnSizer="Star"
             ItemsSource="{Binding StorageLocationTree}"
             ChildPropertyName="Children"
-            SelectedItem="{Binding SelectedStorageLocation, Mode=TwoWay}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             AutoExpandMode="RootNodesExpanded">
 
             <syncfusion:SfTreeGrid.Columns>
                 <syncfusion:TreeGridTextColumn
-                    MappingName="StorageLocationName"
+                    MappingName="StorageName"
                     HeaderText="Storage location" />
             </syncfusion:SfTreeGrid.Columns>
 
