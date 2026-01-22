@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Validators;
+﻿namespace Modelbouwer.Validators;
 
 public class StorageLocationValidator : IEntityValidator<StorageLocationModel>
 {
@@ -15,16 +11,16 @@ public class StorageLocationValidator : IEntityValidator<StorageLocationModel>
 		var result = new ValidationResult();
 
 		// Name
-		if ( string.IsNullOrWhiteSpace( storagelocation.StorageName ) )
+		if ( string.IsNullOrWhiteSpace( storagelocation.StorageLocationName ) )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameRequirered );
 		}
-		else if ( storagelocation.StorageName.Length > 400 )
+		else if ( storagelocation.StorageLocationName.Length > 400 )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
 		}
 
-		if ( await _dataService.NameExistsAsync( storagelocation.StorageName, storagelocation.StorageParentId ) )
+		if ( await _dataService.NameExistsAsync( storagelocation.StorageLocationName, storagelocation.ParentId ) )
 		{
 			result.Errors.Add( Lang.ExportValidationStorageLocationNameExists );
 		}

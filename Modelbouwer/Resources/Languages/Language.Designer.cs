@@ -10143,9 +10143,9 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Voorraadlokatie.
         /// </summary>
-        public static string storageStockDatagridHeaderStorageName {
+        public static string storageStockDatagridHeaderStorageLocationName {
             get {
-                return ResourceManager.GetString("storageStockDatagridHeaderStorageName", resourceCulture);
+                return ResourceManager.GetString("storageStockDatagridHeaderStorageLocationName", resourceCulture);
             }
         }
         
@@ -10350,9 +10350,9 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Opslaglocatie.
         /// </summary>
-        public static string TimemanagementDatagridHeaderStorageName {
+        public static string TimemanagementDatagridHeaderStorageLocationName {
             get {
-                return ResourceManager.GetString("TimemanagementDatagridHeaderStorageName", resourceCulture);
+                return ResourceManager.GetString("TimemanagementDatagridHeaderStorageLocationName", resourceCulture);
             }
         }
         

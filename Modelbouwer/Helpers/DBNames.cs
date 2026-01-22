@@ -623,8 +623,8 @@ public class DBNames
 	public static readonly string ProductUsageViewFieldTypeProjectName = "string";
 	public static readonly string ProductUsageViewFieldNameProductName = "_productName";
 	public static readonly string ProductUsageViewFieldTypeProductName = "string";
-	public static readonly string ProductUsageViewFieldNameStorageName = "StorageName";
-	public static readonly string ProductUsageViewFieldTypeStorageName = "string";
+	public static readonly string ProductUsageViewFieldNameStorageLocationName = "StorageLocationName";
+	public static readonly string ProductUsageViewFieldTypeStorageLocationName = "string";
 	public static readonly string ProductUsageViewFieldNameCategoryName = "CategoryName";
 	public static readonly string ProductUsageViewFieldTypeCategoryName = "string";
 	public static readonly string ProductUsageViewFieldNameAmountUsed = "AmountUsed";

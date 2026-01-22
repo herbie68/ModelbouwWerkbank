@@ -426,7 +426,7 @@
   <data name="storageStockDatagridHeaderUnitName" xml:space="preserve">
     <value>Einheit</value>
   </data>
-  <data name="storageStockDatagridHeaderStorageName" xml:space="preserve">
+  <data name="storageStockDatagridHeaderStorageLocationName" xml:space="preserve">
     <value>Lagerstandort</value>
   </data>
   <data name="storageStockDatagridHeaderProductName" xml:space="preserve">
@@ -697,7 +697,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="TimemanagementDatagridHeaderProjectName" xml:space="preserve">
     <value>Projekt</value>
   </data>
-  <data name="TimemanagementDatagridHeaderStorageName" xml:space="preserve">
+  <data name="TimemanagementDatagridHeaderStorageLocationName" xml:space="preserve">
     <value>Speicherort</value>
   </data>
   <data name="TimemanagementDatagridHeaderWorktypeName" xml:space="preserve">

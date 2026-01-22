@@ -1,41 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Modelbouwer.Models;
 
-public class StorageLocationModel
+public class StorageLocationModel : INotifyPropertyChanged
 {
 	public int StorageId { get; set; }
-	public int? StorageParentId { get; set; }
-	public string? StorageName { get; set; }
-	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
+	public int? ParentId { get; set; }
 
-	private StorageLocationModel? _parent;
-
-	public StorageLocationModel Parent
+	private string? _storageLocationName;
+	public string? StorageLocationName
 	{
-		get => _parent;
+		get => _storageLocationName;
 		set
 		{
-			_parent = value;
+			if ( _storageLocationName != value )
+			{
+				_storageLocationName = value;
+				OnPropertyChanged();
+			}
 		}
 	}
+
+	public event PropertyChangedEventHandler? PropertyChanged;
+	protected void OnPropertyChanged( [CallerMemberName] string? name = null )
+		=> PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( name ) );
+
+
+	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
 	{
 		{ DBNames.StorageFieldNameId, "StorageId" },
-		{ DBNames.StorageFieldNameParentId, "StorageParentId" },
-		{ DBNames.StorageFieldNameName, "StorageName" },
+		{ DBNames.StorageFieldNameParentId, "ParentId" },
+		{ DBNames.StorageFieldNameName, "StorageLocationName" },
 	};
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{
 		[nameof(StorageId)] = [ "ID" ],
-		[nameof(StorageParentId)] = [ "Parent" ],
+		[nameof(ParentId)] = [ "Parent" ],
 
-		[nameof(StorageName)] = [
+		[nameof(StorageLocationName)] = [
 			"Voorraad locatie",
 			"Stock location",
 			"Lagerort" ]

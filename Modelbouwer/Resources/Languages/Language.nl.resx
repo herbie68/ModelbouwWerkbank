@@ -429,7 +429,7 @@
   <data name="storageStockDatagridHeaderUnitName" xml:space="preserve">
     <value>Eenheid</value>
   </data>
-  <data name="storageStockDatagridHeaderStorageName" xml:space="preserve">
+  <data name="storageStockDatagridHeaderStorageLocationName" xml:space="preserve">
     <value>Voorraadlokatie</value>
   </data>
   <data name="storageStockDatagridHeaderProductName" xml:space="preserve">
@@ -700,7 +700,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="TimemanagementDatagridHeaderProjectName" xml:space="preserve">
     <value>Project</value>
   </data>
-  <data name="TimemanagementDatagridHeaderStorageName" xml:space="preserve">
+  <data name="TimemanagementDatagridHeaderStorageLocationName" xml:space="preserve">
     <value>Opslaglocatie</value>
   </data>
   <data name="TimemanagementDatagridHeaderWorktypeName" xml:space="preserve">

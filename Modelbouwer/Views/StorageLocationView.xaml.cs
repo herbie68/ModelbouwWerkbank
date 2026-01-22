@@ -41,7 +41,7 @@ public partial class StorageLocationView : UserControl
 
 		if ( DataContext is StorageLocationPageViewModel vm )
 		{
-			vm.filterChanged += () =>
+			vm._filterChanged += () =>
 			{
 				if ( SfGridTree.View == null )
 					return;
@@ -108,7 +108,7 @@ public partial class StorageLocationView : UserControl
 				filePath: dialog.FileName,
 				existingRecords: currencies,
 				columnMappings: StorageLocationModel.ColumnMappings,
-                uniqueProperty: nameof(StorageLocationModel.StorageName)
+                uniqueProperty: nameof(StorageLocationModel.StorageLocationName)
             );
 
 				MessageBox.Show(

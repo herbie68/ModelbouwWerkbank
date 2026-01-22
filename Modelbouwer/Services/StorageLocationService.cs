@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Services;
+﻿namespace Modelbouwer.Services;
 
 public class StorageLocationService : IStorageLocationService
 {
@@ -59,8 +55,8 @@ public class StorageLocationService : IStorageLocationService
 			return new StorageLocationModel
 			{
 				StorageId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.StorageFieldNameId}" ] ),
-				StorageParentId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.StorageFieldNameParentId}" ] ),
-				StorageName = DatabaseValueConverter.GetString( reader [ $"{DBNames.StorageFieldNameName}" ] )
+				ParentId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.StorageFieldNameParentId}" ] ),
+				StorageLocationName = DatabaseValueConverter.GetString( reader [ $"{DBNames.StorageFieldNameName}" ] )
 			};
 		} );
 	}

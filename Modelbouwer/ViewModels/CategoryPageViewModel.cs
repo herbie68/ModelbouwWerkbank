@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 using CommunityToolkit.Mvvm.Input;
 
-using Syncfusion.Data;
 using Syncfusion.UI.Xaml.TreeGrid;
 using Syncfusion.Windows.Shared;
 
@@ -28,6 +24,7 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 		set
 		{
 			SelectedItem = value;
+			OnPropertyChanged();
 			AddSubCategoryCommand.NotifyCanExecuteChanged();
 		}
 	}
@@ -41,20 +38,20 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand expandCommand;
+	private ICommand _expandCommand;
 
 	public ICommand ExpandCommand
 	{
-		get { return expandCommand; }
-		set { expandCommand = value; }
+		get { return _expandCommand; }
+		set { _expandCommand = value; }
 	}
 
-	private ICommand collapseCommand;
+	private ICommand _collapseCommand;
 
 	public ICommand CollapseCommand
 	{
-		get { return collapseCommand; }
-		set { collapseCommand = value; }
+		get { return _collapseCommand; }
+		set { _collapseCommand = value; }
 	}
 
 
@@ -66,7 +63,7 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadCategoriesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubCategoryCommand = new RelayCommand(
@@ -86,13 +83,10 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 			return;
 
 		OnPropertyChanged( nameof( SelectedCategory ) );
-		OnPropertyChanged( nameof( SelectedCategory.CategoryName ) );
-		OnPropertyChanged( nameof( SelectedCategory.ParentId ) );
-		OnPropertyChanged( nameof( SelectedCategory.CategoryId ) );
 	}
 
 	// Async categories laden
-	private async Task LoadCurrenciesAsync()
+	private async Task LoadCategoriesAsync()
 	{
 		var categoryList = await _dataService.GetAllCategorysAsync();
 
@@ -151,17 +145,17 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	private void ExpandExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.ExpandAllNodes();
+		treeGrid?.ExpandAllNodes();
 	}
 
 	private void CollapseExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.CollapseAllNodes();
+		treeGrid?.CollapseAllNodes();
 	}
 
 
-	public ObservableCollection<CategoryModel> BuildTree( IEnumerable<CategoryModel> flatList )
+	public static ObservableCollection<CategoryModel> BuildTree( IEnumerable<CategoryModel> flatList )
 	{
 		var lookup = flatList.ToDictionary(c => c.CategoryId);
 
@@ -221,20 +215,20 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged filterChanged;
+	internal FilterChanged _filterChanged;
 
-	private string searchText = string.Empty;
+	private string _searchText = string.Empty;
 	public string SearchText
 	{
-		get => searchText;
+		get => _searchText;
 		set
 		{
-			if ( searchText != value )
+			if ( _searchText != value )
 			{
-				searchText = value;
+				_searchText = value;
 				RaisePropertyChanged();
 
-				filterChanged?.Invoke();
+				_filterChanged?.Invoke();
 			}
 		}
 	}

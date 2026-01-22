@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 using CommunityToolkit.Mvvm.Input;
 
@@ -18,7 +15,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 	// Collections
 	private ObservableCollection<StorageLocationModel> _fullTree = [];
-	public ObservableCollection<StorageLocationModel> Categories { get; } = [ ];
+	public ObservableCollection<StorageLocationModel> StorageLocations { get; } = [ ];
 	public ObservableCollection<StorageLocationModel> StorageLocationTree { get; } = [ ];
 
 	// SelectedStorageLocation als type-safe alias
@@ -28,6 +25,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 		set
 		{
 			SelectedItem = value;
+			OnPropertyChanged();
 			AddSubStorageLocationCommand.NotifyCanExecuteChanged();
 		}
 	}
@@ -41,20 +39,20 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand expandCommand;
+	private ICommand _expandCommand;
 
 	public ICommand ExpandCommand
 	{
-		get { return expandCommand; }
-		set { expandCommand = value; }
+		get { return _expandCommand; }
+		set { _expandCommand = value; }
 	}
 
-	private ICommand collapseCommand;
+	private ICommand _collapseCommand;
 
 	public ICommand CollapseCommand
 	{
-		get { return collapseCommand; }
-		set { collapseCommand = value; }
+		get { return _collapseCommand; }
+		set { _collapseCommand = value; }
 	}
 
 
@@ -66,7 +64,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadStorageLocationsAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubStorageLocationCommand = new RelayCommand(
@@ -86,19 +84,16 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 			return;
 
 		OnPropertyChanged( nameof( SelectedStorageLocation ) );
-		OnPropertyChanged( nameof( SelectedStorageLocation.StorageName ) );
-		OnPropertyChanged( nameof( SelectedStorageLocation.StorageParentId ) );
-		OnPropertyChanged( nameof( SelectedStorageLocation.StorageId ) );
 	}
 
 	// Async categories laden
-	private async Task LoadCurrenciesAsync()
+	private async Task LoadStorageLocationsAsync()
 	{
 		var storagelocationList = await _dataService.GetAllStorageLocationsAsync();
 
-		Categories.Clear();
+		StorageLocations.Clear();
 		foreach ( var c in storagelocationList )
-			Categories.Add( c );
+			StorageLocations.Add( c );
 	}
 
 	// Filtering
@@ -110,7 +105,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 		if ( string.IsNullOrWhiteSpace( base.SearchText ) )
 			return true;
 
-		return storagelocation.StorageName?.Contains( base.SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
+		return storagelocation.StorageLocationName?.Contains( base.SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
 	}
 
 	// Abstract overrides voor CRUD
@@ -123,7 +118,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 			return;
 
 		var result = MessageBox.Show(
-			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.StorageName}' {Lang.toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix}",
+			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.StorageLocationName}' {Lang.toolbarButtonActionDeleteMessageQuestionStorageLocationSuffix}",
 			$"{Lang.toolbarButtonActionDeleteMessageButtonText}",
 			MessageBoxButton.YesNo,
 			MessageBoxImage.Warning
@@ -151,17 +146,17 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	private void ExpandExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.ExpandAllNodes();
+		treeGrid?.ExpandAllNodes();
 	}
 
 	private void CollapseExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.CollapseAllNodes();
+		treeGrid?.CollapseAllNodes();
 	}
 
 
-	public ObservableCollection<StorageLocationModel> BuildTree( IEnumerable<StorageLocationModel> flatList )
+	public static ObservableCollection<StorageLocationModel> BuildTree( IEnumerable<StorageLocationModel> flatList )
 	{
 		var lookup = flatList.ToDictionary(c => c.StorageId);
 
@@ -171,14 +166,14 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 		foreach ( var storagelocation in lookup.Values )
 		{
-			if ( storagelocation.StorageParentId != null &&
-				lookup.TryGetValue( storagelocation.StorageParentId.Value, out var parent ) )
+			if ( storagelocation.ParentId != null &&
+				lookup.TryGetValue( storagelocation.ParentId.Value, out var parent ) )
 			{
 				parent.Children.Add( storagelocation );
 			}
 		}
 
-		return new ObservableCollection<StorageLocationModel>( lookup.Values.Where( c => c.StorageParentId == null || c.StorageParentId == 0 ) );
+		return new ObservableCollection<StorageLocationModel>( lookup.Values.Where( c => c.ParentId == null || c.ParentId == 0 ) );
 	}
 
 	protected override int GetId( StorageLocationModel item ) => item.StorageId;
@@ -187,8 +182,8 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	protected override StorageLocationModel CreateNewItem() => new()
 	{
 		StorageId = 0,
-		StorageParentId = 0,
-		StorageName = string.Empty
+		ParentId = 0,
+		StorageLocationName = string.Empty
 	};
 
 	protected override void OnItemsLoaded()
@@ -211,8 +206,8 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 		var newStorageLocation = new StorageLocationModel
 		{
-			StorageName = string.Empty,
-			StorageParentId = SelectedStorageLocation.StorageId
+			StorageLocationName = string.Empty,
+			ParentId = SelectedStorageLocation.StorageId
 		};
 
 		SelectedStorageLocation.Children.Add( newStorageLocation );
@@ -221,20 +216,20 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged filterChanged;
+	internal FilterChanged _filterChanged;
 
-	private string searchText = string.Empty;
+	private string _searchText = string.Empty;
 	public string SearchText
 	{
-		get => searchText;
+		get => _searchText;
 		set
 		{
-			if ( searchText != value )
+			if ( _searchText != value )
 			{
-				searchText = value;
+				_searchText = value;
 				RaisePropertyChanged();
 
-				filterChanged?.Invoke();
+				_filterChanged?.Invoke();
 			}
 		}
 	}
@@ -248,7 +243,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 			return true;
 
 		// 1️⃣ Check current node
-		if ( storagelocation.StorageName?
+		if ( storagelocation.StorageLocationName?
 			.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 			return true;
 
@@ -264,7 +259,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 		foreach ( var child in parent.Children )
 		{
 			// Child matches
-			if ( child.StorageName?
+			if ( child.StorageLocationName?
 				.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 				return true;
 
@@ -287,14 +282,14 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( StorageLocationModel c ) => new()
 	{
-		{ $"@{DBNames.StorageFieldNameParentId}", c.StorageParentId == 0 ? null : c.StorageParentId },
-		{ $"@{DBNames.StorageFieldNameName}", c.StorageName?.Trim() }
+		{ $"@{DBNames.StorageFieldNameParentId}", c.ParentId == 0 ? null : c.ParentId },
+		{ $"@{DBNames.StorageFieldNameName}", c.StorageLocationName?.Trim() }
 	};
 
 	private static Dictionary<string, object?> UpdateParameters( StorageLocationModel c ) => new()
 	{
 		{ $"@{DBNames.StorageFieldNameId}", c.StorageId == 0 ? null : c.StorageId },
-		{ $"@{DBNames.StorageFieldNameId}", c.StorageParentId == 0 ? null : c.StorageParentId },
-		{ $"@{DBNames.StorageFieldNameName}", c.StorageName?.Trim() }
+		{ $"@{DBNames.StorageFieldNameId}", c.ParentId == 0 ? null : c.ParentId },
+		{ $"@{DBNames.StorageFieldNameName}", c.StorageLocationName?.Trim() }
 	};
 }

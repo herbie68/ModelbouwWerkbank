@@ -43,7 +43,7 @@ public partial class CategoryView : UserControl
 
 		if ( DataContext is CategoryPageViewModel vm )
 		{
-			vm.filterChanged += () =>
+			vm._filterChanged += () =>
 			{
 				if ( SfGridTree.View == null )
 					return;
