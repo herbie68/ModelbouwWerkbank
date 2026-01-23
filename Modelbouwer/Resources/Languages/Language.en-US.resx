@@ -3769,4 +3769,37 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ExportCountryHeaderName" xml:space="preserve">
     <value>Country</value>
   </data>
+  <data name="metadataWorkTypeHeaderTitel" xml:space="preserve">
+    <value>Management of work types</value>
+  </data>
+  <data name="metadataWorkTypeHeaderSubtitle" xml:space="preserve">
+    <value>Work types are used to specify the work</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldName" xml:space="preserve">
+    <value>Work type</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTag" xml:space="preserve">
+    <value>Work type</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTooltip" xml:space="preserve">
+    <value>Work types are used to specify the work</value>
+  </data>
+  <data name="ExportWorkTypeFileName" xml:space="preserve">
+    <value>Work types</value>
+  </data>
+  <data name="ExportWorkTypeHeaderName" xml:space="preserve">
+    <value>Work type</value>
+  </data>
+  <data name="metadataProjectDeleteError" xml:space="preserve">
+    <value>This project is still in use and cannot be deleted</value>
+  </data>
+  <data name="ExportValidationProjectNameExists" xml:space="preserve">
+    <value>This project already exists</value>
+  </data>
+  <data name="metadataProjectHeaderTitel" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="metadataProjectHeaderSubtitle" xml:space="preserve">
+    <value>Manage and view projects</value>
+  </data>
 </root>

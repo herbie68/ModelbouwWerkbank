@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Modelbouwer.Services;
 
-namespace Modelbouwer.Services;
-
-public class WorkTypeService : IWorkTypeService
+public class WorktypeService : IWorktypeService
 {
 	private readonly GenericDataService _dataService;
 	public bool WorkTypeUsed { get; set; } = false;
 
-	public WorkTypeService( GenericDataService dataService )
+	public WorktypeService( GenericDataService dataService )
 	{
 		_dataService = dataService;
 	}
@@ -49,18 +45,18 @@ public class WorkTypeService : IWorkTypeService
 		$"OR ( {DBNames.WorktypeFieldNameParentId} IS NULL AND @{DBNames.WorktypeFieldNameParentId} IS NULL ) );";
 
 	public string WorkTypeUsedQuery =
-		$"SELECT COUNT(*){DBNames.TimeFieldNameWorktypeId}) FROM {DBNames.Database}.{DBNames.TimeTable} WHERE {DBNames.TimeFieldNameWorktypeId} = @WorkTypeId";
+		$"SELECT COUNT(*){DBNames.TimeFieldNameWorktypeId}) FROM {DBNames.Database}.{DBNames.TimeTable} WHERE {DBNames.TimeFieldNameWorktypeId} = @WorktypeId";
 	#endregion
 
-	public Task<List<WorkTypeModel>> GetAllWorkTypesAsync()
+	public Task<List<WorktypeModel>> GetAllWorkTypesAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteWorkTypeList, reader =>
 		{
-			return new WorkTypeModel
+			return new WorktypeModel
 			{
-				WorkTypeId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.WorktypeFieldNameId}" ] ),
+				WorktypeId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.WorktypeFieldNameId}" ] ),
 				ParentId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.WorktypeFieldNameParentId}" ] ),
-				WorkTypeName = DatabaseValueConverter.GetString( reader [ $"{DBNames.WorktypeFieldNameName}" ] )
+				WorktypeName = DatabaseValueConverter.GetString( reader [ $"{DBNames.WorktypeFieldNameName}" ] )
 			};
 		} );
 	}

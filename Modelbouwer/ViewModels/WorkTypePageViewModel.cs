@@ -5,13 +5,13 @@ using Syncfusion.Windows.Shared;
 
 namespace Modelbouwer.ViewModels;
 
-public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
+public partial class WorktypePageViewModel : EntityPageViewModel<WorktypeModel>
 {
-	private readonly IWorkTypeService _dataService;
+	private readonly IWorktypeService _dataService;
 
 	// Collections
-	public ObservableCollection<WorkTypeModel> WorkTypes { get; } = [ ];
-	public ObservableCollection<WorkTypeModel> WorkTypeTree { get; } = [ ];
+	public ObservableCollection<WorktypeModel> WorkTypes { get; } = [ ];
+	public ObservableCollection<WorktypeModel> WorkTypeTree { get; } = [ ];
 
 	// Commands
 	public IRelayCommand AddWorkTypeCommand => AddCommand;
@@ -22,45 +22,51 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand expandCommand;
+	private ICommand? _expandCommand;
 
-	public ICommand ExpandCommand
+	public ICommand? ExpandCommand
 	{
-		get { return expandCommand; }
-		set { expandCommand = value; }
+		get { return _expandCommand; }
+		set { _expandCommand = value; }
 	}
 
-	private ICommand _collapseCommand;
+	private ICommand? _collapseCommand;
 
-	public ICommand CollapseCommand
+	public ICommand? CollapseCommand
 	{
 		get { return _collapseCommand; }
 		set { _collapseCommand = value; }
 	}
 
+	internal delegate void FilterChanged();
+	internal FilterChanged? _filterChanged;
+
 	// Constructor
-	public WorkTypePageViewModel(
-		IWorkTypeService dataService,
-		IEntityValidator<WorkTypeModel> validator
-	) : base( validator )
+	public WorktypePageViewModel( IWorktypeService dataService, IEntityValidator<WorktypeModel> validator ) : base( validator )
 	{
 		_dataService = dataService;
 
 		_ = LoadWorkTypesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
-		AddSubWorkTypeCommand = new RelayCommand(
-	AddSubWorkType,
-	() => SelectedItem != null
-);
+		AddSubWorkTypeCommand = new RelayCommand( AddSubWorkType, () => SelectedItem != null );
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
 		CollapseCommand = new DelegateCommand<object>( CollapseExecute );
+	}
 
+	protected override void OnPropertyChanged( System.ComponentModel.PropertyChangedEventArgs e )
+	{
+		base.OnPropertyChanged( e );
+
+		if ( e.PropertyName == nameof( SearchText ) )
+		{
+			_filterChanged?.Invoke();
+		}
 	}
 
 	// Override SelectedItem changed om DefaultWorkType te zetten
-	protected override void OnSelectedItemChanged( WorkTypeModel? value )
+	protected override void OnSelectedItemChanged( WorktypeModel? value )
 	{
 		AddSubWorkTypeCommand.NotifyCanExecuteChanged();
 	}
@@ -76,26 +82,26 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 
 	public bool FilterWorkType( object obj )
 	{
-		if ( obj is not WorkTypeModel worktype )
+		if ( obj is not WorktypeModel worktype )
 			return false;
 
 		if ( string.IsNullOrWhiteSpace( base.SearchText ) )
 			return true;
 
-		return worktype.WorkTypeName?.Contains( base.SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
+		return worktype.WorktypeName?.Contains( base.SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
 	}
 
 	// Abstract overrides voor CRUD
-	protected override Task<List<WorkTypeModel>> LoadItemsAsync() => _dataService.GetAllWorkTypesAsync();
-	protected override Task<int> InsertAsync( WorkTypeModel item ) => _dataService.InsertNewWorkTypeAsync( CreateParameters( item ) );
-	protected override Task UpdateAsync( WorkTypeModel item ) => _dataService.UpdateWorkTypeAsync( UpdateParameters( item ) );
-	protected override async Task DeleteAsync( WorkTypeModel item )
+	protected override Task<List<WorktypeModel>> LoadItemsAsync() => _dataService.GetAllWorkTypesAsync();
+	protected override Task<int> InsertAsync( WorktypeModel item ) => _dataService.InsertNewWorkTypeAsync( CreateParameters( item ) );
+	protected override Task UpdateAsync( WorktypeModel item ) => _dataService.UpdateWorkTypeAsync( UpdateParameters( item ) );
+	protected override async Task DeleteAsync( WorktypeModel item )
 	{
 		if ( item == null )
 			return;
 
 		var result = MessageBox.Show(
-			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.WorkTypeName}' {Lang.toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix}",
+			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.WorktypeName}' {Lang.toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix}",
 			$"{Lang.toolbarButtonActionDeleteMessageButtonText}",
 			MessageBoxButton.YesNo,
 			MessageBoxImage.Warning
@@ -105,7 +111,7 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 			return;
 		try
 		{
-			await _dataService.DeleteWorkTypeAsync( item.WorkTypeId );
+			await _dataService.DeleteWorkTypeAsync( item.WorktypeId );
 		}
 		catch ( EntityInUseException ex )
 		{
@@ -130,10 +136,9 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 		treeGrid?.CollapseAllNodes();
 	}
 
-
-	public ObservableCollection<WorkTypeModel> BuildTree( IEnumerable<WorkTypeModel> flatList )
+	public ObservableCollection<WorktypeModel> BuildTree( IEnumerable<WorktypeModel> flatList )
 	{
-		var lookup = flatList.ToDictionary(c => c.WorkTypeId);
+		var lookup = flatList.ToDictionary(c => c.WorktypeId);
 
 		// Make sure Children are not doubled
 		foreach ( var c in lookup.Values )
@@ -148,17 +153,17 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 			}
 		}
 
-		return new ObservableCollection<WorkTypeModel>( lookup.Values.Where( c => c.ParentId == null || c.ParentId == 0 ) );
+		return new ObservableCollection<WorktypeModel>( lookup.Values.Where( c => c.ParentId == null || c.ParentId == 0 ) );
 	}
 
-	protected override int GetId( WorkTypeModel item ) => item.WorkTypeId;
-	protected override void SetId( WorkTypeModel item, int id ) => item.WorkTypeId = id;
+	protected override int GetId( WorktypeModel item ) => item.WorktypeId;
+	protected override void SetId( WorktypeModel item, int id ) => item.WorktypeId = id;
 
-	protected override WorkTypeModel CreateNewItem() => new()
+	protected override WorktypeModel CreateNewItem() => new()
 	{
-		WorkTypeId = 0,
+		WorktypeId = 0,
 		ParentId = 0,
-		WorkTypeName = string.Empty
+		WorktypeName = string.Empty
 	};
 
 	protected override void OnItemsLoaded()
@@ -176,48 +181,43 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 
 	private void AddSubWorkType()
 	{
-		if ( SelectedItem == null )  // Changed from SelectedWorkType
+		if ( SelectedItem == null )
 			return;
 
-		var newWorkType = new WorkTypeModel
+		var newWorkType = new WorktypeModel
 		{
-			WorkTypeName = string.Empty,
-			ParentId = SelectedItem.WorkTypeId  // Changed from SelectedWorkType
+			WorktypeName = string.Empty,
+			ParentId = SelectedItem.WorktypeId
 		};
 
-		SelectedItem.Children.Add( newWorkType );  // Changed from SelectedWorkType
-		SelectedItem = newWorkType;  // Changed from SelectedWorkType
+		SelectedItem.Children.Add( newWorkType );
+		SelectedItem = newWorkType;
 	}
 
 	#region Filtering
-	internal delegate void FilterChanged();
-	internal FilterChanged _filterChanged;
-
 	public bool FilterRecords( object o )
 	{
-		if ( o is not WorkTypeModel worktype )
+		if ( o is not WorktypeModel worktype )
 			return false;
 
 		if ( string.IsNullOrWhiteSpace( SearchText ) )
 			return true;
 
-		// 1️⃣ Check current node
-		if ( worktype.WorkTypeName?
+		if ( worktype.WorktypeName?
 			.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 			return true;
 
-		// 2️⃣ Check children (important!)
 		return HasMatchingChild( worktype );
 	}
 
-	private bool HasMatchingChild( WorkTypeModel parent )
+	private bool HasMatchingChild( WorktypeModel parent )
 	{
 		if ( parent.Children == null || parent.Children.Count == 0 )
 			return false;
 
 		foreach ( var child in parent.Children )
 		{
-			if ( child.WorkTypeName?
+			if ( child.WorktypeName?
 				.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 				return true;
 
@@ -230,16 +230,16 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 	#endregion
 
 	// Parameter dictionary voor save
-	private static Dictionary<string, object?> CreateParameters( WorkTypeModel c ) => new()
+	private static Dictionary<string, object?> CreateParameters( WorktypeModel c ) => new()
 	{
 		{ $"@{DBNames.WorktypeFieldNameParentId}", c.ParentId == 0 ? null : c.ParentId },
-		{ $"@{DBNames.WorktypeFieldNameName}", c.WorkTypeName?.Trim() }
+		{ $"@{DBNames.WorktypeFieldNameName}", c.WorktypeName?.Trim() }
 	};
 
-	private static Dictionary<string, object?> UpdateParameters( WorkTypeModel c ) => new()
+	private static Dictionary<string, object?> UpdateParameters( WorktypeModel c ) => new()
 	{
-		{ $"@{DBNames.WorktypeFieldNameId}", c.WorkTypeId == 0 ? null : c.WorkTypeId },
+		{ $"@{DBNames.WorktypeFieldNameId}", c.WorktypeId == 0 ? null : c.WorktypeId },
 		{ $"@{DBNames.WorktypeFieldNameId}", c.ParentId == 0 ? null : c.ParentId },
-		{ $"@{DBNames.WorktypeFieldNameName}", c.WorkTypeName?.Trim() }
+		{ $"@{DBNames.WorktypeFieldNameName}", c.WorktypeName?.Trim() }
 	};
 }

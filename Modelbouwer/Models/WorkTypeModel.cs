@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Modelbouwer.Models;
 
-namespace Modelbouwer.Models;
-
-public class WorkTypeModel
+public class WorktypeModel
 {
-	public int WorkTypeId { get; set; }
+	public int WorktypeId { get; set; }
 	public int? ParentId { get; set; }
-	public string WorkTypeName { get; set; } = string.Empty;
+	public string WorktypeName { get; set; } = string.Empty;
 
-	public ObservableCollection<WorkTypeModel> Children { get; set; } = [ ];
+	public ObservableCollection<WorktypeModel> Children { get; set; } = [ ];
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{
-		[nameof(WorkTypeId)] = [ "ID" ],
+		[nameof(WorktypeId)] = [ "ID" ],
 		[nameof(ParentId)] = [ "Parent" ],
 
-		[nameof(WorkTypeName)] = [
-			"Worksoort",
+		[nameof(WorktypeName)] = [
+			"Werksoort",
 			"WorkType",
 			"Arbeitsart" ]
 	};

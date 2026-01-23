@@ -27,7 +27,12 @@
             Grid.Row="0"
             VerticalAlignment="Center"
             Background="{DynamicResource HeaderBackground}">
-            <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataCategoryHeaderTitel}" />
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Image
+                    Style="{DynamicResource HeaderIconStyle}"
+                    Source="{StaticResource Category}" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataCategoryHeaderTitel}" />
+            </StackPanel>
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
@@ -232,6 +237,10 @@
 
             <syncfusion:SfTreeGrid.Columns>
                 <syncfusion:TreeGridTextColumn
+                    MappingName="CategoryName"
+                    HeaderText="Category" />
+
+                <syncfusion:TreeGridTextColumn
                     MappingName="CategoryId"
                     HeaderText="ID"
                     IsHidden="True" />
@@ -240,10 +249,6 @@
                     MappingName="ParentId"
                     HeaderText="Parent ID"
                     IsHidden="True" />
-                
-                <syncfusion:TreeGridTextColumn
-                    MappingName="CategoryName"
-                    HeaderText="Category" />
             </syncfusion:SfTreeGrid.Columns>
 
         </syncfusion:SfTreeGrid>

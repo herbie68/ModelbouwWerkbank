@@ -5,7 +5,7 @@ using Syncfusion.Windows.Shared;
 
 namespace Modelbouwer.ViewModels;
 
-public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
+public partial class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 {
 	private readonly ICategoryService _dataService;
 
@@ -22,41 +22,48 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand expandCommand;
+	private ICommand? _expandCommand;
 
-	public ICommand ExpandCommand
+	public ICommand? ExpandCommand
 	{
-		get { return expandCommand; }
-		set { expandCommand = value; }
+		get { return _expandCommand; }
+		set { _expandCommand = value; }
 	}
 
-	private ICommand _collapseCommand;
+	private ICommand? _collapseCommand;
 
-	public ICommand CollapseCommand
+	public ICommand? CollapseCommand
 	{
 		get { return _collapseCommand; }
 		set { _collapseCommand = value; }
 	}
 
+	internal delegate void FilterChanged();
+	internal FilterChanged? _filterChanged;
+
 	// Constructor
-	public CategoryPageViewModel(
-		ICategoryService dataService,
-		IEntityValidator<CategoryModel> validator
-	) : base( validator )
+	public CategoryPageViewModel( ICategoryService dataService, IEntityValidator<CategoryModel> validator ) : base( validator )
 	{
 		_dataService = dataService;
 
 		_ = LoadCategoriesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
-		AddSubCategoryCommand = new RelayCommand(
-	AddSubCategory,
-	() => SelectedItem != null
-);
+		AddSubCategoryCommand = new RelayCommand( AddSubCategory, () => SelectedItem != null );
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
 		CollapseCommand = new DelegateCommand<object>( CollapseExecute );
 
+	}
+
+	protected override void OnPropertyChanged( System.ComponentModel.PropertyChangedEventArgs e )
+	{
+		base.OnPropertyChanged( e );
+
+		if ( e.PropertyName == nameof( SearchText ) )
+		{
+			_filterChanged?.Invoke();
+		}
 	}
 
 	// Override SelectedItem changed om DefaultCategory te zetten
@@ -190,9 +197,6 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 	}
 
 	#region Filtering
-	internal delegate void FilterChanged();
-	internal FilterChanged _filterChanged;
-
 	public bool FilterRecords( object o )
 	{
 		if ( o is not CategoryModel category )
@@ -201,12 +205,10 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 		if ( string.IsNullOrWhiteSpace( SearchText ) )
 			return true;
 
-		// 1️⃣ Check current node
 		if ( category.CategoryName?
 			.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 			return true;
 
-		// 2️⃣ Check children (important!)
 		return HasMatchingChild( category );
 	}
 

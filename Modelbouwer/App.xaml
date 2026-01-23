@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="Resources/Icons/NavigationIcons.xaml" />
                 <!--<ResourceDictionary Source="Resources/Icons/RibbonIcons.xaml" /> -->
                 <ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" />
+                <ResourceDictionary Source="Resources/Icons/TimeIcons.xaml" />
+                <ResourceDictionary Source="Resources/Icons/Icons.xaml" />
 
                 <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />

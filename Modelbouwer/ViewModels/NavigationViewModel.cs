@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 using Microsoft.Extensions.DependencyInjection;
-
-using Modelbouwer.Helpers;
-using Modelbouwer.Models;
-using Modelbouwer.Views;
 
 namespace Modelbouwer.ViewModels;
 
@@ -150,6 +138,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Unit_Tooltip}",
 			Command = new SimpleCommand( () => LoadUnitView() )
 		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Worktype_Label}",
+			NavigationIcon = CreateNavigationImage( "Worktype" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Worktype_Tooltip}",
+			Command = new SimpleCommand( () => LoadWorktypeView() )
+		} );
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -272,6 +268,18 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadWorktypeView()
+	{
+		try
+		{
+			var worktypeView = _serviceProvider.GetRequiredService<WorktypeView>();
+			CurrentView = worktypeView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading WorktypeView: {ex.Message}" );
+		}
+	}
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -439,7 +447,15 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationIcon = CreateNavigationImage( "Unit" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Unit_Tooltip,
 			Command = new SimpleCommand( () => LoadUnitView() )
-		} );			
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_Worktype_Label,
+			NavigationIcon = CreateNavigationImage( "Worktype" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Worktype_Tooltip,
+			Command = new SimpleCommand( () => LoadWorktypeView() )
+		} );
 		#endregion
 
 		#region CurrencySubitems
@@ -482,9 +498,9 @@ public class NavigationViewModel : INotifyPropertyChanged
 	{
 		private readonly Action _execute;
 
-		#pragma warning disable CS0067
+#pragma warning disable CS0067
 		public event EventHandler? CanExecuteChanged;
-		#pragma warning restore CS0067
+#pragma warning restore CS0067
 
 		public SimpleCommand( Action execute )
 		{

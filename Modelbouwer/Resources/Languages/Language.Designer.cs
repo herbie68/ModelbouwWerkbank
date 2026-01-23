@@ -1447,6 +1447,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dit project bestaat al.
+        /// </summary>
+        public static string ExportValidationProjectNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationProjectNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deze voorraad locatie bestaat al.
         /// </summary>
         public static string ExportValidationStorageNameExists {
@@ -1470,6 +1479,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string ExportValidationWorkTypeNameExists {
             get {
                 return ResourceManager.GetString("ExportValidationWorkTypeNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoorten.
+        /// </summary>
+        public static string ExportWorkTypeFileName {
+            get {
+                return ResourceManager.GetString("ExportWorkTypeFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoort.
+        /// </summary>
+        public static string ExportWorkTypeHeaderName {
+            get {
+                return ResourceManager.GetString("ExportWorkTypeHeaderName", resourceCulture);
             }
         }
         
@@ -6469,6 +6496,33 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dit project wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataProjectDeleteError {
+            get {
+                return ResourceManager.GetString("metadataProjectDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projecten beheren en bekijken.
+        /// </summary>
+        public static string metadataProjectHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataProjectHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projecten.
+        /// </summary>
+        public static string metadataProjectHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataProjectHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projecten.
         /// </summary>
         public static string metadataProjectPageTitle {
@@ -8325,6 +8379,33 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Werksoort.
         /// </summary>
+        public static string metadataWorkTypeEntryFieldName {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeEntryFieldName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoort.
+        /// </summary>
+        public static string metadataWorkTypeEntryFieldNameTag {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeEntryFieldNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoorten worden gebruikt om de werkzaamheden te specificeren.
+        /// </summary>
+        public static string metadataWorkTypeEntryFieldNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeEntryFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoort.
+        /// </summary>
         public static string metadataWorktypeEntryFieldWorktype {
             get {
                 return ResourceManager.GetString("metadataWorktypeEntryFieldWorktype", resourceCulture);
@@ -8355,6 +8436,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataWorktypeEntryToolbarButtonSaveTooltip {
             get {
                 return ResourceManager.GetString("metadataWorktypeEntryToolbarButtonSaveTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoorten worden gebruikt om de werkzaamheden te specificeren.
+        /// </summary>
+        public static string metadataWorkTypeHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van  werksoorten.
+        /// </summary>
+        public static string metadataWorkTypeHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataWorkTypeHeaderTitel", resourceCulture);
             }
         }
         

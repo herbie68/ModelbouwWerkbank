@@ -27,7 +27,12 @@
             Grid.Row="0"
             VerticalAlignment="Center"
             Background="{DynamicResource HeaderBackground}">
-            <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataBrandHeaderTitel}" />
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Image
+                    Style="{DynamicResource HeaderIconStyle}"
+                    Source="{StaticResource Brands}" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataBrandHeaderTitel}" />
+            </StackPanel>
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
@@ -75,168 +80,168 @@
         <!--#endregion-->
 
         <!--#region Toolbar section-->
-        <Grid Grid.Row="3" 
-              Margin="15,2,15,2"  
+        <Grid Grid.Row="3"
+              Margin="15,2,15,2"
               VerticalAlignment="Center">
-            
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="250" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
 
-                <TextBlock 
-                   Text="{Binding ImportStatus}" 
-                   Foreground="Gray"
-                   FontStyle="Italic"
-                   Margin="5"
-                   Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                   TextWrapping="Wrap"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-                <!--#region Toolbar-->
-                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
-                    <Button
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding AddCountryCommand}" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
-                        <Image Style="{DynamicResource ToolBarAddIcon}" />
-                    </Button>
+            <TextBlock
+                Text="{Binding ImportStatus}"
+                Foreground="Gray"
+                FontStyle="Italic"
+                Margin="5"
+                Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}"
+                TextWrapping="Wrap"/>
 
-                    <Button 
-               Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding DeleteCountryCommand}"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
-                        <Image Style="{DynamicResource ToolBarDeleteIcon}" />
-                    </Button>
-
-                    <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Command="{Binding SaveCountryCommand}"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
-                        <Image Style="{DynamicResource ToolBarSaveIcon}" />
-                    </Button>
-
-                    <Border Style="{StaticResource ActionBarSeparatorStyle}" />
-
-                    <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonImport" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionImport}">
-                        <Image Style="{DynamicResource ToolBarImportIcon}" />
-                    </Button>
-
-                    <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonCSVExport"
-                       ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
-                        <Image Style="{DynamicResource ToolBarCSVExportIcon}" />
-                    </Button>
-
-                    <Button 
-                       Style="{StaticResource ActionBarButtonStyle}"
-                       Click="ButtonExcelExport" 
-                       ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
-                        <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
-                    </Button>
-                </StackPanel>
-                <!--#endregion-->
-
-                <!--#region Record Count Section -->
-                <TextBlock
-                   Grid.Column="1"
-                   Width="250"
-                   Height="23" FontSize="14" FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-           
-                   <Run Text="{x:Static language:Language.toolbarVisibleRowLabelBrand}" />
-                   <Run Text=": " />
-                   <Run
-                       FontSize="16"
-                       Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
-                       FontStyle="Italic" />
-                   <Run Text=" " />
-                   <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
-                   <Run Text=" " />
-                   <Run Text="{Binding TotalBrandCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
-                </TextBlock>
-                <!--#endregion-->
-
-                <!--#region Search field-->
-                <!--  Icon  -->
-                <Image
-                   x:Name="FilterIcon"
-                   Grid.Column="2"
-                   Width="20"
-                   Height="20"
-                   Margin="5"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   Source="{StaticResource search}">
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard AutoReverse="True" RepeatBehavior="Forever">
-                                    <DoubleAnimation
-                                       Storyboard.TargetProperty="Opacity"
-                                       From="1.0"
-                                       To="0.3"
-                                       Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Image.Triggers>
-                </Image>
-
-                <!--  Input field  -->
-                <TextBox
-                   Grid.Column="3"
-                   Width="250"
-                   VerticalAlignment="Center"
-                   Style="{DynamicResource DefaultTextBox}"
-                   Tag="{x:Static language:Language.SearchGridTag}"
-                   Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                   ToolTip="{x:Static language:Language.SearchGridTooltip}" />
-
-                <!--  Clear button  -->
+            <!--#region Toolbar-->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                 <Button
-                   Grid.Column="4"
-                   Width="24"
-                   Height="24"
-                   Margin="5"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Command="{Binding ClearSearchCommand}"
-                   Style="{DynamicResource ClearButtonStyle}" />
-                <!--#endregion-->
-            </Grid>
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding AddCountryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
+                    <Image Style="{DynamicResource ToolBarAddIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding DeleteCountryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
+                    <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding SaveCountryCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
+                    <Image Style="{DynamicResource ToolBarSaveIcon}" />
+                </Button>
+
+                <Border Style="{StaticResource ActionBarSeparatorStyle}" />
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonImport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionImport}">
+                    <Image Style="{DynamicResource ToolBarImportIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonCSVExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
+                    <Image Style="{DynamicResource ToolBarCSVExportIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonExcelExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
+                    <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
+                </Button>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Record Count Section -->
+            <TextBlock
+                Grid.Column="1"
+                Width="250"
+                Height="23" FontSize="14" FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelBrand}" />
+                <Run Text=": " />
+                <Run
+                    FontSize="16"
+                    Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
+                    FontStyle="Italic" />
+                <Run Text=" " />
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
+                <Run Text=" " />
+                <Run Text="{Binding TotalBrandCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+            </TextBlock>
+            <!--#endregion-->
+
+            <!--#region Search field-->
+            <!--  Icon  -->
+            <Image
+                x:Name="FilterIcon"
+                Grid.Column="2"
+                Width="20"
+                Height="20"
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Source="{StaticResource search}">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Image.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0"
+                                    To="0.3"
+                                    Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+
+            <!--  Input field  -->
+            <TextBox
+                Grid.Column="3"
+                Width="250"
+                VerticalAlignment="Center"
+                Style="{DynamicResource DefaultTextBox}"
+                Tag="{x:Static language:Language.SearchGridTag}"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="{x:Static language:Language.SearchGridTooltip}" />
+
+            <!--  Clear button  -->
+            <Button
+                Grid.Column="4"
+                Width="24"
+                Height="24"
+                Margin="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding ClearSearchCommand}"
+                Style="{DynamicResource ClearButtonStyle}" />
+            <!--#endregion-->
+        </Grid>
         <!--#endregion-->
 
         <!--#region Datagrid-->
         <syncfusion:SfDataGrid
-           x:Name="SfDataGrid"
-           Grid.Row="4"
-           Margin="15,3,15,5"
-           HorizontalAlignment="Stretch"
-           VerticalAlignment="Top"
-           AllowDraggingColumns="True"
-           AllowGrouping="True"
-           AllowSorting="True"
-           AllowTriStateSorting="True"
-           AutoGenerateColumns="False"
-           ColumnSizer="Star"
-           ItemsSource="{Binding Brands}"
-           Loaded="BrandDataGrid_Loaded"
-           SelectedItem="{Binding SelectedBrand, Mode=TwoWay}">
+            x:Name="SfDataGrid"
+            Grid.Row="4"
+            Margin="15,3,15,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            AllowDraggingColumns="True"
+            AllowGrouping="True"
+            AllowSorting="True"
+            AllowTriStateSorting="True"
+            AutoGenerateColumns="False"
+            ColumnSizer="Star"
+            ItemsSource="{Binding Brands}"
+            Loaded="BrandDataGrid_Loaded"
+            SelectedItem="{Binding SelectedBrand, Mode=TwoWay}">
 
             <syncfusion:SfDataGrid.Columns>
                 <!--#region hidden columns-->
                 <syncfusion:GridTextColumn
-                   Width="0"
-                   IsHidden="True"
-                   MappingName="BrandId" />
+                    Width="0"
+                    IsHidden="True"
+                    MappingName="BrandId" />
                 <!--#endregion-->
 
                 <!--#region Brand Name-->

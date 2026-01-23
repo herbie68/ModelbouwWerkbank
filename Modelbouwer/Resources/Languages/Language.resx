@@ -3749,4 +3749,37 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ExportCountryHeaderName" xml:space="preserve">
     <value>Land</value>
   </data>
+  <data name="metadataWorkTypeHeaderTitel" xml:space="preserve">
+    <value>Beheer van  werksoorten</value>
+  </data>
+  <data name="metadataWorkTypeHeaderSubtitle" xml:space="preserve">
+    <value>Werksoorten worden gebruikt om de werkzaamheden te specificeren</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldName" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTag" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTooltip" xml:space="preserve">
+    <value>Werksoorten worden gebruikt om de werkzaamheden te specificeren</value>
+  </data>
+  <data name="ExportWorkTypeFileName" xml:space="preserve">
+    <value>Werksoorten</value>
+  </data>
+  <data name="ExportWorkTypeHeaderName" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="metadataProjectDeleteError" xml:space="preserve">
+    <value>Dit project wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="ExportValidationProjectNameExists" xml:space="preserve">
+    <value>Dit project bestaat al</value>
+  </data>
+  <data name="metadataProjectHeaderTitel" xml:space="preserve">
+    <value>Projecten</value>
+  </data>
+  <data name="metadataProjectHeaderSubtitle" xml:space="preserve">
+    <value>Projecten beheren en bekijken</value>
+  </data>
 </root>

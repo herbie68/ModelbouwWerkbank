@@ -3769,4 +3769,37 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ExportCountryHeaderName" xml:space="preserve">
     <value>Land</value>
   </data>
+  <data name="metadataWorkTypeHeaderTitel" xml:space="preserve">
+    <value>Verwaltung von Arbeitstypen</value>
+  </data>
+  <data name="metadataWorkTypeHeaderSubtitle" xml:space="preserve">
+    <value>Arbeitstypen werden verwendet, um die Arbeit zu spezifizieren</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldName" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTag" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="metadataWorkTypeEntryFieldNameTooltip" xml:space="preserve">
+    <value>Arbeitstypen werden verwendet, um die Arbeit zu spezifizieren</value>
+  </data>
+  <data name="ExportWorkTypeFileName" xml:space="preserve">
+    <value>Arbeitstypen</value>
+  </data>
+  <data name="ExportWorkTypeHeaderName" xml:space="preserve">
+    <value>Arbeitstyp</value>
+  </data>
+  <data name="metadataProjectDeleteError" xml:space="preserve">
+    <value>Dieses Projekt wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="ExportValidationProjectNameExists" xml:space="preserve">
+    <value>Dieses Projekt existiert bereits</value>
+  </data>
+  <data name="metadataProjectHeaderTitel" xml:space="preserve">
+    <value>Projekte</value>
+  </data>
+  <data name="metadataProjectHeaderSubtitle" xml:space="preserve">
+    <value>Projekte verwalten und anzeigen</value>
+  </data>
 </root>

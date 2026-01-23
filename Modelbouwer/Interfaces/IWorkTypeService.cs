@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Modelbouwer.Interfaces;
 
-public interface IWorkTypeService
+public interface IWorktypeService
 {
-	Task<List<WorkTypeModel>> GetAllWorkTypesAsync();
+	Task<List<WorktypeModel>> GetAllWorkTypesAsync();
 	Task<int> InsertNewWorkTypeAsync( Dictionary<string, object?> queryParameters );
 	Task UpdateWorkTypeAsync( Dictionary<string, object?> queryParameters );
 	Task DeleteWorkTypeAsync( int worktypeId );

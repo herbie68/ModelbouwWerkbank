@@ -1,16 +1,7 @@
-﻿using System;
-using System.Globalization;
-using System.Threading;
-using System.Windows;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Modelbouwer.Interfaces;
-using Modelbouwer.Services;
 using Modelbouwer.Validators;
-using Modelbouwer.ViewModels;
-using Modelbouwer.Views;
 
 namespace Modelbouwer;
 
@@ -38,23 +29,27 @@ public partial class App : Application
 		Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense( "Ngo9BigBOggjHTQxAR8/V1JGaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWH1dcHVXQmVcU0dxX0BWYEs=" );
 
 		// Register services
-		services.AddSingleton<GenericDataService>();
 		services.AddSingleton<BrandService>();
 		services.AddSingleton<CategoryService>();
-		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<ContactTypeService>();
 		services.AddSingleton<CountryService>();
+		services.AddSingleton<CurrencyService>();
+		services.AddSingleton<GenericDataService>();
+		services.AddSingleton<ProjectService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<UnitService>();
+		services.AddSingleton<WorktypeService>();
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
 		services.AddTransient<CategoryPageViewModel>();
-		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<ContactTypePageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
+		services.AddTransient<CurrencyPageViewModel>();
+		services.AddTransient<ProjectPageViewModel>();
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<UnitPageViewModel>();
+		services.AddTransient<WorktypePageViewModel>();
 
 		// Register NavigationViewModel
 		services.AddSingleton<NavigationViewModel>();
@@ -62,11 +57,13 @@ public partial class App : Application
 		// Register Views
 		services.AddTransient<BrandView>();
 		services.AddTransient<CategoryView>();
-		services.AddTransient<CountryView>();
 		services.AddTransient<ContactTypeView>();
+		services.AddTransient<CountryView>();
 		services.AddTransient<CurrencyView>();
+		services.AddTransient<ProjectView>();
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<UnitView>();
+		services.AddTransient<WorktypeView>();
 
 		// Register MainWindow
 		services.AddSingleton<MainWindow>();
@@ -77,23 +74,27 @@ public partial class App : Application
 		services.AddSingleton<IExportService, ExcelExportService>();
 		services.AddSingleton<CsvExportService>();
 		services.AddSingleton<ExcelExportService>();
-		services.AddSingleton<IExportService>(provider => provider.GetRequiredService<CsvExportService>() );
+		services.AddSingleton<IExportService>( provider => provider.GetRequiredService<CsvExportService>() );
 
 		services.AddScoped<IBrandService, BrandService>();
 		services.AddScoped<ICategoryService, CategoryService>();
 		services.AddScoped<IContactTypeService, ContactTypeService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
+		services.AddScoped<IProjectService, ProjectService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<IUnitService, UnitService>();
+		services.AddScoped<IWorktypeService, WorktypeService>();
 
 		services.AddScoped<IEntityValidator<BrandModel>, BrandValidator>();
 		services.AddScoped<IEntityValidator<CategoryModel>, CategoryValidator>();
-		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
 		services.AddScoped<IEntityValidator<ContactTypeModel>, ContactTypeValidator>();
+		services.AddScoped<IEntityValidator<CountryModel>, CountryValidator>();
 		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
+		services.AddScoped<IEntityValidator<ProjectModel>, ProjectValidator>();
 		services.AddScoped<IEntityValidator<StorageLocationModel>, StorageLocationValidator>();
 		services.AddScoped<IEntityValidator<UnitModel>, UnitValidator>();
+		services.AddScoped<IEntityValidator<WorktypeModel>, WorktypeValidator>();
 	}
 
 	protected override async void OnStartup( StartupEventArgs e )

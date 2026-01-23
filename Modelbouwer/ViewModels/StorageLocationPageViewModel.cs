@@ -5,7 +5,7 @@ using Syncfusion.Windows.Shared;
 
 namespace Modelbouwer.ViewModels;
 
-public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationModel>
+public partial class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationModel>
 {
 	private readonly IStorageLocationService _dataService;
 
@@ -22,12 +22,12 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 	private IRelayCommand? _clearSearchCommand;
 
-	private ICommand expandCommand;
+	private ICommand? _expandCommand;
 
-	public ICommand ExpandCommand
+	public ICommand? ExpandCommand
 	{
-		get { return expandCommand; }
-		set { expandCommand = value; }
+		get { return _expandCommand; }
+		set { _expandCommand = value; }
 	}
 
 	private ICommand _collapseCommand;
@@ -38,27 +38,33 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 		set { _collapseCommand = value; }
 	}
 
+	internal delegate void FilterChanged();
+	internal FilterChanged? _filterChanged;
+
 	// Constructor
-	public StorageLocationPageViewModel(
-		IStorageLocationService dataService,
-		IEntityValidator<StorageLocationModel> validator
-	) : base( validator )
+	public StorageLocationPageViewModel( IStorageLocationService dataService, IEntityValidator<StorageLocationModel> validator ) : base( validator )
 	{
 		_dataService = dataService;
 
 		_ = LoadStorageLocationsAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
-		AddSubStorageLocationCommand = new RelayCommand(
-			AddSubStorageLocation,
-			() => SelectedItem != null
-		);
+		AddSubStorageLocationCommand = new RelayCommand( AddSubStorageLocation, () => SelectedItem != null );
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
 		CollapseCommand = new DelegateCommand<object>( CollapseExecute );
 	}
 
-	// Override to handle selection changes
+	protected override void OnPropertyChanged( System.ComponentModel.PropertyChangedEventArgs e )
+	{
+		base.OnPropertyChanged( e );
+
+		if ( e.PropertyName == nameof( SearchText ) )
+		{
+			_filterChanged?.Invoke();
+		}
+	}
+
 	protected override void OnSelectedItemChanged( StorageLocationModel? value )
 	{
 		AddSubStorageLocationCommand.NotifyCanExecuteChanged();
@@ -187,9 +193,6 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	}
 
 	#region Filtering
-	internal delegate void FilterChanged();
-	internal FilterChanged _filterChanged;
-
 	public bool FilterRecords( object o )
 	{
 		if ( o is not StorageLocationModel storagelocation )

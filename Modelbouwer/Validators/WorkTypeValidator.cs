@@ -4,27 +4,27 @@ using System.Text;
 
 namespace Modelbouwer.Validators;
 
-public class WorkTypeValidator : IEntityValidator<WorkTypeModel>
+public class WorktypeValidator : IEntityValidator<WorktypeModel>
 {
-	private readonly IWorkTypeService _dataService;
+	private readonly IWorktypeService _dataService;
 
-	public WorkTypeValidator( IWorkTypeService dataService ) => _dataService = dataService;
+	public WorktypeValidator( IWorktypeService dataService ) => _dataService = dataService;
 
-	public async Task<ValidationResult> ValidateAsync( WorkTypeModel worktype )
+	public async Task<ValidationResult> ValidateAsync( WorktypeModel worktype )
 	{
 		var result = new ValidationResult();
 
 		// Name
-		if ( string.IsNullOrWhiteSpace( worktype.WorkTypeName ) )
+		if ( string.IsNullOrWhiteSpace( worktype.WorktypeName ) )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameRequirered );
 		}
-		else if ( worktype.WorkTypeName.Length > 100 )
+		else if ( worktype.WorktypeName.Length > 100 )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
 		}
 
-		if ( await _dataService.NameExistsAsync( worktype.WorkTypeName, worktype.ParentId ) )
+		if ( await _dataService.NameExistsAsync( worktype.WorktypeName, worktype.ParentId ) )
 		{
 			result.Errors.Add( Lang.ExportValidationWorkTypeNameExists );
 		}
