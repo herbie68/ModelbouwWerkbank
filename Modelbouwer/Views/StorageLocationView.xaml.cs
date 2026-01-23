@@ -29,7 +29,7 @@ public partial class StorageLocationView : UserControl
 
 		if ( DataContext is StorageLocationPageViewModel vm )
 		{
-			vm.filterChanged += () =>
+			vm._filterChanged += () =>
 			{
 				if ( SfGridTree.View == null )
 					return;
@@ -132,10 +132,13 @@ public partial class StorageLocationView : UserControl
 			return;
 
 		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>
+		var columnHeaders = new Dictionary<string, string>();
+
+		foreach ( var mapping in StorageLocationModel.ColumnMappings )
 		{
-			{ "StorageName", Lang.ExportCurrenciesHeaderName }
-		};
+			// Use the first header from the array (usually the English/default one)
+			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+		}
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{

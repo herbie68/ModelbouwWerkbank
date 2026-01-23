@@ -2,8 +2,6 @@
 
 using Microsoft.Win32;
 
-using Modelbouwer.Services;
-
 using Syncfusion.UI.Xaml.Grid;
 
 namespace Modelbouwer.Views;
@@ -117,13 +115,13 @@ public partial class CurrencyView : UserControl
 			return;
 
 		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>
+		var columnHeaders = new Dictionary<string, string>();
+
+		foreach ( var mapping in CurrencyModel.ColumnMappings )
 		{
-			{ "CurrencyCode", Lang.ExportCurrenciesHeaderCode },
-			{ "CurrencyName", Lang.ExportCurrenciesHeaderName },
-			{ "CurrencySymbol", Lang.ExportCurrenciesHeaderSymbol },
-			{ "CurrencyConversionRate",  Lang.ExportCurrenciesHeaderConversionRate }
-		};
+			// Use the first header from the array (usually the English/default one)
+			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+		}
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{

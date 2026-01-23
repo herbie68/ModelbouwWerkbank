@@ -1,36 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 using Syncfusion.UI.Xaml.TreeGrid;
-
 using Syncfusion.Windows.Shared;
 
 namespace Modelbouwer.ViewModels;
 
-public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotifyPropertyChanged
+public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>
 {
 	private readonly IWorkTypeService _dataService;
 
 	// Collections
-	private ObservableCollection<WorkTypeModel> _fullTree = [];
 	public ObservableCollection<WorkTypeModel> WorkTypes { get; } = [ ];
 	public ObservableCollection<WorkTypeModel> WorkTypeTree { get; } = [ ];
-
-	// SelectedWorkType als type-safe alias
-	public WorkTypeModel? SelectedWorkType
-	{
-		get => SelectedItem;
-		set
-		{
-			SelectedItem = value;
-			AddSubWorkTypeCommand.NotifyCanExecuteChanged();
-		}
-	}
 
 	// Commands
 	public IRelayCommand AddWorkTypeCommand => AddCommand;
@@ -49,14 +30,13 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 		set { expandCommand = value; }
 	}
 
-	private ICommand collapseCommand;
+	private ICommand _collapseCommand;
 
 	public ICommand CollapseCommand
 	{
-		get { return collapseCommand; }
-		set { collapseCommand = value; }
+		get { return _collapseCommand; }
+		set { _collapseCommand = value; }
 	}
-
 
 	// Constructor
 	public WorkTypePageViewModel(
@@ -66,13 +46,13 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadWorkTypesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubWorkTypeCommand = new RelayCommand(
-			AddSubWorkType,
-			() => SelectedWorkType != null
-		);
+	AddSubWorkType,
+	() => SelectedItem != null
+);
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
 		CollapseCommand = new DelegateCommand<object>( CollapseExecute );
@@ -82,17 +62,10 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 	// Override SelectedItem changed om DefaultWorkType te zetten
 	protected override void OnSelectedItemChanged( WorkTypeModel? value )
 	{
-		if ( value == null )
-			return;
-
-		OnPropertyChanged( nameof( SelectedWorkType ) );
-		OnPropertyChanged( nameof( SelectedWorkType.WorkTypeName ) );
-		OnPropertyChanged( nameof( SelectedWorkType.ParentId ) );
-		OnPropertyChanged( nameof( SelectedWorkType.WorkTypeId ) );
+		AddSubWorkTypeCommand.NotifyCanExecuteChanged();
 	}
 
-	// Async WorkTypes laden
-	private async Task LoadCurrenciesAsync()
+	private async Task LoadWorkTypesAsync()
 	{
 		var worktypeList = await _dataService.GetAllWorkTypesAsync();
 
@@ -101,7 +74,6 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 			WorkTypes.Add( c );
 	}
 
-	// Filtering
 	public bool FilterWorkType( object obj )
 	{
 		if ( obj is not WorkTypeModel worktype )
@@ -146,18 +118,16 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 		}
 	}
 
-	// TreeGrid Expand and Collapse execution
-
 	private void ExpandExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.ExpandAllNodes();
+		treeGrid?.ExpandAllNodes();
 	}
 
 	private void CollapseExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.CollapseAllNodes();
+		treeGrid?.CollapseAllNodes();
 	}
 
 
@@ -206,38 +176,22 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 
 	private void AddSubWorkType()
 	{
-		if ( SelectedWorkType == null )
+		if ( SelectedItem == null )  // Changed from SelectedWorkType
 			return;
 
 		var newWorkType = new WorkTypeModel
 		{
 			WorkTypeName = string.Empty,
-			ParentId = SelectedWorkType.WorkTypeId
+			ParentId = SelectedItem.WorkTypeId  // Changed from SelectedWorkType
 		};
 
-		SelectedWorkType.Children.Add( newWorkType );
-		SelectedWorkType = newWorkType;
+		SelectedItem.Children.Add( newWorkType );  // Changed from SelectedWorkType
+		SelectedItem = newWorkType;  // Changed from SelectedWorkType
 	}
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged filterChanged;
-
-	private string searchText = string.Empty;
-	public string SearchText
-	{
-		get => searchText;
-		set
-		{
-			if ( searchText != value )
-			{
-				searchText = value;
-				RaisePropertyChanged();
-
-				filterChanged?.Invoke();
-			}
-		}
-	}
+	internal FilterChanged _filterChanged;
 
 	public bool FilterRecords( object o )
 	{
@@ -263,24 +217,15 @@ public class WorkTypePageViewModel : EntityPageViewModel<WorkTypeModel>, INotify
 
 		foreach ( var child in parent.Children )
 		{
-			// Child matches
 			if ( child.WorkTypeName?
 				.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 				return true;
 
-			// Grandchildren match
 			if ( HasMatchingChild( child ) )
 				return true;
 		}
 
 		return false;
-	}
-
-	public event PropertyChangedEventHandler? PropertyChanged;
-
-	protected void RaisePropertyChanged( [CallerMemberName] string? propertyName = null )
-	{
-		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 	#endregion
 

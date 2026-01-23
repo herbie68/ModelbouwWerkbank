@@ -1,19 +1,15 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 using Syncfusion.UI.Xaml.TreeGrid;
 using Syncfusion.Windows.Shared;
 
 namespace Modelbouwer.ViewModels;
 
-public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotifyPropertyChanged
+public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 {
 	private readonly ICategoryService _dataService;
 
 	// Collections
-	private ObservableCollection<CategoryModel> _fullTree = [];
 	public ObservableCollection<CategoryModel> Categories { get; } = [ ];
 	public ObservableCollection<CategoryModel> CategoryTree { get; } = [ ];
 
@@ -34,14 +30,13 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 		set { expandCommand = value; }
 	}
 
-	private ICommand collapseCommand;
+	private ICommand _collapseCommand;
 
 	public ICommand CollapseCommand
 	{
-		get { return collapseCommand; }
-		set { collapseCommand = value; }
+		get { return _collapseCommand; }
+		set { _collapseCommand = value; }
 	}
-
 
 	// Constructor
 	public CategoryPageViewModel(
@@ -51,12 +46,12 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadCategoriesAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubCategoryCommand = new RelayCommand(
 	AddSubCategory,
-	() => SelectedItem != null  // Changed from SelectedCategory
+	() => SelectedItem != null
 );
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
@@ -70,8 +65,7 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 		AddSubCategoryCommand.NotifyCanExecuteChanged();
 	}
 
-	// Async categories laden
-	private async Task LoadCurrenciesAsync()
+	private async Task LoadCategoriesAsync()
 	{
 		var categoryList = await _dataService.GetAllCategorysAsync();
 
@@ -80,7 +74,6 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 			Categories.Add( c );
 	}
 
-	// Filtering
 	public bool FilterCategory( object obj )
 	{
 		if ( obj is not CategoryModel category )
@@ -125,18 +118,16 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 		}
 	}
 
-	// TreeGrid Expand and Collapse execution
-
 	private void ExpandExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.ExpandAllNodes();
+		treeGrid?.ExpandAllNodes();
 	}
 
 	private void CollapseExecute( object obj )
 	{
 		var treeGrid = obj as SfTreeGrid;
-		treeGrid.CollapseAllNodes();
+		treeGrid?.CollapseAllNodes();
 	}
 
 
@@ -200,23 +191,7 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged filterChanged;
-
-	private string searchText = string.Empty;
-	public string SearchText
-	{
-		get => searchText;
-		set
-		{
-			if ( searchText != value )
-			{
-				searchText = value;
-				RaisePropertyChanged();
-
-				filterChanged?.Invoke();
-			}
-		}
-	}
+	internal FilterChanged _filterChanged;
 
 	public bool FilterRecords( object o )
 	{
@@ -242,24 +217,15 @@ public class CategoryPageViewModel : EntityPageViewModel<CategoryModel>, INotify
 
 		foreach ( var child in parent.Children )
 		{
-			// Child matches
 			if ( child.CategoryName?
 				.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 				return true;
 
-			// Grandchildren match
 			if ( HasMatchingChild( child ) )
 				return true;
 		}
 
 		return false;
-	}
-
-	public event PropertyChangedEventHandler? PropertyChanged;
-
-	protected void RaisePropertyChanged( [CallerMemberName] string? propertyName = null )
-	{
-		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 	#endregion
 

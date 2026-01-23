@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-using Modelbouwer.Services;
-
-using Microsoft.Win32;
+﻿using System.Collections;
 
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.TreeGrid;
+using Syncfusion.XlsIO;
 
 namespace Modelbouwer.Services;
 
@@ -31,11 +23,9 @@ public class ExcelExportService : IExportService
 		return Task.CompletedTask;
 	}
 
-	public Task ExportToCsvAsync<T>( SfTreeGrid treeGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, TreeGridColumn, string>? customValueFormatter = null )
-	{
+	public Task ExportToCsvAsync<T>( SfTreeGrid treeGrid, string filePath, Dictionary<string, string>? columnHeaderOverrides = null, Func<T, TreeGridColumn, string>? customValueFormatter = null ) =>
 		// Not supported for Excel service
-		return Task.CompletedTask;
-	}
+		Task.CompletedTask;
 
 	#endregion
 
@@ -64,6 +54,9 @@ public class ExcelExportService : IExportService
 			WriteExcelFile( exportData, filePath, customValueFormatter );
 		} );
 	}
+
+
+	private object? GetPropertyValue<T>( T item, string propertyName ) => item?.GetType().GetProperty( propertyName )?.GetValue( item );
 
 	#endregion
 
@@ -116,33 +109,89 @@ public class ExcelExportService : IExportService
 			}
 		}
 
-		foreach ( var node in treeGrid.View.Nodes )
+		// ✅ Recursively get ALL nodes, including collapsed children
+		if ( treeGrid.ItemsSource is IEnumerable rootItems )
 		{
-			if ( node.Item is T item )
-				exportData.Items.Add( item );
+			var childPropertyName = treeGrid.ChildPropertyName ?? "Children";
+
+			foreach ( var rootItem in rootItems )
+			{
+				if ( rootItem is T item )
+				{
+					AddItemAndChildren( item, exportData, childPropertyName );
+				}
+			}
 		}
 
 		return exportData;
 	}
 
-	private void WriteExcelFile<T, TColumn>( ExportData<T> exportData, string filePath, Func<T, TColumn, string>? customValueFormatter )
+	private void AddItemAndChildren<T>( T item, ExportData<T> exportData, string childPropertyName )
 	{
-		foreach ( var item in exportData.Items )
-		{
-			foreach ( var colInfo in exportData.ColumnInfos )
-			{
-				if ( colInfo.Column == null )
-				{
-					continue; // skip or handle default when null
-				}
+		// Add current item
+		exportData.Items.Add( item );
 
-				var value = customValueFormatter != null
-				? customValueFormatter(item, (TColumn)colInfo.Column)
-				: ""; // fallback
+		// Get the children collection using reflection
+		var childProperty = typeof(T).GetProperty(childPropertyName);
+		if ( childProperty != null )
+		{
+			var childrenValue = childProperty.GetValue(item);
+
+			if ( childrenValue is IEnumerable children )
+			{
+				foreach ( var child in children )
+				{
+					if ( child is T childItem )
+					{
+						AddItemAndChildren( childItem, exportData, childPropertyName );
+					}
+				}
 			}
 		}
 	}
 
+	private void WriteExcelFile<T, TColumn>( ExportData<T> exportData, string filePath, Func<T, TColumn, string>? customValueFormatter )
+	{
+		using ( ExcelEngine excelEngine = new ExcelEngine() )
+		{
+			IApplication application = excelEngine.Excel;
+			application.DefaultVersion = ExcelVersion.Xlsx;
+
+			IWorkbook workbook = application.Workbooks.Create(1);
+			IWorksheet worksheet = workbook.Worksheets[0];
+
+			// Write headers
+			for ( int col = 0; col < exportData.Headers.Count; col++ )
+			{
+				worksheet.Range [ 1, col + 1 ].Text = exportData.Headers [ col ];
+			}
+
+			// Write data
+			int row = 2;
+			foreach ( var item in exportData.Items )
+			{
+				int col = 1;
+				foreach ( var colInfo in exportData.ColumnInfos )
+				{
+					if ( colInfo.Column != null )
+					{
+						var value = customValueFormatter != null
+						? customValueFormatter(item, (TColumn)colInfo.Column)
+						: GetPropertyValue(item, colInfo.MappingName);
+
+						worksheet.Range [ row, col ].Text = value?.ToString() ?? "";
+					}
+					col++;
+				}
+				row++;
+			}
+
+			// Save the file
+			workbook.SaveAs( filePath );
+
+			ShowSuccessMessage( filePath, exportData.Items.Count );
+		}
+	}
 	private string GetColumnHeader( GridColumn column, Dictionary<string, string>? columnHeaderOverrides )
 	{
 		var name = column.MappingName ?? string.Empty;

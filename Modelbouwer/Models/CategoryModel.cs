@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Models;
+﻿namespace Modelbouwer.Models;
 
 public class CategoryModel
 {
@@ -10,7 +6,7 @@ public class CategoryModel
 	public int? ParentId { get; set; }
 	public string CategoryName { get; set; } = string.Empty;
 
-	public ObservableCollection<CategoryModel> Children { get; set; } = [];
+	public ObservableCollection<CategoryModel> Children { get; set; } = [ ];
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{
@@ -18,7 +14,7 @@ public class CategoryModel
 		[nameof(ParentId)] = [ "Parent" ],
 
 		[nameof(CategoryName)] = [
-			"Category",
+			"Categorie",
 			"Category",
 			"Kategorie" ]
 	};

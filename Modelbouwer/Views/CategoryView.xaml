@@ -232,6 +232,16 @@
 
             <syncfusion:SfTreeGrid.Columns>
                 <syncfusion:TreeGridTextColumn
+                    MappingName="CategoryId"
+                    HeaderText="ID"
+                    IsHidden="True" />
+
+                <syncfusion:TreeGridTextColumn
+                    MappingName="ParentId"
+                    HeaderText="Parent ID"
+                    IsHidden="True" />
+                
+                <syncfusion:TreeGridTextColumn
                     MappingName="CategoryName"
                     HeaderText="Category" />
             </syncfusion:SfTreeGrid.Columns>

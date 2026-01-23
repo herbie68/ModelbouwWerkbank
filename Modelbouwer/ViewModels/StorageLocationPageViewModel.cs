@@ -3,6 +3,8 @@
 using Syncfusion.UI.Xaml.TreeGrid;
 using Syncfusion.Windows.Shared;
 
+namespace Modelbouwer.ViewModels;
+
 public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationModel>
 {
 	private readonly IStorageLocationService _dataService;
@@ -21,17 +23,19 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	private IRelayCommand? _clearSearchCommand;
 
 	private ICommand expandCommand;
+
 	public ICommand ExpandCommand
 	{
 		get { return expandCommand; }
 		set { expandCommand = value; }
 	}
 
-	private ICommand collapseCommand;
+	private ICommand _collapseCommand;
+
 	public ICommand CollapseCommand
 	{
-		get { return collapseCommand; }
-		set { collapseCommand = value; }
+		get { return _collapseCommand; }
+		set { _collapseCommand = value; }
 	}
 
 	// Constructor
@@ -42,12 +46,12 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
+		_ = LoadStorageLocationsAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 
 		AddSubStorageLocationCommand = new RelayCommand(
 			AddSubStorageLocation,
-			() => SelectedItem != null  // ✅ Changed to SelectedItem
+			() => SelectedItem != null
 		);
 
 		ExpandCommand = new DelegateCommand<object>( ExpandExecute );
@@ -60,13 +64,12 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 		AddSubStorageLocationCommand.NotifyCanExecuteChanged();
 	}
 
-	// Rest of your methods remain the same...
-	private async Task LoadCurrenciesAsync()
+	private async Task LoadStorageLocationsAsync()
 	{
-		var storagelocationList = await _dataService.GetAllStorageLocationsAsync();
+		var categoryList = await _dataService.GetAllStorageLocationsAsync();
 
 		StorageLocations.Clear();
-		foreach ( var c in storagelocationList )
+		foreach ( var c in categoryList )
 			StorageLocations.Add( c );
 	}
 
@@ -185,7 +188,7 @@ public class StorageLocationPageViewModel : EntityPageViewModel<StorageLocationM
 
 	#region Filtering
 	internal delegate void FilterChanged();
-	internal FilterChanged filterChanged;
+	internal FilterChanged _filterChanged;
 
 	public bool FilterRecords( object o )
 	{

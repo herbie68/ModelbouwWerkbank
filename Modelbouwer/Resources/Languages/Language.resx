@@ -3746,4 +3746,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
     <value>en alle eventueel onderliggende werksoorten wilt verwijderen?</value>
   </data>
+  <data name="ExportCountryHeaderName" xml:space="preserve">
+    <value>Land</value>
+  </data>
 </root>

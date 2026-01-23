@@ -1,15 +1,8 @@
-﻿using System.Windows.Controls;
-using System.Windows.Threading;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
-using Modelbouwer.Services;
-
 using Syncfusion.UI.Xaml.Grid;
-using Syncfusion.UI.Xaml.ScrollAxis;
-using Syncfusion.XlsIO;
 
 namespace Modelbouwer.Views;
 
@@ -87,8 +80,8 @@ public partial class CountryView : UserControl
 				filePath: dialog.FileName,
 				existingRecords: countries,
 				columnMappings: CountryModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(CountryModel.CountryName) // unieke kolom
-            );
+				uniqueProperty: nameof(CountryModel.CountryName) // unieke kolom
+			);
 
 				MessageBox.Show(
 					$"{Lang.ImportMessagboxCompletedRead}: {result.TotalRows}\n" +
@@ -116,19 +109,20 @@ public partial class CountryView : UserControl
 		{
 			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
 			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportCurrenciesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			FileName = $"{Lang.ExportCountriesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
 		};
 
 		if ( dialog.ShowDialog() != true )
 			return;
 
-		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>
+		/// Defineer custom headers voor deze view
+		var columnHeaders = new Dictionary<string, string>();
+
+		foreach ( var mapping in CountryModel.ColumnMappings )
 		{
-			{ "CountryCode", Lang.ExportCountriesHeaderCountryCode },
-			{ "CountryName", Lang.ExportCountriesHeaderCountryName },
-			{ "CountryCurrencySymbol", Lang.ExportCountriesHeaderCountryCurrencySymbol }
-		};
+			// Use the first header from the array (usually the English/default one)
+			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+		}
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
@@ -145,7 +139,7 @@ public partial class CountryView : UserControl
 		{
 			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
 			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportCurrenciesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			FileName = $"{Lang.ExportCountriesFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -153,9 +147,7 @@ public partial class CountryView : UserControl
 
 		var columnHeaders = new Dictionary<string, string>
 		{
-			{ "CountryCode", Lang.ExportCountriesHeaderCountryCode },
-			{ "CountryName", Lang.ExportCountriesHeaderCountryName },
-			{ "CountryCurrencySymbol", Lang.ExportCountriesHeaderCountryCurrencySymbol }
+			{ "CountryName", Lang.ExportCountryHeaderName }
 		};
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )

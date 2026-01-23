@@ -313,6 +313,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Land.
+        /// </summary>
+        public static string ExportCountryHeaderName {
+            get {
+                return ResourceManager.GetString("ExportCountryHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valuta.
         /// </summary>
         public static string ExportCurrenciesFileName {

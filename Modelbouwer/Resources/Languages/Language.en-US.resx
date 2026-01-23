@@ -3766,4 +3766,7 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
     <value>and want to delete any underlying work types?</value>
   </data>
+  <data name="ExportCountryHeaderName" xml:space="preserve">
+    <value>Country</value>
+  </data>
 </root>

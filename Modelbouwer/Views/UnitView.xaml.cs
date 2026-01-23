@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
@@ -127,10 +115,13 @@ public partial class UnitView : UserControl
 			return;
 
 		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>
+		var columnHeaders = new Dictionary<string, string>();
+
+		foreach ( var mapping in UnitModel.ColumnMappings )
 		{
-			{ "UnitName", Lang.ExportCurrenciesHeaderName }
-		};
+			// Use the first header from the array (usually the English/default one)
+			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+		}
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{

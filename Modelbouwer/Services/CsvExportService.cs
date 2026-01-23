@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections;
 
 using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.TreeGrid;
@@ -41,10 +36,7 @@ public class CsvExportService : IExportService
 		SfTreeGrid treeGrid,
 		string filePath,
 		Dictionary<string, string>? columnHeaderOverrides = null,
-		Func<T, TreeGridColumn, string>? customValueFormatter = null )
-	{
-		return ExportSfTreeGridAsync( treeGrid, filePath, columnHeaderOverrides, customValueFormatter );
-	}
+		Func<T, TreeGridColumn, string>? customValueFormatter = null ) => ExportSfTreeGridAsync( treeGrid, filePath, columnHeaderOverrides, customValueFormatter );
 
 	#endregion
 
@@ -103,10 +95,7 @@ public class CsvExportService : IExportService
 	#endregion
 
 	#region Prepare Export Data
-
-	private ExportData<T> PrepareDataGridExportData<T>(
-		SfDataGrid grid,
-		Dictionary<string, string>? columnHeaderOverrides )
+	private ExportData<T> PrepareDataGridExportData<T>( SfDataGrid grid, Dictionary<string, string>? columnHeaderOverrides )
 	{
 		var exportData = new ExportData<T>();
 
@@ -133,15 +122,13 @@ public class CsvExportService : IExportService
 		return exportData;
 	}
 
-	private ExportData<T> PrepareTreeGridExportData<T>(
-		SfTreeGrid grid,
-		Dictionary<string, string>? columnHeaderOverrides )
+	private ExportData<T> PrepareTreeGridExportData<T>( SfTreeGrid grid, Dictionary<string, string>? columnHeaderOverrides )
 	{
 		var exportData = new ExportData<T>();
 
 		foreach ( var column in grid.Columns )
 		{
-			if ( !column.IsHidden && column.MappingName != null )
+			if ( column.MappingName != null )
 			{
 				exportData.ColumnInfos.Add( new ColumnInfo
 				{
@@ -153,15 +140,46 @@ public class CsvExportService : IExportService
 			}
 		}
 
-		foreach ( var node in grid.View.Nodes )
+		// ✅ Get data directly from ItemsSource, not from View.Nodes
+		if ( grid.ItemsSource is IEnumerable rootItems )
 		{
-			if ( node.Item is T item )
-				exportData.Items.Add( item );
+			var childPropertyName = grid.ChildPropertyName ?? "Children";
+
+			foreach ( var rootItem in rootItems )
+			{
+				if ( rootItem is T item )
+				{
+					AddItemAndChildren( item, exportData, childPropertyName );
+				}
+			}
 		}
 
 		return exportData;
 	}
 
+	private void AddItemAndChildren<T>( T item, ExportData<T> exportData, string childPropertyName )
+	{
+		// Add current item
+		exportData.Items.Add( item );
+
+		// Get the children collection using reflection
+		var childProperty = typeof(T).GetProperty(childPropertyName);
+		if ( childProperty != null )
+		{
+			var childrenValue = childProperty.GetValue(item);
+
+			if ( childrenValue is IEnumerable children )
+			{
+				foreach ( var child in children )
+				{
+					if ( child is T childItem )
+					{
+						AddItemAndChildren( childItem, exportData, childPropertyName );
+					}
+				}
+			}
+		}
+	}
 	#endregion
 
 	#region CSV Generation

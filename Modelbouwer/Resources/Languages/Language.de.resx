@@ -3766,4 +3766,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarButtonActionDeleteMessageQuestionWorkTypeSuffix" xml:space="preserve">
     <value>und möchten alle zugrunde liegenden Arbeitstypen löschen?</value>
   </data>
+  <data name="ExportCountryHeaderName" xml:space="preserve">
+    <value>Land</value>
+  </data>
 </root>
