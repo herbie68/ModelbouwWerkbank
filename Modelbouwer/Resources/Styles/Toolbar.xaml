@@ -59,6 +59,12 @@
 
     </Style>
 
+    <Style x:Key="ToolBarRotateIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Source" Value="{StaticResource rotate}" />
+    </Style>
+
     <Style x:Key="ToolBarSaveIcon" TargetType="Image">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
@@ -106,8 +112,180 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
+
+    <Style x:Key="ImageToolBarAddIcon" TargetType="Image">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Margin" Value="5 0 0 0" />
+        <Setter Property="Source" Value="{StaticResource add}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ImageToolBarDeleteIcon" TargetType="Image">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Margin" Value="5 0 0 0" />
+        <Setter Property="Source" Value="{StaticResource remove}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+
+    </Style>
+
+    <Style x:Key="ImageToolBarRotateIcon" TargetType="Image">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Source" Value="{StaticResource rotate}" />
+    </Style>
     <!--#endregion-->
 
+    <!--#region RTF Toolbar Icon resources-->
+    <Style x:Key="RtfToolBarCutIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfCut }" />
+    </Style>
 
+    <Style x:Key="RtfToolBarCopyIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfCopy }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarPasteIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfPaste }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarUndoIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfUndo }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarRedoIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfRedo }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarBoldIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfBold }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarItalicIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfItalic }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarUnderlineIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfUnderline }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarStrikeoutIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfStrikeout }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarTextcolorIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfTextcolor }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarBackcolorIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfBackcolor }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarAlignLeftIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfAlignLeft }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarAlignCenterIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfAlignCenter }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarAlignRightIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfAlignRight }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarAlignJustifyIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfAlignJustify }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarBulletListIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfBulletList }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarNumbersListIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfNumberList }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarIndentIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfIncreaseIndent }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarIndentRemoveIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfDecreaseIndent }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarSubscriptIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfSubscript }" />
+    </Style>
+
+    <Style x:Key="RtfToolBarSuperscriptIcon" TargetType="Image">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Source" Value="{StaticResource RtfSuperscript }" />
+    </Style>
+    <!--#endregion-->
 
 </ResourceDictionary>

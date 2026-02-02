@@ -13,9 +13,18 @@ public class ProjectService : IProjectService
 	#region Database query's
 	public string CompleteProjectList = $"" +
 		$"SELECT " +
-		$"{DBNames.ProjectFieldNameId} AS {DBNames.ProjectFieldNameId}, " +
-		$"{DBNames.ProjectFieldNameName} AS {DBNames.ProjectFieldNameName}" +
+		$"{ DBNames.ProjectFieldNameId} AS {DBNames.ProjectFieldNameId}, " +
+		$"{ DBNames.ProjectFieldNameCode}, " +
+		$"{ DBNames.ProjectFieldNameName}, " +
+		$"{ DBNames.ProjectFieldNameStartDate}, " +
+		$"{ DBNames.ProjectFieldNameEndDate}, " +
+		$"{ DBNames.ProjectFieldNameExpectedTime}, " +
+		$"{ DBNames.ProjectFieldNameClosed}, " +
+		$"{ DBNames.ProjectFieldNameImage}, " +
+		$"{ DBNames.ProjectFieldNameImageRotationAngle}, " +
+		$"{ DBNames.ProjectFieldNameMemo}" +
 		$" FROM {DBNames.Database}.{DBNames.ProjectTable};";
+
 
 	public string AddNewProjectQuery =
 		$"INSERT INTO {DBNames.Database}.{DBNames.ProjectTable} " +
@@ -40,6 +49,8 @@ public class ProjectService : IProjectService
 		$"WHERE {DBNames.ProjectFieldNameName} = @{DBNames.ProjectFieldNameName}";
 
 	public string ProjectUsedQuery = $"SELECT COUNT({DBNames.TimeFieldNameProjectId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.TimeFieldNameProjectId} = @ProjectId";
+
+	public string GetProjectExpectedEndDateQuery = $"CALL {DBNames.Database}.{DBNames.SPProjectExpectedEndDate}(@ProjectId);";
 	#endregion
 
 	public Task<List<ProjectModel>> GetAllProjectsAsync()
@@ -49,7 +60,15 @@ public class ProjectService : IProjectService
 			return new ProjectModel
 			{
 				ProjectId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProjectFieldNameId}" ] ),
-				ProjectName = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProjectFieldNameName}" ] )
+				ProjectCode = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProjectFieldNameCode}" ] ),
+				ProjectName = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProjectFieldNameName}" ] ),
+				ProjectStartDate = DatabaseValueConverter.GetDateOnly( reader [ $"{DBNames.ProjectFieldNameStartDate}" ] ),
+				ProjectEndDate = DatabaseValueConverter.GetDateOnly( reader [ $"{DBNames.ProjectFieldNameEndDate}" ] ),
+				ProjectExpectedTime = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProjectFieldNameExpectedTime}" ] ),
+				ProjectClosed = DatabaseValueConverter.GetSByte( reader [ $"{DBNames.ProjectFieldNameClosed}" ] ) == 1,
+				ProjectImage = reader [ $"{DBNames.ProjectFieldNameImage}" ] as byte [ ],
+				ProjectImageRotationAngle = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProjectFieldNameImageRotationAngle}" ] ),
+				ProjectMemo = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProjectFieldNameMemo}" ] )
 			};
 		} );
 	}
@@ -58,7 +77,15 @@ public class ProjectService : IProjectService
 	{
 		Dictionary<string, object> parameters = new()
 		{
-			{ $"@{DBNames.ProjectFieldNameName}", queryParameters[$"@{DBNames.ProjectFieldNameName}"] ?? DBNull.Value }
+			{ $"@{DBNames.ProjectFieldNameCode}", queryParameters[$"@{DBNames.ProjectFieldNameCode}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameName}", queryParameters[$"@{DBNames.ProjectFieldNameName}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameStartDate}", queryParameters[$"@{DBNames.ProjectFieldNameStartDate}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameEndDate}", queryParameters[$"@{DBNames.ProjectFieldNameEndDate}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameExpectedTime}", queryParameters[$"@{DBNames.ProjectFieldNameExpectedTime}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameClosed}", queryParameters[$"@{DBNames.ProjectFieldNameClosed}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameImage}", queryParameters[$"@{DBNames.ProjectFieldNameImage}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", queryParameters[$"@{DBNames.ProjectFieldNameImageRotationAngle}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameMemo}", queryParameters[$"@{DBNames.ProjectFieldNameMemo}"] ?? DBNull.Value }
 		};
 
 		uint newId = await _dataService.ExecuteScalarAsync<uint>( AddNewProjectQuery, parameters );
@@ -71,7 +98,15 @@ public class ProjectService : IProjectService
 		Dictionary<string, object> parameters = new()
 		{
 			{ $"@{DBNames.ProjectFieldNameId}", queryParameters[$"@{DBNames.ProjectFieldNameId}"] ?? DBNull.Value },
-			{ $"@{DBNames.ProjectFieldNameName}", queryParameters[$"@{DBNames.ProjectFieldNameName}"] ?? DBNull.Value }
+			{ $"@{DBNames.ProjectFieldNameCode}", queryParameters[$"@{DBNames.ProjectFieldNameCode}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameName}", queryParameters[$"@{DBNames.ProjectFieldNameName}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameStartDate}", queryParameters[$"@{DBNames.ProjectFieldNameStartDate}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameEndDate}", queryParameters[$"@{DBNames.ProjectFieldNameEndDate}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameExpectedTime}", queryParameters[$"@{DBNames.ProjectFieldNameExpectedTime}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameClosed}", queryParameters[$"@{DBNames.ProjectFieldNameClosed}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameImage}", queryParameters[$"@{DBNames.ProjectFieldNameImage}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", queryParameters[$"@{DBNames.ProjectFieldNameImageRotationAngle}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProjectFieldNameMemo}", queryParameters[$"@{DBNames.ProjectFieldNameMemo}"] ?? DBNull.Value }
 		};
 
 		await _dataService.ExecuteScalarAsync<uint>( UpdateProjectQuery, parameters );
@@ -119,4 +154,22 @@ public class ProjectService : IProjectService
 		return projects.Any( c =>
 			string.Equals( c.ProjectName, projectName, StringComparison.OrdinalIgnoreCase ) );
 	}
+
+	public async Task<DateOnly?> GetExpectedEndDateAsync( int projectId )
+	{
+		var parameters = new Dictionary<string, object>
+		{
+			{ "@ProjectId", projectId }
+		};
+
+		var result = await _dataService.ExecuteScalarAsync<DateTime?>(
+			GetProjectExpectedEndDateQuery,
+			parameters
+		);
+
+		return result.HasValue
+			? DateOnly.FromDateTime( result.Value )
+			: null;
+	}
+
 }

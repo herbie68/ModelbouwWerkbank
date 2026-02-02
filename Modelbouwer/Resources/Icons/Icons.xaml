@@ -2528,4 +2528,5 @@
     </DrawingGroup>
     <DrawingImage x:Key="clear" Drawing="{StaticResource clearDrawingGroup}" />
     <!--#endregion-->
+
 </ResourceDictionary>

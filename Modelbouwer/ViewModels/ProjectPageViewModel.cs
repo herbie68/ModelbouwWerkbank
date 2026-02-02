@@ -1,10 +1,21 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 
+using Microsoft.Win32;
+
 namespace Modelbouwer.ViewModels;
 
 public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 {
 	private readonly IProjectService _dataService;
+	public DateOnly? ProjectExpectedEndDate;
+
+	public bool IsProjectClosed => SelectedProject?.ProjectClosed == true;
+
+	public Visibility EndDatePickerVisibility =>
+		IsProjectClosed ? Visibility.Visible : Visibility.Collapsed;
+
+	public Visibility ExpectedEndDateVisibility =>
+		IsProjectClosed ? Visibility.Collapsed : Visibility.Visible;
 
 	// SelectedProject als type-safe alias
 	public ProjectModel? SelectedProject
@@ -18,14 +29,16 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	public IAsyncRelayCommand SaveProjectCommand => SaveCommand;
 	public IRelayCommand DeleteProjectCommand => DeleteCommand;
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
+	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
+	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
+
+	private IRelayCommand? _rotateCommand;
+	private IRelayCommand? _addImageCommand;
 
 	private IRelayCommand? _clearSearchCommand;
 
 	// Constructor
-	public ProjectPageViewModel(
-		IProjectService dataService,
-		IEntityValidator<ProjectModel> validator
-	) : base( validator )
+	public ProjectPageViewModel( IProjectService dataService, IEntityValidator<ProjectModel> validator ) : base( validator )
 	{
 		_dataService = dataService;
 
@@ -40,8 +53,29 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 			return;
 
 		OnPropertyChanged( nameof( SelectedProject ) );
-		OnPropertyChanged( nameof( SelectedProject.ProjectName ) );
-		OnPropertyChanged( nameof( SelectedProject.ProjectId ) );
+		OnPropertyChanged( nameof( IsProjectClosed ) );
+		OnPropertyChanged( nameof( EndDatePickerVisibility ) );
+		OnPropertyChanged( nameof( ExpectedEndDateVisibility ) );
+
+		_ = LoadExpectedEndDateAsync( value );
+	}
+
+	private async Task LoadExpectedEndDateAsync( ProjectModel project )
+	{
+		var projectId = project.ProjectId;
+
+		if ( !project.ProjectClosed )
+		{
+			var result = await _dataService.GetExpectedEndDateAsync(projectId);
+
+			if ( SelectedProject?.ProjectId == projectId )
+				ProjectExpectedEndDate = result;
+		}
+		else
+		{
+			if ( SelectedProject?.ProjectId == projectId )
+				ProjectExpectedEndDate = null;
+		}
 	}
 
 	// Async projects laden
@@ -73,6 +107,34 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 			return true;
 
 		return project.ProjectName?.Contains( SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
+	}
+
+	private void RotateImage()
+	{
+		if ( SelectedProject == null )
+			return;
+
+		SelectedProject.ProjectImageRotationAngle = ( SelectedProject.ProjectImageRotationAngle + 90 ) % 360;
+		Debug.WriteLine( SelectedProject.ProjectImageRotationAngle );
+	}
+
+	private void AddImage()
+	{
+
+		if ( SelectedProject == null )
+			return;
+
+		var dialog = new OpenFileDialog
+		{
+			Filter = "Images|*.png;*.jpg;*.jpeg;*.bmp",
+			Title = "Select image"
+		};
+
+		if ( dialog.ShowDialog() != true )
+			return;
+
+		SelectedProject.ProjectImage = File.ReadAllBytes( dialog.FileName );
+		SelectedProject.ProjectImageRotationAngle = 0;
 	}
 
 	// Abstract overrides voor CRUD
@@ -127,6 +189,14 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	private static Dictionary<string, object?> CreateParameters( ProjectModel c ) => new()
 	{
 		{ $"@{DBNames.ProjectFieldNameId}", c.ProjectId },
-		{ $"@{DBNames.ProjectFieldNameName}", c.ProjectName?.Trim() }
+		{ $"@{DBNames.ProjectFieldNameCode}", c.ProjectCode },
+		{ $"@{DBNames.ProjectFieldNameName}", c.ProjectName?.Trim() },
+		{ $"@{DBNames.ProjectFieldNameStartDate}", c.ProjectStartDate },
+		{ $"@{DBNames.ProjectFieldNameEndDate}", c.ProjectEndDate },
+		{ $"@{DBNames.ProjectFieldNameExpectedTime}", c.ProjectExpectedTime },
+		{ $"@{DBNames.ProjectFieldNameImage}", c.ProjectImage },
+		{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", c.ProjectImageRotationAngle },
+		{ $"@{DBNames.ProjectFieldNameClosed}", c.ProjectClosed },
+		{ $"@{DBNames.ProjectFieldNameMemo}", c.ProjectMemo }
 	};
 }

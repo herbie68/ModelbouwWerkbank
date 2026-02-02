@@ -18,8 +18,6 @@ public partial class StorageLocationView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	private bool _wasFiltering;
-
 	public StorageLocationView( StorageLocationPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();

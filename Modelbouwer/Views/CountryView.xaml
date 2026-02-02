@@ -18,7 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
             <RowDefinition Height="96" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
             <RowDefinition Height="35" />
@@ -49,53 +49,50 @@
             VerticalAlignment="Center">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="32" />
-                <RowDefinition Height="32" />
+                <RowDefinition Height="23" />
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--  Country code  -->
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Content="{x:Static language:Language.metadataCountryEntryFieldCode}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    Content="{x:Static language:Language.metadataCountryEntryFieldCode}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
-
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
+            
             <TextBox
-                Grid.Row="0"
-                Grid.Column="2"
-                Width="200"
+                Grid.Row="1"
+                Margin="5,0,0,0"
+                Grid.Column="0"
+                Width="150"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCountryEntryFieldCodeTag}"
                 Text="{Binding SelectedCountry.CountryCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataCountryEntryFieldCodeTooltip}" />
 
             <!--  Country name  -->
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Content="{x:Static language:Language.metadataCountryEntryFieldName}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Label
+                    Content="{x:Static language:Language.metadataCountryEntryFieldName}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="1"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
-
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
+            
             <TextBox
                 Grid.Row="1"
-                Grid.Column="2"
+                Grid.Column="1"
+                Margin="5,0,0,0"
                 Width="500"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCountryEntryFieldNameTag}"
@@ -103,21 +100,20 @@
                 ToolTip="{x:Static language:Language.metadataCountryEntryFieldNameTooltip}" />
 
             <!--  Default currency  -->
-            <Label
-                Grid.Row="2"
-                Grid.Column="0"
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                <Label
                 Content="{x:Static language:Language.metadataCountryEntryFieldCurrency}"
                 Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="2"
-                Grid.Column="1"
+                <Label
                 Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <syncfusion:ComboBoxAdv
                 x:Name="CurrencyComboBox"
-                Grid.Row="2"
+                Grid.Row="1"
                 Grid.Column="2"
+                Margin="5,0,0,0"
                 Width="50"
                 Height="25"
                 HorizontalAlignment="Left"

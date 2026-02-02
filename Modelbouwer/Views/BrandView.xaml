@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
             <RowDefinition Height="96" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
             <RowDefinition Height="25" />
@@ -47,31 +47,27 @@
             VerticalAlignment="Center">
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="23" />
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--  Brand name  -->
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
+            <StackPanel Orientation="Horizontal">
+                <Label
                 Content="{x:Static language:Language.metadataBrandEntryFieldName}"
                 Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
+                <Label Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <TextBox
-                Grid.Row="0"
-                Grid.Column="2"
-                Width="250"
+                Grid.Row="1"
+                Width="250" 
+                Margin="5,0,0,0"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataBrandEntryFieldNameTag}"
                 Text="{Binding SelectedBrand.BrandName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

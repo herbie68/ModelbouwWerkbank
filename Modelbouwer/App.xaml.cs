@@ -39,6 +39,7 @@ public partial class App : Application
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<UnitService>();
 		services.AddSingleton<WorktypeService>();
+		services.AddSingleton<ProjectService>();
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
@@ -50,6 +51,7 @@ public partial class App : Application
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<UnitPageViewModel>();
 		services.AddTransient<WorktypePageViewModel>();
+		services.AddTransient<ProjectPageViewModel>();
 
 		// Register NavigationViewModel
 		services.AddSingleton<NavigationViewModel>();
@@ -64,6 +66,7 @@ public partial class App : Application
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<UnitView>();
 		services.AddTransient<WorktypeView>();
+		services.AddTransient<ProjectView>();
 
 		// Register MainWindow
 		services.AddSingleton<MainWindow>();
@@ -85,6 +88,7 @@ public partial class App : Application
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<IUnitService, UnitService>();
 		services.AddScoped<IWorktypeService, WorktypeService>();
+		services.AddScoped<IProjectService, ProjectService>();
 
 		services.AddScoped<IEntityValidator<BrandModel>, BrandValidator>();
 		services.AddScoped<IEntityValidator<CategoryModel>, CategoryValidator>();
@@ -95,6 +99,7 @@ public partial class App : Application
 		services.AddScoped<IEntityValidator<StorageLocationModel>, StorageLocationValidator>();
 		services.AddScoped<IEntityValidator<UnitModel>, UnitValidator>();
 		services.AddScoped<IEntityValidator<WorktypeModel>, WorktypeValidator>();
+		services.AddScoped<IEntityValidator<ProjectModel>, ProjectValidator>();
 	}
 
 	protected override async void OnStartup( StartupEventArgs e )

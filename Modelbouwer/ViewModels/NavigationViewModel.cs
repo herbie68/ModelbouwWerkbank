@@ -146,6 +146,16 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Worktype_Tooltip}",
 			Command = new SimpleCommand( () => LoadWorktypeView() )
 		} );
+
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Project_Label}",
+			NavigationIcon = CreateNavigationImage( "Project" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Project_Tooltip}",
+			Command = new SimpleCommand( () => LoadProjectView() )
+		} );
+
+
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -280,6 +290,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Debug.WriteLine( $"Error loading WorktypeView: {ex.Message}" );
 		}
 	}
+
+	private void LoadProjectView()
+	{
+		try
+		{
+			var projectView = _serviceProvider.GetRequiredService<ProjectView>();
+			CurrentView = projectView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading ProjectView: {ex.Message}" );
+		}
+	}
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -351,35 +374,12 @@ public class NavigationViewModel : INotifyPropertyChanged
 		#endregion
 
 		#region Projects section
-		#region Subitems
-		ProjectSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Projects_SubItem_Import_Label,
-			NavigationIcon = CreateNavigationImage( "Import" ),
-			NavigationTooltip = Language.navigation_Projects_SubItem_Import_Tooltip
-		} );
-
-		ProjectSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Projects_SubItem_Export_Label,
-			NavigationIcon = CreateNavigationImage( "Export" ),
-			NavigationTooltip = Language.navigation_Projects_SubItem_Export_Tooltip
-		} );
-
-		ProjectSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Projects_SubItem_Report_Label,
-			NavigationIcon = CreateNavigationImage( "Report" ),
-			NavigationTooltip = Language.navigation_Projects_SubItem_Report_Tooltip
-		} );
-		#endregion
-
 		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Projects_MainItem_Label,
 			NavigationIcon = CreateNavigationImage( "Projects" ),
 			NavigationTooltip = Language.navigation_Projects_MainItem_Tooltip,
-			SubItems = ProjectSubItems
+			Command = new SimpleCommand( () => LoadProjectView() )
 		} );
 		#endregion
 

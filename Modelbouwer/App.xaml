@@ -8,31 +8,37 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Icons/ApplicationIcons.xaml" />
-                <!--<ResourceDictionary Source="Resources/Icons/ButtonIcons.xaml" />-->
-                <!--<ResourceDictionary Source="Resources/Icons/DefaultIcons.xaml" />-->
-                <ResourceDictionary Source="Resources/Icons/NavigationIcons.xaml" />
-                <!--<ResourceDictionary Source="Resources/Icons/RibbonIcons.xaml" /> -->
-                <ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" />
-                <ResourceDictionary Source="Resources/Icons/TimeIcons.xaml" />
                 <ResourceDictionary Source="Resources/Icons/Icons.xaml" />
+                <ResourceDictionary Source="Resources/Icons/NavigationIcons.xaml" />
+                <ResourceDictionary Source="Resources/Icons/TimeIcons.xaml" />
+                <ResourceDictionary Source="Resources/Icons/ToolbarIcons.xaml" />
 
-                <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
+                <ResourceDictionary Source="Resources/Styles/DateTimePicker.xaml" />
                 <ResourceDictionary Source="Resources/Styles/DefaultViewStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/GeneralStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/DataGrid.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ImageStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/NavigationStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/RtfToolbarStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfTreeGridStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/TextboxStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ToggleButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Toolbar.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
 
-                <ResourceDictionary Source="Resources/Theme/DefaultTheme.xaml" />
                 <ResourceDictionary Source="Resources/Theme/DefaultColors.xaml" />
+                <ResourceDictionary Source="Resources/Theme/DefaultTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <converters:BooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" IsInverted="True" />
+            <converters:DateOnlyToDateTimeConverter x:Key="DateOnlyConverter" />
+            <converters:ByteToImageConverter x:Key="ByteToImageConverter" />
+            <converters:NullOrEmptyImageConverter x:Key="NullOrEmptyImageConverter" />
+            <converters:SearchHighlightConverter x:Key="SearchHighlightConverter" />
+            <converters:TooltipValidationConverter x:Key="TooltipValidationConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

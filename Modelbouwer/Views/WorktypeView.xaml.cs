@@ -18,8 +18,6 @@ public partial class WorktypeView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	private bool _wasFiltering;
-
 	public WorktypeView( WorktypePageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();

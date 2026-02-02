@@ -13,8 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <AssemblyVersion>26.1.264.0</AssemblyVersion>
-    <FileVersion>26.1.264.0</FileVersion>
+    <AssemblyVersion>26.2.0.0</AssemblyVersion>
+    <FileVersion>26.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +24,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;1006</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Fredoka.ttf" />
+    <None Remove="Resources\Icons\calendar.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.105.0" />
@@ -44,6 +49,8 @@
 
   <ItemGroup>
     <Resource Include="Resources\Cursors\exporting.ani" />
+    <Resource Include="Resources\Fonts\Fredoka.ttf" />
+    <Resource Include="Resources\Icons\calendar.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1262,19 +1262,16 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Status:</value>
   </data>
   <data name="metadataProjectProjectDatagridHeaderProjectId" xml:space="preserve">
-    <value>Leerlauf</value>
+    <value>ID</value>
   </data>
   <data name="metadataProjectProjectDatagridHeaderCode" xml:space="preserve">
     <value>Suchname</value>
-  </data>
-  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
-    <value>Beschreibung</value>
   </data>
   <data name="metadataProjectProjectDatagridHeaderStartDate" xml:space="preserve">
     <value>Startdatum</value>
   </data>
   <data name="metadataProjectProjectDatagridHeaderEndDate" xml:space="preserve">
-    <value>Ende</value>
+    <value>Endedatum</value>
   </data>
   <data name="metadataProjectProjectDatagridHeaderCompleted" xml:space="preserve">
     <value>Vollendet</value>
@@ -1370,7 +1367,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Startdatum</value>
   </data>
   <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDate" xml:space="preserve">
-    <value>Ende</value>
+    <value>Ende Datum</value>
   </data>
   <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDate" xml:space="preserve">
     <value>Erwartete Enddatum</value>
@@ -1940,7 +1937,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Suchname, um das Projekt einfach zu finden, kann der Suchname möglicherweise keine Leerzeichen enthalten</value>
   </data>
   <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTag" xml:space="preserve">
-    <value>Ende</value>
+    <value>Ende Datum</value>
   </data>
   <data name="metadataProjectTabGeneralTabItemGeneralFieldEndDateTooltip" xml:space="preserve">
     <value>Wann wird das Projekt abgeschlossen</value>
@@ -2395,7 +2392,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ExportProjectsTitle" xml:space="preserve">
     <value>Projektdaten exportieren</value>
   </data>
-  <data name="ExportProjectsFileName" xml:space="preserve">
+  <data name="ExportProjectFileName" xml:space="preserve">
     <value>Projekte</value>
   </data>
   <data name="ExportProductsSubTitle" xml:space="preserve">
@@ -3389,7 +3386,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Marke</value>
   </data>
   <data name="metadataBrandHeaderSubtitle" xml:space="preserve">
-    <value>Marke verwalten</value>
+    <value>Marken verwalten</value>
   </data>
   <data name="metadataBrandHeaderTitel" xml:space="preserve">
     <value>Verwaltung der Markentabelle</value>
@@ -3800,6 +3797,102 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Projekte</value>
   </data>
   <data name="metadataProjectHeaderSubtitle" xml:space="preserve">
-    <value>Projekte verwalten und anzeigen</value>
+    <value>Projekte verwalten</value>
+  </data>
+  <data name="GeneralDatePickerWatermark" xml:space="preserve">
+    <value>Datum auswählen</value>
+  </data>
+  <data name="GeneralTimePickerWatermark" xml:space="preserve">
+    <value>Wählen Sie die Uhrzeit aus</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatus" xml:space="preserve">
+    <value>Projektstatus</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatusTag" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatusTooltip" xml:space="preserve">
+    <value>Ist das ausgewählte Projekt abgeschlossen oder nicht</value>
+  </data>
+  <data name="ProjectEntryNotCompletedTooltip" xml:space="preserve">
+    <value>Melden Sie das Projekt als abgeschlossen</value>
+  </data>
+  <data name="ProjectEntryCompletedTag" xml:space="preserve">
+    <value>Bereit</value>
+  </data>
+  <data name="ProjectEntryCompletedTooltip" xml:space="preserve">
+    <value>Melden Sie das Produkt als: Es wird daran gearbeitet</value>
+  </data>
+  <data name="ProjectEntryStatus" xml:space="preserve">
+    <value>Bereit</value>
+  </data>
+  <data name="OrderEntryStatus" xml:space="preserve">
+    <value>Bereit</value>
+  </data>
+  <data name="OrderEntryCompletedTag" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="OrderEntryCompletedTooltip" xml:space="preserve">
+    <value>Melden Sie die Bestellung als geliefert</value>
+  </data>
+  <data name="OrderEntryNotCompletedTag" xml:space="preserve">
+    <value>Offen</value>
+  </data>
+  <data name="OrderEntryNotCompletedTooltip" xml:space="preserve">
+    <value>Bestellung noch nicht (vollständig) geliefert</value>
+  </data>
+  <data name="ProjectEntryNotCompletedTag" xml:space="preserve">
+    <value>Im Gange</value>
+  </data>
+  <data name="ImageButtonRotateTooltip" xml:space="preserve">
+    <value>Zahlen der Viertelwendung</value>
+  </data>
+  <data name="ImageButtonNewTooltip" xml:space="preserve">
+    <value>Bild hinzufügen/ändern</value>
+  </data>
+  <data name="ImageButtonDeleteTooltip" xml:space="preserve">
+    <value>Entfernen Sie das Bild</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProject" xml:space="preserve">
+    <value>Anzahl der angezeigten Projekte</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
+    <value>Projektname</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderCodeLabel" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderNameLabel" xml:space="preserve">
+    <value>Projektname</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Project.Label" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Project.Tooltip" xml:space="preserve">
+    <value>Projektmanagement</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderIdLabel" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderStartDateLabel" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderEndDateLabel" xml:space="preserve">
+    <value>Ende Datum</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderClosedLabel" xml:space="preserve">
+    <value>Vollendet</value>
+  </data>
+  <data name="toolbarButtonFontStrikeout" xml:space="preserve">
+    <value>Streichen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTime" xml:space="preserve">
+    <value>Voraussichtliche Bauzeiten</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTag" xml:space="preserve">
+    <value>Bauzeit</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip" xml:space="preserve">
+    <value>Voraussichtliche Bauzeit in Stunden</value>
   </data>
 </root>

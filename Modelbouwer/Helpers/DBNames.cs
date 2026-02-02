@@ -398,6 +398,8 @@ public class DBNames
 	public static readonly string ProjectTotalssViewFieldNameHoursLongestWorkday = "HoursLongestWorkday";
 	public static readonly string ProjectTotalssViewFieldNameWorkingDays = "WorkingDays";
 	public static readonly string ProjectTotalssViewFieldNameIsClosed = "IsClosed";
+
+	public static readonly string SPProjectExpectedEndDate = "GetProjectEndDate";
 	#endregion Project table
 
 	#region Products in stock

@@ -1,53 +1,153 @@
 ﻿namespace Modelbouwer.Models;
 
-public class ProjectModel : ObservableObject
+public partial class ProjectModel : ObservableObject
 {
-	public int ProjectId { get; set; }
-	public string? ProjectCode { get; set; }
-	public string? ProjectName { get; set; }
-	public string? ProjectStartDate { get; set; }
-	public string? ProjectStartDateStr { get; set; }
-	public string? ProjectEndDate { get; set; }
-	public string? ProjectEndDateStr { get; set; }
-	public string? ProjectExpectedTime { get; set; }
-	public byte [ ]? ProjectImage { get; set; }
-	public string? ProjectImageRotationAngle { get; set; }
-	public bool ProjectClosed { get; set; }
-	public string? ProjectMemo { get; set; }
-	public string? ProjectExpectedWorkdays { get; set; }
-	public string? ProjectExpectedWorkdaysText { get; set; }
-	public string? ProjectTodoTime { get; set; }
-	public string? ProjectTodoWorkdays { get; set; }
-	public string? ProjectTodoWorkdaysText { get; set; }
-	public string? ProjectCreated { get; set; }
-	public string? ProjectModified { get; set; }
-	public string? ProjectSearchField { get; set; }
-	public string? ProjectTotalTimeInHours { get; set; }
-	public string? ProjectTotalTimeInText { get; set; }
-	public string? ProjectShortestWorkday { get; set; }
-	public string? ProjectShortestWorkdayHours { get; set; }
-	public string? ProjectLongestWorkday { get; set; }
-	public string? ProjectLongestWorkdayHours { get; set; }
-	public string? ProjectAverageHoursPerDay { get; set; }
-	public string? ProjectAverageHoursPerDayLong { get; set; }
-	public string? ProjectBuildDays { get; set; }
-	public string? ProjectMaterialCosts { get; set; }
-	public string? ProjectTimeCosts { get; set; }
-	public string? ProjectTotalCosts { get; set; }
+	[ObservableProperty]
+	private bool _projectClosed;
+
+	[ObservableProperty]
+	private int _projectId;
+
+	[ObservableProperty]
+	private string? _projectCode;
+
+	[ObservableProperty]
+	public string? _projectAverageHoursPerDay;
+
+	[ObservableProperty]
+	public string? _projectAverageHoursPerDayLong;
+
+	[ObservableProperty]
+	public string? _projectBuildDays;
+
+	[ObservableProperty]
+	public string? _projectCreated;
+
+	[ObservableProperty]
+	public DateOnly? _projectEndDate;
+
+	[ObservableProperty]
+	public string? _projectEndDateStr;
+
+	[ObservableProperty]
+	public int? _projectExpectedTime;
+
+	//[ObservableProperty]
+	//public DateOnly? _projectExpectedEndDate;
+
+
+	[ObservableProperty]
+	public string? _projectExpectedWorkdays;
+
+	[ObservableProperty]
+	public string? _projectExpectedWorkdaysText;
+
+	[ObservableProperty]
+	public string? _projectLongestWorkday;
+
+	[ObservableProperty]
+	public string? _projectLongestWorkdayHours;
+
+	[ObservableProperty]
+	public string? _projectMaterialCosts;
+
+	[ObservableProperty]
+	public string? _projectModified;
+
+	[ObservableProperty]
+	public string? _projectName;
+
+	[ObservableProperty]
+	public string? _projectSearchField;
+
+	[ObservableProperty]
+	public string? _projectShortestWorkday;
+
+	[ObservableProperty]
+	public string? _projectShortestWorkdayHours;
+
+	[ObservableProperty]
+	public DateOnly? _projectStartDate;
+
+	[ObservableProperty]
+	public string? _projectStartDateStr;
+
+	[ObservableProperty]
+	public string? _projectTimeCosts;
+
+	[ObservableProperty]
+	public string? _projectTodoTime;
+
+	[ObservableProperty]
+	public string? _projectTodoWorkdays;
+
+	[ObservableProperty]
+	public string? _projectTodoWorkdaysText;
+
+	[ObservableProperty]
+	public string? _projectTotalCosts;
+
+	[ObservableProperty]
+	public string? _projectTotalTimeInHours;
+
+	[ObservableProperty]
+	public string? _projectTotalTimeInText;
+
+	[ObservableProperty]
+	private double _projectImageRotationAngle;
+
+	[ObservableProperty]
+	private byte[]? _projectImage;
+
+	[ObservableProperty]
+	private string? _projectMemo;
 
 	// Define the property that you want to use in TLists (for example in the errorList
-	public string Name => ProjectName;
+	public string? Name => ProjectName;
+
+	public static readonly Dictionary<string, string[]> ColumnMappings = new()
+	{
+		[nameof(ProjectId)] = [ "ID" ],
+
+		[nameof(ProjectCode)] =
+		[
+			"Zoeknaam",
+			"Search name",
+			"Suchname" ],
+
+		[nameof(ProjectName)] = [
+			"Projectnaam",
+			"Project name",
+			"Projektname" ],
+
+		[nameof(ProjectStartDate)] = [
+			"Start datum",
+			"Start date",
+			"Startdatum" ],
+
+		[nameof(ProjectEndDate)] = [
+			"Eind datum",
+			"End date",
+			"Endedatum" ],
+
+		[nameof(ProjectClosed)] = [
+			"Voltooid",
+			"Completed",
+			"Vollendet" ]
+	};
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
-	{
+		{
 		{ DBNames.ProjectFieldNameId, "ProjectId" },
 		{ DBNames.ProjectFieldNameCode, "ProjectCode"},
 		{ DBNames.ProjectFieldNameName, "ProjectName"},
 		{ DBNames.ProjectFieldNameStartDate, "ProjectStartDate"},
 		{ DBNames.ProjectFieldNameEndDate, "ProjectEndDate"},
 		{ DBNames.ProjectFieldNameExpectedTime, "ProjectExpectedTime"},
+		{ DBNames.ProjectFieldNameImage, "ProjectImage" },
+		{ DBNames.ProjectFieldNameImageRotationAngle, "ProjectImageRotationAngle" },
+		{ DBNames.ProjectFieldNameMemo, "ProjectMemo" },
 		{ DBNames.ProjectFieldNameClosed, "ProjectClosed"},
-		{DBNames.ProjectTotalssViewFieldNameAverageHoursPerDay, "ProjectAverageHoursPerDay" }
-	};
+		};
 }

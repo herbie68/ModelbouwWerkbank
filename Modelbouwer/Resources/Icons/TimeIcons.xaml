@@ -1465,4 +1465,286 @@
     </DrawingGroup>
     <DrawingImage x:Key="TimeReport" Drawing="{StaticResource TimeReportDrawingGroup}" />
     <!--#endregion-->
+
+    <Geometry x:Key="CalendarGeometry">F1 M26,25.918751z M0,0z M5.4257812,0C4.440221,0.12929521 4.1966816,1.191197 4.2929687,2.0224988 4.4385855,2.619794 3.6135743,2.2464612 3.265044,2.3496094 2.2190244,2.2924586 1.0053615,2.3855867 0.4015128,3.3849481 -0.25027435,4.4415977 0.0822124,5.7249261 0,6.8999613 0,7.3805732 0,7.861185 0,8.3417969 8.6666667,8.3417969 17.333333,8.3417969 26,8.3417969 25.97441,6.9972528 26.05503,5.6459175 25.95219,4.3062609 25.72633,3.0080583 24.376184,2.2686947 23.136424,2.4296875 22.632614,2.4296875 22.128805,2.4296875 21.624995,2.4296875 21.586975,1.6515516 21.849922,0.604318260000001 20.942374,0.213327230000001 19.836117,-0.344128919999999 19.157485,0.933997900000001 19.357417,1.8756524 19.57221,2.5421237 18.899017,2.3206088 18.476339,2.3496094 14.504406,2.3496094 10.532474,2.3496094 6.5605419,2.3496094 6.5229132,1.5706735 6.7849704,0.52279457 5.8762778,0.13182429L5.6604613,0.04882043z M4.3730469,3.8886719C4.3326672,4.6275785 4.3343955,5.6568099 5.2731325,5.8098318 6.4015861,6.0552662 6.7763454,4.8425194 6.640625,3.9630337 7.4174973,4.3028925 7.5564723,6.0503128 6.6362112,6.6362497 5.5708917,7.6224664 3.6595015,6.7022073 3.7246094,5.265625 3.7183185,4.7389813 3.9562893,4.2146695 4.3730469,3.8886719z M19.357422,3.8886719C19.300652,4.6282652 19.35673,5.588139 20.257279,5.7832106 21.378518,6.0874256 21.763293,4.8331768 21.625,3.9630337 22.402464,4.3025532 22.540563,6.0505573 21.6203,6.6362497 20.555257,7.6225777 18.644636,6.7021877 18.710981,5.265625 18.704681,4.7394273 18.941203,4.2149405 19.357466,3.8886719z M0,9.3964844C0.00807838,14.200967 -0.01616721,19.006267 0.01214062,23.810237 0.11144503,25.213707 1.5416069,26.104101 2.8635717,25.917969 9.8456917,25.909869 16.828628,25.934129 23.810237,25.905839 25.213143,25.807019 26.104281,24.378024 25.917969,23.056348 25.917969,18.503059 25.917969,13.949771 25.917969,9.3964824 17.278646,9.3964824 8.639323,9.3964824 0,9.3964824z M1.78125,12.958984C2.969401,12.958984 4.1575521,12.958984 5.3457031,12.958984 5.3457031,13.742187 5.3457031,14.525391 5.3457031,15.308594 4.1575521,15.308594 2.969401,15.308594 1.78125,15.308594 1.78125,14.525391 1.78125,13.742187 1.78125,12.958984z M6.4804687,12.958984C7.6679688,12.958984 8.8554689,12.958984 10.042969,12.958984 10.042969,13.742187 10.042969,14.525391 10.042969,15.308594 8.8554689,15.308594 7.6679688,15.308594 6.4804687,15.308594 6.4804687,14.525391 6.4804687,13.742187 6.4804687,12.958984z M11.177734,12.958984C12.365234,12.958984 13.552734,12.958984 14.740234,12.958984 14.740234,13.742187 14.740234,14.525391 14.740234,15.308594 13.552734,15.308594 12.365234,15.308594 11.177734,15.308594 11.177734,14.525391 11.177734,13.742187 11.177734,12.958984z M15.875,12.958984C17.0625,12.958984 18.25,12.958984 19.4375,12.958984 19.4375,13.742187 19.4375,14.525391 19.4375,15.308594 18.25,15.308594 17.0625,15.308594 15.875,15.308594 15.875,14.525391 15.875,13.742187 15.875,12.958984z M20.654297,12.958984C21.841797,12.958984 23.029297,12.958984 24.216797,12.958984 24.216797,13.742187 24.216797,14.525391 24.216797,15.308594 23.029297,15.308594 21.841797,15.308594 20.654297,15.308594 20.654297,14.525391 20.654297,13.742187 20.654297,12.958984z M1.78125,16.523437C2.969401,16.523437 4.1575521,16.523437 5.3457031,16.523437 5.3457031,17.305989 5.3457031,18.088542 5.3457031,18.871094 4.1575521,18.871094 2.969401,18.871094 1.78125,18.871094 1.78125,18.088542 1.78125,17.305989 1.78125,16.523437z M6.4804687,16.523437C7.6679688,16.523437 8.8554689,16.523437 10.042969,16.523437 10.042969,17.305989 10.042969,18.088542 10.042969,18.871094 8.8554689,18.871094 7.6679688,18.871094 6.4804687,18.871094 6.4804687,18.088542 6.4804687,17.305989 6.4804687,16.523437z M11.177734,16.523437C12.365234,16.523437 13.552734,16.523437 14.740234,16.523437 14.740234,17.305989 14.740234,18.088542 14.740234,18.871094 13.552734,18.871094 12.365234,18.871094 11.177734,18.871094 11.177734,18.088542 11.177734,17.305989 11.177734,16.523437z M15.875,16.523437C17.0625,16.523437 18.25,16.523437 19.4375,16.523437 19.4375,17.305989 19.4375,18.088542 19.4375,18.871094 18.25,18.871094 17.0625,18.871094 15.875,18.871094 15.875,18.088542 15.875,17.305989 15.875,16.523437z M20.654297,16.523437C21.841797,16.523437 23.029297,16.523437 24.216797,16.523437 24.216797,17.305989 24.216797,18.088542 24.216797,18.871094 23.029297,18.871094 21.841797,18.871094 20.654297,18.871094 20.654297,18.088542 20.654297,17.305989 20.654297,16.523437z M1.78125,20.005859C2.969401,20.005859 4.1575521,20.005859 5.3457031,20.005859 5.3457031,20.789062 5.3457031,21.572266 5.3457031,22.355469 4.1575521,22.355469 2.969401,22.355469 1.78125,22.355469 1.78125,21.572266 1.78125,20.789062 1.78125,20.005859z M6.4804687,20.005859C7.6679688,20.005859 8.8554689,20.005859 10.042969,20.005859 10.042969,20.789062 10.042969,21.572266 10.042969,22.355469 8.8554689,22.355469 7.6679688,22.355469 6.4804687,22.355469 6.4804687,21.572266 6.4804687,20.789062 6.4804687,20.005859z M11.177734,20.005859C12.365234,20.005859 13.552734,20.005859 14.740234,20.005859 14.740234,20.789062 14.740234,21.572266 14.740234,22.355469 13.552734,22.355469 12.365234,22.355469 11.177734,22.355469 11.177734,21.572266 11.177734,20.789062 11.177734,20.005859z M15.875,20.005859C17.0625,20.005859 18.25,20.005859 19.4375,20.005859 19.4375,20.789062 19.4375,21.572266 19.4375,22.355469 18.25,22.355469 17.0625,22.355469 15.875,22.355469 15.875,21.572266 15.875,20.789062 15.875,20.005859z M20.654297,20.005859C21.841797,20.005859 23.029297,20.005859 24.216797,20.005859 24.216797,20.789062 24.216797,21.572266 24.216797,22.355469 23.029297,22.355469 21.841797,22.355469 20.654297,22.355469 20.654297,21.572266 20.654297,20.789062 20.654297,20.005859z</Geometry>
+    <DrawingGroup x:Key="CalendarDrawingGroup" ClipGeometry="M0,0 V25.918751 H26 V0 H0 Z">
+        <DrawingGroup.Transform>
+            <TranslateTransform X="0.013662403449416161" Y="0" />
+        </DrawingGroup.Transform>
+        <GeometryDrawing Brush="#FF000080" Geometry="{StaticResource CalendarGeometry}" />
+    </DrawingGroup>
+    <DrawingImage x:Key="Calendar" Drawing="{StaticResource CalendarDrawingGroup}" />
+
+    <!--#region Calendar Icon-->
+    <Geometry x:Key="calendarGeometry1">F1 M45.500357,56.692912z M0,0z M85.156,264.43C82.1058,270.8871 69.004,282.834 58.468,286.618 60.1801,287.12762 64.4978,286.02425 66.3742,286.02425 76.8632,286.02425 85.3742,277.50595 85.3742,266.96225 85.3742,266.10824 85.26355,265.25535 85.15545,264.43105z</Geometry>
+    <Geometry x:Key="calendarGeometry2">F1 M45.500357,56.692912z M0,0z M135.4,206.19C135.4,206.19,137.12,205.79,139.2,205.71L138.84,220.95C135.12,220.95 133.76,221.19 133.76,222.19 133.76,223.23 133.8,224.15 133.88,225.15L147.2,225.15C148.2,225.15 148.2,224.19 148.2,220.79 148.2,220.79 147,220.95 145.76,220.95L143.52,220.95 144,201.39C143.8,201.23 143.2,201.15 142.84,201.15 140.72,201.15 134.72,202.51 134.72,203.43 134.72,204.51 134.92,205.35 135.4,206.19</Geometry>
+    <Geometry x:Key="calendarGeometry3">F1 M45.500357,56.692912z M0,0z M50.531,243.16L48.906,259.629C50.366,259.264 51.9355,259.0665 53.4998,259.0665 59.1834,259.0665 60.2498,260.6231 60.2498,265.7853 60.2498,269.4874 58.0882,274.2228 53.656,274.2228 51.7789,274.2228 50.3135,273.76566 49.2185,272.7228 48.74923,274.1307 48.5935,275.2828 48.5935,277.4728 48.5935,278.2028 50.1303,279.6603 54.406,279.6603 56.7364,279.6603 58.7442,279.08696 60.4372,278.0665 61.12565,272.8215 61.7586,266.1975 61.1872,261.8165 62.9988,262.02963 64.7188,262.19191 66.3747,262.3165 65.60846,255.1221 60.6905,254.254 57.0935,254.254 56.15494,254.254 55.3962,254.36846 54.8747,254.47275L55.5007,248.00275C55.5007,248.00275 61.0082,248.31525 63.5632,248.31525 66.1703,248.31525 66.5007,247.38257 66.5007,243.15905L50.5317,243.15905z</Geometry>
+    <Geometry x:Key="calendarGeometry4">F1 M45.500357,56.692912z M0,0z M34.335928,243.80289C41.38121,241.84589 49.142201,233.33571 49.534097,230.00901 49.534097,230.00901 44.155981,230.88032 35.838752,229.9018 36.425877,234.40291 34.336205,243.80306 34.336205,243.80306z</Geometry>
+    <Geometry x:Key="calendarGeometry5">F1 M45.500357,56.692912z M0,0z M7.5497995,199.84737C6.1587328,199.84737,5.0354068,200.9583,5.0354068,202.35551L5.0354068,213.9624 49.398317,213.9624 49.398317,202.35551C49.398317,200.9583,48.275046,199.84737,46.883924,199.84737L7.549246,199.84737z</Geometry>
+    <Geometry x:Key="calendarGeometry6">F1 M45.500357,56.692912z M0,0z M24.477,155.99C24.477,156.692 24.423,157.07 23.892,157.07 23.595,157.07 23.325,156.926 23.154,156.773 23.109,156.863 23.037,156.998 23.037,157.187 23.037,157.448 23.253,157.718 23.991,157.718 24.972,157.718 25.224,157.043 25.224,156.152L25.224,151.337C24.477,151.337,24.477,151.337,24.477,151.67L24.477,155.99</Geometry>
+    <Geometry x:Key="calendarGeometry7">F1 M45.500357,56.692912z M0,0z M28.538,157.64C28.718,157.658 28.862,157.658 28.97,157.658 29.258,157.658 29.303,157.604 29.285,157.505L27.674,151.34C27.584,151.322 27.458,151.313 27.332,151.313 27.17,151.313 27.071,151.349 27.053,151.439L25.451,157.631C25.622,157.649 25.811,157.658 25.91,157.658 26.198,157.658 26.225,157.613 26.252,157.514L26.603,156.038 28.151,156.038 28.538,157.64 M27.062,154.094C27.197,153.491 27.323,152.798 27.377,152.366 27.422,152.798 27.548,153.5 27.692,154.094L27.998,155.372 26.756,155.372 27.062,154.094</Geometry>
+    <Geometry x:Key="calendarGeometry8">F1 M45.500357,56.692912z M0,0z M32.251,157.64L32.8,157.64C32.899,157.64,32.953,157.586,32.953,157.496L32.953,151.34C32.233,151.34,32.215,151.34,32.215,151.493L32.215,153.608C32.215,154.031,32.242,155.741,32.305,156.281L32.305,156.308C32.089,155.633,31.63,154.238,31.45,153.77L30.442,151.34 29.884,151.34C29.776,151.34,29.731,151.385,29.731,151.493L29.731,157.64C30.46,157.64,30.46,157.64,30.46,157.496L30.46,155.309C30.46,154.922 30.424,153.203 30.37,152.618 30.595,153.32 31.063,154.76 31.225,155.165L32.251,157.64</Geometry>
+    <Geometry x:Key="calendarGeometry9">F1 M45.500357,56.692912z M0,0z M34.477,151.34C33.721,151.34,33.721,151.34,33.721,151.493L33.721,155.804C33.721,156.848 33.901,157.73 35.341,157.73 36.052,157.73 36.646,157.55 36.871,157.406L36.871,151.34C36.142,151.34,36.133,151.34,36.133,151.493L36.133,156.893C35.98,156.974 35.656,157.055 35.341,157.055 34.585,157.055 34.477,156.551 34.477,155.822L34.477,151.34</Geometry>
+    <Geometry x:Key="calendarGeometry10">F1 M45.500357,56.692912z M0,0z M40.403,157.64C40.583,157.658 40.727,157.658 40.835,157.658 41.123,157.658 41.168,157.604 41.15,157.505L39.539,151.34C39.449,151.322 39.323,151.313 39.197,151.313 39.035,151.313 38.936,151.349 38.918,151.439L37.316,157.631C37.487,157.649 37.676,157.658 37.775,157.658 38.063,157.658 38.09,157.613 38.117,157.514L38.468,156.038 40.016,156.038 40.403,157.64 M38.927,154.094C39.062,153.491 39.188,152.798 39.242,152.366 39.287,152.798 39.413,153.5 39.557,154.094L39.863,155.372 38.621,155.372 38.927,154.094</Geometry>
+    <Geometry x:Key="calendarGeometry11">F1 M45.500357,56.692912z M0,0z M41.596,157.64C42.316,157.64,42.325,157.64,42.325,157.496L42.325,155.084 42.64,155.084C42.694,155.084 42.757,155.084 42.82,155.075 43.036,155.372 43.459,156.119 43.558,157.64 43.72,157.649 43.873,157.658 43.99,157.658 44.332,157.658 44.359,157.613 44.359,157.478 44.269,156.056 43.792,155.255 43.513,154.886 43.981,154.625 44.296,154.085 44.296,153.122 44.296,151.871 43.774,151.34 42.64,151.34L41.749,151.34C41.596,151.34,41.596,151.493,41.596,151.493L41.596,157.64 M43.486,153.086C43.486,154.04,43.225,154.409,42.721,154.409L42.325,154.409 42.325,151.979 42.775,151.979C43.306,151.979,43.486,152.402,43.486,153.086</Geometry>
+    <Geometry x:Key="calendarGeometry12">F1 M45.500357,56.692912z M0,0z M45.669,157.64C46.407,157.64,46.398,157.64,46.398,157.496L46.398,155.039 47.613,151.34C46.866,151.34,46.866,151.34,46.821,151.475L46.506,152.573C46.335,153.149 46.083,154.193 46.056,154.454 46.038,154.193 45.795,153.149 45.615,152.573L45.255,151.34C44.409,151.34,44.391,151.34,44.427,151.457L45.669,155.093 45.669,157.64</Geometry>
+    <Geometry x:Key="calendarGeometry13">F1 M45.500357,56.692912z M0,0z M17.931,161.12C15.915,161.12 14.835,162.2 14.835,163.712 14.835,164.558 15.141,165.296 15.951,166.304L17.769,168.41C18.561,169.328 18.813,169.922 18.813,170.75 18.813,171.848 18.327,172.586 17.049,172.586 16.185,172.586 15.573,172.298 15.195,171.956 14.943,172.28 14.817,172.712 14.817,173 14.817,173.504 15.537,174.08 17.175,174.08 19.623,174.08 20.397,172.514 20.397,170.696 20.397,169.58 20.127,168.77 19.191,167.654L17.247,165.44C16.707,164.792 16.419,164.324 16.419,163.658 16.419,162.884 17.103,162.416 18.165,162.416 18.993,162.416 19.677,162.668 19.929,162.866 20.181,162.596 20.289,162.272 20.289,162.02 20.289,161.516 19.641,161.12 17.931,161.12</Geometry>
+    <Geometry x:Key="calendarGeometry14">F1 M45.500357,56.692912z M0,0z M23.087,161.3C21.575,161.3,21.575,161.3,21.575,161.606L21.575,170.228C21.575,172.316 21.935,174.08 24.815,174.08 26.237,174.08 27.425,173.72 27.875,173.432L27.875,161.3C26.417,161.3,26.399,161.3,26.399,161.606L26.399,172.406C26.093,172.568 25.445,172.73 24.815,172.73 23.303,172.73 23.087,171.722 23.087,170.264L23.087,161.3</Geometry>
+    <Geometry x:Key="calendarGeometry15">F1 M45.500357,56.692912z M0,0z M34.49,173.9L35.588,173.9C35.786,173.9,35.894,173.792,35.894,173.612L35.894,161.3C34.454,161.3,34.418,161.3,34.418,161.606L34.418,165.836C34.418,166.682,34.472,170.102,34.598,171.182L34.598,171.236C34.166,169.886,33.248,167.096,32.888,166.16L30.872,161.3 29.756,161.3C29.54,161.3,29.45,161.39,29.45,161.606L29.45,173.9C30.908,173.9,30.908,173.9,30.908,173.612L30.908,169.238C30.908,168.464 30.836,165.026 30.728,163.856 31.178,165.26 32.114,168.14 32.438,168.95L34.49,173.9</Geometry>
+    <Geometry x:Key="calendarGeometry16">F1 M45.500357,56.692912z M0,0z M37.934,161.3C37.538,161.3,37.448,161.426,37.448,161.642L37.448,173.9 39.698,173.9C41.912,173.9 43.208,172.226 43.208,166.952 43.208,162.578 42.038,161.3 39.68,161.3L37.934,161.3 M41.534,166.808C41.534,171.794,40.652,172.514,39.716,172.514L38.906,172.514 38.906,162.65 39.734,162.65C40.94,162.65,41.534,163.47801,41.534,166.808</Geometry>
+    <Geometry x:Key="calendarGeometry17">F1 M45.500357,56.692912z M0,0z M49.354,173.9C49.714,173.936 50.002,173.936 50.218,173.936 50.794,173.936 50.884,173.828 50.848,173.63L47.626,161.3C47.446,161.264 47.194,161.246 46.942,161.246 46.618,161.246 46.42,161.318 46.384,161.498L43.18,173.882C43.522,173.918 43.9,173.936 44.098,173.936 44.674,173.936 44.728,173.846 44.782,173.648L45.484,170.696 48.58,170.696 49.354,173.9 M46.402,166.808C46.672,165.602 46.924,164.216 47.032,163.352 47.122,164.216 47.374,165.62 47.662,166.808L48.274,169.364 45.79,169.364 46.402,166.808</Geometry>
+    <Geometry x:Key="calendarGeometry18">F1 M45.500357,56.692912z M0,0z M52.186,173.9C53.662,173.9,53.644,173.9,53.644,173.612L53.644,168.698 56.074,161.3C54.58,161.3,54.58,161.3,54.49,161.57L53.86,163.766C53.518,164.918 53.014,167.006 52.96,167.528 52.924,167.006 52.438,164.918 52.078,163.766L51.358,161.3C49.666,161.3,49.63,161.3,49.702,161.534L52.186,168.806 52.186,173.9</Geometry>
+    <Geometry x:Key="calendarGeometry19">F1 M45.500357,56.692912z M0,0z M34.936,165.23L34.936,171.2612C36.9269,172.6761 38.311,175.555 38.311,178.8862 38.311,182.2231 36.9324,185.1081 34.936,186.5112L34.936,191.605C39.7063,190.92695 43.436,185.2822 43.436,178.417 43.436,171.5523 39.7063,165.908 34.936,165.229z</Geometry>
+    <Geometry x:Key="calendarGeometry20">F1 M45.500357,56.692912z M0,0z M29.235,188.5L29.235,190.5298C30.3225,191.33914 31.7002,191.8371 33.2258,191.8371 34.7463,191.8371 36.1233,191.33415 37.2166,190.5298L37.2166,188.7408C36.1488,189.46922 34.8082,189.9105 33.3634,189.9105 31.7753,189.9105 30.3397,189.36863 29.235,188.4999z</Geometry>
+    <Geometry x:Key="calendarGeometry21">F1 M45.500357,56.692912z M0,0z M34.936,165.23L34.936,171.2612C36.9269,172.6761 38.311,175.555 38.311,178.8862 38.311,182.2231 36.9324,185.1081 34.936,186.5112L34.936,191.605C39.7063,190.92695 43.436,185.2822 43.436,178.417 43.436,171.5523 39.7063,165.908 34.936,165.229z</Geometry>
+    <Geometry x:Key="calendarGeometry22">F1 M45.500357,56.692912z M0,0z M29.235,188.5L29.235,190.5298C30.3225,191.33914 31.7002,191.8371 33.2258,191.8371 34.7463,191.8371 36.1233,191.33415 37.2166,190.5298L37.2166,188.7408C36.1488,189.46922 34.8082,189.9105 33.3634,189.9105 31.7753,189.9105 30.3397,189.36863 29.235,188.4999z</Geometry>
+    <DrawingGroup x:Key="calendarDrawingGroup" ClipGeometry="M0,0 V56.692912 H45.500357 V0 H0 Z">
+        <DrawingGroup.Transform>
+            <TranslateTransform X="77.456499999999991" Y="438.93" />
+        </DrawingGroup.Transform>
+        <DrawingGroup Opacity="1" Transform="1,0,0,1,-4.7251,-190.50862">
+            <DrawingGroup Opacity="1" Transform="0.5535262,0,0,0.5535262,3.2166858,4.2422844">
+                <DrawingGroup Transform="1,0,0,-1,0,0">
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="43.487,-429.39999" EndPoint="43.452,-435.98999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,0.99209,-0.17678,-6.3874">
+                                <GradientStop Color="#FF595D5F" Offset="0" />
+                                <GradientStop Color="#FFCECECE" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry RadiusX="4.6213" RadiusY="4.6213" Rect="3.0251,-438.93,80.5,44.352" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,-1,0,0">
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="43.487,-429.39999" EndPoint="43.452,-435.98999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,1,-0.17678,-1.2929">
+                                <GradientStop Color="#FF595D5F" Offset="0" />
+                                <GradientStop Color="#FFCECECE" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry RadiusX="4.6581" RadiusY="4.6581" Rect="3.0251,-437.28,80.5,44.705" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,-1,0,0">
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="43.487,-429.39999" EndPoint="43.452,-435.98999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,1,-0.17678,0.70711">
+                                <GradientStop Color="#FF595D5F" Offset="0" />
+                                <GradientStop Color="#FFCECECE" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry RadiusX="4.6581" RadiusY="4.6581" Rect="3.0251,-435.28,80.5,44.705" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup Transform="1,0,0,-1,0,0">
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="23.212999,204.56" EndPoint="45.75,256.16" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,1,-2.4749,-637.85">
+                                <GradientStop Color="#FFE8E8E8" Offset="0" />
+                                <GradientStop Color="#FFCCCCCC" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="0.6" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter">
+                                <Pen.Brush>
+                                    <LinearGradientBrush StartPoint="37.549999,-365.54999" EndPoint="35.212002,-437.14999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,1,0,17.854">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Pen.Brush>
+                            </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry RadiusX="8.2314" RadiusY="8.2314" Rect="3.0251,-432.99,80.5,79" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+            <DrawingGroup Transform="0.5535262,0,0,0.5535262,2.1096334,85.057109">
+                <GeometryDrawing Geometry="{StaticResource calendarGeometry1}">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush StartPoint="35.341999,249.94" EndPoint="39.952,257.03" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="1,0,0,1,37.83,25.279">
+                            <GradientStop Color="#FF505050" Offset="0" />
+                            <GradientStop Color="#00505050" Offset="1" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+            </DrawingGroup>
+            <DrawingGroup Opacity="1" Transform="0.72157675,0,0,0.72157675,-79.319605,74.504686">
+                <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource calendarGeometry2}" />
+                <DrawingGroup Transform="0.76712,0,0,0.76712,112.85,14.624">
+                    <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource calendarGeometry3}" />
+                </DrawingGroup>
+            </DrawingGroup>
+            <DrawingGroup Transform="0.89263303,-0.45078407,0.43825302,0.89885165,0,0">
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <RadialGradientBrush Center="67,263.85999" RadiusX="16.75" RadiusY="16.75" GradientOrigin="67,263.85999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="0.58367" Transform="0.57303282,0,0,0.38897979,-106.25145,124.37539">
+                            <GradientStop Color="#FFFFFFFF" Offset="0" />
+                            <GradientStop Color="#00FFFFFF" Offset="1" />
+                        </RadialGradientBrush>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry RadiusX="9.5983" RadiusY="6.5154" Center="-67.8582,227.0129" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+            <GeometryDrawing Geometry="{StaticResource calendarGeometry4}">
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="59.042999,-261.62" EndPoint="78.355003,-280.64001" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="0.5535262,0,0,-0.5535262,2.0691026,85.085769">
+                        <GradientStop Color="#FFCDCDCD" Offset="0" />
+                        <GradientStop Color="#A1848484" Offset="0.60304" />
+                        <GradientStop Color="#FFFFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+            </GeometryDrawing>
+            <GeometryDrawing Geometry="{StaticResource calendarGeometry5}">
+                <GeometryDrawing.Brush>
+                    <LinearGradientBrush StartPoint="114.5,215.86" EndPoint="157.5,236.17999" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="0.55109622,0,0,0.5535262,-53.658131,83.39653">
+                        <GradientStop Color="#FF729FCF" Offset="0" />
+                        <GradientStop Color="#FF3465A4" Offset="1" />
+                    </LinearGradientBrush>
+                </GeometryDrawing.Brush>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#FF9CBCDD" Thickness="0.553526" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+            <DrawingGroup Opacity="1" Transform="0.42459887,0,0,0.42459887,11.253333,138.32958">
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry6}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry7}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry8}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry9}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry10}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry11}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry12}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry13}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry14}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry15}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry16}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry17}" />
+                <GeometryDrawing Brush="#FFFFFFFF" Geometry="{StaticResource calendarGeometry18}" />
+            </DrawingGroup>
+            <DrawingGroup Opacity="1" Transform="0.5535262,0,0,0.5535262,1.3262831,85.057109">
+                <DrawingGroup Opacity="1" Transform="1,0,0,1,-11.667,27.4">
+                    <GeometryDrawing Geometry="{StaticResource calendarGeometry19}">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF494949" Opacity="0.2" />
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <DrawingGroup Transform="0.89297,0,0,0.89297,9.099,-4.2719">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush StartPoint="24.395,211.97" EndPoint="26.870001,213.73" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                                    <GradientStop Color="#FF555753" Offset="0" />
+                                    <GradientStop Color="#FF000000" Offset="1" />
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                            <GeometryDrawing.Geometry>
+                                <EllipseGeometry RadiusX="7.0711" RadiusY="6.364" Center="26.8701,213.7335" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Opacity="1" Transform="1.1009,0,0,1.3252,18.021,-72.299">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush StartPoint="17.857,188.42999" EndPoint="18.214001,207.36" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="0.78243,0,0,1,-0.44536,-8.217">
+                                    <GradientStop Color="#FF767272" Offset="0" />
+                                    <GradientStop Color="#FFE6E2E2" Offset="0.39954999999999996" />
+                                    <GradientStop Color="#FF585858" Offset="1" />
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry RadiusX="8.3879" RadiusY="8.3879" Rect="10.173,178.43,7.2654,20.714" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <DrawingGroup Transform="1.1536,0,0,1,-1.8123,0">
+                            <GeometryDrawing>
+                                <GeometryDrawing.Brush>
+                                    <LinearGradientBrush StartPoint="13.75,188.61" EndPoint="13.538,174.67999" MappingMode="Absolute" SpreadMethod="Reflect" Opacity="0.47126">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </GeometryDrawing.Brush>
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="8.3879" RadiusY="8.3879" Rect="11.423,178.43,4.2297,20.714" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                    <GeometryDrawing Geometry="{StaticResource calendarGeometry20}">
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="24.395,211.97" EndPoint="26.870001,213.73" MappingMode="Absolute" SpreadMethod="Pad" Opacity="0.31837" Transform="0.89297,0,0,0.89297,9.2366,-4.6847">
+                                <GradientStop Color="#FF555753" Offset="0" />
+                                <GradientStop Color="#FF000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup Opacity="1" Transform="1,0,0,1,34.936,27.4">
+                    <GeometryDrawing Geometry="{StaticResource calendarGeometry21}">
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FF494949" Opacity="0.2" />
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                    <DrawingGroup Transform="0.89297,0,0,0.89297,9.099,-4.2719">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush StartPoint="24.395,211.97" EndPoint="26.870001,213.73" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1">
+                                    <GradientStop Color="#FF555753" Offset="0" />
+                                    <GradientStop Color="#FF000000" Offset="1" />
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                            <GeometryDrawing.Geometry>
+                                <EllipseGeometry RadiusX="7.0711" RadiusY="6.364" Center="26.8701,213.7335" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                    <DrawingGroup Opacity="1" Transform="1.1009,0,0,1.3252,18.021,-72.299">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush StartPoint="17.857,188.42999" EndPoint="18.214001,207.36" MappingMode="Absolute" SpreadMethod="Pad" Opacity="1" Transform="0.78243,0,0,1,-0.44536,-8.217">
+                                    <GradientStop Color="#FF767272" Offset="0" />
+                                    <GradientStop Color="#FFE6E2E2" Offset="0.39954999999999996" />
+                                    <GradientStop Color="#FF585858" Offset="1" />
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry RadiusX="8.3879" RadiusY="8.3879" Rect="10.173,178.43,7.2654,20.714" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <DrawingGroup Transform="1.1536,0,0,1,-1.8123,0">
+                            <GeometryDrawing>
+                                <GeometryDrawing.Brush>
+                                    <LinearGradientBrush StartPoint="13.75,188.61" EndPoint="13.538,174.67999" MappingMode="Absolute" SpreadMethod="Reflect" Opacity="0.47126">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </GeometryDrawing.Brush>
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry RadiusX="8.3879" RadiusY="8.3879" Rect="11.423,178.43,4.2297,20.714" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                    <GeometryDrawing Geometry="{StaticResource calendarGeometry22}">
+                        <GeometryDrawing.Brush>
+                            <LinearGradientBrush StartPoint="24.395,211.97" EndPoint="26.870001,213.73" MappingMode="Absolute" SpreadMethod="Pad" Opacity="0.31837" Transform="0.89297,0,0,0.89297,9.2366,-4.6847">
+                                <GradientStop Color="#FF555753" Offset="0" />
+                                <GradientStop Color="#FF000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="calendar" Drawing="{StaticResource calendarDrawingGroup}" />
+    <!--#endregion-->
 </ResourceDictionary>

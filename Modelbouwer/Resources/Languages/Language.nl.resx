@@ -1270,9 +1270,6 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProjectProjectDatagridHeaderCode" xml:space="preserve">
     <value>Zoeknaam</value>
   </data>
-  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
-    <value>Omschrijving</value>
-  </data>
   <data name="metadataProjectProjectDatagridHeaderStartDate" xml:space="preserve">
     <value>Start datum</value>
   </data>
@@ -2404,7 +2401,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ExportProjectsTitle" xml:space="preserve">
     <value>Exporteer projectgegevens</value>
   </data>
-  <data name="ExportProjectsFileName" xml:space="preserve">
+  <data name="ExportProjectFileName" xml:space="preserve">
     <value>Projecten</value>
   </data>
   <data name="ExportProductsSubTitle" xml:space="preserve">
@@ -3389,7 +3386,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Merk</value>
   </data>
   <data name="metadataBrandHeaderSubtitle" xml:space="preserve">
-    <value>Merk beheren</value>
+    <value>Merken beheren</value>
   </data>
   <data name="metadataBrandHeaderTitel" xml:space="preserve">
     <value>Beheer van de merken tabel</value>
@@ -3800,6 +3797,102 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Projecten</value>
   </data>
   <data name="metadataProjectHeaderSubtitle" xml:space="preserve">
-    <value>Projecten beheren en bekijken</value>
+    <value>Projecten beheren</value>
+  </data>
+  <data name="GeneralDatePickerWatermark" xml:space="preserve">
+    <value>Selecteer datum</value>
+  </data>
+  <data name="GeneralTimePickerWatermark" xml:space="preserve">
+    <value>Selecteer tijdstip</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatus" xml:space="preserve">
+    <value>Project status</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatusTag" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldStatusTooltip" xml:space="preserve">
+    <value>Is het geselecteerde project voltooid of niet</value>
+  </data>
+  <data name="ProjectEntryNotCompletedTag" xml:space="preserve">
+    <value>Mee bezig</value>
+  </data>
+  <data name="ProjectEntryNotCompletedTooltip" xml:space="preserve">
+    <value>Meld het project gereed</value>
+  </data>
+  <data name="ProjectEntryCompletedTag" xml:space="preserve">
+    <value>Gereed</value>
+  </data>
+  <data name="ProjectEntryCompletedTooltip" xml:space="preserve">
+    <value>Meld het product als: Mee bezig</value>
+  </data>
+  <data name="ProjectEntryStatus" xml:space="preserve">
+    <value>Gereed</value>
+  </data>
+  <data name="OrderEntryStatus" xml:space="preserve">
+    <value>Gereed</value>
+  </data>
+  <data name="OrderEntryCompletedTag" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="OrderEntryCompletedTooltip" xml:space="preserve">
+    <value>Meld de inkoop order als geleverd</value>
+  </data>
+  <data name="OrderEntryNotCompletedTag" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OrderEntryNotCompletedTooltip" xml:space="preserve">
+    <value>Inkooporder nog niet (volledig) geleverd</value>
+  </data>
+  <data name="ImageButtonRotateTooltip" xml:space="preserve">
+    <value>Afbeelding kwartslag draaien</value>
+  </data>
+  <data name="ImageButtonNewTooltip" xml:space="preserve">
+    <value>Afbeelding toevoegen/wijzigen</value>
+  </data>
+  <data name="ImageButtonDeleteTooltip" xml:space="preserve">
+    <value>Afbeelding verwijderen</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProject" xml:space="preserve">
+    <value>Aantal getoonde projecten</value>
+  </data>
+  <data name="metadataProjectProjectDatagridHeaderName" xml:space="preserve">
+    <value>Projectnaam</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderCodeLabel" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderNameLabel" xml:space="preserve">
+    <value>Projectnaam</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Project.Label" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Project.Tooltip" xml:space="preserve">
+    <value>Projectbeheer</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderIdLabel" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderStartDateLabel" xml:space="preserve">
+    <value>Start datum</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderEndDateLabel" xml:space="preserve">
+    <value>Eind datum</value>
+  </data>
+  <data name="metadataProjectDatagridHeaderClosedLabel" xml:space="preserve">
+    <value>Voltooid</value>
+  </data>
+  <data name="toolbarButtonFontStrikeout" xml:space="preserve">
+    <value>Doorstrepen</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTime" xml:space="preserve">
+    <value>Verwachte bouw uren</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTag" xml:space="preserve">
+    <value>Bouwtijd</value>
+  </data>
+  <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip" xml:space="preserve">
+    <value>Verwachte bouw tijd in uren</value>
   </data>
 </root>

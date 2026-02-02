@@ -16,8 +16,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
-            <RowDefinition Height="96" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="125" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
             <RowDefinition Height="25" />
@@ -44,59 +44,54 @@
         <!--#region Detail fields-->
         <Grid
             Grid.Row="1"
+            Margin="10,0,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
                 <RowDefinition Height="32" />
+                <RowDefinition Height="25" />
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--  Currency code  -->
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Content="{x:Static language:Language.metadataCurrencyEntryFieldCode}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <Label
+                    Content="{x:Static language:Language.metadataCurrencyEntryFieldCode}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <TextBox
-                Grid.Row="0"
-                Grid.Column="2"
+                Grid.Row="1"
                 Width="100"
+                Margin="5 0 0 0"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCurrencyEntryFieldCodeTag}"
                 Text="{Binding SelectedCurrency.CurrencyCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataCurrencyEntryFieldCodeTooltip}" />
 
             <!--  Currency name  -->
-            <Label
-                Grid.Row="0"
-                Grid.Column="3"
-                Content="{x:Static language:Language.metadataCurrencyEntryFieldName}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Label
+                    Content="{x:Static language:Language.metadataCurrencyEntryFieldName}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="4"
-                Style="{DynamicResource EntrySemicolon}" />
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <TextBox
-                Grid.Row="0"
-                Grid.Column="5"
+                Grid.Row="1"
+                Grid.Column="1"
                 Width="250"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCurrencyEntryFieldNameTag}"
@@ -104,20 +99,18 @@
                 ToolTip="{x:Static language:Language.metadataCurrencyEntryFieldNameTooltip}" />
 
             <!--  Currency symbol  -->
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Content="{x:Static language:Language.metadataCurrencyEntryFieldSymbol}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label
+                    Content="{x:Static language:Language.metadataCurrencyEntryFieldSymbol}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="1"
-                Grid.Column="1"
-                Style="{DynamicResource EntrySemicolon}" />
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <TextBox
-                Grid.Row="1"
-                Grid.Column="2"
+                Grid.Row="3"
+                Margin="5 0 0 0"
                 Width="100"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataCurrencyEntryFieldSymbolTag}"
@@ -125,20 +118,19 @@
                 ToolTip="{x:Static language:Language.metadataCurrencyEntryFieldSymbolTooltip}" />
 
             <!--  Currency Exchange rate  -->
-            <Label
-                Grid.Row="1"
-                Grid.Column="3"
-                Content="{x:Static language:Language.metadataCurrencyEntryFieldRate}"
-                Style="{DynamicResource EntryLabel}" />
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                <Label
+                    Content="{x:Static language:Language.metadataCurrencyEntryFieldRate}"
+                    Style="{DynamicResource EntryLabel}" />
 
-            <Label
-                Grid.Row="1"
-                Grid.Column="4"
-                Style="{DynamicResource EntrySemicolon}" />
+                <Label
+                    Style="{DynamicResource EntrySemicolon}" />
+            </StackPanel>
 
             <syncfusion:DoubleTextBox
-                Grid.Row="1"
-                Grid.Column="5"
+                Grid.Row="3"
+                Margin="5 0 0 0"
+                Grid.Column="1"
                 Width="80"
                 NumberDecimalDigits="4"
                 Style="{DynamicResource SyncfusionDoubleTextBox}"

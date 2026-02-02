@@ -1,9 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
-using Modelbouwer.Interfaces;
+﻿using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
@@ -57,6 +52,7 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private IRelayCommand? _addCommand;
+	private IRelayCommand? _addImageCommand;
 	private IRelayCommand? _deleteCommand;
 	private IAsyncRelayCommand? _saveCommand;
 	private IAsyncRelayCommand? _reloadCommand;

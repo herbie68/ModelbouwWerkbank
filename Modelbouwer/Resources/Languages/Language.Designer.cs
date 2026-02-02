@@ -684,9 +684,9 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Projecten.
         /// </summary>
-        public static string ExportProjectsFileName {
+        public static string ExportProjectFileName {
             get {
-                return ResourceManager.GetString("ExportProjectsFileName", resourceCulture);
+                return ResourceManager.GetString("ExportProjectFileName", resourceCulture);
             }
         }
         
@@ -1546,6 +1546,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selecteer datum.
+        /// </summary>
+        public static string GeneralDatePickerWatermark {
+            get {
+                return ResourceManager.GetString("GeneralDatePickerWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to dag.
         /// </summary>
         public static string generaldatetimeDay {
@@ -2118,6 +2127,42 @@ namespace Modelbouwer.Resources.Languages {
         public static string generalTimeEntries {
             get {
                 return ResourceManager.GetString("generalTimeEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer tijdstip.
+        /// </summary>
+        public static string GeneralTimePickerWatermark {
+            get {
+                return ResourceManager.GetString("GeneralTimePickerWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afbeelding verwijderen.
+        /// </summary>
+        public static string ImageButtonDeleteTooltip {
+            get {
+                return ResourceManager.GetString("ImageButtonDeleteTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afbeelding toevoegen/wijzigen.
+        /// </summary>
+        public static string ImageButtonNewTooltip {
+            get {
+                return ResourceManager.GetString("ImageButtonNewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Afbeelding kwartslag draaien.
+        /// </summary>
+        public static string ImageButtonRotateTooltip {
+            get {
+                return ResourceManager.GetString("ImageButtonRotateTooltip", resourceCulture);
             }
         }
         
@@ -4615,7 +4660,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Merk beheren.
+        ///   Looks up a localized string similar to Merken beheren.
         /// </summary>
         public static string metadataBrandHeaderSubtitle {
             get {
@@ -6496,6 +6541,60 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voltooid.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderClosedLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderClosedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderCodeLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderCodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eind datum.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderEndDateLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderEndDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderIdLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderIdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projectnaam.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderNameLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start datum.
+        /// </summary>
+        public static string metadataProjectDatagridHeaderStartDateLabel {
+            get {
+                return ResourceManager.GetString("metadataProjectDatagridHeaderStartDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dit project wordt nog gebruikt en kan niet worden verwijderd.
         /// </summary>
         public static string metadataProjectDeleteError {
@@ -6505,7 +6604,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Projecten beheren en bekijken.
+        ///   Looks up a localized string similar to Projecten beheren.
         /// </summary>
         public static string metadataProjectHeaderSubtitle {
             get {
@@ -6559,7 +6658,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Omschrijving.
+        ///   Looks up a localized string similar to Projectnaam.
         /// </summary>
         public static string metadataProjectProjectDatagridHeaderName {
             get {
@@ -7225,6 +7324,33 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verwachte bouw uren.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTime {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bouwtijd.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTag {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verwachte bouw tijd in uren.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Omschrijving.
         /// </summary>
         public static string metadataProjectTabGeneralTabItemGeneralFieldName {
@@ -7275,6 +7401,33 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataProjectTabGeneralTabItemGeneralFieldStartDateTooltip {
             get {
                 return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldStartDateTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project status.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldStatus {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldStatusTag {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldStatusTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is het geselecteerde project voltooid of niet.
+        /// </summary>
+        public static string metadataProjectTabGeneralTabItemGeneralFieldStatusTooltip {
+            get {
+                return ResourceManager.GetString("metadataProjectTabGeneralTabItemGeneralFieldStatusTooltip", resourceCulture);
             }
         }
         
@@ -8845,6 +8998,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Project_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Project.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projectbeheer.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Project_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Project.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Voorraadlocaties.
         /// </summary>
         public static string navigation_Resources_SubItem_StorageLocation_Label {
@@ -9039,6 +9210,51 @@ namespace Modelbouwer.Resources.Languages {
         public static string OrderDatagridHeaderSupplierName {
             get {
                 return ResourceManager.GetString("OrderDatagridHeaderSupplierName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geleverd.
+        /// </summary>
+        public static string OrderEntryCompletedTag {
+            get {
+                return ResourceManager.GetString("OrderEntryCompletedTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meld de inkoop order als geleverd.
+        /// </summary>
+        public static string OrderEntryCompletedTooltip {
+            get {
+                return ResourceManager.GetString("OrderEntryCompletedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string OrderEntryNotCompletedTag {
+            get {
+                return ResourceManager.GetString("OrderEntryNotCompletedTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inkooporder nog niet (volledig) geleverd.
+        /// </summary>
+        public static string OrderEntryNotCompletedTooltip {
+            get {
+                return ResourceManager.GetString("OrderEntryNotCompletedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gereed.
+        /// </summary>
+        public static string OrderEntryStatus {
+            get {
+                return ResourceManager.GetString("OrderEntryStatus", resourceCulture);
             }
         }
         
@@ -9885,6 +10101,51 @@ namespace Modelbouwer.Resources.Languages {
         public static string ProjectCostsReportButtonNoGroup {
             get {
                 return ResourceManager.GetString("ProjectCostsReportButtonNoGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gereed.
+        /// </summary>
+        public static string ProjectEntryCompletedTag {
+            get {
+                return ResourceManager.GetString("ProjectEntryCompletedTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meld het project gereed.
+        /// </summary>
+        public static string ProjectEntryCompletedTooltip {
+            get {
+                return ResourceManager.GetString("ProjectEntryCompletedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mee bezig.
+        /// </summary>
+        public static string ProjectEntryNotCompletedTag {
+            get {
+                return ResourceManager.GetString("ProjectEntryNotCompletedTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meld het project als: Mee bezig.
+        /// </summary>
+        public static string ProjectEntryNotCompletedTooltip {
+            get {
+                return ResourceManager.GetString("ProjectEntryNotCompletedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gereed.
+        /// </summary>
+        public static string ProjectEntryStatus {
+            get {
+                return ResourceManager.GetString("ProjectEntryStatus", resourceCulture);
             }
         }
         
@@ -10934,6 +11195,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doorstrepen.
+        /// </summary>
+        public static string toolbarButtonFontStrikeout {
+            get {
+                return ResourceManager.GetString("toolbarButtonFontStrikeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Onderstrepen.
         /// </summary>
         public static string toolbarButtonFontUnderline {
@@ -11092,6 +11362,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelNumberSeperator {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelNumberSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde projecten.
+        /// </summary>
+        public static string toolbarVisibleRowLabelProject {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelProject", resourceCulture);
             }
         }
         

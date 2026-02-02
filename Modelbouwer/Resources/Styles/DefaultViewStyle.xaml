@@ -31,20 +31,26 @@
     
     <!--#region Styles for detail field region -->
     <Style x:Key="EntryLabel" TargetType="Label">
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="pack://application:,,,/Resources/Fonts/Fredoka.ttf"/>
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontStyle" Value="Italic"/>
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource EntryFontBrush}" />
-        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Margin" Value="5,2,0,-5" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="VerticalContentAlignment" Value="Bottom" />
     </Style>
 
     <Style x:Key="EntrySemicolon" TargetType="Label">
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="pack://application:,,,/Resources/Fonts/Fredoka.ttf"/>
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Margin" Value="0,2,0,-5" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource EntryFontBrush}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="VerticalContentAlignment" Value="Bottom" />
         <Setter Property="Content" Value=":" />
     </Style>
     <!--#endregion-->
