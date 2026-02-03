@@ -8,30 +8,22 @@ public partial class RtfEditor : UserControl
 	public RtfEditor()
 	{
 		InitializeComponent();
+		RichTextBoxRtfBehavior.Attach( RtbEditor );
 	}
 
-	// Bindable RTF property
 	public static readonly DependencyProperty RtfTextProperty =
 		DependencyProperty.Register(
 			nameof(RtfText),
 			typeof(string),
 			typeof(RtfEditor),
-			new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+			new FrameworkPropertyMetadata(
+				string.Empty,
+				FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 	public string RtfText
 	{
 		get => ( string ) GetValue( RtfTextProperty );
 		set => SetValue( RtfTextProperty, value );
-	}
-
-	// Enter = LineBreak
-	private void RtbEditor_KeyDown( object sender, KeyEventArgs e )
-	{
-		if ( e.Key == Key.Enter && !Keyboard.IsKeyDown( Key.LeftShift ) && !Keyboard.IsKeyDown( Key.RightShift ) )
-		{
-			e.Handled = true;
-			RtbEditor.CaretPosition.InsertLineBreak();
-		}
 	}
 
 	// StrikeThrough workaround

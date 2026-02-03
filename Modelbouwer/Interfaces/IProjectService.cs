@@ -8,5 +8,7 @@ public interface IProjectService
 	Task DeleteProjectAsync( int projectId );
 	Task<bool> IsProjectUsedAsync( int projectId );
 	Task<bool> NameExistsAsync( string? projectName );
-	Task<DateOnly?> GetExpectedEndDateAsync( int projectId );
+	//Task<DateOnly?> GetExpectedEndDateAsync( int projectId );
+	Task<DateOnly?> GetLastWorkDateOnProjectAsync( int projectId );
+	Task<ProjectWorkStats?> GetProjectWorkStatsAsync( int projectId );
 }

@@ -110,10 +110,9 @@
         <RichTextBox
             x:Name="RtbEditor"
             Grid.Row="1"
-            helpers:RichTextBoxRtfBehavior.RtfText="{Binding RtfText, Mode=TwoWay}"
+            helpers:RichTextBoxRtfBehavior.RtfText="{Binding RtfText, RelativeSource={RelativeSource AncestorType=UserControl}}"
             VerticalScrollBarVisibility="Auto"
             AcceptsReturn="True"
-            AcceptsTab="True"
-            KeyDown="RtbEditor_KeyDown"/>
+            AcceptsTab="True"/>
     </Grid>
 </UserControl>

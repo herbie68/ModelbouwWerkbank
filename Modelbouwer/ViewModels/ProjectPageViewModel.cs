@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using System.ComponentModel;
+
+using CommunityToolkit.Mvvm.Input;
 
 using Microsoft.Win32;
 
@@ -7,22 +9,19 @@ namespace Modelbouwer.ViewModels;
 public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 {
 	private readonly IProjectService _dataService;
-	public DateOnly? ProjectExpectedEndDate;
+	public ProjectModel? SelectedProject
+	{
+		get => SelectedItem;
+		set => SelectedItem = value;
+	}
 
-	public bool IsProjectClosed => SelectedProject?.ProjectClosed == true;
+	public bool IsProjectClosed => SelectedProject?.ProjectClosed ?? false;
 
 	public Visibility EndDatePickerVisibility =>
 		IsProjectClosed ? Visibility.Visible : Visibility.Collapsed;
 
 	public Visibility ExpectedEndDateVisibility =>
 		IsProjectClosed ? Visibility.Collapsed : Visibility.Visible;
-
-	// SelectedProject als type-safe alias
-	public ProjectModel? SelectedProject
-	{
-		get => SelectedItem;
-		set => SelectedItem = value;
-	}
 
 	// Commands
 	public IRelayCommand AddProjectCommand => AddCommand;
@@ -31,6 +30,8 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
+
+	private ProjectModel? _previousProject;
 
 	private IRelayCommand? _rotateCommand;
 	private IRelayCommand? _addImageCommand;
@@ -49,33 +50,51 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	// Override SelectedItem changed om DefaultProject te zetten
 	protected override void OnSelectedItemChanged( ProjectModel? value )
 	{
-		if ( value == null )
-			return;
+		base.OnSelectedItemChanged( value );
 
-		OnPropertyChanged( nameof( SelectedProject ) );
+		// Unhook oude handlers
+		if ( _previousProject != null )
+			_previousProject.PropertyChanged -= SelectedProject_PropertyChanged;
+
+		_previousProject = value;
+
+		if ( value != null )
+			value.PropertyChanged += SelectedProject_PropertyChanged;
+
+		// Refresh UI properties die afhankelijk zijn van de geselecteerde project
+		RaiseProjectStateProperties();
+
+		// Reset workstats en calculated fields
+		_currentWorkStats = null;
+		ProjectExpectedEndDate = null;
+
+		// Laad nieuwe workstats en recalc expected end date
+		if ( value != null )
+			_ = LoadWorkStatsAsync();
+	}
+
+	private void SelectedProject_PropertyChanged( object? sender, PropertyChangedEventArgs e )
+	{
+		switch ( e.PropertyName )
+		{
+			case nameof( ProjectModel.ProjectExpectedTime ):
+			case nameof( ProjectModel.ProjectStartDate ):
+				RecalculateExpectedEndDate();
+				break;
+
+			case nameof( ProjectModel.ProjectClosed ):
+				_ = HandleProjectClosedChangedAsync();
+				_ = LoadWorkStatsAsync();
+				RaiseProjectStateProperties();
+				break;
+		}
+	}
+
+	private void RaiseProjectStateProperties()
+	{
 		OnPropertyChanged( nameof( IsProjectClosed ) );
 		OnPropertyChanged( nameof( EndDatePickerVisibility ) );
 		OnPropertyChanged( nameof( ExpectedEndDateVisibility ) );
-
-		_ = LoadExpectedEndDateAsync( value );
-	}
-
-	private async Task LoadExpectedEndDateAsync( ProjectModel project )
-	{
-		var projectId = project.ProjectId;
-
-		if ( !project.ProjectClosed )
-		{
-			var result = await _dataService.GetExpectedEndDateAsync(projectId);
-
-			if ( SelectedProject?.ProjectId == projectId )
-				ProjectExpectedEndDate = result;
-		}
-		else
-		{
-			if ( SelectedProject?.ProjectId == projectId )
-				ProjectExpectedEndDate = null;
-		}
 	}
 
 	// Async projects laden
@@ -137,10 +156,39 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		SelectedProject.ProjectImageRotationAngle = 0;
 	}
 
+	private async Task HandleProjectClosedChangedAsync()
+	{
+		var project = SelectedProject;
+		if ( project == null )
+			return;
+
+		if ( project.ProjectClosed )
+		{
+			var lastWorkDate =
+			await _dataService.GetLastWorkDateOnProjectAsync(project.ProjectId);
+
+			project.ProjectEndDate =
+				lastWorkDate ?? DateOnly.FromDateTime( DateTime.Today );
+		}
+		else
+		{
+			project.ProjectEndDate = null;
+		}
+
+		// Notify the UI th the EndDate has changed
+		OnPropertyChanged( nameof( SelectedProject ) );
+	}
+
 	// Abstract overrides voor CRUD
 	protected override Task<List<ProjectModel>> LoadItemsAsync() => _dataService.GetAllProjectsAsync();
 	protected override Task<int> InsertAsync( ProjectModel item ) => _dataService.InsertNewProjectAsync( CreateParameters( item ) );
-	protected override Task UpdateAsync( ProjectModel item ) => _dataService.UpdateProjectAsync( CreateParameters( item ) );
+	protected override Task UpdateAsync( ProjectModel item )
+	{
+		if ( SelectedItem == null )
+			return Task.CompletedTask;
+
+		return _dataService.UpdateProjectAsync( CreateParameters( SelectedItem ) );
+	}
 	protected override async Task DeleteAsync( ProjectModel item )
 	{
 		if ( item == null )
@@ -185,14 +233,85 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		OnPropertyChanged( nameof( TotalProjectCount ) );
 	}
 
+	#region Expected end date of the project
+	private double _projectExpectedTime;
+	public double ProjectExpectedTime
+	{
+		get => _projectExpectedTime;
+		set
+		{
+			if ( SetProperty( ref _projectExpectedTime, value ) )
+			{
+				RecalculateExpectedEndDate();
+			}
+		}
+	}
+
+	private DateTime? _projectExpectedEndDate;
+	public DateTime? ProjectExpectedEndDate
+	{
+		get => _projectExpectedEndDate;
+		private set => SetProperty( ref _projectExpectedEndDate, value );
+	}
+
+	private ProjectWorkStats? _currentWorkStats;
+
+	private async Task LoadWorkStatsAsync()
+	{
+		if ( SelectedProject == null )
+			return;
+
+		_currentWorkStats = await _dataService.GetProjectWorkStatsAsync( SelectedProject.ProjectId );
+
+		RecalculateExpectedEndDate();
+	}
+
+	private void RecalculateExpectedEndDate()
+	{
+		if ( _currentWorkStats == null || SelectedProject == null || SelectedProject.ProjectExpectedTime <= 0 || SelectedItem == null )
+		{
+			ProjectExpectedEndDate = null;
+			return;
+		}
+
+		var totalWorkedHours = _currentWorkStats.TotalHours;
+		var startDate = SelectedProject.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue);
+
+		var hoursToDo = SelectedItem.ProjectExpectedTime - totalWorkedHours;
+		if ( hoursToDo <= 0 )
+		{
+			ProjectExpectedEndDate = DateTime.Now;
+			return;
+		}
+
+		var elapsedDays = (DateTime.Now - startDate).TotalDays;
+		if ( elapsedDays <= 0 )
+		{
+			ProjectExpectedEndDate = null;
+			return;
+		}
+
+		var workedHoursPerDay = totalWorkedHours / elapsedDays;
+		if ( workedHoursPerDay <= 0 )
+		{
+			ProjectExpectedEndDate = null;
+			return;
+		}
+
+		var daysToGo = hoursToDo / workedHoursPerDay;
+		ProjectExpectedEndDate = DateTime.Now.AddDays( ( double ) daysToGo );
+	}
+
+	#endregion
+
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( ProjectModel c ) => new()
 	{
 		{ $"@{DBNames.ProjectFieldNameId}", c.ProjectId },
 		{ $"@{DBNames.ProjectFieldNameCode}", c.ProjectCode },
 		{ $"@{DBNames.ProjectFieldNameName}", c.ProjectName?.Trim() },
-		{ $"@{DBNames.ProjectFieldNameStartDate}", c.ProjectStartDate },
-		{ $"@{DBNames.ProjectFieldNameEndDate}", c.ProjectEndDate },
+		{ $"@{DBNames.ProjectFieldNameStartDate}", c.ProjectStartDate.HasValue ? c.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue) : DBNull.Value},
+		{ $"@{DBNames.ProjectFieldNameEndDate}", (c.ProjectClosed && c.ProjectEndDate.HasValue) ? (object)c.ProjectEndDate.Value : DBNull.Value },
 		{ $"@{DBNames.ProjectFieldNameExpectedTime}", c.ProjectExpectedTime },
 		{ $"@{DBNames.ProjectFieldNameImage}", c.ProjectImage },
 		{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", c.ProjectImageRotationAngle },

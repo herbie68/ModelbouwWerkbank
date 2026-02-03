@@ -4,7 +4,8 @@ namespace Modelbouwer.Helpers;
 
 public static class RichTextBoxRtfBehavior
 {
-	private static bool _isUpdatingFromSource;
+	private static bool _isUpdating = false;
+	private static bool _enterPressed = false;
 
 	public static readonly DependencyProperty RtfTextProperty =
 		DependencyProperty.RegisterAttached(
@@ -12,65 +13,97 @@ public static class RichTextBoxRtfBehavior
 			typeof(string),
 			typeof(RichTextBoxRtfBehavior),
 			new FrameworkPropertyMetadata(
-				null,
+				string.Empty,
 				FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
 				OnRtfTextChanged));
 
-	public static string? GetRtfText( DependencyObject obj )
-		=> ( string? ) obj.GetValue( RtfTextProperty );
+	public static string GetRtfText( DependencyObject obj )
+		=> ( string ) obj.GetValue( RtfTextProperty );
 
-	public static void SetRtfText( DependencyObject obj, string? value )
+	public static void SetRtfText( DependencyObject obj, string value )
 		=> obj.SetValue( RtfTextProperty, value );
 
-	private static void OnRtfTextChanged(
-		DependencyObject d,
-		DependencyPropertyChangedEventArgs e )
+	private static void OnRtfTextChanged( DependencyObject d, DependencyPropertyChangedEventArgs e )
 	{
-		if ( _isUpdatingFromSource )
-			return;
-
 		if ( d is not RichTextBox rtb )
 			return;
 
-		rtb.TextChanged -= RichTextBox_TextChanged;
-
-		rtb.Document.Blocks.Clear();
-
-		if ( e.NewValue is string rtf && !string.IsNullOrWhiteSpace( rtf ) )
-		{
-			using var stream = new MemoryStream(Encoding.UTF8.GetBytes(rtf));
-			var range = new TextRange(
-				rtb.Document.ContentStart,
-				rtb.Document.ContentEnd);
-
-			range.Load( stream, DataFormats.Rtf );
-		}
-
-		rtb.CaretPosition = rtb.Document.ContentEnd;
-		rtb.TextChanged += RichTextBox_TextChanged;
-	}
-
-	private static void RichTextBox_TextChanged(
-		object sender,
-		TextChangedEventArgs e )
-	{
-		if ( _isUpdatingFromSource )
+		// Alleen initial load vanaf VM (geen caret reset)
+		if ( !rtb.IsLoaded )
 			return;
 
+		var rtf = e.NewValue as string;
+		if ( !string.IsNullOrEmpty( rtf ) )
+		{
+			using var stream = new MemoryStream(Encoding.UTF8.GetBytes(rtf));
+			rtb.Document.Blocks.Clear();
+			rtb.Selection.Load( stream, DataFormats.Rtf );
+		}
+	}
+
+	private static void RichTextBox_TextChanged( object sender, TextChangedEventArgs e )
+	{
 		if ( sender is not RichTextBox rtb )
 			return;
 
-		_isUpdatingFromSource = true;
-
-		var range = new TextRange(
-			rtb.Document.ContentStart,
-			rtb.Document.ContentEnd);
-
 		using var stream = new MemoryStream();
-		range.Save( stream, DataFormats.Rtf );
+		rtb.Document.Save( stream, DataFormats.Rtf );
+		var rtf = Encoding.UTF8.GetString(stream.ToArray());
+		SetRtfText( rtb, rtf );
+	}
 
-		SetRtfText( rtb, Encoding.UTF8.GetString( stream.ToArray() ) );
+	private static void RichTextBox_PreviewKeyDown( object sender, KeyEventArgs e )
+	{
+		if ( sender is not RichTextBox rtb )
+			return;
 
-		_isUpdatingFromSource = false;
+		if ( e.Key == Key.Enter && !Keyboard.IsKeyDown( Key.LeftShift ) && !Keyboard.IsKeyDown( Key.RightShift ) )
+		{
+			e.Handled = true;
+			rtb.CaretPosition.InsertParagraphBreak();
+			_enterPressed = true; // flag dat we Enter hebben gedaan
+		}
+		else if ( e.Key == Key.Enter )
+		{
+			e.Handled = true;
+			rtb.CaretPosition.InsertLineBreak();
+			_enterPressed = true;
+		}
+	}
+
+	public static void Attach( RichTextBox rtb )
+	{
+		if ( rtb == null )
+			return;
+
+		rtb.TextChanged -= RichTextBox_TextChanged;
+		rtb.PreviewKeyDown -= RichTextBox_PreviewKeyDown;
+
+		rtb.TextChanged += RichTextBox_TextChanged;
+		rtb.PreviewKeyDown += RichTextBox_PreviewKeyDown;
+	}
+
+	public static int GetCaretOffset( RichTextBox rtb ) => new TextRange( rtb.Document.ContentStart, rtb.CaretPosition ).Text.Length;
+
+	public static TextPointer? GetTextPointerAtOffset( TextPointer start, int offset )
+	{
+		var navigator = start;
+		var charsRemaining = offset;
+
+		while ( navigator != null )
+		{
+			if ( navigator.GetPointerContext( LogicalDirection.Forward ) == TextPointerContext.Text )
+			{
+				var textRun = navigator.GetTextInRun(LogicalDirection.Forward);
+				if ( textRun.Length >= charsRemaining )
+					return navigator.GetPositionAtOffset( charsRemaining );
+
+				charsRemaining -= textRun.Length;
+			}
+
+			navigator = navigator.GetNextContextPosition( LogicalDirection.Forward );
+		}
+
+		return start;
 	}
 }

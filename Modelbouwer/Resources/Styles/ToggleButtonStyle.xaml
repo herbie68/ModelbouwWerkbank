@@ -7,10 +7,10 @@
     <SolidColorBrush x:Key="TextBox.Green.Background.Color" Color="#69DB0E" />
     <SolidColorBrush x:Key="TextBox.Green.Borderbrush.Color" Color="#397607" />
     <SolidColorBrush x:Key="TextBox.Green.Foreground.Color" Color="White" />
-    <SolidColorBrush x:Key="TextBox.Red.Background.Color" Color="#DB210E" /> 
+    <SolidColorBrush x:Key="TextBox.Red.Background.Color" Color="#DB210E" />
     <SolidColorBrush x:Key="TextBox.Red.Borderbrush.Color" Color="#761107" />
     <SolidColorBrush x:Key="TextBox.Red.Foreground.Color" Color="#F7EF80" />
-    
+
     <Style x:Key="SwitchButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="{StaticResource SwitchButton.Background.Color}" />
         <Setter Property="BorderBrush" Value="{StaticResource SwitchButton.Border.Color}" />
@@ -25,7 +25,7 @@
                         BorderThickness="0"
                         >
                         <Grid
-                            Width="70"
+                            Width="100"
                             Height="20"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"

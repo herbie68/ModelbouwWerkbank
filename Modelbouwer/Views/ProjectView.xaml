@@ -92,7 +92,7 @@
                 Width="150"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldCodeTag}"
-                Text="{Binding SelectedProject.ProjectCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SelectedItem.ProjectCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldCodeTooltip}" />
             <!--#endregion-->
 
@@ -113,7 +113,7 @@
                 Width="500"
                 Style="{DynamicResource DefaultTextBox}"
                 Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldNameTag}"
-                Text="{Binding SelectedProject.ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SelectedItem.ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldNameTooltip}" />
             <!--#endregion-->
 
@@ -136,7 +136,7 @@
                 HorizontalAlignment="Left"
                 Style="{DynamicResource DefaultDatePicker}"
                 Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldStartDateTag}"
-                SelectedDate="{Binding SelectedProject.ProjectStartDate,Mode=TwoWay, Converter={StaticResource DateOnlyConverter}}"
+                SelectedDate="{Binding SelectedItem.ProjectStartDate,Mode=TwoWay, Converter={StaticResource DateOnlyConverter}}"
                 ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldStartDateTooltip}"
                 />
             <!--#endregion-->
@@ -188,8 +188,7 @@
 
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="42" />
-                    <ColumnDefinition Width="118"/>
+                    <ColumnDefinition Width="160" />
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -198,11 +197,11 @@
                 <DatePicker
                     x:Name="ProjectEndDate"
                     Grid.Column="0"
-                    Width="150"
-                    HorizontalAlignment="Center"
+                    Width="150" Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
                     Style="{DynamicResource DefaultDatePicker}"
                     Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldEndDateTag}"
-                    SelectedDate="{Binding SelectedProject.ProjectEndDate,Mode=TwoWay, Converter={StaticResource DateOnlyConverter}}"
+                    SelectedDate="{Binding SelectedItem.ProjectEndDate,Mode=TwoWay, Converter={StaticResource DateOnlyConverter}}"
                     ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldEndDateTooltip}" Grid.ColumnSpan="2"
                     Visibility="{Binding EndDatePickerVisibility}" />
 
@@ -210,28 +209,30 @@
                     Visibility="{Binding ExpectedEndDateVisibility}"
                     Style="{DynamicResource DefaultTextBox}"
                     ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTooltip}"
+                    Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldExpectedEndDateTag}"
                     Grid.Column="0" Width="150"
-                    Margin="5 0 0 0"
-                    Text="{Binding ProjectExpectedEndDate, StringFormat={}{0:dd-MM-yyyy}}" />
+                    Margin="5,0,0,0"
+                    VerticalContentAlignment="Center"
+                    Text="{Binding ProjectExpectedEndDate, Mode=OneWay, StringFormat={}{0:dd-MM-yyyy}}" Padding="2,0,2,0" />
 
                 <!-- Status toggle -->
                 <ToggleButton
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Margin="5,0,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     BorderBrush="White"
-                    IsChecked="{Binding SelectedProject.ProjectClosed, Mode=TwoWay}"
+                    IsChecked="{Binding SelectedItem.ProjectClosed, Mode=TwoWay}"
                     Style="{StaticResource SwitchButton}"/>
 
                 <!-- Expected Build hours -->
                 <TextBox
                     Margin="5,4,0,4"
-                    Grid.Column="3"
+                    Grid.Column="2"
                     Width="120"
                     Style="{DynamicResource DefaultTextBox}"
                     Tag="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTag}"
-                    Text="{Binding SelectedProject.ProjectExpectedTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding SelectedItem.ProjectExpectedTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ToolTip="{x:Static language:Language.metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip}" />
             </Grid>
             <!--#endregion-->
@@ -239,8 +240,8 @@
             <!--#region Image and Image toolbar -->
             <Grid Grid.Row="0" Grid.Column="3" Grid.RowSpan="5" Height="183" VerticalAlignment="Top">
                 <controls:ImageEditor
-                    ImageSource="{Binding SelectedProject.ProjectImage, Mode=TwoWay}"
-                    RotationAngle="{Binding SelectedProject.ProjectImageRotationAngle, Mode=TwoWay}"
+                    ImageSource="{Binding SelectedItem.ProjectImage, Mode=TwoWay}"
+                    RotationAngle="{Binding SelectedItem.ProjectImageRotationAngle, Mode=TwoWay}"
                     AddImageCommand="{Binding AddImageCommand}"
                     DeleteImageCommand="{Binding DeleteProjectImageCommand}"
                     RotateCommand="{Binding RotateCommand}" />
@@ -251,7 +252,7 @@
         <!--#region Memo field section -->
         <controls:RtfEditor
             Grid.Row="3" Grid.Column="1" Margin="5"
-            RtfText="{Binding SelectedProject.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            RtfText="{Binding SelectedItem.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--#endregion-->
         <!--#endregion-->
@@ -411,7 +412,7 @@
             ColumnSizer="Star"
             ItemsSource="{Binding Projects}"
             Loaded="ProjectDataGrid_Loaded"
-            SelectedItem="{Binding SelectedProject, Mode=TwoWay}">
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
 
             <syncfusion:SfDataGrid.Columns>
                 <!--#region hidden columns-->

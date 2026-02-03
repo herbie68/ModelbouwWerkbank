@@ -539,7 +539,7 @@ public class DBNames
 	public static readonly string TimeFieldTypeProjectId = "int";
 	public static readonly string TimeFieldNameWorktypeId = "Worktype_Id";
 	public static readonly string TimeFieldTypeWorktypeId = "int";
-	public static readonly string TimeFieldNameWorkDate = "workDate";
+	public static readonly string TimeFieldNameWorkDate = "WorkDate";
 	public static readonly string TimeFieldTypeWorkDate = "date";
 	public static readonly string TimeFieldNameStartTime = "StartTime";
 	public static readonly string TimeFieldTypeStartTime = "time";

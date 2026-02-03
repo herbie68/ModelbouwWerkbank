@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Reflection;
 
 using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
 
@@ -74,7 +75,9 @@ public class GenericDataService
 		return await cmd.ExecuteNonQueryAsync();
 	}
 
-	public async Task<T> ExecuteScalarAsync<T>( string? query, Dictionary<string, object>? parameters = null )
+	public async Task<T?> ExecuteScalarAsync<T>(
+	string? query,
+	Dictionary<string, object>? parameters = null )
 	{
 		await using MySqlConnection connection = new(_connection.ConnectionString);
 		await connection.OpenAsync();
@@ -83,17 +86,22 @@ public class GenericDataService
 
 		if ( parameters != null )
 		{
-			foreach ( KeyValuePair<string, object> param in parameters )
+			foreach ( var param in parameters )
 			{
-				command.Parameters.AddWithValue( param.Key, param.Value );
+				command.Parameters.AddWithValue( param.Key, param.Value ?? DBNull.Value );
 			}
 		}
 
 		object? result = await command.ExecuteScalarAsync();
 
-		return result != null && result != DBNull.Value
-			? ( T ) Convert.ChangeType( result, typeof( T ) )
-			: default!;
+		if ( result == null || result == DBNull.Value )
+			return default;
+
+		Type targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+
+		object converted = Convert.ChangeType(result, targetType);
+
+		return ( T ) converted;
 	}
 
 	public T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
@@ -153,4 +161,51 @@ public class GenericDataService
 		// Execute the reader callback
 		await map( reader );
 	}
+
+	public async Task<T?> ExecuteSingleAsync<T>(
+	string query,
+	Dictionary<string, object>? parameters = null )
+	where T : class, new()
+	{
+		using MySqlConnection connection = new(_connection.ConnectionString);
+		await connection.OpenAsync();
+
+		using MySqlCommand cmd = new(query, connection);
+
+		if ( parameters != null )
+		{
+			foreach ( KeyValuePair<string, object> param in parameters )
+			{
+				cmd.Parameters.AddWithValue( $"@{param.Key}", param.Value );
+			}
+		}
+
+		using var reader = await cmd.ExecuteReaderAsync();
+
+		if ( !await reader.ReadAsync() )
+			return null;
+
+		T result = new();
+
+		for ( int i = 0; i < reader.FieldCount; i++ )
+		{
+			string columnName = reader.GetName(i);
+
+			PropertyInfo? property =
+			typeof(T).GetProperty(columnName, BindingFlags.Public | BindingFlags.Instance);
+
+			if ( property == null || reader.IsDBNull( i ) )
+				continue;
+
+			object value = reader.GetValue(i);
+
+			Type targetType = Nullable.GetUnderlyingType(property.PropertyType)
+						  ?? property.PropertyType;
+
+			property.SetValue( result, Convert.ChangeType( value, targetType ) );
+		}
+
+		return result;
+	}
+
 }

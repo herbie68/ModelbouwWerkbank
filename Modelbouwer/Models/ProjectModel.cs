@@ -32,9 +32,8 @@ public partial class ProjectModel : ObservableObject
 	[ObservableProperty]
 	public int? _projectExpectedTime;
 
-	//[ObservableProperty]
-	//public DateOnly? _projectExpectedEndDate;
-
+	[ObservableProperty]
+	public DateOnly? _projectExpectedEndDate;
 
 	[ObservableProperty]
 	public string? _projectExpectedWorkdays;

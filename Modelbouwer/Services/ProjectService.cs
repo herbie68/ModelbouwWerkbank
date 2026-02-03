@@ -28,15 +28,40 @@ public class ProjectService : IProjectService
 
 	public string AddNewProjectQuery =
 		$"INSERT INTO {DBNames.Database}.{DBNames.ProjectTable} " +
-		$"({DBNames.ProjectFieldNameName}) " +
+		$"( {DBNames.ProjectFieldNameName}, " +
+		$"{DBNames.ProjectFieldNameName}, " +
+		$"{DBNames.ProjectFieldNameCode}, " +
+		$"{DBNames.ProjectFieldNameStartDate}, " +
+		$"{DBNames.ProjectFieldNameEndDate}, " +
+		$"{DBNames.ProjectFieldNameExpectedTime}, " +
+		$"{DBNames.ProjectFieldNameClosed}, " +
+		$"{DBNames.ProjectFieldNameImage}, " +
+		$"{DBNames.ProjectFieldNameImageRotationAngle}, " +
+		$"{DBNames.ProjectFieldNameMemo} ) " +
 		$"VALUES " +
-		$"(@{DBNames.ProjectFieldNameName});" +
+		$"( @{DBNames.ProjectFieldNameName}, " +
+		$"@{DBNames.ProjectFieldNameCode}, " +
+		$"@{DBNames.ProjectFieldNameStartDate}, " +
+		$"@{DBNames.ProjectFieldNameEndDate}, " +
+		$"@{DBNames.ProjectFieldNameExpectedTime}, " +
+		$"@{DBNames.ProjectFieldNameClosed}, " +
+		$"@{DBNames.ProjectFieldNameImage}, " +
+		$"@{DBNames.ProjectFieldNameImageRotationAngle}, " +
+		$"@{DBNames.ProjectFieldNameMemo} )" +
 		$"{DBNames.SqlSelectLastId}";
 
 	public string UpdateProjectQuery =
 		$"UPDATE {DBNames.Database}.{DBNames.ProjectTable} " +
 		$"SET " +
-		$"{DBNames.ProjectFieldNameName} = @{DBNames.ProjectFieldNameName}" +
+		$"{DBNames.ProjectFieldNameName} = @{DBNames.ProjectFieldNameName}, " +
+		$"{DBNames.ProjectFieldNameCode} = @{DBNames.ProjectFieldNameCode}, " +
+		$"{DBNames.ProjectFieldNameStartDate} = @{DBNames.ProjectFieldNameStartDate}, " +
+		$"{DBNames.ProjectFieldNameEndDate} = @{DBNames.ProjectFieldNameEndDate}, " +
+		$"{DBNames.ProjectFieldNameExpectedTime} = @{DBNames.ProjectFieldNameExpectedTime}, " +
+		$"{DBNames.ProjectFieldNameClosed} = @{DBNames.ProjectFieldNameClosed}, " +
+		$"{DBNames.ProjectFieldNameImage} = @{DBNames.ProjectFieldNameImage}, " +
+		$"{DBNames.ProjectFieldNameImageRotationAngle} = @{DBNames.ProjectFieldNameImageRotationAngle}, " +
+		$"{DBNames.ProjectFieldNameMemo} = @{DBNames.ProjectFieldNameMemo} " +
 		$"WHERE {DBNames.ProjectFieldNameId} = @{DBNames.ProjectFieldNameId};";
 
 	public string DeleteProjectQuery =
@@ -48,7 +73,17 @@ public class ProjectService : IProjectService
 		$"FROM {DBNames.Database}.{DBNames.ProjectTable} " +
 		$"WHERE {DBNames.ProjectFieldNameName} = @{DBNames.ProjectFieldNameName}";
 
-	public string ProjectUsedQuery = $"SELECT COUNT({DBNames.TimeFieldNameProjectId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.TimeFieldNameProjectId} = @ProjectId";
+	public string LastWorkDateOnProjectQuery =
+		$"SELECT MAX( {DBNames.TimeFieldNameWorkDate} ) " +
+		$"FROM {DBNames.Database}.{DBNames.TimeTable} WHERE {DBNames.TimeFieldNameProjectId} =  @{DBNames.TimeFieldNameProjectId};";
+
+	public string FirstWorkDateAndHourTotalsOnProjectQueryWithProjectId =
+		$"SELECT MIN( {DBNames.TimeViewFieldNameWorkDate} ) AS StartDate, " +
+		$"IFNULL(SUM({DBNames.TimeViewFieldNameElapsedMinutes}), 0) / 60 AS TotalHours " +
+		$"FROM {DBNames.Database}.{DBNames.TimeView} " +
+		$"WHERE {DBNames.TimeViewFieldNameProjectId} =  @{DBNames.TimeViewFieldNameProjectId};";
+
+	public string ProjectUsedQuery = $"SELECT COUNT({DBNames.TimeFieldNameProjectId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.TimeFieldNameProjectId} = @{DBNames.TimeFieldNameProjectId}";
 
 	public string GetProjectExpectedEndDateQuery = $"CALL {DBNames.Database}.{DBNames.SPProjectExpectedEndDate}(@ProjectId);";
 	#endregion
@@ -130,6 +165,21 @@ public class ProjectService : IProjectService
 		}
 	}
 
+	public async Task<DateOnly?> GetLastWorkDateOnProjectAsync( int projectId )
+	{
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.TimeFieldNameProjectId}", projectId }
+		};
+		var result = await _dataService.ExecuteScalarAsync<DateTime?>(
+			LastWorkDateOnProjectQuery,
+			parameters
+		);
+		return result.HasValue
+			? DateOnly.FromDateTime( result.Value )
+			: null;
+	}
+
 	public async Task<bool> IsProjectUsedAsync( int projectId )
 	{
 		var parameters = new Dictionary<string, object>
@@ -155,21 +205,14 @@ public class ProjectService : IProjectService
 			string.Equals( c.ProjectName, projectName, StringComparison.OrdinalIgnoreCase ) );
 	}
 
-	public async Task<DateOnly?> GetExpectedEndDateAsync( int projectId )
+	public async Task<ProjectWorkStats?> GetProjectWorkStatsAsync( int projectId )
 	{
-		var parameters = new Dictionary<string, object>
-		{
-			{ "@ProjectId", projectId }
-		};
-
-		var result = await _dataService.ExecuteScalarAsync<DateTime?>(
-			GetProjectExpectedEndDateQuery,
-			parameters
-		);
-
-		return result.HasValue
-			? DateOnly.FromDateTime( result.Value )
-			: null;
+		return await _dataService.ExecuteSingleAsync<ProjectWorkStats>(
+			FirstWorkDateAndHourTotalsOnProjectQueryWithProjectId,
+			new Dictionary<string, object>
+			{
+			{ DBNames.TimeViewFieldNameProjectId, projectId }
+			} );
 	}
 
 }
