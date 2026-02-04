@@ -3895,4 +3895,10 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip" xml:space="preserve">
     <value>Voraussichtliche Bauzeit in Stunden</value>
   </data>
+  <data name="metadataSupplierHeaderSubtitle" xml:space="preserve">
+    <value>Verwalten Sie die Details der Lieferantenadresse, der Website und der Ansprechpartner</value>
+  </data>
+  <data name="metadataSupplierHeaderTitle" xml:space="preserve">
+    <value>Lieferanten verwalten</value>
+  </data>
 </root>

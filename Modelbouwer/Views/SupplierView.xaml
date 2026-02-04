@@ -1,0 +1,312 @@
+﻿<UserControl x:Class="Modelbouwer.Views.SupplierView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+             xmlns:helpers="clr-namespace:Modelbouwer.Helpers"
+             xmlns:converters="clr-namespace:Modelbouwer.Converters"
+             xmlns:controls="clr-namespace:Modelbouwer.Controls"
+             xmlns:local="clr-namespace:Modelbouwer.Views" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Header -->
+            <RowDefinition Height="85" />
+            <!-- Detail fields -->
+            <RowDefinition Height="190" />
+            <!-- Spacer -->
+            <RowDefinition Height="2" />
+            <!-- Toolbar -->
+            <RowDefinition Height="40" />
+            <!-- DataGrid -->
+            <RowDefinition Height="*" />
+            <!-- Footer -->
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <!--#region Page header-->
+        <StackPanel
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            Background="{DynamicResource HeaderBackground}">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Image
+                    Style="{DynamicResource HeaderIconStyle}"
+                    Source="{StaticResource supplier}" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataSupplierHeaderTitle}" />
+            </StackPanel>
+            <Canvas>
+                <Path Style="{DynamicResource HeadertTitleLine}" />
+            </Canvas>
+            <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataSupplierHeaderSubtitle}" />
+        </StackPanel>
+        <!--#endregion-->
+
+
+
+        <syncfusion:TabControlExt
+            Name="tabControl"
+            Grid.Row="1"
+            TabStripPlacement="Bottom"
+            Height="Auto"
+            Width="Auto">
+
+            <syncfusion:TabItemExt Header="tabItem1">
+                <TextBlock Name="textBlock" Text="This is the first tab item." />
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="tabItem2">
+                <TextBlock Name="textBlock1" Text="This is the second tab item." />
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="tabItem3">
+                <TextBlock Name="textBlock2" Text="This is the third tab item." />
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
+
+        <!--#region Toolbar section-->
+        <Grid Grid.Row="4"
+              Margin="15,2,15,2"
+              VerticalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Text="{Binding ImportStatus}"
+                Foreground="Gray"
+                FontStyle="Italic"
+                Margin="5"
+                Visibility="{Binding IsImporting, Converter={StaticResource BooleanToVisibilityConverter}}"
+                TextWrapping="Wrap"/>
+
+            <!--#region Toolbar-->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding AddProjectCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
+                    <Image Style="{DynamicResource ToolBarAddIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding DeleteProjectCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
+                    <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding SaveProjectCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
+                    <Image Style="{DynamicResource ToolBarSaveIcon}" />
+                </Button>
+
+                <Border Style="{StaticResource ActionBarSeparatorStyle}" />
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonImport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionImport}">
+                    <Image Style="{DynamicResource ToolBarImportIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonCSVExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportCSV}">
+                    <Image Style="{DynamicResource ToolBarCSVExportIcon}" />
+                </Button>
+
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Click="ButtonExcelExport"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionExportExcel}">
+                    <Image Style="{DynamicResource ToolBarExcelExportIcon}" />
+                </Button>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Record Count Section -->
+            <TextBlock
+                Grid.Column="1"
+                Width="Auto"
+                Height="23" FontSize="14" FontWeight="Bold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelProject}" />
+                <Run Text=": " />
+                <Run
+                    FontSize="16"
+                    Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
+                    FontStyle="Italic" />
+                <Run Text=" " />
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
+                <Run Text=" " />
+                <Run Text="{Binding TotalProjectCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+            </TextBlock>
+            <!--#endregion-->
+
+            <!--#region Search field-->
+            <!--  Icon  -->
+            <Image
+                x:Name="FilterIcon"
+                Grid.Column="2"
+                Width="20"
+                Height="20"
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Source="{StaticResource search}">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Image.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard AutoReverse="True" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0"
+                                    To="0.3"
+                                    Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+
+            <!--  Input field  -->
+            <TextBox
+                Grid.Column="3"
+                Width="250"
+                VerticalAlignment="Center"
+                Style="{DynamicResource DefaultTextBox}"
+                Tag="{x:Static language:Language.SearchGridTag}"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="{x:Static language:Language.SearchGridTooltip}" />
+
+            <!--  Clear button  -->
+            <Button
+                Grid.Column="4"
+                Width="24"
+                Height="24"
+                Margin="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding ClearSearchCommand}"
+                Style="{DynamicResource ClearButtonStyle}" />
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Datagrid-->
+        <syncfusion:SfDataGrid
+            x:Name="SfDataGrid"
+            Grid.Row="5"
+            Margin="15,3,15,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            AllowDraggingColumns="True"
+            AllowGrouping="True"
+            AllowSorting="True"
+            AllowTriStateSorting="True"
+            AutoGenerateColumns="False"
+            ColumnSizer="Star"
+            ItemsSource="{Binding Projects}"
+            Loaded="ProjectDataGrid_Loaded"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+            <syncfusion:SfDataGrid.Columns>
+                <!--#region hidden columns-->
+                <syncfusion:GridTextColumn
+                    Width="0"
+                    IsHidden="True"
+                    MappingName="ProjectId" />
+                <!--#endregion-->
+
+                <!--#region Project Code-->
+                <syncfusion:GridTemplateColumn
+                    Width="150"
+                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderCodeLabel}"
+                    MappingName="ProjectCode">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="5 0"
+                                helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                Text="{Binding ProjectCode}" />
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+                <!--#endregion-->
+
+                <!--#region Project Name-->
+                <syncfusion:GridTemplateColumn
+                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderNameLabel}"
+                    MappingName="ProjectName">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="5 0"
+                                helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                Text="{Binding ProjectName}" />
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+                <!--#endregion-->
+
+                <!--#region StartDate -->
+                <syncfusion:GridTemplateColumn
+                    Width="100"
+                    HorizontalAlignment="Center"
+                    HorizontalHeaderContentAlignment="Center"
+                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderStartDateLabel}"
+                    MappingName="ProjectStartDateDisplay">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                Text="{Binding ProjectStartDateDisplay}" />
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+                <!--#endregion-->
+
+                <!--#region EndDate -->
+                <syncfusion:GridTemplateColumn
+                    Width="100"
+                    HorizontalAlignment="Center"
+                    HorizontalHeaderContentAlignment="Center"
+                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderEndDateLabel}"
+                    MappingName="ProjectEndDateDisplay">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                Text="{Binding ProjectEndDateDisplay}" />
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+                <!--#endregion-->
+
+                <!--#region Project closed-->
+                <syncfusion:GridCheckBoxColumn
+                    Width="80"
+                    MappingName="ProjectClosed"
+                    HorizontalHeaderContentAlignment="Center"
+                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderClosedLabel}"
+                    AllowEditing="False" HorizontalAlignment="Center"
+                    IsThreeState="False" />
+                <!--#endregion-->
+
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

@@ -7675,6 +7675,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beheer de gegevens van leveranciers adres, website, contactpersonen.
+        /// </summary>
+        public static string metadataSupplierHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leveranciers beheren.
+        /// </summary>
+        public static string metadataSupplierHeaderTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leveranciers.
         /// </summary>
         public static string metadataSupplierPageTitle {

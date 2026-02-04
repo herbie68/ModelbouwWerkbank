@@ -3895,4 +3895,10 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip" xml:space="preserve">
     <value>Verwachte bouw tijd in uren</value>
   </data>
+  <data name="metadataSupplierHeaderSubtitle" xml:space="preserve">
+    <value>Beheer de gegevens van leveranciers adres, website, contactpersonen</value>
+  </data>
+  <data name="metadataSupplierHeaderTitle" xml:space="preserve">
+    <value>Leveranciers beheren</value>
+  </data>
 </root>

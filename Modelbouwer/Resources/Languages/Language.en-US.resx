@@ -3895,4 +3895,10 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataProjectTabGeneralTabItemGeneralFieldExpectedWorkTimeTooltip" xml:space="preserve">
     <value>Expected construction time in hours</value>
   </data>
+  <data name="metadataSupplierHeaderSubtitle" xml:space="preserve">
+    <value>Manage the details of suppliers address, website, contact persons</value>
+  </data>
+  <data name="metadataSupplierHeaderTitle" xml:space="preserve">
+    <value>Manage suppliers</value>
+  </data>
 </root>
