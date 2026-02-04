@@ -9,6 +9,9 @@ namespace Modelbouwer.ViewModels;
 public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 {
 	private readonly IProjectService _dataService;
+
+	private int? _lastSelectedProjectId;
+
 	public ProjectModel? SelectedProject
 	{
 		get => SelectedItem;
@@ -17,11 +20,9 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 
 	public bool IsProjectClosed => SelectedProject?.ProjectClosed ?? false;
 
-	public Visibility EndDatePickerVisibility =>
-		IsProjectClosed ? Visibility.Visible : Visibility.Collapsed;
+	public Visibility EndDatePickerVisibility => IsProjectClosed ? Visibility.Visible : Visibility.Collapsed;
 
-	public Visibility ExpectedEndDateVisibility =>
-		IsProjectClosed ? Visibility.Collapsed : Visibility.Visible;
+	public Visibility ExpectedEndDateVisibility => IsProjectClosed ? Visibility.Collapsed : Visibility.Visible;
 
 	// Commands
 	public IRelayCommand AddProjectCommand => AddCommand;
@@ -43,7 +44,6 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadProjectsAsync();
 		_ = ReloadCommand.ExecuteAsync( null );
 	}
 
@@ -95,16 +95,6 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		OnPropertyChanged( nameof( IsProjectClosed ) );
 		OnPropertyChanged( nameof( EndDatePickerVisibility ) );
 		OnPropertyChanged( nameof( ExpectedEndDateVisibility ) );
-	}
-
-	// Async projects laden
-	private async Task LoadProjectsAsync()
-	{
-		var projectList = await _dataService.GetAllProjectsAsync();
-
-		Projects.Clear();
-		foreach ( var c in projectList )
-			Projects.Add( c );
 	}
 
 	// Properties voor UI binding
@@ -187,6 +177,8 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		if ( SelectedItem == null )
 			return Task.CompletedTask;
 
+		_lastSelectedProjectId = SelectedItem.ProjectId;
+
 		return _dataService.UpdateProjectAsync( CreateParameters( SelectedItem ) );
 	}
 	protected override async Task DeleteAsync( ProjectModel item )
@@ -230,8 +222,39 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	protected override void OnItemsLoaded()
 	{
 		base.OnItemsLoaded();
+
 		OnPropertyChanged( nameof( TotalProjectCount ) );
+
+		if ( _lastSelectedProjectId.HasValue )
+		{
+			var match = Projects.FirstOrDefault( p => p.ProjectId == _lastSelectedProjectId.Value );
+
+			if ( match != null )
+			{
+				SelectedItem = match;
+				return;
+			}
+
+			_lastSelectedProjectId = null;
+		}
+
+		// Default project selection (Highest Id)
+		SelectProjectWithHighestId();
 	}
+
+	private void SelectProjectWithHighestId()
+	{
+		if ( Projects.Count == 0 )
+		{
+			SelectedItem = null;
+			return;
+		}
+
+		SelectedItem = Projects
+			.OrderByDescending( p => p.ProjectId )
+			.First();
+	}
+
 
 	#region Expected end date of the project
 	private double _projectExpectedTime;
@@ -276,6 +299,7 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 
 		var totalWorkedHours = _currentWorkStats.TotalHours;
 		var startDate = SelectedProject.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue);
+		var endDate = SelectedProject.ProjectEndDate.Value.ToDateTime(TimeOnly.MinValue);
 
 		var hoursToDo = SelectedItem.ProjectExpectedTime - totalWorkedHours;
 		if ( hoursToDo <= 0 )
@@ -301,7 +325,6 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		var daysToGo = hoursToDo / workedHoursPerDay;
 		ProjectExpectedEndDate = DateTime.Now.AddDays( ( double ) daysToGo );
 	}
-
 	#endregion
 
 	// Parameter dictionary voor save
@@ -310,8 +333,14 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		{ $"@{DBNames.ProjectFieldNameId}", c.ProjectId },
 		{ $"@{DBNames.ProjectFieldNameCode}", c.ProjectCode },
 		{ $"@{DBNames.ProjectFieldNameName}", c.ProjectName?.Trim() },
-		{ $"@{DBNames.ProjectFieldNameStartDate}", c.ProjectStartDate.HasValue ? c.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue) : DBNull.Value},
-		{ $"@{DBNames.ProjectFieldNameEndDate}", (c.ProjectClosed && c.ProjectEndDate.HasValue) ? (object)c.ProjectEndDate.Value : DBNull.Value },
+		{ $"@{DBNames.ProjectFieldNameStartDate}",
+			c.ProjectStartDate.HasValue
+				? c.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue)
+				: DBNull.Value },
+		{ $"@{DBNames.ProjectFieldNameEndDate}",
+			c.ProjectEndDate.HasValue
+				? c.ProjectEndDate.Value.ToDateTime(TimeOnly.MinValue)
+				: DBNull.Value },
 		{ $"@{DBNames.ProjectFieldNameExpectedTime}", c.ProjectExpectedTime },
 		{ $"@{DBNames.ProjectFieldNameImage}", c.ProjectImage },
 		{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", c.ProjectImageRotationAngle },

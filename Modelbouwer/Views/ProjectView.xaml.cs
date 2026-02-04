@@ -1,5 +1,4 @@
-﻿using System.Windows.Controls;
-using System.Windows.Threading;
+﻿using System.Windows.Threading;
 
 using Microsoft.Win32;
 
@@ -173,18 +172,6 @@ public partial class ProjectView : UserControl
 		{
 			vm.SelectedProject!.ProjectImage = File.ReadAllBytes( files [ 0 ] );
 			vm.SelectedProject.ProjectImageRotationAngle = 0;
-		}
-	}
-
-	private void ProjectMemoRichTextBox_KeyDown( object sender, KeyEventArgs e )
-	{
-		if ( e.Key == Key.Enter && !Keyboard.IsKeyDown( Key.LeftShift ) && !Keyboard.IsKeyDown( Key.RightShift ) )
-		{
-			// Vervang de Enter met LineBreak
-			var rtb = (RichTextBox)sender;
-			e.Handled = true; // voorkom nieuwe Paragraph
-
-			rtb.CaretPosition.InsertLineBreak();
 		}
 	}
 }

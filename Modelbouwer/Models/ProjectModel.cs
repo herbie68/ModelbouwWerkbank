@@ -2,8 +2,23 @@
 
 public partial class ProjectModel : ObservableObject
 {
-	[ObservableProperty]
 	private bool _projectClosed;
+	public bool ProjectClosed
+	{
+		get => _projectClosed;
+		set
+		{
+			if ( _projectClosed == value )
+				return;
+
+			_projectClosed = value;
+			OnPropertyChanged();
+
+			// Notify dependent properties
+			OnPropertyChanged( nameof( ProjectDisplayEndDate ) );
+			OnPropertyChanged( nameof( ProjectEndDateDisplay ) );
+		}
+	}
 
 	[ObservableProperty]
 	private int _projectId;
@@ -23,11 +38,21 @@ public partial class ProjectModel : ObservableObject
 	[ObservableProperty]
 	public string? _projectCreated;
 
-	[ObservableProperty]
 	public DateOnly? _projectEndDate;
+	public DateOnly? ProjectEndDate
+	{
+		get => _projectEndDate;
+		set
+		{
+			if ( _projectEndDate == value )
+				return;
 
-	[ObservableProperty]
-	public string? _projectEndDateStr;
+			_projectEndDate = value;
+			OnPropertyChanged();
+			OnPropertyChanged( nameof( ProjectDisplayEndDate ) );
+			OnPropertyChanged( nameof( ProjectEndDateDisplay ) );
+		}
+	}
 
 	[ObservableProperty]
 	public int? _projectExpectedTime;
@@ -69,9 +94,6 @@ public partial class ProjectModel : ObservableObject
 	public DateOnly? _projectStartDate;
 
 	[ObservableProperty]
-	public string? _projectStartDateStr;
-
-	[ObservableProperty]
 	public string? _projectTimeCosts;
 
 	[ObservableProperty]
@@ -103,6 +125,21 @@ public partial class ProjectModel : ObservableObject
 
 	// Define the property that you want to use in TLists (for example in the errorList
 	public string? Name => ProjectName;
+
+	public DateOnly? ProjectDisplayEndDate
+	{
+		get
+		{
+			if ( ProjectClosed )
+				return ProjectEndDate;
+
+			return ProjectExpectedEndDate;
+		}
+	}
+
+	public string? ProjectStartDateDisplay => ProjectStartDate?.ToString( "dd-MM-yyyy", CultureInfo.CurrentCulture );
+
+	public string? ProjectEndDateDisplay => ProjectDisplayEndDate?.ToString( "dd-MM-yyyy", CultureInfo.CurrentCulture );
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{

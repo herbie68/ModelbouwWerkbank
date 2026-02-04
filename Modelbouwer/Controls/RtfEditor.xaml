@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
-             xmlns:helpers="clr-namespace:Modelbouwer.Helpers"
              xmlns:local="clr-namespace:Modelbouwer.Controls"
              mc:Ignorable="d"
              Height="Auto" Width="Auto">
@@ -14,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Toolbar -->
+        <!--#region Toolbar -->
         <Border Margin="0,0,0,5" Padding="3" Background="#F1F6FF" CornerRadius="5" BorderBrush="#D7D7F0" BorderThickness="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <!-- Cut -->
@@ -22,6 +21,7 @@
                     Command="ApplicationCommands.Cut"
                     CommandTarget="{Binding ElementName=RtbEditor}"
                     Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
                     ToolTip="{x:Static language:Language.toolbarButtonTextCut}">
                     <Image Style="{DynamicResource RtfToolBarCutIcon}" />
                 </Button>
@@ -31,6 +31,7 @@
                     Command="ApplicationCommands.Copy"
                     CommandTarget="{Binding ElementName=RtbEditor}"
                     Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
                     ToolTip="{x:Static language:Language.toolbarButtonTextCopy}">
                     <Image Style="{DynamicResource RtfToolBarCopyIcon}" />
                 </Button>
@@ -40,6 +41,7 @@
                     Command="ApplicationCommands.Paste"
                     CommandTarget="{Binding ElementName=RtbEditor}"
                     Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
                     ToolTip="{x:Static language:Language.toolbarButtonTextPaste}">
                     <Image Style="{DynamicResource RtfToolBarPasteIcon}" />
                 </Button>
@@ -49,6 +51,7 @@
                     Command="ApplicationCommands.Undo"
                     CommandTarget="{Binding ElementName=RtbEditor}"
                     Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
                     ToolTip="{x:Static language:Language.toolbarButtonTextUndo}">
                     <Image Style="{DynamicResource RtfToolBarUndoIcon}" />
                 </Button>
@@ -58,6 +61,7 @@
                     Command="ApplicationCommands.Redo"
                     CommandTarget="{Binding ElementName=RtbEditor}"
                     Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
                     ToolTip="{x:Static language:Language.toolbarButtonTextRedo}">
                     <Image Style="{DynamicResource RtfToolBarRedoIcon}" />
                 </Button>
@@ -65,54 +69,94 @@
                 <Border Style="{DynamicResource RtfBarSeparatorStyle}"/>
 
                 <!-- Bold -->
-                <ToggleButton CommandTarget="{Binding ElementName=RtbEditor}" Style="{DynamicResource RteToolbarButtonStyle}" Command="EditingCommands.ToggleBold"  ToolTip="{x:Static language:Language.toolbarButtonFontBold}">
+                <ToggleButton
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Style="{DynamicResource RteToolbarButtonStyle}"
+                    Focusable="False"
+                    Command="EditingCommands.ToggleBold"
+                    ToolTip="{x:Static language:Language.toolbarButtonFontBold}">
                     <Image Style="{DynamicResource RtfToolBarBoldIcon}" />
                 </ToggleButton>
 
                 <!-- Italic -->
-                <ToggleButton CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.ToggleItalic" Style="{DynamicResource RteToolbarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonFontItalic}">
+                <ToggleButton
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.ToggleItalic"
+                    Style="{DynamicResource RteToolbarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonFontItalic}">
                     <Image Style="{DynamicResource RtfToolBarItalicIcon}" />
                 </ToggleButton>
 
                 <!-- Underline -->
-                <ToggleButton CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.ToggleUnderline" Style="{DynamicResource RteToolbarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonFontUnderline}">
+                <ToggleButton
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.ToggleUnderline"
+                    Style="{DynamicResource RteToolbarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonFontUnderline}">
                     <Image Style="{DynamicResource RtfToolBarUnderlineIcon}" />
                 </ToggleButton>
 
                 <!-- StrikeThrough -->
-                <ToggleButton Click="StrikeThrough_Click" Style="{DynamicResource RteToolbarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonFontStrikeout}">
+                <ToggleButton
+                    Click="StrikeThrough_Click"
+                    Style="{DynamicResource RteToolbarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonFontStrikeout}">
                     <Image Style="{DynamicResource RtfToolBarStrikeoutIcon}" />
                 </ToggleButton>
 
                 <Border Style="{DynamicResource RtfBarSeparatorStyle}" Margin="5,0"/>
 
                 <!-- Bullets & Numbering -->
-                <Button CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.ToggleBullets" Style="{DynamicResource RtfBarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonListBullet}">
+                <Button
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.ToggleBullets"
+                    Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonListBullet}">
                     <Image Style="{DynamicResource RtfToolBarBulletListIcon}" />
                 </Button>
-                <Button CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.ToggleNumbering" Style="{DynamicResource RtfBarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonListNumber}">
+                <Button
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.ToggleNumbering"
+                    Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonListNumber}">
                     <Image Style="{DynamicResource RtfToolBarNumbersListIcon}" />
                 </Button>
 
                 <Border Style="{DynamicResource RtfBarSeparatorStyle}" Margin="5,0"/>
 
                 <!-- Indentation -->
-                <Button CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.IncreaseIndentation" Style="{DynamicResource RtfBarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonIndentIncrease}">
+                <Button
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.IncreaseIndentation"
+                    Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonIndentIncrease}">
                     <Image Style="{DynamicResource RtfToolBarIndentIcon}" />
                 </Button>
-                <Button CommandTarget="{Binding ElementName=RtbEditor}" Command="EditingCommands.DecreaseIndentation" Style="{DynamicResource RtfBarButtonStyle}" ToolTip="{x:Static language:Language.toolbarButtonIndentDecrease}">
+                <Button
+                    CommandTarget="{Binding ElementName=RtbEditor}"
+                    Command="EditingCommands.DecreaseIndentation"
+                    Style="{DynamicResource RtfBarButtonStyle}"
+                    Focusable="False"
+                    ToolTip="{x:Static language:Language.toolbarButtonIndentDecrease}">
                     <Image Style="{DynamicResource RtfToolBarIndentRemoveIcon}" />
                 </Button>
             </StackPanel>
         </Border>
+        <!--#endregion-->
 
-        <!-- RichTextBox -->
+        <!--#region RichTextBox -->
         <RichTextBox
             x:Name="RtbEditor"
             Grid.Row="1"
-            helpers:RichTextBoxRtfBehavior.RtfText="{Binding RtfText, RelativeSource={RelativeSource AncestorType=UserControl}}"
             VerticalScrollBarVisibility="Auto"
             AcceptsReturn="True"
             AcceptsTab="True"/>
+        <!--#endregion-->
     </Grid>
 </UserControl>
