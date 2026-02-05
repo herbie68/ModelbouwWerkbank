@@ -7675,6 +7675,771 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adres.
+        /// </summary>
+        public static string metadataSupplierDataGridAddressHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridAddressHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land.
+        /// </summary>
+        public static string metadataSupplierDataGridCountryHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridCountryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land ID.
+        /// </summary>
+        public static string metadataSupplierDataGridCountryIdHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridCountryIdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta.
+        /// </summary>
+        public static string metadataSupplierDataGridCurrencyHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridCurrencyHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta ID.
+        /// </summary>
+        public static string metadataSupplierDataGridCurrencyIdHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridCurrencyIdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plaats.
+        /// </summary>
+        public static string metadataSupplierDataGridSupplierCityHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridSupplierCityHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string metadataSupplierDataGridSupplierCodeHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridSupplierCodeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string metadataSupplierDataGridSupplierIdHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridSupplierIdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string metadataSupplierDataGridSupplierNameHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridSupplierNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postcode.
+        /// </summary>
+        public static string metadataSupplierDataGridZipHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDataGridZipHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridFunctionHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridFunctionHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridIdHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridIdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridMailHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridMailHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridNameHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridPhoneHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridPhoneHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridTypeHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridTypeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie Id.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsDataGridTypeIdHeader {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsDataGridTypeIdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralFunctionLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralFunctionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functie.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralFunctionTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralFunctionTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is de functie van deze contactpersoon bij deze leverancier.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralMailLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralMailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralMailTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralMailTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Persoonlijke mail adres  van deze contactpersoon.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralMailTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralMailTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralNameLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralNameTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam van de contactpersoon.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralPhoneLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralPhoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralPhoneTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralPhoneTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directe telefoonnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact gegevens.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsGroupGeneralTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsGroupGeneralTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contactpersonen.
+        /// </summary>
+        public static string metadataSupplierDetailTabContactsTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabContactsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress1Label {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress1Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress1Tag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress1Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Straat en huisnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adres2.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress2Label {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress2Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aanvullende adresgegevens.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress2Tag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress2Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aanvullende adres gegevens zoals bijvoorbeeld &quot;3e etage&quot;.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plaats.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCityLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plaats.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCityTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCityTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plaats.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCityTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCityTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCodeLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCodeTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCodeTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verkorte naam.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCodeTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCodeTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCountryLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCountryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCountryTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCountryTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressCountryTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressCountryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressMailLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressMailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail adres.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressMailTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressMailTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Algemene mail adres van de leverancier.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressMailTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressMailTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressNameLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leveranciernaam.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressNameTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam van de leverancier.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressPhoneLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressPhoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressPhoneTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressPhoneTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Algemene telefoonnummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adres gegevens.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open de website van de leverancier in je browser.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressUrlLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressUrlLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressUrlTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressUrlTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website van de leverancier.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressUrlTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressUrlTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postcode.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressZipLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressZipLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postcode.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressZipTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressZipTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postcode.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupAddressZipTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupAddressZipTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standaard valuta.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standaard valuta.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standaard valuta.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order kosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orderkosten tot bedrag.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tot bedrag.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vanaf wel bedrag zijn de orderkosten gratis.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order kosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order kosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bankrekening.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceIbanLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceIbanLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN Nummer.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceIbanTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceIbanTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is de bankrekening van de leverancier.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceIbanTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceIbanTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten tot bedrag.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tot bedrag.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vanaf wel bedrag zijn de verzendkosten gratis.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financële informatie.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralGroupFinanceTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralGroupFinanceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Algemeen.
+        /// </summary>
+        public static string metadataSupplierDetailTabGeneralTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabGeneralTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order History.
+        /// </summary>
+        public static string metadataSupplierDetailTabHistoryTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabHistoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aanvullende informatie.
+        /// </summary>
+        public static string metadataSupplierDetailTabMemoTitle {
+            get {
+                return ResourceManager.GetString("metadataSupplierDetailTabMemoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beheer de gegevens van leveranciers adres, website, contactpersonen.
         /// </summary>
         public static string metadataSupplierHeaderSubtitle {
@@ -7704,738 +8469,63 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to regels verwerkt.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusCompleted {
+        public static string metadataSupplierStatuslineCompleted {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusCompleted", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslineCompleted", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to regels overgeslagen vanwege fouten.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusCompletedError {
+        public static string metadataSupplierStatuslineCompletedError {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusCompletedError", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslineCompletedError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to regels correct ingelezen.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusCompletedOk {
+        public static string metadataSupplierStatuslineCompletedOk {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusCompletedOk", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslineCompletedOk", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Geen regels ingelezen.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusDescription {
+        public static string metadataSupplierStatuslineDescription {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusDescription", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslineDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Toegevoegd:.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusPrefixAdded {
+        public static string metadataSupplierStatuslinePrefixAdded {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusPrefixAdded", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslinePrefixAdded", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Fout in regel.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusPrefixError {
+        public static string metadataSupplierStatuslinePrefixError {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusPrefixError", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslinePrefixError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Aantal:.
         /// </summary>
-        public static string metadataSupplierStatuslineStatusText {
+        public static string metadataSupplierStatuslineText {
             get {
-                return ResourceManager.GetString("metadataSupplierStatuslineStatusText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adres.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderAddress {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Plaats.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCity {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoeknaam.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCode {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Land.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCountry {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCountry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Land ID.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCountryId {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCountryId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valuta.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCurrency {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCurrency", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valuta ID.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderCurrencyId {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderCurrencyId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naam.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderName {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ID.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderSupplierId {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderSupplierId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postcode.
-        /// </summary>
-        public static string metadataSupplierSupplierDatagridHeaderZip {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierDatagridHeaderZip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verwijder geselekteerde leverancier.
-        /// </summary>
-        public static string metadataSupplierSupplierToolbarButtonDeleteTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierToolbarButtonDeleteTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Leverancier toevoegen.
-        /// </summary>
-        public static string metadataSupplierSupplierToolbarButtonNewTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierToolbarButtonNewTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maak alle ingevulde velden leeg.
-        /// </summary>
-        public static string metadataSupplierSupplierToolbarButtonResetTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierToolbarButtonResetTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wijzigingen opslaan.
-        /// </summary>
-        public static string metadataSupplierSupplierToolbarButtonSaveTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierSupplierToolbarButtonSaveTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Id.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderId {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail adres.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderMail {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderMail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naam.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderName {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderPhone {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderPhone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Functie.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderType {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Functie Id.
-        /// </summary>
-        public static string metadataSupplierTabContactDatagridHeaderTypeId {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactDatagridHeaderTypeId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail adres.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldMail {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldMail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail adres.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldMailTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldMailTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail adres.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldMailTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldMailTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Volledige naam.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldName {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Volledige naam.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldNameTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldNameTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Volledige naam.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldNameTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldNameTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldPhone {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldPhone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldPhoneTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldPhoneTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Functie.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldType {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Functie.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldTypeTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldTypeTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Functie.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralFieldTypeTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralFieldTypeTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Communicatiekanalen per leverancier.
-        /// </summary>
-        public static string metadataSupplierTabContactTabItemGeneralTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTabItemGeneralTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Contactpersonen.
-        /// </summary>
-        public static string metadataSupplierTabContactTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verwijder geselekteerde contactpersoon.
-        /// </summary>
-        public static string metadataSupplierTabContactToolbarButtonDeleteTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactToolbarButtonDeleteTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Contact(persoon) bij leverancier toevoegen.
-        /// </summary>
-        public static string metadataSupplierTabContactToolbarButtonNewTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactToolbarButtonNewTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maak alle ingevulde velden leeg.
-        /// </summary>
-        public static string metadataSupplierTabContactToolbarButtonResetTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactToolbarButtonResetTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wijzigingen opslaan.
-        /// </summary>
-        public static string metadataSupplierTabContactToolbarButtonSaveTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabContactToolbarButtonSaveTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adres.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldAddress {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adres.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldAddressTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldAddressTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adres.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Plaats.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCity {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Plaats.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCityTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCityTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Plaats.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoeknaam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCode {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoeknaam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCodeTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCodeTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoeknaam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Land.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCountry {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCountry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Land.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCountryTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCountryTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Land.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standaard valuta.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCurrency {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCurrency", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standaard valuta.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Standaard valuta.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tot bedrag.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldMaxValue {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldMaxValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tot bedrag.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tot bedrag.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldName {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldNameTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldNameTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naam.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Order kosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Order kosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Order kosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verzendkosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldSendCosts {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldSendCosts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verzendkosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verzendkosten.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Website.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldUrl {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Website.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldUrlTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldUrlTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Website.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postcode.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldZip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldZip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postcode.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldZipTag {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldZipTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Postcode.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Leverancier gegevens.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTabItemGeneralTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTabItemGeneralTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Basisgegevens.
-        /// </summary>
-        public static string metadataSupplierTabGeneralTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabGeneralTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aanvullende informatie.
-        /// </summary>
-        public static string metadataSupplierTabMemoTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabMemoTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Order historie.
-        /// </summary>
-        public static string metadataSupplierTabOrderHistoryTitle {
-            get {
-                return ResourceManager.GetString("metadataSupplierTabOrderHistoryTitle", resourceCulture);
+                return ResourceManager.GetString("metadataSupplierStatuslineText", resourceCulture);
             }
         }
         
@@ -11398,6 +11488,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelStorageLocation {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelStorageLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde leveranciers.
+        /// </summary>
+        public static string toolbarVisibleRowLabelSupplier {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelSupplier", resourceCulture);
             }
         }
         

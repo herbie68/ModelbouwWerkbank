@@ -13,8 +13,8 @@
         <Grid.RowDefinitions>
             <!-- Header -->
             <RowDefinition Height="85" />
-            <!-- Detail fields -->
-            <RowDefinition Height="190" />
+            <!-- Detail section -->
+            <RowDefinition Height="325" />
             <!-- Spacer -->
             <RowDefinition Height="2" />
             <!-- Toolbar -->
@@ -44,27 +44,447 @@
         <!--#endregion-->
 
 
-
+        <!--#region Details-->
         <syncfusion:TabControlExt
             Name="tabControl"
             Grid.Row="1"
-            TabStripPlacement="Bottom"
+            TabStripPlacement="Bottom" CloseButtonType="Hide"
+            TabItemHeaderStyle="Curve"
             Height="Auto"
             Width="Auto">
 
-            <syncfusion:TabItemExt Header="tabItem1">
-                <TextBlock Name="textBlock" Text="This is the first tab item." />
+            <!--#region General supplier information-->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataSupplierDetailTabGeneralTitle}"
+                Image="{StaticResource supplier}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="315" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--#region Adddress information-->
+                    <StackPanel
+                        Grid.Column="0"
+                        Margin="5">
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource supplier}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+                                <!--#region Grid defenitions for groupbox-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier code  -->
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCodeLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="150"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCodeTag}"
+                                    Text="{Binding SelectedItem.SupplierCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCodeTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier name  -->
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressNameLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="325"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressNameTag}"
+                                    Text="{Binding SelectedItem.SupplierName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressNameTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Address  -->
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress1Label}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="325"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress1Tag}"
+                                    Text="{Binding SelectedItem.SupplierAddress1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip}" />
+
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="325"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress2Tag}"
+                                    Text="{Binding SelectedItem.SupplierAddress2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier zip and city  -->
+                                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Margin="0 2 0 2">
+                                    <Label
+                                        Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressZipLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" Margin="5 0 -7 0"/>
+                                    <Label Content="," Style="{DynamicResource EntryLabelHorizontal}" Margin="-1,0,0,0"/>
+                                    <Label
+                                        Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCityLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" Margin="-5 0 0 0" HorizontalContentAlignment="Left"/>
+                                </StackPanel>
+
+                                <Grid Grid.Row="4" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="155" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox
+                                        Grid.Column="0"
+                                        Margin="0 2 0 2"
+                                        Width="150"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressZipTag}"
+                                        Text="{Binding SelectedItem.SupplierZip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressZipTooltip}" />
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Margin="0 2 0 2"
+                                        Width="170"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCityTag}"
+                                        Text="{Binding SelectedItem.SupplierCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCityTooltip}" />
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier country  -->
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:ComboBoxAdv
+                                    x:Name="SupplierCountry"
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Arrow"
+                                    DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTag}"
+                                    DisplayMemberPath="CountryName"
+                                    ItemsSource="{Binding SupplierPageViewModel.SupplierCountry}"
+                                    SelectedItem="{Binding SupplierPageViewModel.SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TextSearch.TextPath="CountryName"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier phone number  -->
+                                <Label
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressPhoneLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="6"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="325"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressPhoneTag}"
+                                    Text="{Binding SelectedItem.SupplierPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier E-mail address  -->
+                                <Label
+                                    Grid.Row="7"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressMailLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="7"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="325"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressMailTag}"
+                                    Text="{Binding SelectedItem.SupplierMail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressMailTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Website  -->
+                                <Label
+                                    Grid.Row="8"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" Margin="0 2 0 2">
+                                    <TextBox
+                                        Width="290"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlTag}"
+                                        Text="{Binding SelectedItem.SupplierUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlTooltip}" />
+
+                                    <Button
+                                        x:Name="GotoWeb"
+                                        Width="25"
+                                        Height="25"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Background="Transparent"
+                                        Margin="8,0,0,0"
+                                        Click="ButtonWeb"
+                                        ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip}" >
+                                        <Border
+                                            BorderBrush="DarkBlue"
+                                            BorderThickness=".25"
+                                            CornerRadius="4"
+                                            Padding="2"
+                                            Margin="0">
+                                            <Image
+                                                IsEnabled="False"
+                                                Style="{DynamicResource GotoWebIcon}"
+                                                />
+                                        </Border>
+                                    </Button>
+
+                                </StackPanel>
+                                <!--#endregion-->
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Financial information-->
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="5">
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource calculator}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+                                <!--#region Grid defenitions for groupbox-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier currency  -->
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:ComboBoxAdv
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Width="80"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Arrow"
+                                    DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag}"
+                                    DisplayMemberPath="CurrencyName"
+                                    ItemsSource="{Binding SupplierPageViewModel.SupplierCurrency}"
+                                    SelectedItem="{Binding SupplierPageViewModel.SelectedCurrency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TextSearch.TextPath="CurrencyName"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Shipping costs  -->
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:DoubleTextBox
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="120"
+                                    NumberDecimalDigits="2"
+                                    Style="{DynamicResource SyncfusionDoubleTextBox}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip}"
+                                    WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag}"
+                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Shipping costs freem from... -->
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:DoubleTextBox
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="120"
+                                    NumberDecimalDigits="2"
+                                    Style="{DynamicResource SyncfusionDoubleTextBox}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip}"
+                                    WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag}"
+                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierMaxShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Handling costs  -->
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:DoubleTextBox
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="120"
+                                    NumberDecimalDigits="2"
+                                    Style="{DynamicResource SyncfusionDoubleTextBox}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip}"
+                                    WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag}"
+                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <!--#endregion-->
+
+                                <!--#region  Supplier Shipping costs freem from... -->
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:DoubleTextBox
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="120"
+                                    NumberDecimalDigits="2"
+                                    Style="{DynamicResource SyncfusionDoubleTextBox}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip}"
+                                    WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag}"
+                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierMaxHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <!--#endregion-->
+
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                </Grid>
             </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt Header="tabItem2">
-                <TextBlock Name="textBlock1" Text="This is the second tab item." />
+            <!--#endregion-->
+
+            <!--#region Contacts per supplier-->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataSupplierDetailTabContactsTitle}"
+                Image="{StaticResource contacts}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
             </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt Header="tabItem3">
-                <TextBlock Name="textBlock2" Text="This is the third tab item." />
+            <!--#endregion-->
+
+            <!--#region Memo-->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataSupplierDetailTabMemoTitle}"
+                Image="{StaticResource memo}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
             </syncfusion:TabItemExt>
+            <!--#endregion-->
+
+            <!--#region Order history-->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataSupplierDetailTabHistoryTitle}"
+                Image="{StaticResource orderhistory}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
+            </syncfusion:TabItemExt>
+            <!--#endregion-->
         </syncfusion:TabControlExt>
+        <!--#endregion-->
 
         <!--#region Toolbar section-->
-        <Grid Grid.Row="4"
+        <Grid Grid.Row="3"
               Margin="15,2,15,2"
               VerticalAlignment="Center">
 
@@ -140,7 +560,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
-                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelProject}" />
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelSupplier}" />
                 <Run Text=": " />
                 <Run
                     FontSize="16"
@@ -217,7 +637,7 @@
             AutoGenerateColumns="False"
             ColumnSizer="Star"
             ItemsSource="{Binding Projects}"
-            Loaded="ProjectDataGrid_Loaded"
+            Loaded="SupplierDataGrid_Loaded"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
 
             <syncfusion:SfDataGrid.Columns>

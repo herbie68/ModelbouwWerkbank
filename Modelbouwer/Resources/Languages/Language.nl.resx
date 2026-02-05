@@ -907,66 +907,6 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="TimeReportButtonGroupMonth" xml:space="preserve">
     <value>Per Maand</value>
   </data>
-  <data name="metadataSupplierStatuslineStatusCompleted" xml:space="preserve">
-    <value>regels verwerkt</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedError" xml:space="preserve">
-    <value>regels overgeslagen vanwege fouten</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedOk" xml:space="preserve">
-    <value>regels correct ingelezen</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusDescription" xml:space="preserve">
-    <value>Geen regels ingelezen</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixAdded" xml:space="preserve">
-    <value>Toegevoegd:</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixError" xml:space="preserve">
-    <value>Fout in regel</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusText" xml:space="preserve">
-    <value>Aantal:</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTitle" xml:space="preserve">
-    <value>Basisgegevens</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralTitle" xml:space="preserve">
-    <value>Leverancier gegevens</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
-    <value>Zoeknaam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldName" xml:space="preserve">
-    <value>Naam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZip" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrency" xml:space="preserve">
-    <value>Standaard valuta</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrl" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCosts" xml:space="preserve">
-    <value>Verzendkosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValue" xml:space="preserve">
-    <value>Tot bedrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts" xml:space="preserve">
-    <value>Order kosten</value>
-  </data>
-  <data name="metadataSupplierTabMemoTitle" xml:space="preserve">
-    <value>Aanvullende informatie</value>
-  </data>
-  <data name="metadataSupplierTabOrderHistoryTitle" xml:space="preserve">
-    <value>Order historie</value>
-  </data>
   <data name="metadataProductStatuslineStatusCompleted" xml:space="preserve">
     <value>regels verwerkt</value>
   </data>
@@ -1129,101 +1069,20 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
     <value>Voorraadhistorie</value>
   </data>
-  <data name="metadataSupplierSupplierDatagridHeaderAddress" xml:space="preserve">
-    <value>Adres</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCity" xml:space="preserve">
-    <value>Plaats</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCode" xml:space="preserve">
-    <value>Zoeknaam</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountryId" xml:space="preserve">
-    <value>Land ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrency" xml:space="preserve">
-    <value>Valuta</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrencyId" xml:space="preserve">
-    <value>Valuta ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderName" xml:space="preserve">
-    <value>Naam</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderSupplierId" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderZip" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Verwijder geselekteerde leverancier</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Leverancier toevoegen</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Maak alle ingevulde velden leeg</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Wijzigingen opslaan</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
     <value>Id</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderMail" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridMailHeader" xml:space="preserve">
     <value>E-mail adres</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderName" xml:space="preserve">
-    <value>Naam</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderPhone" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridPhoneHeader" xml:space="preserve">
     <value>Telefoonnummer</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderType" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeHeader" xml:space="preserve">
     <value>Functie</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderTypeId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeIdHeader" xml:space="preserve">
     <value>Functie Id</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMail" xml:space="preserve">
-    <value>E-mail adres</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldName" xml:space="preserve">
-    <value>Volledige naam</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhone" xml:space="preserve">
-    <value>Telefoonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldType" xml:space="preserve">
-    <value>Functie</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralTitle" xml:space="preserve">
-    <value>Communicatiekanalen per leverancier</value>
-  </data>
-  <data name="metadataSupplierTabContactTitle" xml:space="preserve">
-    <value>Contactpersonen</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Verwijder geselekteerde contactpersoon</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Contact(persoon) bij leverancier toevoegen</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Maak alle ingevulde velden leeg</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Wijzigingen opslaan</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddress" xml:space="preserve">
-    <value>Adres</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCity" xml:space="preserve">
-    <value>Plaats</value>
   </data>
   <data name="toolbarButtonParagraphIndent" xml:space="preserve">
     <value>Inspringen</value>
@@ -1974,96 +1833,6 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="metadataStorageEntryFieldStorageTooltip" xml:space="preserve">
     <value>Locatie</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTag" xml:space="preserve">
-    <value>E-mail adres</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTooltip" xml:space="preserve">
-    <value>E-mail adres</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Volledige naam</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Volledige naam</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTag" xml:space="preserve">
-    <value>Telefoonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip" xml:space="preserve">
-    <value>Telefoonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTag" xml:space="preserve">
-    <value>Functie</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTooltip" xml:space="preserve">
-    <value>Functie</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTag" xml:space="preserve">
-    <value>Adres</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip" xml:space="preserve">
-    <value>Adres</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTag" xml:space="preserve">
-    <value>Plaats</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip" xml:space="preserve">
-    <value>Plaats</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
-    <value>Zoeknaam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
-    <value>Zoeknaam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTag" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag" xml:space="preserve">
-    <value>Standaard valuta</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip" xml:space="preserve">
-    <value>Standaard valuta</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag" xml:space="preserve">
-    <value>Tot bedrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip" xml:space="preserve">
-    <value>Tot bedrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Naam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Naam</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag" xml:space="preserve">
-    <value>Order kosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip" xml:space="preserve">
-    <value>Order kosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag" xml:space="preserve">
-    <value>Verzendkosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip" xml:space="preserve">
-    <value>Verzendkosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTag" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTag" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip" xml:space="preserve">
-    <value>Postcode</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktypeTag" xml:space="preserve">
     <value>Werksoort</value>
@@ -3900,5 +3669,269 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="metadataSupplierHeaderTitle" xml:space="preserve">
     <value>Leveranciers beheren</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralTitle" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressTitle" xml:space="preserve">
+    <value>Adres gegevens</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Label" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tag" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip" xml:space="preserve">
+    <value>Straat en huisnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Label" xml:space="preserve">
+    <value>Adres2</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tag" xml:space="preserve">
+    <value>Aanvullende adresgegevens</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip" xml:space="preserve">
+    <value>Aanvullende adres gegevens zoals bijvoorbeeld "3e etage"</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityLabel" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTag" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTooltip" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeLabel" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTag" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTooltip" xml:space="preserve">
+    <value>Verkorte naam</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryLabel" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTooltip" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailLabel" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTag" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTooltip" xml:space="preserve">
+    <value>Algemene mail adres van de leverancier</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameLabel" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTag" xml:space="preserve">
+    <value>Leveranciernaam</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTooltip" xml:space="preserve">
+    <value>Volledige naam van de leverancier</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneLabel" xml:space="preserve">
+    <value>Telefoonnnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTag" xml:space="preserve">
+    <value>Telefoonnnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip" xml:space="preserve">
+    <value>Algemene telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip" xml:space="preserve">
+    <value>Open de website van de leverancier in je browser</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTag" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTooltip" xml:space="preserve">
+    <value>Website van de leverancier</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipLabel" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTag" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTooltip" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceTitle" xml:space="preserve">
+    <value>Financële informatie</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip" xml:space="preserve">
+    <value>Standaard valuta</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel" xml:space="preserve">
+    <value>Verzendkosten tot bedrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag" xml:space="preserve">
+    <value>Tot bedrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip" xml:space="preserve">
+    <value>Vanaf wel bedrag zijn de verzendkosten gratis</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip" xml:space="preserve">
+    <value>Order kosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel" xml:space="preserve">
+    <value>Orderkosten tot bedrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag" xml:space="preserve">
+    <value>Tot bedrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip" xml:space="preserve">
+    <value>Vanaf wel bedrag zijn de orderkosten gratis</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanLabel" xml:space="preserve">
+    <value>Bankrekening</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTag" xml:space="preserve">
+    <value>IBAN Nummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTooltip" xml:space="preserve">
+    <value>Wat is de bankrekening van de leverancier</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsTitle" xml:space="preserve">
+    <value>Contactpersonen</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralTitle" xml:space="preserve">
+    <value>Contact gegevens</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameLabel" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTag" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTooltip" xml:space="preserve">
+    <value>Naam van de contactpersoon</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionLabel" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTag" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip" xml:space="preserve">
+    <value>Wat is de functie van deze contactpersoon bij deze leverancier</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailLabel" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTag" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTooltip" xml:space="preserve">
+    <value>Persoonlijke mail adres  van deze contactpersoon</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneLabel" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTag" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip" xml:space="preserve">
+    <value>Directe telefoonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridFunctionHeader" xml:space="preserve">
+    <value>Functie</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridNameHeader" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierDetailTabMemoTitle" xml:space="preserve">
+    <value>Aanvullende informatie</value>
+  </data>
+  <data name="metadataSupplierDetailTabHistoryTitle" xml:space="preserve">
+    <value>Order History</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierIdHeader" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCodeHeader" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierNameHeader" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCityHeader" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="metadataSupplierStatuslineText" xml:space="preserve">
+    <value>Aantal:</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixError" xml:space="preserve">
+    <value>Fout in regel</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixAdded" xml:space="preserve">
+    <value>Toegevoegd:</value>
+  </data>
+  <data name="metadataSupplierStatuslineDescription" xml:space="preserve">
+    <value>Geen regels ingelezen</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedOk" xml:space="preserve">
+    <value>regels correct ingelezen</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedError" xml:space="preserve">
+    <value>regels overgeslagen vanwege fouten</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompleted" xml:space="preserve">
+    <value>regels verwerkt</value>
+  </data>
+  <data name="metadataSupplierDataGridZipHeader" xml:space="preserve">
+    <value>Postcode</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyIdHeader" xml:space="preserve">
+    <value>Valuta ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyHeader" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryIdHeader" xml:space="preserve">
+    <value>Land ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryHeader" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDataGridAddressHeader" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="toolbarVisibleRowLabelSupplier" xml:space="preserve">
+    <value>Aantal getoonde leveranciers</value>
   </data>
 </root>

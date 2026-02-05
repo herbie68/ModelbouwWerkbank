@@ -904,66 +904,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="TimeReportButtonGroupMonth" xml:space="preserve">
     <value>Pro Monat</value>
   </data>
-  <data name="metadataSupplierStatuslineStatusCompleted" xml:space="preserve">
-    <value>Linien</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedError" xml:space="preserve">
-    <value>Regeln wegen Fehlern übersprungen</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedOk" xml:space="preserve">
-    <value>Regeln korrekt gelesen</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusDescription" xml:space="preserve">
-    <value>Keine Regeln gelesen</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixAdded" xml:space="preserve">
-    <value>Hinzugefügt:</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixError" xml:space="preserve">
-    <value>Fehlerhaft</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusText" xml:space="preserve">
-    <value>Nummer:</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTitle" xml:space="preserve">
-    <value>Grundinformationen</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralTitle" xml:space="preserve">
-    <value>Lieferantendaten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZip" xml:space="preserve">
-    <value>Postleitzahl</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrency" xml:space="preserve">
-    <value>Standardwährung</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrl" xml:space="preserve">
-    <value>Webseite</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCosts" xml:space="preserve">
-    <value>Portokosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValue" xml:space="preserve">
-    <value>Bis zum Betrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts" xml:space="preserve">
-    <value>Bestellung bestellen</value>
-  </data>
-  <data name="metadataSupplierTabMemoTitle" xml:space="preserve">
-    <value>Weitere Informationen</value>
-  </data>
-  <data name="metadataSupplierTabOrderHistoryTitle" xml:space="preserve">
-    <value>Auftragsgeschichte</value>
-  </data>
   <data name="metadataProductStatuslineStatusCompleted" xml:space="preserve">
     <value>Linien</value>
   </data>
@@ -1126,101 +1066,20 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
     <value>Aktiengeschichte</value>
   </data>
-  <data name="metadataSupplierSupplierDatagridHeaderAddress" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCity" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCode" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountryId" xml:space="preserve">
-    <value>Land -ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrency" xml:space="preserve">
-    <value>Währung</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrencyId" xml:space="preserve">
-    <value>Währungs -ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderSupplierId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
     <value>Leerlauf</value>
   </data>
-  <data name="metadataSupplierSupplierDatagridHeaderZip" xml:space="preserve">
-    <value>Postleitzahl</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Entfernen Sie ausgewählten Lieferanten</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Lieferant hinzufügen</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Alle abgeschlossenen Felder leeren</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Änderungen speichern</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderId" xml:space="preserve">
-    <value>Leerlauf</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderMail" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridMailHeader" xml:space="preserve">
     <value>E-Mail-Adresse</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderPhone" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridPhoneHeader" xml:space="preserve">
     <value>Telefonnummer</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderType" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeHeader" xml:space="preserve">
     <value>Funktion</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderTypeId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeIdHeader" xml:space="preserve">
     <value>Funktion ID</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMail" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldName" xml:space="preserve">
-    <value>Vollständiger Name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhone" xml:space="preserve">
-    <value>Telefonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldType" xml:space="preserve">
-    <value>Funktion</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralTitle" xml:space="preserve">
-    <value>Kommunikationskanäle pro Lieferant</value>
-  </data>
-  <data name="metadataSupplierTabContactTitle" xml:space="preserve">
-    <value>Kontakte</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Löschen Sie die ausgewählte Kontaktperson</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Fügen Sie dem Lieferanten Kontakt (Person) hinzu</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Alle abgeschlossenen Felder leeren</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Änderungen speichern</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddress" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCity" xml:space="preserve">
-    <value>Ort</value>
   </data>
   <data name="toolbarButtonParagraphIndent" xml:space="preserve">
     <value>Einzug</value>
@@ -1965,96 +1824,6 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataStorageEntryFieldStorageTooltip" xml:space="preserve">
     <value>Standort</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTag" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTooltip" xml:space="preserve">
-    <value>E-Mail-Adresse</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Vollständiger Name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Vollständiger Name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTag" xml:space="preserve">
-    <value>Telefonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip" xml:space="preserve">
-    <value>Telefonnummer</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTag" xml:space="preserve">
-    <value>Funktion</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTooltip" xml:space="preserve">
-    <value>Funktion</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTag" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip" xml:space="preserve">
-    <value>Adresse</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTag" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTag" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag" xml:space="preserve">
-    <value>Standardwährung</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip" xml:space="preserve">
-    <value>Standardwährung</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag" xml:space="preserve">
-    <value>Bis zum Betrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip" xml:space="preserve">
-    <value>Bis zum Betrag</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag" xml:space="preserve">
-    <value>Bestellung bestellen</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip" xml:space="preserve">
-    <value>Bestellung bestellen</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag" xml:space="preserve">
-    <value>Portokosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip" xml:space="preserve">
-    <value>Portokosten</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTag" xml:space="preserve">
-    <value>Webseite</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip" xml:space="preserve">
-    <value>Webseite</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTag" xml:space="preserve">
-    <value>Postleitzahl</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip" xml:space="preserve">
-    <value>Postleitzahl</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktypeTag" xml:space="preserve">
     <value>Arbeitstyp</value>
@@ -3900,5 +3669,269 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataSupplierHeaderTitle" xml:space="preserve">
     <value>Lieferanten verwalten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralTitle" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressTitle" xml:space="preserve">
+    <value>Adressdetails</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Label" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tag" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip" xml:space="preserve">
+    <value>Straße und Hausnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Label" xml:space="preserve">
+    <value>Adresse2</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tag" xml:space="preserve">
+    <value>Zusätzliche Adressinformationen</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip" xml:space="preserve">
+    <value>Zusätzliche Adressinformationen wie „3. Stock“</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityLabel" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTag" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTooltip" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeLabel" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTag" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTooltip" xml:space="preserve">
+    <value>Kurzname</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryLabel" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTag" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTooltip" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailLabel" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTag" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTooltip" xml:space="preserve">
+    <value>Allgemeine E-Mail-Adresse des Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTag" xml:space="preserve">
+    <value>Name des Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTooltip" xml:space="preserve">
+    <value>Vollständiger Name des Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneLabel" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTag" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip" xml:space="preserve">
+    <value>Allgemeine Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip" xml:space="preserve">
+    <value>Öffnen Sie die Website des Anbieters in Ihrem Browser</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlLabel" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTag" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTooltip" xml:space="preserve">
+    <value>Website des Anbieters</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipLabel" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTag" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTooltip" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceTitle" xml:space="preserve">
+    <value>Finanzielle Informationen</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip" xml:space="preserve">
+    <value>Standardwährung</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel" xml:space="preserve">
+    <value>Versandkosten bis zum angegebenen Betrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag" xml:space="preserve">
+    <value>Bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip" xml:space="preserve">
+    <value>Die Versandkosten sind für jeden Betrag kostenlos</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag" xml:space="preserve">
+    <value>Bestellkosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip" xml:space="preserve">
+    <value>Bestellkosten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel" xml:space="preserve">
+    <value>Bestellkosten bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag" xml:space="preserve">
+    <value>Bis zum Betrag</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip" xml:space="preserve">
+    <value>Ab diesem Betrag sind die Bestellkosten frei</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanLabel" xml:space="preserve">
+    <value>Bankkonto</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTag" xml:space="preserve">
+    <value>IBAN-Nummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTooltip" xml:space="preserve">
+    <value>Wie lautet das Bankkonto des Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsTitle" xml:space="preserve">
+    <value>Kontakte</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralTitle" xml:space="preserve">
+    <value>Kontaktdaten</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameLabel" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTag" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTooltip" xml:space="preserve">
+    <value>Name der Kontaktperson</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionLabel" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTag" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip" xml:space="preserve">
+    <value>Welche Position hat dieser Ansprechpartner bei diesem Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailLabel" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTag" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTooltip" xml:space="preserve">
+    <value>Persönliche E-Mail-Adresse dieser Kontaktperson</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneLabel" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTag" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip" xml:space="preserve">
+    <value>Direkte Telefonnummer</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridFunctionHeader" xml:space="preserve">
+    <value>Funktion</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabMemoTitle" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="metadataSupplierDetailTabHistoryTitle" xml:space="preserve">
+    <value>Bestellverlauf</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierIdHeader" xml:space="preserve">
+    <value>Leerlauf</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCodeHeader" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCityHeader" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="metadataSupplierStatuslineText" xml:space="preserve">
+    <value>Nummer:</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixError" xml:space="preserve">
+    <value>Fehlerhaft</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixAdded" xml:space="preserve">
+    <value>Hinzugefügt:</value>
+  </data>
+  <data name="metadataSupplierStatuslineDescription" xml:space="preserve">
+    <value>Keine Regeln gelesen</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedOk" xml:space="preserve">
+    <value>Regeln korrekt gelesen</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedError" xml:space="preserve">
+    <value>Regeln wegen Fehlern übersprungen</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompleted" xml:space="preserve">
+    <value>Linien</value>
+  </data>
+  <data name="metadataSupplierDataGridZipHeader" xml:space="preserve">
+    <value>PLZ</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyIdHeader" xml:space="preserve">
+    <value>Währung ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyHeader" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryIdHeader" xml:space="preserve">
+    <value>Länder-ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryHeader" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDataGridAddressHeader" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="toolbarVisibleRowLabelSupplier" xml:space="preserve">
+    <value>Anzahl der angezeigten Lieferanten</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel" xml:space="preserve">
+    <value>Bestellkosten</value>
   </data>
 </root>

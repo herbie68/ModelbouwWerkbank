@@ -904,66 +904,6 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="TimeReportButtonGroupMonth" xml:space="preserve">
     <value>Per month</value>
   </data>
-  <data name="metadataSupplierStatuslineStatusCompleted" xml:space="preserve">
-    <value>lines</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedError" xml:space="preserve">
-    <value>Rules skipped due to errors</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusCompletedOk" xml:space="preserve">
-    <value>Rules correctly read</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusDescription" xml:space="preserve">
-    <value>No rules read</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixAdded" xml:space="preserve">
-    <value>Added:</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusPrefixError" xml:space="preserve">
-    <value>Erroneous</value>
-  </data>
-  <data name="metadataSupplierStatuslineStatusText" xml:space="preserve">
-    <value>Number:</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTitle" xml:space="preserve">
-    <value>Basic information</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralTitle" xml:space="preserve">
-    <value>Supplier Data</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCode" xml:space="preserve">
-    <value>Search name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZip" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrency" xml:space="preserve">
-    <value>Standard currency</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrl" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCosts" xml:space="preserve">
-    <value>Postage costs</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValue" xml:space="preserve">
-    <value>Up to amount</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCosts" xml:space="preserve">
-    <value>Order to order</value>
-  </data>
-  <data name="metadataSupplierTabMemoTitle" xml:space="preserve">
-    <value>Additional information</value>
-  </data>
-  <data name="metadataSupplierTabOrderHistoryTitle" xml:space="preserve">
-    <value>Order history</value>
-  </data>
   <data name="metadataProductStatuslineStatusCompleted" xml:space="preserve">
     <value>lines</value>
   </data>
@@ -1126,101 +1066,20 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
     <value>Stock history</value>
   </data>
-  <data name="metadataSupplierSupplierDatagridHeaderAddress" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCity" xml:space="preserve">
-    <value>Place</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCode" xml:space="preserve">
-    <value>Search name</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountry" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCountryId" xml:space="preserve">
-    <value>Land ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrency" xml:space="preserve">
-    <value>Currency</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderCurrencyId" xml:space="preserve">
-    <value>Currency ID</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierSupplierDatagridHeaderSupplierId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
     <value>Idle</value>
   </data>
-  <data name="metadataSupplierSupplierDatagridHeaderZip" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Remove selected supplier</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Supplier Add</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Empty all completed fields</value>
-  </data>
-  <data name="metadataSupplierSupplierToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Save changes</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderId" xml:space="preserve">
-    <value>Idle</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderMail" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridMailHeader" xml:space="preserve">
     <value>E-mail address</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabContactDatagridHeaderPhone" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridPhoneHeader" xml:space="preserve">
     <value>Telephone number</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderType" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeHeader" xml:space="preserve">
     <value>Function</value>
   </data>
-  <data name="metadataSupplierTabContactDatagridHeaderTypeId" xml:space="preserve">
+  <data name="metadataSupplierDetailTabContactsDataGridTypeIdHeader" xml:space="preserve">
     <value>Function ID</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMail" xml:space="preserve">
-    <value>E-mail address</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldName" xml:space="preserve">
-    <value>Full name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhone" xml:space="preserve">
-    <value>Telephone number</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldType" xml:space="preserve">
-    <value>Function</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralTitle" xml:space="preserve">
-    <value>Communication channels per supplier</value>
-  </data>
-  <data name="metadataSupplierTabContactTitle" xml:space="preserve">
-    <value>Contacts</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonDeleteTooltip" xml:space="preserve">
-    <value>Delete selected contact person</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonNewTooltip" xml:space="preserve">
-    <value>Add contact (person) to the supplier</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonResetTooltip" xml:space="preserve">
-    <value>Empty all completed fields</value>
-  </data>
-  <data name="metadataSupplierTabContactToolbarButtonSaveTooltip" xml:space="preserve">
-    <value>Save changes</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddress" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCity" xml:space="preserve">
-    <value>Place</value>
   </data>
   <data name="toolbarButtonParagraphIndent" xml:space="preserve">
     <value>Indent</value>
@@ -1965,96 +1824,6 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataStorageEntryFieldStorageTooltip" xml:space="preserve">
     <value>Location</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTag" xml:space="preserve">
-    <value>E-mail address</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldMailTooltip" xml:space="preserve">
-    <value>E-mail address</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Full name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Full name</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTag" xml:space="preserve">
-    <value>Telephone number</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldPhoneTooltip" xml:space="preserve">
-    <value>Telephone number</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTag" xml:space="preserve">
-    <value>Function</value>
-  </data>
-  <data name="metadataSupplierTabContactTabItemGeneralFieldTypeTooltip" xml:space="preserve">
-    <value>Function</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTag" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldAddressTooltip" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTag" xml:space="preserve">
-    <value>Place</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCityTooltip" xml:space="preserve">
-    <value>Place</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTag" xml:space="preserve">
-    <value>Search name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCodeTooltip" xml:space="preserve">
-    <value>Search name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTag" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCountryTooltip" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTag" xml:space="preserve">
-    <value>Standard currency</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldCurrencyTooltip" xml:space="preserve">
-    <value>Standard currency</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTag" xml:space="preserve">
-    <value>Up to amount</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldMaxValueTooltip" xml:space="preserve">
-    <value>Up to amount</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTag" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldNameTooltip" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTag" xml:space="preserve">
-    <value>Order to order</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldOrderCostsTooltip" xml:space="preserve">
-    <value>Order to order</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTag" xml:space="preserve">
-    <value>Postage costs</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldSendCostsTooltip" xml:space="preserve">
-    <value>Postage costs</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTag" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldUrlTooltip" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTag" xml:space="preserve">
-    <value>Postcode</value>
-  </data>
-  <data name="metadataSupplierTabGeneralTabItemGeneralFieldZipTooltip" xml:space="preserve">
-    <value>Postcode</value>
   </data>
   <data name="metadataWorktypeEntryFieldWorktypeTag" xml:space="preserve">
     <value>Work type</value>
@@ -3900,5 +3669,269 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataSupplierHeaderTitle" xml:space="preserve">
     <value>Manage suppliers</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralTitle" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressTitle" xml:space="preserve">
+    <value>Address details</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Label" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tag" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip" xml:space="preserve">
+    <value>Street and house number</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Label" xml:space="preserve">
+    <value>Address2</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tag" xml:space="preserve">
+    <value>Additional address information</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip" xml:space="preserve">
+    <value>Additional address information such as "3rd floor"</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityLabel" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTag" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCityTooltip" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeLabel" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTag" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCodeTooltip" xml:space="preserve">
+    <value>Shortened name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryLabel" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTag" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressCountryTooltip" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailLabel" xml:space="preserve">
+    <value>E-mail address</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTag" xml:space="preserve">
+    <value>E-mail address</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressMailTooltip" xml:space="preserve">
+    <value>General email address of the supplier</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTag" xml:space="preserve">
+    <value>Supplier name</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressNameTooltip" xml:space="preserve">
+    <value>Full name of the supplier</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneLabel" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTag" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip" xml:space="preserve">
+    <value>General telephone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip" xml:space="preserve">
+    <value>Open the supplier's website in your browser</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTag" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressUrlTooltip" xml:space="preserve">
+    <value>Supplier's website</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipLabel" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTag" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupAddressZipTooltip" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceTitle" xml:space="preserve">
+    <value>Financial information</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyLabel" xml:space="preserve">
+    <value>Standard currency</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag" xml:space="preserve">
+    <value>Standard currency</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip" xml:space="preserve">
+    <value>Standard currency</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsLabel" xml:space="preserve">
+    <value>Postage costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag" xml:space="preserve">
+    <value>Postage costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip" xml:space="preserve">
+    <value>Postage costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxLabel" xml:space="preserve">
+    <value>Shipping costs up to amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag" xml:space="preserve">
+    <value>Up to amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip" xml:space="preserve">
+    <value>Shipping costs are free for any amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel" xml:space="preserve">
+    <value>Handling costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag" xml:space="preserve">
+    <value>Handling costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip" xml:space="preserve">
+    <value>Handling costs</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxLabel" xml:space="preserve">
+    <value>Handlingcosts up to amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag" xml:space="preserve">
+    <value>Up to amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip" xml:space="preserve">
+    <value>The handling costs are free from this amount</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanLabel" xml:space="preserve">
+    <value>Bank account</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTag" xml:space="preserve">
+    <value>IBAN Number</value>
+  </data>
+  <data name="metadataSupplierDetailTabGeneralGroupFinanceIbanTooltip" xml:space="preserve">
+    <value>What is the supplier's bank account</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsTitle" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralTitle" xml:space="preserve">
+    <value>Contact details</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameLabel" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTag" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralNameTooltip" xml:space="preserve">
+    <value>Name of the contact person</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionLabel" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTag" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip" xml:space="preserve">
+    <value>What is the position of this contact person at this supplier</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailLabel" xml:space="preserve">
+    <value>E-mail address</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTag" xml:space="preserve">
+    <value>E-mail address</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralMailTooltip" xml:space="preserve">
+    <value>Personal email address of this contact person</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneLabel" xml:space="preserve">
+    <value>Telephone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTag" xml:space="preserve">
+    <value>Telephone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip" xml:space="preserve">
+    <value>Direct telephone number</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridFunctionHeader" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="metadataSupplierDetailTabContactsDataGridNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDetailTabMemoTitle" xml:space="preserve">
+    <value>Additional information</value>
+  </data>
+  <data name="metadataSupplierDetailTabHistoryTitle" xml:space="preserve">
+    <value>OrderHistory</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierIdHeader" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCodeHeader" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="metadataSupplierDataGridSupplierCityHeader" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="metadataSupplierStatuslineText" xml:space="preserve">
+    <value>Number:</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixError" xml:space="preserve">
+    <value>Erroneous</value>
+  </data>
+  <data name="metadataSupplierStatuslinePrefixAdded" xml:space="preserve">
+    <value>Added:</value>
+  </data>
+  <data name="metadataSupplierStatuslineDescription" xml:space="preserve">
+    <value>No rules read</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedOk" xml:space="preserve">
+    <value>Rules correctly read</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompletedError" xml:space="preserve">
+    <value>Rules skipped due to errors</value>
+  </data>
+  <data name="metadataSupplierStatuslineCompleted" xml:space="preserve">
+    <value>lines</value>
+  </data>
+  <data name="metadataSupplierDataGridZipHeader" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyIdHeader" xml:space="preserve">
+    <value>Currency ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCurrencyHeader" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryIdHeader" xml:space="preserve">
+    <value>Country ID</value>
+  </data>
+  <data name="metadataSupplierDataGridCountryHeader" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="metadataSupplierDataGridAddressHeader" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="toolbarVisibleRowLabelSupplier" xml:space="preserve">
+    <value>Number of suppliers shown</value>
   </data>
 </root>

@@ -64,6 +64,18 @@
         <Setter Property="Margin" Value="8,0" />
         <Setter Property="Background" Value="#66000000" />
     </Style>
+    <!--#endregion-->
 
+    <!--#region Header group resources-->
+    <Style x:Key="ImageHeaderGroup" TargetType="Image">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Goto Web Icon-->
+    <Style x:Key="GotoWebIcon" TargetType="Image">
+        <Setter Property="Source" Value="{StaticResource gotoweb}" />
+    </Style>
     <!--#endregion-->
 </ResourceDictionary>

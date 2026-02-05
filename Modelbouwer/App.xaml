@@ -24,7 +24,9 @@
                 <ResourceDictionary Source="Resources/Styles/RtfToolbarStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfDataGridStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/SfTreeGridStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/TabControlExtStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/TextboxStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/TextBlockStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ToggleButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Toolbar.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ToolbarStyle.xaml" />
