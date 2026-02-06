@@ -11,19 +11,19 @@ public class SupplierValidator : IEntityValidator<SupplierModel>
 		var result = new ValidationResult();
 
 		// Name
-		if ( string.IsNullOrWhiteSpace( supplier.SupplierName ) )
+		if ( string.IsNullOrWhiteSpace( supplier.Name ) )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameRequirered );
 		}
-		else if ( supplier.SupplierName.Length > 100 )
+		else if ( supplier.Name.Length > 100 )
 		{
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
 		}
 
 		// ❗ Duplicate checks
-		if ( supplier.SupplierId == 0 )
+		if ( supplier.Id == 0 )
 		{
-			if ( await _dataService.NameExistsAsync( supplier.SupplierName ) )
+			if ( await _dataService.NameExistsAsync( supplier.Name ) )
 				result.Errors.Add( Lang.ExportValidationSupplierNameExists );
 		}
 

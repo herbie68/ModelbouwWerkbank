@@ -104,7 +104,7 @@ public class SupplierService : ISupplierService
 		$"{DBNames.SqlSelectLastId}";
 
 	public string AddNewContactQuery =
-		$"INSERT INTO {DBNames.Database}.{DBNames.SupplierTable} ( " +
+		$"INSERT INTO {DBNames.Database}.{DBNames.SupplierContactTable} ( " +
 		$"{ DBNames.SupplierContactFieldNameTypeId}, " +
 		$"{ DBNames.SupplierContactFieldNameName}, " +
 		$"{ DBNames.SupplierContactFieldNameMail}, " +
@@ -117,7 +117,7 @@ public class SupplierService : ISupplierService
 		$"{DBNames.SqlSelectLastId}";
 
 	public string UpdateSupplierQuery =
-		$"UPDATE {DBNames.Database}.{DBNames.SupplierContactTable} " +
+		$"UPDATE {DBNames.Database}.{DBNames.SupplierTable} " +
 		$"SET " +
 		$"{DBNames.SupplierFieldNameCode} = @{DBNames.SupplierFieldNameCode}, " +
 		$"{DBNames.SupplierFieldNameName} = @{DBNames.SupplierFieldNameName}, " +
@@ -138,7 +138,7 @@ public class SupplierService : ISupplierService
 		$"WHERE {DBNames.SupplierFieldNameId} = @{DBNames.SupplierFieldNameId};";
 
 	public string UpdateContactQuery =
-		$"UPDATE {DBNames.Database}.{DBNames.SupplierTable} " +
+		$"UPDATE {DBNames.Database}.{DBNames.SupplierContactTable} " +
 		$"SET " +
 		$"{DBNames.SupplierContactFieldNameTypeId} = @{DBNames.SupplierContactFieldNameTypeId}, " +
 		$"{DBNames.SupplierContactFieldNameName} = @{DBNames.SupplierContactFieldNameName}, " +
@@ -185,37 +185,37 @@ public class SupplierService : ISupplierService
 		{
 			return new SupplierModel
 			{
-				SupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameId}" ] ),
-				SupplierCode = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameCode}" ] ),
-				SupplierName = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameName}" ] ),
-				SupplierAddress1 = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameAddress1}" ] ),
-				SupplierAddress2 = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameAddress2}" ] ),
-				SupplierZip = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameZip}" ] ),
-				SupplierCity = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameCity}" ] ),
-				SupplierUrl = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameUrl}" ] ),
-				SupplierShippingCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameShippingCosts}" ] ),
-				SupplierMinShippingCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameMinShippingCosts}" ] ),
-				SupplierOrderCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameOrderCosts}" ] ),
-				SupplierMinOrderCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameMinOrderCosts}" ] ),
-				SupplierCurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
-				SupplierCountryId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCountryId}" ] ),
-				SupplierMemo = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameMemo}" ] )
+				Id = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameId}" ] ),
+				Code = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameCode}" ] ),
+				Name = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameName}" ] ),
+				Address1 = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameAddress1}" ] ),
+				Address2 = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameAddress2}" ] ),
+				Zip = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameZip}" ] ),
+				City = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameCity}" ] ),
+				Url = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameUrl}" ] ),
+				ShippingCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameShippingCosts}" ] ),
+				MinShippingCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameMinShippingCosts}" ] ),
+				OrderCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameOrderCosts}" ] ),
+				MinOrderCosts = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.SupplierFieldNameMinOrderCosts}" ] ),
+				CurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
+				CountryId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCountryId}" ] ),
+				Memo = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameMemo}" ] )
 			};
 		} );
 	}
 
-	public Task<List<SupplierModel>> GetAllContactsAsync()
+	public Task<List<SupplierContactModel>> GetAllContactsAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteContactList, reader =>
 		{
-			return new SupplierModel
+			return new SupplierContactModel
 			{
 				SupplierContactId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierContactFieldNameId}" ] ),
 				SupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierContactFieldNameSupplierId}" ] ),
-				SupplierContactTypeId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierContactFieldNameTypeId}" ] ),
-				SupplierContactName = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNameName}" ] ),
-				SupplierMail = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNameMail}" ] ),
-				SupplierPhone = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNamePhone}" ] ),
+				ContactTypeId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierContactFieldNameTypeId}" ] ),
+				Name = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNameName}" ] ),
+				Mail = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNameMail}" ] ),
+				Phone = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierContactFieldNamePhone}" ] ),
 			};
 		} );
 	}
@@ -269,7 +269,7 @@ public class SupplierService : ISupplierService
 			{ $"{DBNames.SupplierFieldNameCode}", queryParameters[$"@{DBNames.SupplierFieldNameCode}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierFieldNameName}", queryParameters[$"@{DBNames.SupplierFieldNameName}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierFieldNameAddress1}", queryParameters[$"@{DBNames.SupplierFieldNameAddress1}"] ?? DBNull.Value },
-			{ $"{DBNames.SupplierFieldNameAddress2}", queryParameters[$"@{DBNames.SupplierFieldNameAddress1}"] ?? DBNull.Value },
+			{ $"{DBNames.SupplierFieldNameAddress2}", queryParameters[$"@{DBNames.SupplierFieldNameAddress2}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierFieldNameZip}", queryParameters[$"@{DBNames.SupplierFieldNameZip}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierFieldNameCity}", queryParameters[$"@{DBNames.SupplierFieldNameCity}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierFieldNameUrl}", queryParameters[$"@{DBNames.SupplierFieldNameUrl}"] ?? DBNull.Value },
@@ -296,8 +296,8 @@ public class SupplierService : ISupplierService
 			{ $"{DBNames.SupplierContactFieldNameSupplierId}", queryParameters[$"@{DBNames.SupplierContactFieldNameSupplierId}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierContactFieldNameTypeId}", queryParameters[$"@{DBNames.SupplierContactFieldNameTypeId}"] ?? DBNull.Value },
 			{ $"{DBNames.SupplierContactFieldNameName}", queryParameters[$"@{DBNames.SupplierContactFieldNameName}"] ?? DBNull.Value },
-			{ $"{DBNames.SupplierFieldNameAddress1}", queryParameters[$"@{DBNames.SupplierContactFieldNameMail}"] ?? DBNull.Value },
-			{ $"{DBNames.SupplierFieldNameAddress2}", queryParameters[$"@{DBNames.SupplierContactFieldNamePhone}"] ?? DBNull.Value }
+			{ $"{DBNames.SupplierContactFieldNameMail}", queryParameters[$"@{DBNames.SupplierContactFieldNameMail}"] ?? DBNull.Value },
+			{ $"{DBNames.SupplierContactFieldNamePhone}", queryParameters[$"@{DBNames.SupplierContactFieldNamePhone}"] ?? DBNull.Value }
 		};
 
 		uint newId = await _dataService.ExecuteScalarAsync<uint>( AddNewContactQuery, parameters );
@@ -403,7 +403,7 @@ public class SupplierService : ISupplierService
 		var suppliers = await GetAllSuppliersAsync();
 
 		return suppliers.Any( c =>
-			string.Equals( c.SupplierName, supplierName, StringComparison.OrdinalIgnoreCase ) );
+			string.Equals( c.Name, supplierName, StringComparison.OrdinalIgnoreCase ) );
 	}
 
 	public async Task<bool> ContactNameExistsAsync( string? contactName )
@@ -414,6 +414,6 @@ public class SupplierService : ISupplierService
 		var contacts = await GetAllContactsAsync();
 
 		return contacts.Any( c =>
-			string.Equals( c.SupplierContactName, contactName, StringComparison.OrdinalIgnoreCase ) );
+			string.Equals( c.Name, contactName, StringComparison.OrdinalIgnoreCase ) );
 	}
 }

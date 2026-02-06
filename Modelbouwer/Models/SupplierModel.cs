@@ -1,159 +1,120 @@
 ﻿namespace Modelbouwer.Models;
 
-public partial class SupplierModel : ObservableObject
+public class SupplierModel : ObservableObject
 {
 	#region General supplier information
-	[ObservableProperty]
-	private int _supplierId;
-
-	[ObservableProperty]
-	private string? _supplierCode;
-
-	[ObservableProperty]
-	private string? _supplierName;
-
-	[ObservableProperty]
-	private string? _supplierAddress1;
-
-	[ObservableProperty]
-	private string? _supplierAddress2;
-
-	[ObservableProperty]
-	private string? _supplierZip;
-
-	[ObservableProperty]
-	private string? _supplierCity;
-
-	[ObservableProperty]
-	private string? _supplierUrl;
-
-	[ObservableProperty]
-	private double _supplierShippingCosts;
-
-	[ObservableProperty]
-	private double _supplierMinShippingCosts;
-
-	[ObservableProperty]
-	private double _supplierOrderCosts;
-
-	[ObservableProperty]
-	private double _supplierMinOrderCosts;
-
-	[ObservableProperty]
-	private string? _supplierMemo;
-
-	[ObservableProperty]
-	private string? _supplierMail;
-
-	[ObservableProperty]
-	private string? _supplierPhone;
-
-	[ObservableProperty]
-	private int _supplierCurrencyId;
-
-	[ObservableProperty]
-	private string? _supplierCurrency;
-
-	[ObservableProperty]
-	private double _supplierCurrencyRate;
-
-	[ObservableProperty]
-	private int _supplierCountryId;
-
-	[ObservableProperty]
-	private string? _supplierCountry;
+	public int CountryId { get; set; }
+	public int CurrencyId { get; set; }
+	public int Id { get; set; }
+	public double CurrencyRate { get; set; }
+	public double MinOrderCosts { get; set; }
+	public double MinShippingCosts { get; set; }
+	public double OrderCosts { get; set; }
+	public double ShippingCosts { get; set; }
+	public string? Address1 { get; set; }
+	public string? Address2 { get; set; }
+	public string? City { get; set; }
+	public string? Code { get; set; }
+	public string? Country { get; set; }
+	public string? Currency { get; set; }
+	public string? Mail { get; set; }
+	public string? Memo { get; set; }
+	public string? Name { get; set; }
+	public string? Phone { get; set; }
+	public string? Url { get; set; }
+	public string? Zip { get; set; }
 	#endregion
 
 	#region Supplier Contacts
-	[ObservableProperty]
-	private int _supplierContactId;
+	//[ObservableProperty]
+	//private int _supplierContactId;
 
-	[ObservableProperty]
-	private int _supplierContactSuppplierId;
+	//[ObservableProperty]
+	//private int _supplierContactSuppplierId;
 
-	[ObservableProperty]
-	private string? _supplierContactName;
+	//[ObservableProperty]
+	//private string? _supplierContactName;
 
-	[ObservableProperty]
-	private int _supplierContactContactTypeId;
+	//[ObservableProperty]
+	//private int _supplierContactContactTypeId;
 
-	[ObservableProperty]
-	private string? _supplierContactContactType;
+	//[ObservableProperty]
+	//private string? _supplierContactContactType;
 
-	[ObservableProperty]
-	private string? _supplierContactMail;
+	//[ObservableProperty]
+	//private string? _supplierContactMail;
 
-	[ObservableProperty]
-	private string? _supplierContactPhone;
+	//[ObservableProperty]
+	//private string? _supplierContactPhone;
 	#endregion
 
 	#region Supplier Conacts functions
-	[ObservableProperty]
-	private string? _supplierContactTypeName;
+	//[ObservableProperty]
+	//private string? _supplierContactTypeName;
 
-	[ObservableProperty]
-	private int _supplierContactTypeId;
+	//[ObservableProperty]
+	//private int _supplierContactTypeId;
 	#endregion
 
 	#region Order History
-	[ObservableProperty]
-	private int _supplierOrderHistoryOrderId;
+	//[ObservableProperty]
+	//private int _supplierOrderHistoryOrderId;
 
-	[ObservableProperty]
-	private int _supplierOrderHistorySupplierId;
+	//[ObservableProperty]
+	//private int _supplierOrderHistorySupplierId;
 
-	[ObservableProperty]
-	private string? _supplierOrderHistoryOrderNumber;
+	//[ObservableProperty]
+	//private string? _supplierOrderHistoryOrderNumber;
 
-	[ObservableProperty]
-	private string? _supplierOrderHistoryOrderDate;
+	//[ObservableProperty]
+	//private string? _supplierOrderHistoryOrderDate;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryOrderCosts;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryOrderCosts;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryShippingCosts;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryShippingCosts;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryCurrencyConversionRate;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryCurrencyConversionRate;
 
-	[ObservableProperty]
-	private string? _supplierOrderHistoryReceived;
+	//[ObservableProperty]
+	//private string? _supplierOrderHistoryReceived;
 
-	[ObservableProperty]
-	private int _supplierOrderHistoryProductId;
+	//[ObservableProperty]
+	//private int _supplierOrderHistoryProductId;
 
-	[ObservableProperty]
-	private string? _supplierOrderHistoryProductNumber;
+	//[ObservableProperty]
+	//private string? _supplierOrderHistoryProductNumber;
 
-	[ObservableProperty]
-	private string? _supplierOrderHistoryProductDescription;
+	//[ObservableProperty]
+	//private string? _supplierOrderHistoryProductDescription;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryPrice;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryPrice;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryAmount;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryAmount;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryRowTotal;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryRowTotal;
 
-	[ObservableProperty]
-	private decimal _supplierOrderHistoryOrderTotal;
+	//[ObservableProperty]
+	//private decimal _supplierOrderHistoryOrderTotal;
 	#endregion
 
 	#region ColumnMappings
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{
-		[nameof(SupplierId)] = [ "ID" ],
+		[nameof(Id)] = [ "ID" ],
 
-		[nameof(SupplierCode)] =
+		[nameof(Code)] =
 		[
 			"Zoeknaam",
 			"Search name",
 			"Suchname" ],
 
-		[nameof(SupplierName)] = [
+		[nameof(Name)] = [
 			"Suppliernaam",
 			"Supplier name",
 			"Projektname" ],

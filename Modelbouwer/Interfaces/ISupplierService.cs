@@ -3,7 +3,7 @@
 public interface ISupplierService
 {
 	Task<List<SupplierModel>> GetAllSuppliersAsync();
-	Task<List<SupplierModel>> GetAllContactsAsync();
+	Task<List<SupplierContactModel>> GetAllContactsAsync();
 	Task<List<ContactTypeModel>> GetAllContactFunctionsAsync();
 	Task<List<CountryModel>> GetAllCountriesAsync();
 	Task<List<CurrencyModel>> GetAllCurrenciesAsync();

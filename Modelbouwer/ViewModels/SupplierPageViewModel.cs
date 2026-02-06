@@ -16,11 +16,8 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	// Commands
 	public IRelayCommand AddSupplierCommand => AddCommand;
-	public IRelayCommand AddContactCommand => AddContactCommand;
 	public IAsyncRelayCommand SaveSupplierCommand => SaveCommand;
-	public IAsyncRelayCommand SaveContactCommand => SaveContactCommand;
 	public IRelayCommand DeleteSupplierCommand => DeleteCommand;
-	public IRelayCommand DeleteContactCommand => DeleteContactCommand;
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private SupplierModel? _previousSupplier;
@@ -62,7 +59,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		if ( string.IsNullOrWhiteSpace( SearchText ) )
 			return true;
 
-		return Supplier.SupplierName?.Contains( SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
+		return Supplier.Name?.Contains( SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
 	}
 
 	// Abstract overrides voor CRUD
@@ -73,7 +70,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		if ( SelectedItem == null )
 			return Task.CompletedTask;
 
-		_lastSelectedSupplierId = SelectedItem.SupplierId;
+		_lastSelectedSupplierId = SelectedItem.Id;
 
 		return _dataService.UpdateSupplierAsync( CreateParameters( SelectedItem ) );
 	}
@@ -83,7 +80,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 			return;
 
 		var result = MessageBox.Show(
-			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.SupplierName}' {Lang.toolbarButtonActionDeleteMessageQuestionSuffix}",
+			$"{Lang.toolbarButtonActionDeleteMessageQuestionPrefix} '{item.Name}' {Lang.toolbarButtonActionDeleteMessageQuestionSuffix}",
 			$"{Lang.toolbarButtonActionDeleteMessageButtonText}",
 			MessageBoxButton.YesNo,
 			MessageBoxImage.Warning
@@ -93,7 +90,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 			return;
 		try
 		{
-			await _dataService.DeleteSupplierAsync( item.SupplierId );
+			await _dataService.DeleteSupplierAsync( item.Id );
 		}
 		catch ( EntityInUseException ex )
 		{
@@ -106,13 +103,13 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		}
 	}
 
-	protected override int GetId( SupplierModel item ) => item.SupplierId;
-	protected override void SetId( SupplierModel item, int id ) => item.SupplierId = id;
+	protected override int GetId( SupplierModel item ) => item.Id;
+	protected override void SetId( SupplierModel item, int id ) => item.Id = id;
 
 	protected override SupplierModel CreateNewItem() => new()
 	{
-		SupplierId = 0,
-		SupplierName = string.Empty
+		Id = 0,
+		Name = string.Empty
 	};
 
 	protected override void OnItemsLoaded()
@@ -123,7 +120,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 		if ( _lastSelectedSupplierId.HasValue )
 		{
-			var match = Suppliers.FirstOrDefault( p => p.SupplierId == _lastSelectedSupplierId.Value );
+			var match = Suppliers.FirstOrDefault( p => p.Id == _lastSelectedSupplierId.Value );
 
 			if ( match != null )
 			{
@@ -147,17 +144,17 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		}
 
 		SelectedItem = Suppliers
-			.OrderByDescending( p => p.SupplierId )
+			.OrderByDescending( p => p.Id )
 			.First();
 	}
 
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( SupplierModel c ) => new()
 	{
-		{ $"@{DBNames.SupplierFieldNameId}", c.SupplierId },
-		{ $"@{DBNames.SupplierFieldNameCode}", c.SupplierCode },
-		{ $"@{DBNames.SupplierFieldNameName}", c.SupplierName?.Trim() },
-		{ $"@{DBNames.SupplierFieldNameMemo}", c.SupplierMemo }
+		{ $"@{DBNames.SupplierFieldNameId}", c.Id },
+		{ $"@{DBNames.SupplierFieldNameCode}", c.Code },
+		{ $"@{DBNames.SupplierFieldNameName}", c.Name?.Trim() },
+		{ $"@{DBNames.SupplierFieldNameMemo}", c.Memo }
 	};
 
 }

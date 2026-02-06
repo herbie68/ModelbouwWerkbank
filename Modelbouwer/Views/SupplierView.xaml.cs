@@ -79,7 +79,7 @@ public partial class SupplierView : UserControl
 				filePath: dialog.FileName,
 				existingRecords: Suppliers,
 				columnMappings: SupplierModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(SupplierModel.SupplierName) // unieke kolom
+                uniqueProperty: nameof(SupplierModel.Name) // unieke kolom
             );
 
 				MessageBox.Show(
