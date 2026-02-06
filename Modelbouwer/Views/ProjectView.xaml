@@ -255,8 +255,7 @@
             Grid.Row="3"
             Grid.Column="1"
             Margin="5"
-            RtfText="{Binding SelectedItem.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
-
+            RtfText="{Binding SelectedItem.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Loaded="ProjectMemoEditor_Loaded" />
         <!--#endregion-->
         <!--#endregion-->
 

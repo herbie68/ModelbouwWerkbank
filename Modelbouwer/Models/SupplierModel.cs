@@ -28,16 +28,16 @@ public partial class SupplierModel : ObservableObject
 	private string? _supplierUrl;
 
 	[ObservableProperty]
-	private decimal _supplierShippingCosts;
+	private double _supplierShippingCosts;
 
 	[ObservableProperty]
-	private decimal _supplierMinShippingCosts;
+	private double _supplierMinShippingCosts;
 
 	[ObservableProperty]
-	private decimal _supplierOrderCosts;
+	private double _supplierOrderCosts;
 
 	[ObservableProperty]
-	private decimal _supplierMinOrderCosts;
+	private double _supplierMinOrderCosts;
 
 	[ObservableProperty]
 	private string? _supplierMemo;

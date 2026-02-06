@@ -3934,4 +3934,31 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsLabel" xml:space="preserve">
     <value>Bestellkosten</value>
   </data>
+  <data name="toolbarVisibleRowLabelContacts" xml:space="preserve">
+    <value>Anzahl der angezeigten Kontakte</value>
+  </data>
+  <data name="toolbarButtonActionNewContact" xml:space="preserve">
+    <value>Ansprechpartner hinzufügen</value>
+  </data>
+  <data name="toolbarButtonActionSaveContact" xml:space="preserve">
+    <value>Geänderte Kontaktdaten speichern</value>
+  </data>
+  <data name="toolbarButtonActionDeleteContact" xml:space="preserve">
+    <value>Ausgewählten Kontakt löschen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Supplier.Label" xml:space="preserve">
+    <value>Lieferantenmanagement</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Supplier.Tooltip" xml:space="preserve">
+    <value>Lieferantendatenmanagement</value>
+  </data>
+  <data name="ExportValidationSupplierNameExists" xml:space="preserve">
+    <value>Ein Lieferant mit diesem Namen existiert bereits</value>
+  </data>
+  <data name="metadataSupplierDeleteError" xml:space="preserve">
+    <value>Dieser Lieferant wird noch verwendet und kann nicht gelöscht werden</value>
+  </data>
+  <data name="metadataSupplierContactDeleteError" xml:space="preserve">
+    <value>Dieser Kontakt wird noch irgendwo verwendet und kann nicht gelöscht werden</value>
+  </data>
 </root>

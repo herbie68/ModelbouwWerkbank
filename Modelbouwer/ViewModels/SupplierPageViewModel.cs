@@ -16,8 +16,11 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	// Commands
 	public IRelayCommand AddSupplierCommand => AddCommand;
+	public IRelayCommand AddContactCommand => AddContactCommand;
 	public IAsyncRelayCommand SaveSupplierCommand => SaveCommand;
+	public IAsyncRelayCommand SaveContactCommand => SaveContactCommand;
 	public IRelayCommand DeleteSupplierCommand => DeleteCommand;
+	public IRelayCommand DeleteContactCommand => DeleteContactCommand;
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private SupplierModel? _previousSupplier;

@@ -155,6 +155,13 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Command = new SimpleCommand( () => LoadProjectView() )
 		} );
 
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Supplier_Label}",
+			NavigationIcon = CreateNavigationImage( "Supplier" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Supplier_Tooltip}",
+			Command = new SimpleCommand( () => LoadSupplierView() )
+		} );
 
 	}
 
@@ -303,6 +310,20 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Debug.WriteLine( $"Error loading ProjectView: {ex.Message}" );
 		}
 	}
+
+	private void LoadSupplierView()
+	{
+		try
+		{
+			var supplierView = _serviceProvider.GetRequiredService<SupplierView>();
+			CurrentView = supplierView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading SupplierView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -443,6 +464,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		MetadataSubItems.Add( new NavigationModel
 		{
+			NavigationItem = Language.navigation_Resources_SubItem_Supplier_Label,
+			NavigationIcon = CreateNavigationImage( "Supplier" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Supplier_Tooltip,
+			Command = new SimpleCommand( () => LoadSupplierView() )
+		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
 			NavigationItem = Language.navigation_Resources_SubItem_Unit_Label,
 			NavigationIcon = CreateNavigationImage( "Unit" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Unit_Tooltip,
@@ -474,6 +503,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 		} );
 		#endregion
 
+		#region Resources main item
 		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_MainItem_Label,
@@ -481,6 +511,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = Language.navigation_Resources_MainItem_Tooltip,
 			SubItems = MetadataSubItems
 		} );
+		#endregion
 		#endregion
 
 		#region Settings section

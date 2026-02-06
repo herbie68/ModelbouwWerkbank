@@ -1465,6 +1465,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Een leverancier met deze naam bestaat al.
+        /// </summary>
+        public static string ExportValidationSupplierNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationSupplierNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deze eenheid bestaat al.
         /// </summary>
         public static string ExportValidationUnitNameExists {
@@ -7675,6 +7684,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deze contactpersoon wordt nog ergens gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataSupplierContactDeleteError {
+            get {
+                return ResourceManager.GetString("metadataSupplierContactDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adres.
         /// </summary>
         public static string metadataSupplierDataGridAddressHeader {
@@ -7761,6 +7779,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataSupplierDataGridZipHeader {
             get {
                 return ResourceManager.GetString("metadataSupplierDataGridZipHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze leverancier wordt nog gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataSupplierDeleteError {
+            get {
+                return ResourceManager.GetString("metadataSupplierDeleteError", resourceCulture);
             }
         }
         
@@ -9138,6 +9165,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string navigation_Resources_SubItem_StorageLocation_Tooltip {
             get {
                 return ResourceManager.GetString("navigation.Resources.SubItem.StorageLocation.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leveranciersbeheer.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Supplier_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Supplier.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van de leveranciergegevens.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Supplier_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Supplier.Tooltip", resourceCulture);
             }
         }
         
@@ -11159,6 +11204,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verwijder geselecteerde contactpersoon.
+        /// </summary>
+        public static string toolbarButtonActionDeleteContact {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionDeleteContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verwijder.
         /// </summary>
         public static string toolbarButtonActionDeleteMessageButtonText {
@@ -11258,6 +11312,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contactpersoon toevoegen.
+        /// </summary>
+        public static string toolbarButtonActionNewContact {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionNewContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nieuwe categorie op zelfde niveau als de geselecteerde categorie.
         /// </summary>
         public static string toolbarButtonActionNewRoot {
@@ -11281,6 +11344,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonActionSave {
             get {
                 return ResourceManager.GetString("toolbarButtonActionSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gewijzigde contactgegevens opslaan.
+        /// </summary>
+        public static string toolbarButtonActionSaveContact {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionSaveContact", resourceCulture);
             }
         }
         
@@ -11434,6 +11506,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelCategory {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde contactpersonen.
+        /// </summary>
+        public static string toolbarVisibleRowLabelContacts {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelContacts", resourceCulture);
             }
         }
         

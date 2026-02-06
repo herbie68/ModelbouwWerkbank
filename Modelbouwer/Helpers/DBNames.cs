@@ -489,7 +489,12 @@ public class DBNames
 	public static readonly string SupplierFieldTypeMinShippingCosts = "double";
 	public static readonly string SupplierFieldNameOrderCosts = "OrderCosts";
 	public static readonly string SupplierFieldTypeOrderCosts = "double";
-
+	public static readonly string SupplierFieldNameMinOrderCosts = "MinOrderCosts";
+	public static readonly string SupplierFieldTypeMinOrderCosts = "double";
+	public static readonly string SupplierFieldNameGeneralEmail = "GeneralEmail";
+	public static readonly string SupplierFieldTypeGeneralEmail = "string";
+	public static readonly string SupplierFieldNameGeneralPhone = "GeneralPhone";
+	public static readonly string SupplierFieldTypeGeneralPhone = "string";
 	#endregion Supplier table
 
 	#region SupplierContact Table

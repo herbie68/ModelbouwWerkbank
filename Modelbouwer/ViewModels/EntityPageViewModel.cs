@@ -46,16 +46,24 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	// Commands
 	// -----------------------------
 	public IRelayCommand AddCommand => _addCommand ??= new RelayCommand( Add );
+	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( Add );
 	public IRelayCommand DeleteCommand => _deleteCommand ??= new RelayCommand( Delete );
+	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( Delete );
 	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync );
+	public IAsyncRelayCommand SaveContactCommand => _saveContactCommand ??= new AsyncRelayCommand( SaveAsync );
 	public IAsyncRelayCommand ReloadCommand => _reloadCommand ??= new AsyncRelayCommand( ReloadAsync );
+	public IAsyncRelayCommand ReloadContactsCommand => _reloadContactsCommand ??= new AsyncRelayCommand( ReloadAsync );
 	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private IRelayCommand? _addCommand;
+	private IRelayCommand? _addContactCommand;
 	private IRelayCommand? _addImageCommand;
 	private IRelayCommand? _deleteCommand;
+	private IRelayCommand? _deleteContactCommand;
 	private IAsyncRelayCommand? _saveCommand;
+	private IAsyncRelayCommand? _saveContactCommand;
 	private IAsyncRelayCommand? _reloadCommand;
+	private IAsyncRelayCommand? _reloadContactsCommand;
 	private IRelayCommand? _clearSearchCommand;
 
 	// -----------------------------

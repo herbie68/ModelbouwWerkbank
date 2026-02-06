@@ -3914,4 +3914,31 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelSupplier" xml:space="preserve">
     <value>Aantal getoonde leveranciers</value>
   </data>
+  <data name="toolbarVisibleRowLabelContacts" xml:space="preserve">
+    <value>Aantal getoonde contactpersonen</value>
+  </data>
+  <data name="toolbarButtonActionNewContact" xml:space="preserve">
+    <value>Contactpersoon toevoegen</value>
+  </data>
+  <data name="toolbarButtonActionSaveContact" xml:space="preserve">
+    <value>Gewijzigde contactgegevens opslaan</value>
+  </data>
+  <data name="toolbarButtonActionDeleteContact" xml:space="preserve">
+    <value>Verwijder geselecteerde contactpersoon</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Supplier.Label" xml:space="preserve">
+    <value>Leveranciersbeheer</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Supplier.Tooltip" xml:space="preserve">
+    <value>Beheer van de leveranciergegevens</value>
+  </data>
+  <data name="ExportValidationSupplierNameExists" xml:space="preserve">
+    <value>Een leverancier met deze naam bestaat al</value>
+  </data>
+  <data name="metadataSupplierDeleteError" xml:space="preserve">
+    <value>Deze leverancier wordt nog gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="metadataSupplierContactDeleteError" xml:space="preserve">
+    <value>Deze contactpersoon wordt nog ergens gebruikt en kan niet worden verwijderd</value>
+  </data>
 </root>

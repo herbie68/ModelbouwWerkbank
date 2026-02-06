@@ -43,7 +43,6 @@
         </StackPanel>
         <!--#endregion-->
 
-
         <!--#region Details-->
         <syncfusion:TabControlExt
             Name="tabControl"
@@ -332,7 +331,7 @@
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="2" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="170" />
@@ -452,10 +451,260 @@
                 ImageWidth="17"
                 ImageHeight="17">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <!--#region Contact information-->
+                    <StackPanel
+                        Grid.Column="0"
+                        Margin="5">
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource contacts}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+                                <!--#region Grid defenitions for groupbox-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="2" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+
+                                <!--#region  Contact full Name  -->
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralNameLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="240"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralNameTag}"
+                                    Text="{Binding SelectedItem.SupplierContactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralNameTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Contact function  -->
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralFunctionLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <syncfusion:ComboBoxAdv
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="240"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Arrow"
+                                    DefaultText="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralFunctionTag}"
+                                    DisplayMemberPath="CurrencyName"
+                                    ItemsSource="{Binding SupplierPageViewModel.SupplierContactFunctions}"
+                                    SelectedItem="{Binding SupplierPageViewModel.SelectedContactFunction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TextSearch.TextPath="ContactFunctionName"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Contact E-mail address  -->
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralMailLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="240"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralMailTag}"
+                                    Text="{Binding SelectedItem.SupplierContactMail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralMailTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region  Contact full Name  -->
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Content="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralPhoneLabel}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0 2 0 2"
+                                    Width="240"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralPhoneTag}"
+                                    Text="{Binding SelectedItem.SupplierContactPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip}" />
+                                <!--#endregion-->
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Contacts DataGrid -->
+                    <Grid Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--#region Toolbar section-->
+                        <Grid Grid.Row="0"
+                              Margin="15,2,15,2"
+                              VerticalAlignment="Center">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--#region Toolbar-->
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
+                                <Button
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    Command="{Binding AddContactCommand}"
+                                    ToolTip="{x:Static language:Language.toolbarButtonActionNewContact}">
+                                    <Image Style="{DynamicResource ToolBarAddIcon}" />
+                                </Button>
+
+                                <Button
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    Command="{Binding DeleteContactCommand}"
+                                    ToolTip="{x:Static language:Language.toolbarButtonActionDeleteContact}">
+                                    <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+                                </Button>
+
+                                <Button
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    Command="{Binding SaveContactCommand}"
+                                    ToolTip="{x:Static language:Language.toolbarButtonActionSaveContact}">
+                                    <Image Style="{DynamicResource ToolBarSaveIcon}" />
+                                </Button>
+                            </StackPanel>
+                            <!--#endregion-->
+
+                            <!--#region Record Count Section -->
+                            <TextBlock
+                                Grid.Column="1"
+                                Width="Auto"
+                                Height="23" FontSize="14" FontWeight="Bold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelContacts}" />
+                                <Run Text=": " />
+                                <Run
+                                    FontSize="16"
+                                    Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
+                                    FontStyle="Italic" />
+                                <Run Text=" " />
+                                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
+                                <Run Text=" " />
+                                <Run Text="{Binding TotalProjectCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                            </TextBlock>
+                            <!--#endregion-->
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region Contactss per supplier DataGrid-->
+                        <syncfusion:SfDataGrid
+                            x:Name="SfContactsDataGrid"
+                            Grid.Row="1"
+                            Margin="15,3,15,5"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            AllowDraggingColumns="True"
+                            AllowGrouping="True"
+                            AllowSorting="True"
+                            AllowTriStateSorting="True"
+                            AutoGenerateColumns="False"
+                            ColumnSizer="Star"
+                            ItemsSource="{Binding Contacts}"
+                            Loaded="ContactDataGrid_Loaded"
+                            SelectedItem="{Binding SelectedContact, Mode=TwoWay}">
+
+                            <syncfusion:SfDataGrid.Columns>
+                                <!--#region hidden columns-->
+                                <syncfusion:GridTextColumn
+                                    Width="0"
+                                    IsHidden="True"
+                                    MappingName="ContactId" />
+
+                                <syncfusion:GridTextColumn
+                                    Width="0"
+                                    IsHidden="True"
+                                    MappingName="ContactFunctionId" />
+
+                                <!--#endregion-->
+
+                                <!--#region Contact Name-->
+                                <syncfusion:GridTemplateColumn
+                                    Width="150"
+                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridNameHeader}"
+                                    MappingName="ContactName">
+                                    <syncfusion:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="5 0"
+                                                Text="{Binding ContactName}" />
+                                        </DataTemplate>
+                                    </syncfusion:GridTemplateColumn.CellTemplate>
+                                </syncfusion:GridTemplateColumn>
+                                <!--#endregion-->
+
+                                <!--#region Contact Function-->
+                                <syncfusion:GridTemplateColumn
+                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridFunctionHeader}"
+                                    MappingName="ContactFunction">
+                                    <syncfusion:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="5 0"
+                                                Text="{Binding ContactFunction}" />
+                                        </DataTemplate>
+                                    </syncfusion:GridTemplateColumn.CellTemplate>
+                                </syncfusion:GridTemplateColumn>
+                                <!--#endregion-->
+
+                            </syncfusion:SfDataGrid.Columns>
+                        </syncfusion:SfDataGrid>
+                        <!--#endregion-->
+                    </Grid>
+
+                    <!--#endregion-->
                 </Grid>
             </syncfusion:TabItemExt>
             <!--#endregion-->
+
+
 
             <!--#region Memo-->
             <syncfusion:TabItemExt
@@ -464,7 +713,13 @@
                 ImageWidth="17"
                 ImageHeight="17">
                 <Grid>
+                    <!--#region Memo field section -->
+                    <controls:RtfEditor
+                        x:Name="SupplierMemoEditor"
+                        Margin="5"
+                        RtfText="{Binding SelectedItem.SupplierMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Loaded="SupplierMemoEditor_Loaded" />
 
+                    <!--#endregion-->
                 </Grid>
             </syncfusion:TabItemExt>
             <!--#endregion-->
@@ -475,8 +730,8 @@
                 Image="{StaticResource orderhistory}"
                 ImageWidth="17"
                 ImageHeight="17">
-                <Grid>
-
+                <Grid Background="#FFDCDE11">
+                    <Label FontFamily="Comfortaa" Content="Deze functionaliteit is nog niet geÏmplementeerd" FontSize="24" FontWeight="ExtraBold" FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDCDE11" Foreground="#FFCA1313"/>
                 </Grid>
             </syncfusion:TabItemExt>
             <!--#endregion-->
@@ -576,7 +831,6 @@
             <!--#region Search field-->
             <!--  Icon  -->
             <Image
-                x:Name="FilterIcon"
                 Grid.Column="2"
                 Width="20"
                 Height="20"
@@ -636,7 +890,7 @@
             AllowTriStateSorting="True"
             AutoGenerateColumns="False"
             ColumnSizer="Star"
-            ItemsSource="{Binding Projects}"
+            ItemsSource="{Binding Suppliers}"
             Loaded="SupplierDataGrid_Loaded"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
 
@@ -645,86 +899,69 @@
                 <syncfusion:GridTextColumn
                     Width="0"
                     IsHidden="True"
-                    MappingName="ProjectId" />
+                    MappingName="SupplierId" />
                 <!--#endregion-->
 
-                <!--#region Project Code-->
+                <!--#region Supplier Code-->
                 <syncfusion:GridTemplateColumn
                     Width="150"
-                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderCodeLabel}"
-                    MappingName="ProjectCode">
+                    HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierCodeHeader}"
+                    MappingName="SupplierCode">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding ProjectCode}" />
+                                Text="{Binding SupplierCode}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
                 <!--#endregion-->
 
-                <!--#region Project Name-->
+                <!--#region Supplier Name-->
                 <syncfusion:GridTemplateColumn
-                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderNameLabel}"
-                    MappingName="ProjectName">
+                    HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierNameHeader}"
+                    MappingName="SupplierName">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding ProjectName}" />
+                                Text="{Binding SupplierName}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
                 <!--#endregion-->
 
-                <!--#region StartDate -->
+                <!--#region Supplier City-->
                 <syncfusion:GridTemplateColumn
-                    Width="100"
-                    HorizontalAlignment="Center"
-                    HorizontalHeaderContentAlignment="Center"
-                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderStartDateLabel}"
-                    MappingName="ProjectStartDateDisplay">
+                    HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierCityHeader}"
+                    MappingName="SupplierCity">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
-                                HorizontalAlignment="Center"
+                                Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding ProjectStartDateDisplay}" />
+                                Text="{Binding SupplierCity}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
                 <!--#endregion-->
 
-                <!--#region EndDate -->
+                <!--#region Supplier Name-->
                 <syncfusion:GridTemplateColumn
-                    Width="100"
-                    HorizontalAlignment="Center"
-                    HorizontalHeaderContentAlignment="Center"
-                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderEndDateLabel}"
-                    MappingName="ProjectEndDateDisplay">
+                    HeaderText="{x:Static language:Language.metadataSupplierDataGridCountryHeader}"
+                    MappingName="SupplierCountry">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
-                                HorizontalAlignment="Center"
+                                Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding ProjectEndDateDisplay}" />
+                                Text="{Binding SupplierCountry}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
                 <!--#endregion-->
-
-                <!--#region Project closed-->
-                <syncfusion:GridCheckBoxColumn
-                    Width="80"
-                    MappingName="ProjectClosed"
-                    HorizontalHeaderContentAlignment="Center"
-                    HeaderText="{x:Static language:Language.metadataProjectDatagridHeaderClosedLabel}"
-                    AllowEditing="False" HorizontalAlignment="Center"
-                    IsThreeState="False" />
-                <!--#endregion-->
-
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
         <!--#endregion-->

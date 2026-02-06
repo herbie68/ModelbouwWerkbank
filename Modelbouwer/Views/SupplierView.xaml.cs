@@ -166,4 +166,14 @@ public partial class SupplierView : UserControl
 	{
 
 	}
+
+	private void ContactDataGrid_Loaded( object sender, RoutedEventArgs e )
+	{
+
+	}
+
+	private void SupplierMemoEditor_Loaded( object sender, RoutedEventArgs e )
+	{
+
+	}
 }
