@@ -1240,6 +1240,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Een contactpersoon met deze naam bestaat al.
+        /// </summary>
+        public static string ExportValidationContactNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationContactNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dit type bestaat al.
         /// </summary>
         public static string ExportValidationContactTypeNameExists {

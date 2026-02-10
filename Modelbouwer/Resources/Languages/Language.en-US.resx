@@ -3961,4 +3961,7 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataSupplierContactDeleteError" xml:space="preserve">
     <value>This contact is still used somewhere and cannot be deleted</value>
   </data>
+  <data name="ExportValidationContactNameExists" xml:space="preserve">
+    <value>A contact person with this name already exists</value>
+  </data>
 </root>

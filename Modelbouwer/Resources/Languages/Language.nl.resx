@@ -3961,4 +3961,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataSupplierContactDeleteError" xml:space="preserve">
     <value>Deze contactpersoon wordt nog ergens gebruikt en kan niet worden verwijderd</value>
   </data>
+  <data name="ExportValidationContactNameExists" xml:space="preserve">
+    <value>Een contactpersoon met deze naam bestaat al</value>
+  </data>
 </root>

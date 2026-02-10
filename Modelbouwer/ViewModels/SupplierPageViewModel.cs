@@ -5,13 +5,21 @@ namespace Modelbouwer.ViewModels;
 public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 {
 	private readonly ISupplierService _dataService;
+	private readonly ICountryService _countryService;
+	private readonly ICurrencyService _currencyService;
+	private readonly IContactService _contactService;
+	private readonly IContactTypeService _contactTypeService;
 
 	private int? _lastSelectedSupplierId;
 
 	public SupplierModel? SelectedSupplier
 	{
 		get => SelectedItem;
-		set => SelectedItem = value;
+		set
+		{
+			SelectedItem = value;
+			UpdateFilteredContacts();
+		}
 	}
 
 	// Commands
@@ -25,39 +33,83 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 	private IRelayCommand? _clearSearchCommand;
 
 	// Collections for dropdowns
-	public ObservableCollection<CountryModel> SupplierCountry { get; } = new();
-	public ObservableCollection<CurrencyModel> SupplierCurrency { get; } = new();
-	public ObservableCollection<ContactTypeModel> SupplierContactFunctions { get; } = new();
-	public ObservableCollection<SupplierContactModel> Contacts { get; } = new();
+	public ObservableCollection<CountryModel> SupplierCountry { get; } = [ ];
+	public ObservableCollection<CurrencyModel> SupplierCurrency { get; } = [ ];
+	public ObservableCollection<ContactTypeModel> SupplierContactFunctions { get; } = [ ];
+	public ObservableCollection<SupplierContactModel> Contacts { get; } = [ ];
 
 	// Selected items for dropdowns
 	private CountryModel? _selectedCountry;
 	public CountryModel? SelectedCountry
 	{
 		get => _selectedCountry;
-		set => SetProperty( ref _selectedCountry, value );
+		set
+		{
+			if ( SetProperty( ref _selectedCountry, value ) && SelectedItem != null && value != null )
+			{
+				SelectedItem.CountryId = value.CountryId;
+			}
+		}
 	}
 
 	private CurrencyModel? _selectedCurrency;
 	public CurrencyModel? SelectedCurrency
 	{
 		get => _selectedCurrency;
-		set => SetProperty( ref _selectedCurrency, value );
-	}
-
-	private ContactTypeModel? _selectedContactFunction;
-	public ContactTypeModel? SelectedContactFunction
-	{
-		get => _selectedContactFunction;
-		set => SetProperty( ref _selectedContactFunction, value );
+		set
+		{
+			if ( SetProperty( ref _selectedCurrency, value ) && SelectedItem != null && value != null )
+			{
+				SelectedItem.CurrencyId = value.CurrencyId;
+			}
+		}
 	}
 
 	private SupplierContactModel? _selectedContact;
 	public SupplierContactModel? SelectedContact
 	{
 		get => _selectedContact;
-		set => SetProperty( ref _selectedContact, value );
+		set
+		{
+			if ( SetProperty( ref _selectedContact, value ) )
+			{
+				if ( value != null )
+				{
+					// Zet de combobox SelectedContactFunction automatisch
+					SelectedContactFunction = SupplierContactFunctions.FirstOrDefault( ct => ct.ContactTypeId == value.ContactTypeId );
+				}
+			}
+		}
 	}
+
+	private ContactTypeModel? _selectedContactFunction;
+	public ContactTypeModel? SelectedContactFunction
+	{
+		get => _selectedContactFunction;
+		set
+		{
+			if ( SetProperty( ref _selectedContactFunction, value ) && SelectedContact != null && value != null )
+			{
+				SelectedContact.ContactTypeId = value.ContactTypeId;
+			}
+		}
+	}
+
+	#region Filter contacts on selected supplier
+	public ObservableCollection<SupplierContactModel> FilteredContacts { get; } = new();
+
+	private void UpdateFilteredContacts()
+	{
+		FilteredContacts.Clear();
+
+		if ( SelectedSupplier == null )
+			return;
+
+		foreach ( var contact in Contacts.Where( c => c.SupplierId == SelectedSupplier.Id ) )
+			FilteredContacts.Add( contact );
+	}
+	#endregion
+
 
 	// Contact commands
 	private IRelayCommand? _addContactCommand;
@@ -84,18 +136,76 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		set => SetProperty( ref _isImporting, value );
 	}
 
+	public int CountryId { get; set; }
+
 	// Constructor
-	public SupplierPageViewModel( ISupplierService dataService, IEntityValidator<SupplierModel> validator ) : base( validator )
+	public SupplierPageViewModel( ISupplierService dataService, ICountryService countryService, ICurrencyService currencyService, IContactService contactService,
+	IContactTypeService contactTypeService, IEntityValidator<SupplierModel> validator ) : base( validator )
 	{
 		_dataService = dataService;
 
+		_countryService = countryService;
+		_currencyService = currencyService;
+		_contactService = contactService ?? throw new ArgumentNullException( nameof( contactService ) );
+		_contactTypeService = contactTypeService ?? throw new ArgumentNullException( nameof( contactTypeService ) );
+
+		_ = LoadComboBoxesContentAsync();
+		_ = LoadContactsAndFunctionsAsync();
+
 		_ = ReloadCommand.ExecuteAsync( null );
+	}
+
+	private async Task LoadComboBoxesContentAsync()
+	{
+		SupplierCountry.Clear();
+		SupplierCurrency.Clear();
+
+		var countries = await _countryService.GetAllCountriesAsync();
+		foreach ( var country in countries )
+		{
+			SupplierCountry.Add( country );
+		}
+
+		var currencies = await _currencyService.GetAllCurrenciesAsync();
+		foreach ( var currency in currencies )
+		{
+			SupplierCurrency.Add( currency );
+		}
+	}
+
+	private async Task LoadContactsAndFunctionsAsync()
+	{
+		// Load contact types
+		var types = await _contactTypeService.GetAllContactTypesAsync();
+		SupplierContactFunctions.Clear();
+		foreach ( var t in types )
+			SupplierContactFunctions.Add( t );
+
+		// Load all contacts
+		var allContacts = await _contactService.GetAllContactsAsync();
+		Contacts.Clear();
+		foreach ( var c in allContacts )
+			Contacts.Add( c );
+
+		// Koppel ContactType lookup
+		foreach ( var contact in Contacts )
+		{
+			contact.ContactTypeList = SupplierContactFunctions;
+			contact.RefreshContactTypeName();
+		}
+
+		// Update filtered view
+		UpdateFilteredContacts();
 	}
 
 	// Override SelectedItem changed om DefaultSupplier te zetten
 	protected override void OnSelectedItemChanged( SupplierModel? value )
 	{
 		base.OnSelectedItemChanged( value );
+
+		SelectedCurrency = SupplierCurrency.FirstOrDefault( c => c.CurrencyId == value?.CurrencyId );
+
+		SelectedCountry = SupplierCountry.FirstOrDefault( c => c.CountryId == value?.CountryId );
 
 		_previousSupplier = value;
 	}
@@ -104,6 +214,7 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 	// Properties voor UI binding
 	public ObservableCollection<SupplierModel> Suppliers => Items;
 	public int TotalSupplierCount => TotalItemCount;
+	public int TotalContactCount => TotalContactCount;
 	public int VisibleSupplierCount
 	{
 		get => base.VisibleItemCount;
@@ -176,7 +287,13 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 	{
 		base.OnItemsLoaded();
 
+		foreach ( var supplier in Suppliers )
+		{
+			supplier.CountryList = SupplierCountry;
+		}
+
 		OnPropertyChanged( nameof( TotalSupplierCount ) );
+		OnPropertyChanged( nameof( TotalContactCount ) );
 
 		if ( _lastSelectedSupplierId.HasValue )
 		{

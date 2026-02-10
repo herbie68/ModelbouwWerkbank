@@ -3961,4 +3961,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataSupplierContactDeleteError" xml:space="preserve">
     <value>Dieser Kontakt wird noch irgendwo verwendet und kann nicht gelöscht werden</value>
   </data>
+  <data name="ExportValidationContactNameExists" xml:space="preserve">
+    <value>Es existiert bereits ein Ansprechpartner mit diesem Namen</value>
+  </data>
 </root>

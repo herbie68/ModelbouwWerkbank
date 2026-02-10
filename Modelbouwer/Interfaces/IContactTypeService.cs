@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Modelbouwer.Interfaces;
 
-namespace Modelbouwer.Interfaces;
-
-	public interface IContactTypeService
-	{
+public interface IContactTypeService
+{
 	Task<List<ContactTypeModel>> GetAllContactTypesAsync();
 	Task<int> InsertNewContactTypeAsync( Dictionary<string, object?> queryParameters );
 	Task UpdateContactTypeAsync( Dictionary<string, object?> queryParameters );

@@ -115,7 +115,7 @@
                                     Width="150"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCodeTag}"
-                                    Text="{Binding SelectedItem.SupplierCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCodeTooltip}" />
                                 <!--#endregion-->
 
@@ -133,7 +133,7 @@
                                     Width="325"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressNameTag}"
-                                    Text="{Binding SelectedItem.SupplierName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressNameTooltip}" />
                                 <!--#endregion-->
 
@@ -151,7 +151,7 @@
                                     Width="325"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress1Tag}"
-                                    Text="{Binding SelectedItem.SupplierAddress1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Address1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress1Tooltip}" />
 
                                 <TextBox
@@ -161,7 +161,7 @@
                                     Width="325"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress2Tag}"
-                                    Text="{Binding SelectedItem.SupplierAddress2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Address2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressAddress2Tooltip}" />
                                 <!--#endregion-->
 
@@ -188,7 +188,7 @@
                                         Width="150"
                                         Style="{DynamicResource DefaultTextBox}"
                                         Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressZipTag}"
-                                        Text="{Binding SelectedItem.SupplierZip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Text="{Binding SelectedItem.Zip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressZipTooltip}" />
 
                                     <TextBox
@@ -197,7 +197,7 @@
                                         Width="170"
                                         Style="{DynamicResource DefaultTextBox}"
                                         Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCityTag}"
-                                        Text="{Binding SelectedItem.SupplierCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Text="{Binding SelectedItem.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCityTooltip}" />
                                 </Grid>
                                 <!--#endregion-->
@@ -219,7 +219,7 @@
                                     DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTag}"
                                     DisplayMemberPath="CountryName"
                                     ItemsSource="{Binding SupplierCountry}"
-                                    SelectedItem="{Binding SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"
                                     TextSearch.TextPath="CountryName"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTooltip}" />
                                 <!--#endregion-->
@@ -238,7 +238,7 @@
                                     Width="325"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressPhoneTag}"
-                                    Text="{Binding SelectedItem.SupplierPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressPhoneTooltip}" />
                                 <!--#endregion-->
 
@@ -256,7 +256,7 @@
                                     Width="325"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressMailTag}"
-                                    Text="{Binding SelectedItem.SupplierMail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedItem.Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressMailTooltip}" />
                                 <!--#endregion-->
 
@@ -272,7 +272,7 @@
                                         Width="290"
                                         Style="{DynamicResource DefaultTextBox}"
                                         Tag="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlTag}"
-                                        Text="{Binding SelectedItem.SupplierUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Text="{Binding SelectedItem.Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlTooltip}" />
 
                                     <Button
@@ -355,7 +355,7 @@
                                     DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag}"
                                     DisplayMemberPath="CurrencyName"
                                     ItemsSource="{Binding SupplierCurrency}"
-                                    SelectedItem="{Binding SelectedCurrency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"
                                     TextSearch.TextPath="CurrencyName"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip}" />
                                 <!--#endregion-->
@@ -376,7 +376,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag}"
-                                    Value="{Binding SelectedSupplier.SupplierShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedItem.ShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Shipping costs freem from... -->
@@ -395,7 +395,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag}"
-                                    Value="{Binding SelectedSupplier.SupplierMaxShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedItem.MinShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Handling costs  -->
@@ -414,7 +414,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag}"
-                                    Value="{Binding SelectedSupplier.SupplierHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedItem.OrderCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Shipping costs freem from... -->
@@ -433,7 +433,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag}"
-                                    Value="{Binding SelectedSupplier.SupplierMaxHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedItem.MinOrderCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                             </Grid>
@@ -634,7 +634,7 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <!--#region Contactss per supplier DataGrid-->
+                        <!--#region Contacts per supplier DataGrid-->
                         <syncfusion:SfDataGrid
                             x:Name="SfContactsDataGrid"
                             Grid.Row="1"
@@ -647,7 +647,7 @@
                             AllowTriStateSorting="True"
                             AutoGenerateColumns="False"
                             ColumnSizer="Star"
-                            ItemsSource="{Binding Contacts}"
+                            ItemsSource="{Binding FilteredContacts}"
                             Loaded="ContactDataGrid_Loaded"
                             SelectedItem="{Binding SelectedContact, Mode=TwoWay}">
 
@@ -667,7 +667,7 @@
 
                                 <!--#region Contact Name-->
                                 <syncfusion:GridTemplateColumn
-                                    Width="150"
+                                    Width="250"
                                     HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridNameHeader}"
                                     MappingName="Name">
                                     <syncfusion:GridTemplateColumn.CellTemplate>
@@ -680,6 +680,50 @@
                                 </syncfusion:GridTemplateColumn>
                                 <!--#endregion-->
 
+                                <!--#region Contact Name-->
+                                <syncfusion:GridTemplateColumn
+                                    Width="150"
+                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridTypeHeader}"
+                                    MappingName="ContactType">
+                                    <syncfusion:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="5 0"
+                                                Text="{Binding ContactType}" />
+                                        </DataTemplate>
+                                    </syncfusion:GridTemplateColumn.CellTemplate>
+                                </syncfusion:GridTemplateColumn>
+                                <!--#endregion-->
+
+                                <!--#region Contact E-Mail-->
+                                <syncfusion:GridTemplateColumn
+                                    Width="250"
+                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridMailHeader}"
+                                    MappingName="Mail">
+                                    <syncfusion:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="5 0"
+                                                Text="{Binding Mail}" />
+                                        </DataTemplate>
+                                    </syncfusion:GridTemplateColumn.CellTemplate>
+                                </syncfusion:GridTemplateColumn>
+                                <!--#endregion-->
+
+                                <!--#region Contact Phone-->
+                                <syncfusion:GridTemplateColumn
+                                    Width="150"
+                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridPhoneHeader}"
+                                    MappingName="Phone">
+                                    <syncfusion:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="5 0"
+                                                Text="{Binding Phone}" />
+                                        </DataTemplate>
+                                    </syncfusion:GridTemplateColumn.CellTemplate>
+                                </syncfusion:GridTemplateColumn>
+                                <!--#endregion-->
                             </syncfusion:SfDataGrid.Columns>
                         </syncfusion:SfDataGrid>
                         <!--#endregion-->
@@ -689,8 +733,6 @@
                 </Grid>
             </syncfusion:TabItemExt>
             <!--#endregion-->
-
-
 
             <!--#region Memo-->
             <syncfusion:TabItemExt
@@ -703,7 +745,7 @@
                     <controls:RtfEditor
                         x:Name="SupplierMemoEditor"
                         Margin="5"
-                        RtfText="{Binding SelectedItem.SupplierMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Loaded="SupplierMemoEditor_Loaded" />
+                        RtfText="{Binding SelectedItem.Memo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Loaded="SupplierMemoEditor_Loaded" />
 
                     <!--#endregion-->
                 </Grid>
@@ -885,20 +927,31 @@
                 <syncfusion:GridTextColumn
                     Width="0"
                     IsHidden="True"
-                    MappingName="SupplierId" />
+                    MappingName="Id" />
+
+                <syncfusion:GridTextColumn
+                    Width="0"
+                    IsHidden="True"
+                    MappingName="CurrencyId" />
+
+                <syncfusion:GridTextColumn
+                    Width="0"
+                    IsHidden="True"
+                    MappingName="CountryId" />
+
                 <!--#endregion-->
 
                 <!--#region Supplier Code-->
                 <syncfusion:GridTemplateColumn
                     Width="150"
                     HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierCodeHeader}"
-                    MappingName="SupplierCode">
+                    MappingName="Code">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding SupplierCode}" />
+                                Text="{Binding Code}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
@@ -907,13 +960,13 @@
                 <!--#region Supplier Name-->
                 <syncfusion:GridTemplateColumn
                     HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierNameHeader}"
-                    MappingName="SupplierName">
+                    MappingName="Name">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding SupplierName}" />
+                                Text="{Binding Name}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
@@ -922,13 +975,13 @@
                 <!--#region Supplier City-->
                 <syncfusion:GridTemplateColumn
                     HeaderText="{x:Static language:Language.metadataSupplierDataGridSupplierCityHeader}"
-                    MappingName="SupplierCity">
+                    MappingName="City">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding SupplierCity}" />
+                                Text="{Binding City}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
@@ -937,13 +990,13 @@
                 <!--#region Supplier Name-->
                 <syncfusion:GridTemplateColumn
                     HeaderText="{x:Static language:Language.metadataSupplierDataGridCountryHeader}"
-                    MappingName="SupplierCountry">
+                    MappingName="Country">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock
                                 Margin="5 0"
                                 helpers:TextBlockHelper.HighlightText="{Binding DataContext.SearchText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Text="{Binding SupplierCountry}" />
+                                Text="{Binding CountryName}" />
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>

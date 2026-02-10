@@ -31,11 +31,11 @@ public partial class App : Application
 		// Register services
 		services.AddSingleton<BrandService>();
 		services.AddSingleton<CategoryService>();
+		services.AddSingleton<ContactService>();
 		services.AddSingleton<ContactTypeService>();
 		services.AddSingleton<CountryService>();
 		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<GenericDataService>();
-		services.AddSingleton<ProjectService>();
 		services.AddSingleton<ProjectService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();
@@ -84,6 +84,7 @@ public partial class App : Application
 
 		services.AddScoped<IBrandService, BrandService>();
 		services.AddScoped<ICategoryService, CategoryService>();
+		services.AddScoped<IContactService, ContactService>();
 		services.AddScoped<IContactTypeService, ContactTypeService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
@@ -101,6 +102,7 @@ public partial class App : Application
 		services.AddScoped<IEntityValidator<ProjectModel>, ProjectValidator>();
 		services.AddScoped<IEntityValidator<StorageLocationModel>, StorageLocationValidator>();
 		services.AddScoped<IEntityValidator<SupplierModel>, SupplierValidator>();
+		services.AddScoped<IEntityValidator<SupplierContactModel>, ContactValidator>();
 		services.AddScoped<IEntityValidator<UnitModel>, UnitValidator>();
 		services.AddScoped<IEntityValidator<WorktypeModel>, WorktypeValidator>();
 	}

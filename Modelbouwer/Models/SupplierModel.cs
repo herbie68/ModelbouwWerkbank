@@ -25,83 +25,11 @@ public class SupplierModel : ObservableObject
 	public string? Zip { get; set; }
 	#endregion
 
-	#region Supplier Contacts
-	//[ObservableProperty]
-	//private int _supplierContactId;
+	// Injected lookup
+	public IReadOnlyList<CountryModel>? CountryList { get; set; }
 
-	//[ObservableProperty]
-	//private int _supplierContactSuppplierId;
-
-	//[ObservableProperty]
-	//private string? _supplierContactName;
-
-	//[ObservableProperty]
-	//private int _supplierContactContactTypeId;
-
-	//[ObservableProperty]
-	//private string? _supplierContactContactType;
-
-	//[ObservableProperty]
-	//private string? _supplierContactMail;
-
-	//[ObservableProperty]
-	//private string? _supplierContactPhone;
-	#endregion
-
-	#region Supplier Conacts functions
-	//[ObservableProperty]
-	//private string? _supplierContactTypeName;
-
-	//[ObservableProperty]
-	//private int _supplierContactTypeId;
-	#endregion
-
-	#region Order History
-	//[ObservableProperty]
-	//private int _supplierOrderHistoryOrderId;
-
-	//[ObservableProperty]
-	//private int _supplierOrderHistorySupplierId;
-
-	//[ObservableProperty]
-	//private string? _supplierOrderHistoryOrderNumber;
-
-	//[ObservableProperty]
-	//private string? _supplierOrderHistoryOrderDate;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryOrderCosts;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryShippingCosts;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryCurrencyConversionRate;
-
-	//[ObservableProperty]
-	//private string? _supplierOrderHistoryReceived;
-
-	//[ObservableProperty]
-	//private int _supplierOrderHistoryProductId;
-
-	//[ObservableProperty]
-	//private string? _supplierOrderHistoryProductNumber;
-
-	//[ObservableProperty]
-	//private string? _supplierOrderHistoryProductDescription;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryPrice;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryAmount;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryRowTotal;
-
-	//[ObservableProperty]
-	//private decimal _supplierOrderHistoryOrderTotal;
-	#endregion
+	public string? CountryName =>
+		CountryList?.FirstOrDefault( c => c.CountryId == CountryId )?.CountryName;
 
 	#region ColumnMappings
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
@@ -125,21 +53,19 @@ public class SupplierModel : ObservableObject
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
 	{
-		{ DBNames.SupplierFieldNameId, "SupplierId" },
-		{ DBNames.SupplierFieldNameCurrencyId, "SupplierCurrencyId" },
-		{ DBNames.SupplierFieldNameCountryId, "SupplierCountryId" },
-		{ DBNames.SupplierFieldNameCode, "SupplierCode" },
-		{ DBNames.SupplierFieldNameName, "SupplierName" },
-		{ DBNames.SupplierFieldNameAddress1, "SupplierAddress1" },
-		{ DBNames.SupplierFieldNameAddress2, "SupplierAddress2" },
-		{ DBNames.SupplierFieldNameZip, "SupplierZip" },
-		{ DBNames.SupplierFieldNameCity, "SupplierCity" },
-		{ DBNames.SupplierFieldNameUrl, "SupplierUrl" },
-		{ DBNames.SupplierFieldNameMemo, "SupplierMemo" },
-		{ DBNames.SupplierFieldNameShippingCosts, "SupplierShippingCosts" },
-		{ DBNames.SupplierFieldNameMinShippingCosts, "SupplierMinShippingCosts" },
-		{ DBNames.SupplierFieldNameOrderCosts, "SupplierOrderCosts" },
-		{ DBNames.ContactTypeFieldNameId, "ContactTypeId" },
-		{ DBNames.ContactTypeFieldNameName, "ContactTypeName" }
+		{ DBNames.SupplierFieldNameId, "Id" },
+		{ DBNames.SupplierFieldNameCurrencyId, "CurrencyId" },
+		{ DBNames.SupplierFieldNameCountryId, "CountryId" },
+		{ DBNames.SupplierFieldNameCode, "Code" },
+		{ DBNames.SupplierFieldNameName, "Name" },
+		{ DBNames.SupplierFieldNameAddress1, "Address1" },
+		{ DBNames.SupplierFieldNameAddress2, "Address2" },
+		{ DBNames.SupplierFieldNameZip, "Zip" },
+		{ DBNames.SupplierFieldNameCity, "City" },
+		{ DBNames.SupplierFieldNameUrl, "Url" },
+		{ DBNames.SupplierFieldNameMemo, "Memo" },
+		{ DBNames.SupplierFieldNameShippingCosts, "ShippingCosts" },
+		{ DBNames.SupplierFieldNameMinShippingCosts, "MinShippingCosts" },
+		{ DBNames.SupplierFieldNameOrderCosts, "OrderCosts" },
 	};
 }
