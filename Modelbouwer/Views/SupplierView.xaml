@@ -11,17 +11,17 @@
              xmlns:local="clr-namespace:Modelbouwer.Views" >
     <Grid>
         <Grid.RowDefinitions>
-            <!-- Header -->
+            <!-- 0. Header -->
             <RowDefinition Height="85" />
-            <!-- Detail section -->
+            <!-- 1. Detail section -->
             <RowDefinition Height="325" />
-            <!-- Spacer -->
+            <!-- 2. Spacer -->
             <RowDefinition Height="2" />
-            <!-- Toolbar -->
+            <!-- 3. Toolbar -->
             <RowDefinition Height="40" />
-            <!-- DataGrid -->
+            <!-- 4. DataGrid -->
             <RowDefinition Height="*" />
-            <!-- Footer -->
+            <!-- 5. Footer -->
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
 
@@ -60,8 +60,8 @@
                 ImageHeight="17">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="315" />
+                        <ColumnDefinition Width="500" />
+                        <ColumnDefinition Width="325" />
                     </Grid.ColumnDefinitions>
 
                     <!--#region Adddress information-->
@@ -218,8 +218,8 @@
                                     Cursor="Arrow"
                                     DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTag}"
                                     DisplayMemberPath="CountryName"
-                                    ItemsSource="{Binding SupplierPageViewModel.SupplierCountry}"
-                                    SelectedItem="{Binding SupplierPageViewModel.SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ItemsSource="{Binding SupplierCountry}"
+                                    SelectedItem="{Binding SelectedCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     TextSearch.TextPath="CountryName"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressCountryTooltip}" />
                                 <!--#endregion-->
@@ -354,8 +354,8 @@
                                     Cursor="Arrow"
                                     DefaultText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTag}"
                                     DisplayMemberPath="CurrencyName"
-                                    ItemsSource="{Binding SupplierPageViewModel.SupplierCurrency}"
-                                    SelectedItem="{Binding SupplierPageViewModel.SelectedCurrency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ItemsSource="{Binding SupplierCurrency}"
+                                    SelectedItem="{Binding SelectedCurrency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     TextSearch.TextPath="CurrencyName"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceCurrencyTooltip}" />
                                 <!--#endregion-->
@@ -376,7 +376,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsTag}"
-                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedSupplier.SupplierShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Shipping costs freem from... -->
@@ -395,7 +395,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceShippingCostsMaxTag}"
-                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierMaxShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedSupplier.SupplierMaxShippingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Handling costs  -->
@@ -414,7 +414,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsTag}"
-                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedSupplier.SupplierHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                                 <!--#region  Supplier Shipping costs freem from... -->
@@ -433,7 +433,7 @@
                                     Style="{DynamicResource SyncfusionDoubleTextBox}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTooltip}"
                                     WatermarkText="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupFinanceHandlingCostsMaxTag}"
-                                    Value="{Binding SupplierPageViewModel.SelectedSupplier.SupplierMaxHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    Value="{Binding SelectedSupplier.SupplierMaxHandlingCosts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <!--#endregion-->
 
                             </Grid>
@@ -503,7 +503,7 @@
                                     Width="240"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralNameTag}"
-                                    Text="{Binding SelectedItem.SupplierContactName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedContact.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralNameTooltip}" />
                                 <!--#endregion-->
 
@@ -521,10 +521,10 @@
                                     HorizontalAlignment="Left"
                                     Cursor="Arrow"
                                     DefaultText="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralFunctionTag}"
-                                    DisplayMemberPath="CurrencyName"
-                                    ItemsSource="{Binding SupplierPageViewModel.SupplierContactFunctions}"
-                                    SelectedItem="{Binding SupplierPageViewModel.SelectedContactFunction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    TextSearch.TextPath="ContactFunctionName"
+                                    DisplayMemberPath="ContactTypeName"
+                                    ItemsSource="{Binding SupplierContactFunctions}"
+                                    SelectedItem="{Binding SelectedContactFunction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TextSearch.TextPath="ContactTypeName"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralFunctionTooltip}" />
                                 <!--#endregion-->
 
@@ -542,7 +542,7 @@
                                     Width="240"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralMailTag}"
-                                    Text="{Binding SelectedItem.SupplierContactMail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedContact.Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralMailTooltip}" />
                                 <!--#endregion-->
 
@@ -560,7 +560,7 @@
                                     Width="240"
                                     Style="{DynamicResource DefaultTextBox}"
                                     Tag="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralPhoneTag}"
-                                    Text="{Binding SelectedItem.SupplierContactPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding SelectedContact.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     ToolTip="{x:Static language:Language.metadataSupplierDetailTabContactsGroupGeneralPhoneTooltip}" />
                                 <!--#endregion-->
                             </Grid>
@@ -628,7 +628,7 @@
                                 <Run Text=" " />
                                 <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
                                 <Run Text=" " />
-                                <Run Text="{Binding TotalProjectCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                                <Run Text="{Binding TotalSupplierCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
                             </TextBlock>
                             <!--#endregion-->
                         </Grid>
@@ -656,12 +656,12 @@
                                 <syncfusion:GridTextColumn
                                     Width="0"
                                     IsHidden="True"
-                                    MappingName="ContactId" />
+                                    MappingName="SupplierContactId" />
 
                                 <syncfusion:GridTextColumn
                                     Width="0"
                                     IsHidden="True"
-                                    MappingName="ContactFunctionId" />
+                                    MappingName="ContactTypeId" />
 
                                 <!--#endregion-->
 
@@ -669,26 +669,12 @@
                                 <syncfusion:GridTemplateColumn
                                     Width="150"
                                     HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridNameHeader}"
-                                    MappingName="ContactName">
+                                    MappingName="Name">
                                     <syncfusion:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock
                                                 Margin="5 0"
-                                                Text="{Binding ContactName}" />
-                                        </DataTemplate>
-                                    </syncfusion:GridTemplateColumn.CellTemplate>
-                                </syncfusion:GridTemplateColumn>
-                                <!--#endregion-->
-
-                                <!--#region Contact Function-->
-                                <syncfusion:GridTemplateColumn
-                                    HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridFunctionHeader}"
-                                    MappingName="ContactFunction">
-                                    <syncfusion:GridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                Margin="5 0"
-                                                Text="{Binding ContactFunction}" />
+                                                Text="{Binding Name}" />
                                         </DataTemplate>
                                     </syncfusion:GridTemplateColumn.CellTemplate>
                                 </syncfusion:GridTemplateColumn>
@@ -763,21 +749,21 @@
             <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,2,0,2">
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
-                    Command="{Binding AddProjectCommand}"
+                    Command="{Binding AddSupplierCommand}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
                     <Image Style="{DynamicResource ToolBarAddIcon}" />
                 </Button>
 
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
-                    Command="{Binding DeleteProjectCommand}"
+                    Command="{Binding DeleteSupplierCommand}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
                     <Image Style="{DynamicResource ToolBarDeleteIcon}" />
                 </Button>
 
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
-                    Command="{Binding SaveProjectCommand}"
+                    Command="{Binding SaveSupplierCommand}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
                     <Image Style="{DynamicResource ToolBarSaveIcon}" />
                 </Button>
@@ -824,7 +810,7 @@
                 <Run Text=" " />
                 <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
                 <Run Text=" " />
-                <Run Text="{Binding TotalProjectCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                <Run Text="{Binding TotalSupplierCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
             </TextBlock>
             <!--#endregion-->
 
@@ -880,7 +866,7 @@
         <!--#region Datagrid-->
         <syncfusion:SfDataGrid
             x:Name="SfDataGrid"
-            Grid.Row="5"
+            Grid.Row="4"
             Margin="15,3,15,5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"

@@ -158,7 +158,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 		NavigationItems.Add( new NavigationModel
 		{
 			NavigationItem = $"{Lang.navigation_Resources_SubItem_Supplier_Label}",
-			NavigationIcon = CreateNavigationImage( "Supplier" ),
+			NavigationIcon = CreateNavigationImage( "supplier" ),
 			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Supplier_Tooltip}",
 			Command = new SimpleCommand( () => LoadSupplierView() )
 		} );
@@ -465,7 +465,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 		MetadataSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Resources_SubItem_Supplier_Label,
-			NavigationIcon = CreateNavigationImage( "Supplier" ),
+			NavigationIcon = CreateNavigationImage( "supplier" ),
 			NavigationTooltip = Language.navigation_Resources_SubItem_Supplier_Tooltip,
 			Command = new SimpleCommand( () => LoadSupplierView() )
 		} );

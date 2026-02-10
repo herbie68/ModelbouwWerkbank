@@ -24,6 +24,66 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	private IRelayCommand? _clearSearchCommand;
 
+	// Collections for dropdowns
+	public ObservableCollection<CountryModel> SupplierCountry { get; } = new();
+	public ObservableCollection<CurrencyModel> SupplierCurrency { get; } = new();
+	public ObservableCollection<ContactTypeModel> SupplierContactFunctions { get; } = new();
+	public ObservableCollection<SupplierContactModel> Contacts { get; } = new();
+
+	// Selected items for dropdowns
+	private CountryModel? _selectedCountry;
+	public CountryModel? SelectedCountry
+	{
+		get => _selectedCountry;
+		set => SetProperty( ref _selectedCountry, value );
+	}
+
+	private CurrencyModel? _selectedCurrency;
+	public CurrencyModel? SelectedCurrency
+	{
+		get => _selectedCurrency;
+		set => SetProperty( ref _selectedCurrency, value );
+	}
+
+	private ContactTypeModel? _selectedContactFunction;
+	public ContactTypeModel? SelectedContactFunction
+	{
+		get => _selectedContactFunction;
+		set => SetProperty( ref _selectedContactFunction, value );
+	}
+
+	private SupplierContactModel? _selectedContact;
+	public SupplierContactModel? SelectedContact
+	{
+		get => _selectedContact;
+		set => SetProperty( ref _selectedContact, value );
+	}
+
+	// Contact commands
+	private IRelayCommand? _addContactCommand;
+	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( AddContact );
+
+	private IRelayCommand? _deleteContactCommand;
+	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( DeleteContact, () => SelectedContact != null );
+
+	private IRelayCommand? _saveContactCommand;
+	public IRelayCommand SaveContactCommand => _saveContactCommand ??= new RelayCommand( SaveContact );
+
+	// Import status properties
+	private string _importStatus = string.Empty;
+	public string ImportStatus
+	{
+		get => _importStatus;
+		set => SetProperty( ref _importStatus, value );
+	}
+
+	private bool _isImporting;
+	public bool IsImporting
+	{
+		get => _isImporting;
+		set => SetProperty( ref _isImporting, value );
+	}
+
 	// Constructor
 	public SupplierPageViewModel( ISupplierService dataService, IEntityValidator<SupplierModel> validator ) : base( validator )
 	{
@@ -156,5 +216,31 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		{ $"@{DBNames.SupplierFieldNameName}", c.Name?.Trim() },
 		{ $"@{DBNames.SupplierFieldNameMemo}", c.Memo }
 	};
+
+	// Contact management methods
+	private void AddContact()
+	{
+		var newContact = new SupplierContactModel
+		{
+			SupplierContactId = 0,
+			Name = string.Empty
+		};
+		Contacts.Add( newContact );
+		SelectedContact = newContact;
+	}
+
+	private void DeleteContact()
+	{
+		if ( SelectedContact == null )
+			return;
+
+		Contacts.Remove( SelectedContact );
+	}
+
+	private void SaveContact()
+	{
+		// Implement contact save logic here
+		// This would typically call a service method to persist the contact
+	}
 
 }
