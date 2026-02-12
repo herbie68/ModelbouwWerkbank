@@ -25,7 +25,6 @@ public class ProjectService : IProjectService
 		$"{ DBNames.ProjectFieldNameMemo}" +
 		$" FROM {DBNames.Database}.{DBNames.ProjectTable};";
 
-
 	public string AddNewProjectQuery =
 		$"INSERT INTO {DBNames.Database}.{DBNames.ProjectTable} " +
 		$"( {DBNames.ProjectFieldNameName}, " +

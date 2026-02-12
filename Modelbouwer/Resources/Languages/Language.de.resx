@@ -3964,4 +3964,31 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ExportValidationContactNameExists" xml:space="preserve">
     <value>Es existiert bereits ein Ansprechpartner mit diesem Namen</value>
   </data>
+  <data name="metadataProductHeaderSubtitle" xml:space="preserve">
+    <value>Produkte verwalten</value>
+  </data>
+  <data name="metadataProductHeaderTitle" xml:space="preserve">
+    <value>Verwaltung von Materialien, Produkten und Werkzeugen</value>
+  </data>
+  <data name="metadataProductDataGridProductCodeHeader" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductDataGridProductNameHeader" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="metadataProductDeleteError" xml:space="preserve">
+    <value>Dieses Produkt wird noch irgendwo verwendet und kann nicht entfernt werden</value>
+  </data>
+  <data name="ExportValidationProductNameExists" xml:space="preserve">
+    <value>Es gibt bereits ein Produkt mit genau diesem Namen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Label" xml:space="preserve">
+    <value>Produkte und Material</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Tooltip" xml:space="preserve">
+    <value>Verwalten Sie die Materialien, Produkte und Werkzeuge</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProduct" xml:space="preserve">
+    <value>Anzahl der angezeigten Produkte</value>
+  </data>
 </root>

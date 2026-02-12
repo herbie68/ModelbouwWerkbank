@@ -283,7 +283,7 @@
                                         BorderThickness="0"
                                         Background="Transparent"
                                         Margin="8,0,0,0"
-                                        Click="ButtonWeb"
+                                        Command="{Binding OpenWebsiteCommand}"
                                         ToolTip="{x:Static language:Language.metadataSupplierDetailTabGeneralGroupAddressUrlButtonTooltip}" >
                                         <Border
                                             BorderBrush="DarkBlue"
@@ -623,12 +623,8 @@
                                 <Run Text=": " />
                                 <Run
                                     FontSize="16"
-                                    Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
+                                    Text="{Binding TotalContactCount, Mode=OneWay}"
                                     FontStyle="Italic" />
-                                <Run Text=" " />
-                                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
-                                <Run Text=" " />
-                                <Run Text="{Binding TotalSupplierCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
                             </TextBlock>
                             <!--#endregion-->
                         </Grid>
@@ -648,10 +644,10 @@
                             AutoGenerateColumns="False"
                             ColumnSizer="Star"
                             ItemsSource="{Binding FilteredContacts}"
-                            Loaded="ContactDataGrid_Loaded"
                             SelectedItem="{Binding SelectedContact, Mode=TwoWay}">
 
                             <syncfusion:SfDataGrid.Columns>
+
                                 <!--#region hidden columns-->
                                 <syncfusion:GridTextColumn
                                     Width="0"
@@ -662,12 +658,10 @@
                                     Width="0"
                                     IsHidden="True"
                                     MappingName="ContactTypeId" />
-
                                 <!--#endregion-->
 
                                 <!--#region Contact Name-->
                                 <syncfusion:GridTemplateColumn
-                                    Width="250"
                                     HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridNameHeader}"
                                     MappingName="Name">
                                     <syncfusion:GridTemplateColumn.CellTemplate>
@@ -680,16 +674,16 @@
                                 </syncfusion:GridTemplateColumn>
                                 <!--#endregion-->
 
-                                <!--#region Contact Name-->
+                                <!--#region Contact Finction-->
                                 <syncfusion:GridTemplateColumn
-                                    Width="150"
+                                    Width="200"
                                     HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridTypeHeader}"
-                                    MappingName="ContactType">
+                                    MappingName="ContactTypeId">
                                     <syncfusion:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock
                                                 Margin="5 0"
-                                                Text="{Binding ContactType}" />
+                                                Text="{Binding ContactTypeName}" />
                                         </DataTemplate>
                                     </syncfusion:GridTemplateColumn.CellTemplate>
                                 </syncfusion:GridTemplateColumn>
@@ -697,7 +691,6 @@
 
                                 <!--#region Contact E-Mail-->
                                 <syncfusion:GridTemplateColumn
-                                    Width="250"
                                     HeaderText="{x:Static language:Language.metadataSupplierDetailTabContactsDataGridMailHeader}"
                                     MappingName="Mail">
                                     <syncfusion:GridTemplateColumn.CellTemplate>
@@ -938,7 +931,6 @@
                     Width="0"
                     IsHidden="True"
                     MappingName="CountryId" />
-
                 <!--#endregion-->
 
                 <!--#region Supplier Code-->

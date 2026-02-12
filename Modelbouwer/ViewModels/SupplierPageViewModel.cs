@@ -12,33 +12,36 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	private int? _lastSelectedSupplierId;
 
-	public SupplierModel? SelectedSupplier
+	// Constructor
+	public SupplierPageViewModel
+		(
+			ISupplierService dataService,
+			ICountryService countryService,
+			ICurrencyService currencyService,
+			IContactService contactService,
+			IContactTypeService contactTypeService,
+			IEntityValidator<SupplierModel> validator
+		) : base( validator )
 	{
-		get => SelectedItem;
-		set
-		{
-			SelectedItem = value;
-			UpdateFilteredContacts();
-		}
+		_dataService = dataService;
+		_countryService = countryService;
+		_currencyService = currencyService;
+		_contactService = contactService ?? throw new ArgumentNullException( nameof( contactService ) );
+		_contactTypeService = contactTypeService ?? throw new ArgumentNullException( nameof( contactTypeService ) );
+
+		_ = LoadComboBoxesContentAsync();
+		_ = LoadContactsAndFunctionsAsync();
+
+		_ = ReloadCommand.ExecuteAsync( null );
 	}
 
-	// Commands
-	public IRelayCommand AddSupplierCommand => AddCommand;
-	public IAsyncRelayCommand SaveSupplierCommand => SaveCommand;
-	public IRelayCommand DeleteSupplierCommand => DeleteCommand;
-	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
-
-	private SupplierModel? _previousSupplier;
-
-	private IRelayCommand? _clearSearchCommand;
-
-	// Collections for dropdowns
+	#region Collections & Selected Items
 	public ObservableCollection<CountryModel> SupplierCountry { get; } = [ ];
 	public ObservableCollection<CurrencyModel> SupplierCurrency { get; } = [ ];
 	public ObservableCollection<ContactTypeModel> SupplierContactFunctions { get; } = [ ];
 	public ObservableCollection<SupplierContactModel> Contacts { get; } = [ ];
+	public ObservableCollection<SupplierContactModel> FilteredContacts { get; } = [ ];
 
-	// Selected items for dropdowns
 	private CountryModel? _selectedCountry;
 	public CountryModel? SelectedCountry
 	{
@@ -94,67 +97,9 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 			}
 		}
 	}
-
-	#region Filter contacts on selected supplier
-	public ObservableCollection<SupplierContactModel> FilteredContacts { get; } = new();
-
-	private void UpdateFilteredContacts()
-	{
-		FilteredContacts.Clear();
-
-		if ( SelectedSupplier == null )
-			return;
-
-		foreach ( var contact in Contacts.Where( c => c.SupplierId == SelectedSupplier.Id ) )
-			FilteredContacts.Add( contact );
-	}
 	#endregion
 
-
-	// Contact commands
-	private IRelayCommand? _addContactCommand;
-	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( AddContact );
-
-	private IRelayCommand? _deleteContactCommand;
-	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( DeleteContact, () => SelectedContact != null );
-
-	private IRelayCommand? _saveContactCommand;
-	public IRelayCommand SaveContactCommand => _saveContactCommand ??= new RelayCommand( SaveContact );
-
-	// Import status properties
-	private string _importStatus = string.Empty;
-	public string ImportStatus
-	{
-		get => _importStatus;
-		set => SetProperty( ref _importStatus, value );
-	}
-
-	private bool _isImporting;
-	public bool IsImporting
-	{
-		get => _isImporting;
-		set => SetProperty( ref _isImporting, value );
-	}
-
-	public int CountryId { get; set; }
-
-	// Constructor
-	public SupplierPageViewModel( ISupplierService dataService, ICountryService countryService, ICurrencyService currencyService, IContactService contactService,
-	IContactTypeService contactTypeService, IEntityValidator<SupplierModel> validator ) : base( validator )
-	{
-		_dataService = dataService;
-
-		_countryService = countryService;
-		_currencyService = currencyService;
-		_contactService = contactService ?? throw new ArgumentNullException( nameof( contactService ) );
-		_contactTypeService = contactTypeService ?? throw new ArgumentNullException( nameof( contactTypeService ) );
-
-		_ = LoadComboBoxesContentAsync();
-		_ = LoadContactsAndFunctionsAsync();
-
-		_ = ReloadCommand.ExecuteAsync( null );
-	}
-
+	#region Load Methods
 	private async Task LoadComboBoxesContentAsync()
 	{
 		SupplierCountry.Clear();
@@ -197,6 +142,121 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		// Update filtered view
 		UpdateFilteredContacts();
 	}
+	#endregion
+
+	#region SelectedSupplier + Filter
+	private SupplierModel? _previousSupplier;
+	//public SupplierModel? SelectedSupplier => SelectedItem;
+
+	private void UpdateFilteredContacts()
+	{
+		FilteredContacts.Clear();
+
+		if ( SelectedItem == null )
+			return;
+
+		if ( SelectedItem == null )
+		{
+			RaiseContactCounters();
+			return;
+		}
+
+		foreach ( var c in Contacts.Where( c => c.SupplierId == SelectedItem.Id ) )
+			FilteredContacts.Add( c );
+
+
+		RaiseContactCounters();
+	}
+
+	private void RaiseContactCounters()
+	{
+		OnPropertyChanged( nameof( TotalContactCount ) );
+	}
+
+	public int TotalContactCount => FilteredContacts.Count;
+	#endregion
+
+	#region CRUD Contacts
+	private IRelayCommand? _addContactCommand;
+	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( AddContact );
+
+	private IRelayCommand? _deleteContactCommand;
+	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( DeleteContact, () => SelectedContact != null );
+
+	private IRelayCommand? _saveContactCommand;
+	public IRelayCommand SaveContactCommand => _saveContactCommand ??= new RelayCommand( SaveContact );
+
+	#region Relay command for going to the supplier website
+	[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]
+	private void OpenWebsite()
+	{
+		if ( string.IsNullOrWhiteSpace( SelectedItem?.Url ) )
+			return;
+
+		ProcessStartInfo startInfo = new()
+		{
+			FileName = SelectedItem.Url,
+			UseShellExecute = true
+		};
+
+		Process.Start( startInfo );
+	}
+
+	private bool CanOpenWebsite()
+	{
+		return !string.IsNullOrWhiteSpace( SelectedItem?.Url );
+	}
+	#endregion
+
+
+	private void AddContact()
+	{
+		if ( SelectedItem == null )
+			return;
+
+		var newContact = new SupplierContactModel
+		{
+			SupplierContactId = 0,
+			SupplierId = SelectedItem.Id,
+			Name = string.Empty,
+			ContactTypeId = SupplierContactFunctions.FirstOrDefault()?.ContactTypeId ?? 0
+		};
+		Contacts.Add( newContact );
+		FilteredContacts.Add( newContact );
+
+		SelectedContact = newContact;
+
+		RaiseContactCounters();
+	}
+
+	private void DeleteContact()
+	{
+		if ( SelectedContact == null )
+			return;
+
+		Contacts.Remove( SelectedContact );
+		FilteredContacts.Remove( SelectedContact );
+
+		RaiseContactCounters();
+	}
+
+	private void SaveContact()
+	{
+		// Implement contact save logic here
+		// This would typically call a service method to persist the contact
+	}
+	#endregion
+
+
+	// Commands
+	public IRelayCommand AddSupplierCommand => AddCommand;
+	public IAsyncRelayCommand SaveSupplierCommand => SaveCommand;
+	public IRelayCommand DeleteSupplierCommand => DeleteCommand;
+	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
+
+
+	private IRelayCommand? _clearSearchCommand;
+
 
 	// Override SelectedItem changed om DefaultSupplier te zetten
 	protected override void OnSelectedItemChanged( SupplierModel? value )
@@ -207,6 +267,10 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 		SelectedCountry = SupplierCountry.FirstOrDefault( c => c.CountryId == value?.CountryId );
 
+		UpdateFilteredContacts();
+
+		OpenWebsiteCommand.NotifyCanExecuteChanged();
+
 		_previousSupplier = value;
 	}
 
@@ -214,7 +278,6 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 	// Properties voor UI binding
 	public ObservableCollection<SupplierModel> Suppliers => Items;
 	public int TotalSupplierCount => TotalItemCount;
-	public int TotalContactCount => TotalContactCount;
 	public int VisibleSupplierCount
 	{
 		get => base.VisibleItemCount;
@@ -335,29 +398,6 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 	};
 
 	// Contact management methods
-	private void AddContact()
-	{
-		var newContact = new SupplierContactModel
-		{
-			SupplierContactId = 0,
-			Name = string.Empty
-		};
-		Contacts.Add( newContact );
-		SelectedContact = newContact;
-	}
 
-	private void DeleteContact()
-	{
-		if ( SelectedContact == null )
-			return;
-
-		Contacts.Remove( SelectedContact );
-	}
-
-	private void SaveContact()
-	{
-		// Implement contact save logic here
-		// This would typically call a service method to persist the contact
-	}
 
 }

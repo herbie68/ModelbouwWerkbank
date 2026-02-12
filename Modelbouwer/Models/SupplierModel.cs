@@ -45,7 +45,7 @@ public class SupplierModel : ObservableObject
 		[nameof(Name)] = [
 			"Suppliernaam",
 			"Supplier name",
-			"Projektname" ],
+			"Lieferantenname" ],
 
 	};
 	#endregion
