@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System.ComponentModel;
 
 namespace Modelbouwer.Models;
 
@@ -62,7 +63,7 @@ public partial class ProductModel : ObservableObject
 	{
 		if ( ProductStandardQuantity > 0 )
 		{
-			ProductPackagePrice = Math.Round( value * ProductStandardQuantity, 2 );
+			ProductPackagePrice = Math.Round( value * ProductStandardQuantity, 2, MidpointRounding.AwayFromZero );
 		}
 	}
 
@@ -70,7 +71,7 @@ public partial class ProductModel : ObservableObject
 	{
 		if ( ProductStandardQuantity > 0 )
 		{
-			ProductPrice = Math.Round( value / ProductStandardQuantity, 6 );
+			ProductPrice = Math.Round( value / ProductStandardQuantity, 6, MidpointRounding.AwayFromZero );
 		}
 	}
 
@@ -79,11 +80,11 @@ public partial class ProductModel : ObservableObject
 		// Herbereken indien nodig
 		if ( ProductPrice > 0 )
 		{
-			ProductPackagePrice = Math.Round( ProductPrice * value, 2 );
+			ProductPackagePrice = Math.Round( ProductPrice * value, 2, MidpointRounding.AwayFromZero );
 		}
 		else if ( ProductPackagePrice > 0 )
 		{
-			ProductPrice = Math.Round( ProductPackagePrice / value, 6 );
+			ProductPrice = Math.Round( ProductPackagePrice / value, 6, MidpointRounding.AwayFromZero );
 		}
 	}
 
@@ -125,7 +126,24 @@ public partial class ProductModel : ObservableObject
 		{ DBNames.ProductFieldNameUnitId, "_productUnitId" },
 	};
 
-	public ProductModel() { }
+	public ProductModel()
+	{
+		// Subscribe to property changed events from generated properties to mark state
+		this.PropertyChanged += ProductModel_PropertyChanged;
+	}
+
+	private void ProductModel_PropertyChanged( object? sender, PropertyChangedEventArgs e )
+	{
+		if ( e.PropertyName == nameof( State ) )
+			return;
+
+		if ( State == RecordState.Unchanged )
+		{
+			// set backing field directly to avoid recursion into SetProperty
+			_state = RecordState.Modified;
+			OnPropertyChanged( nameof( StatusMarker ) );
+		}
+	}
 
 	// Copy constructor
 	public ProductModel( ProductModel other )
@@ -134,5 +152,23 @@ public partial class ProductModel : ObservableObject
 		_productPackagePrice = other._productPackagePrice;
 		_productStandardQuantity = other._productStandardQuantity;
 	}
+
+	// Added record state tracking
+	public enum RecordState
+	{
+		Unchanged,
+		Added,
+		Modified,
+		Deleted
+	}
+
+	private RecordState _state = RecordState.Unchanged;
+	public RecordState State
+	{
+		get => _state;
+		set => SetProperty( ref _state, value );
+	}
+
+	public string StatusMarker => State == RecordState.Unchanged ? string.Empty : "*";
 
 }
