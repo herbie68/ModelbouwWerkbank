@@ -1,10 +1,14 @@
-﻿namespace Modelbouwer.Services;
+namespace Modelbouwer.Services;
 
 public class ProductService : IProductService
 {
 	private readonly GenericDataService _dataService;
 	public bool ProductUsed { get; set; } = false;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="ProductService"/> class using the provided data service.
+	/// </summary>
+	/// <param name="dataService">Service used to execute parameterized database queries for product operations.</param>
 	public ProductService( GenericDataService dataService )
 	{
 		_dataService = dataService;
@@ -136,6 +140,10 @@ public class ProductService : IProductService
 		$"AS ProductInUse;";
 	#endregion
 
+	/// <summary>
+	/// Retrieves all products from the database and maps each result row into a ProductModel.
+	/// </summary>
+	/// <returns>A list of ProductModel instances representing all products from the Product table.</returns>
 	public Task<List<ProductModel>> GetAllProductsAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteProductList, reader =>
@@ -162,6 +170,10 @@ public class ProductService : IProductService
 		} );
 	}
 
+	/// <summary>
+	/// Retrieves all brands from the database.
+	/// </summary>
+	/// <returns>A list of BrandModel representing every brand record in the database.</returns>
 	public Task<List<BrandModel>> GetAllBrandsAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteBrandList, reader =>
@@ -174,6 +186,10 @@ public class ProductService : IProductService
 		} );
 	}
 
+	/// <summary>
+	/// Retrieves all units from the database and maps each row to a UnitModel.
+	/// </summary>
+	/// <returns>A list of UnitModel instances containing the unit ID and unit name.</returns>
 	public Task<List<UnitModel>> GetAllUnitsAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteUnitList, reader =>
@@ -186,6 +202,10 @@ public class ProductService : IProductService
 		} );
 	}
 
+	/// <summary>
+	/// Retrieves all categories from the database.
+	/// </summary>
+	/// <returns>A list of CategoryModel where each item contains CategoryId, ParentId, and CategoryName.</returns>
 	public Task<List<CategoryModel>> GetAllCategoriesAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteCategoryList, reader =>
@@ -199,6 +219,11 @@ public class ProductService : IProductService
 		} );
 	}
 
+	/// <summary>
+	/// Inserts a new product record using the provided SQL parameters and returns the created product's Id.
+	/// </summary>
+	/// <param name="queryParameters">A dictionary mapping SQL parameter names (including the leading '@') for product fields to their values; null values will be stored as SQL NULL.</param>
+	/// <returns>The Id of the newly inserted product.</returns>
 	public async Task<int> InsertNewProductAsync( Dictionary<string, object?> queryParameters )
 	{
 		Dictionary<string, object> parameters = new()
@@ -225,6 +250,10 @@ public class ProductService : IProductService
 		return ( int ) newId;
 	}
 
+	/// <summary>
+	/// Updates an existing product record in the database using the provided query parameters.
+	/// </summary>
+	/// <param name="queryParameters">Dictionary mapping SQL parameter names (including the '@' prefix) to their values; null or missing values are sent as <c>DBNull.Value</c> for the update.</param>
 	public async Task UpdateProductAsync( Dictionary<string, object?> queryParameters )
 	{
 		Dictionary<string, object> parameters = new()
@@ -250,6 +279,11 @@ public class ProductService : IProductService
 		await _dataService.ExecuteScalarAsync<uint>( UpdateProductQuery, parameters );
 	}
 
+	/// <summary>
+	/// Deletes the product with the specified id from the database.
+	/// </summary>
+	/// <param name="productId">Identifier of the product to delete.</param>
+	/// <exception cref="EntityInUseException">Thrown when the product cannot be deleted because it is referenced by other records.</exception>
 	public async Task DeleteProductAsync( int productId )
 	{
 		var parameters = new Dictionary<string, object>
@@ -268,6 +302,11 @@ public class ProductService : IProductService
 		}
 	}
 
+	/// <summary>
+	/// Checks whether the product is referenced by other records (usage entries, order lines, or product suppliers).
+	/// </summary>
+	/// <param name="productId">The database identifier of the product to check.</param>
+	/// <returns>`true` if the product is referenced by any related records, `false` otherwise.</returns>
 	public async Task<bool> IsProductUsedAsync( int productId )
 	{
 		var parameters = new Dictionary<string, object>
@@ -282,6 +321,11 @@ public class ProductService : IProductService
 		return usedCount > 0;
 	}
 
+	/// <summary>
+	/// Determines whether a product with the specified name exists in the catalog.
+	/// </summary>
+	/// <param name="productName">The product name to check; null or whitespace is treated as not found.</param>
+	/// <returns>`true` if a product with the specified name exists (case-insensitive), `false` otherwise.</returns>
 	public async Task<bool> NameExistsAsync( string? productName )
 	{
 		if ( string.IsNullOrWhiteSpace( productName ) )

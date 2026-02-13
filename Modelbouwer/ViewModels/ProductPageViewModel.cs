@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
@@ -11,7 +11,15 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 	private int? _lastSelectedProductId;
 
-	// Constructor
+	/// <summary>
+	/// Initializes a ProductPageViewModel with the services required for product, unit, brand, and category operations and initiates loading of lookup data and items.
+	/// </summary>
+	/// <param name="dataService">Service used for product CRUD operations.</param>
+	/// <param name="unitService">Service providing unit lookup data.</param>
+	/// <param name="brandService">Service providing brand lookup data.</param>
+	/// <param name="categoryService">Service providing category lookup data; required and cannot be null.</param>
+	/// <param name="validator">Validator for ProductModel instances.</param>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="categoryService"/> is null.</exception>
 	public ProductPageViewModel
 		(
 			IProductService dataService,
@@ -78,6 +86,13 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	#endregion
 
 	#region Load Methods
+	/// <summary>
+	/// Reloads the ProductBrand and ProductUnit collections used by the UI combo boxes.
+	/// </summary>
+	/// <remarks>
+	/// Clears the existing collections and repopulates them from the brand and unit services.
+	/// </remarks>
+	/// <returns>A task that completes when the collections have been refreshed.</returns>
 	private async Task LoadComboBoxesContentAsync()
 	{
 		ProductBrand.Clear();
@@ -112,7 +127,10 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private IRelayCommand? _clearSearchCommand;
 
 
-	// Override SelectedItem changed om DefaultProduct te zetten
+	/// <summary>
+	/// Handles a change to the currently selected product and synchronizes the SelectedUnit, SelectedBrand, and SelectedCategory properties to match the new product.
+	/// </summary>
+	/// <param name="value">The newly selected ProductModel, or null if the selection was cleared.</param>
 	protected override void OnSelectedItemChanged( ProductModel? value )
 	{
 		base.OnSelectedItemChanged( value );
@@ -136,7 +154,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		set => base.VisibleItemCount = value;
 	}
 
-	// Filtering
+	/// <summary>
+	/// Determines whether the provided object is a ProductModel whose Name matches the view model's current SearchText (case-insensitive).
+	/// </summary>
+	/// <param name="obj">The object to test; expected to be a ProductModel.</param>
+	/// <returns>`true` if <paramref name="obj"/> is a ProductModel and its Name contains the current SearchText using case-insensitive comparison, `false` otherwise.</returns>
 	public bool FilterProduct( object obj )
 	{
 		if ( obj is not ProductModel Product )
@@ -148,9 +170,22 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		return Product.Name?.Contains( SearchText, StringComparison.CurrentCultureIgnoreCase ) == true;
 	}
 
-	// Abstract overrides voor CRUD
+	/// <summary>
+/// Retrieves all product models for the view model.
+/// </summary>
+/// <returns>A list containing all ProductModel instances.</returns>
 	protected override Task<List<ProductModel>> LoadItemsAsync() => _dataService.GetAllProductsAsync();
-	protected override Task<int> InsertAsync( ProductModel item ) => _dataService.InsertNewProductAsync( CreateParameters( item ) );
+	/// <summary>
+/// Insert a new product into the data store.
+/// </summary>
+/// <param name="item">The product to insert.</param>
+/// <returns>The database identifier assigned to the inserted product.</returns>
+protected override Task<int> InsertAsync( ProductModel item ) => _dataService.InsertNewProductAsync( CreateParameters( item ) );
+	/// <summary>
+	/// Updates the currently selected product via the product data service and records its id for selection restoration after reload.
+	/// </summary>
+	/// <param name="item">This parameter is ignored; the method updates the currently selected product instead of the provided instance.</param>
+	/// <returns>A task that completes when the selected product has been sent to the data service for update.</returns>
 	protected override Task UpdateAsync( ProductModel item )
 	{
 		if ( SelectedItem == null )
@@ -160,6 +195,10 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		return _dataService.UpdateProductAsync( CreateParameters( SelectedItem ) );
 	}
+	/// <summary>
+	/// Prompts the user for confirmation and deletes the specified product when confirmed.
+	/// </summary>
+	/// <param name="item">The product to delete; if null, the method returns without action.</param>
 	protected override async Task DeleteAsync( ProductModel item )
 	{
 		if ( item == null )
@@ -189,15 +228,35 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		}
 	}
 
-	protected override int GetId( ProductModel item ) => item.ProductId;
-	protected override void SetId( ProductModel item, int id ) => item.ProductId = id;
+	/// <summary>
+/// Gets the identifier for the specified product.
+/// </summary>
+/// <param name="item">The product whose identifier to retrieve.</param>
+/// <returns>The product's ProductId.</returns>
+protected override int GetId( ProductModel item ) => item.ProductId;
+	/// <summary>
+/// Set the ProductId of the specified product.
+/// </summary>
+/// <param name="item">The product whose ProductId will be updated.</param>
+/// <param name="id">The value to assign to the product's ProductId.</param>
+protected override void SetId( ProductModel item, int id ) => item.ProductId = id;
 
+	/// <summary>
+	/// Creates a new ProductModel initialized with default values.
+	/// </summary>
+	/// <returns>A ProductModel with ProductId set to 0 and ProductName set to an empty string.</returns>
 	protected override ProductModel CreateNewItem() => new()
 	{
 		ProductId = 0,
 		ProductName = string.Empty
 	};
 
+	/// <summary>
+	/// Update UI state after the product list is loaded by refreshing counts and restoring or choosing the selected product.
+	/// </summary>
+	/// <remarks>
+	/// Notifies that TotalProductCount changed, attempts to re-select the product with the previously stored product id (if any), and if no matching product is found selects the product with the highest ProductId.
+	/// </remarks>
 	protected override void OnItemsLoaded()
 	{
 		base.OnItemsLoaded();
@@ -221,6 +280,9 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		SelectProductWithHighestId();
 	}
 
+	/// <summary>
+	/// Selects the product that has the largest ProductId, or clears the current selection if no products exist.
+	/// </summary>
 	private void SelectProductWithHighestId()
 	{
 		if ( Products.Count == 0 )
@@ -234,7 +296,14 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			.First();
 	}
 
-	// Parameter dictionary voor save
+	/// <summary>
+	/// Builds a dictionary of database parameters for persisting a ProductModel.
+	/// </summary>
+	/// <param name="c">The product whose fields are converted into parameter values.</param>
+	/// <returns>
+	/// A dictionary mapping parameter names (DB field name constants prefixed with '@') to values:
+	/// ProductId, ProductCode, ProductName (trimmed), and ProductMemo.
+	/// </returns>
 	private static Dictionary<string, object?> CreateParameters( ProductModel c ) => new()
 	{
 		{ $"@{DBNames.ProductFieldNameId}", c.ProductId },

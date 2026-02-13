@@ -1,4 +1,4 @@
-﻿using System.Windows.Threading;
+using System.Windows.Threading;
 
 using Microsoft.Win32;
 
@@ -132,6 +132,13 @@ public partial class SupplierView : UserControl
 		}
 	}
 
+	/// <summary>
+	/// Prompt the user to choose a destination and export the suppliers grid to an Excel (.xlsx) file.
+	/// </summary>
+	/// <remarks>
+	/// If the user cancels the save dialog no action is taken. Column headers are derived from SupplierModel.ColumnMappings
+	/// by taking the first header for each column. A busy cursor is shown while the file is being written.
+	/// </remarks>
 	private async void ButtonExcelExport( object sender, RoutedEventArgs e )
 	{
 		var dialog = new SaveFileDialog
