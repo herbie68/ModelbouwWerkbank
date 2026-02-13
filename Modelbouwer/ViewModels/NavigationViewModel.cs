@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -571,4 +572,11 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		public void Execute( object? parameter ) => _execute();
 	}
+
+	// Get the Assembly File Version for display in the UI
+	public string AppVersion =>
+	$"Modelbouwer v{Assembly
+		.GetExecutingAssembly()
+		.GetCustomAttribute<AssemblyFileVersionAttribute>()?
+		.Version ?? Language.generalUnknownVersion}";
 }

@@ -30,6 +30,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <!-- Content area -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="95" />
+        </Grid.RowDefinitions>
+
         <!-- Loading indicator -->
         <TextBlock Grid.ColumnSpan="2"
                    Text="Loading navigation..."
@@ -37,7 +43,7 @@
                    VerticalAlignment="Center"
                    FontSize="16"
                    Visibility="{Binding IsNavigationLoaded,
-                                        Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
+                   Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
 
         <!-- Navigation drawer -->
         <syncfusion:SfNavigationDrawer
@@ -48,7 +54,7 @@
             ItemContainerStyle="{StaticResource ItemStyle}"
             ItemsSource="{Binding NavigationItems}"
             Visibility="{Binding IsNavigationLoaded,
-                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Converter={StaticResource BooleanToVisibilityConverter}}" />
 
         <!-- Main content host -->
         <Border Grid.Column="1"
@@ -57,6 +63,16 @@
                             Content="{Binding CurrentView}"
                             HorizontalContentAlignment="Stretch"
                             VerticalContentAlignment="Stretch" />
+        </Border>
+
+        <Border Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#f5f5f5">
+            <StackPanel Orientation="Vertical">
+                <Image Source="{StaticResource DevLogo}" Height="60"/>
+                <TextBlock
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Margin="5,5" Height="20" FontSize="14" Foreground="#034bac" FontWeight="DemiBold" FontStyle="Italic"
+                    Text="{Binding AppVersion}"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

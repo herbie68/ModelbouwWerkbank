@@ -3991,4 +3991,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarVisibleRowLabelProduct" xml:space="preserve">
     <value>Anzahl der angezeigten Produkte</value>
   </data>
+  <data name="generalUnknownVersion" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
 </root>

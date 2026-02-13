@@ -3991,4 +3991,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelProduct" xml:space="preserve">
     <value>Aantal getoonde producten</value>
   </data>
+  <data name="generalUnknownVersion" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
 </root>

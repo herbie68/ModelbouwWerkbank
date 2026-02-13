@@ -2167,6 +2167,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Onbekend.
+        /// </summary>
+        public static string generalUnknownVersion {
+            get {
+                return ResourceManager.GetString("generalUnknownVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afbeelding verwijderen.
         /// </summary>
         public static string ImageButtonDeleteTooltip {
