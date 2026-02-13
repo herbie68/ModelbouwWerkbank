@@ -8,7 +8,8 @@
              xmlns:helpers="clr-namespace:Modelbouwer.Helpers"
              xmlns:converters="clr-namespace:Modelbouwer.Converters"
              xmlns:controls="clr-namespace:Modelbouwer.Controls"
-             xmlns:local="clr-namespace:Modelbouwer.Views">
+             xmlns:local="clr-namespace:Modelbouwer.Views"
+             xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels">
     <Grid>
         <Grid.RowDefinitions>
             <!-- 0. Header -->
@@ -51,6 +52,230 @@
             TabItemHeaderStyle="Curve"
             Height="Auto"
             Width="Auto">
+
+            <!--#region General product information -->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataProductTabGeneralTitle}"
+                Image="{StaticResource product}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="170" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--#region Groupboxes -->
+                    <StackPanel Margin="5" Grid.Column="0" Orientation="Vertical">
+                        <!--#region Product information group -->
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource product}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataProductTabGeneralTabItemProductTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+                                <!--#region Search name and Brand labels -->
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="170"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Column="0"
+                                        Content="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldCode}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        Content="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldBrand}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region Search name and Brand input -->
+                                <Grid Grid.Row="1" Margin="5 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="170"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox
+                                        Grid.Column="0"
+                                        Margin="5 2 0 2"
+                                        Width="150"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldCodeTag}"
+                                        Text="{Binding SelectedItem.ProductCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldCodeTooltip}" />
+
+                                    <syncfusion:ComboBoxAdv
+                                        Grid.Column="1"
+                                        Margin="5 2 0 2"
+                                        Width="200"
+                                        HorizontalAlignment="Left"
+                                        Cursor="Arrow"
+                                        DefaultText="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldBrandTag}"
+                                        DisplayMemberPath="BrandName"
+                                        ItemsSource="{Binding ProductBrand}"
+                                        SelectedItem="{Binding SelectedBrand, Mode=TwoWay}"
+                                        TextSearch.TextPath="BrandName"
+                                        ToolTip="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldBrandTooltip}" />
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region Product name-->
+                                <Label
+                                    Grid.Row="2"
+                                    Content="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldName}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <TextBox
+                                    Grid.Row="3"
+                                    Margin="5 2 0 2"
+                                    MinWidth="600"
+                                    Style="{DynamicResource DefaultTextBox}"
+                                    Tag="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldNameTag}"
+                                    Text="{Binding SelectedItem.ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ToolTip="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldNameTooltip}" />
+                                <!--#endregion-->
+
+                                <!--#region Product category-->
+                                <Label
+                                    Grid.Row="4"
+                                    Content="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldCategory}"
+                                    Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="5,2,0,2" VerticalAlignment="Center">
+                                    <!-- Show selected category name -->
+                                    <TextBox Width="500"
+                                             Text="{Binding SelectedCategory.CaategoryName}"
+                                             Style="{DynamicResource DefaultTextBox}"
+                                             ToolTip="{x:Static language:Language.metadataProductTabGeneralTabItemProductFieldCategoryTooltip}" />
+
+                                    <!-- Button to open the picker -->
+                                    <Button Content="{x:Static language:Language.metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel}"
+                                            ToolTip="{x:Static language:Language.metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip}"
+                                            Margin="5,0,0,0"
+                                            Padding="10,2" Style="{StaticResource SearchButtonStyle}"
+                                            Command="{Binding OpenCategoryPickerCommand}" />
+                                </StackPanel>
+                                <!--#endregion-->
+                            </Grid>
+                        </GroupBox>
+                        <!--#endregion-->
+
+                        <!--#region Product stock information -->
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource Storage}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataProductTabGeneralTabItemStorageTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <!--#endregion-->
+
+                        <!--#region Product in projects -->
+                        <GroupBox Opacity="1">
+                            <GroupBox.Header>
+                                <StackPanel
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="{StaticResource Projects}"
+                                        Style="{DynamicResource ImageHeaderGroup}" />
+                                    <TextBlock
+                                        Style="{DynamicResource TextBlockBold}"
+                                        Text="{x:Static language:Language.metadataProductTabGeneralTabItemProjectTitle}" />
+                                </StackPanel>
+                            </GroupBox.Header>
+
+                            <Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <!--#endregion-->
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Image and Image toolbar -->
+                    <Grid Grid.Column="1" Height="183" VerticalAlignment="Top">
+                        <controls:ImageEditor
+                            ImageSource="{Binding SelectedItem.ProductImage, Mode=TwoWay}"
+                            RotationAngle="{Binding SelectedItem.ProductImageRotationAngle, Mode=TwoWay}"
+                            AddImageCommand="{Binding AddImageCommand}"
+                            DeleteImageCommand="{Binding DeleteProjectImageCommand}"
+                            RotateCommand="{Binding RotateCommand}" />
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+            </syncfusion:TabItemExt>
+            <!--#endregion-->
+
+            <!--#region Additional product information (memo field) -->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataProductTabMemoTitle}"
+                Image="{StaticResource memo}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
+            </syncfusion:TabItemExt>
+            <!--#endregion-->
+
+            <!--#region Product suppliers -->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataProductTabSupplierTitle}"
+                Image="{StaticResource supplier}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
+            </syncfusion:TabItemExt>
+            <!--#endregion-->
+
+            <!--#region Product Quantity of Stock -->
+            <syncfusion:TabItemExt
+                Header="{x:Static language:Language.metadataProductTabStockTitle}"
+                Image="{StaticResource Storage}"
+                ImageWidth="17"
+                ImageHeight="17">
+                <Grid>
+
+                </Grid>
+            </syncfusion:TabItemExt>
+            <!--#endregion-->
 
         </syncfusion:TabControlExt>
 
@@ -217,16 +442,6 @@
                     Width="0"
                     IsHidden="True"
                     MappingName="Id" />
-
-                <syncfusion:GridTextColumn
-                    Width="0"
-                    IsHidden="True"
-                    MappingName="CurrencyId" />
-
-                <syncfusion:GridTextColumn
-                    Width="0"
-                    IsHidden="True"
-                    MappingName="CountryId" />
                 <!--#endregion-->
 
                 <!--#region Product Code-->
@@ -262,7 +477,5 @@
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
         <!--#endregion-->
-
-
     </Grid>
 </UserControl>

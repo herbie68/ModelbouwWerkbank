@@ -1007,7 +1007,7 @@ In order to be able to add a new time registration, a date and project must firs
     <value>Detailed description</value>
   </data>
   <data name="metadataProductTabSupplierTitle" xml:space="preserve">
-    <value>Supplier</value>
+    <value>Suppliers</value>
   </data>
   <data name="metadataProductTabSupplierTabItemGeneralTitle" xml:space="preserve">
     <value>Article information per supplier</value>
@@ -1063,7 +1063,7 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataProductTabSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
     <value>Remove selected product from the supplier</value>
   </data>
-  <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
+  <data name="metadataProductTabStockTitle" xml:space="preserve">
     <value>Stock history</value>
   </data>
   <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
@@ -3993,5 +3993,17 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="generalUnknownVersion" xml:space="preserve">
     <value>Unknown</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel" xml:space="preserve">
+    <value>Select category</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip" xml:space="preserve">
+    <value>Select the category for this product, tool or material</value>
+  </data>
+  <data name="toolbarButtonActionSelect" xml:space="preserve">
+    <value>Confirm the selected category</value>
+  </data>
+  <data name="toolbarButtonActionCancel" xml:space="preserve">
+    <value>Select none, back</value>
   </data>
 </root>

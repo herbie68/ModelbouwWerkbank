@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 
+using Microsoft.Win32;
+
 namespace Modelbouwer.ViewModels;
 
 public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
@@ -10,6 +12,25 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private readonly ICategoryService _categoryService;
 
 	private int? _lastSelectedProductId;
+
+	public ProductModel? SelectedProduct
+	{
+		get => SelectedItem;
+		set
+		{
+			if ( SelectedItem?.ProductCategoryId != null && ProductCategory != null )
+			{
+				SelectedCategory = ProductCategory
+					.FirstOrDefault( c => c.CategoryId == SelectedItem.ProductCategoryId );
+			}
+			else
+			{
+				SelectedCategory = null;
+			}
+
+			SelectedItem = value;
+		}
+	}
 
 	// Constructor
 	public ProductPageViewModel
@@ -26,6 +47,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		_unitService = unitService;
 		_categoryService = categoryService ?? throw new ArgumentNullException( nameof( categoryService ) );
 
+		OpenCategoryPickerCommand = new AsyncRelayCommand( OpenCategoryPickerAsync );
+
 		_ = LoadComboBoxesContentAsync();
 
 		_ = ReloadCommand.ExecuteAsync( null );
@@ -35,7 +58,13 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public ObservableCollection<BrandModel> ProductBrand { get; } = [ ];
 	public ObservableCollection<UnitModel> ProductUnit { get; } = [ ];
 	public ObservableCollection<CategoryModel> ProductCategory { get; } = [ ];
-	public ObservableCollection<CategoryModel> Categorys { get; } = [ ];
+
+	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
+	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
+
+	private IRelayCommand? _rotateCommand;
+	private IRelayCommand? _addImageCommand;
+
 
 	private BrandModel? _selectedBrand;
 	public BrandModel? SelectedBrand
@@ -71,7 +100,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			if ( SetProperty( ref _selectedCategory, value ) && SelectedItem != null && value != null )
 			{
-				SelectedItem.ProductCategoryId = value.CategoryId;
+				SelectedItem.ProductCategoryId = value?.CategoryId ?? 0;
 			}
 		}
 	}
@@ -107,10 +136,24 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public IAsyncRelayCommand SaveProductCommand => SaveCommand;
 	public IRelayCommand DeleteProductCommand => DeleteCommand;
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
-
-
 	private IRelayCommand? _clearSearchCommand;
+	public IAsyncRelayCommand OpenCategoryPickerCommand { get; }
 
+	public async Task OpenCategoryPickerAsync()
+	{
+		var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory)
+		{
+			SelectedCategory = this.SelectedCategory
+		};
+
+		var dlg = new CategoryPickerDialog(vm);
+		bool? result = dlg.ShowDialog();
+
+		if ( result == true && vm.SelectedCategory != null )
+		{
+			SelectedCategory = vm.SelectedCategory;
+		}
+	}
 
 	// Override SelectedItem changed om DefaultProduct te zetten
 	protected override void OnSelectedItemChanged( ProductModel? value )
@@ -233,6 +276,48 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			.OrderByDescending( p => p.ProductId )
 			.First();
 	}
+
+	private void RotateImage()
+	{
+		if ( SelectedProduct == null )
+			return;
+
+		SelectedProduct.ProductImageRotationAngle = ( SelectedProduct.ProductImageRotationAngle + 90 ) % 360;
+		Debug.WriteLine( SelectedProduct.ProductImageRotationAngle );
+	}
+
+	private void AddImage()
+	{
+
+		if ( SelectedProduct == null )
+			return;
+
+		var dialog = new OpenFileDialog
+		{
+			Filter = "Images|*.png;*.jpg;*.jpeg;*.bmp",
+			Title = "Select image"
+		};
+
+		if ( dialog.ShowDialog() != true )
+			return;
+
+		SelectedProduct.ProductImage = File.ReadAllBytes( dialog.FileName );
+		SelectedProduct.ProductImageRotationAngle = 0;
+	}
+
+	//public async Task OpenCategoryPickerAsync()
+	//{
+	//	var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory);
+	//	var dialog = new CategoryPickerDialog(vm)
+	//	{
+	//		Owner = Application.Current.MainWindow
+	//	};
+
+	//	if ( dialog.ShowDialog() == true )
+	//	{
+	//		SelectedCategory = vm.SelectedCategory;
+	//	}
+	//}
 
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( ProductModel c ) => new()

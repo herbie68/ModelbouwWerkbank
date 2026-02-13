@@ -1,5 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace Modelbouwer.Models;
 
@@ -48,7 +49,7 @@ public partial class ProductModel : ObservableObject
 	private string? _productDimensions;
 
 	[ObservableProperty]
-	private string? _productImageRotationAngle;
+	private double _productImageRotationAngle;
 
 	[ObservableProperty]
 	private string? _productMemo;
