@@ -35,9 +35,15 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	[ObservableProperty] protected bool _isLoading;
 	[ObservableProperty] protected bool _isSaving;
 	[ObservableProperty] protected string _searchText = string.Empty;
-	[ObservableProperty] protected int _visibleItemCount;
 
 	public int TotalItemCount => Items.Count;
+
+	private int _visibleItemCount;
+	public int VisibleItemCount
+	{
+		get => _visibleItemCount;
+		set => SetProperty( ref _visibleItemCount, value );
+	}
 
 	// Grid filtering hook
 	public Action? RefreshGridFilter { get; set; }

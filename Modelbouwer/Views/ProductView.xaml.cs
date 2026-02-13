@@ -7,9 +7,9 @@ using Syncfusion.UI.Xaml.Grid;
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for SupplierView.xaml
+/// Interaction logic for ProductViewxaml.xaml
 /// </summary>
-public partial class SupplierView : UserControl
+public partial class ProductView : UserControl
 {
 	private readonly CsvExportService _csvExportService;
 	private readonly ExcelExportService _excelExportService;
@@ -18,34 +18,34 @@ public partial class SupplierView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
-	public SupplierView( SupplierPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
+	public ProductView( ProductPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
 		DataContext = viewModel;
 		_csvExportService = csvExportService;
 		_excelExportService = excelExportService;
-		Loaded += SupplierView_Loaded;
+		Loaded += ProductView_Loaded;
 	}
 
-	private void SupplierView_Loaded( object sender, RoutedEventArgs e )
+	private void ProductView_Loaded( object sender, RoutedEventArgs e )
 	{
-		if ( DataContext is SupplierPageViewModel vm )
+		if ( DataContext is ProductPageViewModel vm )
 		{
 			vm.RefreshGridFilter = () =>
 			{
 				SfDataGrid.View?.RefreshFilter();
 				SfDataGrid.UpdateLayout();
-				vm.VisibleSupplierCount = SfDataGrid.View?.Records.Count ?? 0;
+				vm.VisibleProductCount = SfDataGrid.View?.Records.Count ?? 0;
 			};
 		}
 	}
 
-	private void SupplierDataGrid_Loaded( object sender, RoutedEventArgs e )
+	private void ProductDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( sender is not SfDataGrid grid )
 			return;
 
-		if ( DataContext is not SupplierPageViewModel vm )
+		if ( DataContext is not ProductPageViewModel vm )
 			return;
 
 		grid.Dispatcher.BeginInvoke(
@@ -54,9 +54,10 @@ public partial class SupplierView : UserControl
 				if ( grid.View == null )
 					return;
 
-				grid.View.Filter = vm.FilterSupplier;
+				grid.View.Filter = vm.FilterProduct;
 				grid.View.RefreshFilter();
-				vm.VisibleSupplierCount = grid.View.Records.Count;
+				vm.VisibleProductCount = grid.View.Records.Count;
+
 			} ),
 			DispatcherPriority.Loaded
 		);
@@ -72,15 +73,15 @@ public partial class SupplierView : UserControl
 		if ( dialog.ShowDialog() == true )
 		{
 			// Haal de lijst op uit de DataGrid
-			if ( SfDataGrid.ItemsSource is List<SupplierModel> Suppliers )
+			if ( SfDataGrid.ItemsSource is List<ProductModel> Products )
 			{
 				// Voer de import uit
 				var result = CsvImportService.ImportCsv(
 				filePath: dialog.FileName,
-				existingRecords: Suppliers,
-				columnMappings: SupplierModel.ColumnMappings, // mapping van UI naar property
-                uniqueProperty: nameof(SupplierModel.Name) // unieke kolom
-            );
+				existingRecords: Products,
+				columnMappings: ProductModel.ColumnMappings, // mapping van UI naar property
+				uniqueProperty: nameof(ProductModel.Name) // unieke kolom
+			);
 
 				MessageBox.Show(
 					$"{Lang.ImportMessagboxCompletedRead}: {result.TotalRows}\n" +
@@ -97,7 +98,7 @@ public partial class SupplierView : UserControl
 			}
 			else
 			{
-				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<SupplierModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
+				MessageBox.Show( "The ItemsSource of the DataGrid is not a List<ProductModel>.", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
 			}
 		}
 	}
@@ -108,7 +109,7 @@ public partial class SupplierView : UserControl
 		{
 			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
 			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportSuppliersFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -117,7 +118,7 @@ public partial class SupplierView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in SupplierModel.ColumnMappings )
+		foreach ( var mapping in ProductModel.ColumnMappings )
 		{
 			// Use the first header from the array (usually the English/default one)
 			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
@@ -125,7 +126,7 @@ public partial class SupplierView : UserControl
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _csvExportService.ExportToCsvAsync<SupplierModel>(
+			await _csvExportService.ExportToCsvAsync<ProductModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );
@@ -138,7 +139,7 @@ public partial class SupplierView : UserControl
 		{
 			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
 			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportSuppliersFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
 		};
 
 		if ( dialog.ShowDialog() != true )
@@ -147,7 +148,7 @@ public partial class SupplierView : UserControl
 		// Defineer custom headers voor deze view
 		var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in SupplierModel.ColumnMappings )
+		foreach ( var mapping in ProductModel.ColumnMappings )
 		{
 			// Use the first header from the array (usually the English/default one)
 			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
@@ -155,7 +156,7 @@ public partial class SupplierView : UserControl
 
 		using ( new UiBusyScope( CustomCursors.Exporting ) )
 		{
-			await _excelExportService.ExportToExcelAsync<SupplierModel>(
+			await _excelExportService.ExportToExcelAsync<ProductModel>(
 			SfDataGrid,
 			dialog.FileName,
 			columnHeaders );
@@ -167,7 +168,7 @@ public partial class SupplierView : UserControl
 
 	}
 
-	private void SupplierMemoEditor_Loaded( object sender, RoutedEventArgs e )
+	private void ProductMemoEditor_Loaded( object sender, RoutedEventArgs e )
 	{
 
 	}

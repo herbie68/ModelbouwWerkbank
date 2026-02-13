@@ -1,11 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Threading;
-
-using Modelbouwer.ViewModels;
-
-namespace Modelbouwer;
+﻿namespace Modelbouwer;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

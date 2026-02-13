@@ -1456,6 +1456,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Er bestaat al een product met exact deze naam.
+        /// </summary>
+        public static string ExportValidationProductNameExists {
+            get {
+                return ResourceManager.GetString("ExportValidationProductNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dit project bestaat al.
         /// </summary>
         public static string ExportValidationProjectNameExists {
@@ -2154,6 +2163,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string GeneralTimePickerWatermark {
             get {
                 return ResourceManager.GetString("GeneralTimePickerWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Onbekend.
+        /// </summary>
+        public static string generalUnknownVersion {
+            get {
+                return ResourceManager.GetString("generalUnknownVersion", resourceCulture);
             }
         }
         
@@ -5722,6 +5740,51 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string metadataProductDataGridProductCodeHeader {
+            get {
+                return ResourceManager.GetString("metadataProductDataGridProductCodeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Productnaam.
+        /// </summary>
+        public static string metadataProductDataGridProductNameHeader {
+            get {
+                return ResourceManager.GetString("metadataProductDataGridProductNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit product wordt nog ergens gebruikt en kan niet worden verwijderd.
+        /// </summary>
+        public static string metadataProductDeleteError {
+            get {
+                return ResourceManager.GetString("metadataProductDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Producten beheren.
+        /// </summary>
+        public static string metadataProductHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataProductHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer van materialen, producten en gereedschappen.
+        /// </summary>
+        public static string metadataProductHeaderTitle {
+            get {
+                return ResourceManager.GetString("metadataProductHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Producten.
         /// </summary>
         public static string metadataProductPageTitle {
@@ -9142,6 +9205,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Producten en materiaal.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Product_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Product.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer de materialen, producten en gereedschappen.
+        /// </summary>
+        public static string navigation_Resources_SubItem_Product_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.Product.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project.
         /// </summary>
         public static string navigation_Resources_SubItem_Project_Label {
@@ -11560,6 +11641,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelNumberSeperator {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelNumberSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde producten.
+        /// </summary>
+        public static string toolbarVisibleRowLabelProduct {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelProduct", resourceCulture);
             }
         }
         

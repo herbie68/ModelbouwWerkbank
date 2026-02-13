@@ -3964,4 +3964,34 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ExportValidationContactNameExists" xml:space="preserve">
     <value>A contact person with this name already exists</value>
   </data>
+  <data name="metadataProductHeaderSubtitle" xml:space="preserve">
+    <value>Manage products</value>
+  </data>
+  <data name="metadataProductHeaderTitle" xml:space="preserve">
+    <value>Management of materials, products and tools</value>
+  </data>
+  <data name="metadataProductDataGridProductCodeHeader" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="metadataProductDataGridProductNameHeader" xml:space="preserve">
+    <value>Product name</value>
+  </data>
+  <data name="metadataProductDeleteError" xml:space="preserve">
+    <value>This product is still in use somewhere and cannot be removed</value>
+  </data>
+  <data name="ExportValidationProductNameExists" xml:space="preserve">
+    <value>There is already a product with exactly this name</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Label" xml:space="preserve">
+    <value>Products and material</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Tooltip" xml:space="preserve">
+    <value>Manage the materials, products and tools</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProduct" xml:space="preserve">
+    <value>Number of products shown</value>
+  </data>
+  <data name="generalUnknownVersion" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
 </root>

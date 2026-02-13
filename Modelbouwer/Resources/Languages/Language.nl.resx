@@ -3964,4 +3964,34 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ExportValidationContactNameExists" xml:space="preserve">
     <value>Een contactpersoon met deze naam bestaat al</value>
   </data>
+  <data name="metadataProductHeaderTitle" xml:space="preserve">
+    <value>Beheer van materialen, producten en gereedschappen</value>
+  </data>
+  <data name="metadataProductHeaderSubtitle" xml:space="preserve">
+    <value>Producten beheren</value>
+  </data>
+  <data name="metadataProductDataGridProductCodeHeader" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProductDataGridProductNameHeader" xml:space="preserve">
+    <value>Productnaam</value>
+  </data>
+  <data name="metadataProductDeleteError" xml:space="preserve">
+    <value>Dit product wordt nog ergens gebruikt en kan niet worden verwijderd</value>
+  </data>
+  <data name="ExportValidationProductNameExists" xml:space="preserve">
+    <value>Er bestaat al een product met exact deze naam</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Label" xml:space="preserve">
+    <value>Producten en materiaal</value>
+  </data>
+  <data name="navigation.Resources.SubItem.Product.Tooltip" xml:space="preserve">
+    <value>Beheer de materialen, producten en gereedschappen</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProduct" xml:space="preserve">
+    <value>Aantal getoonde producten</value>
+  </data>
+  <data name="generalUnknownVersion" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
 </root>

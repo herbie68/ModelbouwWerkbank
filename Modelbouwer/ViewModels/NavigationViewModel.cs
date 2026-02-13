@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -163,6 +164,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Command = new SimpleCommand( () => LoadSupplierView() )
 		} );
 
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = $"{Lang.navigation_Resources_SubItem_Product_Label}",
+			NavigationIcon = CreateNavigationImage( "product" ),
+			NavigationTooltip = $"{Lang.navigation_Resources_SubItem_Product_Tooltip}",
+			Command = new SimpleCommand( () => LoadProductView() )
+		} );
+
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -321,6 +330,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		catch ( Exception ex )
 		{
 			Debug.WriteLine( $"Error loading SupplierView: {ex.Message}" );
+		}
+	}
+
+	private void LoadProductView()
+	{
+		try
+		{
+			var productView = _serviceProvider.GetRequiredService<ProductView>();
+			CurrentView = productView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading ProductView: {ex.Message}" );
 		}
 	}
 
@@ -485,6 +507,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = Language.navigation_Resources_SubItem_Worktype_Tooltip,
 			Command = new SimpleCommand( () => LoadWorktypeView() )
 		} );
+
+		MetadataSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Resources_SubItem_Product_Label,
+			NavigationIcon = CreateNavigationImage( "product" ),
+			NavigationTooltip = Language.navigation_Resources_SubItem_Product_Tooltip,
+			Command = new SimpleCommand( () => LoadProductView() )
+		} );
 		#endregion
 
 		#region CurrencySubitems
@@ -542,4 +572,11 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		public void Execute( object? parameter ) => _execute();
 	}
+
+	// Get the Assembly File Version for display in the UI
+	public string AppVersion =>
+	$"Modelbouwer v{Assembly
+		.GetExecutingAssembly()
+		.GetCustomAttribute<AssemblyFileVersionAttribute>()?
+		.Version ?? Language.generalUnknownVersion}";
 }
