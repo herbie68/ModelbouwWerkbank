@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Modelbouwer.Validators;
@@ -23,6 +23,10 @@ public partial class App : Application
 		   .Build();
 	}
 
+	/// <summary>
+	/// Registers application services, view models, views, exported utilities, scoped service interfaces, and entity validators into the provided dependency-injection service collection.
+	/// </summary>
+	/// <param name="services">The IServiceCollection used to configure dependency injection for the application.</param>
 	private void ConfigureServices( IServiceCollection services )
 	{
 		// Register Syncfusion license

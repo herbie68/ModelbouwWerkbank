@@ -1,4 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace Modelbouwer.Models;
 
@@ -58,6 +58,10 @@ public partial class ProductModel : ObservableObject
 	// Define the property that you want to use in TLists (for example in the errorList
 	public string Name => _productName;
 
+	/// <summary>
+	/// Updates the package price when the unit price changes, keeping package and unit pricing consistent.
+	/// </summary>
+	/// <param name="value">The new unit price; if <see cref="ProductStandardQuantity"/> is greater than zero, the package price is set to this value multiplied by the standard quantity (rounded to 2 decimal places).</param>
 	partial void OnProductPriceChanged( double value )
 	{
 		if ( ProductStandardQuantity > 0 )
@@ -66,6 +70,10 @@ public partial class ProductModel : ObservableObject
 		}
 	}
 
+	/// <summary>
+	/// If ProductStandardQuantity is greater than zero, sets ProductPrice to the package price divided by ProductStandardQuantity, rounded to 6 decimal places.
+	/// </summary>
+	/// <param name="value">The new package price.</param>
 	partial void OnProductPackagePriceChanged( double value )
 	{
 		if ( ProductStandardQuantity > 0 )
@@ -74,6 +82,10 @@ public partial class ProductModel : ObservableObject
 		}
 	}
 
+	/// <summary>
+	/// Updates the related price fields to remain consistent when the product's standard quantity changes.
+	/// </summary>
+	/// <param name="value">The new standard quantity used to recalculate dependent prices. If <see cref="ProductPrice"/> is greater than zero, <see cref="ProductPackagePrice"/> is set to ProductPrice * value rounded to 2 decimals; otherwise, if <see cref="ProductPackagePrice"/> is greater than zero, <see cref="ProductPrice"/> is set to ProductPackagePrice / value rounded to 6 decimals.</param>
 	partial void OnProductStandardQuantityChanged( double value )
 	{
 		// Herbereken indien nodig
@@ -125,9 +137,15 @@ public partial class ProductModel : ObservableObject
 		{ DBNames.ProductFieldNameUnitId, "_productUnitId" },
 	};
 
-	public ProductModel() { }
+	/// <summary>
+/// Initializes a new instance of ProductModel with default property values.
+/// </summary>
+public ProductModel() { }
 
-	// Copy constructor
+	/// <summary>
+	/// Initializes a new ProductModel by copying price-related values from an existing instance.
+	/// </summary>
+	/// <param name="other">The source ProductModel whose price, package price, and standard quantity will be copied.</param>
 	public ProductModel( ProductModel other )
 	{
 		_productPrice = other._productPrice;

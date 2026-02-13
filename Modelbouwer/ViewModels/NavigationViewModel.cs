@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -82,6 +82,12 @@ public class NavigationViewModel : INotifyPropertyChanged
 		} );
 	}
 
+	/// <summary>
+	/// Adds a set of default navigation entries to the NavigationItems collection as a fallback.
+	/// </summary>
+	/// <remarks>
+	/// Each entry includes a localized label, icon, tooltip, and a command that loads the corresponding view.
+	/// </remarks>
 	private void AddFallbackNavigation()
 	{
 		NavigationItems.Add( new NavigationModel
@@ -174,6 +180,11 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 	}
 
+	/// <summary>
+	/// Creates an Image control using an application resource for the given resource key and applies the navigation icon style if available.
+	/// </summary>
+	/// <param name="resourceKey">The key of the ImageSource resource to load from the application resources.</param>
+	/// <returns>An Image whose Source is the resource identified by <paramref name="resourceKey"/> (and whose Style is the navigation icon style if present), or `null` if the application is unavailable, the resource is not found, or an error occurs.</returns>
 	private static Image? CreateNavigationImage( string resourceKey )
 	{
 		try
@@ -320,6 +331,13 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	/// <summary>
+	/// Loads the supplier view and makes it the current view.
+	/// </summary>
+	/// <remarks>
+	/// Attempts to resolve <c>SupplierView</c> from the injected service provider and assigns it to <see cref="CurrentView"/>.
+	/// If resolution fails, the error is logged and <see cref="CurrentView"/> is not modified.
+	/// </remarks>
 	private void LoadSupplierView()
 	{
 		try
@@ -333,6 +351,12 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	/// <summary>
+	/// Resolves the ProductView from the service provider and assigns it to the CurrentView property.
+	/// </summary>
+	/// <remarks>
+	/// If resolving or assignment fails, the method writes the error message to debug output and does not propagate the exception.
+	/// </remarks>
 	private void LoadProductView()
 	{
 		try
@@ -346,6 +370,12 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	/// <summary>
+	/// Constructs the navigation structure and populates the view model's navigation collections.
+	/// </summary>
+	/// <remarks>
+	/// Populates TimeSubItems, InventorySubItems, MetadataSubItems, and MetadataCurrenciesSubItems and adds the corresponding top-level NavigationModel entries (Time, Inventory, Projects, Resources, Settings) to NavigationItems. Attaches commands for items that load views.
+	/// </remarks>
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -570,7 +600,11 @@ public class NavigationViewModel : INotifyPropertyChanged
 
 		public bool CanExecute( object? parameter ) => true;
 
-		public void Execute( object? parameter ) => _execute();
+		/// <summary>
+/// Invokes the command's action.
+/// </summary>
+/// <param name="parameter">Ignored; this command does not use the parameter and it may be null.</param>
+public void Execute( object? parameter ) => _execute();
 	}
 
 	// Get the Assembly File Version for display in the UI

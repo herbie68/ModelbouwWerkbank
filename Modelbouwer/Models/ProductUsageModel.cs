@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Modelbouwer.Model;
@@ -43,11 +43,23 @@ public class ProductUsageModel
 
 	public event PropertyChangedEventHandler? PropertyChanged;
 
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event for a specified property.
+	/// </summary>
+	/// <param name="propertyName">The name of the property that changed. If omitted, the caller member name is used.</param>
 	protected void NotifyPropertyChanged( [CallerMemberName] string? propertyName = null )
 	{
 		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 
+	/// <summary>
+	/// Sets a backing field to a new value, raises PropertyChanged for the property, and updates the record state and status marker when appropriate.
+	/// </summary>
+	/// <typeparam name="T">Type of the backing field.</typeparam>
+	/// <param name="field">Reference to the backing field to update.</param>
+	/// <param name="value">New value to assign to the field.</param>
+	/// <param name="propertyName">Name of the property that changed; automatically supplied by the compiler when omitted.</param>
+	/// <returns>`true` if the field was changed, `false` if the new value equals the current value.</returns>
 	protected bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
 	{
 		if ( EqualityComparer<T>.Default.Equals( field, value ) )

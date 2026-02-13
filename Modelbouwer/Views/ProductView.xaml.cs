@@ -1,4 +1,4 @@
-﻿using System.Windows.Threading;
+using System.Windows.Threading;
 
 using Microsoft.Win32;
 
@@ -18,6 +18,12 @@ public partial class ProductView : UserControl
 	public bool IncludeHeaders { get; set; } = true;
 	public Encoding CsvEncoding { get; set; } = Encoding.UTF8;
 
+	/// <summary>
+	/// Initializes a new instance of ProductView with the specified view model and export services.
+	/// </summary>
+	/// <param name="viewModel">The view model to set as the control's DataContext.</param>
+	/// <param name="csvExportService">The service used to export data to CSV.</param>
+	/// <param name="excelExportService">The service used to export data to Excel.</param>
 	public ProductView( ProductPageViewModel viewModel, CsvExportService csvExportService, ExcelExportService excelExportService )
 	{
 		InitializeComponent();
@@ -27,6 +33,11 @@ public partial class ProductView : UserControl
 		Loaded += ProductView_Loaded;
 	}
 
+	/// <summary>
+	/// On control load, assigns the view model's RefreshGridFilter action to refresh the data grid's filter, update layout, and set the view model's VisibleProductCount.
+	/// </summary>
+	/// <param name="sender">The source of the Loaded event.</param>
+	/// <param name="e">Event data for the Loaded event.</param>
 	private void ProductView_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( DataContext is ProductPageViewModel vm )
@@ -40,6 +51,12 @@ public partial class ProductView : UserControl
 		}
 	}
 
+	/// <summary>
+	/// Applies the view model's product filter to the data grid and updates the view model's VisibleProductCount after the grid's view is available.
+	/// </summary>
+	/// <remarks>
+	/// Invoked on the grid's Loaded event; the filter application and count update are dispatched on the grid's dispatcher with Loaded priority.
+	/// </remarks>
 	private void ProductDataGrid_Loaded( object sender, RoutedEventArgs e )
 	{
 		if ( sender is not SfDataGrid grid )
@@ -63,6 +80,12 @@ public partial class ProductView : UserControl
 		);
 	}
 
+	/// <summary>
+	/// Prompts the user to select a CSV file and imports its rows into the DataGrid's item list when that list is a List&lt;ProductModel&gt;.
+	/// </summary>
+	/// <remarks>
+	/// Uses ProductModel.ColumnMappings to map CSV columns and uses ProductModel.Name as the unique key; displays an import summary message box and refreshes the grid view. If the DataGrid's ItemsSource is not a List&lt;ProductModel&gt;, displays an error message.
+	/// </remarks>
 	private void ButtonImport( object sender, RoutedEventArgs e )
 	{
 		var dialog = new Microsoft.Win32.OpenFileDialog
@@ -103,6 +126,14 @@ public partial class ProductView : UserControl
 		}
 	}
 
+	/// <summary>
+	/// Prompts the user to choose a file and exports the current product grid to a CSV file.
+	/// </summary>
+	/// <remarks>
+	/// Builds column headers from ProductModel.ColumnMappings (takes the first header for each mapping),
+	/// then writes the grid contents to the selected CSV file using the CSV export service while showing an exporting cursor.
+	/// If the user cancels the save dialog, no action is taken.
+	/// </remarks>
 	private async void ButtonCSVExport( object sender, RoutedEventArgs e )
 	{
 		var dialog = new SaveFileDialog
@@ -133,6 +164,9 @@ public partial class ProductView : UserControl
 		}
 	}
 
+	/// <summary>
+	/// Prompts the user to select a destination file and exports the current product grid to an Excel (.xlsx) file using ProductModel column mappings for the column headers.
+	/// </summary>
 	private async void ButtonExcelExport( object sender, RoutedEventArgs e )
 	{
 		var dialog = new SaveFileDialog
@@ -168,6 +202,11 @@ public partial class ProductView : UserControl
 
 	}
 
+	/// <summary>
+	/// Handles the Loaded event for the product memo editor control.
+	/// </summary>
+	/// <param name="sender">The control that raised the Loaded event (the memo editor).</param>
+	/// <param name="e">Event data for the Loaded event.</param>
 	private void ProductMemoEditor_Loaded( object sender, RoutedEventArgs e )
 	{
 
