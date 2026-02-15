@@ -5974,6 +5974,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selecteer categorie.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer de categorie voor dit product, deze tool of dit materiaal.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merk.
         /// </summary>
         public static string metadataProductTabGeneralTabItemProductFieldBrand {
@@ -6309,9 +6327,9 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Voorraadhistorie.
         /// </summary>
-        public static string metadataProductTabStorageHistoryTitle {
+        public static string metadataProductTabStockTitle {
             get {
-                return ResourceManager.GetString("metadataProductTabStorageHistoryTitle", resourceCulture);
+                return ResourceManager.GetString("metadataProductTabStockTitle", resourceCulture);
             }
         }
         
@@ -6586,7 +6604,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leverancier.
+        ///   Looks up a localized string similar to Leveranciers.
         /// </summary>
         public static string metadataProductTabSupplierTitle {
             get {
@@ -11267,6 +11285,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Niets selecteren, terug.
+        /// </summary>
+        public static string toolbarButtonActionCancel {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geselecteerde regel kan niet worden verwijderd, deze wordt gebruikt.
         /// </summary>
         public static string toolbarButtonActionCanNotDelete {
@@ -11443,6 +11470,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonActionSaveContact {
             get {
                 return ResourceManager.GetString("toolbarButtonActionSaveContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig de geselecteerde category.
+        /// </summary>
+        public static string toolbarButtonActionSelect {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionSelect", resourceCulture);
             }
         }
         

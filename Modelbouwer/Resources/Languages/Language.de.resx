@@ -1063,7 +1063,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProductTabSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
     <value>Entfernen Sie das ausgewählte Produkt aus dem Lieferanten</value>
   </data>
-  <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
+  <data name="metadataProductTabStockTitle" xml:space="preserve">
     <value>Aktiengeschichte</value>
   </data>
   <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
@@ -3993,5 +3993,17 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="generalUnknownVersion" xml:space="preserve">
     <value>Unbekannt</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel" xml:space="preserve">
+    <value>Kategorie auswählen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip" xml:space="preserve">
+    <value>Wählen Sie die Kategorie für dieses Produkt, Werkzeug oder Material aus</value>
+  </data>
+  <data name="toolbarButtonActionSelect" xml:space="preserve">
+    <value>Bestätigen Sie die ausgewählte Kategorie</value>
+  </data>
+  <data name="toolbarButtonActionCancel" xml:space="preserve">
+    <value>Keine auswählen, zurück</value>
   </data>
 </root>

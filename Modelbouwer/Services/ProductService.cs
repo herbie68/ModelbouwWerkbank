@@ -149,7 +149,7 @@ public class ProductService : IProductService
 				ProductHide = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductFieldNameHide}" ] ),
 				ProductId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductFieldNameId}" ] ),
 				ProductImage = reader [ $"{DBNames.ProductFieldNameImage}" ] as byte [ ],
-				ProductImageRotationAngle = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductFieldNameImageRotationAngle}" ] ),
+				ProductImageRotationAngle = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductFieldNameImageRotationAngle}" ] ),
 				ProductMemo = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductFieldNameMemo}" ] ),
 				ProductMinimalStock = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductFieldNameMinimalStock}" ] ),
 				ProductName = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductFieldNameName}" ] ),
@@ -261,10 +261,27 @@ public class ProductService : IProductService
 		{
 			await _dataService.ExecuteScalarAsync<uint>( DeleteProductQuery, parameters );
 		}
-		catch ( MySqlException ex ) when ( ex.Number == 1451 )
+		catch ( Exception ex )
 		{
-			throw new EntityInUseException(
-				$"{Lang.metadataProductDeleteError}." );
+			// Try to get a SQL error number (MySqlException has a Number property).
+			// We use reflection so unit tests can throw a lightweight exception exposing a Number property.
+			int? number = null;
+			try
+			{
+				var prop = ex.GetType().GetProperty( "Number" );
+				if ( prop != null && prop.PropertyType == typeof( int ) )
+					number = ( int? ) prop.GetValue( ex );
+			}
+			catch { /* ignore reflection issues */ }
+
+			if ( number == 1451 )
+			{
+				throw new EntityInUseException(
+					$"{Lang.metadataProductDeleteError}." );
+			}
+
+			// Not a MySQL foreign key constraint — rethrow original.
+			throw;
 		}
 	}
 

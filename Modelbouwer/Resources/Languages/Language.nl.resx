@@ -1010,7 +1010,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Uitgebreide omschrijving</value>
   </data>
   <data name="metadataProductTabSupplierTitle" xml:space="preserve">
-    <value>Leverancier</value>
+    <value>Leveranciers</value>
   </data>
   <data name="metadataProductTabSupplierTabItemGeneralTitle" xml:space="preserve">
     <value>Artikelinformatie per leverancier</value>
@@ -1066,7 +1066,7 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProductTabSupplierToolbarButtonDeleteTooltip" xml:space="preserve">
     <value>Verwijder geselekteerde product bij leverancier</value>
   </data>
-  <data name="metadataProductTabStorageHistoryTitle" xml:space="preserve">
+  <data name="metadataProductTabStockTitle" xml:space="preserve">
     <value>Voorraadhistorie</value>
   </data>
   <data name="metadataSupplierDetailTabContactsDataGridIdHeader" xml:space="preserve">
@@ -3993,5 +3993,17 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="generalUnknownVersion" xml:space="preserve">
     <value>Onbekend</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel" xml:space="preserve">
+    <value>Selecteer categorie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemProductButtonSearchCategoryTooltip" xml:space="preserve">
+    <value>Selecteer de categorie voor dit product, deze tool of dit materiaal</value>
+  </data>
+  <data name="toolbarButtonActionSelect" xml:space="preserve">
+    <value>Bevestig de geselecteerde category</value>
+  </data>
+  <data name="toolbarButtonActionCancel" xml:space="preserve">
+    <value>Niets selecteren, terug</value>
   </data>
 </root>

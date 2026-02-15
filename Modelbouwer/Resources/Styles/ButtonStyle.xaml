@@ -105,6 +105,55 @@
     </Style>
     <!--#endregion-->
 
+    <!-- #region Search Category Button Style-->
+    <Style x:Key="SearchButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource ComboBox.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboBox.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4"
+                        >
+                        <Grid>
+                            <!--  Define two columns 1 for the text and one for the image  -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="25" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Content}"
+                                />
+
+                            <Image
+                                Grid.Column="1"
+                                Width="16"
+                                Height="16" Margin="0,0,3,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="{StaticResource search}"
+                                />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
     <!--#region Hide TImage toolbar buttons when there is no image available-->
     <Style x:Key="HideButtonOnNoImage" TargetType="Button">
         <Setter Property="Visibility" Value="Visible" />
