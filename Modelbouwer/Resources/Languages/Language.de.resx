@@ -4006,4 +4006,16 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarButtonActionCancel" xml:space="preserve">
     <value>Keine auswählen, zurück</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel" xml:space="preserve">
+    <value>Lagerort auswählen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip" xml:space="preserve">
+    <value>Wo ist dieser Artikel gespeichert</value>
+  </data>
+  <data name="metadataStorageLocationDatagridHeaderName" xml:space="preserve">
+    <value>Lagerort</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
+    <value>Anzahl der pro Produkt angezeigten Lieferanten</value>
+  </data>
 </root>

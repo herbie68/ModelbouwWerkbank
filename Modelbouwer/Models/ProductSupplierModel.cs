@@ -3,43 +3,33 @@
 public class ProductSupplierModel : ObservableObject
 {
 	public int ProductSupplierId { get; set; }
-	public int ProductSupplierProductId { get; set; }
-	public int ProductSupplierSupplierId { get; set; }
-	public int ProductSupplierCurrencyId { get; set; }
-	public string? ProductSupplierName { get; set; }
-	public string? ProductSupplierProductNumber { get; set; }
-	public string? ProductSupplierProductName { get; set; }
-	public decimal ProductSupplierPrice { get; set; }
-	public string? ProductSupplierURL { get; set; }
-	public bool? ProductSupplierDefaultSupplier { get; set; }
-	public bool? ProductSupplierDefaultSupplierCheck { get; set; }
-	public string? ProductSupplierSupplierName { get; set; }
-	//public string? ProductSupplierCurrencySymbol { get; set; }
-
-	private string? productSupplierCurrencySymbol;
-
-	public string? ProductSupplierCurrencySymbol
-	{
-		get => productSupplierCurrencySymbol;
-		set => SetProperty( ref productSupplierCurrencySymbol, value );
-	}
-
+	public int ProductId { get; set; }
+	public int SupplierId { get; set; }
+	public int CurrencyId { get; set; }
+	public string? SupplierName { get; set; }
+	public string? ProductNumber { get; set; }
+	public string? ProductName { get; set; }
+	public double Price { get; set; }
+	public string? URL { get; set; }
+	public bool? DefaultSupplier { get; set; }
+	public bool? DefaultSupplierCheck { get; set; }
+	public string? CurrencySymbol { get; set; }
 
 	// Define the property that you want to use in TLists (for example in the errorList
-	public string Name => ProductSupplierProductName;
+	public string Name => ProductName;
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
 	{
 		{ DBNames.ProductSupplierFieldNameId, "ProductSupplierId" },
-		{ DBNames.ProductSupplierFieldNameProductId, "ProductSupplierProductId" },
-		{ DBNames.ProductSupplierFieldNameSupplierId, "ProductSupplierSupplierId" },
+		{ DBNames.ProductSupplierFieldNameProductId, "ProductId" },
+		{ DBNames.ProductSupplierFieldNameSupplierId, "SupplierId" },
 		{ DBNames.ProductSupplierFieldNameCurrencyId, "CurrencyId" },
-		{ DBNames.ProductSupplierFieldNameProductNumber, "ProductSupplierProductNumber" },
-		{ DBNames.ProductSupplierFieldNameProductName, "ProductSupplierProductName" },
-		{ DBNames.ProductSupplierFieldNameSupplierName, "ProductSupplierSupplierName" },
-		{ DBNames.ProductSupplierFieldNamePrice, "ProductSupplierPrice" },
-		{ DBNames.ProductSupplierFieldNameProductUrl, "ProductSupplierURL" },
+		{ DBNames.ProductSupplierFieldNameProductNumber, "ProductNumber" },
+		{ DBNames.ProductSupplierFieldNameProductName, "ProductName" },
+		{ DBNames.ProductSupplierFieldNameSupplierName, "SupplierName" },
+		{ DBNames.ProductSupplierFieldNamePrice, "Price" },
+		{ DBNames.ProductSupplierFieldNameProductUrl, "URL" },
 		{ DBNames.ProductSupplierFieldNameDefaultSupplier, "ProductSupplierDefaultSupplier" }
 	};
 }

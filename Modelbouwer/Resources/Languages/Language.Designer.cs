@@ -6163,6 +6163,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selecteer voorraad locatie.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waar wordt dit artikel opgeslagen.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afmetingen.
         /// </summary>
         public static string metadataProductTabGeneralTabItemStorageFieldDimensions {
@@ -7653,6 +7671,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataStorageEntryToolbarButtonSaveTooltip {
             get {
                 return ResourceManager.GetString("metadataStorageEntryToolbarButtonSaveTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraad locatie.
+        /// </summary>
+        public static string metadataStorageLocationDatagridHeaderName {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationDatagridHeaderName", resourceCulture);
             }
         }
         
@@ -11686,6 +11713,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelProduct {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde leveranciers per product.
+        /// </summary>
+        public static string toolbarVisibleRowLabelProductSupplier {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelProductSupplier", resourceCulture);
             }
         }
         

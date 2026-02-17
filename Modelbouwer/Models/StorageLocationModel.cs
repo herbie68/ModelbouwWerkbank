@@ -9,12 +9,10 @@ public class StorageLocationModel
 	public int? ParentId { get; set; }
 	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
 
-	private string _storageName;
-
 	public string StorageName
 	{
-		get => _storageName;
-		set => SetProperty( ref _storageName, value );
+		get;
+		set => SetProperty( ref field, value );
 	}
 
 	private StorageLocationModel? _parent;
@@ -40,7 +38,7 @@ public class StorageLocationModel
 		set => SetProperty( ref _state, value );
 	}
 
-	public string StatusMarker => State == RecordState.Unchanged ? string.Empty : "*" ;
+	public string StatusMarker => State == RecordState.Unchanged ? string.Empty : "*";
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
@@ -68,7 +66,7 @@ public class StorageLocationModel
 		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 
-	protected bool SetProperty<T>( ref T field, T value, [ CallerMemberName] string? propertyName = null )
+	protected bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
 	{
 		if ( EqualityComparer<T>.Default.Equals( field, value ) )
 		{

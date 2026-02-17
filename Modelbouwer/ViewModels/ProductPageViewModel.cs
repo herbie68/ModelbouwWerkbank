@@ -2,6 +2,8 @@
 
 using Microsoft.Win32;
 
+using Modelbouwer.Model;
+
 namespace Modelbouwer.ViewModels;
 
 public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
@@ -10,26 +12,35 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private readonly IUnitService _unitService;
 	private readonly IBrandService _brandService;
 	private readonly ICategoryService _categoryService;
+	private readonly IStorageLocationService _storageLocationService;
+	private readonly ISupplierService _supplierService;
 
 	private int? _lastSelectedProductId;
+	private bool _isInternalCategoryUpdate;
+	private bool _isInternalStorageLocationUpdate;
 
-	public ProductModel? SelectedProduct
+	private void UpdateSelectedCategoryFromProduct()
 	{
-		get => SelectedItem;
-		set
+		if ( SelectedItem?.ProductCategoryId == null )
 		{
-			if ( SelectedItem?.ProductCategoryId != null && ProductCategory != null )
-			{
-				SelectedCategory = ProductCategory
-					.FirstOrDefault( c => c.CategoryId == SelectedItem.ProductCategoryId );
-			}
-			else
-			{
-				SelectedCategory = null;
-			}
-
-			SelectedItem = value;
+			SelectedCategory = null;
+			return;
 		}
+
+		SelectedCategory = AllCategories
+			.FirstOrDefault( c => c.CategoryId == SelectedItem.ProductCategoryId );
+	}
+
+	private void UpdateSelectedStorageLocationFromProduct()
+	{
+		if ( SelectedItem?.ProductStorageId == null )
+		{
+			SelectedStorageLocation = null;
+			return;
+		}
+
+		SelectedStorageLocation = AllStorageLocations
+			.FirstOrDefault( c => c.StorageId == SelectedItem.ProductStorageId );
 	}
 
 	// Constructor
@@ -39,6 +50,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			IUnitService unitService,
 			IBrandService brandService,
 			ICategoryService categoryService,
+			IStorageLocationService storageLocationService,
+			ISupplierService supplierService,
 			IEntityValidator<ProductModel> validator
 		) : base( validator )
 	{
@@ -46,18 +59,67 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		_brandService = brandService;
 		_unitService = unitService;
 		_categoryService = categoryService ?? throw new ArgumentNullException( nameof( categoryService ) );
+		_storageLocationService = storageLocationService ?? throw new ArgumentNullException( nameof( storageLocationService ) );
+		_supplierService = supplierService;
 
 		OpenCategoryPickerCommand = new AsyncRelayCommand( OpenCategoryPickerAsync );
+		OpenStorageLocationPickerCommand = new AsyncRelayCommand( OpenStorageLocationPickerAsync );
 
-		_ = LoadComboBoxesContentAsync();
-
-		_ = ReloadCommand.ExecuteAsync( null );
+		_ = InitializeAsync();
 	}
 
+	private async Task InitializeAsync()
+	{
+		try
+		{
+			await LoadComboBoxesContentAsync();
+
+			await LoadSuppliersAsync();
+			await LoadProductSuppliersAsync();
+
+			// Then load products (this will trigger OnSelectedItemChanged with populated combo boxes)
+			await ReloadCommand.ExecuteAsync( null );
+		}
+		catch ( Exception ex )
+		{
+			MessageBox.Show( ex.ToString() );
+		}
+	}
 	#region Collections & Selected Items
 	public ObservableCollection<BrandModel> ProductBrand { get; } = [ ];
 	public ObservableCollection<UnitModel> ProductUnit { get; } = [ ];
-	public ObservableCollection<CategoryModel> ProductCategory { get; } = [ ];
+	public ObservableCollection<CategoryModel> ProductCategory { get; private set; } = [ ];
+	public ObservableCollection<StorageLocationModel> ProductStorageLocation { get; private set; } = [ ];
+	public ObservableCollection<SupplierModel> Suppliers { get; } = [ ];
+	public ObservableCollection<ProductSupplierModel> ProductSuppliers { get; } = [ ];
+	public ObservableCollection<ProductSupplierModel> FilteredSuppliers { get; } = [ ];
+
+	public List<CategoryModel> AllCategories
+	{
+		get;
+		private set
+		{
+			if ( SetProperty( ref field, value ) )
+			{
+				// When categories change, remap selected category for the current product
+				UpdateSelectedCategoryFromProduct();
+			}
+		}
+	}
+
+	public List<StorageLocationModel> AllStorageLocations
+	{
+		get;
+		private set
+		{
+			if ( SetProperty( ref field, value ) )
+			{
+				// When storage location change, remap selected storagelocation for the current product
+				UpdateSelectedStorageLocationFromProduct();
+			}
+		}
+	}
+
 
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
@@ -66,44 +128,37 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private IRelayCommand? _addImageCommand;
 
 
-	private BrandModel? _selectedBrand;
-	public BrandModel? SelectedBrand
-	{
-		get => _selectedBrand;
-		set
-		{
-			if ( SetProperty( ref _selectedBrand, value ) && SelectedItem != null && value != null )
-			{
-				SelectedItem.ProductBrandId = value.BrandId;
-			}
-		}
-	}
-
-	private UnitModel? _selectedUnit;
-	public UnitModel? SelectedUnit
-	{
-		get => _selectedUnit;
-		set
-		{
-			if ( SetProperty( ref _selectedUnit, value ) && SelectedItem != null && value != null )
-			{
-				SelectedItem.ProductUnitId = value.UnitId;
-			}
-		}
-	}
-
-	private CategoryModel? _selectedCategory;
 	public CategoryModel? SelectedCategory
 	{
-		get => _selectedCategory;
+		get;
 		set
 		{
-			if ( SetProperty( ref _selectedCategory, value ) && SelectedItem != null && value != null )
+			if ( SetProperty( ref field, value ) )
 			{
-				SelectedItem.ProductCategoryId = value?.CategoryId ?? 0;
+				if ( !_isInternalCategoryUpdate && SelectedItem != null )
+				{
+					SelectedItem?.ProductCategoryId = value?.CategoryId ?? 0;
+				}
 			}
 		}
 	}
+
+	public StorageLocationModel? SelectedStorageLocation
+	{
+		get;
+		set
+		{
+			if ( SetProperty( ref field, value ) )
+			{
+				if ( !_isInternalStorageLocationUpdate && SelectedItem != null )
+				{
+					SelectedItem?.ProductStorageId = value?.StorageId ?? 0;
+				}
+			}
+		}
+	}
+
+	public ProductSupplierModel? SelectedSupplier { get; set; }
 	#endregion
 
 	#region Load Methods
@@ -111,6 +166,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	{
 		ProductBrand.Clear();
 		ProductUnit.Clear();
+		ProductCategory.Clear();
+		ProductStorageLocation.Clear();
 
 		var brands = await _brandService.GetAllBrandsAsync();
 		foreach ( var brand in brands )
@@ -122,6 +179,27 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		foreach ( var unit in units )
 		{
 			ProductUnit.Add( unit );
+		}
+
+		var categories = await _categoryService.GetAllCategorysAsync();
+		AllCategories = categories;
+		foreach ( var category in categories )
+		{
+			ProductCategory.Add( category );
+		}
+
+		var storageLocations = await _storageLocationService.GetAllStorageLocationsAsync();
+		AllStorageLocations = storageLocations;
+		foreach ( var location in storageLocations )
+		{
+			ProductStorageLocation.Add( location );
+		}
+
+
+		// If a product is already selected, map its category now that AllCategories is available
+		if ( SelectedItem != null )
+		{
+			UpdateSelectedCategoryFromProduct();
 		}
 	}
 	#endregion
@@ -138,13 +216,118 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 	private IRelayCommand? _clearSearchCommand;
 	public IAsyncRelayCommand OpenCategoryPickerCommand { get; }
+	public IAsyncRelayCommand OpenStorageLocationPickerCommand { get; }
+
+	#region CRUD Contacts
+	private IRelayCommand? _addSupplierCommand;
+	public IRelayCommand AddSupplierCommand => _addSupplierCommand ??= new RelayCommand( AddSupplier );
+	private IRelayCommand? _saveSupplierCommand;
+	public IRelayCommand SaveSupplierCommand => _saveSupplierCommand ??= new RelayCommand( SaveSupplier );
+	private IRelayCommand? _deleteSupplierCommand;
+	public IRelayCommand DeleteSupplierCommand => _deleteSupplierCommand ??= new RelayCommand( DeleteSupplier );
+
+	#region Relay command for going to the supplier website
+	//[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]
+	//private void OpenWebsite()
+	//{
+	//if ( string.IsNullOrWhiteSpace( SelectedSupplier?.Url ) )
+	//	return;
+
+	//ProcessStartInfo startInfo = new()
+	//{
+	//	FileName = SelectedItem.Url,
+	//	UseShellExecute = true
+	//};
+
+	//Process.Start( startInfo );
+	//}
+
+	//private bool CanOpenWebsite()
+	//{
+	//	return !string.IsNullOrWhiteSpace( SelectedItem?.Url );
+	//}
+	#endregion
+
+
+	private void AddSupplier()
+	{
+		if ( SelectedItem == null )
+			return;
+
+		var newSupplier = new ProductSupplierModel
+		{
+			ProductSupplierId = 0,
+			SupplierId = 0,
+			SupplierName = string.Empty,
+			ProductId = SelectedItem.ProductId,
+			ProductName = string.Empty,
+			ProductNumber = string.Empty,
+			CurrencyId = 0,
+			CurrencySymbol = string.Empty,
+			Price = 0,
+			URL = string.Empty,
+			DefaultSupplier = false
+		};
+		ProductSuppliers.Add( newSupplier );
+		FilteredSuppliers.Add( newSupplier );
+
+		SelectedSupplier = newSupplier;
+
+		RaiseSupplierCounters();
+	}
+
+	private void DeleteSupplier()
+	{
+		if ( SelectedSupplier == null )
+			return;
+
+		ProductSuppliers.Remove( SelectedSupplier );
+		FilteredSuppliers.Remove( SelectedSupplier );
+
+		RaiseSupplierCounters();
+	}
+
+	private void SaveSupplier()
+	{
+		// Implement contact save logic here
+		// This would typically call a service method to persist the contact
+	}
+
+	private void UpdateFilteredSuppliers()
+	{
+		FilteredSuppliers.Clear();
+
+		if ( SelectedItem == null )
+			return;
+
+		if ( SelectedItem == null )
+		{
+			RaiseSupplierCounters();
+			return;
+		}
+
+		foreach ( var c in ProductSuppliers.Where( c => c.ProductId == SelectedItem.ProductId ) )
+			FilteredSuppliers.Add( c );
+
+
+		RaiseSupplierCounters();
+	}
+
+	private void RaiseSupplierCounters()
+	{
+		OnPropertyChanged( nameof( TotalSupplierCount ) );
+	}
+
+	public int TotalSupplierCount => FilteredSuppliers.Count;
+	#endregion
+
+
+	// Commands
+
 
 	public async Task OpenCategoryPickerAsync()
 	{
-		var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory)
-		{
-			SelectedCategory = this.SelectedCategory
-		};
+		var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory);
 
 		var dlg = new CategoryPickerDialog(vm);
 		bool? result = dlg.ShowDialog();
@@ -155,15 +338,28 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		}
 	}
 
+	public async Task OpenStorageLocationPickerAsync()
+	{
+		var vm = new StorageLocationPickerViewModel(_storageLocationService, SelectedStorageLocation);
+
+		var dlg = new StorageLocationPickerDialog(vm);
+		bool? result = dlg.ShowDialog();
+
+		if ( result == true && vm.SelectedStorageLocation != null )
+		{
+			SelectedStorageLocation = vm.SelectedStorageLocation;
+		}
+	}
+
 	// Override SelectedItem changed om DefaultProduct te zetten
 	protected override void OnSelectedItemChanged( ProductModel? value )
 	{
 		base.OnSelectedItemChanged( value );
 
-		SelectedUnit = ProductUnit.FirstOrDefault( c => c.UnitId == value?.ProductUnitId );
-
-		SelectedBrand = ProductBrand.FirstOrDefault( c => c.BrandId == value?.ProductBrandId );
 		SelectedCategory = ProductCategory.FirstOrDefault( c => c.CategoryId == value?.ProductCategoryId );
+		SelectedStorageLocation = ProductStorageLocation.FirstOrDefault( c => c.StorageId == value?.ProductStorageId );
+
+		UpdateFilteredSuppliers();
 
 		_previousProduct = value;
 	}
@@ -246,6 +442,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		base.OnItemsLoaded();
 
 		OnPropertyChanged( nameof( TotalProductCount ) );
+		OnPropertyChanged( nameof( TotalSupplierCount ) );
 
 		if ( _lastSelectedProductId.HasValue )
 		{
@@ -272,24 +469,23 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			return;
 		}
 
-		SelectedItem = Products
-			.OrderByDescending( p => p.ProductId )
-			.First();
+		// Select the first product in the list by default (better UX than selecting the last/highest id)
+		SelectedItem = Products.First();
 	}
 
 	private void RotateImage()
 	{
-		if ( SelectedProduct == null )
+		if ( SelectedItem == null )
 			return;
 
-		SelectedProduct.ProductImageRotationAngle = ( SelectedProduct.ProductImageRotationAngle + 90 ) % 360;
-		Debug.WriteLine( SelectedProduct.ProductImageRotationAngle );
+		SelectedItem.ProductImageRotationAngle = ( SelectedItem.ProductImageRotationAngle + 90 ) % 360;
+		Debug.WriteLine( SelectedItem.ProductImageRotationAngle );
 	}
 
 	private void AddImage()
 	{
 
-		if ( SelectedProduct == null )
+		if ( SelectedItem == null )
 			return;
 
 		var dialog = new OpenFileDialog
@@ -301,9 +497,30 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		if ( dialog.ShowDialog() != true )
 			return;
 
-		SelectedProduct.ProductImage = File.ReadAllBytes( dialog.FileName );
-		SelectedProduct.ProductImageRotationAngle = 0;
+		SelectedItem.ProductImage = File.ReadAllBytes( dialog.FileName );
+		SelectedItem.ProductImageRotationAngle = 0;
 	}
+
+	private async Task LoadSuppliersAsync()
+	{
+		// Load contact types
+		var allSuppliers = await _supplierService.GetAllSuppliersAsync();
+		Suppliers.Clear();
+		foreach ( var c in allSuppliers )
+			Suppliers.Add( c );
+	}
+
+	private async Task LoadProductSuppliersAsync()
+	{
+		// Load contact types
+		var allProductSuppliers = await _supplierService.GetAllProductSuppliersAsync();
+		ProductSuppliers.Clear();
+		foreach ( var c in allProductSuppliers )
+			ProductSuppliers.Add( c );
+
+		UpdateFilteredSuppliers();
+	}
+
 
 	//public async Task OpenCategoryPickerAsync()
 	//{

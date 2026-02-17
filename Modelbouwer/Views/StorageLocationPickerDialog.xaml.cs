@@ -6,11 +6,11 @@ using Syncfusion.UI.Xaml.TreeGrid;
 namespace Modelbouwer.Views;
 
 /// <summary>
-/// Interaction logic for CategoryPickerDialog.xaml
+/// Interaction logic for StorageLocationPickerDialog.xaml
 /// </summary>
-public partial class CategoryPickerDialog : Window
+public partial class StorageLocationPickerDialog : Window
 {
-	public CategoryPickerDialog( CategoryPickerViewModel vm )
+	public StorageLocationPickerDialog( StorageLocationPickerViewModel vm )
 	{
 		InitializeComponent();
 		DataContext = vm;
@@ -28,24 +28,24 @@ public partial class CategoryPickerDialog : Window
 
 		vm._filterChanged += () =>
 		{
-			if ( CategoryTreeGrid.View == null )
+			if ( StorageLocationTreeGrid.View == null )
 				return;
 
 			if ( string.IsNullOrWhiteSpace( vm.SearchText ) )
-				CategoryTreeGrid.View.Filter = null;
+				StorageLocationTreeGrid.View.Filter = null;
 			else
-				CategoryTreeGrid.View.Filter = vm.FilterRecords;
+				StorageLocationTreeGrid.View.Filter = vm.FilterRecords;
 
-			CategoryTreeGrid.View.RefreshFilter();
+			StorageLocationTreeGrid.View.RefreshFilter();
 		};
 
-		// If the ViewModel already had a selected category (LoadAsync may have fired before this dialog
+		// If the ViewModel already had a selected storagelocation (LoadAsync may have fired before this dialog
 		// subscribed to RequestScrollToSelection), ensure we expand to it once the dialog is loaded.
 		Loaded += ( s, e ) =>
 		{
 			_ = Dispatcher.BeginInvoke( () =>
 			{
-				if ( vm.SelectedCategory != null )
+				if ( vm.SelectedStorageLocation != null )
 					ExpandToSelection();
 			}, DispatcherPriority.Background );
 		};
@@ -53,35 +53,35 @@ public partial class CategoryPickerDialog : Window
 
 	private void ExpandToSelection()
 	{
-		if ( DataContext is not CategoryPickerViewModel vm || vm.SelectedCategory == null )
+		if ( DataContext is not StorageLocationPickerViewModel vm || vm.SelectedStorageLocation == null )
 			return;
 
-		var selected = vm.SelectedCategory;
+		var selected = vm.SelectedStorageLocation;
 
 		_ = Dispatcher.BeginInvoke( () =>
 		{
 			// Collapse alles eerst
-			CategoryTreeGrid.CollapseAllNodes();
+			StorageLocationTreeGrid.CollapseAllNodes();
 
 			// Expand alleen de parent chain
 			ExpandParentChain( selected );
 
 			// Zet geselecteerde item
-			CategoryTreeGrid.SelectedItem = selected;
+			StorageLocationTreeGrid.SelectedItem = selected;
 
 			// Scroll naar geselecteerde item using row/column overloads
-			int rowIndex = CategoryTreeGrid.ResolveToRowIndex( selected );
+			int rowIndex = StorageLocationTreeGrid.ResolveToRowIndex( selected );
 			if ( rowIndex >= 0 )
 			{
-				CategoryTreeGrid.ScrollInView( new RowColumnIndex( rowIndex, 0 ) );
+				StorageLocationTreeGrid.ScrollInView( new RowColumnIndex( rowIndex, 0 ) );
 			}
-			// <- let op: CategoryTreeGrid moet van type SfTreeGrid zijn
+			// <- let op: StorageLocationTreeGrid moet van type SfTreeGrid zijn
 		}, DispatcherPriority.Background );
 	}
 
-	private void ExpandParentChain( CategoryModel node )
+	private void ExpandParentChain( StorageLocationModel node )
 	{
-		var ancestors = new List<CategoryModel>();
+		var ancestors = new List<StorageLocationModel>();
 		var current = node.Parent;
 		while ( current != null )
 		{
@@ -94,9 +94,9 @@ public partial class CategoryPickerDialog : Window
 
 		foreach ( var ancestor in ancestors )
 		{
-			int idx = CategoryTreeGrid.ResolveToRowIndex(ancestor);
+			int idx = StorageLocationTreeGrid.ResolveToRowIndex(ancestor);
 			if ( idx >= 0 )
-				CategoryTreeGrid.ExpandNode( idx );
+				StorageLocationTreeGrid.ExpandNode( idx );
 		}
 	}
 }

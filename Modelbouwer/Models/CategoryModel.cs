@@ -4,6 +4,7 @@ public class CategoryModel
 {
 	public int CategoryId { get; set; }
 	public int? ParentId { get; set; }
+	public CategoryModel? Parent { get; set; } = null;
 	public string CategoryName { get; set; } = string.Empty;
 
 	public ObservableCollection<CategoryModel> Children { get; set; } = [ ];

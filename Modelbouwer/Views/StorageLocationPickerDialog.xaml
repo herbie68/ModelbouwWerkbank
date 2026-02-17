@@ -1,12 +1,13 @@
-﻿<Window
-    x:Class="Modelbouwer.Views.CategoryPickerDialog"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    Title="{x:Static language:Language.metadataProductTabGeneralTabItemProductButtonSearchCategoryLabel}"
-    WindowStartupLocation="CenterOwner" Width="600">
-
+﻿<Window x:Class="Modelbouwer.Views.StorageLocationPickerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Modelbouwer.Views"
+        xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        Title="{x:Static language:Language.metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel}"
+        WindowStartupLocation="CenterOwner" Width="600">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,7 +25,7 @@
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
                     Command="{Binding OkCommand}"
-                    CommandParameter="{Binding ElementName=CategoryTreeGrid}"
+                    CommandParameter="{Binding ElementName=StorageLocationTreeGrid}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionSelect}">
                     <Image Style="{DynamicResource ToolBarSelectIcon}" />
                 </Button>
@@ -32,7 +33,7 @@
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
                     Command="{Binding CancelCommand}"
-                    CommandParameter="{Binding ElementName=CategoryTreeGrid}"
+                    CommandParameter="{Binding ElementName=StorageLocationTreeGrid}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionCancel}">
                     <Image Style="{DynamicResource ToolBarCancelIcon}" />
                 </Button>
@@ -42,7 +43,7 @@
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
                     Command="{Binding ExpandAllCommand}"
-                    CommandParameter="{Binding ElementName=CategoryTreeGrid}"
+                    CommandParameter="{Binding ElementName=StorageLocationTreeGrid}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionExpand}">
                     <Image Style="{DynamicResource ToolBarExpandIcon}" />
                 </Button>
@@ -50,7 +51,7 @@
                 <Button
                     Style="{StaticResource ActionBarButtonStyle}"
                     Command="{Binding CollapseAllCommand}"
-                    CommandParameter="{Binding ElementName=CategoryTreeGrid}"
+                    CommandParameter="{Binding ElementName=StorageLocationTreeGrid}"
                     ToolTip="{x:Static language:Language.toolbarButtonActionCollapse}">
                     <Image Style="{DynamicResource ToolBarCollapseIcon}" />
                 </Button>
@@ -105,19 +106,19 @@
         </Grid>
         <!-- Tree -->
         <syncfusion:SfTreeGrid
-            x:Name="CategoryTreeGrid"
+            x:Name="StorageLocationTreeGrid"
             Grid.Row="1" Width="500"
-            ItemsSource="{Binding CategoryTree}"
+            ItemsSource="{Binding StorageLocationTree}"
             ChildPropertyName="Children" AutoGenerateColumns="False"
             SelectionMode="Single"
-            SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+            SelectedItem="{Binding SelectedStorageLocation, Mode=TwoWay}"
             AutoExpandMode="None">
 
             <syncfusion:SfTreeGrid.Columns>
                 <syncfusion:TreeGridTextColumn
-                    MappingName="CategoryName"
+                    MappingName="StorageName"
                     Width="498"
-                    HeaderText="{x:Static language:Language.metadataCategoryDatagridHeaderName}"/>
+                    HeaderText="{x:Static language:Language.metadataStorageLocationDatagridHeaderName}"/>
             </syncfusion:SfTreeGrid.Columns>
         </syncfusion:SfTreeGrid>
     </Grid>

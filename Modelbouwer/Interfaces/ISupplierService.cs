@@ -1,8 +1,11 @@
-﻿namespace Modelbouwer.Interfaces;
+﻿using Modelbouwer.Model;
+
+namespace Modelbouwer.Interfaces;
 
 public interface ISupplierService
 {
 	Task<List<SupplierModel>> GetAllSuppliersAsync();
+	Task<List<ProductSupplierModel>> GetAllProductSuppliersAsync();
 	Task<List<CountryModel>> GetAllCountriesAsync();
 	Task<List<CurrencyModel>> GetAllCurrenciesAsync();
 	Task<int> InsertNewSupplierAsync( Dictionary<string, object?> queryParameters );

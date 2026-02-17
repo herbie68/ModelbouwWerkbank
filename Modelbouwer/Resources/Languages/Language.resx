@@ -3986,4 +3986,16 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarButtonActionCancel" xml:space="preserve">
     <value>Niets selecteren, terug</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel" xml:space="preserve">
+    <value>Selecteer voorraad locatie</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip" xml:space="preserve">
+    <value>Waar wordt dit artikel opgeslagen</value>
+  </data>
+  <data name="metadataStorageLocationDatagridHeaderName" xml:space="preserve">
+    <value>Voorraad locatie</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
+    <value>Aantal getoonde leveranciers per product</value>
+  </data>
 </root>

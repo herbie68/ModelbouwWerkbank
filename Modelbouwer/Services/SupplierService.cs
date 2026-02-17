@@ -1,4 +1,6 @@
-﻿namespace Modelbouwer.Services;
+﻿using Modelbouwer.Model;
+
+namespace Modelbouwer.Services;
 
 public class SupplierService : ISupplierService
 {
@@ -32,6 +34,23 @@ public class SupplierService : ISupplierService
 		$"{ DBNames.SupplierFieldNameMemo}" +
 		$" FROM {DBNames.Database}.{DBNames.SupplierTable};";
 
+	public string CompleteProductSupplierList = $"" +
+		$"SELECT " +
+		$"ps.{DBNames.ProductSupplierFieldNameId}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductId}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameSupplierId}, " +
+		$"s.{DBNames.SupplierFieldNameName}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " +
+		$"c.{DBNames.CurrencyFieldNameSymbol}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductNumber}, " +
+		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
+		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
+		$"CASE WHEN ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} = '*' THEN 1 ELSE 0 END AS {DBNames.ProductSupplierFieldNameDefaultSupplier} " +
+		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.CurrencyTable} c ON ps.{DBNames.ProductSupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId};";
 
 	public string CompleteCountryList =
 		$"SELECT " +
@@ -154,6 +173,27 @@ public class SupplierService : ISupplierService
 				CurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
 				CountryId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCountryId}" ] ),
 				Memo = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameMemo}" ] )
+			};
+		} );
+	}
+
+	public Task<List<ProductSupplierModel>> GetAllProductSuppliersAsync()
+	{
+		return _dataService.ExecuteQueryAsync( CompleteProductSupplierList, reader =>
+		{
+			return new ProductSupplierModel
+			{
+				ProductSupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameId}" ] ),
+				ProductId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameProductId}" ] ),
+				SupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameSupplierId}" ] ),
+				SupplierName = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameName}" ] ),
+				CurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
+				CurrencySymbol = DatabaseValueConverter.GetString( reader [ $"{DBNames.CurrencyFieldNameSymbol}" ] ),
+				ProductNumber = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductNumber}" ] ),
+				ProductName = DatabaseValueConverter.GetString( reader [ "ProductName" ] ),
+				Price = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductSupplierFieldNamePrice}" ] ),
+				URL = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductUrl}" ] ),
+				DefaultSupplier = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameDefaultSupplier}" ] ) == 1
 			};
 		} );
 	}

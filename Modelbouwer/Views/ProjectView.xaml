@@ -225,7 +225,6 @@
                     IsChecked="{Binding SelectedItem.ProjectClosed, Mode=TwoWay}"
                     Style="{StaticResource SwitchButton}"/>
 
-                <!-- Expected Build hours -->
                 <TextBox
                     Margin="5,4,0,4"
                     Grid.Column="2"
@@ -255,7 +254,7 @@
             Grid.Row="3"
             Grid.Column="1"
             Margin="5"
-            RtfText="{Binding SelectedItem.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Loaded="ProjectMemoEditor_Loaded" />
+            RtfText="{Binding SelectedItem.ProjectMemo, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
         <!--#endregion-->
         <!--#endregion-->
 

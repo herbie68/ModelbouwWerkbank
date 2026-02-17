@@ -4006,4 +4006,16 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="toolbarButtonActionCancel" xml:space="preserve">
     <value>Select none, back</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel" xml:space="preserve">
+    <value>Select stock location</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip" xml:space="preserve">
+    <value>Where is this article stored</value>
+  </data>
+  <data name="metadataStorageLocationDatagridHeaderName" xml:space="preserve">
+    <value>Stock location</value>
+  </data>
+  <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
+    <value>Number of suppliers shown per product</value>
+  </data>
 </root>
