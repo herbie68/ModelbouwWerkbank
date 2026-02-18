@@ -75,14 +75,6 @@ public partial class ProductView : UserControl
 		);
 	}
 
-	private void SupplierDataGrid_Loaded( object sender, RoutedEventArgs e )
-	{
-		if ( sender is not SfDataGrid grid )
-			return;
-
-		if ( DataContext is not ProductPageViewModel vm )
-			return;
-	}
 
 	private void ButtonImport( object sender, RoutedEventArgs e )
 	{
@@ -184,13 +176,4 @@ public partial class ProductView : UserControl
 		}
 	}
 
-	private void ContactDataGrid_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
-
-	private void ProductMemoEditor_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
 }

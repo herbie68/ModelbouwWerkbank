@@ -13,8 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <AssemblyVersion>26.2.17.27</AssemblyVersion>
-    <FileVersion>26.2.17.27</FileVersion>
+    <AssemblyVersion>26.2.18.5</AssemblyVersion>
+    <FileVersion>26.2.18.5</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

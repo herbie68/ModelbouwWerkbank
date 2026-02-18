@@ -926,22 +926,7 @@ In order to be able to add a new time registration, a date and project must firs
     <value>Status:</value>
   </data>
   <data name="metadataProductProductDatagridHeaderProductId" xml:space="preserve">
-    <value>Idle</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
-    <value>Disreibung</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
-    <value>Chamois</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
-    <value>Leek</value>
+    <value>ID</value>
   </data>
   <data name="metadataProductProductToolbarButtonNewTooltip" xml:space="preserve">
     <value>Add product</value>
@@ -993,15 +978,6 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="metadataProductTabGeneralTabItemProjectFieldProjectCosts" xml:space="preserve">
     <value>Project costs</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
-    <value>Bild Hinzufügen</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
-    <value>Lösche Bild</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
-    <value>Bild um eine Vierteldrehung Drehen</value>
   </data>
   <data name="metadataProductTabMemoTitle" xml:space="preserve">
     <value>Detailed description</value>
@@ -4016,6 +3992,90 @@ In order to be able to add a new time registration, a date and project must firs
     <value>Stock location</value>
   </data>
   <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
-    <value>Number of suppliers shown per product</value>
+    <value>Number of registered suppliers for this product</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemSupplierTitle" xml:space="preserve">
+    <value>Supplier specific product information</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductLabel" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel" xml:space="preserve">
+    <value>Item number</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel" xml:space="preserve">
+    <value>Standard supplier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameLabel" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTag" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
+    <value>Change image</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
+    <value>Delete image</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
+    <value>Figure of the quarter turn</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTag" xml:space="preserve">
+    <value>Standard supplier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTooltip" xml:space="preserve">
+    <value>Is this the default supplier for this product</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTag" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip" xml:space="preserve">
+    <value>Leave blank if the description is the same as the standard product description</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTag" xml:space="preserve">
+    <value>Item number</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip" xml:space="preserve">
+    <value>The item number at the supplier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip" xml:space="preserve">
+    <value>Price per unit</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTag" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip" xml:space="preserve">
+    <value>URL for the product website</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTag" xml:space="preserve">
+    <value>Select supplier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTooltip" xml:space="preserve">
+    <value>Select the supplier for this product</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
+    <value>Open the product page on the supplier's website in your browser</value>
   </data>
 </root>

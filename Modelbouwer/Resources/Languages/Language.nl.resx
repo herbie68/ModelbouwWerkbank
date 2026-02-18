@@ -931,21 +931,6 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProductProductDatagridHeaderProductId" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
-    <value>Suchname</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
-    <value>Kategorie</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
-    <value>Preis</value>
-  </data>
   <data name="metadataProductProductToolbarButtonNewTooltip" xml:space="preserve">
     <value>Product toevoegen</value>
   </data>
@@ -997,14 +982,8 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProductTabGeneralTabItemProjectFieldProjectCosts" xml:space="preserve">
     <value>Projektkosten</value>
   </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
-    <value>Bild hinzufügen</value>
-  </data>
   <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
-    <value>Lösche Bild</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
-    <value>Bild um eine Vierteldrehung drehen</value>
+    <value>Verwijder afbeelding</value>
   </data>
   <data name="metadataProductTabMemoTitle" xml:space="preserve">
     <value>Uitgebreide omschrijving</value>
@@ -4016,6 +3995,87 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
     <value>Voorraad locatie</value>
   </data>
   <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
-    <value>Aantal getoonde leveranciers per product</value>
+    <value>Aantal geregistreerde leveranciers voor dit product</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemSupplierTitle" xml:space="preserve">
+    <value>Leverancier specifieke product informatie</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductLabel" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel" xml:space="preserve">
+    <value>Artikelnummer</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel" xml:space="preserve">
+    <value>Standaard leverancier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameLabel" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTag" xml:space="preserve">
+    <value>Standaard leverancier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTooltip" xml:space="preserve">
+    <value>Is dit de standaard leverancier voor dit product</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTag" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip" xml:space="preserve">
+    <value>Laat leeg als de omschrijving gelijk is aan de standaard productomschrijving</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTag" xml:space="preserve">
+    <value>Artikelnummer</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip" xml:space="preserve">
+    <value>Het artikelnummer bij de leverancier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTag" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip" xml:space="preserve">
+    <value>Prijs per eenheid</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTag" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip" xml:space="preserve">
+    <value>Url voor de productwebsite</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
+    <value>Stukprijs</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
+    <value>Afbeelding wijzigen</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
+    <value>Afbeelding kwartslag draaien</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTag" xml:space="preserve">
+    <value>Selecteer leverancier</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTooltip" xml:space="preserve">
+    <value>Selecteer de leverancier voor dit product</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
+    <value>Open product pagina op de website van de leverancier in je browser</value>
   </data>
 </root>

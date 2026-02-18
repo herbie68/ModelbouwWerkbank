@@ -440,8 +440,8 @@
                     </Grid.RowDefinitions>
 
                     <!--#region Detail fields-->
-                    <StackPanel Orientation="Vertical" Grid.Row="0">
-                        <GroupBox Opacity="1">
+                    <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left">
+                        <GroupBox Opacity="1" Width="590">
                             <GroupBox.Header>
                                 <StackPanel
                                     Background="Transparent"
@@ -451,38 +451,206 @@
                                         Style="{DynamicResource ImageHeaderGroup}" />
                                     <TextBlock
                                         Style="{DynamicResource TextBlockBold}"
-                                        Text="{x:Static language:Language.metadataProductTabGeneralTabItemProductTitle}" />
+                                        Text="{x:Static language:Language.metadataProductTabGeneralTabItemSupplierTitle}" />
                                 </StackPanel>
                             </GroupBox.Header>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="25" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="25" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="25" />
-                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
                                 </Grid.RowDefinitions>
 
-                                <!--#region Supplier, Product number supplier, price supplier, Default supplier-->
+                                <!--#region Supplier selection-->
                                 <Grid Grid.Row="0" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="300"/>
-                                        <ColumnDefinition Width="200"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-                                </Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="1" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="300"/>
-                                        <ColumnDefinition Width="200"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
+
+                                    <syncfusion:ComboBoxAdv
+                                        Margin="5 10 0 0"
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Tag="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductTag}"
+                                        ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductTooltip}" />
                                 </Grid>
                                 <!--#endregion-->
+
+                                <!--#region Product number supplier, price supplier, Default supplier -->
+                                <Grid Grid.Row="1" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="300"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="140"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--#region Product Number-->
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Content="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                    <TextBox
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Margin="5 0 0 0"
+                                        MinWidth="290"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNumberTag}"
+                                        Text="{Binding SelectedSupplier.ProductNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip}" />
+                                    <!--#endregion-->
+
+                                    <!--#region Product Price-->
+                                    <Label
+                                        Grid.Column="1" Margin="0 0 5 0"
+                                        Grid.Row="0" HorizontalAlignment="Right"
+                                        Content="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                    <StackPanel Grid.Column="1"
+                                                Grid.Row="1"
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center">
+                                        <Label Margin="5 0 5 0" Content="{Binding SelectedSupplier.CurrencySymbol}"/>
+
+                                        <TextBox
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Margin="5 0 0 0"
+                                            Width="120"
+                                            HorizontalAlignment="Left"
+                                            HorizontalContentAlignment="Right"
+                                            Style="{DynamicResource DefaultTextBox}"
+                                            Tag="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductPriceTag}"
+                                            Text="{Binding SelectedSupplier.ProductPrice, Mode=TwoWay, StringFormat={}{0:N4}, ConverterCulture='nl-NL', UpdateSourceTrigger=PropertyChanged}"
+                                            ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip}" />
+                                    </StackPanel>
+                                    <!--#endregion-->
+
+                                    <!--#region Default suplier-->
+                                    <Label
+                                        Grid.Column="2"
+                                        Grid.Row="0"
+                                        Content="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                    <CheckBox
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        IsChecked="{Binding SelectedSupplier.DefaultSupplier, Converter={StaticResource IntToBoolConverter}}"
+                                        />
+                                    <!--#endregion-->
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region Product description -->
+                                <Grid Grid.Row="2" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="560"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Column="0"
+                                        Content="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNameLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" Margin="5,0,0,0" />
+
+                                    <TextBox
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Margin="5 0 0 0"
+                                        MinWidth="550"
+                                        Style="{DynamicResource DefaultTextBox}"
+                                        Tag="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNameTag}"
+                                        Text="{Binding SelectedSupplier.ProductName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip}" />
+
+                                </Grid>
+                                <!--#endregion-->
+
+                                <!--#region Product website -->
+                                <Grid Grid.Row="3" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="560"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Content="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel}"
+                                        Style="{DynamicResource EntryLabelHorizontal}" />
+
+                                    <StackPanel
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Margin="0 2 0 2"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center">
+
+                                        <TextBox
+                                            Width="518"
+                                            Margin="5 0 0 0"
+                                            Style="{DynamicResource DefaultTextBox}"
+                                            Tag="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductUrlTag}"
+                                            Text="{Binding SelectedSupplier.Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip}" />
+
+                                        <Button
+                                            x:Name="GotoWeb"
+                                            Width="25"
+                                            Height="25"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="0"
+                                            Background="Transparent"
+                                            Margin="8,0,0,0"
+                                            Command="{Binding OpenWebsiteCommand}"
+                                            ToolTip="{x:Static language:Language.metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip}" >
+                                            <Border
+                                                BorderBrush="DarkBlue"
+                                                BorderThickness=".25"
+                                                CornerRadius="4"
+                                                Padding="2"
+                                                Margin="0">
+                                                <Image
+                                                    IsEnabled="False"
+                                                    Style="{DynamicResource GotoWebIcon}"
+                                                    />
+                                            </Border>
+                                        </Button>
+
+                                    </StackPanel>
+                                </Grid>
+                                <!--#endregion-->
+
                             </Grid>
                         </GroupBox>
                     </StackPanel>
@@ -536,14 +704,7 @@
 
                             <Run Text="{x:Static language:Language.toolbarVisibleRowLabelProductSupplier}" />
                             <Run Text=": " />
-                            <Run
-                                FontSize="16"
-                                Text="{Binding VisibleItemCount, StringFormat={}{0:N0}}"
-                                FontStyle="Italic" />
-                            <Run Text=" " />
-                            <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
-                            <Run Text=" " />
-                            <Run Text="{Binding TotalProductCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                            <Run Text="{Binding TotalSupplierCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
                         </TextBlock>
                         <!--#endregion-->
                     </Grid>
@@ -561,7 +722,7 @@
                         AllowSorting="True"
                         AllowTriStateSorting="True"
                         AutoGenerateColumns="False"
-                        ColumnSizer="Star"
+                        ColumnSizer="Star" Height="180"
                         ItemsSource="{Binding FilteredSuppliers}"
                         SelectedItem="{Binding SelectedSupplier, Mode=TwoWay}">
 

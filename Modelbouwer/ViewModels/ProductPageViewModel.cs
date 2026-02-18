@@ -521,6 +521,17 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		UpdateFilteredSuppliers();
 	}
 
+	private int _totalProductSupplierCount;
+	public int TotalProductSupplierCount
+	{
+		get => _totalProductSupplierCount;
+		set
+		{
+			_totalProductSupplierCount = value;
+			OnPropertyChanged();
+		}
+	}
+
 
 	//public async Task OpenCategoryPickerAsync()
 	//{

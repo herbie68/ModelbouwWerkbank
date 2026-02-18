@@ -926,22 +926,7 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Status:</value>
   </data>
   <data name="metadataProductProductDatagridHeaderProductId" xml:space="preserve">
-    <value>Leerlauf</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
-    <value>Ein solcher Name</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
-    <value>Disreibung</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
-    <value>Gamois</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
-    <value>Ort</value>
-  </data>
-  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
-    <value>Lauch</value>
+    <value>ID</value>
   </data>
   <data name="metadataProductProductToolbarButtonNewTooltip" xml:space="preserve">
     <value>Produkt hinzufügen</value>
@@ -994,14 +979,8 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProductTabGeneralTabItemProjectFieldProjectCosts" xml:space="preserve">
     <value>Projektkosten</value>
   </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
-    <value>Bild Hinzufügen</value>
-  </data>
   <data name="metadataProductTabGeneralTabItemImageButtonDeleteTooltip" xml:space="preserve">
     <value>Lösche Bild</value>
-  </data>
-  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
-    <value>Bild um ein</value>
   </data>
   <data name="metadataProductTabMemoTitle" xml:space="preserve">
     <value>Detaillierte Beschreibung</value>
@@ -4016,6 +3995,87 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
     <value>Lagerort</value>
   </data>
   <data name="toolbarVisibleRowLabelProductSupplier" xml:space="preserve">
-    <value>Anzahl der pro Produkt angezeigten Lieferanten</value>
+    <value>Anzahl der registrierten Lieferanten für dieses Produkt</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemSupplierTitle" xml:space="preserve">
+    <value>Lieferantenspezifische Produktinformationen</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductLabel" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel" xml:space="preserve">
+    <value>Artikelnummer</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel" xml:space="preserve">
+    <value>Betrag</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel" xml:space="preserve">
+    <value>Standardlieferant</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameLabel" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderLocation" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="metadataProductProductDatagridHeaderPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonNewTooltip" xml:space="preserve">
+    <value>Bild ändern</value>
+  </data>
+  <data name="metadataProductTabGeneralTabItemImageButtonRotateTooltip" xml:space="preserve">
+    <value>Zahlen der Viertelwendung</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTag" xml:space="preserve">
+    <value>Standardlieferant</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductDefaultTooltip" xml:space="preserve">
+    <value>Ist dies der Standardlieferant für dieses Produkt</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTag" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip" xml:space="preserve">
+    <value>Lassen Sie das Feld leer, wenn die Beschreibung mit der Standardproduktbeschreibung übereinstimmt</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTag" xml:space="preserve">
+    <value>Artikelnummer</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip" xml:space="preserve">
+    <value>Die Artikelnummer beim Lieferanten</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTag" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip" xml:space="preserve">
+    <value>Preis pro Einheit</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTag" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip" xml:space="preserve">
+    <value>URL für die Produktwebsite</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTag" xml:space="preserve">
+    <value>Anbieter auswählen</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductTooltip" xml:space="preserve">
+    <value>Wählen Sie den Lieferanten für dieses Produkt aus</value>
+  </data>
+  <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
+    <value>Öffnen Sie die Produktseite auf der Website des Anbieters in Ihrem Browser</value>
   </data>
 </root>
