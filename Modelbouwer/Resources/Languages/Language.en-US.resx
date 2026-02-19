@@ -4078,4 +4078,10 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
     <value>Open the product page on the supplier's website in your browser</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemProductSuppliersTitle" xml:space="preserve">
+    <value>Suppliers for this item</value>
+  </data>
+  <data name="generalUnsavedChanges" xml:space="preserve">
+    <value>Please note, the changes have not been saved yet!</value>
+  </data>
 </root>

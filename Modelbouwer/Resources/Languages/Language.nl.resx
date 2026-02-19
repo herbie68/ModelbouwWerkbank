@@ -4078,4 +4078,10 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
     <value>Open product pagina op de website van de leverancier in je browser</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemProductSuppliersTitle" xml:space="preserve">
+    <value>Leveranciers voor dit artikel</value>
+  </data>
+  <data name="generalUnsavedChanges" xml:space="preserve">
+    <value>Let op, de wijzigingen zijn nog niet opgeslagen!</value>
+  </data>
 </root>

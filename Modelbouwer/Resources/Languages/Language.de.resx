@@ -4078,4 +4078,10 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip" xml:space="preserve">
     <value>Öffnen Sie die Produktseite auf der Website des Anbieters in Ihrem Browser</value>
   </data>
+  <data name="metadataProductTabGeneralTabItemProductSuppliersTitle" xml:space="preserve">
+    <value>Lieferanten für diesen Artikel</value>
+  </data>
+  <data name="generalUnsavedChanges" xml:space="preserve">
+    <value>Bitte beachten Sie, dass die Änderungen noch nicht gespeichert wurden!</value>
+  </data>
 </root>

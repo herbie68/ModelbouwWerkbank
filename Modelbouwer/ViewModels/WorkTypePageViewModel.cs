@@ -66,8 +66,10 @@ public partial class WorktypePageViewModel : EntityPageViewModel<WorktypeModel>
 	}
 
 	// Override SelectedItem changed om DefaultWorkType te zetten
-	protected override void OnSelectedItemChanged( WorktypeModel? value )
+	protected override void OnSelectedItemChanged( WorktypeModel? oldValue, WorktypeModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		AddSubWorkTypeCommand.NotifyCanExecuteChanged();
 	}
 

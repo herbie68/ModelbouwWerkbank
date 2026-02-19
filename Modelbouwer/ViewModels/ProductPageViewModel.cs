@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using System.ComponentModel;
+
+using CommunityToolkit.Mvvm.Input;
 
 using Microsoft.Win32;
 
@@ -91,8 +93,54 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public ObservableCollection<CategoryModel> ProductCategory { get; private set; } = [ ];
 	public ObservableCollection<StorageLocationModel> ProductStorageLocation { get; private set; } = [ ];
 	public ObservableCollection<SupplierModel> Suppliers { get; } = [ ];
-	public ObservableCollection<ProductSupplierModel> ProductSuppliers { get; } = [ ];
+	public ObservableCollection<ProductSupplierModel> ProductSuppliers { get; set; } = [ ];
 	public ObservableCollection<ProductSupplierModel> FilteredSuppliers { get; } = [ ];
+	//Filter suplliers list voor Suppliers per product tab, to filter out suppliers alteide in the datagrid
+	public IEnumerable<SupplierModel> AvailableSuppliers => Suppliers.Where( s => !ProductSuppliers.Any( ps => ps.SupplierId == s.Id ) );
+
+	private ProductSupplierModel? _selectedSupplier;
+
+	public ProductSupplierModel? SelectedSupplier
+	{
+		get => _selectedSupplier;
+		set
+		{
+			if ( SetProperty( ref _selectedSupplier, value ) )
+			{
+				OnPropertyChanged( nameof( SelectedSupplierSupplier ) );
+				OpenWebsiteCommand.NotifyCanExecuteChanged();
+			}
+		}
+	}
+
+	public SupplierModel? SelectedSupplierSupplier
+	{
+		get
+		{
+			if ( SelectedSupplier == null )
+				return null;
+
+			return Suppliers.FirstOrDefault( s => s.Id == SelectedSupplier.SupplierId );
+		}
+		set
+		{
+			if ( SelectedSupplier != null && value != null )
+			{
+				SelectedSupplier.SupplierId = value.Id;
+				SelectedSupplier.SupplierName = value.Name;
+
+				OnPropertyChanged( nameof( SelectedSupplier ) );
+			}
+		}
+	}
+
+	private void Supplier_PropertyChanged( object? sender, PropertyChangedEventArgs e )
+	{
+		if ( e.PropertyName == nameof( ProductSupplierModel.URL ) )
+		{
+			OpenWebsiteCommand.NotifyCanExecuteChanged();
+		}
+	}
 
 	public List<CategoryModel> AllCategories
 	{
@@ -119,7 +167,6 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			}
 		}
 	}
-
 
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
@@ -157,8 +204,6 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			}
 		}
 	}
-
-	public ProductSupplierModel? SelectedSupplier { get; set; }
 	#endregion
 
 	#region Load Methods
@@ -227,25 +272,25 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public IRelayCommand DeleteSupplierCommand => _deleteSupplierCommand ??= new RelayCommand( DeleteSupplier );
 
 	#region Relay command for going to the supplier website
-	//[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]
-	//private void OpenWebsite()
-	//{
-	//if ( string.IsNullOrWhiteSpace( SelectedSupplier?.Url ) )
-	//	return;
+	[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]
+	private void OpenWebsite()
+	{
+		if ( string.IsNullOrWhiteSpace( SelectedSupplier?.URL ) )
+			return;
 
-	//ProcessStartInfo startInfo = new()
-	//{
-	//	FileName = SelectedItem.Url,
-	//	UseShellExecute = true
-	//};
+		ProcessStartInfo startInfo = new()
+		{
+			FileName = SelectedSupplier.URL,
+			UseShellExecute = true
+		};
 
-	//Process.Start( startInfo );
-	//}
+		Process.Start( startInfo );
+	}
 
-	//private bool CanOpenWebsite()
-	//{
-	//	return !string.IsNullOrWhiteSpace( SelectedItem?.Url );
-	//}
+	private bool CanOpenWebsite()
+	{
+		return !string.IsNullOrWhiteSpace( SelectedSupplier?.URL );
+	}
 	#endregion
 
 
@@ -273,6 +318,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		SelectedSupplier = newSupplier;
 
+		OnPropertyChanged( nameof( AvailableSuppliers ) );
+
 		RaiseSupplierCounters();
 	}
 
@@ -283,6 +330,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		ProductSuppliers.Remove( SelectedSupplier );
 		FilteredSuppliers.Remove( SelectedSupplier );
+
+		OnPropertyChanged( nameof( AvailableSuppliers ) );
 
 		RaiseSupplierCounters();
 	}
@@ -352,16 +401,16 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	}
 
 	// Override SelectedItem changed om DefaultProduct te zetten
-	protected override void OnSelectedItemChanged( ProductModel? value )
+	protected override void OnSelectedItemChanged( ProductModel? oldValue, ProductModel? newValue )
 	{
-		base.OnSelectedItemChanged( value );
+		base.OnSelectedItemChanged( oldValue, newValue );
 
-		SelectedCategory = ProductCategory.FirstOrDefault( c => c.CategoryId == value?.ProductCategoryId );
-		SelectedStorageLocation = ProductStorageLocation.FirstOrDefault( c => c.StorageId == value?.ProductStorageId );
+		SelectedCategory = ProductCategory.FirstOrDefault( c => c.CategoryId == newValue?.ProductCategoryId );
+		SelectedStorageLocation = ProductStorageLocation.FirstOrDefault( c => c.StorageId == newValue?.ProductStorageId );
 
 		UpdateFilteredSuppliers();
 
-		_previousProduct = value;
+		_previousProduct = newValue;
 	}
 
 
@@ -503,11 +552,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 	private async Task LoadSuppliersAsync()
 	{
-		// Load contact types
 		var allSuppliers = await _supplierService.GetAllSuppliersAsync();
 		Suppliers.Clear();
 		foreach ( var c in allSuppliers )
 			Suppliers.Add( c );
+		OnPropertyChanged( nameof( AvailableSuppliers ) );
 	}
 
 	private async Task LoadProductSuppliersAsync()
@@ -550,10 +599,21 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( ProductModel c ) => new()
 	{
-		{ $"@{DBNames.ProductFieldNameId}", c.ProductId },
+		{ $"@{DBNames.ProductFieldNameBrandId}", c.ProductBrandId },
+		{ $"@{DBNames.ProductFieldNameCategoryId}", c.ProductCategoryId },
 		{ $"@{DBNames.ProductFieldNameCode}", c.ProductCode },
-		{ $"@{DBNames.ProductFieldNameName}", c.ProductName?.Trim() },
-		{ $"@{DBNames.ProductFieldNameMemo}", c.ProductMemo }
+		{ $"@{DBNames.ProductFieldNameDimensions}", c.ProductDimensions },
+		{ $"@{DBNames.ProductFieldNameHide}", c.ProductHide },
+		{ $"@{DBNames.ProductFieldNameImage}", c.ProductImage },
+		{ $"@{DBNames.ProductFieldNameImageRotationAngle}", c.ProductImageRotationAngle },
+		{ $"@{DBNames.ProductFieldNameMemo}", c.ProductMemo },
+		{ $"@{DBNames.ProductFieldNameMinimalStock}", c.ProductMinimalStock },
+		{ $"@{DBNames.ProductFieldNameName}" , c.ProductName },
+		{ $"@{DBNames.ProductFieldNamePrice}", c.ProductPrice },
+		{ $"@{DBNames.ProductFieldNameProjectCosts}", c.ProductProjectCosts },
+		{ $"@{DBNames.ProductFieldNameStandardOrderQuantity}", c.ProductStandardQuantity },
+		{ $"@{DBNames.ProductFieldNameStorageId}", c.ProductStorageId },
+		{ $"@{DBNames.ProductFieldNameUnitId}", c.ProductUnitId }
 	};
 
 }

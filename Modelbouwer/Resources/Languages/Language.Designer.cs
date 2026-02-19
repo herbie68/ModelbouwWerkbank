@@ -2176,6 +2176,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let op, de wijzigingen zijn nog niet opgeslagen!.
+        /// </summary>
+        public static string generalUnsavedChanges {
+            get {
+                return ResourceManager.GetString("generalUnsavedChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afbeelding verwijderen.
         /// </summary>
         public static string ImageButtonDeleteTooltip {
@@ -6267,6 +6276,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataProductTabGeneralTabItemProductFieldNameTooltip {
             get {
                 return ResourceManager.GetString("metadataProductTabGeneralTabItemProductFieldNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leveranciers voor dit artikel.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemProductSuppliersTitle {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemProductSuppliersTitle", resourceCulture);
             }
         }
         

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
@@ -38,10 +34,12 @@ public class UnitPageViewModel : EntityPageViewModel<UnitModel>
 	}
 
 	// Override SelectedItem changed om DefaultUnit te zetten
-	protected override void OnSelectedItemChanged( UnitModel? value )
+	protected override void OnSelectedItemChanged( UnitModel? oldValue, UnitModel? newValue )
 	{
-		if ( value == null )
+		if ( newValue == null )
 			return;
+
+		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedUnit ) );
 		OnPropertyChanged( nameof( SelectedUnit.UnitName ) );

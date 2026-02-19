@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-    public class ContactTypePageViewModel : EntityPageViewModel<ContactTypeModel>
-	{
+public class ContactTypePageViewModel : EntityPageViewModel<ContactTypeModel>
+{
 	private readonly IContactTypeService _dataService;
 
 	// SelectedContactType als type-safe alias
@@ -38,10 +34,12 @@ namespace Modelbouwer.ViewModels;
 	}
 
 	// Override SelectedItem changed om DefaultContactType te zetten
-	protected override void OnSelectedItemChanged( ContactTypeModel? value )
+	protected override void OnSelectedItemChanged( ContactTypeModel? oldValue, ContactTypeModel? newValue )
 	{
-		if ( value == null )
+		if ( newValue == null )
 			return;
+
+		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedContactType ) );
 		OnPropertyChanged( nameof( SelectedContactType.ContactTypeName ) );

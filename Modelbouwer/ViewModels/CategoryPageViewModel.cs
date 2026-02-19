@@ -67,8 +67,10 @@ public partial class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 	}
 
 	// Override SelectedItem changed om DefaultCategory te zetten
-	protected override void OnSelectedItemChanged( CategoryModel? value )
+	protected override void OnSelectedItemChanged( CategoryModel? oldValue, CategoryModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		AddSubCategoryCommand.NotifyCanExecuteChanged();
 	}
 

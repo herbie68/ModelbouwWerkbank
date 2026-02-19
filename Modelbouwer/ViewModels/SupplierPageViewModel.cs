@@ -259,19 +259,19 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 
 	// Override SelectedItem changed om DefaultSupplier te zetten
-	protected override void OnSelectedItemChanged( SupplierModel? value )
+	protected override void OnSelectedItemChanged( SupplierModel? oldValue, SupplierModel? newValue )
 	{
-		base.OnSelectedItemChanged( value );
+		base.OnSelectedItemChanged( oldValue, newValue );
 
-		SelectedCurrency = SupplierCurrency.FirstOrDefault( c => c.CurrencyId == value?.CurrencyId );
+		SelectedCurrency = SupplierCurrency.FirstOrDefault( c => c.CurrencyId == newValue?.CurrencyId );
 
-		SelectedCountry = SupplierCountry.FirstOrDefault( c => c.CountryId == value?.CountryId );
+		SelectedCountry = SupplierCountry.FirstOrDefault( c => c.CountryId == newValue?.CountryId );
 
 		UpdateFilteredContacts();
 
 		OpenWebsiteCommand.NotifyCanExecuteChanged();
 
-		_previousSupplier = value;
+		_previousSupplier = newValue;
 	}
 
 

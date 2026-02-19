@@ -1,8 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 
-using Modelbouwer.Interfaces;
-using Modelbouwer.Services;
-
 namespace Modelbouwer.ViewModels;
 
 public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
@@ -43,14 +40,17 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 	}
 
 	// Override SelectedItem changed om DefaultCurrency te zetten
-	protected override void OnSelectedItemChanged( CountryModel? value )
+	protected override void OnSelectedItemChanged( CountryModel? oldValue, CountryModel? newValue )
 	{
-		if ( value == null ) return;
+		if ( newValue == null )
+			return;
+
+		base.OnSelectedItemChanged( oldValue, newValue );
 
 		if ( Currencies.Any() )
 		{
-			value.DefaultCurrency = Currencies
-				.FirstOrDefault( c => c.CurrencyId == value.CountryCurrencyId )
+			newValue.DefaultCurrency = Currencies
+				.FirstOrDefault( c => c.CurrencyId == newValue.CountryCurrencyId )
 				?? Currencies.First();
 		}
 
@@ -137,7 +137,7 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 		}
 	}
 
-		//return _countryService.DeleteCountryAsync( item.CountryId );
+	//return _countryService.DeleteCountryAsync( item.CountryId );
 	//}
 
 	protected override int GetId( CountryModel item ) => item.CountryId;
