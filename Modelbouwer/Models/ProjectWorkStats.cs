@@ -1,7 +1,8 @@
 ﻿namespace Modelbouwer.Models;
 
-public class ProjectWorkStats
+public partial class ProjectWorkStats : ObservableObject
 {
-	public DateTime StartDate { get; set; }
-	public double TotalHours { get; set; }
+	[ObservableProperty] public DateTime _startDate;
+
+	[ObservableProperty] public double _totalHours;
 }

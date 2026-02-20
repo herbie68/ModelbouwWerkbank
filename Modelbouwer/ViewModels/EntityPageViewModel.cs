@@ -98,6 +98,8 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 
 		if ( newValue is INotifyPropertyChanged newNpc )
 			newNpc.PropertyChanged += Item_PropertyChanged;
+
+		HasUnsavedChanges = false;
 	}
 
 	private void Item_PropertyChanged( object? sender, PropertyChangedEventArgs e )

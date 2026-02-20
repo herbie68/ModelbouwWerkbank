@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Modelbouwer.Models;
 
-namespace Modelbouwer.Models;
-
-public class UnitModel
+public partial class UnitModel : ObservableObject
 {
-	public string? UnitName { get; set; }
-	public int UnitId { get; set; }
+	[ObservableProperty] public string? _unitName;
+	[ObservableProperty] public int _unitId;
 
 	/// <summary>
 	/// Gives the mapping between CSV column headers and model property names, for 3 languages Dutch, English, German.

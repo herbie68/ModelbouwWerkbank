@@ -9,10 +9,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
+    xmlns:converters="clr-namespace:Modelbouwer.Converters"
     d:DataContext="{d:DesignInstance Type=viewmodels:CountryPageViewModel}"
     HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -38,7 +43,13 @@
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
-            <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataCountryHeaderSubtitle}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataCountryHeaderSubtitle}" />
+
+                <TextBlock Text="{x:Static language:Language.generalUnsavedChanges}"
+                           Visibility="{Binding HasUnsavedChanges, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           Style="{DynamicResource TextBlockUnsavedChangesWarning}" />
+            </StackPanel>
         </StackPanel>
         <!--#endregion-->
 
@@ -68,7 +79,7 @@
                 <Label
                     Style="{DynamicResource EntrySemicolon}" />
             </StackPanel>
-            
+
             <TextBox
                 Grid.Row="1"
                 Margin="5,0,0,0"
@@ -88,7 +99,7 @@
                 <Label
                     Style="{DynamicResource EntrySemicolon}" />
             </StackPanel>
-            
+
             <TextBox
                 Grid.Row="1"
                 Grid.Column="1"
@@ -102,11 +113,11 @@
             <!--  Default currency  -->
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
                 <Label
-                Content="{x:Static language:Language.metadataCountryEntryFieldCurrency}"
-                Style="{DynamicResource EntryLabel}" />
+                    Content="{x:Static language:Language.metadataCountryEntryFieldCurrency}"
+                    Style="{DynamicResource EntryLabel}" />
 
                 <Label
-                Style="{DynamicResource EntrySemicolon}" />
+                    Style="{DynamicResource EntrySemicolon}" />
             </StackPanel>
 
             <syncfusion:ComboBoxAdv

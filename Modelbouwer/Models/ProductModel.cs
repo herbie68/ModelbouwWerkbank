@@ -6,59 +6,42 @@ namespace Modelbouwer.Models;
 
 public partial class ProductModel : ObservableObject
 {
-	[ObservableProperty]
-	private byte [ ]? _productImage;
+	[ObservableProperty] private byte [ ]? _productImage;
 
-	[ObservableProperty]
-	private double _productMinimalStock;
+	[ObservableProperty] private double _productMinimalStock;
 
-	[ObservableProperty]
-	private double _productPrice;
+	[ObservableProperty] private double _productPrice;
 
-	[ObservableProperty]
-	private double _productPackagePrice;
+	[ObservableProperty] private double _productPackagePrice;
 
-	[ObservableProperty]
-	private double _productStandardQuantity;
+	[ObservableProperty] private double _productStandardQuantity;
 
-	[ObservableProperty]
-	private int _productBrandId;
+	[ObservableProperty] private int _productBrandId;
 
-	[ObservableProperty]
-	private int _productCategoryId;
+	[ObservableProperty] private int _productCategoryId;
 
-	[ObservableProperty]
-	private int _productId;
+	[ObservableProperty] private int _productId;
 
-	[ObservableProperty]
-	private int _productProjectCosts;
+	[ObservableProperty] private int _productProjectCosts;
 
-	[ObservableProperty]
-	private int _productStorageId;
+	[ObservableProperty] private int _productStorageId;
 
-	[ObservableProperty]
-	private int _productUnitId;
+	[ObservableProperty] private int _productUnitId;
 
-	[ObservableProperty]
-	private int _productHide;
+	[ObservableProperty] private int _productHide;
 
-	[ObservableProperty]
-	private string? _productCode;
+	[ObservableProperty] private string? _productCode;
 
-	[ObservableProperty]
-	private string? _productDimensions;
+	[ObservableProperty] private string? _productDimensions;
 
-	[ObservableProperty]
-	private double _productImageRotationAngle;
+	[ObservableProperty] private double _productImageRotationAngle;
 
-	[ObservableProperty]
-	private string? _productMemo;
+	[ObservableProperty] private string? _productMemo;
 
-	[ObservableProperty]
-	private string? _productName;
+	[ObservableProperty] private string? _productName;
 
 	// Define the property that you want to use in TLists (for example in the errorList
-	public string Name => _productName;
+	public string? Name => ProductName;
 
 	partial void OnProductPriceChanged( double value )
 	{

@@ -36,10 +36,10 @@ public class UnitPageViewModel : EntityPageViewModel<UnitModel>
 	// Override SelectedItem changed om DefaultUnit te zetten
 	protected override void OnSelectedItemChanged( UnitModel? oldValue, UnitModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		if ( newValue == null )
 			return;
-
-		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedUnit ) );
 		OnPropertyChanged( nameof( SelectedUnit.UnitName ) );

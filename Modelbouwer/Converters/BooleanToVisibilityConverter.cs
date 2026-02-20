@@ -1,9 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-
-namespace Modelbouwer.Converters;
+﻿namespace Modelbouwer.Converters;
 
 [ValueConversion( typeof( bool ), typeof( Visibility ) )]
 public sealed class BooleanToVisibilityConverter : IValueConverter
@@ -64,7 +59,7 @@ public sealed class BooleanToVisibilityConverter : IValueConverter
 			|| text.Equals( "1", StringComparison.OrdinalIgnoreCase );
 	}
 
-	public object Convert( object value, Type targetType, object parameter, CultureInfo culture )
+	public object Convert( object value, Type targetType, object? parameter, CultureInfo culture )
 	{
 		// Normalize input to bool (robust against strings and ints)
 		TryGetBool( value, out var boolValue );
@@ -73,11 +68,11 @@ public sealed class BooleanToVisibilityConverter : IValueConverter
 		var inverted = IsParameterInverted( parameter ) || IsInverted;
 
 		return inverted
-			? (object)( boolValue ? Visibility.Collapsed : Visibility.Visible )
-			: (object)( boolValue ? Visibility.Visible : Visibility.Collapsed );
+			? ( object ) ( boolValue ? Visibility.Collapsed : Visibility.Visible )
+			: ( object ) ( boolValue ? Visibility.Visible : Visibility.Collapsed );
 	}
 
-	public object ConvertBack( object value, Type targetType, object parameter, CultureInfo culture )
+	public object ConvertBack( object value, Type targetType, object? parameter, CultureInfo culture )
 	{
 		if ( value is Visibility visibility )
 		{

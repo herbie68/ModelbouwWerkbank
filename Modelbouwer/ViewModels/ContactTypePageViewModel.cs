@@ -36,10 +36,10 @@ public class ContactTypePageViewModel : EntityPageViewModel<ContactTypeModel>
 	// Override SelectedItem changed om DefaultContactType te zetten
 	protected override void OnSelectedItemChanged( ContactTypeModel? oldValue, ContactTypeModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		if ( newValue == null )
 			return;
-
-		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedContactType ) );
 		OnPropertyChanged( nameof( SelectedContactType.ContactTypeName ) );

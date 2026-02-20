@@ -33,6 +33,17 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 			.FirstOrDefault( c => c.CategoryId == SelectedItem.ProductCategoryId );
 	}
 
+	/// <summary>
+	/// Since suppliers is a nested part inside the productpage, it has to have its own "unsaved changes" tracking, otherwise when you change a supplier, 
+	/// it would mark the entire product as having unsaved changes, which is not ideal UX
+	/// </summary>
+	private bool _hasUnsavedSupplierChanges;
+	public bool HasUnsavedSupplierChanges
+	{
+		get => _hasUnsavedSupplierChanges;
+		set => SetProperty( ref _hasUnsavedSupplierChanges, value );
+	}
+
 	private void UpdateSelectedStorageLocationFromProduct()
 	{
 		if ( SelectedItem?.ProductStorageId == null )
@@ -43,6 +54,15 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		SelectedStorageLocation = AllStorageLocations
 			.FirstOrDefault( c => c.StorageId == SelectedItem.ProductStorageId );
+	}
+
+	private void HookSupplierPropertyChanged( ProductSupplierModel ps )
+	{
+		ps.PropertyChanged += ( s, e ) =>
+		{
+			// Only mark supplier changes, not product changes
+			HasUnsavedSupplierChanges = true;
+		};
 	}
 
 	// Constructor
@@ -66,6 +86,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		OpenCategoryPickerCommand = new AsyncRelayCommand( OpenCategoryPickerAsync );
 		OpenStorageLocationPickerCommand = new AsyncRelayCommand( OpenStorageLocationPickerAsync );
+
+		Debug.WriteLine( $"VM created: {GetHashCode()}" );
 
 		_ = InitializeAsync();
 	}
@@ -107,6 +129,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			if ( SetProperty( ref _selectedSupplier, value ) )
 			{
+				HasUnsavedSupplierChanges = false;
+
 				OnPropertyChanged( nameof( SelectedSupplierSupplier ) );
 				OpenWebsiteCommand.NotifyCanExecuteChanged();
 			}
@@ -316,7 +340,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		ProductSuppliers.Add( newSupplier );
 		FilteredSuppliers.Add( newSupplier );
 
+		HookSupplierPropertyChanged( newSupplier );
+
 		SelectedSupplier = newSupplier;
+
+		HasUnsavedSupplierChanges = true;
 
 		OnPropertyChanged( nameof( AvailableSuppliers ) );
 
@@ -333,6 +361,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		OnPropertyChanged( nameof( AvailableSuppliers ) );
 
+		HasUnsavedSupplierChanges = false;
+
 		RaiseSupplierCounters();
 	}
 
@@ -340,6 +370,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	{
 		// Implement contact save logic here
 		// This would typically call a service method to persist the contact
+
+		HasUnsavedSupplierChanges = false;
 	}
 
 	private void UpdateFilteredSuppliers()
@@ -404,6 +436,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	protected override void OnSelectedItemChanged( ProductModel? oldValue, ProductModel? newValue )
 	{
 		base.OnSelectedItemChanged( oldValue, newValue );
+
+		HasUnsavedSupplierChanges = false;
 
 		SelectedCategory = ProductCategory.FirstOrDefault( c => c.CategoryId == newValue?.ProductCategoryId );
 		SelectedStorageLocation = ProductStorageLocation.FirstOrDefault( c => c.StorageId == newValue?.ProductStorageId );
@@ -565,12 +599,16 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		var allProductSuppliers = await _supplierService.GetAllProductSuppliersAsync();
 		ProductSuppliers.Clear();
 		foreach ( var c in allProductSuppliers )
+		{
 			ProductSuppliers.Add( c );
+			HookSupplierPropertyChanged( c );
+		}
 
 		UpdateFilteredSuppliers();
 	}
 
 	private int _totalProductSupplierCount;
+
 	public int TotalProductSupplierCount
 	{
 		get => _totalProductSupplierCount;
@@ -581,20 +619,9 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		}
 	}
 
+	public BrandModel SelectedBrand { get; set; }
+	public UnitModel SelectedUnit { get; set; }
 
-	//public async Task OpenCategoryPickerAsync()
-	//{
-	//	var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory);
-	//	var dialog = new CategoryPickerDialog(vm)
-	//	{
-	//		Owner = Application.Current.MainWindow
-	//	};
-
-	//	if ( dialog.ShowDialog() == true )
-	//	{
-	//		SelectedCategory = vm.SelectedCategory;
-	//	}
-	//}
 
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( ProductModel c ) => new()

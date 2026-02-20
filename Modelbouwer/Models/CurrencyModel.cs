@@ -2,13 +2,18 @@
 
 namespace Modelbouwer.Models;
 
-public class CurrencyModel
+public partial class CurrencyModel : ObservableObject
 {
-	public double CurrencyConversionRate { get; set; } = 1.0;
-	public int CurrencyId { get; set; }
-	public string? CurrencyCode { get; set; } = string.Empty;
-	public string? CurrencyName { get; set; } = string.Empty;
-	public string? CurrencySymbol { get; set; } = string.Empty;
+	[ObservableProperty] public double _currencyConversionRate = 1.0;
+
+	[ObservableProperty] public int _currencyId;
+
+	[ObservableProperty] public string? _currencyCode = string.Empty;
+
+	[ObservableProperty] public string? _currencyName = string.Empty;
+
+	[ObservableProperty] public string? _currencySymbol = string.Empty;
+
 	public override string? ToString() => CurrencySymbol;
 
 	/// <summary>

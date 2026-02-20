@@ -36,9 +36,10 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 	// Override SelectedItem changed om DefaultBrand te zetten
 	protected override void OnSelectedItemChanged( BrandModel? oldValue, BrandModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		if ( newValue == null )
 			return;
-		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedBrand ) );
 		OnPropertyChanged( nameof( SelectedBrand.BrandName ) );

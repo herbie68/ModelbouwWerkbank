@@ -39,10 +39,10 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	// Override SelectedItem changed om DefaultCurrency te zetten
 	protected override void OnSelectedItemChanged( CurrencyModel? oldValue, CurrencyModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		if ( newValue == null )
 			return;
-
-		base.OnSelectedItemChanged( oldValue, newValue );
 
 		OnPropertyChanged( nameof( SelectedCurrency ) );
 		OnPropertyChanged( nameof( SelectedCurrency.CurrencyCode ) );

@@ -1,20 +1,20 @@
 ﻿namespace Modelbouwer.Models;
 
-public class SupplierOrderHistoryModel : ObservableObject
+public partial class SupplierOrderHistoryModel : ObservableObject
 {
-	private int OrderId { get; set; }
-	private int ProductId { get; set; }
-	private int SupplierId { get; set; }
-	private double Amount { get; set; }
-	private double CurrencyConversionRate { get; set; }
-	private double OrderCosts { get; set; }
-	private double OrderTotal { get; set; }
-	private double Price { get; set; }
-	private double RowTotal { get; set; }
-	private double ShippingCosts { get; set; }
-	private string? OrderNumber { get; set; }
-	private string? ProductDescription { get; set; }
-	private string? ProductNumber { get; set; }
-	private string? Received { get; set; }
-	private DateOnly? OrderDate { get; set; }
+	[ObservableProperty] private int _orderId;
+	[ObservableProperty] private int _productId;
+	[ObservableProperty] private int _supplierId;
+	[ObservableProperty] private double _amount;
+	[ObservableProperty] private double _currencyConversionRate;
+	[ObservableProperty] private double _orderCosts;
+	[ObservableProperty] private double _orderTotal;
+	[ObservableProperty] private double _price;
+	[ObservableProperty] private double _rowTotal;
+	[ObservableProperty] private double _shippingCosts;
+	[ObservableProperty] private string? _orderNumber;
+	[ObservableProperty] private string? _productDescription;
+	[ObservableProperty] private string? _productNumber;
+	[ObservableProperty] private string? _received;
+	[ObservableProperty] private DateOnly? _orderDate;
 }

@@ -3,10 +3,12 @@ using System.Runtime.CompilerServices;
 
 namespace Modelbouwer.Models;
 
-public class StorageLocationModel
+public partial class StorageLocationModel : ObservableObject
 {
-	public int StorageId { get; set; }
-	public int? ParentId { get; set; }
+	[ObservableProperty] public int _storageId;
+
+	[ObservableProperty] public int? _parentId;
+
 	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
 
 	public string StorageName

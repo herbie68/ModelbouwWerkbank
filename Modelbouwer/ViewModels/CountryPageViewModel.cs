@@ -42,10 +42,10 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 	// Override SelectedItem changed om DefaultCurrency te zetten
 	protected override void OnSelectedItemChanged( CountryModel? oldValue, CountryModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		if ( newValue == null )
 			return;
-
-		base.OnSelectedItemChanged( oldValue, newValue );
 
 		if ( Currencies.Any() )
 		{

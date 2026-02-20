@@ -3,28 +3,34 @@ using System.Runtime.CompilerServices;
 
 namespace Modelbouwer.Model;
 
-public class ProductUsageModel
+public partial class ProductUsageModel : ObservableObject
 {
-	public int ProductUsageId { get; set; }
-	public int ProductUsageProjectId { get; set; }
+	[ObservableProperty] public int _productUsageId;
+
+	[ObservableProperty] public int _productUsageProjectId;
+
+	[ObservableProperty] public int _productUsageProductId;
+
+	[ObservableProperty] public int _productUsageCategoryId;
+
 	private string? _productUsageProjectName;
-	public string? ProductUsageProjectName { get => _productUsageProjectName; set => SetProperty(ref _productUsageProjectName, value); }
-	public int ProductUsageProductId { get; set; }
+	public string? ProductUsageProjectName { get => _productUsageProjectName; set => SetProperty( ref _productUsageProjectName, value ); }
+
+
 	private string? _productUsageProductName;
-	public string? ProductUsageProductName { get => _productUsageProductName; set => SetProperty(ref _productUsageProductName, value); }
+	public string? ProductUsageProductName { get => _productUsageProductName; set => SetProperty( ref _productUsageProductName, value ); }
 	private string? _productUsageUsageDate;
-	public string? ProductUsageUsageDate { get => _productUsageUsageDate; set => SetProperty(ref _productUsageUsageDate, value); }
-	public int ProductUsageCategoryId { get; set; }
+	public string? ProductUsageUsageDate { get => _productUsageUsageDate; set => SetProperty( ref _productUsageUsageDate, value ); }
 	private string? _productUsageCategoryName;
-	public string? ProductUsageCategoryName { get => _productUsageCategoryName; set => SetProperty(ref _productUsageCategoryName, value); }
+	public string? ProductUsageCategoryName { get => _productUsageCategoryName; set => SetProperty( ref _productUsageCategoryName, value ); }
 	private double _productUsageAmount;
-	public double ProductUsageAmount { get => _productUsageAmount; set => SetProperty(ref _productUsageAmount, value); }
+	public double ProductUsageAmount { get => _productUsageAmount; set => SetProperty( ref _productUsageAmount, value ); }
 	private double _productUsageProductPrice;
-	public double ProductUsageProductPrice { get => _productUsageProductPrice; set => SetProperty(ref _productUsageProductPrice, value); }
+	public double ProductUsageProductPrice { get => _productUsageProductPrice; set => SetProperty( ref _productUsageProductPrice, value ); }
 	private double _productUsageCosts;
-	public double ProductUsageCosts { get => _productUsageCosts; set => SetProperty(ref _productUsageCosts, value); }
+	public double ProductUsageCosts { get => _productUsageCosts; set => SetProperty( ref _productUsageCosts, value ); }
 	private string? _productUsageComment;
-	public string? ProductUsageComment { get => _productUsageComment; set => SetProperty(ref _productUsageComment, value); }
+	public string? ProductUsageComment { get => _productUsageComment; set => SetProperty( ref _productUsageComment, value ); }
 
 	public enum RecordState
 	{

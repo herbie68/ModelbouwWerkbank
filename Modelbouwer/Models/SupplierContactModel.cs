@@ -1,10 +1,11 @@
 ﻿namespace Modelbouwer.Models;
 
-public class SupplierContactModel : ObservableObject
+public partial class SupplierContactModel : ObservableObject
 {
-	public int SupplierContactId { get; set; }
-	public int SupplierId { get; set; }
-	public int ContactId { get; set; }
+	[ObservableProperty] public int _supplierContactId;
+	[ObservableProperty] public int _supplierId;
+	[ObservableProperty] public int _contactId;
+
 	private int _contactTypeId;
 	public int ContactTypeId
 	{
@@ -18,12 +19,12 @@ public class SupplierContactModel : ObservableObject
 			}
 		}
 	}
-	public string? Name { get; set; }
-	public string? Mail { get; set; }
-	public string? Phone { get; set; }
+	[ObservableProperty] public string? _name;
+	[ObservableProperty] public string? _mail;
+	[ObservableProperty] public string? _phone;
 
 	// Lookup voor contacttypes
-	public IReadOnlyList<ContactTypeModel>? ContactTypeList { get; set; }
+	[ObservableProperty] public IReadOnlyList<ContactTypeModel>? _contactTypeList;
 
 	public string? ContactTypeName => ContactTypeList?.FirstOrDefault( ct => ct.ContactTypeId == ContactTypeId )?.ContactTypeName;
 

@@ -1,28 +1,28 @@
 ﻿namespace Modelbouwer.Models;
 
-public class SupplierModel : ObservableObject
+public partial class SupplierModel : ObservableObject
 {
 	#region General supplier information
-	public int CountryId { get; set; }
-	public int CurrencyId { get; set; }
-	public int Id { get; set; }
-	public double CurrencyRate { get; set; }
-	public double MinOrderCosts { get; set; }
-	public double MinShippingCosts { get; set; }
-	public double OrderCosts { get; set; }
-	public double ShippingCosts { get; set; }
-	public string? Address1 { get; set; }
-	public string? Address2 { get; set; }
-	public string? City { get; set; }
-	public string? Code { get; set; }
-	public string? Country { get; set; }
-	public string? Currency { get; set; }
-	public string? Mail { get; set; }
-	public string? Memo { get; set; }
-	public string? Name { get; set; }
-	public string? Phone { get; set; }
-	public string? Url { get; set; }
-	public string? Zip { get; set; }
+	[ObservableProperty] public int _countryId;
+	[ObservableProperty] public int _currencyId;
+	[ObservableProperty] public int _id;
+	[ObservableProperty] public double _currencyRate;
+	[ObservableProperty] public double _minOrderCosts;
+	[ObservableProperty] public double _minShippingCosts;
+	[ObservableProperty] public double _orderCosts;
+	[ObservableProperty] public double _shippingCosts;
+	[ObservableProperty] public string? _address1;
+	[ObservableProperty] public string? _address2;
+	[ObservableProperty] public string? _city;
+	[ObservableProperty] public string? _code;
+	[ObservableProperty] public string? _country;
+	[ObservableProperty] public string? _currency;
+	[ObservableProperty] public string? _mail;
+	[ObservableProperty] public string? _memo;
+	[ObservableProperty] public string? _name;
+	[ObservableProperty] public string? _phone;
+	[ObservableProperty] public string? _url;
+	[ObservableProperty] public string? _zip;
 	#endregion
 
 	// Injected lookup

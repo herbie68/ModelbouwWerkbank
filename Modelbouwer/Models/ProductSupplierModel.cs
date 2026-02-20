@@ -1,19 +1,30 @@
 ﻿namespace Modelbouwer.Model;
 
-public class ProductSupplierModel : ObservableObject
+public partial class ProductSupplierModel : ObservableObject
 {
-	public int ProductSupplierId { get; set; }
-	public int ProductId { get; set; }
-	public int SupplierId { get; set; }
-	public int CurrencyId { get; set; }
-	public string? SupplierName { get; set; }
-	public string? ProductNumber { get; set; }
-	public string? ProductName { get; set; }
-	public double Price { get; set; }
-	public string? URL { get; set; }
-	public bool? DefaultSupplier { get; set; }
-	public bool? DefaultSupplierCheck { get; set; }
-	public string? CurrencySymbol { get; set; }
+	[ObservableProperty] public int _productSupplierId;
+
+	[ObservableProperty] public int _productId;
+
+	[ObservableProperty] public int _supplierId;
+
+	[ObservableProperty] public int _currencyId;
+
+	[ObservableProperty] public string? _supplierName;
+
+	[ObservableProperty] public string? _productNumber;
+
+	[ObservableProperty] public string? _productName;
+
+	[ObservableProperty] public double _price;
+
+	[ObservableProperty] public string? _uRL;
+
+	[ObservableProperty] public bool? _defaultSupplier;
+
+	[ObservableProperty] public bool? _defaultSupplierCheck;
+
+	[ObservableProperty] public string? _currencySymbol;
 
 	// Define the property that you want to use in TLists (for example in the errorList
 	public string Name => ProductName;
