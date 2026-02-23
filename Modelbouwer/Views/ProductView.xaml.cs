@@ -3,6 +3,7 @@
 using Microsoft.Win32;
 
 using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.ScrollAxis;
 
 namespace Modelbouwer.Views;
 
@@ -58,10 +59,22 @@ public partial class ProductView : UserControl
 				grid.View.RefreshFilter();
 				vm.VisibleProductCount = grid.View.Records.Count;
 
+				// Ensure the selected item is visible and grid has focus
+				if ( vm.SelectedItem != null )
+				{
+					int rowIndex = grid.ResolveToRowIndex( vm.SelectedItem );
+					if ( rowIndex >= 0 )
+					{
+						grid.ScrollInView( new RowColumnIndex( rowIndex, 0 ) );
+					}
+					grid.Focus();
+				}
+
 			} ),
 			DispatcherPriority.Loaded
 		);
 	}
+
 
 	private void ButtonImport( object sender, RoutedEventArgs e )
 	{
@@ -163,13 +176,4 @@ public partial class ProductView : UserControl
 		}
 	}
 
-	private void ContactDataGrid_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
-
-	private void ProductMemoEditor_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
 }

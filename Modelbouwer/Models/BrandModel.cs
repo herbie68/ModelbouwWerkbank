@@ -1,11 +1,10 @@
-﻿using Modelbouwer.Models;
+﻿namespace Modelbouwer.Models;
 
-namespace Modelbouwer.Models;
-
-public class BrandModel
+public partial class BrandModel : ObservableObject
 {
-	public string? BrandName { get; set; }
-	public int BrandId { get; set; }
+	[ObservableProperty] private int _brandId;
+
+	[ObservableProperty] private string? _brandName = string.Empty;
 
 	/// <summary>
 	/// Gives the mapping between CSV column headers and model property names, for 3 languages Dutch, English, German.

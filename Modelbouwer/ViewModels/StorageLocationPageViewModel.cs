@@ -65,8 +65,10 @@ public partial class StorageLocationPageViewModel : EntityPageViewModel<StorageL
 		}
 	}
 
-	protected override void OnSelectedItemChanged( StorageLocationModel? value )
+	protected override void OnSelectedItemChanged( StorageLocationModel? oldValue, StorageLocationModel? newValue )
 	{
+		base.OnSelectedItemChanged( oldValue, newValue );
+
 		AddSubStorageLocationCommand.NotifyCanExecuteChanged();
 	}
 

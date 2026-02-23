@@ -1,6 +1,4 @@
-﻿using Moq;
-
-namespace Modelbouwer.UnitTests.ViewModels;
+﻿namespace Modelbouwer.UnitTests.ViewModels;
 
 [TestClass]
 public class ProductPageViewModelTests
@@ -40,8 +38,8 @@ public class ProductPageViewModelTests
 	public void Constructor_InitializesCollections()
 	{
 		// Assert
-		Assert.IsNotNull( _viewModel.ProductBrand );
-		Assert.IsNotNull( _viewModel.ProductUnit );
+		object value = Assert.IsNotNull( _viewModel.ProductBrand );
+		object value1 = Assert.IsNotNull( _viewModel.ProductUnit );
 		Assert.IsNotNull( _viewModel.ProductCategory );
 		Assert.IsNotNull( _viewModel.Products );
 	}

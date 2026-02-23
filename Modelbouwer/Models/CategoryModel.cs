@@ -1,10 +1,14 @@
 ﻿namespace Modelbouwer.Models;
 
-public class CategoryModel
+public partial class CategoryModel : ObservableObject
 {
-	public int CategoryId { get; set; }
-	public int? ParentId { get; set; }
-	public string CategoryName { get; set; } = string.Empty;
+	[ObservableProperty] public int _categoryId;
+
+	[ObservableProperty] public int? _parentId;
+
+	[ObservableProperty] public CategoryModel? _parent = null;
+
+	[ObservableProperty] public string _categoryName = string.Empty;
 
 	public ObservableCollection<CategoryModel> Children { get; set; } = [ ];
 

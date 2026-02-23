@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using System.ComponentModel;
+
+using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
@@ -16,15 +18,19 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	// -----------------------------
 	public ObservableCollection<T> Items { get; } = new();
 
-	private T? _selectedItem;
 	public T? SelectedItem
 	{
-		get => _selectedItem;
+		get;
 		set
 		{
-			if ( SetProperty( ref _selectedItem, value ) )
+			if ( !EqualityComparer<T?>.Default.Equals( field, value ) )
 			{
-				OnSelectedItemChanged( value );
+				var oldValue = field;
+
+				if ( SetProperty( ref field, value ) )
+				{
+					OnSelectedItemChanged( oldValue, value );
+				}
 			}
 		}
 	}
@@ -35,6 +41,8 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	[ObservableProperty] protected bool _isLoading;
 	[ObservableProperty] protected bool _isSaving;
 	[ObservableProperty] protected string _searchText = string.Empty;
+	[ObservableProperty]
+	private bool hasUnsavedChanges;
 
 	public int TotalItemCount => Items.Count;
 
@@ -83,7 +91,21 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	protected abstract void SetId( T item, int id );
 	protected abstract T CreateNewItem();
 
-	protected virtual void OnSelectedItemChanged( T? value ) { }
+	protected virtual void OnSelectedItemChanged( T? oldValue, T? newValue )
+	{
+		if ( oldValue is INotifyPropertyChanged oldNpc )
+			oldNpc.PropertyChanged -= Item_PropertyChanged;
+
+		if ( newValue is INotifyPropertyChanged newNpc )
+			newNpc.PropertyChanged += Item_PropertyChanged;
+
+		HasUnsavedChanges = false;
+	}
+
+	private void Item_PropertyChanged( object? sender, PropertyChangedEventArgs e )
+	{
+		HasUnsavedChanges = true;
+	}
 
 	// -----------------------------
 	// Default implementations
@@ -100,6 +122,8 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		var item = CreateNewItem();
 		Items.Add( item );
 		SelectedItem = item;
+
+		HasUnsavedChanges = true;
 	}
 
 	private async Task SaveAsync()
@@ -137,6 +161,8 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		{
 			IsSaving = false;
 		}
+
+		HasUnsavedChanges = false;
 	}
 
 	private async Task ReloadAsync()

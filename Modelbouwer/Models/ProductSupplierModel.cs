@@ -1,45 +1,46 @@
 ﻿namespace Modelbouwer.Model;
 
-public class ProductSupplierModel : ObservableObject
+public partial class ProductSupplierModel : ObservableObject
 {
-	public int ProductSupplierId { get; set; }
-	public int ProductSupplierProductId { get; set; }
-	public int ProductSupplierSupplierId { get; set; }
-	public int ProductSupplierCurrencyId { get; set; }
-	public string? ProductSupplierName { get; set; }
-	public string? ProductSupplierProductNumber { get; set; }
-	public string? ProductSupplierProductName { get; set; }
-	public decimal ProductSupplierPrice { get; set; }
-	public string? ProductSupplierURL { get; set; }
-	public bool? ProductSupplierDefaultSupplier { get; set; }
-	public bool? ProductSupplierDefaultSupplierCheck { get; set; }
-	public string? ProductSupplierSupplierName { get; set; }
-	//public string? ProductSupplierCurrencySymbol { get; set; }
+	[ObservableProperty] public int _productSupplierId;
 
-	private string? productSupplierCurrencySymbol;
+	[ObservableProperty] public int _productId;
 
-	public string? ProductSupplierCurrencySymbol
-	{
-		get => productSupplierCurrencySymbol;
-		set => SetProperty( ref productSupplierCurrencySymbol, value );
-	}
+	[ObservableProperty] public int _supplierId;
 
+	[ObservableProperty] public int _currencyId;
+
+	[ObservableProperty] public string? _supplierName;
+
+	[ObservableProperty] public string? _productNumber;
+
+	[ObservableProperty] public string? _productName;
+
+	[ObservableProperty] public double _price;
+
+	[ObservableProperty] public string? _uRL;
+
+	[ObservableProperty] public bool? _defaultSupplier;
+
+	[ObservableProperty] public bool? _defaultSupplierCheck;
+
+	[ObservableProperty] public string? _currencySymbol;
 
 	// Define the property that you want to use in TLists (for example in the errorList
-	public string Name => ProductSupplierProductName;
+	public string Name => ProductName;
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()
 	{
 		{ DBNames.ProductSupplierFieldNameId, "ProductSupplierId" },
-		{ DBNames.ProductSupplierFieldNameProductId, "ProductSupplierProductId" },
-		{ DBNames.ProductSupplierFieldNameSupplierId, "ProductSupplierSupplierId" },
+		{ DBNames.ProductSupplierFieldNameProductId, "ProductId" },
+		{ DBNames.ProductSupplierFieldNameSupplierId, "SupplierId" },
 		{ DBNames.ProductSupplierFieldNameCurrencyId, "CurrencyId" },
-		{ DBNames.ProductSupplierFieldNameProductNumber, "ProductSupplierProductNumber" },
-		{ DBNames.ProductSupplierFieldNameProductName, "ProductSupplierProductName" },
-		{ DBNames.ProductSupplierFieldNameSupplierName, "ProductSupplierSupplierName" },
-		{ DBNames.ProductSupplierFieldNamePrice, "ProductSupplierPrice" },
-		{ DBNames.ProductSupplierFieldNameProductUrl, "ProductSupplierURL" },
+		{ DBNames.ProductSupplierFieldNameProductNumber, "ProductNumber" },
+		{ DBNames.ProductSupplierFieldNameProductName, "ProductName" },
+		{ DBNames.ProductSupplierFieldNameSupplierName, "SupplierName" },
+		{ DBNames.ProductSupplierFieldNamePrice, "Price" },
+		{ DBNames.ProductSupplierFieldNameProductUrl, "URL" },
 		{ DBNames.ProductSupplierFieldNameDefaultSupplier, "ProductSupplierDefaultSupplier" }
 	};
 }

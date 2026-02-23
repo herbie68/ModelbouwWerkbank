@@ -174,4 +174,5 @@ public partial class ProjectView : UserControl
 			vm.SelectedProject.ProjectImageRotationAngle = 0;
 		}
 	}
+
 }

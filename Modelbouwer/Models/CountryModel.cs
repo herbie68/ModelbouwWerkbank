@@ -1,12 +1,16 @@
 ﻿namespace Modelbouwer.Models;
 
-public class CountryModel : ObservableObject
+public partial class CountryModel : ObservableObject
 {
-	public int CountryCurrencyId { get; set; }
-	public int CountryId { get; set; }
-	public string? CountryCode { get; set; }
-	public string? CountryCurrencySymbol { get; set; }
-	public string? CountryName { get; set; }
+	[ObservableProperty] public int _countryCurrencyId;
+
+	[ObservableProperty] public int _countryId;
+
+	[ObservableProperty] public string? _countryCode;
+
+	[ObservableProperty] public string? _countryCurrencySymbol;
+
+	[ObservableProperty] public string? _countryName;
 
 	private CurrencyModel? _defaultCurrency;
 
@@ -41,10 +45,10 @@ public class CountryModel : ObservableObject
 			"Country Code",
 			"Ländercode" ],
 
-		[nameof(CountryName)] =	[
+		[nameof(CountryName)] = [
 			"Land",
 			"Country",
-			"Land (DE)"	],
+			"Land (DE)" ],
 
 		[nameof(CountryCurrencySymbol)] = [
 			"Valuta",

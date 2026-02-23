@@ -4,14 +4,14 @@ using Syncfusion.UI.Xaml.TreeGrid;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class CategoryPickerViewModel : ObservableObject
+public partial class StorageLocationPickerViewModel : ObservableObject
 {
-	private readonly ICategoryService _categoryService;
+	private readonly IStorageLocationService _storagelocationService;
 
-	public ObservableCollection<CategoryModel> CategoryTree { get; } = [ ];
+	public ObservableCollection<StorageLocationModel> StorageLocationTree { get; } = [ ];
 
 	[ObservableProperty]
-	private CategoryModel? _selectedCategory;
+	private StorageLocationModel? _selectedStorageLocation;
 
 	[ObservableProperty]
 	private string? _searchText;
@@ -31,11 +31,11 @@ public partial class CategoryPickerViewModel : ObservableObject
 	internal delegate void FilterChanged();
 	internal FilterChanged? _filterChanged;
 
-	public CategoryPickerViewModel(
-		ICategoryService categoryService,
-		CategoryModel? currentSelection = null )
+	public StorageLocationPickerViewModel(
+		IStorageLocationService storagelocationService,
+		StorageLocationModel? currentSelection = null )
 	{
-		_categoryService = categoryService;
+		_storagelocationService = storagelocationService;
 
 		OkCommand = new RelayCommand( OnOk );
 		CancelCommand = new RelayCommand( OnCancel );
@@ -45,27 +45,27 @@ public partial class CategoryPickerViewModel : ObservableObject
 		_ = LoadAsync( currentSelection );
 	}
 
-	private async Task LoadAsync( CategoryModel? currentSelection )
+	private async Task LoadAsync( StorageLocationModel? currentSelection )
 	{
-		var flat = await _categoryService.GetAllCategorysAsync();
+		var flat = await _storagelocationService.GetAllStorageLocationsAsync();
 
 		var tree = BuildTree(flat);
 
-		CategoryTree.Clear();
+		StorageLocationTree.Clear();
 		foreach ( var root in tree )
-			CategoryTree.Add( root );
+			StorageLocationTree.Add( root );
 
 		// Map the incoming selection (which may be an instance from a different view model)
 		// to the instance loaded into this view model's tree so UI selection works.
 		if ( currentSelection != null )
 		{
 			// flat contains the instances used to build the tree, so find the one with the same id
-			var mapped = flat.FirstOrDefault( f => f.CategoryId == currentSelection.CategoryId );
-			SelectedCategory = mapped;
+			var mapped = flat.FirstOrDefault( f => f.StorageId == currentSelection.StorageId );
+			SelectedStorageLocation = mapped;
 		}
 		else
 		{
-			SelectedCategory = null;
+			SelectedStorageLocation = null;
 		}
 
 		RequestScrollToSelection?.Invoke();
@@ -81,9 +81,9 @@ public partial class CategoryPickerViewModel : ObservableObject
 	private void OnCollapseAll( object? parameter )
 		=> ( parameter as SfTreeGrid )?.CollapseAllNodes();
 
-	private static ObservableCollection<CategoryModel> BuildTree( IEnumerable<CategoryModel> flatList )
+	private static ObservableCollection<StorageLocationModel> BuildTree( IEnumerable<StorageLocationModel> flatList )
 	{
-		var lookup = flatList.ToDictionary(c => c.CategoryId);
+		var lookup = flatList.ToDictionary(c => c.StorageId);
 
 		foreach ( var c in lookup.Values )
 		{
@@ -91,44 +91,44 @@ public partial class CategoryPickerViewModel : ObservableObject
 			c.Parent = null;
 		}
 
-		foreach ( var category in lookup.Values )
+		foreach ( var storagelocation in lookup.Values )
 		{
-			if ( category.ParentId != null &&
-				lookup.TryGetValue( category.ParentId.Value, out var parent ) )
+			if ( storagelocation.ParentId != null &&
+				lookup.TryGetValue( storagelocation.ParentId.Value, out var parent ) )
 			{
-				category.Parent = parent;
-				parent.Children.Add( category );
+				storagelocation.Parent = parent;
+				parent.Children.Add( storagelocation );
 			}
 		}
 
-		return new ObservableCollection<CategoryModel>(
+		return new ObservableCollection<StorageLocationModel>(
 			lookup.Values.Where( c => c.ParentId == null || c.ParentId == 0 ) );
 	}
 
 	#region Filtering
 	public bool FilterRecords( object o )
 	{
-		if ( o is not CategoryModel category )
+		if ( o is not StorageLocationModel storagelocation )
 			return false;
 
 		if ( string.IsNullOrWhiteSpace( SearchText ) )
 			return true;
 
-		if ( category.CategoryName?
+		if ( storagelocation.StorageName?
 			.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 			return true;
 
-		return HasMatchingChild( category );
+		return HasMatchingChild( storagelocation );
 	}
 
-	private bool HasMatchingChild( CategoryModel parent )
+	private bool HasMatchingChild( StorageLocationModel parent )
 	{
 		if ( parent.Children == null || parent.Children.Count == 0 || SearchText == null )
 			return false;
 
 		foreach ( var child in parent.Children )
 		{
-			if ( child.CategoryName?
+			if ( child.StorageName?
 				.Contains( SearchText, StringComparison.OrdinalIgnoreCase ) == true )
 				return true;
 
@@ -145,4 +145,3 @@ public partial class CategoryPickerViewModel : ObservableObject
 	}
 	#endregion
 }
-

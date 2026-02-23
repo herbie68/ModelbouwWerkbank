@@ -2176,6 +2176,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let op, de wijzigingen zijn nog niet opgeslagen!.
+        /// </summary>
+        public static string generalUnsavedChanges {
+            get {
+                return ResourceManager.GetString("generalUnsavedChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afbeelding verwijderen.
         /// </summary>
         public static string ImageButtonDeleteTooltip {
@@ -5794,7 +5803,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kategorie.
+        ///   Looks up a localized string similar to Categorie.
         /// </summary>
         public static string metadataProductProductDatagridHeaderCategory {
             get {
@@ -5803,7 +5812,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suchname.
+        ///   Looks up a localized string similar to Zoeknaam.
         /// </summary>
         public static string metadataProductProductDatagridHeaderCode {
             get {
@@ -5812,7 +5821,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ort.
+        ///   Looks up a localized string similar to Locatie.
         /// </summary>
         public static string metadataProductProductDatagridHeaderLocation {
             get {
@@ -5821,7 +5830,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beschreibung.
+        ///   Looks up a localized string similar to Omschrijving.
         /// </summary>
         public static string metadataProductProductDatagridHeaderName {
             get {
@@ -5830,7 +5839,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preis.
+        ///   Looks up a localized string similar to Stukprijs.
         /// </summary>
         public static string metadataProductProductDatagridHeaderPrice {
             get {
@@ -5947,7 +5956,178 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lösche Bild.
+        ///   Looks up a localized string similar to Standaard leverancier.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductDefaultLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standaard leverancier.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductDefaultTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductDefaultTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is dit de standaard leverancier voor dit product.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductDefaultTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductDefaultTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leverancier.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omschrijving.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNameLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omschrijving.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNameTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laat leeg als de omschrijving gelijk is aan de standaard productomschrijving.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNameTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artikelnummer.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artikelnummer.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNumberTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNumberTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het artikelnummer bij de leverancier.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductNumberTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stukprijs.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductPriceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stukprijs.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductPriceTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductPriceTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prijs per eenheid.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductPriceTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer leverancier.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer de leverancier voor dit product.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open product pagina op de website van de leverancier in je browser.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductUrlButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductUrlLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductUrlTag {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductUrlTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url voor de productwebsite.
+        /// </summary>
+        public static string metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductSupplierTabInfoTabItemSupplierProductUrlTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verwijder afbeelding.
         /// </summary>
         public static string metadataProductTabGeneralTabItemImageButtonDeleteTooltip {
             get {
@@ -5956,7 +6136,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bild hinzufügen.
+        ///   Looks up a localized string similar to Afbeelding wijzigen.
         /// </summary>
         public static string metadataProductTabGeneralTabItemImageButtonNewTooltip {
             get {
@@ -5965,7 +6145,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bild um eine Vierteldrehung drehen.
+        ///   Looks up a localized string similar to Afbeelding kwartslag draaien.
         /// </summary>
         public static string metadataProductTabGeneralTabItemImageButtonRotateTooltip {
             get {
@@ -6100,6 +6280,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Leveranciers voor dit artikel.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemProductSuppliersTitle {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemProductSuppliersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Productgegevens.
         /// </summary>
         public static string metadataProductTabGeneralTabItemProductTitle {
@@ -6159,6 +6348,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataProductTabGeneralTabItemProjectTitle {
             get {
                 return ResourceManager.GetString("metadataProductTabGeneralTabItemProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer voorraad locatie.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waar wordt dit artikel opgeslagen.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemStorageButtonSearchStorageLocationTooltip", resourceCulture);
             }
         }
         
@@ -6303,6 +6510,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataProductTabGeneralTabItemStorageTitle {
             get {
                 return ResourceManager.GetString("metadataProductTabGeneralTabItemStorageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leverancier specifieke product informatie.
+        /// </summary>
+        public static string metadataProductTabGeneralTabItemSupplierTitle {
+            get {
+                return ResourceManager.GetString("metadataProductTabGeneralTabItemSupplierTitle", resourceCulture);
             }
         }
         
@@ -7653,6 +7869,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string metadataStorageEntryToolbarButtonSaveTooltip {
             get {
                 return ResourceManager.GetString("metadataStorageEntryToolbarButtonSaveTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraad locatie.
+        /// </summary>
+        public static string metadataStorageLocationDatagridHeaderName {
+            get {
+                return ResourceManager.GetString("metadataStorageLocationDatagridHeaderName", resourceCulture);
             }
         }
         
@@ -11686,6 +11911,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelProduct {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal geregistreerde leveranciers voor dit product.
+        /// </summary>
+        public static string toolbarVisibleRowLabelProductSupplier {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelProductSupplier", resourceCulture);
             }
         }
         

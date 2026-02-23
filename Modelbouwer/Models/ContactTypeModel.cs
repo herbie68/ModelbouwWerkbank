@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Modelbouwer.Models;
 
-namespace Modelbouwer.Models;
+public partial class ContactTypeModel : ObservableObject
+{
+	[ObservableProperty] public string? _contactTypeName;
 
-    public class ContactTypeModel
-    {
-	public string? ContactTypeName { get; set; }
-	public int ContactTypeId { get; set; }
+	[ObservableProperty] public int _contactTypeId;
 
 	// Define the property that you want to use in TLists (for example in the errorList
 	public string? Name => ContactTypeName;

@@ -1,8 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 
-using Modelbouwer.Interfaces;
-using Modelbouwer.Services;
-
 namespace Modelbouwer.ViewModels;
 
 public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
@@ -10,7 +7,7 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	private readonly ICurrencyService _dataService;
 
 	// Collections
-	public ObservableCollection<CurrencyModel> Currencies { get; } = [];
+	public ObservableCollection<CurrencyModel> Currencies { get; } = [ ];
 
 	// SelectedCurrency als type-safe alias
 	public CurrencyModel? SelectedCurrency
@@ -40,9 +37,11 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	}
 
 	// Override SelectedItem changed om DefaultCurrency te zetten
-	protected override void OnSelectedItemChanged( CurrencyModel? value )
+	protected override void OnSelectedItemChanged( CurrencyModel? oldValue, CurrencyModel? newValue )
 	{
-		if ( value == null )
+		base.OnSelectedItemChanged( oldValue, newValue );
+
+		if ( newValue == null )
 			return;
 
 		OnPropertyChanged( nameof( SelectedCurrency ) );

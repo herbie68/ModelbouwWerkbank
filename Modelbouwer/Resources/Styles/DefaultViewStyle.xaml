@@ -62,9 +62,9 @@
         <Setter Property="FontStyle" Value="Italic"/>
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource EntryFontBrush}" />
-        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Margin" Value="5,0,0,-5" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
@@ -75,7 +75,7 @@
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Foreground" Value="{DynamicResource EntryFontBrush}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Content" Value=":" />
     </Style>

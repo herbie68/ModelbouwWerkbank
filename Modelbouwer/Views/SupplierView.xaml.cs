@@ -161,14 +161,4 @@ public partial class SupplierView : UserControl
 			columnHeaders );
 		}
 	}
-
-	private void ContactDataGrid_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
-
-	private void SupplierMemoEditor_Loaded( object sender, RoutedEventArgs e )
-	{
-
-	}
 }

@@ -48,18 +48,18 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	}
 
 	// Override SelectedItem changed om DefaultProject te zetten
-	protected override void OnSelectedItemChanged( ProjectModel? value )
+	protected override void OnSelectedItemChanged( ProjectModel? oldValue, ProjectModel? newValue )
 	{
-		base.OnSelectedItemChanged( value );
+		base.OnSelectedItemChanged( oldValue, newValue );
 
 		// Unhook oude handlers
 		if ( _previousProject != null )
 			_previousProject.PropertyChanged -= SelectedProject_PropertyChanged;
 
-		_previousProject = value;
+		_previousProject = newValue;
 
-		if ( value != null )
-			value.PropertyChanged += SelectedProject_PropertyChanged;
+		if ( newValue != null )
+			newValue.PropertyChanged += SelectedProject_PropertyChanged;
 
 		// Refresh UI properties die afhankelijk zijn van de geselecteerde project
 		RaiseProjectStateProperties();
@@ -69,7 +69,7 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 		ProjectExpectedEndDate = null;
 
 		// Laad nieuwe workstats en recalc expected end date
-		if ( value != null )
+		if ( newValue != null )
 			_ = LoadWorkStatsAsync();
 	}
 

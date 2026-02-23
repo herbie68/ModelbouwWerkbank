@@ -57,7 +57,6 @@ public class ProductService : IProductService
 		$"{ DBNames.ProductFieldNameCode}, " +
 		$"{ DBNames.ProductFieldNameDimensions}, " +
 		$"{ DBNames.ProductFieldNameHide}, " +
-		$"{ DBNames.ProductFieldNameId}, " +
 		$"{ DBNames.ProductFieldNameImage}, " +
 		$"{ DBNames.ProductFieldNameImageRotationAngle}, " +
 		$"{ DBNames.ProductFieldNameMemo}, " +
@@ -68,13 +67,12 @@ public class ProductService : IProductService
 		$"{ DBNames.ProductFieldNameStandardOrderQuantity}, " +
 		$"{ DBNames.ProductFieldNameStorageId}, " +
 		$"{ DBNames.ProductFieldNameUnitId}" +
-		$"VALUES ( " +
+		$" ) VALUES ( " +
 		$"@{ DBNames.ProductFieldNameBrandId}, " +
 		$"@{ DBNames.ProductFieldNameCategoryId}, " +
 		$"@{ DBNames.ProductFieldNameCode}, " +
 		$"@{ DBNames.ProductFieldNameDimensions}, " +
 		$"@{ DBNames.ProductFieldNameHide}, " +
-		$"@{ DBNames.ProductFieldNameId}, " +
 		$"@{ DBNames.ProductFieldNameImage}, " +
 		$"@{ DBNames.ProductFieldNameImageRotationAngle}, " +
 		$"@{ DBNames.ProductFieldNameMemo}, " +
@@ -84,8 +82,8 @@ public class ProductService : IProductService
 		$"@{ DBNames.ProductFieldNameProjectCosts}, " +
 		$"@{ DBNames.ProductFieldNameStandardOrderQuantity}, " +
 		$"@{ DBNames.ProductFieldNameStorageId}, " +
-		$"@{ DBNames.ProductFieldNameUnitId}" +
-		$"{ DBNames.SqlSelectLastId}";
+		$"@{ DBNames.ProductFieldNameUnitId} " +
+		$"); { DBNames.SqlSelectLastId};";
 
 	public string UpdateProductQuery =
 		$"UPDATE {DBNames.Database}.{DBNames.ProductTable} " +

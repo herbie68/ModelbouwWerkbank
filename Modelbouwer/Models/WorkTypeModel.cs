@@ -1,12 +1,12 @@
 ﻿namespace Modelbouwer.Models;
 
-public class WorktypeModel
+public partial class WorktypeModel : ObservableObject
 {
-	public int WorktypeId { get; set; }
-	public int? ParentId { get; set; }
-	public string WorktypeName { get; set; } = string.Empty;
+	[ObservableProperty] public int _worktypeId;
+	[ObservableProperty] public int? _parentId;
+	[ObservableProperty] public string _worktypeName = string.Empty;
 
-	public ObservableCollection<WorktypeModel> Children { get; set; } = [ ];
+	[ObservableProperty] public ObservableCollection<WorktypeModel> _children = [ ];
 
 	public static readonly Dictionary<string, string[]> ColumnMappings = new()
 	{

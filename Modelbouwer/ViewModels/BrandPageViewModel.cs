@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
@@ -38,9 +34,11 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 	}
 
 	// Override SelectedItem changed om DefaultBrand te zetten
-	protected override void OnSelectedItemChanged( BrandModel? value )
+	protected override void OnSelectedItemChanged( BrandModel? oldValue, BrandModel? newValue )
 	{
-		if ( value == null )
+		base.OnSelectedItemChanged( oldValue, newValue );
+
+		if ( newValue == null )
 			return;
 
 		OnPropertyChanged( nameof( SelectedBrand ) );
