@@ -13,6 +13,9 @@ public class DBNames
 	public static readonly string SqlCount = " COUNT( ";
 	public static readonly string SqlCountAll = " COUNT(*) ";
 	public static readonly string SqlCountUnique = " COUNT(DISTINCT ";
+	public static readonly string SqlCurrentDate = " CURDATE() ";
+	public static readonly string SqlCurrentDateTime = " NOW() ";
+	public static readonly string SqlCurrentTime = " CURTIME() ";
 	public static readonly string SqlDelete = "DELETE ";
 	public static readonly string SqlDeleteFrom = "DELETE FROM ";
 	public static readonly string SqlDesc = " DESC ";
@@ -405,6 +408,8 @@ public class DBNames
 	#region Products in stock
 	#region Stocklog table
 	public static readonly string StocklogTable = "stocklog";
+	public static readonly string GetCategoryFunction = "GetCategoryPath";
+	public static readonly string GetStockLocationFunction = "GetStockLocationPath";
 	public static readonly string StocklogFieldNameId = "Id";
 	public static readonly string StocklogFieldTypeId = "int";
 	public static readonly string StocklogFieldNameProductId = "product_Id";

@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--#region General usage Icons-->
     <!--#region Edit Icon-->
@@ -11,70 +11,70 @@
     <Geometry x:Key="editGeometry6">F1 M25,25z M0,0z M20.349848,5.3483064C16.350012,9.3889296 12.350177,13.429553 8.3503424,17.470176 8.6572328,17.812531 8.9641232,18.154886 9.2710134,18.497242 13.271277,14.434943 17.271541,10.372644 21.271804,6.3103447 20.964487,5.9896646 20.657166,5.6689866 20.349848,5.3483064z</Geometry>
     <Geometry x:Key="editGeometry7">F1 M25,25z M0,0z M18.7712,3.6376674C14.771395,7.6782903 10.771591,11.718914 6.7717865,15.759537 7.0786463,16.101924 7.3855059,16.44431 7.6923657,16.786695 11.69263,12.724365 15.692893,8.6620348 19.693159,4.5997058 19.385838,4.2790256 19.078519,3.9583476 18.7712,3.6376674z</Geometry>
     <DrawingGroup x:Key="editDrawingGroup"
-            ClipGeometry="M0,0 V25 H25 V0 H0 Z">
+                  ClipGeometry="M0,0 V25 H25 V0 H0 Z">
         <GeometryDrawing Brush="#FFFFF6D5"
-                Geometry="{StaticResource editGeometry1}"/>
+                         Geometry="{StaticResource editGeometry1}"/>
         <GeometryDrawing Brush="#FFFFD42A"
-                Geometry="{StaticResource editGeometry2}"/>
+                         Geometry="{StaticResource editGeometry2}"/>
         <GeometryDrawing Brush="#FFFFAA00"
-                Geometry="{StaticResource editGeometry3}"/>
+                         Geometry="{StaticResource editGeometry3}"/>
         <GeometryDrawing Brush="#FF010101"
-                Geometry="{StaticResource editGeometry4}"/>
+                         Geometry="{StaticResource editGeometry4}"/>
         <GeometryDrawing Brush="#FF808080"
-                Geometry="{StaticResource editGeometry5}"/>
+                         Geometry="{StaticResource editGeometry5}"/>
         <GeometryDrawing Brush="#FFFFFF00"
-                Geometry="{StaticResource editGeometry6}"/>
+                         Geometry="{StaticResource editGeometry6}"/>
         <GeometryDrawing Brush="#FFFFE900"
-                Geometry="{StaticResource editGeometry7}"/>
+                         Geometry="{StaticResource editGeometry7}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Edit"
-            Drawing="{StaticResource editDrawingGroup}"/>
+                  Drawing="{StaticResource editDrawingGroup}"/>
     <!--#endregion-->
 
     <!--  region Export Icon  -->
     <Geometry x:Key="ExportGeometry">F1 M20,20z M0,0z M23.471008,4.2230202L32,12.800012 23.471008,20.360005 23.471008,16.322012C23.471008,16.322012 8.7430115,12.294 5.0610046,20.360005 5.0610046,18.343985 6.3990173,8.2560073 23.471008,8.2560073z M0,0L21.334015,0 21.334015,2.1340014 21.334015,4.2690102 19.200012,4.2690102 19.200012,2.1340014 2.1340027,2.1340014 2.1340027,23.466997 19.200012,23.466997 19.200012,21.331989 21.334015,21.331989 21.334015,23.466997 21.334015,25.601 19.200012,25.601 0,25.601 0,23.466997 0,2.1340014z</Geometry>
     <DrawingGroup x:Key="ExportDrawingGroup"
-            ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                  ClipGeometry="M0,0 V20 H20 V0 H0 Z">
         <DrawingGroup Opacity="1"
-                Transform="0.625,0,0,0.625,0,1.99968755245209">
+                      Transform="0.625,0,0,0.625,0,1.99968755245209">
             <GeometryDrawing Brush="#FFFF0202"
-                    Geometry="{StaticResource ExportGeometry}"/>
+                             Geometry="{StaticResource ExportGeometry}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Export"
-            Drawing="{StaticResource ExportDrawingGroup}"/>
+                  Drawing="{StaticResource ExportDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Import Icon-->
     <Geometry x:Key="ImportGeometry">F1 M20,20z M0,0z M13.594002,4.2219891L13.594002,8.255989C30.661003,8.255989 32,18.345018 32,20.360004 28.319,12.293011 13.594002,16.32399 13.594002,16.32399L13.594002,20.360004 5.0610008,12.798993z M0,0L21.333,0 21.333,2.1329974 21.333,4.2670025 19.201,4.2670025 19.201,2.1329974 2.1330032,2.1329974 2.1330032,23.467003 19.201,23.467003 19.201,21.332998 21.333,21.332998 21.333,23.467003 21.333,25.6 19.201,25.6 0,25.6 0,23.467003 0,2.1329974z</Geometry>
     <DrawingGroup x:Key="ImportDrawingGroup"
-            ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                  ClipGeometry="M0,0 V20 H20 V0 H0 Z">
         <DrawingGroup Opacity="1"
-                Transform="0.625,0,0,0.625,0,1.99999988079071">
+                      Transform="0.625,0,0,0.625,0,1.99999988079071">
             <GeometryDrawing Brush="#FF09EF3E"
-                    Geometry="{StaticResource ImportGeometry}"/>
+                             Geometry="{StaticResource ImportGeometry}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Import"
-            Drawing="{StaticResource ImportDrawingGroup}"/>
+                  Drawing="{StaticResource ImportDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Report Icon-->
     <Geometry x:Key="ReportGeometry">F1 M20,20z M0,0z M16,20.866L22,20.866 22,27.866001 16,27.866001z M0,15.866L6,15.866 6,27.866001 0,27.866001z M24,12.865999L30,12.865999 30,27.866001 24,27.866001z M8,10.865999L14,10.865999 14,27.866001 8,27.866001z M10.733002,0C11.911011,-2.1827873E-08 12.865997,0.95501717 12.865997,2.1330262 12.865997,2.2140201 12.851013,2.2900089 12.84201,2.368012L18.178009,5.6400154C18.498993,5.4490059 18.868011,5.3330086 19.265991,5.3330086 19.794006,5.3330086 20.269012,5.5310067 20.640991,5.8470162L25.670013,3.2369998C25.670013,3.2239993 25.666992,3.2120059 25.666992,3.1990054 25.666992,2.0209964 26.622009,1.0660096 27.799011,1.0660096 28.97699,1.0660096 29.933014,2.0209964 29.933014,3.1990054 29.933014,4.3770145 28.97699,5.3330086 27.799011,5.3330086 27.019012,5.3330086 26.34201,4.9089974 25.971008,4.2830203L21.261017,6.7290047C21.346008,6.9580086 21.399994,7.206025 21.399994,7.4660042 21.399994,8.6440137 20.444,9.6000074 19.265991,9.6000074 18.088013,9.6000074 17.132996,8.6440137 17.132996,7.4660042 17.132996,7.0850228 17.240997,6.7320259 17.416016,6.4230049L12.455994,3.3820194C12.067017,3.9150091 11.442993,4.2669986 10.733002,4.2669986 9.9580078,4.2669986 9.2870178,3.8500064 8.9120178,3.2310184L3.7640073,7.0920113C4.1140137,7.4730233 4.3330078,7.9770211 4.3330078,8.5330213 4.3330078,9.7109998 3.3779907,10.666017 2.2000122,10.666017 1.0220032,10.666017 0.066009521,9.7109998 0.066009611,8.5330213 0.066009521,7.3550118 1.0220032,6.3990181 2.2000122,6.3990181 2.4049988,6.3990181 2.598999,6.4370125 2.7879944,6.4920052L8.598999,2.1330262C8.598999,0.95501717,9.5549927,-2.1827873E-08,10.733002,0z</Geometry>
     <DrawingGroup x:Key="ReportDrawingGroup"
-            ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                  ClipGeometry="M0,0 V20 H20 V0 H0 Z">
         <DrawingGroup.Transform>
             <TranslateTransform X="0"
-                    Y="3.7417338984801856E-16"/>
+                                Y="3.7417338984801856E-16"/>
         </DrawingGroup.Transform>
         <DrawingGroup Opacity="1"
-                Transform="0.666666666666667,0,0,0.666666666666667,0,0.711332956949871">
+                      Transform="0.666666666666667,0,0,0.666666666666667,0,0.711332956949871">
             <GeometryDrawing Brush="#FF002BBD"
-                    Geometry="{StaticResource ReportGeometry}"/>
+                             Geometry="{StaticResource ReportGeometry}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Report"
-            Drawing="{StaticResource ReportDrawingGroup}"/>
+                  Drawing="{StaticResource ReportDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region DeveloperLogo-->
@@ -99,50 +99,50 @@
     <Geometry x:Key="HNSoftwareLogoGeometry19">F1 M48.370622,25.085972z M0,0z M41.362791,0L41.362791,0.72807097 41.362791,1.4436699 42.097031,1.5177789C42.978124,1.6164929 43.443096,1.8385889 43.761275,2.3074864 43.981545,2.62831 43.993895,2.9985256 44.055075,6.971804 44.128465,11.759479 44.140745,11.882883 44.936135,12.290083L45.315454,12.487466 45.004077,12.706177C44.844973,12.829578 44.699013,12.948343 44.669044,12.969714 44.634544,12.994294 44.483268,13.141514 44.360896,13.351281 44.128384,13.733802 44.11626,14.06694 44.055075,18.077236 43.993835,22.05051 43.981515,22.42055 43.761275,22.741372 43.443108,23.210265 42.97812,23.432547 42.097031,23.531256L41.362791,23.605246 41.362791,24.345617 41.362791,25.085972 42.366283,24.999582C43.736866,24.876204 44.246292,24.73822 44.858163,24.182941 45.824929,23.331525 45.817196,23.21041 45.866141,18.509121 45.878391,16.238677 45.927381,14.252122 45.951811,14.091711 46.07417,13.548776 46.441305,13.326586 47.236741,13.326586L47.971,13.326586 47.971,12.5246 47.971,11.722421 47.236746,11.722421C46.44131,11.722421 46.074197,11.500409 45.951816,10.957477 45.927406,10.796982 45.878436,8.8102522 45.866146,6.5398052 45.829429,2.6529039 45.817262,2.3691565 45.572515,1.8509053 45.30329,1.2586133 44.60572,0.5551865 44.067276,0.34541799 43.895953,0.27138058 43.443096,0.1728111 43.075974,0.12345395 42.708852,0.0740968 42.170424,0.02463832 41.876727,0.01229116z</Geometry>
     <Geometry x:Key="HNSoftwareLogoGeometry20">F1 M48.370622,25.085972z M0,0z M19.08375,15.579417L18.863444,16.184035C18.692119,16.677605 18.569862,16.825666 18.190499,16.973744 17.749955,17.158835 17.811121,17.171301 19.756869,17.171301 21.70262,17.171301 21.763783,17.158821 21.323238,16.973744 20.943876,16.825745 20.821447,16.677605 20.65012,16.184035L20.429813,15.579417 19.756869,15.579417z</Geometry>
     <DrawingGroup x:Key="HNSoftwareLogoDrawingGroup"
-            ClipGeometry="M0,0 V25.085972 H48.370622 V0 H0 Z">
+                  ClipGeometry="M0,0 V25.085972 H48.370622 V0 H0 Z">
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry1}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry1}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry2}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry2}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry3}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry3}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry4}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry4}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry5}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry5}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry6}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry6}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry7}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry7}"/>
         <GeometryDrawing Brush="#FF37B5FD"
-                Geometry="{StaticResource HNSoftwareLogoGeometry8}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry8}"/>
         <GeometryDrawing Brush="#FF0196B1"
-                Geometry="{StaticResource HNSoftwareLogoGeometry9}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry9}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry10}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry10}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry11}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry11}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry12}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry12}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry13}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry13}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry14}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry14}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry15}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry15}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry16}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry16}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry17}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry17}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry18}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry18}"/>
         <GeometryDrawing Brush="#FF0196B1"
-                Geometry="{StaticResource HNSoftwareLogoGeometry19}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry19}"/>
         <GeometryDrawing Brush="#FF034BAC"
-                Geometry="{StaticResource HNSoftwareLogoGeometry20}"/>
+                         Geometry="{StaticResource HNSoftwareLogoGeometry20}"/>
     </DrawingGroup>
     <DrawingImage x:Key="DevLogo"
-            Drawing="{StaticResource HNSoftwareLogoDrawingGroup}"/>
+                  Drawing="{StaticResource HNSoftwareLogoDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Application logo-->
@@ -165,7 +165,7 @@
     <Geometry x:Key="AppLogoGeometry17">F1 M28.145608,26.105004z M0,0z M24.821155,16.026536C24.605124,16.026536 24.420551,15.950006 24.267485,15.79694 24.11442,15.642788 24.037888,15.458214 24.037888,15.24327L24.037888,14.347712C24.037888,14.292352 24.057418,14.246185 24.096508,14.209275 24.135588,14.170195 24.181748,14.150665 24.234943,14.150665L24.239843,14.150665C24.293033,14.150665 24.339203,14.170195 24.37828,14.209275 24.41736,14.246185 24.43689,14.292345 24.43689,14.347712L24.436815,15.24327C24.436815,15.349656 24.474275,15.440303 24.549183,15.515207 24.624083,15.590107 24.714732,15.627576 24.821119,15.627576 24.927506,15.627576 25.018161,15.590116 25.093056,15.515207 25.167966,15.440307 25.205423,15.349656 25.205423,15.24327L25.205423,14.347712C25.205423,14.292352 25.224953,14.246185 25.264043,14.209275 25.303123,14.170195 25.349823,14.150665 25.404099,14.150665L25.407399,14.150665C25.462759,14.150665 25.508927,14.170195 25.545836,14.209275 25.584916,14.246185 25.604446,14.292345 25.604446,14.347712L25.604446,15.24327C25.604446,15.349656 25.641906,15.440303 25.716815,15.515207 25.791715,15.590107 25.882367,15.627576 25.988752,15.627576 26.096221,15.627576 26.187402,15.590116 26.262307,15.515207 26.337217,15.440307 26.374674,15.349656 26.374674,15.24327L26.374674,14.347712C26.374674,14.292352 26.394204,14.246185 26.433294,14.209275 26.470204,14.170195 26.516374,14.150665 26.571729,14.150665L26.575029,14.150665C26.629309,14.150665 26.676001,14.170195 26.715087,14.209275 26.753077,14.247275 26.772077,14.293435 26.772077,14.347712L26.772077,15.24327C26.772077,15.458214 26.695547,15.642788 26.542479,15.79694 26.389413,15.950006 26.204837,16.026536 25.988809,16.026536 25.730443,16.026536 25.536179,15.940776 25.405911,15.769252 25.274554,15.940773 25.079681,16.026536 24.821313,16.026536z</Geometry>
     <Geometry x:Key="AppLogoGeometry18">F1 M28.145608,26.105004z M0,0z M25.425266,18.280973C25.166898,18.280973 24.946004,18.372693 24.762542,18.556149 24.57908,18.739612 24.487291,18.960505 24.487291,19.218872 24.487291,19.477239 24.579081,19.698208 24.762542,19.881671 24.946004,20.065131 25.166898,20.15685 25.425266,20.15685 25.627182,20.15685 25.809542,20.09764 25.97238,19.979308 26.133043,19.865322 26.245436,19.715544 26.309486,19.529911 26.318186,19.506031 26.322536,19.482681 26.322536,19.459881 26.322536,19.421881 26.310026,19.385491 26.285056,19.35075 26.244896,19.2943 26.191176,19.26615 26.123871,19.26615 26.029421,19.26615 25.966398,19.31063 25.934919,19.399651 25.898009,19.506038 25.833458,19.592869 25.741183,19.660174 25.646743,19.728564 25.541442,19.762749 25.425287,19.762749 25.250509,19.762749 25.121862,19.710639 25.039359,19.60642 25.092549,19.58145 25.272779,19.499504 25.579997,19.36055 25.827507,19.248737 26.027267,19.158625 26.179244,19.090233 26.230274,19.067433 26.264984,19.030583 26.28344,18.97956 26.29214,18.95676 26.29649,18.93395 26.29649,18.91115 26.29649,18.88293 26.28999,18.85523 26.2769,18.82809 26.20308,18.665251 26.089696,18.53386 25.93663,18.433986 25.782478,18.331941 25.612021,18.280973 25.425302,18.280973z M25.425266,18.683171C25.592445,18.683171,25.716205,18.730931,25.796539,18.826467L24.88625,19.235145 24.88625,19.223805C24.88625,19.073996 24.93836,18.946418 25.042576,18.841118 25.147879,18.735817 25.275456,18.683169 25.425266,18.683169z</Geometry>
     <DrawingGroup x:Key="AppLogoDrawingGroup"
-            ClipGeometry="M0,0 V26.105004 H28.145608 V0 H0 Z">
+                  ClipGeometry="M0,0 V26.105004 H28.145608 V0 H0 Z">
         <GeometryDrawing Brush="#FFFFFFFF">
             <GeometryDrawing.Pen>
                 <Pen
@@ -177,7 +177,7 @@
                     Thickness="0.0029098">
                     <Pen.DashStyle>
                         <DashStyle Dashes="18.0000687332463 7.00003436662313 1 7.00003436662313"
-                                Offset="0"/>
+                                   Offset="0"/>
                     </Pen.DashStyle>
                 </Pen>
             </GeometryDrawing.Pen>
@@ -189,44 +189,44 @@
             </GeometryDrawing.Geometry>
         </GeometryDrawing>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry1}"/>
+                         Geometry="{StaticResource AppLogoGeometry1}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry2}"/>
+                         Geometry="{StaticResource AppLogoGeometry2}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry3}"/>
+                         Geometry="{StaticResource AppLogoGeometry3}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry4}"/>
+                         Geometry="{StaticResource AppLogoGeometry4}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry5}"/>
+                         Geometry="{StaticResource AppLogoGeometry5}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry6}"/>
+                         Geometry="{StaticResource AppLogoGeometry6}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry7}"/>
+                         Geometry="{StaticResource AppLogoGeometry7}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry8}"/>
+                         Geometry="{StaticResource AppLogoGeometry8}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry9}"/>
+                         Geometry="{StaticResource AppLogoGeometry9}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry10}"/>
+                         Geometry="{StaticResource AppLogoGeometry10}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry11}"/>
+                         Geometry="{StaticResource AppLogoGeometry11}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry12}"/>
+                         Geometry="{StaticResource AppLogoGeometry12}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry13}"/>
+                         Geometry="{StaticResource AppLogoGeometry13}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry14}"/>
+                         Geometry="{StaticResource AppLogoGeometry14}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry15}"/>
+                         Geometry="{StaticResource AppLogoGeometry15}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry16}"/>
+                         Geometry="{StaticResource AppLogoGeometry16}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry17}"/>
+                         Geometry="{StaticResource AppLogoGeometry17}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource AppLogoGeometry18}"/>
+                         Geometry="{StaticResource AppLogoGeometry18}"/>
     </DrawingGroup>
     <DrawingImage x:Key="AppLogo"
-            Drawing="{StaticResource AppLogoDrawingGroup}"/>
+                  Drawing="{StaticResource AppLogoDrawingGroup}"/>
     <!--#endregion-->
     <!--#endregion-->
 
@@ -308,37 +308,37 @@
     <Geometry x:Key="TimeGeometry74">F0 M200,200z M0,0z M153.63962,153C153.47755,153.005 153.31842,153.044 153.17283,153.11523 152.61317,153.38841 152.37668,154.06135 152.64158,154.62695 152.90684,155.19253 153.57552,155.44122 154.14353,155.18555L154.20603,155.15625C154.75799,154.86584 154.97377,154.18456 154.69041,153.62695 154.49031,153.23211 154.08103,152.98791 153.63962,153z M153.65132,153.0723C154.06397,153.0609 154.44664,153.28914 154.63375,153.65823 154.89736,154.17911 154.69565,154.81466 154.18062,155.08597L154.12402,155.11327C153.59264,155.35386 152.96602,155.12127 152.71777,154.59179 152.46973,154.06245 152.69157,153.43257 153.21582,153.17772 153.35184,153.11202 153.5003,153.07608 153.65136,153.07226z</Geometry>
     <Geometry x:Key="TimeGeometry75">F0 M200,200z M0,0z M153.65134,153.07227A1.0691448,1.0660804,65.713524,0,0,153.2158,153.17773A1.0691448,1.0660804,65.713524,0,0,152.71775,154.5918A1.0691448,1.0660804,65.713524,0,0,154.124,155.11328L154.1806,155.08598A1.0691448,1.0660804,65.713524,0,0,154.63373,153.65824A1.0691448,1.0660804,65.713524,0,0,153.6513,153.07231z</Geometry>
     <DrawingGroup x:Key="TimeDrawingGroup"
-            ClipGeometry="M0,0 V200 H200 V0 H0 Z">
+                  ClipGeometry="M0,0 V200 H200 V0 H0 Z">
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Geometry="{StaticResource TimeGeometry1}">
                 <GeometryDrawing.Brush>
                     <RadialGradientBrush Center="416.92,355.35"
-                            GradientOrigin="416.92,355.35"
-                            MappingMode="Absolute"
-                            Opacity="1"
-                            RadiusX="51.221"
-                            RadiusY="51.221"
-                            SpreadMethod="Pad">
+                                         GradientOrigin="416.92,355.35"
+                                         MappingMode="Absolute"
+                                         Opacity="1"
+                                         RadiusX="51.221"
+                                         RadiusY="51.221"
+                                         SpreadMethod="Pad">
                         <GradientStop Offset="0"
-                                Color="#FF000000"/>
+                                      Color="#FF000000"/>
                         <GradientStop Offset="0.86"
-                                Color="#7F000000"/>
+                                      Color="#7F000000"/>
                         <GradientStop Offset="1"
-                                Color="#00000000"/>
+                                      Color="#00000000"/>
                     </RadialGradientBrush>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FFFFFFFF"
-                    Geometry="{StaticResource TimeGeometry2}"/>
+                             Geometry="{StaticResource TimeGeometry2}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25"/>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Geometry="{StaticResource TimeGeometry3}">
                 <GeometryDrawing.Brush>
                     <SolidColorBrush Opacity="0.11373"
-                            Color="#FF282D30"/>
+                                     Color="#FF282D30"/>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
@@ -346,7 +346,7 @@
             <GeometryDrawing Geometry="{StaticResource TimeGeometry4}">
                 <GeometryDrawing.Brush>
                     <SolidColorBrush Opacity="0.10588"
-                            Color="#FF000000"/>
+                                     Color="#FF000000"/>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
@@ -354,247 +354,247 @@
             <GeometryDrawing Geometry="{StaticResource TimeGeometry5}">
                 <GeometryDrawing.Brush>
                     <SolidColorBrush Opacity="0.10631"
-                            Color="#FF000000"/>
+                                     Color="#FF000000"/>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry6}"/>
+                             Geometry="{StaticResource TimeGeometry6}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry7}"/>
+                             Geometry="{StaticResource TimeGeometry7}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry8}"/>
+                             Geometry="{StaticResource TimeGeometry8}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry9}"/>
+                             Geometry="{StaticResource TimeGeometry9}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry10}"/>
+                             Geometry="{StaticResource TimeGeometry10}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry11}"/>
+                             Geometry="{StaticResource TimeGeometry11}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry12}"/>
+                             Geometry="{StaticResource TimeGeometry12}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry13}"/>
+                             Geometry="{StaticResource TimeGeometry13}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry14}"/>
+                             Geometry="{StaticResource TimeGeometry14}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry15}"/>
+                             Geometry="{StaticResource TimeGeometry15}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry16}"/>
+                             Geometry="{StaticResource TimeGeometry16}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry17}"/>
+                             Geometry="{StaticResource TimeGeometry17}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry18}"/>
+                             Geometry="{StaticResource TimeGeometry18}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry19}"/>
+                             Geometry="{StaticResource TimeGeometry19}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry20}"/>
+                             Geometry="{StaticResource TimeGeometry20}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry21}"/>
+                             Geometry="{StaticResource TimeGeometry21}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry22}"/>
+                             Geometry="{StaticResource TimeGeometry22}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry23}"/>
+                             Geometry="{StaticResource TimeGeometry23}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry24}"/>
+                             Geometry="{StaticResource TimeGeometry24}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry25}"/>
+                             Geometry="{StaticResource TimeGeometry25}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry26}"/>
+                             Geometry="{StaticResource TimeGeometry26}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry27}"/>
+                             Geometry="{StaticResource TimeGeometry27}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry28}"/>
+                             Geometry="{StaticResource TimeGeometry28}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry29}"/>
+                             Geometry="{StaticResource TimeGeometry29}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry30}"/>
+                             Geometry="{StaticResource TimeGeometry30}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry31}"/>
+                             Geometry="{StaticResource TimeGeometry31}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry32}"/>
+                             Geometry="{StaticResource TimeGeometry32}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry33}"/>
+                             Geometry="{StaticResource TimeGeometry33}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry34}"/>
+                             Geometry="{StaticResource TimeGeometry34}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry35}"/>
+                             Geometry="{StaticResource TimeGeometry35}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry36}"/>
+                             Geometry="{StaticResource TimeGeometry36}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry37}"/>
+                             Geometry="{StaticResource TimeGeometry37}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry38}"/>
+                             Geometry="{StaticResource TimeGeometry38}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry39}"/>
+                             Geometry="{StaticResource TimeGeometry39}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry40}"/>
+                             Geometry="{StaticResource TimeGeometry40}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry41}"/>
+                             Geometry="{StaticResource TimeGeometry41}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry42}"/>
+                             Geometry="{StaticResource TimeGeometry42}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry43}"/>
+                             Geometry="{StaticResource TimeGeometry43}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry44}"/>
+                             Geometry="{StaticResource TimeGeometry44}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry45}"/>
+                             Geometry="{StaticResource TimeGeometry45}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry46}"/>
+                             Geometry="{StaticResource TimeGeometry46}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry47}"/>
+                             Geometry="{StaticResource TimeGeometry47}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry48}"/>
+                             Geometry="{StaticResource TimeGeometry48}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry49}"/>
+                             Geometry="{StaticResource TimeGeometry49}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry50}"/>
+                             Geometry="{StaticResource TimeGeometry50}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry51}"/>
+                             Geometry="{StaticResource TimeGeometry51}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry52}"/>
+                             Geometry="{StaticResource TimeGeometry52}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry53}"/>
+                             Geometry="{StaticResource TimeGeometry53}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry54}"/>
+                             Geometry="{StaticResource TimeGeometry54}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry55}"/>
+                             Geometry="{StaticResource TimeGeometry55}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry56}"/>
+                             Geometry="{StaticResource TimeGeometry56}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry57}"/>
+                             Geometry="{StaticResource TimeGeometry57}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25"/>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF282D30"
-                    Geometry="{StaticResource TimeGeometry58}"/>
+                             Geometry="{StaticResource TimeGeometry58}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry59}"/>
+                             Geometry="{StaticResource TimeGeometry59}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FFEF2929"
-                    Geometry="{StaticResource TimeGeometry60}"/>
+                             Geometry="{StaticResource TimeGeometry60}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FFCC0000"
-                    Geometry="{StaticResource TimeGeometry61}"/>
+                             Geometry="{StaticResource TimeGeometry61}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Geometry="{StaticResource TimeGeometry62}">
                 <GeometryDrawing.Brush>
                     <LinearGradientBrush MappingMode="Absolute"
-                            Opacity="1"
-                            SpreadMethod="Pad"
-                            StartPoint="-66.487,57.046"
-                            EndPoint="-65.777,58.065">
+                                         Opacity="1"
+                                         SpreadMethod="Pad"
+                                         StartPoint="-66.487,57.046"
+                                         EndPoint="-65.777,58.065">
                         <GradientStop Offset="0"
-                                Color="#FFCC0000"/>
+                                      Color="#FFCC0000"/>
                         <GradientStop Offset="1"
-                                Color="#00CC0000"/>
+                                      Color="#00CC0000"/>
                     </LinearGradientBrush>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
@@ -603,15 +603,15 @@
             <GeometryDrawing Geometry="{StaticResource TimeGeometry63}">
                 <GeometryDrawing.Brush>
                     <LinearGradientBrush MappingMode="Absolute"
-                            Opacity="1"
-                            SpreadMethod="Pad"
-                            Transform="1.318,2.9207,-2.9207,1.318,409.08,270.65"
-                            StartPoint="-65.233,58.346"
-                            EndPoint="-65.842,57.819">
+                                         Opacity="1"
+                                         SpreadMethod="Pad"
+                                         Transform="1.318,2.9207,-2.9207,1.318,409.08,270.65"
+                                         StartPoint="-65.233,58.346"
+                                         EndPoint="-65.842,57.819">
                         <GradientStop Offset="0"
-                                Color="#FFFFFFFF"/>
+                                      Color="#FFFFFFFF"/>
                         <GradientStop Offset="1"
-                                Color="#00CC0000"/>
+                                      Color="#00CC0000"/>
                     </LinearGradientBrush>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
@@ -620,82 +620,82 @@
             <GeometryDrawing Geometry="{StaticResource TimeGeometry64}">
                 <GeometryDrawing.Brush>
                     <RadialGradientBrush Center="218.8,321.17"
-                            GradientOrigin="218.8,321.17"
-                            MappingMode="Absolute"
-                            Opacity="1"
-                            RadiusX="49.922"
-                            RadiusY="49.922"
-                            SpreadMethod="Pad"
-                            Transform="1.2471,-7.8267E-06,8.1335E-06,1.296,-222.87,-366.23">
+                                         GradientOrigin="218.8,321.17"
+                                         MappingMode="Absolute"
+                                         Opacity="1"
+                                         RadiusX="49.922"
+                                         RadiusY="49.922"
+                                         SpreadMethod="Pad"
+                                         Transform="1.2471,-7.8267E-06,8.1335E-06,1.296,-222.87,-366.23">
                         <GradientStop Offset="0"
-                                Color="#FF000000"/>
+                                      Color="#FF000000"/>
                         <GradientStop Offset="0.7"
-                                Color="#FFFFFFFF"/>
+                                      Color="#FFFFFFFF"/>
                         <GradientStop Offset="1"
-                                Color="#FF000000"/>
+                                      Color="#FF000000"/>
                     </RadialGradientBrush>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FFD2D2D2"
-                    Geometry="{StaticResource TimeGeometry65}"/>
+                             Geometry="{StaticResource TimeGeometry65}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry66}"/>
+                             Geometry="{StaticResource TimeGeometry66}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry67}"/>
+                             Geometry="{StaticResource TimeGeometry67}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry68}"/>
+                             Geometry="{StaticResource TimeGeometry68}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry69}"/>
+                             Geometry="{StaticResource TimeGeometry69}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry70}"/>
+                             Geometry="{StaticResource TimeGeometry70}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry71}"/>
+                             Geometry="{StaticResource TimeGeometry71}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry72}"/>
+                             Geometry="{StaticResource TimeGeometry72}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry73}"/>
+                             Geometry="{StaticResource TimeGeometry73}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Brush="#FF000000"
-                    Geometry="{StaticResource TimeGeometry74}"/>
+                             Geometry="{StaticResource TimeGeometry74}"/>
         </DrawingGroup>
         <DrawingGroup Transform="1,0,0,1,-56.249,-56.25">
             <GeometryDrawing Geometry="{StaticResource TimeGeometry75}">
                 <GeometryDrawing.Brush>
                     <LinearGradientBrush MappingMode="Absolute"
-                            Opacity="1"
-                            SpreadMethod="Pad"
-                            StartPoint="-65.303,59.091"
-                            EndPoint="-65.895,57.841">
+                                         Opacity="1"
+                                         SpreadMethod="Pad"
+                                         StartPoint="-65.303,59.091"
+                                         EndPoint="-65.895,57.841">
                         <GradientStop Offset="0"
-                                Color="#FFFFFFFF"/>
+                                      Color="#FFFFFFFF"/>
                         <GradientStop Offset="1"
-                                Color="#00FFFFFF"/>
+                                      Color="#00FFFFFF"/>
                     </LinearGradientBrush>
                 </GeometryDrawing.Brush>
             </GeometryDrawing>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Time"
-            Drawing="{StaticResource TimeDrawingGroup}"/>
+                  Drawing="{StaticResource TimeDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#endregion-->
@@ -721,74 +721,239 @@
     <Geometry x:Key="inventoryGeometry17">F1 M1024,1024z M0,0z M173.09,387.35L241.004,387.35 241.004,455.264 173.09,455.264z M173.09,526.63L241.004,526.63 241.004,594.544 173.09,594.544z</Geometry>
     <Geometry x:Key="inventoryGeometry18">F1 M1024,1024z M0,0z M166.136,380.396L166.136,462.216 247.958,462.216 247.958,380.396 166.136,380.396z M234.052,448.31L180.042,448.31 180.042,394.302 234.052,394.302 234.052,448.31z M166.136,519.676L166.136,601.496 247.958,601.496 247.958,519.676 166.136,519.676z M234.052,587.59L180.042,587.59 180.042,533.582 234.052,533.582 234.052,587.59z M443.558,264.914L457.464,264.914 457.464,251.008 443.558,251.008 443.558,264.914z M415.746,264.914L429.652,264.914 429.652,251.008 415.746,251.008 415.746,264.914z M387.932,264.914L401.838,264.914 401.838,251.008 387.932,251.008 387.932,264.914z M360.12,264.914L374.026,264.914 374.026,251.008 360.12,251.008 360.12,264.914z M304.494,264.914L318.4,264.914 318.4,251.008 304.494,251.008 304.494,264.914z M332.306,264.914L346.212,264.914 346.212,251.008 332.306,251.008 332.306,264.914z M554.81,264.914L568.716,264.914 568.716,251.008 554.81,251.008 554.81,264.914z M471.372,264.914L485.278,264.914 485.278,251.008 471.372,251.008 471.372,264.914z M582.624,251.008L582.624,264.914 596.53,264.914 596.53,251.008 582.624,251.008z M499.184,264.914L513.09,264.914 513.09,251.008 499.184,251.008 499.184,264.914z M526.998,264.914L540.904,264.914 540.904,251.008 526.998,251.008 526.998,264.914z M304.494,294.52L592.41,294.52 592.41,308.426 304.494,308.426z M415.746,406.502L429.652,406.502 429.652,392.596 415.746,392.596 415.746,406.502z M387.932,406.502L401.838,406.502 401.838,392.596 387.932,392.596 387.932,406.502z M360.12,406.502L374.026,406.502 374.026,392.596 360.12,392.596 360.12,406.502z M332.306,406.502L346.212,406.502 346.212,392.596 332.306,392.596 332.306,406.502z M304.494,406.502L318.4,406.502 318.4,392.596 304.494,392.596 304.494,406.502z M554.81,406.502L568.716,406.502 568.716,392.596 554.81,392.596 554.81,406.502z M582.624,392.596L582.624,406.502 596.53,406.502 596.53,392.596 582.624,392.596z M526.998,406.502L540.904,406.502 540.904,392.596 526.998,392.596 526.998,406.502z M471.372,406.502L485.278,406.502 485.278,392.596 471.372,392.596 471.372,406.502z M443.558,406.502L457.464,406.502 457.464,392.596 443.558,392.596 443.558,406.502z M499.184,406.502L513.09,406.502 513.09,392.596 499.184,392.596 499.184,406.502z M304.494,436.11L592.41,436.11 592.41,450.016 304.494,450.016z M415.746,548.094L429.652,548.094 429.652,534.188 415.746,534.188 415.746,548.094z M360.12,548.094L374.026,548.094 374.026,534.188 360.12,534.188 360.12,548.094z M387.932,548.094L401.838,548.094 401.838,534.188 387.932,534.188 387.932,548.094z M582.624,534.188L582.624,548.094 596.53,548.094 596.53,534.188 582.624,534.188z M332.306,548.094L346.212,548.094 346.212,534.188 332.306,534.188 332.306,548.094z M304.494,548.094L318.4,548.094 318.4,534.188 304.494,534.188 304.494,548.094z M554.81,548.094L568.716,548.094 568.716,534.188 554.81,534.188 554.81,548.094z M526.998,548.094L540.904,548.094 540.904,534.188 526.998,534.188 526.998,548.094z M471.372,548.094L485.278,548.094 485.278,534.188 471.372,534.188 471.372,548.094z M443.558,548.094L457.464,548.094 457.464,534.188 443.558,534.188 443.558,548.094z M499.184,548.094L513.09,548.094 513.09,534.188 499.184,534.188 499.184,548.094z M304.494,577.702L730.226,577.702 730.226,591.608 304.494,591.608z M270.412,228.53L212.512,281.604 198.992,265.03 188.218,273.822 211.046,301.812 279.808,238.784z</Geometry>
     <DrawingGroup x:Key="inventoryDrawingGroup"
-            ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                  ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry1}"/>
+                         Geometry="{StaticResource inventoryGeometry1}"/>
         <GeometryDrawing Brush="#FFDFDFDF"
-                Geometry="{StaticResource inventoryGeometry2}"/>
+                         Geometry="{StaticResource inventoryGeometry2}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry3}"/>
+                         Geometry="{StaticResource inventoryGeometry3}"/>
         <GeometryDrawing Brush="#FFDFDFDF"
-                Geometry="{StaticResource inventoryGeometry4}"/>
+                         Geometry="{StaticResource inventoryGeometry4}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry5}"/>
+                         Geometry="{StaticResource inventoryGeometry5}"/>
         <GeometryDrawing Brush="#FFDFDFDF"
-                Geometry="{StaticResource inventoryGeometry6}"/>
+                         Geometry="{StaticResource inventoryGeometry6}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry7}"/>
+                         Geometry="{StaticResource inventoryGeometry7}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry8}"/>
+                         Geometry="{StaticResource inventoryGeometry8}"/>
         <GeometryDrawing Brush="#FFFFFFFF"
-                Geometry="{StaticResource inventoryGeometry9}"/>
+                         Geometry="{StaticResource inventoryGeometry9}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry10}"/>
+                         Geometry="{StaticResource inventoryGeometry10}"/>
         <GeometryDrawing Brush="#FFFFD452"
-                Geometry="{StaticResource inventoryGeometry11}"/>
+                         Geometry="{StaticResource inventoryGeometry11}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry12}"/>
+                         Geometry="{StaticResource inventoryGeometry12}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry13}"/>
+                         Geometry="{StaticResource inventoryGeometry13}"/>
         <GeometryDrawing Brush="#FFF58E6F"
-                Geometry="{StaticResource inventoryGeometry14}"/>
+                         Geometry="{StaticResource inventoryGeometry14}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry15}"/>
+                         Geometry="{StaticResource inventoryGeometry15}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry16}"/>
+                         Geometry="{StaticResource inventoryGeometry16}"/>
         <GeometryDrawing Brush="#FFF58E6F"
-                Geometry="{StaticResource inventoryGeometry17}"/>
+                         Geometry="{StaticResource inventoryGeometry17}"/>
         <GeometryDrawing Brush="#FF4A555F"
-                Geometry="{StaticResource inventoryGeometry18}"/>
+                         Geometry="{StaticResource inventoryGeometry18}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Inventory"
-            Drawing="{StaticResource inventoryDrawingGroup}"/>
+                  Drawing="{StaticResource inventoryDrawingGroup}"/>
+    <!--#endregion-->
+
+    <!--#region Invntory Check icon -->
+    <Geometry x:Key="inventorycheckGeometry1">F1 M25,24.173277z M0,0z M97.563926,166.59453L95.404926,166.59453 95.404926,158.21253C95.404926,157.02078 95.685126,155.41104 95.296446,154.27602 94.759956,152.70937 90.491256,152.56691 89.464926,153.65748 88.490346,154.69306 89.054926,157.74753 89.054926,159.10153L89.054926,174.46853 89.054926,235.30153C87.734066,235.30153 86.126296,235.09423 84.869506,235.58905 84.254496,235.83119 83.963606,236.75158 84.638926,237.12363 85.462346,237.57726 87.110136,237.45904 88.038926,237.46053 90.570756,237.46453 93.129716,237.56628 95.658926,237.45553 96.081696,237.43703 96.769716,237.43273 97.127846,237.1839 97.629156,236.83553 97.522186,235.75412 97.026916,235.45127 96.606926,235.19444 95.873696,235.25 95.404926,235.30153L95.404926,228.82453 160.93693,228.82453 160.93693,235.30153C160.45695,235.22033 159.50732,235.16202 159.1212,235.5228 158.62483,235.98659 158.73013,237.07248 159.42028,237.27846 160.57467,237.623 162.02944,237.46053 163.22293,237.46053 165.09629,237.46053 167.07739,237.6438 168.93793,237.42423 169.71732,237.33223 171.07105,237.56816 171.69156,237.00786 172.26413,236.49084 171.83846,235.7304 171.22197,235.5306 170.01484,235.13939 168.53841,235.30149 167.28693,235.30149L167.28693,174.84953 167.28693,159.35553C167.28693,157.93123 167.8658,154.83144 166.92445,153.68374 166.02849,152.5914 161.70905,152.72709 161.1582,154.14902 160.77966,155.12617 161.0639,156.66393 161.0639,157.70453L161.0639,163.80053C161.0639,164.68354,160.82845,165.75015,161.0639,166.59453L158.9049,166.59453 158.9049,160.37153C158.9049,159.5059 159.05042,158.44389 158.45168,157.72844 157.61525,156.72897 155.86945,157.06953 154.7139,157.06953L144.9349,157.06953C144.9349,155.90558 145.26652,154.24775 144.16741,153.4758 143.25887,152.8377 141.67048,153.13253 140.6169,153.13253L131.8539,153.13253C130.75476,153.13253 129.09397,152.81605 128.1949,153.58438 127.23145,154.40774 127.5359,156.07074 127.5359,157.19653L127.5359,166.59453 126.0119,166.59453 126.0119,151.10053C126.0119,149.55299 126.58923,146.52826 125.56005,145.27185 124.51489,143.99592 121.41897,144.62353 119.9159,144.62353L104.0409,144.62353C102.44096,144.62353 98.985536,143.91343 97.961846,145.39739 97.002026,146.78876 97.563896,149.72325 97.563896,151.35453L97.563896,166.59453 M107.4699,147.16353L107.4699,153.64053C107.4699,154.67787 107.4538,155.75238 108.6129,156.19405 109.79133,156.64308 110.87754,155.52501 112.0419,155.58042 113.34154,155.64222 115.08772,157.16259 116.11942,155.65922 116.5672,155.00672 116.3599,153.88601 116.3599,153.13254L116.3599,147.16354 123.3449,147.16354 123.3449,166.59454 100.2309,166.59454 100.2309,153.38654C100.2309,151.43819 99.805946,148.90384 100.3579,147.03654 102.54636,147.55756 105.22186,147.16354 107.4699,147.16354 M114.4549,147.29054L114.4549,154.27554 111.9149,153.58831 109.5019,154.27554 109.5019,147.29054 114.4549,147.29054 M93.118896,155.16454L93.118896,235.30154 91.213896,235.30154 91.213896,155.16454 93.118896,155.16454 M165.1279,155.16454L165.1279,210.53654 165.1279,227.42754C165.1279,229.82089,165.67818,233.01029,165.0009,235.30154L163.2229,235.30154 163.2229,155.16454 165.1279,155.16454 M142.5219,155.54554L142.5219,166.59454 129.9489,166.59454 129.9489,155.54554 142.5219,155.54554 M100.4849,159.35554L100.4849,159.73654 100.6119,159.73654 100.4849,159.35554 M156.6189,159.48254C156.09788,161.671,156.4919,164.3465,156.4919,166.59454L144.9349,166.59454C144.9349,164.3859,144.43669,161.47062,145.0619,159.35554L149.1259,159.48254 156.6189,159.48254 M116.7699,161.89906C116.17878,162.26048 116.08722,164.41261 116.66897,164.81301 116.96026,165.01349 117.42349,164.94339 117.7569,164.94354 118.59841,164.94392 120.43252,165.2888 121.14552,164.81301 121.65289,164.47444 121.6529,162.23763 121.14552,161.89906 120.53842,161.49395 117.39047,161.51964 116.7699,161.89906 M104.0409,166.21354L104.1679,166.34054 104.0409,166.21354 M95.531896,168.75354C100.25568,169.11004 105.14077,168.75954 109.8829,168.75354 119.44897,168.74184 129.01533,168.7529 138.5849,168.75354L153.8249,168.75354C156.10047,168.75413,158.71217,169.2832,160.9369,168.75354L160.9369,171.03954 95.404896,171.03954 95.531896,168.75354 M161.0639,173.32554C160.749,174.64823,160.9369,176.16152,160.9369,177.51654L160.9369,185.13654C160.9369,187.694,160.47146,190.77611,161.0639,193.26454L158.7779,193.26454 158.7779,180.94554C158.7779,179.43715 159.20807,177.32017 157.76004,176.33581 156.93166,175.77269 155.66408,175.99254 154.7139,175.99254L147.4749,175.99254 125.8849,175.99254 119.4079,175.99254C118.41188,175.99254 117.18475,175.80183 116.2329,176.13335 114.22454,176.83284 114.7089,179.40856 114.7089,181.07254L102.5169,181.07254C101.13355,181.07254 98.981426,180.6375 97.994966,181.84012 97.297146,182.69085 97.563896,184.10774 97.563896,185.13654L97.563896,193.26454 95.404896,193.26454 95.404896,173.32554 161.0639,173.32554 M135.9179,178.40554L135.9179,193.39154 121.8209,193.36494 117.1219,193.39154 117.1219,178.40554 135.9179,178.40554 M156.2379,178.40554L156.2379,193.39154 144.2999,193.39105 138.2039,193.39154 138.0769,188.43854 138.0769,178.40554 156.2379,178.40554 M114.7089,183.35854L114.7089,193.39154 100.1039,193.39154 99.976896,189.96254 99.976896,183.35854 114.7089,183.35854 M149.4089,188.56907C148.81779,188.93049 148.72621,191.0826 149.30797,191.48301 149.59926,191.6835 150.06248,191.61339 150.3959,191.61354 151.26404,191.61394 153.17712,191.97308 153.91153,191.48301 154.41889,191.14445 154.41889,188.90763 153.91153,188.56907 153.61321,188.37 153.14804,188.43869 152.8089,188.43854 151.93033,188.43814 150.17132,188.10291 149.4089,188.56907 M139.6009,190.47054L139.7279,190.59754 139.6009,190.47054 M139.8549,190.85154L139.9819,190.97854 139.8549,190.85154 M140.1089,191.23254L140.2359,191.35954 140.1089,191.23254 M140.4899,191.86754L140.7439,192.12154 140.4899,191.86754 M120.2969,192.24854L120.4239,192.37554 120.2969,192.24854 M140.8709,192.37554L141.2519,192.75654 140.8709,192.37554 M120.88956,193.05287L120.97426,193.09517 120.88956,193.05287 M141.3789,193.01057L141.5059,193.13757 141.3789,193.01057 M161.0639,195.55057L160.9369,197.58257 95.404896,197.58257C95.404896,197.09734 95.186616,195.90746 95.608526,195.57331 96.331116,195.00101 98.690506,195.42357 99.595896,195.42357L110.5179,195.42357 144.2999,195.42357 155.2219,195.42357C157.12665,195.42357,159.18804,195.20233,161.0639,195.55057 M160.9369,199.74157L160.9369,222.60157 158.9049,222.47457C158.54272,217.88577 158.9049,213.23574 158.9049,208.63157 158.9049,207.13276 159.39966,204.52829 158.36152,203.30315 157.29038,202.03907 154.31733,202.66257 152.8089,202.66257L136.9339,202.66257C135.27401,202.66257 132.00301,201.99919 130.94638,203.55343 130.08763,204.81661 130.5839,207.40955 130.5839,208.88557L130.5839,222.47457C130.18629,222.54407 129.48723,222.73361 129.13467,222.45047 128.81809,222.19623 128.93292,221.55943 128.9329,221.20458L128.9329,218.02958 128.9329,207.36158C128.9329,206.09457 129.29967,204.19853 128.39638,203.17616 127.13898,201.75302 123.80845,202.40858 122.0749,202.40858L104.5489,202.40858C102.76996,202.40858 98.905106,201.65599 97.819066,203.42654 97.084866,204.6235 97.563896,207.13063 97.563896,208.50458L97.563896,217.90258C97.563896,219.36826,97.852836,221.19437,97.436896,222.60158L95.404896,222.60158 95.404896,199.74158 160.9369,199.74158 M108.8669,204.56758C109.36658,206.25807 108.9939,208.51976 108.9939,210.28258 108.9939,210.9784 108.81975,211.95105 109.23437,212.55525 110.29849,214.10587 111.98384,212.56665 113.3119,212.50635 114.43533,212.45535 115.61161,213.57266 116.7408,213.17977 117.7595,212.82532 117.88354,211.84394 117.8839,210.91758L117.8839,204.69458 126.3929,204.69458 126.2659,210.66358 126.2659,222.47458 100.2309,222.47458 100.2309,210.66358 100.1039,204.69458 100.2309,204.56758 104.5489,204.69458 108.8669,204.56758 M115.9789,204.69458L115.8519,211.29858 113.3119,210.57509 110.7719,211.29858 110.8989,204.69458 115.9789,204.69458 M139.9819,204.94858C140.48159,206.63906 140.1089,208.90077 140.1089,210.66358 140.1089,211.47367 139.93042,212.49987 140.46501,213.18006 141.61029,214.63728 143.29767,213.12806 144.6809,213.09396 145.85733,213.06486 147.04371,214.18663 148.2369,213.8001 149.33893,213.4431 149.37984,212.39434 149.3799,211.42561L149.3799,204.94861C151.51441,204.94861,154.32043,204.47129,156.3649,205.07561L156.3645,214.8551 156.3649,222.47461 156.2379,222.60161C153.86207,222.03596,150.93217,222.47461,148.4909,222.47461L132.9969,222.47461C133.48209,220.43665 133.1239,217.96321 133.1239,215.87061 133.1239,212.35681 133.53425,208.55047 132.9969,205.07561L139.9819,204.94861 M147.4749,205.20261L147.3479,211.93361 144.6809,211.13408 142.1409,211.93361C141.54702,209.92449,142.0139,207.17304,142.0139,205.07561L147.4749,205.20261 M100.4849,213.96561L100.4849,214.34661 100.6119,214.34661 100.4849,213.96561 M133.2509,215.36261L133.3779,215.48961 133.2509,215.36261 M119.3099,217.65214C118.61995,218.074 118.70254,220.14336 119.3099,220.60234 119.97487,221.10487 123.10816,221.09156 123.81752,220.65624 124.41301,220.29081 124.51615,218.08514 123.92482,217.68898 123.26677,217.24812 119.98327,217.24043 119.3099,217.65218 M149.51435,217.61588C148.79138,217.9184 148.70726,220.12217 149.29327,220.58764 149.96982,221.12503 152.78516,221.0358 153.56345,220.71013 154.29247,220.40508 154.366,218.22245 153.78453,217.74288 153.15575,217.22428 150.25381,217.30646 149.51435,217.61588 M135.6639,220.56961L135.9179,220.82361 135.6639,220.56961 M136.0449,221.07761L136.2989,221.33161 136.0449,221.07761 M104.5489,221.58561L104.6759,221.71261 104.5489,221.58561 M136.4259,221.58561L136.8069,221.96661 136.4259,221.58561 M104.9299,222.09361L105.1839,222.34761 104.9299,222.09361 M136.9339,222.22061L137.0609,222.34761 136.9339,222.22061 M160.9369,224.63361L161.0639,226.53861 95.404896,226.53861 95.404896,224.63361z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry2">F1 M25,24.173277z M0,0z M89.164581,127.41098C83.373035,126.82856 80.12911,126.09782 75.893081,124.42136 73.446538,123.45311 73.585293,123.78639 73.810768,119.4197 73.900858,117.6749 73.977613,115.83549 73.981328,115.33212L73.988128,114.41691 73.064537,115.07955C67.257081,119.24621 59.232455,115.30297 59.233299,108.28298 59.23368,105.10804 61.572232,99.280407 64.515711,95.119291L64.907628,94.565249 64.913928,92.769791C64.922828,90.237552,65.554263,88.529875,66.980145,87.181533L67.364868,86.817732 65.956311,85.657533C65.181604,85.019423 64.257243,84.264014 63.902174,83.978846 61.069466,81.703805 61.009733,78.557674 63.779166,77.500018 65.529753,76.831462 65.74315,76.959758 72.319607,82.634571 73.183115,83.37969 74.077542,84.12188 74.307225,84.283882L74.724828,84.578432 77.372711,83.826487C78.829047,83.412917 80.677819,82.910912 81.481094,82.710921 82.284369,82.510929 82.956322,82.340079 82.974323,82.331254 82.992323,82.322454 82.563699,81.86235 82.021823,81.308856 81.453854,80.72871 80.821448,79.919 80.528594,79.396981 80.046011,78.536764 79.993859,78.487773 79.486249,78.417816 76.123969,77.954435 73.604059,75.061479 73.391891,71.421254 73.333681,70.422583 73.255025,70.036259 73.028871,69.638333 70.812333,65.738248 70.714482,59.250908 72.808662,55.038808 79.187679,42.208463 100.45378,42.243103 105.75064,55.092468 106.24677,56.296022 106.11707,56.188019 107.5251,56.570075 116.01472,58.873663 116.72008,66.355069 108.50716,66.986364L107.4362,67.068684 107.54241,67.782008C108.54754,74.53225,106.05428,80.7101,101.18168,83.542825L100.11777,84.161339 100.67368,84.304454C100.97943,84.383164 101.52414,84.530204 101.88414,84.631201 102.24414,84.732199 102.55975,84.814833 102.58551,84.814833 102.61131,84.814833 102.74078,84.613458 102.87333,84.367333 103.56099,83.090426 104.66533,82.984769 108.15684,83.86184L108.98809,84.070651 109.66185,83.617242C110.44367,83.091116,110.90846,83.046739,112.15584,83.379117L112.96377,83.594401 113.51018,83.014037C115.42096,80.984519 120.5524,82.214355 121.0647,84.824602 121.18443,85.434647 121.0907,85.378812 122.7544,85.831125 123.41808,86.011561 124.09843,86.662852 124.25407,87.266743 124.33107,87.565337 124.44038,87.682452 124.6686,87.710691 128.86967,88.230513 131.37357,89.677703 131.30409,91.545833 131.28619,92.02833 129.04467,98.394016 128.16402,100.4635 128.05351,100.7232 127.96309,100.96552 127.96309,101.00199 127.96309,101.03849 128.33188,101.23552 128.78263,101.4399 135.00671,104.26203 130.11772,116.92191 122.31729,118.18168L121.68799,118.28331 121.14053,119.86882C119.81306,123.71335 119.40889,123.76164 110.13633,121.18365 108.77777,120.80594 108.87882,120.71248 109.04401,122.19392 109.21449,123.72277 109.16064,123.83331 107.98053,124.37716 103.41486,126.48124 94.3896819999999,127.93643 89.1645939999999,127.41098z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry3">F0 M25,24.173277z M0,0z M103.94083,86.640877C101.30202,94.762284,94.975936,111.36742,95.518087,111.51998L115.80987,117.22971C115.98041,117.27771 121.4705,100.32385 124.22124,92.128397 124.22124,92.128397 103.94638,86.623805 103.94083,86.640877z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry4">F1 M25,24.173277z M0,0z M101.79376,108.90904C101.30476,108.52663 100.10495,105.08112 100.47001,105.41978 101.44401,104.79618 102.1088,106.45382 102.43251,107.27764 102.5581,107.62689 104.64139,105.43192 105.06552,105.10256 106.27742,104.16143 107.13644,104.51715 106.17008,105.61778 105.50043,106.60236 104.19479,107.3925 103.25318,108.17534 102.07926,109.14282 102.08742,109.13871 101.79379,108.90907z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry5">F1 M25,24.173277z M0,0z M92.436374,64.816981C93.65708,64.499815 94.674649,64.119246 97.991082,62.73953 103.02943,60.643455 108.21275,59.872358 110.80395,60.833422 111.93956,61.254616 109.68955,59.690504 108.38741,59.153545 102.7874,56.844286 96.245735,57.19384 88.910581,60.194288 87.954582,60.58534 85.611211,61.839394 84.471111,62.570068L83.46064,63.217665 84.661611,63.778371C87.543506,65.123864,89.994876,65.451336,92.436374,64.816981z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry6">F1 M25,24.173277z M0,0z M77.992267,64.15807C84.979187,58.848256,94.805164,55.322527,101.75494,55.631617L103.05681,55.689517 102.86673,55.234425C99.572603,47.347784 87.257886,45.136686 79.361486,51.014076 74.51951,54.618021 72.496404,61.279652 74.832953,65.925515L75.137318,66.530697 76.05495,65.731846C76.559647,65.292478,77.43144,64.584279,77.992267,64.15807z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry7">F1 M25,24.173277z M0,0z M65.291208,81.763042C65.486277,81.481557 65.922675,81.048065 66.26098,80.799726 67.015053,80.246185 67.015459,80.280963 66.24652,79.561712 64.661951,78.079533 62.751074,80.106874 64.225254,81.706171 64.862572,82.397579 64.851868,82.397008 65.291207,81.763041z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry8">F1 M25,24.173277z M0,0z M95.999493,82.774598C102.75207,81.398511 106.34119,74.959787 104.87946,66.844333 104.14235,62.751943 104.42811,62.831178 98.861838,65.175742 93.000106,67.644758 88.503045,67.836392 84.171723,65.801733 83.338749,65.410439 83.407191,65.317688 83.252492,67.047467 83.02771,69.560885 82.467165,72.215351 82.11526,72.43284 81.84456,72.600142 81.457823,72.174915 80.776272,70.960592 79.577407,68.824566 78.743236,68.143131 77.678328,68.429881 74.461285,69.296141 75.922534,75.129118 79.587794,76.052041 80.120174,76.186096 80.502267,76.146681 81.418717,75.863152 81.634294,75.796462 81.739707,75.918192 82.098599,76.648277 84.430701,81.39243 90.23323,83.949687 95.999493,82.774598z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry9">F1 M25,24.173277z M0,0z M69.515553,85.403895C69.845018,85.238928 70.413946,85.005959 70.779837,84.886184 71.729954,84.575163 71.756928,84.627562 69.667502,82.725351L67.761473,80.990106 67.410095,81.240309C65.835229,82.361713 65.682862,82.872364 66.653831,83.77489 67.090393,84.180679 67.733331,84.779372 68.082581,85.105317 68.82768,85.800698 68.75381,85.785306 69.515553,85.403895z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry10">F1 M25,24.173277z M0,0z M94.511312,89.355083C95.623009,88.60647,96.104441,87.133797,95.706151,85.70014L95.581636,85.251947 93.86593,85.302087C91.179305,85.380597 88.872833,84.946215 86.552937,83.92482 84.638817,83.08208 84.587549,83.108881 85.314391,84.572301 86.948302,87.862007 92.466799,90.731857 94.511312,89.355086z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry11">F1 M25,24.173277z M0,0z M121.96684,89.291583C122.57272,87.48489 122.54712,87.429521 120.918,87.022808 119.84655,86.755318 119.45408,86.416915 119.45408,85.760549 119.45408,84.73823 118.90943,84.161709 117.47854,83.66941 116.01496,83.165866 115.12103,83.472638 114.49901,84.691895 114.13925,85.39709 113.75801,85.470834 112.2637,85.124279 111.31012,84.90313 111.00588,84.938497 110.59871,85.317831 110.32569,85.572186 109.74246,87.239457 109.83226,87.508858 109.87166,87.626945 120.8295,90.488018 121.36008,90.518744 121.49241,90.526444 121.6799,90.147217 121.96684,89.291583z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry12">F1 M25,24.173277z M0,0z M116.10843,87.211001C115.97965,87.136141 115.79131,86.876306 115.68989,86.633587 115.20656,85.476812 116.6568,84.557554 117.55231,85.453064 118.38573,86.286484 117.13585,87.808226 116.10843,87.211001z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry13">F1 M25,24.173277z M0,0z M79.781864,93.165083C80.125165,92.798371,80.718123,92.2271,81.09955,91.895593L81.793053,91.292853 81.505863,91.091697C81.347908,90.981061 80.897347,90.609357 80.504617,90.265687 79.683478,89.547127 79.631302,89.530527 79.525011,89.954025 79.481781,90.12628 79.133283,90.587935 78.750579,90.979925L78.054753,91.692633 78.293036,92.222483C78.424092,92.513901 78.573086,92.952358 78.624135,93.196833 78.801778,94.047576 78.95977,94.043243 79.781864,93.165083z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry14">F1 M25,24.173277z M0,0z M84.861417,96.096761C84.737109,95.475221 82.864685,92.307833 82.621565,92.307833 82.374318,92.307833 80.900337,93.674018 80.62592,94.157532 80.146444,95.002354 80.286261,94.783297 81.756055,95.541827 82.543555,95.948239 84.861417,97.062416 84.861417,96.096761z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry15">F1 M25,24.173277z M0,0z M93.863582,79.31194C92.690078,79.011089 92.054344,78.308445 92.422407,77.719083 92.680693,77.305501 92.850471,77.303946 93.703189,77.707353 94.631856,78.146686 95.333662,78.188167 96.474001,77.871125 97.1867,77.672977 97.253513,77.67284 97.449802,77.869125 98.335459,78.754782 95.749102,79.795331 93.863582,79.31194z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry16">F1 M25,24.173277z M0,0z M126.52534,98.626084C126.88666,97.560871 127.58914,95.493795 128.0864,94.032582 128.81916,91.879342 128.95934,91.346963 128.82605,91.223513 128.6717,91.080567 127.8118,90.744582 127.78055,90.815011 127.77255,90.832791 127.5855,91.390258 127.36463,92.053833 127.14377,92.717408 126.41654,94.85908 125.74857,96.813104 124.31652,101.00233 124.38067,100.56283 125.20123,100.56283L125.86838,100.56283z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry17">F1 M25,24.173277z M0,0z M72.763128,101.56848C75.361304,100.84705 75.026215,98.813999 72.251654,98.465269 71.890344,98.419859 71.490294,98.306 71.362654,98.212255 70.65412,97.691872 73.520367,97.510221 74.716665,97.999692 75.808503,98.446422 76.526597,97.885744 76.527606,96.585734 76.528906,94.971991 75.234519,94.112372 72.619281,93.990072 71.047549,93.916572 70.849814,93.829759 71.475678,93.487992 72.56425,92.893554 75.299195,93.318154 76.355476,94.245582 77.15695,94.949285 77.600794,93.775692 77.032654,92.455016 76.331547,90.825249 75.045915,90.203975 72.426703,90.229217 70.464273,90.248127 70.296996,90.147367 71.494004,89.667394 73.142266,89.006477 73.958134,89.015901 75.847154,89.717674 78.556448,90.724185 79.280089,88.351296 76.693219,86.943345 71.944135,84.35857 67.053321,87.247065 67.072454,92.62533 67.093304,98.485965 69.611593,102.44357 72.763128,101.56848z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry18">F1 M25,24.173277z M0,0z M69.486692,113.20689C72.190481,111.90364,74.445659,107.92355,75.319733,102.91233L75.408343,102.40433 75.139673,102.74573C72.866241,105.63456 67.681386,103.45975 66.018355,98.91975 65.707592,98.07138 62.82228,103.82324 62.238944,106.454 61.175627,111.2494 65.393893,115.17965 69.486695,113.20689z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry19">F1 M25,24.173277z M0,0z M123.75479,115.33197C127.39437,113.61342 130.52245,106.73047 128.79024,104.25208 127.33831,102.17469 121.99408,101.99489 121.99408,104.02343 121.99408,104.63806 122.39821,104.97186 123.26408,105.0724 125.68568,105.35359 127.36116,106.62248 126.69725,107.67244 126.59566,107.8331 126.52645,107.81939 126.22294,107.57844 125.03002,106.63139 123.79829,106.22738 122.07986,106.21949L120.95915,106.21449 120.52411,106.68888C119.59788,107.6989 120.06256,108.46262 121.81756,108.81469 124.18983,109.29059 125.53884,110.37609 124.87916,111.27826 124.72757,111.48556 124.68118,111.47311 124.21241,111.09921 122.47194,109.711 119.89302,109.24339 119.38589,110.22408 118.94567,111.07536 119.19522,111.46709 121.10508,112.9227 122.43987,113.94002 122.45645,113.97787 122.18933,115.39701L122.08646,115.94352 122.45302,115.85862C122.65463,115.81192,123.24042,115.57501,123.75479,115.33213z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry20">F1 M25,24.173277z M0,0z M119.13658,97.900937C118.64763,97.773761 116.76168,97.317881 114.94558,96.887871 111.09569,95.976305 110.96736,95.933329 110.86385,95.520892 110.68092,94.792043 111.18638,94.421324 112.08808,94.623007 119.28487,96.232704 120.85108,96.715514 120.85108,97.324334 120.85108,98.033728 120.32602,98.21031 119.13658,97.900937z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry21">F1 M25,24.173277z M0,0z M116.46958,104.10386C116.26003,104.03776 114.55393,103.61292 112.67824,103.15974 108.90071,102.24704 108.84928,102.22892 108.73412,101.77008 108.48446,100.77537 109.03059,100.6939 111.68641,101.32968 118.01642,102.84501 118.18408,102.90049 118.18408,103.47985 118.18408,104.14568 117.44976,104.41295 116.46958,104.10386z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry22">F1 M25,24.173277z M0,0z M114.94558,110.50927C113.74912,110.24028 108.64105,108.99963 107.85299,108.78661 106.74967,108.48837 106.40952,108.17995 106.55309,107.60794 106.70851,106.98869 107.0274,106.97958 109.29908,107.52954 110.44886,107.80789 112.30398,108.24651 113.42158,108.50426 115.8037,109.05364 116.02508,109.16127 116.02508,109.77002 116.02508,110.1506 115.50619,110.68508 115.23764,110.58112 115.21674,110.57312 115.08528,110.54072 114.94558,110.50932z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry23">F1 M25,24.173277z M0,0z M118.07709,120.03923C118.2872,119.84908 119.71352,115.75174 119.88338,114.85033 119.94928,114.50076 119.91028,114.44827 119.41041,114.21392L118.86565,113.95851 118.18383,115.96552C117.45453,118.11228 117.27662,118.46983 116.9377,118.46983 116.81892,118.46983 114.52187,117.8989 111.83315,117.20108 109.14444,116.50327 104.51571,115.30645 101.54708,114.54149 98.578457,113.77653 95.78056,113.03532 95.329533,112.89437 94.878506,112.75342 94.500742,112.65008 94.490058,112.66472 94.479378,112.67932 94.435618,113.04197 94.392828,113.47052L94.315018,114.2497 94.787798,114.37509C97.150682,115.0018 110.42648,118.50419 112.91358,119.15699 114.65983,119.61534 116.26003,120.04338 116.46958,120.10818 117.08842,120.29955 117.82431,120.26799 118.07709,120.03918z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry24">F1 M25,24.173277z M0,0z M100.72158,72.381686C99.434699,71.825014 99.222917,68.587647 100.4186,67.75016 101.56937,66.944124 102.73275,67.982953 102.74649,69.828833 102.76069,71.734882 101.85779,72.87318 100.72158,72.381686z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry25">F1 M25,24.173277z M0,0z M90.081788,73.004214C88.96979,72.126732 88.887169,69.596751 89.938686,68.622238 90.638167,67.97398 91.79336,68.247621 92.265686,69.173456 93.358411,71.315375 91.677678,74.263536 90.081788,73.004214z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry26">F1 M25,24.173277z M0,0z M97.483082,122.71823C102.15651,122.18316 104.82244,121.39413 104.67171,120.59063 104.5684,120.03994 102.52969,119.27252 95.832082,117.26318 92.696725,116.32255 92.614009,116.29092 92.193543,115.8716 91.232381,114.91307 91.302056,114.34132 92.907164,110.01569 93.475622,108.48375 94.248012,106.40166 94.623586,105.38883 94.999161,104.37601 95.942783,101.80426 96.720525,99.673834 98.504261,94.787744 101.00089,88.100321 101.31446,87.368608 101.44591,87.06186 101.5286,86.786022 101.49822,86.755635 101.43492,86.692325 98.112094,85.703833 97.962585,85.703833 97.908405,85.703833 97.863405,86.203896 97.862574,86.815083 97.857674,90.453447 95.730292,92.451697 92.410213,91.93657 88.544105,91.336723 84.392597,88.590359 82.845295,85.609053 82.618852,85.172749 82.393952,84.815561 82.345517,84.815303 82.297087,84.815045 81.442833,85.014858 80.447186,85.259333 79.451539,85.503808 78.533906,85.703833 78.408,85.703833 78.150556,85.703833 78.096393,85.909104 78.33302,85.987981 79.039514,86.223479 84.429938,91.717107 85.195605,92.981956 87.145576,96.203223 87.537211,98.276834 86.19563,98.276834 85.684261,98.276834 80.711257,97.190799 80.035866,96.931627 79.947906,96.897877 79.816383,97.114016 79.714116,97.460373 79.467643,98.295127 78.668528,99.429426 78.065259,99.800834 77.716539,100.01553 77.573966,100.18002 77.624951,100.30883 78.338793,102.11238 77.78521,106.15495 76.333659,109.73858 75.975505,110.6228 76.030421,110.63308 77.043702,109.87138 78.373487,108.87176 80.469478,105.81639 80.976314,104.13873 81.126299,103.64227 81.12635,104.77129 80.976453,107.2325 80.774209,110.55322 80.740205,111.20718 80.509538,116.21208 80.388101,118.847 80.323266,121.03736 80.365462,121.07955 80.715817,121.42991 86.986474,122.59302 89.799577,122.82944 91.374555,122.96181 95.931743,122.89584 97.483078,122.71823z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry27">F1 M25,24.173277z M0,0z M103.78769,102.02525C103.29869,101.64284 102.09888,98.197328 102.46394,98.535988 103.43794,97.912388 104.10273,99.570028 104.42644,100.39385 104.55203,100.7431 106.63532,98.548128 107.05945,98.218768 108.27135,97.277638 109.13037,97.633358 108.16401,98.733988 107.49436,99.718568 106.18872,100.50871 105.24711,101.29155 104.07319,102.25903 104.08135,102.25492 103.78772,102.02528z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry28">F1 M25,24.173277z M0,0z M79.642522,73.969887C80.260507,73.518005 79.709432,71.504078 78.772195,70.789208 77.104359,69.517088 76.978352,71.837787 78.622112,73.553309 79.248932,74.207495 79.292981,74.225478 79.642522,73.969887z</Geometry>
+    <Geometry x:Key="inventorycheckGeometry29">F1 M25,24.173277z M0,0z M105.78162,96.043472C105.29262,95.661062 104.09281,92.21555 104.45787,92.55421 105.43187,91.93061 106.09666,93.58825 106.42037,94.412072 106.54596,94.761322 108.62925,92.56635 109.05338,92.23699 110.26528,91.29586 111.1243,91.65158 110.15794,92.75221 109.48829,93.73679 108.18265,94.526932 107.24104,95.309772 106.06712,96.277252 106.07528,96.273142 105.78165,96.043502z</Geometry>
+    <DrawingGroup x:Key="inventorycheckDrawingGroup" ClipGeometry="M0,0 V24.173277 H25 V0 H0 Z">
+        <DrawingGroup Opacity="1" Transform="0.23152315,0,0,0.23152315,-14.813021,-33.444379">
+            <GeometryDrawing Brush="#FFFF9955">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="117.0232,178.254,39.4777,15.3748" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFF9955">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="99.7685,182.8866,15.1734,11.2793" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF803300">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="99.7685,146.4972,24.7071,20.8131" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFF7F2A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="129.5782,154.6882,13.1592,13.025" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFF6600">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="144.6174,158.448,12.6221,8.4595" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFD42A">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="108.4966,146.363,6.9825,9.1309" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFB380">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="99.9028,204.371,26.8556,18.5304" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFC87137">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="132.1295,203.8339,25.3785,19.4703" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFDD55">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="110.2422,203.4311,6.8482,8.8623" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFFFDD55">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="140.8576,204.5053,7.6538,8.191" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF666666">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="90.9062,154.8225,2.2827,80.701" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF666666">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="163.1477,154.6882,2.2827,80.701" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF666666">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="94.9345,167.9817,67.139,3.6255" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF666666">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="94.9345,195.1058,67.139,3.6255" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF666666">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="94.666,224.1099,67.139,3.6255" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FF2A2622" Geometry="{StaticResource inventorycheckGeometry1}" />
+            <GeometryDrawing Brush="#FFF9F9F9">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="117.4932,162.6106,3.0884,1.8799" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFF9F9F9">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="150.1227,189.1976,2.9541,2.1484" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFF9F9F9">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="119.7759,218.2017,3.4912,2.1484" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+            <GeometryDrawing Brush="#FFF9F9F9">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0.2213" RadiusY="0.2215" Rect="149.9885,218.0674,3.2227,2.5513" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="1,0,0,1,-38.91424,-6.967795">
+            <DrawingGroup Opacity="1" Transform="0.23152315,0,0,0.23152315,25.20036,1.6175032">
+                <GeometryDrawing Brush="#FF1A1A1A" Geometry="{StaticResource inventorycheckGeometry2}" />
+                <GeometryDrawing Brush="#FFF9F9F9" Geometry="{StaticResource inventorycheckGeometry3}" />
+                <GeometryDrawing Brush="#FF008000" Geometry="{StaticResource inventorycheckGeometry4}" />
+                <GeometryDrawing Brush="#FF127AD2" Geometry="{StaticResource inventorycheckGeometry5}" />
+                <GeometryDrawing Brush="#FF127AD2" Geometry="{StaticResource inventorycheckGeometry6}" />
+                <GeometryDrawing Brush="#FFFF6600" Geometry="{StaticResource inventorycheckGeometry7}" />
+                <GeometryDrawing Brush="#FFFFCF77" Geometry="{StaticResource inventorycheckGeometry8}" />
+                <GeometryDrawing Brush="#FFF9AA07" Geometry="{StaticResource inventorycheckGeometry9}" />
+                <GeometryDrawing Brush="#FFF5AF4B" Geometry="{StaticResource inventorycheckGeometry10}" />
+                <GeometryDrawing Brush="#FFCCCCCC" Geometry="{StaticResource inventorycheckGeometry11}" />
+                <GeometryDrawing Brush="#FF1A1A1A" Geometry="{StaticResource inventorycheckGeometry12}" />
+                <GeometryDrawing Brush="#FFF9AA07" Geometry="{StaticResource inventorycheckGeometry13}" />
+                <GeometryDrawing Brush="#FFFBE581" Geometry="{StaticResource inventorycheckGeometry14}" />
+                <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource inventorycheckGeometry15}" />
+                <GeometryDrawing Brush="#FF999999" Geometry="{StaticResource inventorycheckGeometry16}" />
+                <GeometryDrawing Brush="#FFFFCF77" Geometry="{StaticResource inventorycheckGeometry17}" />
+                <GeometryDrawing Brush="#FF127AD2" Geometry="{StaticResource inventorycheckGeometry18}" />
+                <GeometryDrawing Brush="#FFFFCF77" Geometry="{StaticResource inventorycheckGeometry19}" />
+                <GeometryDrawing Brush="#FF999999" Geometry="{StaticResource inventorycheckGeometry20}" />
+                <GeometryDrawing Brush="#FF999999" Geometry="{StaticResource inventorycheckGeometry21}" />
+                <GeometryDrawing Brush="#FF999999" Geometry="{StaticResource inventorycheckGeometry22}" />
+                <GeometryDrawing Brush="#FFB3B3B3" Geometry="{StaticResource inventorycheckGeometry23}" />
+                <GeometryDrawing Brush="#FF1A1A1A" Geometry="{StaticResource inventorycheckGeometry24}" />
+                <GeometryDrawing Brush="#FF1A1A1A" Geometry="{StaticResource inventorycheckGeometry25}" />
+                <GeometryDrawing Brush="#FF127AD2" Geometry="{StaticResource inventorycheckGeometry26}" />
+                <GeometryDrawing Brush="#FF008000" Geometry="{StaticResource inventorycheckGeometry27}" />
+                <GeometryDrawing Brush="#FFF9AA07" Geometry="{StaticResource inventorycheckGeometry28}" />
+                <GeometryDrawing Brush="#FF008000" Geometry="{StaticResource inventorycheckGeometry29}" />
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="inventorycheck" Drawing="{StaticResource inventorycheckDrawingGroup}" />
     <!--#endregion-->
 
     <!--#region Recieve Icon-->
     <Geometry x:Key="RecieveGeometry">F1 M20,20z M0,0z M20.619,20.999998L20.619,24.999999 30.619002,24.999999 30.619002,20.999998z M19.619,19.999998L31.619002,19.999998 31.619002,25.999999 19.619,25.999999z M19.619,12.999997L19.619,16.999998 25.619002,16.999998 25.619002,12.999997z M18.619,11.999997L26.619002,11.999997 26.619002,17.999998 18.619,17.999998z M7.0849326,7.5463258C7.2538445,7.5506467 7.4237816,7.5981016 7.5780013,7.6929303 8.0500014,7.9799309 8.1990015,8.5959331 7.9110014,9.0669338L6.5790017,11.25194 7.8480008,14.799951 11.744001,13.031945C12.247002,12.799944 12.840001,13.026945 13.067002,13.528946 13.137002,13.682947 13.152002,13.842947 13.142001,13.999948L16.619002,13.999948 16.619002,27.999987 29.619002,27.999987C30.172001,27.999987 30.619002,28.44699 30.619002,28.999991 30.619002,29.552992 30.172001,29.999995 29.619002,29.999995 29.619002,31.103997 28.723002,32 27.619002,32 26.515002,32 25.619002,31.103997 25.619002,29.999995L21.619002,29.999995C21.619002,31.103997 20.723002,32 19.619002,32 18.515002,32 17.619002,31.103997 17.619002,29.999995L14.619002,29.999995 14.619002,15.999953 11.619001,15.999953C11.308001,15.999953,11.043,15.850953,10.859,15.628953L7.8130009,17.011957C7.667001,17.078957 7.5080016,17.112957 7.3480017,17.112957 7.1990015,17.112957 7.0510008,17.083957 6.9110014,17.025958 6.6220009,16.904956 6.3940012,16.666956 6.2860014,16.372955L5.2400014,13.446946 2.5360017,17.880959 11.225001,23.011973 10.523001,30.485997C10.474001,31.003996 10.038001,31.392998 9.5280011,31.392998 9.4970009,31.392998 9.4660008,31.391997 9.4330008,31.387999 8.884001,31.336997 8.4800007,30.848996 8.5320008,30.298995L9.1160014,24.087977 3.7670007,20.930968 6.1970017,25.386979 1.9680009,31.291998C1.7720017,31.564 1.4650005,31.709998 1.1530004,31.709998 0.95200193,31.709998 0.74800139,31.648999 0.57200098,31.522997 0.12300135,31.200999 0.019001245,30.576996 0.34100198,30.127995L3.8400006,25.241978 0,18.19796 0.29300165,17.717959 6.2040017,8.0259315C6.384002,7.7315549 6.6921265,7.5621795 7.0126536,7.5471021 7.0366929,7.5459709 7.0608027,7.5457076 7.0849326,7.5463258z M9.6190007,0C11.276,0 12.619001,1.3429999 12.619001,3 12.619001,4.6570001 11.276,6 9.6190007,6.0000001 7.9620001,6 6.6190002,4.6570001 6.6190002,3 6.6190002,1.3429999 7.9620001,0 9.6190007,0z</Geometry>
     <DrawingGroup x:Key="RecieveDrawingGroup"
-            ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                  ClipGeometry="M0,0 V20 H20 V0 H0 Z">
         <DrawingGroup Opacity="1"
-                Transform="0.625,0,0,0.625,0.119062066078186,0">
+                      Transform="0.625,0,0,0.625,0.119062066078186,0">
             <GeometryDrawing Brush="#FF082C7F"
-                    Geometry="{StaticResource RecieveGeometry}"/>
+                             Geometry="{StaticResource RecieveGeometry}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Recieve"
-            Drawing="{StaticResource RecieveDrawingGroup}"/>
+                  Drawing="{StaticResource RecieveDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Order Icon-->
     <Geometry x:Key="OrderGeometry">F1 M20,20z M0,0z M17.474599,26.728008C18.676549,26.728008 19.677514,27.729015 19.677514,28.930003 19.677514,30.130992 18.676549,31.131999 17.474599,31.131999 16.273563,31.131999 15.272599,30.130992 15.272599,28.930003 15.172625,27.729015 16.173589,26.728008 17.474599,26.728008z M6.2637364,26.728008C7.4647104,26.728008 8.4656745,27.729015 8.4656745,28.930003 8.4656745,30.130992 7.4647104,31.131999 6.2637364,31.131999 5.0627014,31.131999 4.0617367,30.130992 4.0617367,28.930003 4.0617367,27.729015 5.0627014,26.728008 6.2637364,26.728008z M30.588391,0C31.389407,2.0850757E-07 31.889402,0.19998196 31.989375,0.60098334 32.090387,1.1009832 31.389407,1.7019966 30.388442,2.0019846 29.387418,2.2019968 28.186443,3.6040053 27.585437,5.005007L22.880477,17.518012C22.380485,18.91999 21.879514,20.021003 21.879514,20.021003 21.879514,20.021003 21.479493,21.121986 20.878549,22.522989L20.377517,23.724008C19.877523,25.125985,18.175578,26.226999,16.67456,26.226999L5.6627304,26.126992C4.1617114,26.126992 3.8607506,25.726999 3.8607508,25.125985 3.8607506,24.625009 4.1617114,24.125009 5.6627304,24.125009L15.372573,24.225015C16.87457,24.225015 18.476539,23.224008 18.876559,22.122995 19.276517,20.922004 18.476539,19.920997 16.974605,19.920997L5.4627205,19.819984C3.9617623,19.819984,2.4597665,18.618995,2.1597823,17.117988L0.057757411,7.9079926C-0.24320351,6.406985,0.65778652,5.3049948,2.1597823,5.3049948L22.580493,5.406008C24.081514,5.406008 25.683482,4.4050004 26.183477,3.1029982 26.684447,1.8020027 28.085431,0.50097694 29.387418,0.19998192 29.787437,2.0850757E-07 30.188434,2.0850757E-07 30.588391,0z</Geometry>
     <DrawingGroup x:Key="OrderDrawingGroup"
-            ClipGeometry="M0,0 V20 H20 V0 H0 Z">
+                  ClipGeometry="M0,0 V20 H20 V0 H0 Z">
         <DrawingGroup Opacity="1"
-                Transform="0.625018664261746,0,0,0.625018664261746,0,0.270960077702934">
+                      Transform="0.625018664261746,0,0,0.625018664261746,0,0.270960077702934">
             <GeometryDrawing Brush="#FF106207"
-                    Geometry="{StaticResource OrderGeometry}"/>
+                             Geometry="{StaticResource OrderGeometry}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Order"
-            Drawing="{StaticResource OrderDrawingGroup}"/>
+                  Drawing="{StaticResource OrderDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#endregion-->
@@ -805,32 +970,32 @@
     <Geometry x:Key="projectGeometry8">F1 M114.46215,107.25715z M0,0z M83.54207,19.639111L69.79976,32.149975 74.00261,36.611718 87.72477,24.057963z</Geometry>
     <Geometry x:Key="projectGeometry9">F1 M114.46215,107.25715z M0,0z M91.13386,27.729056L77.4241,40.012544 81.83262,44.430879 95.3274,32.147908z</Geometry>
     <DrawingGroup x:Key="projectDrawingGroup"
-            ClipGeometry="M0,0 V107.25715 H114.46215 V0 H0 Z">
+                  ClipGeometry="M0,0 V107.25715 H114.46215 V0 H0 Z">
         <DrawingGroup.Transform>
             <TranslateTransform X="2.0715096304968483E-09"
-                    Y="0"/>
+                                Y="0"/>
         </DrawingGroup.Transform>
         <GeometryDrawing Brush="#FFFFAA00"
-                Geometry="{StaticResource projectGeometry1}"/>
+                         Geometry="{StaticResource projectGeometry1}"/>
         <GeometryDrawing Brush="#FF010101"
-                Geometry="{StaticResource projectGeometry2}"/>
+                         Geometry="{StaticResource projectGeometry2}"/>
         <GeometryDrawing Brush="#FFE9C6AF"
-                Geometry="{StaticResource projectGeometry3}"/>
+                         Geometry="{StaticResource projectGeometry3}"/>
         <GeometryDrawing Brush="#FF502D16"
-                Geometry="{StaticResource projectGeometry4}"/>
+                         Geometry="{StaticResource projectGeometry4}"/>
         <GeometryDrawing Brush="#FF808080"
-                Geometry="{StaticResource projectGeometry5}"/>
+                         Geometry="{StaticResource projectGeometry5}"/>
         <GeometryDrawing Brush="#FFFFFF00"
-                Geometry="{StaticResource projectGeometry6}"/>
+                         Geometry="{StaticResource projectGeometry6}"/>
         <GeometryDrawing Brush="#FFFFE900"
-                Geometry="{StaticResource projectGeometry7}"/>
+                         Geometry="{StaticResource projectGeometry7}"/>
         <GeometryDrawing Brush="#FFFFE900"
-                Geometry="{StaticResource projectGeometry8}"/>
+                         Geometry="{StaticResource projectGeometry8}"/>
         <GeometryDrawing Brush="#FFFFFF00"
-                Geometry="{StaticResource projectGeometry9}"/>
+                         Geometry="{StaticResource projectGeometry9}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Projects"
-            Drawing="{StaticResource projectDrawingGroup}"/>
+                  Drawing="{StaticResource projectDrawingGroup}"/>
 
     <!--#endregion-->
 
@@ -870,72 +1035,72 @@
     <Geometry x:Key="ResourcesGeometry30">F1 M1376,1336z M0,0z M579,1139L581,1139 582,1141 582,1173 580,1174 569,1174 569,1173 578,1172 579,1171 580,1152 579,1142z</Geometry>
     <Geometry x:Key="ResourcesGeometry31">F1 M1376,1336z M0,0z M580,1160L581,1160 581,1173 580,1174 569,1174 569,1173 578,1172 579,1171z</Geometry>
     <DrawingGroup x:Key="ResourcesDrawingGroup"
-            ClipGeometry="M0,0 V1336 H1376 V0 H0 Z">
+                  ClipGeometry="M0,0 V1336 H1376 V0 H0 Z">
         <GeometryDrawing Brush="#FF373639"
-                Geometry="{StaticResource ResourcesGeometry1}"/>
+                         Geometry="{StaticResource ResourcesGeometry1}"/>
         <GeometryDrawing Brush="#FFFDFDFD"
-                Geometry="{StaticResource ResourcesGeometry2}"/>
+                         Geometry="{StaticResource ResourcesGeometry2}"/>
         <GeometryDrawing Brush="#FF77AEFE"
-                Geometry="{StaticResource ResourcesGeometry3}"/>
+                         Geometry="{StaticResource ResourcesGeometry3}"/>
         <GeometryDrawing Brush="#FFFDFDFD"
-                Geometry="{StaticResource ResourcesGeometry4}"/>
+                         Geometry="{StaticResource ResourcesGeometry4}"/>
         <GeometryDrawing Brush="#FFFEE365"
-                Geometry="{StaticResource ResourcesGeometry5}"/>
+                         Geometry="{StaticResource ResourcesGeometry5}"/>
         <GeometryDrawing Brush="#FF4492FD"
-                Geometry="{StaticResource ResourcesGeometry6}"/>
+                         Geometry="{StaticResource ResourcesGeometry6}"/>
         <GeometryDrawing Brush="#FFFEE366"
-                Geometry="{StaticResource ResourcesGeometry7}"/>
+                         Geometry="{StaticResource ResourcesGeometry7}"/>
         <GeometryDrawing Brush="#FFFEA57E"
-                Geometry="{StaticResource ResourcesGeometry8}"/>
+                         Geometry="{StaticResource ResourcesGeometry8}"/>
         <GeometryDrawing Brush="#FF373639"
-                Geometry="{StaticResource ResourcesGeometry9}"/>
+                         Geometry="{StaticResource ResourcesGeometry9}"/>
         <GeometryDrawing Brush="#FFD6E3ED"
-                Geometry="{StaticResource ResourcesGeometry10}"/>
+                         Geometry="{StaticResource ResourcesGeometry10}"/>
         <GeometryDrawing Brush="#FFFEA57E"
-                Geometry="{StaticResource ResourcesGeometry11}"/>
+                         Geometry="{StaticResource ResourcesGeometry11}"/>
         <GeometryDrawing Brush="#FFFEA57D"
-                Geometry="{StaticResource ResourcesGeometry12}"/>
+                         Geometry="{StaticResource ResourcesGeometry12}"/>
         <GeometryDrawing Brush="#FF77AEFE"
-                Geometry="{StaticResource ResourcesGeometry13}"/>
+                         Geometry="{StaticResource ResourcesGeometry13}"/>
         <GeometryDrawing Brush="#FFFDFDFD"
-                Geometry="{StaticResource ResourcesGeometry14}"/>
+                         Geometry="{StaticResource ResourcesGeometry14}"/>
         <GeometryDrawing Brush="#FFFEB903"
-                Geometry="{StaticResource ResourcesGeometry15}"/>
+                         Geometry="{StaticResource ResourcesGeometry15}"/>
         <GeometryDrawing Brush="#FFFBFCFD"
-                Geometry="{StaticResource ResourcesGeometry16}"/>
+                         Geometry="{StaticResource ResourcesGeometry16}"/>
         <GeometryDrawing Brush="#FFFEB803"
-                Geometry="{StaticResource ResourcesGeometry17}"/>
+                         Geometry="{StaticResource ResourcesGeometry17}"/>
         <GeometryDrawing Brush="#FFFAFBFD"
-                Geometry="{StaticResource ResourcesGeometry18}"/>
+                         Geometry="{StaticResource ResourcesGeometry18}"/>
         <GeometryDrawing Brush="#FFFDFDFD"
-                Geometry="{StaticResource ResourcesGeometry19}"/>
+                         Geometry="{StaticResource ResourcesGeometry19}"/>
         <GeometryDrawing Brush="#FF77AEFE"
-                Geometry="{StaticResource ResourcesGeometry20}"/>
+                         Geometry="{StaticResource ResourcesGeometry20}"/>
         <GeometryDrawing Brush="#FFFCFDFD"
-                Geometry="{StaticResource ResourcesGeometry21}"/>
+                         Geometry="{StaticResource ResourcesGeometry21}"/>
         <GeometryDrawing Brush="#FFFCFCFD"
-                Geometry="{StaticResource ResourcesGeometry22}"/>
+                         Geometry="{StaticResource ResourcesGeometry22}"/>
         <GeometryDrawing Brush="#FFFE7B43"
-                Geometry="{StaticResource ResourcesGeometry23}"/>
+                         Geometry="{StaticResource ResourcesGeometry23}"/>
         <GeometryDrawing Brush="#FFFE7B43"
-                Geometry="{StaticResource ResourcesGeometry24}"/>
+                         Geometry="{StaticResource ResourcesGeometry24}"/>
         <GeometryDrawing Brush="#FFFCFCFD"
-                Geometry="{StaticResource ResourcesGeometry25}"/>
+                         Geometry="{StaticResource ResourcesGeometry25}"/>
         <GeometryDrawing Brush="#FFFCFDFD"
-                Geometry="{StaticResource ResourcesGeometry26}"/>
+                         Geometry="{StaticResource ResourcesGeometry26}"/>
         <GeometryDrawing Brush="#FFD3E1ED"
-                Geometry="{StaticResource ResourcesGeometry27}"/>
+                         Geometry="{StaticResource ResourcesGeometry27}"/>
         <GeometryDrawing Brush="#FF373639"
-                Geometry="{StaticResource ResourcesGeometry28}"/>
+                         Geometry="{StaticResource ResourcesGeometry28}"/>
         <GeometryDrawing Brush="#FFFEA47C"
-                Geometry="{StaticResource ResourcesGeometry29}"/>
+                         Geometry="{StaticResource ResourcesGeometry29}"/>
         <GeometryDrawing Brush="#FFFE9151"
-                Geometry="{StaticResource ResourcesGeometry30}"/>
+                         Geometry="{StaticResource ResourcesGeometry30}"/>
         <GeometryDrawing Brush="#FFFEAB5D"
-                Geometry="{StaticResource ResourcesGeometry31}"/>
+                         Geometry="{StaticResource ResourcesGeometry31}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Resources"
-            Drawing="{StaticResource ResourcesDrawingGroup}"/>
+                  Drawing="{StaticResource ResourcesDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Brands icon -->
@@ -959,57 +1124,57 @@
     <Geometry x:Key="brandsGeometry18">F1 M25,25z M0,0z M429.48,453.68C431.64,451.136,434.712,450.176,437.208,449.984L437.208,446.984C437.208,446.984 431.208,446.98402 428.208,446.984 425.208,446.98398 408.12,475.136 408.12,475.136 405.336,478.544 403.992,479.888 401.208,479.984L401.208,482.984C401.208,482.984 406.208,482.98398 409.208,482.98398 412.208,482.98398 429.48,453.67998 429.48,453.67998z</Geometry>
     <Geometry x:Key="brandsGeometry19">F1 M25,25z M0,0z M408.93,453.68C406.77,451.136,403.698,450.176,401.202,449.984L401.202,446.984C401.202,446.984 407.202,446.98402 410.202,446.984 413.202,446.98398 430.29,475.136 430.29,475.136 433.074,478.544 434.418,479.888 437.202,479.984L437.202,482.984C437.202,482.984 432.202,482.98398 429.202,482.98398 426.202,482.98398 408.93,453.67998 408.93,453.67998z</Geometry>
     <DrawingGroup x:Key="brandsDrawingGroup"
-            ClipGeometry="M0,0 V25 H25 V0 H0 Z">
+                  ClipGeometry="M0,0 V25 H25 V0 H0 Z">
         <DrawingGroup Opacity="1"
-                Transform="0.13888889,0,0,0.13888889,-45.722223,-52.081945">
+                      Transform="0.13888889,0,0,0.13888889,-45.722223,-52.081945">
             <DrawingGroup Transform="2,0,0,2,119.2,124.99">
                 <GeometryDrawing Brush="#FF008080"
-                        Geometry="{StaticResource brandsGeometry1}"/>
+                                 Geometry="{StaticResource brandsGeometry1}"/>
             </DrawingGroup>
             <DrawingGroup Transform="1.8889,0,0,1.8889,135.87,143.88">
                 <GeometryDrawing Brush="#FFF9F9F9"
-                        Geometry="{StaticResource brandsGeometry2}"/>
+                                 Geometry="{StaticResource brandsGeometry2}"/>
             </DrawingGroup>
             <DrawingGroup Transform="1.1111,0,0,1.1111,252.54,276.1">
                 <GeometryDrawing Brush="#FF000080"
-                        Geometry="{StaticResource brandsGeometry3}"/>
+                                 Geometry="{StaticResource brandsGeometry3}"/>
             </DrawingGroup>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry4}"/>
+                             Geometry="{StaticResource brandsGeometry4}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry5}"/>
+                             Geometry="{StaticResource brandsGeometry5}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry6}"/>
+                             Geometry="{StaticResource brandsGeometry6}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry7}"/>
+                             Geometry="{StaticResource brandsGeometry7}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry8}"/>
+                             Geometry="{StaticResource brandsGeometry8}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry9}"/>
+                             Geometry="{StaticResource brandsGeometry9}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry10}"/>
+                             Geometry="{StaticResource brandsGeometry10}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry11}"/>
+                             Geometry="{StaticResource brandsGeometry11}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry12}"/>
+                             Geometry="{StaticResource brandsGeometry12}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry13}"/>
+                             Geometry="{StaticResource brandsGeometry13}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry14}"/>
+                             Geometry="{StaticResource brandsGeometry14}"/>
             <GeometryDrawing Brush="#FF000080"
-                    Geometry="{StaticResource brandsGeometry15}"/>
+                             Geometry="{StaticResource brandsGeometry15}"/>
             <GeometryDrawing Brush="#FFFFFF00"
-                    Geometry="{StaticResource brandsGeometry16}"/>
+                             Geometry="{StaticResource brandsGeometry16}"/>
             <GeometryDrawing Brush="#FFFFFF00"
-                    Geometry="{StaticResource brandsGeometry17}"/>
+                             Geometry="{StaticResource brandsGeometry17}"/>
             <GeometryDrawing Brush="#FFFFFF00"
-                    Geometry="{StaticResource brandsGeometry18}"/>
+                             Geometry="{StaticResource brandsGeometry18}"/>
             <GeometryDrawing Brush="#FFFFFF00"
-                    Geometry="{StaticResource brandsGeometry19}"/>
+                             Geometry="{StaticResource brandsGeometry19}"/>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Brands"
-            Drawing="{StaticResource brandsDrawingGroup}"/>
+                  Drawing="{StaticResource brandsDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Category icon -->
@@ -1019,48 +1184,48 @@
     <Geometry x:Key="CategoryGeometry4">F1 M23.964844,25z M0,0z M5.361673,13.003579C7.891305,10.473947 10.420937,7.9443154 12.950569,5.4146836 15.833521,8.2976354 18.716472,11.180587 21.599424,14.063539 19.069792,16.593171 16.54016,19.122802 14.010528,21.652434 11.127576,18.769482 8.2446247,15.886531 5.361673,13.003579z</Geometry>
     <Geometry x:Key="CategoryGeometry5">F1 M23.964844,25z M0,0z M12.963867,8.6523438C11.52832,10.087891 10.092774,11.523437 8.657227,12.958984 8.9668653,13.33387 9.2765036,13.671459 9.5861423,13.104288 10.891087,11.799343 12.196032,10.494398 13.500977,9.1894531 13.32194,9.0104167 13.142904,8.8313802 12.963867,8.6523438z M15.117188,10.805664C13.68566,12.258112 12.20997,13.66792 10.810547,15.151367 11.120333,15.5264 11.430034,15.864052 11.737689,15.294906 13.043225,13.977528 14.348761,12.660151 15.654297,11.342773 15.475261,11.163737 15.296224,10.9847 15.117188,10.805664z M17.30957,12.998047C15.861614,14.434208 14.407339,15.864018 12.963867,17.304687 13.273506,17.679573 13.583145,18.017162 13.892783,17.449991 15.210749,16.132025 16.528714,14.81406 17.84668,13.496094 17.667643,13.330078 17.488607,13.164063 17.30957,12.998047z</Geometry>
     <DrawingGroup x:Key="CategoryDrawingGroup"
-            ClipGeometry="M0,0 V25 H23.964844 V0 H0 Z">
+                  ClipGeometry="M0,0 V25 H23.964844 V0 H0 Z">
         <DrawingGroup.Transform>
             <TranslateTransform X="0.022882552817463875"
-                    Y="0.012979456223547459"/>
+                                Y="0.012979456223547459"/>
         </DrawingGroup.Transform>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource CategoryGeometry1}"/>
+                         Geometry="{StaticResource CategoryGeometry1}"/>
         <GeometryDrawing Brush="#FF0000FF"
-                Geometry="{StaticResource CategoryGeometry2}"/>
+                         Geometry="{StaticResource CategoryGeometry2}"/>
         <GeometryDrawing Brush="#FF000080"
-                Geometry="{StaticResource CategoryGeometry3}"/>
+                         Geometry="{StaticResource CategoryGeometry3}"/>
         <GeometryDrawing Brush="#FFF9F9F9"
-                Geometry="{StaticResource CategoryGeometry4}"/>
+                         Geometry="{StaticResource CategoryGeometry4}"/>
         <GeometryDrawing Brush="#FF7F8C8D"
-                Geometry="{StaticResource CategoryGeometry5}"/>
+                         Geometry="{StaticResource CategoryGeometry5}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Category"
-            Drawing="{StaticResource CategoryDrawingGroup}"/>
+                  Drawing="{StaticResource CategoryDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Currency Icon-->
     <Geometry x:Key="CurrencyGeometry">F1 M9.7109368,9.7109375z M0,0z M5.80606,8.3039375C4.721637,8.3039375,3.771581,7.6215313,3.255574,6.6062813L6.668243,6.6062813 6.668243,5.1993125 2.85896,5.1993125C2.84946,5.0855 2.84435,4.9715 2.84435,4.8550625 2.84435,4.7397187 2.84945,4.6243125 2.85896,4.5120312L6.66831,4.5120312 6.66831,3.1047812 3.255608,3.1047812C3.771614,2.089625 4.721637,1.4074375 5.806093,1.4074375 6.842585,1.4074375 7.818579,2.0561563 8.353036,3.0996875L9.710937,2.492875C8.923758,0.9548125 7.427613,0 5.80606,0 4.58707,0 3.449302,0.52078125 2.602294,1.4676875 2.176299,1.9440312 1.850812,2.4998438 1.636828,3.1047812L0,3.1047812 0,4.512 1.350013,4.512C1.342713,4.6250312 1.339013,4.7404687 1.339013,4.8550312 1.339013,4.9707812 1.342713,5.08475 1.350013,5.1992812L0,5.1992812 0,6.60625 1.636828,6.60625C1.850812,7.211125 2.176299,7.7663125 2.602327,8.2422187 3.449336,9.1891875 4.587104,9.7109375 5.806093,9.7109375 7.42768,9.7109375 8.923758,8.75625 9.710937,7.2182187L8.353036,6.6102812C7.818546,7.6551562,6.842552,8.3039375,5.80606,8.3039375z</Geometry>
     <DrawingGroup x:Key="CurrencyDrawingGroup"
-            ClipGeometry="M0,0 V9.7109375 H9.7109368 V0 H0 Z">
+                  ClipGeometry="M0,0 V9.7109375 H9.7109368 V0 H0 Z">
         <GeometryDrawing Geometry="{StaticResource CurrencyGeometry}">
             <GeometryDrawing.Brush>
                 <LinearGradientBrush MappingMode="Absolute"
-                        Opacity="1"
-                        SpreadMethod="Pad"
-                        Transform="0.03342444,0,0,0.03125,-0.3378543,0"
-                        StartPoint="10.108,155.375"
-                        EndPoint="300.642,155.375">
+                                     Opacity="1"
+                                     SpreadMethod="Pad"
+                                     Transform="0.03342444,0,0,0.03125,-0.3378543,0"
+                                     StartPoint="10.108,155.375"
+                                     EndPoint="300.642,155.375">
                     <GradientStop Offset="0"
-                            Color="#FF00006F"/>
+                                  Color="#FF00006F"/>
                     <GradientStop Offset="1"
-                            Color="#5600005E"/>
+                                  Color="#5600005E"/>
                 </LinearGradientBrush>
             </GeometryDrawing.Brush>
         </GeometryDrawing>
     </DrawingGroup>
     <DrawingImage x:Key="Currency"
-            Drawing="{StaticResource CurrencyDrawingGroup}"/>
+                  Drawing="{StaticResource CurrencyDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#region Country icon-->
@@ -1071,7 +1236,7 @@
     <Geometry x:Key="CountriesGeometry5">F1 M473.68,473.68z M0,0z M13.604,157.672C13.578,157.739,13.555,157.803,13.529,157.878L326.412,157.878C317.138,83.808 294.356,20.849 258.109,0.976999999999975 251.098,0.355 244.007,0 236.835,0 133.807,0 46.185,65.805 13.604,157.672z</Geometry>
     <Geometry x:Key="CountriesGeometry6">F1 M473.68,473.68z M0,0z M326.533,314.872L13.22,314.872C13.299,315.093 13.37,315.317 13.448,315.545 45.9,407.647 133.637,473.68 236.835,473.68 244.008,473.68 251.098,473.328 258.109,472.7 294.51,452.746 317.337,389.342 326.533,314.872z</Geometry>
     <DrawingGroup x:Key="CountriesDrawingGroup"
-            ClipGeometry="M0,0 V473.68 H473.68 V0 H0 Z">
+                  ClipGeometry="M0,0 V473.68 H473.68 V0 H0 Z">
         <GeometryDrawing Brush="#FFFFFFFF">
             <GeometryDrawing.Geometry>
                 <EllipseGeometry
@@ -1081,22 +1246,22 @@
             </GeometryDrawing.Geometry>
         </GeometryDrawing>
         <GeometryDrawing Brush="#FFEFECEC"
-                Geometry="{StaticResource CountriesGeometry1}"/>
+                         Geometry="{StaticResource CountriesGeometry1}"/>
         <GeometryDrawing Brush="#FFE63026"
-                Geometry="{StaticResource CountriesGeometry2}"/>
+                         Geometry="{StaticResource CountriesGeometry2}"/>
         <GeometryDrawing Brush="#FF2B479D"
-                Geometry="{StaticResource CountriesGeometry3}"/>
+                         Geometry="{StaticResource CountriesGeometry3}"/>
         <GeometryDrawing Brush="#FFEFEFEF"
-                Geometry="{StaticResource CountriesGeometry4}"/>
+                         Geometry="{StaticResource CountriesGeometry4}"/>
         <GeometryDrawing Brush="#FFE73B36"
-                Geometry="{StaticResource CountriesGeometry5}"/>
+                         Geometry="{StaticResource CountriesGeometry5}"/>
         <GeometryDrawing Brush="#FF3757A6"
-                Geometry="{StaticResource CountriesGeometry6}"/>
+                         Geometry="{StaticResource CountriesGeometry6}"/>
     </DrawingGroup>
     <DrawingImage x:Key="Countries"
-            Drawing="{StaticResource CountriesDrawingGroup}"/>
+                  Drawing="{StaticResource CountriesDrawingGroup}"/>
     <!--#endregion-->
-    
+
     <!--#region Storage location -->
     <Geometry x:Key="storagelocationGeometry1">F1 M25,28.157557z M0,0z M0.38710868,4.0883178C1.8858138,5.1176957 3.3845187,6.1470737 4.8832238,7.1764517 4.9471577,7.7929369 4.2462216,6.9209227 3.9463078,6.8293308 2.7579926,6.0132033 1.5696771,5.1970755 0.38136182,4.380948 0.38326982,4.283405 0.38519382,4.1858611 0.38710882,4.0883178z</Geometry>
     <Geometry x:Key="storagelocationGeometry2">F1 M25,28.157557z M0,0z M4.8990852,1.3417774C3.2919561,4.1253276 1.6848267,6.9088778 0.07769761,9.692428 -0.06315384,10.541245 0.19715557,10.051919 0.45719304,9.5635005 1.9262533,7.0190858 3.3953138,4.4746708 4.8643741,1.9302561 4.8759437,1.7340966 4.8875149,1.5379368 4.8990852,1.3417774z</Geometry>
@@ -1429,7 +1594,7 @@
     </DrawingGroup>
     <DrawingImage x:Key="StorageLocation" Drawing="{StaticResource storagelocationDrawingGroup}" />
     <!--#endregion-->
-    
+
     <!--#region Unit Icon -->
     <Geometry x:Key="unitGeometry1">F1 M25,24.960218z M0,0z M0,0C8.2368724,0 16.473745,0 24.960219,0 24.960219,8.2368724 24.960219,16.473745 24.960219,24.960219 16.723347,24.960219 8.4864745,24.960219 0,24.960219 0,16.723347 0,8.4864745 0,0z</Geometry>
     <Geometry x:Key="unitGeometry2">F1 M25,24.960218z M0,0z M12.684196,12.870113C16.748412,12.870113 20.812627,12.870113 25,12.870113 25,16.859848 25,20.849583 25,24.960219 20.935785,24.960219 16.87157,24.960219 12.684196,24.960219 12.684196,20.970484 12.684196,16.980749 12.684196,12.870113z</Geometry>
@@ -1643,21 +1808,21 @@
     <!--#region Settings Icons-->
     <Geometry x:Key="SettingsGeometry">F1 M26,25.321548z M0,0z M4.9629898,25.440168C4.564003,25.440168 4.0650101,25.640182 3.7659989,25.939165 3.0680008,26.638176 3.0680008,27.635191 3.7659989,28.3342 4.4639969,29.032204 5.4620133,29.032204 6.1600113,28.3342 6.8589859,27.635191 6.8589859,26.638176 6.1600113,25.939165 5.760994,25.640182 5.3620072,25.440168 4.9629898,25.440168z M18.432014,18.457121L22.422005,22.447138 24.816994,22.946165 29.107002,29.431192 27.509987,31.027212 21.025002,26.737175 20.526985,24.343178 16.535988,20.352123z M8.1560135,18.357115L13.643013,23.84415C11.048988,26.638176 8.9539872,28.932196 7.9560013,29.930189 6.359993,31.526207 3.6659928,31.626215 2.070015,29.930189 0.47400668,28.3342 0.47400668,25.640182 2.070015,24.044165z M2.967995,6.7840408C2.768013,6.7840408 2.5690079,6.8840479 2.4690018,6.9840545 2.1699906,7.2830371 2.1699906,7.7820638 2.4690018,8.0810469L11.746986,17.359123C12.047005,17.659113 12.544991,17.659113 12.845009,17.359123 13.14399,17.06011 13.14399,16.561113 12.845009,16.2621L3.5659867,6.9840545C3.3670121,6.8840479,3.1669998,6.7840408,2.967995,6.7840408z M5.2620011,4.4890431C5.0629959,4.4890431 4.8630143,4.5890191 4.7640152,4.6890262 4.3649979,4.9880394 4.3649979,5.4870356 4.7640152,5.8860554L14.042,15.164101C14.341011,15.46409 14.840004,15.46409 15.139015,15.164101 15.439003,14.865087 15.439003,14.366092 15.139015,14.067109L5.8610001,4.6890262C5.661995,4.5890192,5.4620133,4.4890431,5.2620011,4.4890431z M4.3649979,2.3940283C5.4620133,2.3940281,6.5589981,2.7930175,7.3580094,3.5920337L19.328987,15.46409 13.342995,21.450153 1.2720107,9.6770657C-0.42400357,7.9810704 -0.42400357,5.2880291 1.2720107,3.6910337 2.1699906,2.7930175 3.267006,2.3940281 4.3649979,2.3940283z M24.217995,0C25.31501,-8.5992724E-08,26.312996,0.20001344,27.211006,0.59900296L23.021004,4.7890328C22.223,5.5870422,22.223,6.7840408,23.021004,7.4820436L24.617012,9.079069C25.414986,9.8770789,26.612007,9.8770789,27.311012,9.079069L31.501015,4.9880394C31.799995,5.8860554 32.000008,6.7840408 32.000008,7.7820638 32.000008,12.07207 28.508003,15.564097 24.217995,15.564097 19.927986,15.564097 16.436012,12.07207 16.436012,7.7820638 16.436012,3.4920272 19.927986,-8.5992724E-08 24.217995,0z</Geometry>
     <DrawingGroup x:Key="SettingsDrawingGroup"
-            ClipGeometry="M0,0 V25.321548 H26 V0 H0 Z">
+                  ClipGeometry="M0,0 V25.321548 H26 V0 H0 Z">
         <DrawingGroup.Transform>
             <TranslateTransform X="7.4505805969238281E-09"
-                    Y="2.7728419739339941E-14"/>
+                                Y="2.7728419739339941E-14"/>
         </DrawingGroup.Transform>
         <DrawingGroup Opacity="1"
-                Transform="1,0,0,1,15,-11.339226">
+                      Transform="1,0,0,1,15,-11.339226">
             <DrawingGroup Transform="-0.81249981,0,0,0.81249981,11,11.339226">
                 <GeometryDrawing Brush="#FF2F38B0"
-                        Geometry="{StaticResource SettingsGeometry}"/>
+                                 Geometry="{StaticResource SettingsGeometry}"/>
             </DrawingGroup>
         </DrawingGroup>
     </DrawingGroup>
     <DrawingImage x:Key="Settings"
-            Drawing="{StaticResource SettingsDrawingGroup}"/>
+                  Drawing="{StaticResource SettingsDrawingGroup}"/>
     <!--#endregion-->
 
     <!--#endregion-->

@@ -165,7 +165,7 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		HasUnsavedChanges = false;
 	}
 
-	private async Task ReloadAsync()
+	protected async Task ReloadAsync()
 	{
 		IsLoading = true;
 		try

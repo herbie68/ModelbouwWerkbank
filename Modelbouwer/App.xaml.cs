@@ -38,6 +38,7 @@ public partial class App : Application
 		services.AddSingleton<GenericDataService>();
 		services.AddSingleton<ProductService>();
 		services.AddSingleton<ProjectService>();
+		services.AddSingleton<StockService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();
 		services.AddSingleton<UnitService>();
@@ -51,6 +52,7 @@ public partial class App : Application
 		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<ProductPageViewModel>();
 		services.AddTransient<ProjectPageViewModel>();
+		services.AddTransient<StockManagementPageViewModel>();
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<SupplierPageViewModel>();
 		services.AddTransient<UnitPageViewModel>();
@@ -67,6 +69,7 @@ public partial class App : Application
 		services.AddTransient<CurrencyView>();
 		services.AddTransient<ProductView>();
 		services.AddTransient<ProjectView>();
+		services.AddTransient<StockManagementView>();
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<SupplierView>();
 		services.AddTransient<UnitView>();
@@ -91,6 +94,7 @@ public partial class App : Application
 		services.AddScoped<ICurrencyService, CurrencyService>();
 		services.AddScoped<IProductService, ProductService>();
 		services.AddScoped<IProjectService, ProjectService>();
+		services.AddScoped<IStockService, StockService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<ISupplierService, SupplierService>();
 		services.AddScoped<IUnitService, UnitService>();
@@ -103,6 +107,7 @@ public partial class App : Application
 		services.AddScoped<IEntityValidator<CurrencyModel>, CurrencyValidator>();
 		services.AddScoped<IEntityValidator<ProductModel>, ProductValidator>();
 		services.AddScoped<IEntityValidator<ProjectModel>, ProjectValidator>();
+		services.AddScoped<IEntityValidator<StockManagementModel>, StockManagementValidator>();
 		services.AddScoped<IEntityValidator<StorageLocationModel>, StorageLocationValidator>();
 		services.AddScoped<IEntityValidator<SupplierModel>, SupplierValidator>();
 		services.AddScoped<IEntityValidator<SupplierContactModel>, ContactValidator>();

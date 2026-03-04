@@ -172,6 +172,13 @@ public class NavigationViewModel : INotifyPropertyChanged
 			Command = new SimpleCommand( () => LoadProductView() )
 		} );
 
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Inventory_SubItem_Report_Label,
+			NavigationIcon = CreateNavigationImage( "Inventory" ),
+			NavigationTooltip = Language.navigation_Inventory_SubItem_Report_Tooltip,
+			Command = new SimpleCommand( () => LoadStockManagementView() )
+		} );
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -346,6 +353,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadStockManagementView()
+	{
+		try
+		{
+			var stockmanagementView = _serviceProvider.GetRequiredService<StockManagementView>();
+			CurrentView = stockmanagementView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading StockManagementView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -387,6 +407,14 @@ public class NavigationViewModel : INotifyPropertyChanged
 		#region Subitems
 		InventorySubItems.Add( new NavigationModel
 		{
+			NavigationItem = Language.navigation_Inventory_SubItem_Report_Label,
+			NavigationIcon = CreateNavigationImage( "Inventory" ),
+			NavigationTooltip = Language.navigation_Inventory_SubItem_Report_Tooltip,
+			Command = new SimpleCommand( () => LoadStockManagementView() )
+		} );
+
+		InventorySubItems.Add( new NavigationModel
+		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Order_Label,
 			NavigationIcon = CreateNavigationImage( "Order" ),
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Order_Tooltip
@@ -397,13 +425,6 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationItem = Language.navigation_Inventory_SubItem_Receipt_Label,
 			NavigationIcon = CreateNavigationImage( "Recieve" ),
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Receipt_Tooltip
-		} );
-
-		InventorySubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Inventory_SubItem_Report_Label,
-			NavigationIcon = CreateNavigationImage( "Report" ),
-			NavigationTooltip = Language.navigation_Inventory_SubItem_Report_Tooltip
 		} );
 		#endregion
 
@@ -563,10 +584,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 		public event EventHandler? CanExecuteChanged;
 #pragma warning restore CS0067
 
-		public SimpleCommand( Action execute )
-		{
-			_execute = execute ?? throw new ArgumentNullException( nameof( execute ) );
-		}
+		public SimpleCommand( Action execute ) => _execute = execute ?? throw new ArgumentNullException( nameof( execute ) );
 
 		public bool CanExecute( object? parameter ) => true;
 
@@ -574,7 +592,7 @@ public class NavigationViewModel : INotifyPropertyChanged
 	}
 
 	// Get the Assembly File Version for display in the UI
-	public string AppVersion =>
+	public static string AppVersion =>
 	$"Modelbouwer v{Assembly
 		.GetExecutingAssembly()
 		.GetCustomAttribute<AssemblyFileVersionAttribute>()?

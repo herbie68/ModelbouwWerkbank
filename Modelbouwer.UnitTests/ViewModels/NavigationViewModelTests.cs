@@ -146,7 +146,7 @@ public class NavigationViewModelTests
 	public void AppVersion_ReturnsVersionString()
 	{
 		// Act
-		var version = _viewModel.AppVersion;
+		var version = NavigationViewModel.AppVersion;
 
 		// Assert
 		Assert.IsNotNull( version );
@@ -157,7 +157,7 @@ public class NavigationViewModelTests
 	public void AppVersion_ContainsVersionNumber()
 	{
 		// Act
-		var version = _viewModel.AppVersion;
+		var version = NavigationViewModel.AppVersion;
 
 		// Assert
 		// Should contain a version number pattern

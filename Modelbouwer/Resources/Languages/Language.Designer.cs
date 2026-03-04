@@ -7837,6 +7837,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Handmatig voorraadbeheer.
+        /// </summary>
+        public static string metadataStockHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataStockHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraad.
+        /// </summary>
+        public static string metadataStockHeaderTitel {
+            get {
+                return ResourceManager.GetString("metadataStockHeaderTitel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locatie.
         /// </summary>
         public static string metadataStorageEntryFieldStorage {
@@ -9484,6 +9502,78 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geleverd.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockDeliveries_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockDeliveries.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geleverde bestellingen.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockDeliveries_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockDeliveries.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadbeheer.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockManagement_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockManagement.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer voorraad mutaties en bestellingen.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockManagement_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockManagement.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadmutaties.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockMutations_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockMutations.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registreer voorraad.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockMutations_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockMutations.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestellingen.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockOrders_Label {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockOrders.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beheer bestellingen bij leveranciers.
+        /// </summary>
+        public static string navigation_Resources_SubItem_StockOrders_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Resources.SubItem.StockOrders.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Voorraadlocaties.
         /// </summary>
         public static string navigation_Resources_SubItem_StorageLocation_Label {
@@ -10947,6 +11037,132 @@ namespace Modelbouwer.Resources.Languages {
         public static string StatusStockProducts {
             get {
                 return ResourceManager.GetString("StatusStockProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string StockManagementDataGridHeaderCategory {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeknaam.
+        /// </summary>
+        public static string StockManagementDataGridHeaderCode {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraad.
+        /// </summary>
+        public static string StockManagementDataGridHeaderInventoryAmount {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderInventoryAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waarde.
+        /// </summary>
+        public static string StockManagementDataGridHeaderInventoryValue {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderInventoryValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voorraadlocatie.
+        /// </summary>
+        public static string StockManagementDataGridHeaderLocation {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimale voorraad.
+        /// </summary>
+        public static string StockManagementDataGridHeaderMinimalStock {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderMinimalStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omschrijving.
+        /// </summary>
+        public static string StockManagementDataGridHeaderName {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In bestelling.
+        /// </summary>
+        public static string StockManagementDataGridHeaderOrdered {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderOrdered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prijs.
+        /// </summary>
+        public static string StockManagementDataGridHeaderPrice {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string StockManagementDataGridHeaderProductId {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderProductId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tekort.
+        /// </summary>
+        public static string StockManagementDataGridHeaderShort {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtuele voorraad.
+        /// </summary>
+        public static string StockManagementDataGridHeaderVirtualInventoryAmount {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderVirtualInventoryAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtuele waarde.
+        /// </summary>
+        public static string StockManagementDataGridHeaderVirtualInventoryValue {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridHeaderVirtualInventoryValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vul de werkelijke voorraad in om aan te passen.
+        /// </summary>
+        public static string StockManagementDataGridTooltipEditInventoryAmount {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridTooltipEditInventoryAmount", resourceCulture);
             }
         }
         

@@ -87,8 +87,6 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		OpenCategoryPickerCommand = new AsyncRelayCommand( OpenCategoryPickerAsync );
 		OpenStorageLocationPickerCommand = new AsyncRelayCommand( OpenStorageLocationPickerAsync );
 
-		Debug.WriteLine( $"VM created: {GetHashCode()}" );
-
 		_ = InitializeAsync();
 	}
 

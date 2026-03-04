@@ -4084,4 +4084,76 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="generalUnsavedChanges" xml:space="preserve">
     <value>Let op, de wijzigingen zijn nog niet opgeslagen!</value>
   </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Label" xml:space="preserve">
+    <value>Voorraadbeheer</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Label" xml:space="preserve">
+    <value>Voorraadmutaties</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Label" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Label" xml:space="preserve">
+    <value>Geleverd</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Tooltip" xml:space="preserve">
+    <value>Beheer voorraad mutaties en bestellingen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Tooltip" xml:space="preserve">
+    <value>Registreer voorraad</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Tooltip" xml:space="preserve">
+    <value>Beheer bestellingen bij leveranciers</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Tooltip" xml:space="preserve">
+    <value>Geleverde bestellingen</value>
+  </data>
+  <data name="metadataStockHeaderTitel" xml:space="preserve">
+    <value>Voorraad</value>
+  </data>
+  <data name="metadataStockHeaderSubtitle" xml:space="preserve">
+    <value>Handmatig voorraadbeheer</value>
+  </data>
+  <data name="StockManagementDataGridHeaderProductId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCode" xml:space="preserve">
+    <value>Zoeknaam</value>
+  </data>
+  <data name="StockManagementDataGridHeaderName" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="StockManagementDataGridHeaderLocation" xml:space="preserve">
+    <value>Voorraadlocatie</value>
+  </data>
+  <data name="StockManagementDataGridHeaderMinimalStock" xml:space="preserve">
+    <value>Minimale voorraad</value>
+  </data>
+  <data name="StockManagementDataGridHeaderPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryAmount" xml:space="preserve">
+    <value>Voorraad</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryValue" xml:space="preserve">
+    <value>Waarde</value>
+  </data>
+  <data name="StockManagementDataGridHeaderOrdered" xml:space="preserve">
+    <value>In bestelling</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryAmount" xml:space="preserve">
+    <value>Virtuele voorraad</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryValue" xml:space="preserve">
+    <value>Virtuele waarde</value>
+  </data>
+  <data name="StockManagementDataGridHeaderShort" xml:space="preserve">
+    <value>Tekort</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditInventoryAmount" xml:space="preserve">
+    <value>Vul de werkelijke voorraad in om aan te passen</value>
+  </data>
 </root>

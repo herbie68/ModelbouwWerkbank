@@ -4084,4 +4084,76 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="generalUnsavedChanges" xml:space="preserve">
     <value>Please note, the changes have not been saved yet!</value>
   </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Label" xml:space="preserve">
+    <value>Stock management</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Label" xml:space="preserve">
+    <value>Stock mutations</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Label" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Label" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Tooltip" xml:space="preserve">
+    <value>Manage stock changes and orders</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Tooltip" xml:space="preserve">
+    <value>Register stock</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Tooltip" xml:space="preserve">
+    <value>Manage orders with suppliers</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Tooltip" xml:space="preserve">
+    <value>Delivered orders</value>
+  </data>
+  <data name="metadataStockHeaderTitel" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="metadataStockHeaderSubtitle" xml:space="preserve">
+    <value>Manual inventory management</value>
+  </data>
+  <data name="StockManagementDataGridHeaderProductId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCode" xml:space="preserve">
+    <value>Search name</value>
+  </data>
+  <data name="StockManagementDataGridHeaderName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="StockManagementDataGridHeaderLocation" xml:space="preserve">
+    <value>Stock location</value>
+  </data>
+  <data name="StockManagementDataGridHeaderMinimalStock" xml:space="preserve">
+    <value>Minimum stock</value>
+  </data>
+  <data name="StockManagementDataGridHeaderPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryAmount" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="StockManagementDataGridHeaderOrdered" xml:space="preserve">
+    <value>On order</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryAmount" xml:space="preserve">
+    <value>Virtual stock</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryValue" xml:space="preserve">
+    <value>Virtual value</value>
+  </data>
+  <data name="StockManagementDataGridHeaderShort" xml:space="preserve">
+    <value>Shortage</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditInventoryAmount" xml:space="preserve">
+    <value>Enter actual stock to adjust</value>
+  </data>
 </root>

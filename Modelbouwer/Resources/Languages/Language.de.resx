@@ -4084,4 +4084,76 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="generalUnsavedChanges" xml:space="preserve">
     <value>Bitte beachten Sie, dass die Änderungen noch nicht gespeichert wurden!</value>
   </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Label" xml:space="preserve">
+    <value>Aktienmanagement</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Label" xml:space="preserve">
+    <value>Aktienmutationen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Label" xml:space="preserve">
+    <value>Bestellungen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Label" xml:space="preserve">
+    <value>Geliefert</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockManagement.Tooltip" xml:space="preserve">
+    <value>Verwalten Sie Bestandsänderungen und Bestellungen</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockMutations.Tooltip" xml:space="preserve">
+    <value>Lagerbestand registrieren</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockOrders.Tooltip" xml:space="preserve">
+    <value>Verwalten Sie Bestellungen bei Lieferanten</value>
+  </data>
+  <data name="navigation.Resources.SubItem.StockDeliveries.Tooltip" xml:space="preserve">
+    <value>Gelieferte Bestellungen</value>
+  </data>
+  <data name="metadataStockHeaderTitel" xml:space="preserve">
+    <value>Aktie</value>
+  </data>
+  <data name="metadataStockHeaderSubtitle" xml:space="preserve">
+    <value>Manuelle Bestandsverwaltung</value>
+  </data>
+  <data name="StockManagementDataGridHeaderProductId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCode" xml:space="preserve">
+    <value>Suchname</value>
+  </data>
+  <data name="StockManagementDataGridHeaderName" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="StockManagementDataGridHeaderCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="StockManagementDataGridHeaderLocation" xml:space="preserve">
+    <value>Lagerstandort</value>
+  </data>
+  <data name="StockManagementDataGridHeaderMinimalStock" xml:space="preserve">
+    <value>Mindestbestand</value>
+  </data>
+  <data name="StockManagementDataGridHeaderPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryAmount" xml:space="preserve">
+    <value>Aktie</value>
+  </data>
+  <data name="StockManagementDataGridHeaderInventoryValue" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="StockManagementDataGridHeaderOrdered" xml:space="preserve">
+    <value>Auf Bestellung</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryAmount" xml:space="preserve">
+    <value>Virtueller Bestand</value>
+  </data>
+  <data name="StockManagementDataGridHeaderVirtualInventoryValue" xml:space="preserve">
+    <value>Virtueller Wert</value>
+  </data>
+  <data name="StockManagementDataGridHeaderShort" xml:space="preserve">
+    <value>Mangel</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditInventoryAmount" xml:space="preserve">
+    <value>Geben Sie den tatsächlichen Bestand zur Anpassung ein</value>
+  </data>
 </root>
