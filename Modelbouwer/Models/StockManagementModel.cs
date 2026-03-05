@@ -13,10 +13,10 @@ public partial class StockManagementModel : ObservableObject
 	[ObservableProperty] private double _productVirtualInventory;
 	[ObservableProperty] private double _productVirtualInventoryValue;
 	[ObservableProperty] private int _productId;
-	[ObservableProperty] private string? _productCategory;
-	[ObservableProperty] private string? _productCode;
-	[ObservableProperty] private string? _productName;
-	[ObservableProperty] private string? _productStorageLocation;
+	[ObservableProperty] private string? _productCategory = "";
+	[ObservableProperty] private string? _productCode = "";
+	[ObservableProperty] private string? _productName = "";
+	[ObservableProperty] private string? _productStorageLocation = "";
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()

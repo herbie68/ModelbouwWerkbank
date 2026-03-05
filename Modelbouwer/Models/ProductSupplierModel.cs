@@ -27,7 +27,7 @@ public partial class ProductSupplierModel : ObservableObject
 	[ObservableProperty] public string? _currencySymbol;
 
 	// Define the property that you want to use in TLists (for example in the errorList
-	public string Name => ProductName;
+	public string? Name => ProductName;
 
 	// Mapping dictionary for mapping Database Header to Property name
 	public static readonly Dictionary<string, string> HeaderToPropertyMap = new()

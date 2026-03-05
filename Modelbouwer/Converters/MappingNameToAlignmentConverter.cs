@@ -1,24 +1,21 @@
 ﻿namespace Modelbouwer.Converters;
+
 public class MappingNameToAlignmentConverter : IValueConverter
 {
 	public object Convert( object value, Type targetType, object parameter, CultureInfo culture )
 	{
-		if ( value == null )
+		if ( value is string mappingName )
 		{
-			return System.Windows.HorizontalAlignment.Left;
+			if ( mappingName.Contains( "Value" ) ||
+				mappingName.Contains( "Price" ) ||
+				mappingName.Contains( "Inventory" ) ||
+				mappingName.Contains( "Order" ) )
+			{
+				return HorizontalAlignment.Right;
+			}
 		}
 
-		string mappingName = value.ToString();
-
-		if ( mappingName.Contains( "Value" ) || mappingName.Contains( "Price" ) || mappingName.Contains( "Inventory" ) || mappingName.Contains( "Order" ) )
-		{
-			return System.Windows.HorizontalAlignment.Right;
-		}
-
-		return System.Windows.HorizontalAlignment.Left;
+		return HorizontalAlignment.Left;
 	}
-	public object ConvertBack( object value, Type targetType, object parameter, System.Globalization.CultureInfo culture )
-	{
-		throw new NotImplementedException();
-	}
+	public object ConvertBack( object value, Type targetType, object parameter, System.Globalization.CultureInfo culture ) => throw new NotImplementedException();
 }

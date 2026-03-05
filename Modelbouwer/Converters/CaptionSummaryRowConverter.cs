@@ -36,8 +36,5 @@ public class CaptionSummaryRowConverter : IValueConverter
 		return "Foutieve waarde";
 	}
 
-	public object ConvertBack( object value, Type targetType, object parameter, CultureInfo culture )
-	{
-		return null;
-	}
+	public object? ConvertBack( object value, Type targetType, object parameter, CultureInfo culture ) => null;
 }

@@ -153,6 +153,22 @@
         <Setter Property="Width" Value="14" />
         <Setter Property="Source" Value="{StaticResource rotate}" />
     </Style>
+
+    <Style x:Key="ToolBarSettingsIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource savesettings}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToolBarResetSettingsIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource resetsettings}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
     <!--#endregion-->
 
     <!--#region RTF Toolbar Icon resources-->

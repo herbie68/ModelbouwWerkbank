@@ -11,7 +11,7 @@ public partial class StorageLocationModel : ObservableObject
 
 	public ObservableCollection<StorageLocationModel> Children { get; set; } = [ ];
 
-	public string StorageName
+	public string? StorageName
 	{
 		get;
 		set => SetProperty( ref field, value );
@@ -19,7 +19,7 @@ public partial class StorageLocationModel : ObservableObject
 
 	private StorageLocationModel? _parent;
 
-	public StorageLocationModel Parent
+	public StorageLocationModel? Parent
 	{
 		get => _parent;
 		set => _parent = value;

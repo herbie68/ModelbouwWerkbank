@@ -38,6 +38,7 @@ public partial class App : Application
 		services.AddSingleton<GenericDataService>();
 		services.AddSingleton<ProductService>();
 		services.AddSingleton<ProjectService>();
+		services.AddSingleton<SettingsService>();
 		services.AddSingleton<StockService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();

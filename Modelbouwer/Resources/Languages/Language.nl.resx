@@ -4156,4 +4156,13 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="StockManagementDataGridTooltipEditInventoryAmount" xml:space="preserve">
     <value>Vul de werkelijke voorraad in om aan te passen</value>
   </data>
+  <data name="toolbarVisibleRowLabelStockManagement" xml:space="preserve">
+    <value>Aantal getoonde producten</value>
+  </data>
+  <data name="toolbarButtonActionSaveSettings" xml:space="preserve">
+    <value>Kolominstellingen opslaan als sjabloon</value>
+  </data>
+  <data name="toolbarButtonActionResetSettings" xml:space="preserve">
+    <value>Reset de ingestelde kolom en groepering naar de standaard instellingen</value>
+  </data>
 </root>

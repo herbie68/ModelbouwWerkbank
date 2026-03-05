@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Services;
+﻿namespace Modelbouwer.Services;
 
 public class SettingsService
 {
-	private static readonly SettingsService _instance =new();
-	public static SettingsService Instance => _instance;
-
 	string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 	public AppSettings Settings { get; private set; } = new AppSettings();
-	private SettingsService() { }
+	public SettingsService() { }
 
 	public async Task LoadSettingsAsync()
 	{
@@ -37,6 +30,9 @@ public class SettingsService
 				case "Language":
 					Settings.Language = value;
 					break;
+				case "StockManagementGridLayout":
+					Settings.StockManagementGridLayout = value;
+					break;
 				case "HourRate":
 					if ( double.TryParse( value, out var rate ) )
 						Settings.HourRate = rate;
@@ -49,6 +45,42 @@ public class SettingsService
 					break;
 			}
 		}
+	}
+
+	public async Task<string?> GetSettingsAsync( string key )
+	{
+		if ( key == null )
+			return null;
+
+		using var connection = new MySqlConnection(DBConnect.ConnectionString);
+		await connection.OpenAsync();
+
+		var command = new MySqlCommand(
+		$"SELECT `Value` FROM {DBNames.Database}.{DBNames.SettingsTable} WHERE `Key` = @key",
+		connection);
+
+		command.Parameters.AddWithValue( "@key", key );
+
+		var result = await command.ExecuteScalarAsync();
+
+		return result?.ToString();
+	}
+
+	public async Task ResetSettingsAsync( string key )
+	{
+		if ( key == null )
+			return;
+
+		using var connection = new MySqlConnection(DBConnect.ConnectionString);
+		await connection.OpenAsync();
+
+		var command = new MySqlCommand(
+		$"DELETE FROM {DBNames.Database}.{DBNames.SettingsTable} WHERE `Key` = @key",
+		connection);
+
+		command.Parameters.AddWithValue( "@key", key );
+
+		await command.ExecuteNonQueryAsync();
 	}
 
 	public async Task SaveSettingAsync( string key, string value )

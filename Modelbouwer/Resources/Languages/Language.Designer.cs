@@ -11897,6 +11897,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset de ingestelde kolom en groepering naar de standaard instellingen.
+        /// </summary>
+        public static string toolbarButtonActionResetSettings {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionResetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gewijzigde gegevens opslaan.
         /// </summary>
         public static string toolbarButtonActionSave {
@@ -11911,6 +11920,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarButtonActionSaveContact {
             get {
                 return ResourceManager.GetString("toolbarButtonActionSaveContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kolominstellingen opslaan als sjabloon.
+        /// </summary>
+        public static string toolbarButtonActionSaveSettings {
+            get {
+                return ResourceManager.GetString("toolbarButtonActionSaveSettings", resourceCulture);
             }
         }
         
@@ -12145,6 +12163,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string toolbarVisibleRowLabelProject {
             get {
                 return ResourceManager.GetString("toolbarVisibleRowLabelProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal getoonde producten.
+        /// </summary>
+        public static string toolbarVisibleRowLabelStockManagement {
+            get {
+                return ResourceManager.GetString("toolbarVisibleRowLabelStockManagement", resourceCulture);
             }
         }
         

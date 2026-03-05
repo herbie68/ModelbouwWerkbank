@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Modelbouwer.Services;
+﻿namespace Modelbouwer.Services;
 
 public class CategoryService : ICategoryService
 {
@@ -33,7 +29,7 @@ public class CategoryService : ICategoryService
 		$"UPDATE {DBNames.Database}.{DBNames.CategoryTable} " +
 		$"SET " +
 		$"{DBNames.CategoryFieldNameParentId} = @{DBNames.CategoryFieldNameParentId}, " +
-		$"{DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName}" +     
+		$"{DBNames.CategoryFieldNameName} = @{DBNames.CategoryFieldNameName}" +
 		$"WHERE {DBNames.CategoryFieldNameId} = @{DBNames.CategoryFieldNameId};";
 
 	public string DeleteCategoryQuery =
@@ -48,7 +44,7 @@ public class CategoryService : ICategoryService
 		$"( {DBNames.CategoryFieldNameParentId} = @{DBNames.CategoryFieldNameParentId} ) " +
 		$"OR ( {DBNames.CategoryFieldNameParentId} IS NULL AND @{DBNames.CategoryFieldNameParentId} IS NULL ) );";
 
-	public string CategoryUsedQuery = 
+	public string CategoryUsedQuery =
 		$"SELECT COUNT(*){DBNames.ProductFieldNameCategoryId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.ProductFieldNameCategoryId} = @CategoryId";
 	#endregion
 
@@ -130,7 +126,7 @@ public class CategoryService : ICategoryService
 		if ( parentId == 0 )
 			parentId = null;
 
-		var parameters = new Dictionary<string, object>
+		var parameters = new Dictionary<string, object?>
 		{
 			{ $"@{DBNames.CategoryFieldNameParentId}", parentId },
 			{ $"@{DBNames.CategoryFieldNameName}", categoryName }

@@ -1,4 +1,5 @@
 ﻿namespace Modelbouwer.Converters;
+
 public class TooltipValidationConverter : IMultiValueConverter
 {
 	public object Convert( object [ ] values, Type targetType, object parameter, CultureInfo culture )
@@ -14,7 +15,7 @@ public class TooltipValidationConverter : IMultiValueConverter
 				: $"{validationError}\n{existingTooltip}";
 		}
 
-		return existingTooltip;
+		return existingTooltip ?? "";
 	}
 
 	public object [ ] ConvertBack( object value, Type [ ] targetTypes, object parameter, CultureInfo culture )

@@ -12,8 +12,7 @@
              xmlns:converters="clr-namespace:Modelbouwer.Converters"
              xmlns:controls="clr-namespace:Modelbouwer.Controls"
 
-             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
-
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages" d:DataContext="{d:DesignInstance Type=local:StockManagementPageViewModel}"
              mc:Ignorable="d" >
 
     <UserControl.Resources>
@@ -74,15 +73,33 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
+            <!--#region Action buttons -->
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding DataGridSaveSettingsCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionSaveSettings}">
+                    <Image Style="{DynamicResource ToolBarSettingsIcon}" />
+                </Button>
+                <Button
+                    Style="{StaticResource ActionBarButtonStyle}"
+                    Command="{Binding DataGridResetSettingsCommand}"
+                    ToolTip="{x:Static language:Language.toolbarButtonActionResetSettings}">
+                    <Image Style="{DynamicResource ToolBarResetSettingsIcon}" />
+                </Button>
+
+            </StackPanel>
+            <!--#endregion-->
+
             <!--#region Record Count Section -->
             <TextBlock
-                Grid.Column="0"
+                Grid.Column="1"
                 Width="Auto"
                 Height="23" FontSize="14" FontWeight="Bold"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
-                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelProduct}" />
+                <Run Text="{x:Static language:Language.toolbarVisibleRowLabelStockManagement}" />
                 <Run Text=": " />
                 <Run
                     FontSize="16"
@@ -91,7 +108,7 @@
                 <Run Text=" " />
                 <Run Text="{x:Static language:Language.toolbarVisibleRowLabelNumberSeperator}" FontWeight="Normal"/>
                 <Run Text=" " />
-                <Run Text="{Binding TotalProductCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
+                <Run Text="{Binding TotalItemCount, StringFormat={}{0:N0}, Mode=OneWay}" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
             </TextBlock>
             <!--#endregion-->
 
@@ -167,48 +184,29 @@
             ColumnSizer="Star"
             ItemsSource="{Binding Items}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            Loaded="StockManagementDataGrid_Loaded"
             NavigationMode="Cell">
 
-            <syncfusion:SfDataGrid.Resources>
-                <Style TargetType="syncfusion:GridTableSummaryCell">
-                    <Setter Property="FontSize" Value="13" />
-                    <Setter Property="FontStyle" Value="Italic" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="Foreground" Value="DarkBlue" />
-                    <Setter Property="HorizontalContentAlignment" Value="Right" />
-                </Style>
-
-                <Style TargetType="syncfusion:GridCaptionSummaryCell">
-                    <Setter Property="ContentTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <ContentPresenter HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=syncfusion:GridCaptionSummaryCell}, Path=ColumnBase.MappingName, Converter={StaticResource MappingNameToAlignmentConverter}, ConverterParameter=Left}" Content="{Binding}" />
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="FontSize" Value="12" />
-                    <Setter Property="FontStyle" Value="Italic" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="Foreground" Value="DarkBlue" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </syncfusion:SfDataGrid.Resources>
-
             <syncfusion:SfDataGrid.TableSummaryRows>
-                <syncfusion:GridTableSummaryRow Position="Top" ShowSummaryInRow="False">
+                <syncfusion:GridTableSummaryRow
+                    Position="Top"
+                    ShowSummaryInRow="False"
+                    Title="Totals:"
+                    TitleColumnCount="2">
                     <syncfusion:GridSummaryRow.SummaryColumns>
+
                         <syncfusion:GridSummaryColumn
                             Name="Value"
-                            Format="'{Sum:c}'"
                             MappingName="ProductInventoryValue"
                             SummaryType="DoubleAggregate"
-                            />
+                            Format="'{Sum:c}'"/>
+
                         <syncfusion:GridSummaryColumn
                             Name="VirtualValue"
-                            Format="'{Sum:c}'"
                             MappingName="ProductVirtualInventoryValue"
                             SummaryType="DoubleAggregate"
-                            />
+                            Format="'{Sum:c}'"/>
+
                     </syncfusion:GridSummaryRow.SummaryColumns>
                 </syncfusion:GridTableSummaryRow>
             </syncfusion:SfDataGrid.TableSummaryRows>
@@ -229,6 +227,7 @@
                             <syncfusion:GridSummaryColumn.Template>
                                 <DataTemplate>
                                     <TextBlock
+                                        HorizontalAlignment="Right"
                                         Style="{StaticResource DataGridGroupColumDataHeader}"
                                         Text="{Binding Converter={StaticResource CaptionSummaryRowConverter}, ConverterParameter=ProductInventoryValue}"
                                         />
@@ -245,6 +244,7 @@
                             <syncfusion:GridSummaryColumn.Template>
                                 <DataTemplate>
                                     <TextBlock
+                                        HorizontalAlignment="Right"
                                         Style="{StaticResource DataGridGroupColumDataHeader}"
                                         Text="{Binding Converter={StaticResource CaptionSummaryRowConverter}, ConverterParameter=ProductVirtualInventoryValue}"
                                         />
@@ -266,6 +266,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Left"
+                    Width="150"
                     HeaderText="{x:Static language:Language.StockManagementDataGridHeaderCode}"
                     AllowEditing="False" />
 
@@ -273,6 +274,7 @@
                     MappingName="ProductName"
                     AllowGrouping="False"
                     AllowSorting="True"
+                    AllowResizing="True"
                     HorizontalHeaderContentAlignment="Left"
                     HeaderText="{x:Static language:Language.StockManagementDataGridHeaderName}"
                     AllowEditing="False" />
@@ -300,6 +302,7 @@
                     AllowFiltering="False"
                     AllowGrouping="False"
                     AllowSorting="True"
+                    Width="140"
                     HorizontalHeaderContentAlignment="Right"
                     MinValue="0"
                     NumberDecimalDigits="2" />
@@ -311,8 +314,8 @@
                     AllowFiltering="False"
                     AllowGrouping="False"
                     AllowSorting="True"
+                    Width="100"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
                     NumberDecimalDigits="2" />
 
                 <syncfusion:GridNumericColumn
@@ -323,7 +326,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
+                    Width="100"
                     NumberDecimalDigits="2" >
                     <syncfusion:GridNumericColumn.CellStyle>
                         <Style TargetType="{x:Type sfGrid:GridCell}">
@@ -342,7 +345,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
+                    Width="100"
                     NumberDecimalDigits="2"/>
 
                 <syncfusion:GridNumericColumn
@@ -353,7 +356,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
+                    Width="100"
                     NumberDecimalDigits="2"/>
 
                 <syncfusion:GridNumericColumn
@@ -363,6 +366,7 @@
                     AllowFiltering="False"
                     AllowGrouping="False"
                     AllowSorting="True"
+                    Width="100"
                     HorizontalHeaderContentAlignment="Right"
                     NumberDecimalDigits="2"/>
 
@@ -374,7 +378,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
+                    Width="130"
                     NumberDecimalDigits="2" />
 
                 <syncfusion:GridNumericColumn
@@ -385,7 +389,7 @@
                     AllowGrouping="False"
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
-                    MinValue="0"
+                    Width="130"
                     NumberDecimalDigits="2"/>
 
             </syncfusion:SfDataGrid.Columns>

@@ -4156,4 +4156,13 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="StockManagementDataGridTooltipEditInventoryAmount" xml:space="preserve">
     <value>Enter actual stock to adjust</value>
   </data>
+  <data name="toolbarVisibleRowLabelStockManagement" xml:space="preserve">
+    <value>Number of products shown</value>
+  </data>
+  <data name="toolbarButtonActionSaveSettings" xml:space="preserve">
+    <value>Save column settings as template</value>
+  </data>
+  <data name="toolbarButtonActionResetSettings" xml:space="preserve">
+    <value>Reset the set column and grouping to the default settings</value>
+  </data>
 </root>
