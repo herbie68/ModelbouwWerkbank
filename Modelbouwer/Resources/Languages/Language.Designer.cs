@@ -11158,11 +11158,56 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Totaal:.
+        /// </summary>
+        public static string StockManagementDataGridSummaryText {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridSummaryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vul de werkelijke voorraad in om aan te passen.
         /// </summary>
         public static string StockManagementDataGridTooltipEditInventoryAmount {
             get {
                 return ResourceManager.GetString("StockManagementDataGridTooltipEditInventoryAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wijzig de minimale voorraad.
+        /// </summary>
+        public static string StockManagementDataGridTooltipEditProductMinimalStock {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridTooltipEditProductMinimalStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wijzig de product  prijs.
+        /// </summary>
+        public static string StockManagementDataGridTooltipEditProductPrice {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridTooltipEditProductPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Er is te onvoldoende voorraad.
+        /// </summary>
+        public static string StockManagementDataGridValueShortWarning {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridValueShortWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Er is te onvoldoende voorraad, maar wanneer de bestellingen worden toegevoegd is er voldoende voorraad.
+        /// </summary>
+        public static string StockManagementDataGridValueTempShortWarning {
+            get {
+                return ResourceManager.GetString("StockManagementDataGridValueTempShortWarning", resourceCulture);
             }
         }
         

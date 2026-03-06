@@ -4142,7 +4142,7 @@ In order to be able to add a new time registration, a date and project must firs
     <value>Value</value>
   </data>
   <data name="StockManagementDataGridHeaderOrdered" xml:space="preserve">
-    <value>On order</value>
+    <value>In order</value>
   </data>
   <data name="StockManagementDataGridHeaderVirtualInventoryAmount" xml:space="preserve">
     <value>Virtual stock</value>
@@ -4164,5 +4164,20 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="toolbarButtonActionResetSettings" xml:space="preserve">
     <value>Reset the set column and grouping to the default settings</value>
+  </data>
+  <data name="StockManagementDataGridSummaryText" xml:space="preserve">
+    <value>Totals:</value>
+  </data>
+  <data name="StockManagementDataGridValueShortWarning" xml:space="preserve">
+    <value>There is insufficient stock</value>
+  </data>
+  <data name="StockManagementDataGridValueTempShortWarning" xml:space="preserve">
+    <value>There is insufficient stock, but when the orders are added there is enough stock</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductMinimalStock" xml:space="preserve">
+    <value>Change the minimum stock</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductPrice" xml:space="preserve">
+    <value>Change the product price</value>
   </data>
 </root>

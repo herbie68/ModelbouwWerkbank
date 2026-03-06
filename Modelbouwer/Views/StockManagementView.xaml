@@ -19,7 +19,7 @@
         <converters:ByteToImageConverter x:Key="ByteToImageConverter" DefaultImage="{StaticResource noimage}" />
         <converters:ByteToImageConverter x:Key="NullOrEmptyImageConverter" />
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroCnvverter" />
+        <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter" />
         <converters:CaptionSummaryRowConverter x:Key="CaptionSummaryRowConverter" />
         <converters:MappingNameToAlignmentConverter x:Key="MappingNameToAlignmentConverter" />
 
@@ -185,14 +185,69 @@
             ItemsSource="{Binding Items}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             Loaded="StockManagementDataGrid_Loaded"
-            NavigationMode="Cell">
+            NavigationMode="Cell" AllowTriStateSorting="True">
+
+            <syncfusion:SfDataGrid.Resources>
+                <!-- =================== -->
+                <!-- Table Summary Style -->
+                <!-- =================== -->
+                <Style TargetType="syncfusion:GridTableSummaryCell">
+                    <Setter Property="Background" Value="#F7F7E6"/>
+                    <Setter Property="Foreground" Value="DarkBlue" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="FontStyle" Value="Italic" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="HorizontalContentAlignment" Value="Right" />
+                    <Setter Property="Padding" Value="6,2,6,2"/>
+                    <Setter Property="BorderThickness" Value="0,2,0,1"/>
+                    <Setter Property="BorderBrush" Value="#CFCFCF"/>
+                </Style>
+
+                <!-- ===================== -->
+                <!-- Caption Summary Style -->
+                <!-- ===================== -->
+                <Style TargetType="syncfusion:GridCaptionSummaryCell">
+                    <Setter Property="Background" Value="#FBFBEA"/>
+                    <Setter Property="Foreground" Value="#2F4F6F"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Padding" Value="4,2,4,2"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="BorderThickness" Value="0,1,0,0"/>
+                    <Setter Property="BorderBrush" Value="#CFCFCF"/>
+                </Style>
+
+                <!-- =============== -->
+                <!-- Grid Cell Style -->
+                <!-- =============== -->
+                <Style TargetType="syncfusion:GridCell">
+                    <Setter Property="BorderBrush" Value="#EAEAEA"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                </Style>
+
+                <!-- ================= -->
+                <!-- Header Cell Style -->
+                <!-- ================= -->
+                <Style TargetType="syncfusion:GridHeaderCellControl">
+                    <Setter Property="Background" Value="#324986"/>
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="BorderBrush" Value="#EAEAEA"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                </Style>
+            </syncfusion:SfDataGrid.Resources>
+            <sfGrid:SfDataGrid.AlternatingRowStyleSelector>
+                <StyleSelector/>
+            </sfGrid:SfDataGrid.AlternatingRowStyleSelector>
 
             <syncfusion:SfDataGrid.TableSummaryRows>
                 <syncfusion:GridTableSummaryRow
                     Position="Top"
                     ShowSummaryInRow="False"
-                    Title="Totals:"
-                    TitleColumnCount="2">
+                    Title="{x:Static language:Language.StockManagementDataGridSummaryText}"
+                    TitleColumnCount="3">
                     <syncfusion:GridSummaryRow.SummaryColumns>
 
                         <syncfusion:GridSummaryColumn
@@ -262,6 +317,52 @@
                     MappingName="ProductId" />
 
                 <syncfusion:GridTextColumn
+                    Width="20"
+                    AllowFiltering="False"
+                    AllowGrouping="True"
+                    AllowSorting="False"
+                    HeaderText=""
+                    MappingName="ShowCellIcon"
+                    >
+                    <syncfusion:GridTextColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image>
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Setter Property="Margin" Value="3" />
+                                        <Setter Property="Source" Value="{x:Null}" />
+                                        <Setter Property="Visibility" Value="Collapsed" />
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ProductShortInventory, Converter={StaticResource GreaterThanZeroConverter}}" Value="True">
+                                                <Setter Property="Source" Value="{DynamicResource short}" />
+                                                <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridValueShortWarning}" />
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding ProductTempShortInventory, Converter={StaticResource GreaterThanZeroConverter}}" Value="True">
+                                                <Setter Property="Source" Value="{DynamicResource tempshort}" />
+                                                <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridValueTempShortWarning}" />
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding ProductShortInventory}" Value="0" />
+                                                    <Condition Binding="{Binding ProductTempShortInventory}" Value="0" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Source" Value="{x:Null}" />
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </DataTemplate>
+                    </syncfusion:GridTextColumn.CellTemplate>
+                </syncfusion:GridTextColumn>
+
+                <syncfusion:GridTextColumn
                     MappingName="ProductCode"
                     AllowGrouping="False"
                     AllowSorting="True"
@@ -298,14 +399,24 @@
                 <syncfusion:GridNumericColumn
                     MappingName="ProductMinimalStock"
                     HeaderText="{x:Static language:Language.StockManagementDataGridHeaderMinimalStock}"
-                    AllowEditing="False"
+                    AllowEditing="True"
                     AllowFiltering="False"
                     AllowGrouping="False"
                     AllowSorting="True"
                     Width="140"
                     HorizontalHeaderContentAlignment="Right"
                     MinValue="0"
-                    NumberDecimalDigits="2" />
+                    NumberDecimalDigits="2" >
+                    <syncfusion:GridNumericColumn.CellStyle>
+                        <Style TargetType="{x:Type sfGrid:GridCell}">
+                            <Setter Property="Background" Value="#E9EBF1" />
+                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditProductMinimalStock}" />
+
+                        </Style>
+                    </syncfusion:GridNumericColumn.CellStyle>
+                </syncfusion:GridNumericColumn>
 
                 <syncfusion:GridNumericColumn
                     MappingName="ProductPrice"
@@ -316,7 +427,17 @@
                     AllowSorting="True"
                     Width="100"
                     HorizontalHeaderContentAlignment="Right"
-                    NumberDecimalDigits="2" />
+                    NumberDecimalDigits="2" >
+                    <syncfusion:GridNumericColumn.CellStyle>
+                        <Style TargetType="{x:Type sfGrid:GridCell}">
+                            <Setter Property="Background" Value="#E9EBF1" />
+                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditProductPrice}" />
+
+                        </Style>
+                    </syncfusion:GridNumericColumn.CellStyle>
+                </syncfusion:GridNumericColumn>
 
                 <syncfusion:GridNumericColumn
                     MappingName="ProductInventory"
@@ -330,8 +451,10 @@
                     NumberDecimalDigits="2" >
                     <syncfusion:GridNumericColumn.CellStyle>
                         <Style TargetType="{x:Type sfGrid:GridCell}">
-                            <Setter Property="Background" Value="#B3BFDE" />
-                            <Setter Property="ToolTip" Value="{}x:Static language:Language.StockManagementDataGridTooltipEditInventoryAmount}" />
+                            <Setter Property="Background" Value="#E9EBF1" />
+                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditInventoryAmount}" />
 
                         </Style>
                     </syncfusion:GridNumericColumn.CellStyle>
@@ -390,6 +513,11 @@
                     AllowSorting="True"
                     HorizontalHeaderContentAlignment="Right"
                     Width="130"
+                    NumberDecimalDigits="2"/>
+
+                <syncfusion:GridNumericColumn
+                    MappingName="ProductTempShortInventory"
+                    IsHidden="True"
                     NumberDecimalDigits="2"/>
 
             </syncfusion:SfDataGrid.Columns>

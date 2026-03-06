@@ -102,18 +102,30 @@ public partial class StockManagementPageViewModel : EntityPageViewModel<StockMan
 			return;
 
 		double difference = item.ProductInventory - item.ProductOriginalInventory;
-		if ( difference == 0 )
-			return;
 
 		_lastEditedProductId = item.ProductId;
 
-		var parameters = new Dictionary<string, object?>
+		if ( difference != 0 )
 		{
-			{ $"@{DBNames.StocklogFieldNameProductId}", item.ProductId },
-			{ $"@{DBNames.StocklogFieldNameAmountCorrection}", difference }
+			// First save the correction to the database
+			var parameters = new Dictionary<string, object?>
+			{
+				{ $"@{DBNames.StocklogFieldNameProductId}", item.ProductId },
+				{ $"@{DBNames.StocklogFieldNameAmountCorrection}", difference }
+			};
+
+			await _dataService.InsertCorrectionAsync( parameters );
+		}
+
+		// Now save eventualy changes of product price or minimal stock as well
+		var productparameters = new Dictionary<string, object?>
+		{
+			{ $"@{DBNames.ProductFieldNameId}", item.ProductId },
+			{ $"@{DBNames.ProductFieldNameMinimalStock}", item.ProductMinimalStock },
+			{ $"@{DBNames.ProductFieldNamePrice}", item.ProductPrice }
 		};
 
-		await _dataService.InsertCorrectionAsync( parameters );
+		await _dataService.UpdateProductCorrectionAsync( productparameters );
 
 		await ReloadAndReselectAsync();
 	}
@@ -146,7 +158,7 @@ public partial class StockManagementPageViewModel : EntityPageViewModel<StockMan
 
 	private async void Item_PropertyChanged( object? sender, PropertyChangedEventArgs e )
 	{
-		if ( e.PropertyName != nameof( StockManagementModel.ProductInventory ) )
+		if ( e.PropertyName != nameof( StockManagementModel.ProductInventory ) && e.PropertyName != nameof( StockManagementModel.ProductMinimalStock ) && e.PropertyName != nameof( StockManagementModel.ProductPrice ) )
 			return;
 
 		if ( sender is not StockManagementModel item )

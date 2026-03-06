@@ -15,5 +15,4 @@
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
     <!--#endregion-->
-
 </ResourceDictionary>

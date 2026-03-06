@@ -9,10 +9,9 @@
     xmlns:t="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
     <Style x:Key="SfDataGridGroupDropAreaStyle1" TargetType="{x:Type syncfusion:GroupDropArea}">
-        <Setter Property="Background" Value="#FFF5F2CC" />
+        <Setter Property="Background" Value="#F7F7F7" />
         <Setter Property="Foreground" Value="DarkSlateBlue" />
         <Setter Property="GroupDropAreaText" Value="{x:Static language:Language.datagridGroupBox_Text}" />
-        <Setter Property="Height" Value="65" />
         <Setter Property="ToolTip" Value="{x:Static language:Language.datagridGroupBox_Tooltip}" />
     </Style>
 

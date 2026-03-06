@@ -4165,4 +4165,19 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarButtonActionResetSettings" xml:space="preserve">
     <value>Setzen Sie die eingestellte Spalte und Gruppierung auf die Standardeinstellungen zurück</value>
   </data>
+  <data name="StockManagementDataGridSummaryText" xml:space="preserve">
+    <value>Gesamt:</value>
+  </data>
+  <data name="StockManagementDataGridValueShortWarning" xml:space="preserve">
+    <value>Der Vorrat reicht nicht aus</value>
+  </data>
+  <data name="StockManagementDataGridValueTempShortWarning" xml:space="preserve">
+    <value>Es ist nicht genügend Lagerbestand vorhanden, aber wenn die Bestellungen hinzugefügt werden, ist genügend Lagerbestand vorhanden</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductMinimalStock" xml:space="preserve">
+    <value>Ändern Sie den Mindestbestand</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductPrice" xml:space="preserve">
+    <value>Ändern Sie den Produktpreis</value>
+  </data>
 </root>

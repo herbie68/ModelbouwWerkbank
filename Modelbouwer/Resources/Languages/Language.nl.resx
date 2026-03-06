@@ -4165,4 +4165,19 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarButtonActionResetSettings" xml:space="preserve">
     <value>Reset de ingestelde kolom en groepering naar de standaard instellingen</value>
   </data>
+  <data name="StockManagementDataGridSummaryText" xml:space="preserve">
+    <value>Totaal:</value>
+  </data>
+  <data name="StockManagementDataGridValueShortWarning" xml:space="preserve">
+    <value>Er is te onvoldoende voorraad</value>
+  </data>
+  <data name="StockManagementDataGridValueTempShortWarning" xml:space="preserve">
+    <value>Er is te onvoldoende voorraad, maar wanneer de bestellingen worden toegevoegd is er voldoende voorraad</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductMinimalStock" xml:space="preserve">
+    <value>Wijzig de minimale voorraad</value>
+  </data>
+  <data name="StockManagementDataGridTooltipEditProductPrice" xml:space="preserve">
+    <value>Wijzig de product  prijs</value>
+  </data>
 </root>

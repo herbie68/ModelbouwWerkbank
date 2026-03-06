@@ -19,7 +19,9 @@ public class StockService : IStockService
 		$"	IFNULL(so.InOrder, 0) AS InOrder, " +
 		$"	(IFNULL(sl.InventoryAmount, 0) + IFNULL(so.InOrder, 0)) AS VirtualInventoryAmount, " +
 		$"	p.{DBNames.ProductFieldNamePrice} * (IFNULL(sl.InventoryAmount, 0) + IFNULL(so.InOrder, 0)) AS VirtualInventoryValue, " +
-		$"	GREATEST(p.{DBNames.ProductFieldNameMinimalStock} - (IFNULL(sl.InventoryAmount, 0) + IFNULL(so.InOrder, 0)),     0 ) AS Short " +
+		$"	GREATEST(p.{DBNames.ProductFieldNameMinimalStock} - (IFNULL(sl.InventoryAmount, 0) + IFNULL(so.InOrder, 0)), 0) AS Short, " +
+		$"  CASE " +
+		$"		WHEN GREATEST( p.{DBNames.ProductFieldNameMinimalStock} - (IFNULL(sl.InventoryAmount, 0) + IFNULL(so.InOrder, 0)), 0) > 0 THEN 0 ELSE GREATEST(p.{DBNames.ProductFieldNameMinimalStock} - IFNULL(sl.InventoryAmount,0), 0) END AS TempShort " +
 		$"FROM {DBNames.Database}.{DBNames.ProductTable} p " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.StorageTable} s ON p.{DBNames.ProductFieldNameStorageId} = s.{DBNames.StorageFieldNameId} " +
 		$"LEFT JOIN ( " +
@@ -48,6 +50,13 @@ public class StockService : IStockService
 		$"@{DBNames.StocklogFieldNameAmountCorrection}, " +
 		$"{DBNames.SqlCurrentDate} " +
 		$");";
+
+	public string UpdateProductCorrection = $"" +
+		$"UPDATE {DBNames.Database}.{DBNames.ProductTable} " +
+		$"SET " +
+		$"{DBNames.ProductFieldNamePrice} = @{DBNames.ProductFieldNamePrice}, " +
+		$"{DBNames.ProductFieldNameMinimalStock} = @{DBNames.ProductFieldNameMinimalStock} " +
+		$"WHERE {DBNames.ProductFieldNameId} = @{DBNames.ProductFieldNameId};";
 	#endregion
 
 	#region All Database mutations for inventory management
@@ -71,7 +80,8 @@ public class StockService : IStockService
 				ProductInOrder = DatabaseValueConverter.GetDouble( reader [ "InOrder" ] ),
 				ProductVirtualInventory = DatabaseValueConverter.GetDouble( reader [ "VirtualInventoryAmount" ] ),
 				ProductVirtualInventoryValue = DatabaseValueConverter.GetDouble( reader [ "VirtualInventoryValue" ] ),
-				ProductShortInventory = DatabaseValueConverter.GetDouble( reader [ "Short" ] )
+				ProductShortInventory = DatabaseValueConverter.GetDouble( reader [ "Short" ] ),
+				ProductTempShortInventory = DatabaseValueConverter.GetDouble( reader [ "TempShort" ] )
 			};
 		} );
 	}
@@ -87,6 +97,22 @@ public class StockService : IStockService
 		};
 
 		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertInventoryCorrection, parameters );
+
+		return ( int ) newId;
+	}
+	#endregion
+
+	#region Update Minimal stock and/or price for the given product
+	public async Task<int> UpdateProductCorrectionAsync( Dictionary<string, object?> queryParameters )
+	{
+		Dictionary<string, object> parameters = new()
+		{
+			{ $"@{DBNames.ProductFieldNameId}", queryParameters[$"@{DBNames.ProductFieldNameId}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProductFieldNameMinimalStock}", queryParameters[$"@{DBNames.ProductFieldNameMinimalStock}"] ?? DBNull.Value },
+			{ $"@{DBNames.ProductFieldNamePrice}", queryParameters[$"@{DBNames.ProductFieldNamePrice}"] ?? 0 }
+		};
+
+		uint newId = await _dataService.ExecuteScalarAsync<uint>( UpdateProductCorrection, parameters );
 
 		return ( int ) newId;
 	}
