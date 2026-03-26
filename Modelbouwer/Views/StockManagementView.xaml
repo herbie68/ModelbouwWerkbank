@@ -410,8 +410,8 @@
                     <syncfusion:GridNumericColumn.CellStyle>
                         <Style TargetType="{x:Type sfGrid:GridCell}">
                             <Setter Property="Background" Value="#E9EBF1" />
-                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
-                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="0,0,.5,.5"/>
                             <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditProductMinimalStock}" />
 
                         </Style>
@@ -431,8 +431,8 @@
                     <syncfusion:GridNumericColumn.CellStyle>
                         <Style TargetType="{x:Type sfGrid:GridCell}">
                             <Setter Property="Background" Value="#E9EBF1" />
-                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
-                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="0,0,.5,.5"/>
                             <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditProductPrice}" />
 
                         </Style>
@@ -452,8 +452,8 @@
                     <syncfusion:GridNumericColumn.CellStyle>
                         <Style TargetType="{x:Type sfGrid:GridCell}">
                             <Setter Property="Background" Value="#E9EBF1" />
-                            <Setter Property="BorderBrush" Value="#F2F2BF"/>
-                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="0,0,.5,.5"/>
                             <Setter Property="ToolTip" Value="{x:Static language:Language.StockManagementDataGridTooltipEditInventoryAmount}" />
 
                         </Style>

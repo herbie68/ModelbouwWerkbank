@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "items": [
+    {
+      "name": "App.xaml",
+      "path": "Modelbouwer\\App.xaml"
+    },
+    {
+      "name": "App.xaml.cs",
+      "path": "Modelbouwer\\App.xaml.cs"
+    },
+    {
+      "name": "GlobalUsings.cs",
+      "path": "Modelbouwer\\GlobalUsings.cs"
+    }
+  ]
+}
