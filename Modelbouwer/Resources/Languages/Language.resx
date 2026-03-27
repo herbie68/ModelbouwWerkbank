@@ -4075,4 +4075,16 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarVisibleRowLabelUnit">
     <value>Aantal getoonde eenheden</value>
   </data>
+  <data name="metadataStockOrderHeaderSubtitle" xml:space="preserve">
+    <value>Registreer bestelling bij een leverancier</value>
+  </data>
+  <data name="metadataStockRecieptHeaderSubtitle" xml:space="preserve">
+    <value>Registreer ontvangsten op een bestelling</value>
+  </data>
+  <data name="metadataStockOrderHeaderTitle" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="metadataStockRecieptHeaderTitle" xml:space="preserve">
+    <value>Ontvangsten</value>
+  </data>
 </root>

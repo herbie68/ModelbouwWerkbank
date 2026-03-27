@@ -3,16 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Modelbouwer.ViewModels"
-             xmlns:hlp="clr-namespace:Modelbouwer.Helpers"
+             xmlns:local="clr-namespace:Modelbouwer.Views"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:sfGrid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
              xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
              xmlns:helpers="clr-namespace:Modelbouwer.Helpers"
              xmlns:converters="clr-namespace:Modelbouwer.Converters"
              xmlns:controls="clr-namespace:Modelbouwer.Controls"
-
-             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages" d:DataContext="{d:DesignInstance Type=local:StockManagementPageViewModel}"
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages" d:DataContext="{d:DesignInstance Type=viewmodels:StockManagementPageViewModel}"
              mc:Ignorable="d" >
 
     <UserControl.Resources>
@@ -22,7 +20,6 @@
         <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter" />
         <converters:CaptionSummaryRowConverter x:Key="CaptionSummaryRowConverter" />
         <converters:MappingNameToAlignmentConverter x:Key="MappingNameToAlignmentConverter" />
-
     </UserControl.Resources>
 
     <Grid>

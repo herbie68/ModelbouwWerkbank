@@ -4075,4 +4075,16 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarVisibleRowLabelUnit">
     <value>Anzahl der angezeigten Einheiten</value>
   </data>
+  <data name="metadataStockOrderHeaderSubtitle" xml:space="preserve">
+    <value>Registrieren Sie die Bestellung bei einem Lieferanten</value>
+  </data>
+  <data name="metadataStockRecieptHeaderSubtitle" xml:space="preserve">
+    <value>Registrieren Sie Belege für eine Bestellung</value>
+  </data>
+  <data name="metadataStockOrderHeaderTitle" xml:space="preserve">
+    <value>Bestellungen</value>
+  </data>
+  <data name="metadataStockRecieptHeaderTitle" xml:space="preserve">
+    <value>Rezeption</value>
+  </data>
 </root>

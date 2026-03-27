@@ -7855,6 +7855,42 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registreer bestelling bij een leverancier.
+        /// </summary>
+        public static string metadataStockOrderHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataStockOrderHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestellingen.
+        /// </summary>
+        public static string metadataStockOrderHeaderTitle {
+            get {
+                return ResourceManager.GetString("metadataStockOrderHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registreer ontvangsten op een bestelling.
+        /// </summary>
+        public static string metadataStockRecieptHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("metadataStockRecieptHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ontvangsten.
+        /// </summary>
+        public static string metadataStockRecieptHeaderTitle {
+            get {
+                return ResourceManager.GetString("metadataStockRecieptHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locatie.
         /// </summary>
         public static string metadataStorageEntryFieldStorage {
