@@ -2604,10 +2604,10 @@
   <data name="metadataProjectTabMemoTitle">
     <value>Aanvullende informatie</value>
   </data>
-  <data name="metadataStockHeaderSubtitle">
+  <data name="metadataStockManagementHeaderSubtitle">
     <value>Handmatig voorraadbeheer</value>
   </data>
-  <data name="metadataStockHeaderTitel">
+  <data name="metadataStockManagementHeaderTitle">
     <value>Voorraad</value>
   </data>
   <data name="metadataStorageEntryFieldStorage">
@@ -4086,5 +4086,71 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="metadataStockRecieptHeaderTitle" xml:space="preserve">
     <value>Ontvangsten</value>
+  </data>
+  <data name="StockOrderOrderSelectionGroupTitle" xml:space="preserve">
+    <value>Selecteer een bestaande bestelling of creëer nieuwe</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierLabel" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierTag" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierTooltip" xml:space="preserve">
+    <value>Selecteer leverancier</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateTooltip" xml:space="preserve">
+    <value>Besteldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateTag" xml:space="preserve">
+    <value>Besteldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateLabel" xml:space="preserve">
+    <value>Besteldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberTag" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberTooltip" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberLabel" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyTag" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyTooltip" xml:space="preserve">
+    <value>Valuta bestelling</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyLabel" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusTag" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusTooltip" xml:space="preserve">
+    <value>Status bestelling</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusLabel" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsTag" xml:space="preserve">
+    <value>Bestelkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsTooltip" xml:space="preserve">
+    <value>Kosten voor de bestelling</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsLabel" xml:space="preserve">
+    <value>Bestelkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsTag" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsTooltip" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsLabel" xml:space="preserve">
+    <value>Verzendkosten</value>
   </data>
 </root>

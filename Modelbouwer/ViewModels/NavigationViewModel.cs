@@ -179,6 +179,13 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = Language.navigation_Inventory_SubItem_Report_Tooltip,
 			Command = new SimpleCommand( () => LoadStockManagementView() )
 		} );
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Inventory_SubItem_Order_Label,
+			NavigationIcon = CreateNavigationImage( "Order" ),
+			NavigationTooltip = Language.navigation_Inventory_SubItem_Order_Tooltip,
+			Command = new SimpleCommand( () => LoadStockOrderManagementView() )
+		} );
 	}
 
 	private static Image? CreateNavigationImage( string resourceKey )
@@ -366,6 +373,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadStockOrderManagementView()
+	{
+		try
+		{
+			var stockorderView = _serviceProvider.GetRequiredService<StockOrderView>();
+			CurrentView = stockorderView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading StockOrderView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -417,7 +437,8 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Order_Label,
 			NavigationIcon = CreateNavigationImage( "Order" ),
-			NavigationTooltip = Language.navigation_Inventory_SubItem_Order_Tooltip
+			NavigationTooltip = Language.navigation_Inventory_SubItem_Order_Tooltip,
+			Command = new SimpleCommand( () => LoadStockOrderManagementView() )
 		} );
 
 		InventorySubItems.Add( new NavigationModel

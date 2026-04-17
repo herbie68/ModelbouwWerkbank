@@ -2604,10 +2604,10 @@
   <data name="metadataProjectTabMemoTitle">
     <value>Weitere Informationen</value>
   </data>
-  <data name="metadataStockHeaderSubtitle">
+  <data name="metadataStockManagementHeaderSubtitle">
     <value>Manuelle Bestandsverwaltung</value>
   </data>
-  <data name="metadataStockHeaderTitel">
+  <data name="metadataStockManagementHeaderTitle">
     <value>Aktie</value>
   </data>
   <data name="metadataStorageEntryFieldStorage">
@@ -4086,5 +4086,71 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="metadataStockRecieptHeaderTitle" xml:space="preserve">
     <value>Rezeption</value>
+  </data>
+  <data name="StockOrderOrderSelectionGroupTitle" xml:space="preserve">
+    <value>Wählen Sie eine bestehende Bestellung aus oder erstellen Sie eine neue</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierLabel" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierTag" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="StockOrderOrderSelectionSupplierTooltip" xml:space="preserve">
+    <value>Anbieter auswählen</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateTooltip" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateTag" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderdateLabel" xml:space="preserve">
+    <value>Bestelldatum</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberTag" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberTooltip" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdernumberLabel" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyTag" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyTooltip" xml:space="preserve">
+    <value>Währungsreihenfolge</value>
+  </data>
+  <data name="StockOrderOrderSelectionCurrencyLabel" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusTag" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusTooltip" xml:space="preserve">
+    <value>Bestellstatus</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrderstatusLabel" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsTag" xml:space="preserve">
+    <value>Bestellkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsTooltip" xml:space="preserve">
+    <value>Kosten für die Bestellung</value>
+  </data>
+  <data name="StockOrderOrderSelectionOrdercostsLabel" xml:space="preserve">
+    <value>Bestellkosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsTag" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsTooltip" xml:space="preserve">
+    <value>Portokosten</value>
+  </data>
+  <data name="StockOrderOrderSelectionDeliverycostsLabel" xml:space="preserve">
+    <value>Portokosten</value>
   </data>
 </root>

@@ -7839,18 +7839,18 @@ namespace Modelbouwer.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Handmatig voorraadbeheer.
         /// </summary>
-        public static string metadataStockHeaderSubtitle {
+        public static string metadataStockManagementHeaderSubtitle {
             get {
-                return ResourceManager.GetString("metadataStockHeaderSubtitle", resourceCulture);
+                return ResourceManager.GetString("metadataStockManagementHeaderSubtitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Voorraad.
         /// </summary>
-        public static string metadataStockHeaderTitel {
+        public static string metadataStockManagementHeaderTitle {
             get {
-                return ResourceManager.GetString("metadataStockHeaderTitel", resourceCulture);
+                return ResourceManager.GetString("metadataStockManagementHeaderTitle", resourceCulture);
             }
         }
         
@@ -11244,6 +11244,204 @@ namespace Modelbouwer.Resources.Languages {
         public static string StockManagementDataGridValueTempShortWarning {
             get {
                 return ResourceManager.GetString("StockManagementDataGridValueTempShortWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta.
+        /// </summary>
+        public static string StockOrderOrderSelectionCurrencyLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionCurrencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta.
+        /// </summary>
+        public static string StockOrderOrderSelectionCurrencyTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionCurrencyTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valuta bestelling.
+        /// </summary>
+        public static string StockOrderOrderSelectionCurrencyTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionCurrencyTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string StockOrderOrderSelectionDeliverycostsLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionDeliverycostsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string StockOrderOrderSelectionDeliverycostsTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionDeliverycostsTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verzendkosten.
+        /// </summary>
+        public static string StockOrderOrderSelectionDeliverycostsTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionDeliverycostsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer een bestaande bestelling of creëer nieuwe.
+        /// </summary>
+        public static string StockOrderOrderSelectionGroupTitle {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelkosten.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdercostsLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdercostsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelkosten.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdercostsTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdercostsTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kosten voor de bestelling.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdercostsTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdercostsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Besteldatum.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderdateLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderdateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Besteldatum.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderdateTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderdateTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Besteldatum.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderdateTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderdateTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelnummer.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdernumberLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdernumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelnummer.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdernumberTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdernumberTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelnummer.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrdernumberTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrdernumberTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderstatusLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderstatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderstatusTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderstatusTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status bestelling.
+        /// </summary>
+        public static string StockOrderOrderSelectionOrderstatusTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionOrderstatusTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leverancier.
+        /// </summary>
+        public static string StockOrderOrderSelectionSupplierLabel {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionSupplierLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leverancier.
+        /// </summary>
+        public static string StockOrderOrderSelectionSupplierTag {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionSupplierTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer leverancier.
+        /// </summary>
+        public static string StockOrderOrderSelectionSupplierTooltip {
+            get {
+                return ResourceManager.GetString("StockOrderOrderSelectionSupplierTooltip", resourceCulture);
             }
         }
         

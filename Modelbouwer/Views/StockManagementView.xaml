@@ -45,13 +45,13 @@
                 <Image
                     Style="{DynamicResource HeaderIconStyle}"
                     Source="{StaticResource inventorycheck}" />
-                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataStockHeaderTitel}" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataStockManagementHeaderTitle}" />
             </StackPanel>
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataStockHeaderSubtitle}" />
+                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.metadataStockManagementHeaderSubtitle}" />
 
                 <TextBlock Text="{x:Static language:Language.generalUnsavedChanges}"
                            Visibility="{Binding HasUnsavedChanges, Converter={StaticResource BooleanToVisibilityConverter}}"

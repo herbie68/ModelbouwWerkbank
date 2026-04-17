@@ -19,12 +19,8 @@
             <RowDefinition Height="85" />
             <!-- Spacer -->
             <RowDefinition Height="2" />
-            <!-- Toolbar wilt existing order selector-->
-            <RowDefinition Height="40" />
-            <!-- Base information for order -->
-            <RowDefinition Height="100" />
-            <!-- Subtitlebar -->
-            <RowDefinition Height="30" />
+            <!-- Existing or new order -->
+            <RowDefinition Height="170" />
             <!-- DataGrid -->
             <RowDefinition Height="150" />
             <!-- Subtitlebar -->
@@ -44,7 +40,8 @@
                 <Image
                     Style="{DynamicResource HeaderIconStyle}"
                     Source="{StaticResource inventorycheck}" />
-                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataStockOrderHeaderTitel}" />
+
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.metadataStockOrderHeaderTitle}" />
             </StackPanel>
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
@@ -57,6 +54,149 @@
                            Style="{DynamicResource TextBlockUnsavedChangesWarning}" />
             </StackPanel>
         </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Groupboxes -->
+        <!--#region Existing or new order -->
+        <StackPanel Margin="5" Grid.Row="2" Orientation="Vertical">
+            <GroupBox Opacity="1">
+                <GroupBox.Header>
+                    <StackPanel
+                        Background="Transparent"
+                        Orientation="Horizontal">
+                        <Image
+                            Source="{StaticResource Order}"
+                            Style="{DynamicResource ImageHeaderGroup}" />
+                        <TextBlock
+                            Style="{DynamicResource TextBlockBold}"
+                            Text="{x:Static language:Language.StockOrderOrderSelectionGroupTitle}" />
+                    </StackPanel>
+                </GroupBox.Header>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!--#region Row 0/1-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="110" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            Content="{x:Static language:Language.StockOrderOrderSelectionSupplierLabel}"
+                            Style="{DynamicResource EntryLabelHorizontal}" />
+
+                        <Label
+                            Grid.Column="1"
+                            Content="{x:Static language:Language.StockOrderOrderSelectionOrderdateLabel}"
+                            Style="{DynamicResource EntryLabelHorizontal}" />
+
+                        <Label
+                            Grid.Column="2"
+                            Content="{x:Static language:Language.StockOrderOrderSelectionCurrencyLabel}"
+                            Style="{DynamicResource EntryLabelHorizontal}" />
+
+                        <Label
+                            Grid.Column="3"
+                            Content="{x:Static language:Language.StockOrderOrderSelectionDeliverycostsLabel}"
+                            Style="{DynamicResource EntryLabelHorizontal}" />
+
+                        <Label
+                            Grid.Column="4"
+                            Content="{x:Static language:Language.StockOrderOrderSelectionOrdercostsLabel}"
+                            Style="{DynamicResource EntryLabelHorizontal}" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="110" />
+                        </Grid.ColumnDefinitions>
+
+                        <syncfusion:ComboBoxAdv
+                            Grid.Column="0"
+                            Margin="5 2 0 2"
+                            Width="200"
+                            HorizontalAlignment="Left"
+                            Cursor="Arrow"
+                            DefaultText="{x:Static language:Language.StockOrderOrderSelectionSupplierTag}"
+                            DisplayMemberPath="SupplierName"
+                            ItemsSource="{Binding OrderSupplier}"
+                            SelectedValuePath="SupplierId"
+                            SelectedValue="{Binding SelectedItem.OrderSupplierId, Mode=TwoWay}"
+                            TextSearch.TextPath="SupplierName"
+                            ToolTip="{x:Static language:Language.StockOrderOrderSelectionSupplierTooltip}" />
+
+                        <DatePicker
+                            x:Name="OrderDate"
+                            Grid.Column="1"
+                            Margin="5 0 0 0"
+                            Width="150"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource DefaultDatePicker}"
+                            Tag="{x:Static language:Language.StockOrderOrderSelectionOrderdateTag}"
+                            SelectedDate="{Binding SelectedItem.ProjectStartDate,Mode=TwoWay, Converter={StaticResource DateOnlyConverter}}"
+                            ToolTip="{x:Static language:Language.StockOrderOrderSelectionOrderdateTooltip}"
+                            />
+
+                        <syncfusion:ComboBoxAdv
+                            Grid.Column="2"
+                            Margin="5 2 0 2"
+                            Width="80"
+                            HorizontalAlignment="Left"
+                            Cursor="Arrow"
+                            DefaultText="{x:Static language:Language.StockOrderOrderSelectionCurrencyTag}"
+                            DisplayMemberPath="CurrencyName"
+                            ItemsSource="{Binding SupplierCurrency}"
+                            SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"
+                            TextSearch.TextPath="CurrencyName"
+                            ToolTip="{x:Static language:Language.StockOrderOrderSelectionCurrencyTooltip}" />
+
+                        <TextBox
+                            Grid.Column="3"
+                            Margin="5 2 0 2"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Right"
+                            Style="{DynamicResource DefaultTextBox}"
+                            Tag="{x:Static language:Language.StockOrderOrderSelectionDeliverycostsTag}"
+                            Text="{Binding SelectedItem.SendCosts, Mode=TwoWay, StringFormat={}{0:N4}, ConverterCulture='nl-NL', UpdateSourceTrigger=PropertyChanged}"
+                            ToolTip="{x:Static language:Language.StockOrderOrderSelectionDeliverycostsTooltip}" />
+
+                        <TextBox
+                            Grid.Column="4"
+                            Margin="5 2 0 2"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Right"
+                            Style="{DynamicResource DefaultTextBox}"
+                            Tag="{x:Static language:Language.StockOrderOrderSelectionOrdercostsTag}"
+                            Text="{Binding SelectedItem.OrderCosts, Mode=TwoWay, StringFormat={}{0:N4}, ConverterCulture='nl-NL', UpdateSourceTrigger=PropertyChanged}"
+                            ToolTip="{x:Static language:Language.StockOrderOrderSelectionOrdercostsTooltip}" />
+                    </Grid>
+
+
+
+                    <!--#endregion-->
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+        <!--#endregion-->
+
+
         <!--#endregion-->
     </Grid>
 </UserControl>

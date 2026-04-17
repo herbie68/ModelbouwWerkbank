@@ -12,6 +12,10 @@
     {
       "name": "GlobalUsings.cs",
       "path": "Modelbouwer\\GlobalUsings.cs"
+    },
+    {
+      "name": "NavigationViewModel.cs",
+      "path": "Modelbouwer\\ViewModels\\NavigationViewModel.cs"
     }
   ]
 }

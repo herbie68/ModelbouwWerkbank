@@ -1,6 +1,3 @@
 <Solution>
-  <Project Path="Modelbouwer.UnitTests/Modelbouwer.UnitTests.csproj" Id="99fbec56-410c-47ee-a807-deade2ba0099">
-    <Build Solution="Debug|*" Project="false" />
-  </Project>
   <Project Path="Modelbouwer/Modelbouwer.csproj" />
 </Solution>
