@@ -92,10 +92,24 @@ public class UnitService : IUnitService
 		{
 			await _dataService.ExecuteScalarAsync<uint>( DeleteUnitQuery, parameters );
 		}
-		catch ( MySqlException ex ) when ( ex.Number == 1451 )
+		catch ( Exception ex )
 		{
-			throw new EntityInUseException(
-				$"{Lang.metadataUnitDeleteError}." );
+			int? number = null;
+			try
+			{
+				var prop = ex.GetType().GetProperty( "Number" );
+				if ( prop != null && prop.PropertyType == typeof( int ) )
+					number = ( int? ) prop.GetValue( ex );
+			}
+			catch { /* ignore reflection issues */ }
+
+			if ( number == 1451 )
+			{
+				throw new EntityInUseException(
+					$"{Lang.metadataUnitDeleteError}." );
+			}
+
+			throw;
 		}
 	}
 
