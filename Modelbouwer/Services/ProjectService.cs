@@ -157,10 +157,24 @@ public class ProjectService : IProjectService
 		{
 			await _dataService.ExecuteScalarAsync<uint>( DeleteProjectQuery, parameters );
 		}
-		catch ( MySqlException ex ) when ( ex.Number == 1451 )
+		catch ( Exception ex )
 		{
-			throw new EntityInUseException(
-				$"{Lang.metadataProjectDeleteError}." );
+			int? number = null;
+			try
+			{
+				var prop = ex.GetType().GetProperty( "Number" );
+				if ( prop != null && prop.PropertyType == typeof( int ) )
+					number = ( int? ) prop.GetValue( ex );
+			}
+			catch { /* ignore reflection issues */ }
+
+			if ( number == 1451 )
+			{
+				throw new EntityInUseException(
+					$"{Lang.metadataProjectDeleteError}." );
+			}
+
+			throw;
 		}
 	}
 

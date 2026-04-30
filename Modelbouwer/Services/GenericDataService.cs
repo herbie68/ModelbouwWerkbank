@@ -19,13 +19,13 @@ public class GenericDataService
 	}
 
 	#region General Get statenents
-	public async Task<uint> GetLastInsertIdAsync()
+	public virtual async Task<uint> GetLastInsertIdAsync()
 	{
 		return await ExecuteScalarAsync<uint>( GetLastInsertIdQuery );
 	}
 	#endregion
 
-	public async Task<List<T>> ExecuteQueryAsync<T>(
+	public virtual async Task<List<T>> ExecuteQueryAsync<T>(
 		string? query,
 	Func<DbDataReader, T> mapFunc,
 	Dictionary<string, object>? parameters = null )
@@ -55,7 +55,7 @@ public class GenericDataService
 		return results;
 	}
 
-	public async Task<int> ExecuteNonQueryAsync(
+	public virtual async Task<int> ExecuteNonQueryAsync(
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
@@ -75,7 +75,7 @@ public class GenericDataService
 		return await cmd.ExecuteNonQueryAsync();
 	}
 
-	public async Task<T?> ExecuteScalarAsync<T>(
+	public virtual async Task<T?> ExecuteScalarAsync<T>(
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
@@ -104,7 +104,7 @@ public class GenericDataService
 		return ( T ) converted;
 	}
 
-	public T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
+	public virtual T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
 	{
 		using var connection = new MySqlConnection(_connection.ConnectionString);
 		using var command = new MySqlCommand(sql, connection);
@@ -129,7 +129,7 @@ public class GenericDataService
 	/// Caller is responsible for disposing the reader (which will also close the connection).
 	/// Accepts parameters as Dictionary<string, object> for convenience.
 	/// </summary>
-	public async Task ExecuteReaderAsync(
+	public virtual async Task ExecuteReaderAsync(
 		string? sql,
 		Func<DbDataReader, Task> map )
 	{
@@ -137,7 +137,7 @@ public class GenericDataService
 		await ExecuteReaderAsync( sql, map, null );
 	}
 
-	public async Task ExecuteReaderAsync(
+	public virtual async Task ExecuteReaderAsync(
 		string? sql,
 		Func<DbDataReader, Task> map,
 		Dictionary<string, object>? parameters )
@@ -162,7 +162,7 @@ public class GenericDataService
 		await map( reader );
 	}
 
-	public async Task<T?> ExecuteSingleAsync<T>(
+	public virtual async Task<T?> ExecuteSingleAsync<T>(
 	string query,
 	Dictionary<string, object>? parameters = null )
 	where T : class, new()

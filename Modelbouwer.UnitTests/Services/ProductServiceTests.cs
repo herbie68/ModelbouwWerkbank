@@ -128,11 +128,7 @@ public class ProductServiceTests
 	public async Task InsertNewProductAsync_ReturnsNewProductId()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProductFieldNameName}", "New Product" },
-			{ $"@{DBNames.ProductFieldNameCode}", "NP001" }
-		};
+		var parameters = CreateValidProductParameters();
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -149,12 +145,7 @@ public class ProductServiceTests
 	public async Task InsertNewProductAsync_PassesCorrectParameters()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProductFieldNameName}", "New Product" },
-			{ $"@{DBNames.ProductFieldNameBrandId}", 5 },
-			{ $"@{DBNames.ProductFieldNamePrice}", 10.50 }
-		};
+		var parameters = CreateValidProductParameters();
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -167,9 +158,21 @@ public class ProductServiceTests
 		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
 			It.IsAny<string>(),
 			It.Is<Dictionary<string, object>>( d =>
+				d.ContainsKey( DBNames.ProductFieldNameCategoryId ) &&
+				d.ContainsKey( DBNames.ProductFieldNameCode ) &&
+				d.ContainsKey( DBNames.ProductFieldNameDimensions ) &&
+				d.ContainsKey( DBNames.ProductFieldNameHide ) &&
+				d.ContainsKey( DBNames.ProductFieldNameImage ) &&
+				d.ContainsKey( DBNames.ProductFieldNameImageRotationAngle ) &&
+				d.ContainsKey( DBNames.ProductFieldNameMemo ) &&
+				d.ContainsKey( DBNames.ProductFieldNameMinimalStock ) &&
 				d.ContainsKey( DBNames.ProductFieldNameName ) &&
 				d.ContainsKey( DBNames.ProductFieldNameBrandId ) &&
-				d.ContainsKey( DBNames.ProductFieldNamePrice )
+				d.ContainsKey( DBNames.ProductFieldNamePrice ) &&
+				d.ContainsKey( DBNames.ProductFieldNameProjectCosts ) &&
+				d.ContainsKey( DBNames.ProductFieldNameStandardOrderQuantity ) &&
+				d.ContainsKey( DBNames.ProductFieldNameStorageId ) &&
+				d.ContainsKey( DBNames.ProductFieldNameUnitId )
 			) ), Times.Once );
 	}
 
@@ -177,11 +180,7 @@ public class ProductServiceTests
 	public async Task UpdateProductAsync_CallsDataService()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProductFieldNameId}", 1 },
-			{ $"@{DBNames.ProductFieldNameName}", "Updated Product" }
-		};
+		var parameters = CreateValidProductParameters( 1, "Updated Product", "UP001" );
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -195,7 +194,21 @@ public class ProductServiceTests
 			It.IsAny<string>(),
 			It.Is<Dictionary<string, object>>( d =>
 				d.ContainsKey( DBNames.ProductFieldNameId ) &&
-				d.ContainsKey( DBNames.ProductFieldNameName )
+				d.ContainsKey( DBNames.ProductFieldNameBrandId ) &&
+				d.ContainsKey( DBNames.ProductFieldNameCategoryId ) &&
+				d.ContainsKey( DBNames.ProductFieldNameCode ) &&
+				d.ContainsKey( DBNames.ProductFieldNameDimensions ) &&
+				d.ContainsKey( DBNames.ProductFieldNameHide ) &&
+				d.ContainsKey( DBNames.ProductFieldNameImage ) &&
+				d.ContainsKey( DBNames.ProductFieldNameImageRotationAngle ) &&
+				d.ContainsKey( DBNames.ProductFieldNameMemo ) &&
+				d.ContainsKey( DBNames.ProductFieldNameMinimalStock ) &&
+				d.ContainsKey( DBNames.ProductFieldNameName ) &&
+				d.ContainsKey( DBNames.ProductFieldNamePrice ) &&
+				d.ContainsKey( DBNames.ProductFieldNameProjectCosts ) &&
+				d.ContainsKey( DBNames.ProductFieldNameStandardOrderQuantity ) &&
+				d.ContainsKey( DBNames.ProductFieldNameStorageId ) &&
+				d.ContainsKey( DBNames.ProductFieldNameUnitId )
 			) ), Times.Once );
 	}
 
@@ -369,6 +382,38 @@ public class ProductServiceTests
 
 		// Assert
 		Assert.IsTrue( service.ProductUsed );
+	}
+
+	private static Dictionary<string, object?> CreateValidProductParameters(
+		int? productId = null,
+		string productName = "New Product",
+		string productCode = "NP001" )
+	{
+		var parameters = new Dictionary<string, object?>
+		{
+			{ $"@{DBNames.ProductFieldNameBrandId}", 5 },
+			{ $"@{DBNames.ProductFieldNameCategoryId}", 3 },
+			{ $"@{DBNames.ProductFieldNameCode}", productCode },
+			{ $"@{DBNames.ProductFieldNameDimensions}", "10x20" },
+			{ $"@{DBNames.ProductFieldNameHide}", 0 },
+			{ $"@{DBNames.ProductFieldNameImage}", null },
+			{ $"@{DBNames.ProductFieldNameImageRotationAngle}", 0d },
+			{ $"@{DBNames.ProductFieldNameMemo}", "Test memo" },
+			{ $"@{DBNames.ProductFieldNameMinimalStock}", 2d },
+			{ $"@{DBNames.ProductFieldNameName}", productName },
+			{ $"@{DBNames.ProductFieldNamePrice}", 10.50 },
+			{ $"@{DBNames.ProductFieldNameProjectCosts}", 0 },
+			{ $"@{DBNames.ProductFieldNameStandardOrderQuantity}", 5d },
+			{ $"@{DBNames.ProductFieldNameStorageId}", 4 },
+			{ $"@{DBNames.ProductFieldNameUnitId}", 2 }
+		};
+
+		if ( productId.HasValue )
+		{
+			parameters.Add( $"@{DBNames.ProductFieldNameId}", productId.Value );
+		}
+
+		return parameters;
 	}
 
 	// Small test exception that mimics MySqlException's Number property

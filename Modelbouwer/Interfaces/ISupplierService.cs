@@ -6,6 +6,8 @@ public interface ISupplierService
 {
 	Task<List<SupplierModel>> GetAllSuppliersAsync();
 	Task<List<ProductSupplierModel>> GetAllProductSuppliersAsync();
+	Task<ProductSupplierModel?> GetProductSupplierAsync( int supplierId, int productId );
+	Task<int> UpsertProductSupplierAsync( ProductSupplierModel productSupplier );
 	Task<List<CountryModel>> GetAllCountriesAsync();
 	Task<List<CurrencyModel>> GetAllCurrenciesAsync();
 	Task<int> InsertNewSupplierAsync( Dictionary<string, object?> queryParameters );

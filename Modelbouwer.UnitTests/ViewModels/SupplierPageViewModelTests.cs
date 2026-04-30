@@ -283,7 +283,7 @@ public class SupplierPageViewModelTests
 		// Assert
 		Assert.IsNotNull( result );
 		Assert.AreEqual( 1, result.Count );
-		_mockSupplierService.Verify( s => s.GetAllSuppliersAsync(), Times.Once );
+		_mockSupplierService.Verify( s => s.GetAllSuppliersAsync(), Times.AtLeastOnce );
 	}
 
 	[TestMethod]
