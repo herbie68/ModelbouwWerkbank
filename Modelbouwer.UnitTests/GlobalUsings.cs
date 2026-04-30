@@ -1,4 +1,5 @@
 //global using Microsoft.Xaml.Behaviors;
+global using Moq;
 global using Modelbouwer.Exceptions;
 global using Modelbouwer.Helpers;
 global using Modelbouwer.Interfaces;

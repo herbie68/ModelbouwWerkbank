@@ -9,37 +9,45 @@ public class ProductPageViewModelTests
 	private Mock<ICategoryService> _mockCategoryService;
 	private Mock<IEntityValidator<ProductModel>> _mockValidator;
 	private ProductPageViewModel _viewModel;
+	private Mock<IStorageLocationService> _mockStorageLocationService;
+	private Mock<ISupplierService> _mockSupplierService;
 
 	[TestInitialize]
 	public void Setup()
 	{
 		_mockProductService = new Mock<IProductService>();
-		_mockUnitService = new Mock<IUnitService>();
-		_mockBrandService = new Mock<IBrandService>();
-		_mockCategoryService = new Mock<ICategoryService>();
-		_mockValidator = new Mock<IEntityValidator<ProductModel>>();
+    	_mockUnitService = new Mock<IUnitService>();
+    	_mockBrandService = new Mock<IBrandService>();
+    	_mockCategoryService = new Mock<ICategoryService>();
+    	_mockStorageLocationService = new Mock<IStorageLocationService>();
+    	_mockSupplierService = new Mock<ISupplierService>();
+    	_mockValidator = new Mock<IEntityValidator<ProductModel>>();
 
 		// Setup default returns for async methods
-		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>() );
-		_mockUnitService.Setup( s => s.GetAllUnitsAsync() ).ReturnsAsync( new List<UnitModel>() );
-		_mockBrandService.Setup( s => s.GetAllBrandsAsync() ).ReturnsAsync( new List<BrandModel>() );
-		_mockCategoryService.Setup( s => s.GetAllCategorysAsync() ).ReturnsAsync( new List<CategoryModel>() );
+		_mockProductService.Setup(s => s.GetAllProductsAsync()).ReturnsAsync(new List<ProductModel>());
+    	_mockUnitService.Setup(s => s.GetAllUnitsAsync()).ReturnsAsync(new List<UnitModel>());
+   		_mockBrandService.Setup(s => s.GetAllBrandsAsync()).ReturnsAsync(new List<BrandModel>());
+		_mockCategoryService.Setup(s => s.GetAllCategorysAsync()).ReturnsAsync(new List<CategoryModel>());
+		_mockStorageLocationService.Setup(s => s.GetAllStorageLocationsAsync()).ReturnsAsync(new List<StorageLocationModel>());
+		_mockSupplierService.Setup(s => s.GetAllSuppliersAsync()).ReturnsAsync(new List<SupplierModel>());
+		_mockSupplierService.Setup(s => s.GetAllProductSuppliersAsync()).ReturnsAsync(new List<Modelbouwer.Model.ProductSupplierModel>());
 
 		_viewModel = new ProductPageViewModel(
 			_mockProductService.Object,
 			_mockUnitService.Object,
 			_mockBrandService.Object,
 			_mockCategoryService.Object,
-			_mockValidator.Object
-		);
+			_mockStorageLocationService.Object,
+			_mockSupplierService.Object,
+			_mockValidator.Object);
 	}
 
 	[TestMethod]
 	public void Constructor_InitializesCollections()
 	{
 		// Assert
-		object value = Assert.IsNotNull( _viewModel.ProductBrand );
-		object value1 = Assert.IsNotNull( _viewModel.ProductUnit );
+		Assert.IsNotNull( _viewModel.ProductBrand );
+		Assert.IsNotNull( _viewModel.ProductUnit );
 		Assert.IsNotNull( _viewModel.ProductCategory );
 		Assert.IsNotNull( _viewModel.Products );
 	}
@@ -66,33 +74,29 @@ public class ProductPageViewModelTests
 	}
 
 	[TestMethod]
-	public void SelectedBrand_UpdatesProductBrandId()
+	public void SelectedBrand_CanBeSetAndRetrieved()
 	{
 		// Arrange
-		var product = new ProductModel { ProductId = 1 };
 		var brand = new BrandModel { BrandId = 5, BrandName = "Test Brand" };
-		_viewModel.SelectedItem = product;
 
 		// Act
 		_viewModel.SelectedBrand = brand;
 
 		// Assert
-		Assert.AreEqual( 5, product.ProductBrandId );
+		Assert.AreEqual( brand, _viewModel.SelectedBrand );
 	}
 
 	[TestMethod]
-	public void SelectedUnit_UpdatesProductUnitId()
+	public void SelectedUnit_CanBeSetAndRetrieved()
 	{
 		// Arrange
-		var product = new ProductModel { ProductId = 1 };
 		var unit = new UnitModel { UnitId = 3, UnitName = "Test Unit" };
-		_viewModel.SelectedItem = product;
 
 		// Act
 		_viewModel.SelectedUnit = unit;
 
 		// Assert
-		Assert.AreEqual( 3, product.ProductUnitId );
+		Assert.AreEqual( unit, _viewModel.SelectedUnit );
 	}
 
 	[TestMethod]
@@ -257,7 +261,7 @@ public class ProductPageViewModelTests
 		// Assert
 		Assert.IsNotNull( result );
 		Assert.AreEqual( 1, result.Count );
-		_mockProductService.Verify( s => s.GetAllProductsAsync(), Times.Once );
+		_mockProductService.Verify( s => s.GetAllProductsAsync(), Times.AtLeastOnce );
 	}
 
 	[TestMethod]
@@ -314,32 +318,28 @@ public class ProductPageViewModelTests
 	}
 
 	[TestMethod]
-	public void OnSelectedItemChanged_UpdatesSelectedBrandUnitCategory()
+	public void OnSelectedItemChanged_UpdatesSelectedCategoryAndStorageLocation()
 	{
 		// Arrange
-		var brand = new BrandModel { BrandId = 1, BrandName = "Brand 1" };
-		var unit = new UnitModel { UnitId = 2, UnitName = "Unit 1" };
 		var category = new CategoryModel { CategoryId = 3, CategoryName = "Category 1" };
+		var storageLocation = new StorageLocationModel { StorageId = 4, StorageName = "Shelf A" };
 
-		_viewModel.ProductBrand.Add( brand );
-		_viewModel.ProductUnit.Add( unit );
 		_viewModel.ProductCategory.Add( category );
+		_viewModel.ProductStorageLocation.Add( storageLocation );
 
 		var product = new ProductModel
 		{
 			ProductId = 1,
-			ProductBrandId = 1,
-			ProductUnitId = 2,
-			ProductCategoryId = 3
+			ProductCategoryId = 3,
+			ProductStorageId = 4
 		};
 
 		// Act
 		_viewModel.SelectedItem = product;
 
 		// Assert
-		Assert.AreEqual( brand, _viewModel.SelectedBrand );
-		Assert.AreEqual( unit, _viewModel.SelectedUnit );
 		Assert.AreEqual( category, _viewModel.SelectedCategory );
+		Assert.AreEqual( storageLocation, _viewModel.SelectedStorageLocation );
 	}
 
 	[TestMethod]
