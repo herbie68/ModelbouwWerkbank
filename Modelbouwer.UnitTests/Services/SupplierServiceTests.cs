@@ -38,6 +38,20 @@ public class SupplierServiceTests
 	}
 
 	[TestMethod]
+	public void ProductSupplierQueries_UseSupplierCurrencyInsteadOfProductSupplierCurrency()
+	{
+		StringAssert.Contains( _service.CompleteProductSupplierList, $"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}" );
+		StringAssert.Contains( _service.CompleteProductSupplierList, $"c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId}" );
+		Assert.IsFalse( _service.CompleteProductSupplierList.Contains( $"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " ) );
+		Assert.IsFalse( _service.CompleteProductSupplierList.Contains( DBNames.ProductSupplierFieldNameDefaultSupplier ) );
+
+		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}" );
+		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId}" );
+		Assert.IsFalse( _service.ProductSupplierBySupplierAndProductQuery.Contains( $"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " ) );
+		Assert.IsFalse( _service.ProductSupplierBySupplierAndProductQuery.Contains( DBNames.ProductSupplierFieldNameDefaultSupplier ) );
+	}
+
+	[TestMethod]
 	public async Task UpsertProductSupplierAsync_WithNewRecord_InsertsAndReturnsId()
 	{
 		var productSupplier = new ProductSupplierModel
@@ -59,11 +73,17 @@ public class SupplierServiceTests
 		var result = await _service.UpsertProductSupplierAsync( productSupplier );
 
 		Assert.AreEqual( 41, result );
+		Assert.IsFalse( _service.InsertProductSupplierQuery.Contains( DBNames.ProductSupplierFieldNameCurrencyId ) );
+		Assert.IsFalse( _service.UpdateProductSupplierQuery.Contains( DBNames.ProductSupplierFieldNameCurrencyId ) );
+		Assert.IsFalse( _service.InsertProductSupplierQuery.Contains( DBNames.ProductSupplierFieldNameDefaultSupplier ) );
+		Assert.IsFalse( _service.UpdateProductSupplierQuery.Contains( DBNames.ProductSupplierFieldNameDefaultSupplier ) );
 		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
 			It.Is<string>( q => q != null && q.Contains( "INSERT INTO" ) ),
 			It.Is<Dictionary<string, object>>( p =>
 				( int ) p[DBNames.ProductSupplierFieldNameProductId] == 5 &&
-				( int ) p[DBNames.ProductSupplierFieldNameSupplierId] == 11 ) ),
+				( int ) p[DBNames.ProductSupplierFieldNameSupplierId] == 11 &&
+				!p.ContainsKey( DBNames.ProductSupplierFieldNameCurrencyId ) &&
+				!p.ContainsKey( DBNames.ProductSupplierFieldNameDefaultSupplier ) ) ),
 			Times.Once );
 	}
 }

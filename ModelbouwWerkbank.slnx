@@ -334,5 +334,6 @@
     <File Path="Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs" />
   </Folder>
+  <Project Path="Modelbouwer.UnitTests/Modelbouwer.UnitTests.csproj" />
   <Project Path="Modelbouwer/Modelbouwer.csproj" />
 </Solution>

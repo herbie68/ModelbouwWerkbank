@@ -1,3 +1,7 @@
+using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
+using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+using MySqlTransaction = MySql.Data.MySqlClient.MySqlTransaction;
+
 namespace Modelbouwer.Services;
 
 public class StockOrderService : IStockOrderService
@@ -29,24 +33,26 @@ ORDER BY {DBNames.OrderViewFieldNameOrderDate} DESC, {DBNames.OrderViewFieldName
 
 	public string OrderLinesQuery = $@"
 SELECT
-	{DBNames.OrderLineFieldNameId},
-	{DBNames.OrderLineViewFieldNameOrderId},
-	{DBNames.OrderLineFieldNameSupplierId},
-	{DBNames.OrderLineViewFieldNameProductId},
-	{DBNames.OrderLineViewFieldNameProductCode},
-	{DBNames.OrderLineViewFieldNameProductName},
-	{DBNames.OrderLineFieldNameSupplierProductName},
-	{DBNames.OrderLineFieldNameAmount},
-	{DBNames.OrderLineFieldNameOpenAmount},
-	{DBNames.OrderLineFieldNamePrice},
-	{DBNames.OrderLineFieldNameRealRowTotal},
-	{DBNames.OrderLineViewFieldNameReceived},
-	{DBNames.OrderLineViewFieldNameExpected},
-	{DBNames.OrderLineViewFieldNameClosed},
-	{DBNames.OrderLineViewFieldNameClosedDate}
-FROM {DBNames.Database}.{DBNames.OrderLineView}
-WHERE {DBNames.OrderLineViewFieldNameOrderId} = @OrderId
-ORDER BY {DBNames.OrderLineFieldNameId};";
+	ol.{DBNames.OrderLineFieldNameId} AS {DBNames.OrderLineFieldNameId},
+	ol.{DBNames.OrderLineFieldNameSupplierOrderId} AS {DBNames.OrderLineViewFieldNameOrderId},
+	o.{DBNames.OrderFieldNameSupplierId} AS {DBNames.OrderLineViewFieldNameSupplierId},
+	p.{DBNames.ProductFieldNameId} AS {DBNames.OrderLineViewFieldNameProductId},
+	p.{DBNames.ProductFieldNameCode} AS {DBNames.OrderLineViewFieldNameProductCode},
+	p.{DBNames.ProductFieldNameName} AS {DBNames.OrderLineViewFieldNameProductName},
+	ol.{DBNames.OrderLineFieldNameSupplierProductName} AS {DBNames.OrderLineFieldNameSupplierProductName},
+	ol.{DBNames.OrderLineFieldNameAmount} AS {DBNames.OrderLineFieldNameAmount},
+	ol.{DBNames.OrderLineFieldNameOpenAmount} AS {DBNames.OrderLineFieldNameOpenAmount},
+	ol.{DBNames.OrderLineFieldNamePrice} AS {DBNames.OrderLineFieldNamePrice},
+	ol.{DBNames.OrderLineFieldNameRealRowTotal} AS {DBNames.OrderLineFieldNameRealRowTotal},
+	(ol.{DBNames.OrderLineFieldNameAmount} - ol.{DBNames.OrderLineFieldNameOpenAmount}) AS {DBNames.OrderLineViewFieldNameReceived},
+	ol.{DBNames.OrderLineFieldNameOpenAmount} AS {DBNames.OrderLineViewFieldNameExpected},
+	ol.{DBNames.OrderLineFieldNameClosed} AS {DBNames.OrderLineViewFieldNameClosed},
+	ol.{DBNames.OrderLineFieldNameClosedDate} AS {DBNames.OrderLineViewFieldNameClosedDate}
+FROM {DBNames.Database}.{DBNames.OrderLineTable} ol
+INNER JOIN {DBNames.Database}.{DBNames.OrderTable} o ON ol.{DBNames.OrderLineFieldNameSupplierOrderId} = o.{DBNames.OrderFieldNameId}
+INNER JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ol.{DBNames.OrderLineFieldNameProductId} = p.{DBNames.ProductFieldNameId}
+WHERE ol.{DBNames.OrderLineFieldNameSupplierOrderId} = @OrderId
+ORDER BY ol.{DBNames.OrderLineFieldNameId};";
 
 	public string InsertOrderQuery = $@"
 INSERT INTO {DBNames.Database}.{DBNames.OrderTable} (
@@ -93,7 +99,6 @@ WHERE {DBNames.OrderFieldNameId} = @{DBNames.OrderFieldNameId};";
 	public string InsertOrderLineQuery = $@"
 INSERT INTO {DBNames.Database}.{DBNames.OrderLineTable} (
 	{DBNames.OrderLineFieldNameSupplierOrderId},
-	{DBNames.OrderLineFieldNameSupplierId},
 	{DBNames.OrderLineFieldNameProductId},
 	{DBNames.OrderLineFieldNameSupplierProductName},
 	{DBNames.OrderLineFieldNameAmount},
@@ -104,7 +109,6 @@ INSERT INTO {DBNames.Database}.{DBNames.OrderLineTable} (
 	{DBNames.OrderLineFieldNameClosedDate}
 ) VALUES (
 	@{DBNames.OrderLineFieldNameSupplierOrderId},
-	@{DBNames.OrderLineFieldNameSupplierId},
 	@{DBNames.OrderLineFieldNameProductId},
 	@{DBNames.OrderLineFieldNameSupplierProductName},
 	@{DBNames.OrderLineFieldNameAmount},
@@ -120,7 +124,6 @@ INSERT INTO {DBNames.Database}.{DBNames.OrderLineTable} (
 UPDATE {DBNames.Database}.{DBNames.OrderLineTable}
 SET
 	{DBNames.OrderLineFieldNameSupplierOrderId} = @{DBNames.OrderLineFieldNameSupplierOrderId},
-	{DBNames.OrderLineFieldNameSupplierId} = @{DBNames.OrderLineFieldNameSupplierId},
 	{DBNames.OrderLineFieldNameProductId} = @{DBNames.OrderLineFieldNameProductId},
 	{DBNames.OrderLineFieldNameSupplierProductName} = @{DBNames.OrderLineFieldNameSupplierProductName},
 	{DBNames.OrderLineFieldNameAmount} = @{DBNames.OrderLineFieldNameAmount},
@@ -134,6 +137,21 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 	public string DeleteOrderLineQuery = $@"
 DELETE FROM {DBNames.Database}.{DBNames.OrderLineTable}
 WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
+
+	public string InsertStocklogCorrectionQuery = $@"
+INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
+	{DBNames.StocklogFieldNameProductId},
+	{DBNames.StocklogFieldNameSupplyOrderId},
+	{DBNames.StocklogFieldNameSupplyOrderlineId},
+	{DBNames.StocklogFieldNameAmountCorrection},
+	{DBNames.StocklogFieldNameLogDate}
+) VALUES (
+	@{DBNames.StocklogFieldNameProductId},
+	@{DBNames.StocklogFieldNameSupplyOrderId},
+	@{DBNames.StocklogFieldNameSupplyOrderlineId},
+	@{DBNames.StocklogFieldNameAmountCorrection},
+	{DBNames.SqlCurrentDate}
+);";
 
 	public Task<List<StockOrderModel>> GetAllOrdersAsync()
 	{
@@ -166,7 +184,7 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 			{
 				Id = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineFieldNameId] ),
 				SupplyOrderId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameOrderId] ),
-				SupplierId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineFieldNameSupplierId] ),
+				SupplierId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameSupplierId] ),
 				ProductId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameProductId] ),
 				ProductCode = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductCode] ),
 				ProductName = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductName] ),
@@ -189,6 +207,26 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 		return ( int ) newId;
 	}
 
+	public Task<int> InsertOrderWithLinesAsync( StockOrderModel order, IEnumerable<StockOrderLineModel> lines )
+	{
+		List<StockOrderLineModel> lineList = lines.ToList();
+
+		return _dataService.ExecuteInTransactionAsync<int>( async ( connection, transaction ) =>
+		{
+			uint orderId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderQuery, BuildOrderParameters( order, includeId: false ) );
+
+			foreach ( var line in lineList )
+			{
+				line.SupplyOrderId = ( int ) orderId;
+				uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
+				line.Id = ( int ) lineId;
+				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, ( int ) orderId, ( int ) lineId, line.Amount );
+			}
+
+			return ( int ) orderId;
+		} );
+	}
+
 	public Task UpdateOrderAsync( StockOrderModel order )
 	{
 		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderQuery, BuildOrderParameters( order, includeId: true ) );
@@ -202,10 +240,47 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 		} );
 	}
 
+	public Task DeleteOrderWithLinesAsync( int orderId, IEnumerable<StockOrderLineModel> lines )
+	{
+		List<StockOrderLineModel> lineList = lines.ToList();
+
+		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
+		{
+			foreach ( var line in lineList )
+			{
+				if ( line.Id > 0 )
+				{
+					await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderLineQuery, new Dictionary<string, object>
+					{
+						{ $"@{DBNames.OrderLineFieldNameId}", line.Id }
+					} );
+				}
+
+				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, orderId, line.Id, -line.Amount );
+			}
+
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderQuery, new Dictionary<string, object>
+			{
+				{ $"@{DBNames.OrderFieldNameId}", orderId }
+			} );
+		} );
+	}
+
 	public async Task<int> InsertOrderLineAsync( StockOrderLineModel line )
 	{
 		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
 		return ( int ) newId;
+	}
+
+	public Task<int> InsertOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
+	{
+		return _dataService.ExecuteInTransactionAsync<int>( async ( connection, transaction ) =>
+		{
+			uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
+			line.Id = ( int ) lineId;
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, ( int ) lineId, stockCorrection );
+			return ( int ) lineId;
+		} );
 	}
 
 	public Task UpdateOrderLineAsync( StockOrderLineModel line )
@@ -213,11 +288,32 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
 	}
 
+	public Task UpdateOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
+	{
+		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
+		{
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection );
+		} );
+	}
+
 	public Task DeleteOrderLineAsync( int lineId )
 	{
 		return _dataService.ExecuteScalarAsync<uint>( DeleteOrderLineQuery, new Dictionary<string, object>
 		{
 			{ $"@{DBNames.OrderLineFieldNameId}", lineId }
+		} );
+	}
+
+	public Task DeleteOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
+	{
+		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
+		{
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderLineQuery, new Dictionary<string, object>
+			{
+				{ $"@{DBNames.OrderLineFieldNameId}", line.Id }
+			} );
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection );
 		} );
 	}
 
@@ -249,7 +345,6 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 		Dictionary<string, object> parameters = new()
 		{
 			{ $"@{DBNames.OrderLineFieldNameSupplierOrderId}", line.SupplyOrderId },
-			{ $"@{DBNames.OrderLineFieldNameSupplierId}", line.SupplierId },
 			{ $"@{DBNames.OrderLineFieldNameProductId}", line.ProductId },
 			{ $"@{DBNames.OrderLineFieldNameSupplierProductName}", line.SupplierProductName ?? string.Empty },
 			{ $"@{DBNames.OrderLineFieldNameAmount}", line.Amount },
@@ -273,5 +368,50 @@ WHERE {DBNames.OrderLineFieldNameId} = @{DBNames.OrderLineFieldNameId};";
 		return value == null || value == DBNull.Value
 			? null
 			: Convert.ToDateTime( value );
+	}
+
+	private static async Task<T> ExecuteScalarInTransactionAsync<T>( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters )
+	{
+		await using MySqlCommand command = new(query, connection, transaction);
+
+		foreach ( var parameter in parameters )
+		{
+			command.Parameters.AddWithValue( parameter.Key, parameter.Value ?? DBNull.Value );
+		}
+
+		object? result = await command.ExecuteScalarAsync();
+
+		if ( result == null || result == DBNull.Value )
+			return default!;
+
+		Type targetType = Nullable.GetUnderlyingType( typeof( T ) ) ?? typeof( T );
+		object converted = Convert.ChangeType( result, targetType );
+		return ( T ) converted;
+	}
+
+	private static async Task ExecuteNonQueryInTransactionAsync( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters )
+	{
+		await using MySqlCommand command = new(query, connection, transaction);
+
+		foreach ( var parameter in parameters )
+		{
+			command.Parameters.AddWithValue( parameter.Key, parameter.Value ?? DBNull.Value );
+		}
+
+		await command.ExecuteNonQueryAsync();
+	}
+
+	private Task InsertStocklogCorrectionAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double correctionAmount )
+	{
+		if ( productId <= 0 || correctionAmount == 0d )
+			return Task.CompletedTask;
+
+		return ExecuteNonQueryInTransactionAsync( connection, transaction, InsertStocklogCorrectionQuery, new Dictionary<string, object>
+		{
+			{ $"@{DBNames.StocklogFieldNameProductId}", productId },
+			{ $"@{DBNames.StocklogFieldNameSupplyOrderId}", supplyOrderId > 0 ? supplyOrderId : DBNull.Value },
+			{ $"@{DBNames.StocklogFieldNameSupplyOrderlineId}", supplyOrderLineId > 0 ? supplyOrderLineId : DBNull.Value },
+			{ $"@{DBNames.StocklogFieldNameAmountCorrection}", correctionAmount }
+		} );
 	}
 }

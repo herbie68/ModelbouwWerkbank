@@ -52,4 +52,23 @@ public class StockOrderProductDialogViewModelTests
 		Assert.IsNull( errorMessage );
 		Assert.AreEqual( 25.0, vm.Model.RowTotal );
 	}
+
+	[TestMethod]
+	public void RowTotal_RaisesPropertyChanged_WhenAmountOrPriceChanges()
+	{
+		var model = new StockOrderProductDialogModel
+		{
+			UnitPrice = 10,
+			Amount = 2
+		};
+
+		List<string?> changedProperties = [];
+		model.PropertyChanged += ( _, args ) => changedProperties.Add( args.PropertyName );
+
+		model.UnitPrice = 12.5;
+		model.Amount = 3;
+
+		Assert.IsTrue( changedProperties.Contains( nameof( StockOrderProductDialogModel.RowTotal ) ) );
+		Assert.AreEqual( 37.5, model.RowTotal );
+	}
 }

@@ -2,6 +2,7 @@
 using System.Reflection;
 
 using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+using MySqlTransaction = MySql.Data.MySqlClient.MySqlTransaction;
 
 namespace Modelbouwer.Services;
 
@@ -206,6 +207,47 @@ public class GenericDataService
 		}
 
 		return result;
+	}
+
+	public virtual async Task ExecuteInTransactionAsync( Func<MySqlConnection, MySqlTransaction, Task> operation )
+	{
+		await using MySqlConnection connection = new(_connection.ConnectionString);
+		await connection.OpenAsync();
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
+
+		try
+		{
+			await operation( connection, transaction );
+			await transaction.CommitAsync();
+		}
+		catch
+		{
+			await transaction.RollbackAsync();
+			throw;
+		}
+	}
+
+	public virtual async Task<T> ExecuteInTransactionAsync<T>( Func<MySqlConnection, MySqlTransaction, Task<T>> operation )
+	{
+		await using MySqlConnection connection = new(_connection.ConnectionString);
+		await connection.OpenAsync();
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
+
+		try
+		{
+			T result = await operation( connection, transaction );
+			await transaction.CommitAsync();
+			return result;
+		}
+		catch
+		{
+			await transaction.RollbackAsync();
+			throw;
+		}
 	}
 
 }

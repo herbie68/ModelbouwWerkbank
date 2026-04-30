@@ -34,7 +34,11 @@
         <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,8" Text="{Binding Model.Amount, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}" />
 
         <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Totaal" />
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.RowTotal, StringFormat={}{0:N2}}" />
+        <TextBox Grid.Row="4"
+                 Grid.Column="1"
+                 Margin="0,0,0,8"
+                 IsReadOnly="True"
+                 Text="{Binding Model.RowTotal, Mode=OneWay, StringFormat={}{0:N2}}" />
 
         <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Width="100" Margin="0,12,8,0" Content="Annuleren" IsCancel="True" />

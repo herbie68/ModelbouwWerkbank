@@ -19,6 +19,10 @@
             <Button Width="110" Margin="0,0,8,0" Command="{Binding SaveOrderCommand}" Content="Opslaan" />
             <Button Width="110" Margin="0,0,8,0" Command="{Binding DeleteOrderCommand}" Content="Verwijderen" />
             <Button Width="110" Margin="0,0,8,0" Command="{Binding ResetOrderCommand}" Content="Reset" />
+            <CheckBox Margin="16,0,0,0"
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding ShowClosedOrders, Mode=TwoWay}"
+                      Content="Gesloten orders tonen" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" Text="{Binding EditableOrder.OrderNumber}" />
         </StackPanel>
 
@@ -118,7 +122,6 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                            <Button Width="150" Margin="0,0,8,0" Command="{Binding AddProductToOrderCommand}" Content="Product toevoegen" />
                             <Button Width="130" Margin="0,0,8,0" Command="{Binding EditOrderLineCommand}" Content="Regel wijzigen" />
                             <Button Width="130" Command="{Binding DeleteOrderLineCommand}" Content="Regel verwijderen" />
                         </StackPanel>

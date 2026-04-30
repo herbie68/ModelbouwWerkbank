@@ -17,6 +17,16 @@ public partial class StockOrderProductDialogModel : ObservableObject
 
 	public double RowTotal => Math.Round( UnitPrice * Amount, 2, MidpointRounding.AwayFromZero );
 
+	partial void OnUnitPriceChanged( double value )
+	{
+		OnPropertyChanged( nameof( RowTotal ) );
+	}
+
+	partial void OnAmountChanged( double value )
+	{
+		OnPropertyChanged( nameof( RowTotal ) );
+	}
+
 	public static StockOrderProductDialogModel Create(
 		ProductModel product,
 		SupplierModel supplier,
