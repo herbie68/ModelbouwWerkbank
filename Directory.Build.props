@@ -1,7 +1,17 @@
 <Project>
   <PropertyGroup>
-    <!-- Default setting for all projects -->
-    <BaseIntermediateOutputPath>$(SolutionDir)Builds\Obj\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(SolutionDir)Builds\</BaseOutputPath>
+    <!-- Keep bin rooted at the repository, even when Visual Studio builds a single project -->
+    <!-- Keep obj isolated per project so restore/build assets cannot overwrite each other -->
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)Builds\Obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)Builds\</BaseOutputPath>
+    <!-- Never treat project-local build artifacts as source files -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\Builds\**</DefaultItemExcludes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="$(MSBuildProjectDirectory)\Builds\**\*.cs" />
+    <None Remove="$(MSBuildProjectDirectory)\Builds\**" />
+    <Content Remove="$(MSBuildProjectDirectory)\Builds\**" />
+    <EmbeddedResource Remove="$(MSBuildProjectDirectory)\Builds\**" />
+  </ItemGroup>
 </Project>

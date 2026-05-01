@@ -9,6 +9,8 @@ public partial class ProductModel : ObservableObject
 	[ObservableProperty] private byte [ ]? _productImage;
 
 	[ObservableProperty] private double _productMinimalStock;
+	[ObservableProperty] private double _currentInventory;
+	[ObservableProperty] private double _inOrder;
 
 	[ObservableProperty] private double _productPrice;
 

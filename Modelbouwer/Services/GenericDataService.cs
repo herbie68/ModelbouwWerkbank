@@ -2,6 +2,7 @@
 using System.Reflection;
 
 using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+using MySqlTransaction = MySql.Data.MySqlClient.MySqlTransaction;
 
 namespace Modelbouwer.Services;
 
@@ -19,13 +20,13 @@ public class GenericDataService
 	}
 
 	#region General Get statenents
-	public async Task<uint> GetLastInsertIdAsync()
+	public virtual async Task<uint> GetLastInsertIdAsync()
 	{
 		return await ExecuteScalarAsync<uint>( GetLastInsertIdQuery );
 	}
 	#endregion
 
-	public async Task<List<T>> ExecuteQueryAsync<T>(
+	public virtual async Task<List<T>> ExecuteQueryAsync<T>(
 		string? query,
 	Func<DbDataReader, T> mapFunc,
 	Dictionary<string, object>? parameters = null )
@@ -55,7 +56,7 @@ public class GenericDataService
 		return results;
 	}
 
-	public async Task<int> ExecuteNonQueryAsync(
+	public virtual async Task<int> ExecuteNonQueryAsync(
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
@@ -75,7 +76,7 @@ public class GenericDataService
 		return await cmd.ExecuteNonQueryAsync();
 	}
 
-	public async Task<T?> ExecuteScalarAsync<T>(
+	public virtual async Task<T?> ExecuteScalarAsync<T>(
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
@@ -104,7 +105,7 @@ public class GenericDataService
 		return ( T ) converted;
 	}
 
-	public T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
+	public virtual T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
 	{
 		using var connection = new MySqlConnection(_connection.ConnectionString);
 		using var command = new MySqlCommand(sql, connection);
@@ -129,7 +130,7 @@ public class GenericDataService
 	/// Caller is responsible for disposing the reader (which will also close the connection).
 	/// Accepts parameters as Dictionary<string, object> for convenience.
 	/// </summary>
-	public async Task ExecuteReaderAsync(
+	public virtual async Task ExecuteReaderAsync(
 		string? sql,
 		Func<DbDataReader, Task> map )
 	{
@@ -137,7 +138,7 @@ public class GenericDataService
 		await ExecuteReaderAsync( sql, map, null );
 	}
 
-	public async Task ExecuteReaderAsync(
+	public virtual async Task ExecuteReaderAsync(
 		string? sql,
 		Func<DbDataReader, Task> map,
 		Dictionary<string, object>? parameters )
@@ -162,7 +163,7 @@ public class GenericDataService
 		await map( reader );
 	}
 
-	public async Task<T?> ExecuteSingleAsync<T>(
+	public virtual async Task<T?> ExecuteSingleAsync<T>(
 	string query,
 	Dictionary<string, object>? parameters = null )
 	where T : class, new()
@@ -206,6 +207,47 @@ public class GenericDataService
 		}
 
 		return result;
+	}
+
+	public virtual async Task ExecuteInTransactionAsync( Func<MySqlConnection, MySqlTransaction, Task> operation )
+	{
+		await using MySqlConnection connection = new(_connection.ConnectionString);
+		await connection.OpenAsync();
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
+
+		try
+		{
+			await operation( connection, transaction );
+			await transaction.CommitAsync();
+		}
+		catch
+		{
+			await transaction.RollbackAsync();
+			throw;
+		}
+	}
+
+	public virtual async Task<T> ExecuteInTransactionAsync<T>( Func<MySqlConnection, MySqlTransaction, Task<T>> operation )
+	{
+		await using MySqlConnection connection = new(_connection.ConnectionString);
+		await connection.OpenAsync();
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
+
+		try
+		{
+			T result = await operation( connection, transaction );
+			await transaction.CommitAsync();
+			return result;
+		}
+		catch
+		{
+			await transaction.RollbackAsync();
+			throw;
+		}
 	}
 
 }

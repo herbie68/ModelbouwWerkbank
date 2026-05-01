@@ -4153,4 +4153,82 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="StockOrderOrderSelectionDeliverycostsLabel" xml:space="preserve">
     <value>Portokosten</value>
   </data>
+  <data name="StockOrderShowClosedOrders" xml:space="preserve">
+    <value>Geschlossene Bestellungen anzeigen</value>
+  </data>
+  <data name="StockOrderExistingOrdersGroupTitle" xml:space="preserve">
+    <value>Bestehende Bestellungen</value>
+  </data>
+  <data name="StockOrderClosedLabel" xml:space="preserve">
+    <value>Geschlossen</value>
+  </data>
+  <data name="StockOrderTotalLabel" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="StockOrderEditLineButton" xml:space="preserve">
+    <value>Zeile bearbeiten</value>
+  </data>
+  <data name="StockOrderDeleteLineButton" xml:space="preserve">
+    <value>Zeile löschen</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductCode" xml:space="preserve">
+    <value>Produktcode</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductPrice" xml:space="preserve">
+    <value>Produktpreis</value>
+  </data>
+  <data name="StockOrderLineGridHeaderOrderedAmount" xml:space="preserve">
+    <value>Bestellte Menge</value>
+  </data>
+  <data name="StockOrderLineGridHeaderRowTotal" xml:space="preserve">
+    <value>Zeilensumme</value>
+  </data>
+  <data name="StockOrderProductsGroupTitle" xml:space="preserve">
+    <value>Produkte</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductCode" xml:space="preserve">
+    <value>Produktcode</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="StockOrderProductGridHeaderCurrentInventory" xml:space="preserve">
+    <value>Aktueller Bestand</value>
+  </data>
+  <data name="StockOrderProductGridHeaderOrderQuantity" xml:space="preserve">
+    <value>Bestellmenge</value>
+  </data>
+  <data name="StockOrderProductDialogTitle" xml:space="preserve">
+    <value>Produkt hinzufügen</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductNumber" xml:space="preserve">
+    <value>Lieferanten-Produktnummer</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductName" xml:space="preserve">
+    <value>Lieferanten-Produktname</value>
+  </data>
+  <data name="StockOrderProductDialogPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="StockOrderProductDialogAmount" xml:space="preserve">
+    <value>Menge</value>
+  </data>
+  <data name="StockOrderProductDialogTotal" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="StockOrderProductDialogCancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="StockOrderProductDialogConfirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
+    <value>Ausgewähltes Produkt zur Bestellung hinzufügen</value>
+  </data>
 </root>

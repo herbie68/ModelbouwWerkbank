@@ -40,6 +40,7 @@ public partial class App : Application
 		services.AddSingleton<ProjectService>();
 		services.AddSingleton<SettingsService>();
 		services.AddSingleton<StockService>();
+		services.AddSingleton<StockOrderService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();
 		services.AddSingleton<UnitService>();
@@ -98,6 +99,7 @@ public partial class App : Application
 		services.AddScoped<IProductService, ProductService>();
 		services.AddScoped<IProjectService, ProjectService>();
 		services.AddScoped<IStockService, StockService>();
+		services.AddScoped<IStockOrderService, StockOrderService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<ISupplierService, SupplierService>();
 		services.AddScoped<IUnitService, UnitService>();

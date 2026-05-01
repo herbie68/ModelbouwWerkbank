@@ -59,11 +59,7 @@ public class ProjectServiceTests
 	public async Task InsertNewProjectAsync_ReturnsNewProjectId()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProjectFieldNameName}", "New Project" },
-			{ $"@{DBNames.ProjectFieldNameCode}", "NP001" }
-		};
+		var parameters = CreateValidProjectParameters();
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -80,12 +76,7 @@ public class ProjectServiceTests
 	public async Task InsertNewProjectAsync_PassesCorrectParameters()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProjectFieldNameName}", "New Project" },
-			{ $"@{DBNames.ProjectFieldNameCode}", "NP001" },
-			{ $"@{DBNames.ProjectFieldNameStartDate}", DateOnly.FromDateTime(DateTime.Now) }
-		};
+		var parameters = CreateValidProjectParameters();
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -98,6 +89,13 @@ public class ProjectServiceTests
 		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
 			It.IsAny<string>(),
 			It.Is<Dictionary<string, object>>( d =>
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameStartDate}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameEndDate}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameExpectedTime}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameClosed}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameImage}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameImageRotationAngle}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameMemo}" ) &&
 				d.ContainsKey( $"@{DBNames.ProjectFieldNameName}" ) &&
 				d.ContainsKey( $"@{DBNames.ProjectFieldNameCode}" )
 			) ), Times.Once );
@@ -107,11 +105,7 @@ public class ProjectServiceTests
 	public async Task UpdateProjectAsync_CallsDataService()
 	{
 		// Arrange
-		var parameters = new Dictionary<string, object?>
-		{
-			{ $"@{DBNames.ProjectFieldNameId}", 1 },
-			{ $"@{DBNames.ProjectFieldNameName}", "Updated Project" }
-		};
+		var parameters = CreateValidProjectParameters( 1, "Updated Project", "UP001" );
 
 		_mockDataService
 			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
@@ -125,6 +119,14 @@ public class ProjectServiceTests
 			It.IsAny<string>(),
 			It.Is<Dictionary<string, object>>( d =>
 				d.ContainsKey( $"@{DBNames.ProjectFieldNameId}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameCode}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameStartDate}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameEndDate}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameExpectedTime}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameClosed}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameImage}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameImageRotationAngle}" ) &&
+				d.ContainsKey( $"@{DBNames.ProjectFieldNameMemo}" ) &&
 				d.ContainsKey( $"@{DBNames.ProjectFieldNameName}" )
 			) ), Times.Once );
 	}
@@ -386,6 +388,32 @@ public class ProjectServiceTests
 
 		// Act & Assert
 		Assert.IsFalse( service.ProjectUsed );
+	}
+
+	private static Dictionary<string, object?> CreateValidProjectParameters(
+		int? projectId = null,
+		string projectName = "New Project",
+		string projectCode = "NP001" )
+	{
+		var parameters = new Dictionary<string, object?>
+		{
+			{ $"@{DBNames.ProjectFieldNameCode}", projectCode },
+			{ $"@{DBNames.ProjectFieldNameName}", projectName },
+			{ $"@{DBNames.ProjectFieldNameStartDate}", new DateOnly( 2026, 4, 30 ) },
+			{ $"@{DBNames.ProjectFieldNameEndDate}", new DateOnly( 2026, 5, 31 ) },
+			{ $"@{DBNames.ProjectFieldNameExpectedTime}", 16 },
+			{ $"@{DBNames.ProjectFieldNameClosed}", false },
+			{ $"@{DBNames.ProjectFieldNameImage}", null },
+			{ $"@{DBNames.ProjectFieldNameImageRotationAngle}", 0d },
+			{ $"@{DBNames.ProjectFieldNameMemo}", "Test memo" }
+		};
+
+		if ( projectId.HasValue )
+		{
+			parameters.Add( $"@{DBNames.ProjectFieldNameId}", projectId.Value );
+		}
+
+		return parameters;
 	}
 
 	// Small test exception that mimics MySqlException's Number property

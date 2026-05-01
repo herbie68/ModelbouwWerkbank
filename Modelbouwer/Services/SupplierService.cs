@@ -40,17 +40,63 @@ public class SupplierService : ISupplierService
 		$"ps.{DBNames.ProductSupplierFieldNameProductId}, " +
 		$"ps.{DBNames.ProductSupplierFieldNameSupplierId}, " +
 		$"s.{DBNames.SupplierFieldNameName}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " +
+		$"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}, " +
 		$"c.{DBNames.CurrencyFieldNameSymbol}, " +
 		$"ps.{DBNames.ProductSupplierFieldNameProductNumber}, " +
 		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
 		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
-		$"CASE WHEN ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} = '*' THEN 1 ELSE 0 END AS {DBNames.ProductSupplierFieldNameDefaultSupplier} " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductUrl} " +
 		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
-		$"LEFT JOIN {DBNames.Database}.{DBNames.CurrencyTable} c ON ps.{DBNames.ProductSupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId};";
+		$"LEFT JOIN {DBNames.Database}.{DBNames.CurrencyTable} c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId};";
+
+	public string ProductSupplierBySupplierAndProductQuery = $"" +
+		$"SELECT " +
+		$"ps.{DBNames.ProductSupplierFieldNameId}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductId}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameSupplierId}, " +
+		$"s.{DBNames.SupplierFieldNameName}, " +
+		$"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}, " +
+		$"c.{DBNames.CurrencyFieldNameSymbol}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductNumber}, " +
+		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
+		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductUrl} " +
+		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
+		$"LEFT JOIN {DBNames.Database}.{DBNames.CurrencyTable} c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId} " +
+		$"WHERE ps.{DBNames.ProductSupplierFieldNameSupplierId} = @SupplierId " +
+		$"AND ps.{DBNames.ProductSupplierFieldNameProductId} = @ProductId " +
+		$"LIMIT 1;";
+
+	public string InsertProductSupplierQuery = $"" +
+		$"INSERT INTO {DBNames.Database}.{DBNames.ProductSupplierTable} ( " +
+		$"{DBNames.ProductSupplierFieldNameProductId}, " +
+		$"{DBNames.ProductSupplierFieldNameSupplierId}, " +
+		$"{DBNames.ProductSupplierFieldNameProductNumber}, " +
+		$"{DBNames.ProductSupplierFieldNameProductName}, " +
+		$"{DBNames.ProductSupplierFieldNamePrice}, " +
+		$"{DBNames.ProductSupplierFieldNameProductUrl} ) " +
+		$"VALUES ( " +
+		$"@{DBNames.ProductSupplierFieldNameProductId}, " +
+		$"@{DBNames.ProductSupplierFieldNameSupplierId}, " +
+		$"@{DBNames.ProductSupplierFieldNameProductNumber}, " +
+		$"@{DBNames.ProductSupplierFieldNameProductName}, " +
+		$"@{DBNames.ProductSupplierFieldNamePrice}, " +
+		$"@{DBNames.ProductSupplierFieldNameProductUrl} );" +
+		$"{DBNames.SqlSelectLastId}";
+
+	public string UpdateProductSupplierQuery = $"" +
+		$"UPDATE {DBNames.Database}.{DBNames.ProductSupplierTable} SET " +
+		$"{DBNames.ProductSupplierFieldNameProductId} = @{DBNames.ProductSupplierFieldNameProductId}, " +
+		$"{DBNames.ProductSupplierFieldNameSupplierId} = @{DBNames.ProductSupplierFieldNameSupplierId}, " +
+		$"{DBNames.ProductSupplierFieldNameProductNumber} = @{DBNames.ProductSupplierFieldNameProductNumber}, " +
+		$"{DBNames.ProductSupplierFieldNameProductName} = @{DBNames.ProductSupplierFieldNameProductName}, " +
+		$"{DBNames.ProductSupplierFieldNamePrice} = @{DBNames.ProductSupplierFieldNamePrice}, " +
+		$"{DBNames.ProductSupplierFieldNameProductUrl} = @{DBNames.ProductSupplierFieldNameProductUrl} " +
+		$"WHERE {DBNames.ProductSupplierFieldNameId} = @{DBNames.ProductSupplierFieldNameId};";
 
 	public string CompleteCountryList =
 		$"SELECT " +
@@ -179,23 +225,44 @@ public class SupplierService : ISupplierService
 
 	public Task<List<ProductSupplierModel>> GetAllProductSuppliersAsync()
 	{
-		return _dataService.ExecuteQueryAsync( CompleteProductSupplierList, reader =>
-		{
-			return new ProductSupplierModel
+		return _dataService.ExecuteQueryAsync( CompleteProductSupplierList, MapProductSupplier );
+	}
+
+	public async Task<ProductSupplierModel?> GetProductSupplierAsync( int supplierId, int productId )
+	{
+		var results = await _dataService.ExecuteQueryAsync(
+			ProductSupplierBySupplierAndProductQuery,
+			MapProductSupplier,
+			new Dictionary<string, object>
 			{
-				ProductSupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameId}" ] ),
-				ProductId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameProductId}" ] ),
-				SupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameSupplierId}" ] ),
-				SupplierName = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameName}" ] ),
-				CurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
-				CurrencySymbol = DatabaseValueConverter.GetString( reader [ $"{DBNames.CurrencyFieldNameSymbol}" ] ),
-				ProductNumber = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductNumber}" ] ),
-				ProductName = DatabaseValueConverter.GetString( reader [ "ProductName" ] ),
-				Price = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductSupplierFieldNamePrice}" ] ),
-				URL = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductUrl}" ] ),
-				DefaultSupplier = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameDefaultSupplier}" ] ) == 1
-			};
-		} );
+				{ "@SupplierId", supplierId },
+				{ "@ProductId", productId }
+			} );
+
+		return results.FirstOrDefault();
+	}
+
+	public async Task<int> UpsertProductSupplierAsync( ProductSupplierModel productSupplier )
+	{
+		Dictionary<string, object> parameters = new()
+		{
+			{ DBNames.ProductSupplierFieldNameProductId, productSupplier.ProductId },
+			{ DBNames.ProductSupplierFieldNameSupplierId, productSupplier.SupplierId },
+			{ DBNames.ProductSupplierFieldNameProductNumber, productSupplier.ProductNumber ?? string.Empty },
+			{ DBNames.ProductSupplierFieldNameProductName, productSupplier.ProductName ?? string.Empty },
+			{ DBNames.ProductSupplierFieldNamePrice, productSupplier.Price },
+			{ DBNames.ProductSupplierFieldNameProductUrl, productSupplier.URL ?? string.Empty }
+		};
+
+		if ( productSupplier.ProductSupplierId > 0 )
+		{
+			parameters.Add( DBNames.ProductSupplierFieldNameId, productSupplier.ProductSupplierId );
+			await _dataService.ExecuteScalarAsync<uint>( UpdateProductSupplierQuery, parameters );
+			return productSupplier.ProductSupplierId;
+		}
+
+		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertProductSupplierQuery, parameters );
+		return ( int ) newId;
 	}
 
 	public Task<List<CountryModel>> GetAllCountriesAsync()
@@ -321,6 +388,24 @@ public class SupplierService : ISupplierService
 
 		return suppliers.Any( c =>
 			string.Equals( c.Name, supplierName, StringComparison.OrdinalIgnoreCase ) );
+	}
+
+	private static ProductSupplierModel MapProductSupplier( System.Data.Common.DbDataReader reader )
+	{
+		return new ProductSupplierModel
+		{
+			ProductSupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameId}" ] ),
+			ProductId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameProductId}" ] ),
+			SupplierId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductSupplierFieldNameSupplierId}" ] ),
+			SupplierName = DatabaseValueConverter.GetString( reader [ $"{DBNames.SupplierFieldNameName}" ] ),
+			CurrencyId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.SupplierFieldNameCurrencyId}" ] ),
+			CurrencySymbol = DatabaseValueConverter.GetString( reader [ $"{DBNames.CurrencyFieldNameSymbol}" ] ),
+			ProductNumber = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductNumber}" ] ),
+			ProductName = DatabaseValueConverter.GetString( reader [ "ProductName" ] ),
+			Price = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductSupplierFieldNamePrice}" ] ),
+			URL = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductUrl}" ] ),
+			DefaultSupplier = false
+		};
 	}
 
 }

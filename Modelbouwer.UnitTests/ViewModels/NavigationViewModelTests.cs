@@ -13,18 +13,6 @@ public class NavigationViewModelTests
 	{
 		_mockServiceProvider = new Mock<IServiceProvider>();
 
-		// Setup service provider to return mock services
-		var mockBrandView = new Mock<BrandView>();
-		var mockCategoryView = new Mock<CategoryView>();
-		var mockProductView = new Mock<ProductView>();
-
-		_mockServiceProvider.Setup( sp => sp.GetService( typeof( BrandView ) ) )
-			.Returns( mockBrandView.Object );
-		_mockServiceProvider.Setup( sp => sp.GetService( typeof( CategoryView ) ) )
-			.Returns( mockCategoryView.Object );
-		_mockServiceProvider.Setup( sp => sp.GetService( typeof( ProductView ) ) )
-			.Returns( mockProductView.Object );
-
 		_viewModel = new NavigationViewModel( _mockServiceProvider.Object );
 	}
 
