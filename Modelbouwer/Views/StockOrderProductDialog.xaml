@@ -1,7 +1,8 @@
 <Window x:Class="Modelbouwer.Views.StockOrderProductDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Product toevoegen"
+        xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+        Title="{x:Static language:Language.StockOrderProductDialogTitle}"
         Width="460"
         Height="320"
         WindowStartupLocation="CenterOwner"
@@ -21,19 +22,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Leverancier productnummer" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderProductDialogSupplierProductNumber}" />
         <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,8" Text="{Binding Model.SupplierProductNumber, UpdateSourceTrigger=PropertyChanged}" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Leverancier productnaam" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderProductDialogSupplierProductName}" />
         <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,8" Text="{Binding Model.SupplierProductName, UpdateSourceTrigger=PropertyChanged}" />
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Prijs" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderProductDialogPrice}" />
         <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,8" Text="{Binding Model.UnitPrice, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N4}}" />
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Aantal" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderProductDialogAmount}" />
         <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,8" Text="{Binding Model.Amount, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}" />
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="Totaal" />
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderProductDialogTotal}" />
         <TextBox Grid.Row="4"
                  Grid.Column="1"
                  Margin="0,0,0,8"
@@ -41,8 +42,8 @@
                  Text="{Binding Model.RowTotal, Mode=OneWay, StringFormat={}{0:N2}}" />
 
         <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Width="100" Margin="0,12,8,0" Content="Annuleren" IsCancel="True" />
-            <Button Width="100" Margin="0,12,0,0" Content="Bevestigen" IsDefault="True" Click="ConfirmClick" />
+            <Button Width="100" Margin="0,12,8,0" Content="{x:Static language:Language.StockOrderProductDialogCancel}" IsCancel="True" />
+            <Button Width="100" Margin="0,12,0,0" Content="{x:Static language:Language.StockOrderProductDialogConfirm}" IsDefault="True" Click="ConfirmClick" />
         </StackPanel>
     </Grid>
 </Window>

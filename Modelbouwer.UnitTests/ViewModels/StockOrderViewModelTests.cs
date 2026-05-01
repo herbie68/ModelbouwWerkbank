@@ -82,6 +82,181 @@ public class StockOrderViewModelTests
 	}
 
 	[TestMethod]
+	public void EditableOrder_WhenSupplierSelectedOnNewOrder_FillsCurrencyAndSupplierCosts()
+	{
+		_viewModel.Suppliers.Clear();
+		_viewModel.Suppliers.Add( new SupplierModel
+		{
+			Id = 11,
+			Name = "Supplier 11",
+			CurrencyId = 2,
+			ShippingCosts = 7.5,
+			OrderCosts = 3.25
+		} );
+
+		_viewModel.EditableOrder.SupplierId = 11;
+
+		Assert.AreEqual( 2, _viewModel.EditableOrder.CurrencyId );
+		Assert.AreEqual( 7.5d, _viewModel.EditableOrder.ShippingCosts );
+		Assert.AreEqual( 3.25d, _viewModel.EditableOrder.OrderCosts );
+	}
+
+	[TestMethod]
+	public void EditableOrder_WhenCostsManuallyOverridden_KeepsManualValuesOnSupplierChange()
+	{
+		_viewModel.Suppliers.Clear();
+		_viewModel.Suppliers.Add( new SupplierModel
+		{
+			Id = 11,
+			Name = "Supplier 11",
+			CurrencyId = 2,
+			ShippingCosts = 7.5,
+			OrderCosts = 3.25
+		} );
+		_viewModel.Suppliers.Add( new SupplierModel
+		{
+			Id = 12,
+			Name = "Supplier 12",
+			CurrencyId = 3,
+			ShippingCosts = 12.5,
+			OrderCosts = 6.5
+		} );
+
+		_viewModel.EditableOrder.SupplierId = 11;
+		_viewModel.EditableOrder.ShippingCosts = 99d;
+		_viewModel.EditableOrder.OrderCosts = 55d;
+
+		_viewModel.EditableOrder.SupplierId = 12;
+
+		Assert.AreEqual( 3, _viewModel.EditableOrder.CurrencyId );
+		Assert.AreEqual( 99d, _viewModel.EditableOrder.ShippingCosts );
+		Assert.AreEqual( 55d, _viewModel.EditableOrder.OrderCosts );
+	}
+
+	[TestMethod]
+	public void ApplySelectedOrder_WhenSupplierChanges_PreservesLoadedCosts()
+	{
+		_viewModel.Suppliers.Clear();
+		_viewModel.Suppliers.Add( new SupplierModel
+		{
+			Id = 11,
+			Name = "Supplier 11",
+			CurrencyId = 2,
+			ShippingCosts = 7.5,
+			OrderCosts = 3.25
+		} );
+		_viewModel.Suppliers.Add( new SupplierModel
+		{
+			Id = 12,
+			Name = "Supplier 12",
+			CurrencyId = 3,
+			ShippingCosts = 12.5,
+			OrderCosts = 6.5
+		} );
+
+		_viewModel.ApplySelectedOrder( new StockOrderModel
+		{
+			Id = 25,
+			SupplierId = 11,
+			CurrencyId = 2,
+			OrderNumber = "SO-025",
+			ShippingCosts = 18d,
+			OrderCosts = 9d
+		}, new List<StockOrderLineModel>() );
+
+		_viewModel.EditableOrder.SupplierId = 12;
+
+		Assert.AreEqual( 3, _viewModel.EditableOrder.CurrencyId );
+		Assert.AreEqual( 18d, _viewModel.EditableOrder.ShippingCosts );
+		Assert.AreEqual( 9d, _viewModel.EditableOrder.OrderCosts );
+	}
+
+	[TestMethod]
+	public async Task ConstructorInitialization_PopulatesAvailableProductsWithInventoryFields()
+	{
+		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>
+		{
+			new()
+			{
+				ProductId = 5,
+				ProductCode = "P-005",
+				ProductName = "Wheel Set",
+				ProductPrice = 12.5,
+				ProductMinimalStock = 10,
+				ProductStandardQuantity = 4
+			}
+		} );
+
+		_mockStockService.Setup( s => s.GetCompleteInventoryAsync() ).ReturnsAsync( new List<StockManagementModel>
+		{
+			new()
+			{
+				ProductId = 5,
+				ProductInventory = 6,
+				ProductInOrder = 3,
+				ProductMinimalStock = 10
+			}
+		} );
+
+		_viewModel = new StockOrderViewModel(
+			_mockStockOrderService.Object,
+			_mockProductService.Object,
+			_mockStockService.Object,
+			_mockSupplierService.Object );
+
+		for ( int attempt = 0; attempt < 20 && _viewModel.AvailableProducts.Count == 0; attempt++ )
+		{
+			await Task.Delay( 25 );
+		}
+
+		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
+		Assert.AreEqual( 6d, _viewModel.AvailableProducts[ 0 ].CurrentInventory );
+		Assert.AreEqual( 3d, _viewModel.AvailableProducts[ 0 ].InOrder );
+	}
+
+	[TestMethod]
+	public async Task InitializeAsync_PopulatesAvailableProductsWithInventoryFields()
+	{
+		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>
+		{
+			new()
+			{
+				ProductId = 5,
+				ProductCode = "P-005",
+				ProductName = "Wheel Set",
+				ProductPrice = 12.5,
+				ProductMinimalStock = 10,
+				ProductStandardQuantity = 4
+			}
+		} );
+
+		_mockStockService.Setup( s => s.GetCompleteInventoryAsync() ).ReturnsAsync( new List<StockManagementModel>
+		{
+			new()
+			{
+				ProductId = 5,
+				ProductInventory = 6,
+				ProductInOrder = 3,
+				ProductMinimalStock = 10
+			}
+		} );
+
+		_viewModel = new StockOrderViewModel(
+			_mockStockOrderService.Object,
+			_mockProductService.Object,
+			_mockStockService.Object,
+			_mockSupplierService.Object );
+
+		await _viewModel.InitializeAsync();
+
+		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
+		Assert.AreEqual( 6d, _viewModel.AvailableProducts[ 0 ].CurrentInventory );
+		Assert.AreEqual( 3d, _viewModel.AvailableProducts[ 0 ].InOrder );
+		Assert.AreEqual( 10d, _viewModel.AvailableProducts[ 0 ].ProductMinimalStock );
+		Assert.AreEqual( 4d, _viewModel.AvailableProducts[ 0 ].ProductStandardQuantity );
+	}
+
+	[TestMethod]
 	public async Task SaveOrderAsync_WithNewOrder_InsertsOrderAndPendingLines()
 	{
 		_viewModel.EditableOrder.SupplierId = 11;

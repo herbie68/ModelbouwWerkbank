@@ -9,15 +9,19 @@ public partial class StockOrderViewModel : ObservableObject
 	private readonly IStockService _stockService;
 	private readonly ISupplierService _supplierService;
 	private bool _suppressSelectedOrderChange;
+	private bool _suppressEditableOrderTracking;
+	private bool _shippingCostsOverridden;
+	private bool _orderCostsOverridden;
+	private StockOrderModel? _trackedEditableOrder;
 	private List<StockOrderModel> _allOrders = [];
 	private Dictionary<int, StockManagementModel> _inventoryByProductId = [];
 
-	public ObservableCollection<StockOrderModel> Orders { get; } = [];
-	public ObservableCollection<StockOrderLineModel> OrderLines { get; } = [];
-	public ObservableCollection<StockOrderLineModel> PendingOrderLines { get; } = [];
-	public ObservableCollection<ProductModel> AvailableProducts { get; } = [];
-	public ObservableCollection<SupplierModel> Suppliers { get; } = [];
-	public ObservableCollection<CurrencyModel> Currencies { get; } = [];
+	public ObservableCollection<StockOrderModel> Orders { get; } = [ ];
+	public ObservableCollection<StockOrderLineModel> OrderLines { get; } = [ ];
+	public ObservableCollection<StockOrderLineModel> PendingOrderLines { get; } = [ ];
+	public ObservableCollection<ProductModel> AvailableProducts { get; } = [ ];
+	public ObservableCollection<SupplierModel> Suppliers { get; } = [ ];
+	public ObservableCollection<CurrencyModel> Currencies { get; } = [ ];
 
 	[ObservableProperty] private StockOrderModel _editableOrder = new();
 	[ObservableProperty] private StockOrderModel? _selectedOrder;
@@ -38,7 +42,6 @@ public partial class StockOrderViewModel : ObservableObject
 	public IRelayCommand NewOrderCommand { get; }
 	public IAsyncRelayCommand SaveOrderCommand { get; }
 	public IAsyncRelayCommand DeleteOrderCommand { get; }
-	public IRelayCommand ResetOrderCommand { get; }
 	public IAsyncRelayCommand AddProductToOrderCommand { get; }
 	public IAsyncRelayCommand EditOrderLineCommand { get; }
 	public IAsyncRelayCommand DeleteOrderLineCommand { get; }
@@ -57,7 +60,6 @@ public partial class StockOrderViewModel : ObservableObject
 		NewOrderCommand = new RelayCommand( BeginNewOrder );
 		SaveOrderCommand = new AsyncRelayCommand( SaveOrderAsync );
 		DeleteOrderCommand = new AsyncRelayCommand( DeleteOrderAsync );
-		ResetOrderCommand = new RelayCommand( ResetOrder );
 		AddProductToOrderCommand = new AsyncRelayCommand( AddSelectedProductAsync );
 		EditOrderLineCommand = new AsyncRelayCommand( EditSelectedOrderLineAsync );
 		DeleteOrderLineCommand = new AsyncRelayCommand( DeleteSelectedOrderLineAsync );
@@ -72,6 +74,18 @@ public partial class StockOrderViewModel : ObservableObject
 			return;
 
 		_ = LoadSelectedOrderAsync( value );
+	}
+
+	partial void OnEditableOrderChanged( StockOrderModel value )
+	{
+		if ( _trackedEditableOrder != null )
+		{
+			_trackedEditableOrder.PropertyChanged -= EditableOrder_PropertyChanged;
+		}
+
+		_trackedEditableOrder = value;
+		_trackedEditableOrder.PropertyChanged += EditableOrder_PropertyChanged;
+		RefreshLookupsFromEditableOrder();
 	}
 
 	partial void OnEnableSupplierOrderFilterChanged( bool value )
@@ -92,6 +106,9 @@ public partial class StockOrderViewModel : ObservableObject
 
 	public void BeginNewOrder()
 	{
+		_shippingCostsOverridden = false;
+		_orderCostsOverridden = false;
+
 		EditableOrder = new StockOrderModel
 		{
 			Id = 0,
@@ -112,6 +129,9 @@ public partial class StockOrderViewModel : ObservableObject
 
 	public void ApplySelectedOrder( StockOrderModel order, IEnumerable<StockOrderLineModel> lines )
 	{
+		_shippingCostsOverridden = true;
+		_orderCostsOverridden = true;
+
 		_suppressSelectedOrderChange = true;
 		SelectedOrder = order;
 		_suppressSelectedOrderChange = false;
@@ -164,7 +184,7 @@ public partial class StockOrderViewModel : ObservableObject
 			EditableOrder.Id = newOrderId;
 			foreach ( var line in pendingLines )
 			{
-				ApplyLocalInventoryCorrection( line.ProductId, line.Amount );
+				ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
 			}
 
 			var lines = await _stockOrderService.GetOrderLinesAsync( newOrderId );
@@ -213,15 +233,17 @@ public partial class StockOrderViewModel : ObservableObject
 
 	private async Task LoadReferenceDataAsync()
 	{
+		var inventory = await _stockService.GetCompleteInventoryAsync();
+		_inventoryByProductId = inventory.ToDictionary( item => item.ProductId );
+
 		var products = await _productService.GetAllProductsAsync();
 		AvailableProducts.Clear();
 		foreach ( var product in products )
 		{
+			ApplyInventorySnapshotToProduct( product );
+
 			AvailableProducts.Add( product );
 		}
-
-		var inventory = await _stockService.GetCompleteInventoryAsync();
-		_inventoryByProductId = inventory.ToDictionary( item => item.ProductId );
 
 		var suppliers = await _supplierService.GetAllSuppliersAsync();
 		Suppliers.Clear();
@@ -257,6 +279,28 @@ public partial class StockOrderViewModel : ObservableObject
 		return Suppliers.FirstOrDefault( s => s.Id == EditableOrder.SupplierId );
 	}
 
+	private void EditableOrder_PropertyChanged( object? sender, System.ComponentModel.PropertyChangedEventArgs e )
+	{
+		if ( _suppressEditableOrderTracking )
+			return;
+
+		switch ( e.PropertyName )
+		{
+			case nameof( StockOrderModel.SupplierId ):
+				ApplySupplierDefaults();
+				break;
+			case nameof( StockOrderModel.CurrencyId ):
+				RefreshLookupsFromEditableOrder();
+				break;
+			case nameof( StockOrderModel.ShippingCosts ):
+				_shippingCostsOverridden = true;
+				break;
+			case nameof( StockOrderModel.OrderCosts ):
+				_orderCostsOverridden = true;
+				break;
+		}
+	}
+
 	private ProductModel BuildProductForLine( StockOrderLineModel line )
 	{
 		ProductModel? existingProduct = AvailableProducts.FirstOrDefault( p => p.ProductId == line.ProductId );
@@ -276,6 +320,37 @@ public partial class StockOrderViewModel : ObservableObject
 	{
 		SelectedSupplier = Suppliers.FirstOrDefault( s => s.Id == EditableOrder.SupplierId );
 		SelectedCurrency = Currencies.FirstOrDefault( c => c.CurrencyId == EditableOrder.CurrencyId );
+	}
+
+	private void ApplySupplierDefaults()
+	{
+		RefreshLookupsFromEditableOrder();
+
+		var supplier = GetEditableOrderSupplier();
+		if ( supplier == null )
+			return;
+
+		_suppressEditableOrderTracking = true;
+		try
+		{
+			EditableOrder.CurrencyId = supplier.CurrencyId;
+
+			if ( !_shippingCostsOverridden )
+			{
+				EditableOrder.ShippingCosts = supplier.ShippingCosts;
+			}
+
+			if ( !_orderCostsOverridden )
+			{
+				EditableOrder.OrderCosts = supplier.OrderCosts;
+			}
+		}
+		finally
+		{
+			_suppressEditableOrderTracking = false;
+		}
+
+		RefreshLookupsFromEditableOrder();
 	}
 
 	private void RecalculateTotals()
@@ -315,22 +390,11 @@ public partial class StockOrderViewModel : ObservableObject
 
 		foreach ( var line in linesToDelete )
 		{
-			ApplyLocalInventoryCorrection( line.ProductId, -line.Amount );
+			ApplyLocalInventoryCorrection( line.ProductId, -line.Amount, -line.OpenAmount );
 		}
 
 		await _stockOrderService.DeleteOrderWithLinesAsync( EditableOrder.Id, linesToDelete );
 		await LoadOrdersAsync();
-		BeginNewOrder();
-	}
-
-	private void ResetOrder()
-	{
-		if ( SelectedOrder != null )
-		{
-			ApplySelectedOrder( SelectedOrder, OrderLines.ToList() );
-			return;
-		}
-
 		BeginNewOrder();
 	}
 
@@ -379,7 +443,7 @@ public partial class StockOrderViewModel : ObservableObject
 		{
 			line.Id = await _stockOrderService.InsertOrderLineWithStockCorrectionAsync( line, line.Amount );
 			OrderLines.Add( line );
-			ApplyLocalInventoryCorrection( line.ProductId, line.Amount );
+			ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
 		}
 
 		RecalculateTotals();
@@ -401,6 +465,7 @@ public partial class StockOrderViewModel : ObservableObject
 
 		var line = SelectedOrderLine;
 		double originalAmount = line.Amount;
+		double originalOpenAmount = line.OpenAmount;
 		ProductModel product = BuildProductForLine( line );
 		var existingProductSupplier = await _supplierService.GetProductSupplierAsync( supplier.Id, line.ProductId );
 		var dialogModel = StockOrderProductDialogModel.Create( product, supplier, existingProductSupplier );
@@ -430,7 +495,7 @@ public partial class StockOrderViewModel : ObservableObject
 			line.OpenAmount = Math.Max( dialogVm.Model.Amount - line.Received, 0d );
 			double stockCorrection = dialogVm.Model.Amount - originalAmount;
 			await _stockOrderService.UpdateOrderLineWithStockCorrectionAsync( line, stockCorrection );
-			ApplyLocalInventoryCorrection( line.ProductId, stockCorrection );
+			ApplyLocalInventoryCorrection( line.ProductId, stockCorrection, line.OpenAmount - originalOpenAmount );
 		}
 
 		RecalculateTotals();
@@ -448,7 +513,7 @@ public partial class StockOrderViewModel : ObservableObject
 		if ( line.Id > 0 )
 		{
 			await _stockOrderService.DeleteOrderLineWithStockCorrectionAsync( line, -line.Amount );
-			ApplyLocalInventoryCorrection( line.ProductId, -line.Amount );
+			ApplyLocalInventoryCorrection( line.ProductId, -line.Amount, -line.OpenAmount );
 		}
 
 		if ( PendingOrderLines.Contains( line ) )
@@ -466,14 +531,35 @@ public partial class StockOrderViewModel : ObservableObject
 		OnPropertyChanged( nameof( VisibleOrderLines ) );
 	}
 
-	private void ApplyLocalInventoryCorrection( int productId, double correctionAmount )
+	private void ApplyInventorySnapshotToProduct( ProductModel product )
 	{
-		if ( productId <= 0 || correctionAmount == 0d )
+		if ( _inventoryByProductId.TryGetValue( product.ProductId, out StockManagementModel? stockInfo ) )
+		{
+			product.CurrentInventory = stockInfo.ProductInventory;
+			product.InOrder = stockInfo.ProductInOrder;
+			if ( product.ProductMinimalStock <= 0 )
+			{
+				product.ProductMinimalStock = stockInfo.ProductMinimalStock;
+			}
+		}
+	}
+
+	private void ApplyLocalInventoryCorrection( int productId, double inventoryCorrection, double inOrderCorrection )
+	{
+		if ( productId <= 0 || ( inventoryCorrection == 0d && inOrderCorrection == 0d ) )
 			return;
 
 		if ( _inventoryByProductId.TryGetValue( productId, out StockManagementModel? inventory ) )
 		{
-			inventory.ProductInventory += correctionAmount;
+			inventory.ProductInventory += inventoryCorrection;
+			inventory.ProductInOrder += inOrderCorrection;
+		}
+
+		ProductModel? product = AvailableProducts.FirstOrDefault( p => p.ProductId == productId );
+		if ( product != null )
+		{
+			product.CurrentInventory += inventoryCorrection;
+			product.InOrder += inOrderCorrection;
 		}
 	}
 

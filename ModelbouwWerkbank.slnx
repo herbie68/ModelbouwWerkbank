@@ -1,11 +1,7 @@
 <Solution>
-  <Folder Name="/Modelbouwer.UnitTests/">
-    <File Path="Modelbouwer.UnitTests/GlobalUsings.cs" />
-    <File Path="Modelbouwer.UnitTests/Modelbouwer.UnitTests.csproj" />
-  </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/">
+  <Folder Name="/Builds/" />
+  <Folder Name="/Builds/Debug/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/.msCoverageSourceRootsMapping_Modelbouwer.UnitTests" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/BouncyCastle.Cryptography.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/Castle.Core.dll" />
@@ -110,7 +106,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/xunit.execution.dotnet.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ZstdSharp.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/">
+  <Folder Name="/Builds/Debug/net10.0-windows/cs/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -122,7 +118,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/cs/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/">
+  <Folder Name="/Builds/Debug/net10.0-windows/de/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -135,10 +131,10 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/Modelbouwer.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/de/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/en-US/">
+  <Folder Name="/Builds/Debug/net10.0-windows/en-US/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/en-US/Modelbouwer.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/">
+  <Folder Name="/Builds/Debug/net10.0-windows/es/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -150,7 +146,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/es/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/">
+  <Folder Name="/Builds/Debug/net10.0-windows/fr/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -162,8 +158,8 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/fr/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/hu/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/">
+  <Folder Name="/Builds/Debug/net10.0-windows/hu/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/it/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -175,7 +171,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/it/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/">
+  <Folder Name="/Builds/Debug/net10.0-windows/ja/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -187,7 +183,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ja/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/">
+  <Folder Name="/Builds/Debug/net10.0-windows/ko/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -199,10 +195,10 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ko/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/nl/">
+  <Folder Name="/Builds/Debug/net10.0-windows/nl/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/nl/Modelbouwer.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/">
+  <Folder Name="/Builds/Debug/net10.0-windows/pl/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -214,7 +210,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pl/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/">
+  <Folder Name="/Builds/Debug/net10.0-windows/pt-BR/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -226,12 +222,12 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-BR/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/pt-PT/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/Resources/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/Resources/Config/">
+  <Folder Name="/Builds/Debug/net10.0-windows/pt-PT/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/Resources/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/Resources/Config/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/Resources/Config/modelbouwer.config" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/">
+  <Folder Name="/Builds/Debug/net10.0-windows/ru/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -243,27 +239,27 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/ru/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/linux-musl-x64/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/linux-musl-x64/native/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/linux-x64/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/linux-x64/native/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/osx-x64/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/osx-x64/native/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-arm64/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-arm64/native/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/">
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/linux-musl-x64/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/linux-musl-x64/native/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/linux-x64/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/linux-x64/native/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/osx-x64/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/osx-x64/native/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-arm64/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-arm64/native/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-x64/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-x64/native/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/comerr64.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/gssapi64.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/k5sprt64.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/krb5_64.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x64/native/krbcc64.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x86/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/runtimes/win-x86/native/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/sv/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/">
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-x86/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/runtimes/win-x86/native/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/sv/" />
+  <Folder Name="/Builds/Debug/net10.0-windows/tr/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -275,7 +271,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/tr/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/">
+  <Folder Name="/Builds/Debug/net10.0-windows/zh-Hans/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -287,7 +283,7 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hans/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/">
+  <Folder Name="/Builds/Debug/net10.0-windows/zh-Hant/">
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/Microsoft.Testing.Extensions.MSBuild.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/Microsoft.Testing.Extensions.Telemetry.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/Microsoft.Testing.Extensions.VSTestBridge.resources.dll" />
@@ -299,37 +295,37 @@
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" />
     <File Path="Modelbouwer.UnitTests/Builds/Debug/net10.0-windows/zh-Hant/MSTest.TestFramework.resources.dll" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Release/" />
-  <Folder Name="/Modelbouwer.UnitTests/Builds/Release/net10.0-windows/" />
-  <Folder Name="/Modelbouwer.UnitTests/Models/">
+  <Folder Name="/Builds/Release/" />
+  <Folder Name="/Builds/Release/net10.0-windows/" />
+  <Folder Name="/Models/">
     <File Path="Modelbouwer.UnitTests/Models/ProductModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/Models/ProductUsageModelTests.cs" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/Services/">
+  <Folder Name="/Services/">
     <File Path="Modelbouwer.UnitTests/Services/ProductServiceTests.cs" />
     <File Path="Modelbouwer.UnitTests/Services/ProjectServiceTests.cs" />
     <File Path="Modelbouwer.UnitTests/Services/UnitService.cs" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134549_21028/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134549_21028/In/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134549_21028/In/HERBIESNB/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134748_22728/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134748_22728/In/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T134748_22728/In/HERBIESNB/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135021_24224/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135021_24224/In/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135021_24224/In/HERBIESNB/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135139_13280/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135139_13280/In/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135139_13280/In/HERBIESNB/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135304_24892/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135304_24892/In/" />
-  <Folder Name="/Modelbouwer.UnitTests/TestResults/Deploy_hnijk 20260430T135304_24892/In/HERBIESNB/" />
-  <Folder Name="/Modelbouwer.UnitTests/Validators/">
+  <Folder Name="/TestResults/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134549_21028/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134549_21028/In/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134549_21028/In/HERBIESNB/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134748_22728/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134748_22728/In/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T134748_22728/In/HERBIESNB/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135021_24224/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135021_24224/In/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135021_24224/In/HERBIESNB/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135139_13280/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135139_13280/In/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135139_13280/In/HERBIESNB/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135304_24892/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135304_24892/In/" />
+  <Folder Name="/TestResults/Deploy_hnijk 20260430T135304_24892/In/HERBIESNB/" />
+  <Folder Name="/Validators/">
     <File Path="Modelbouwer.UnitTests/Validators/ProductValidatorTests.cs" />
   </Folder>
-  <Folder Name="/Modelbouwer.UnitTests/ViewModels/">
+  <Folder Name="/ViewModels/">
     <File Path="Modelbouwer.UnitTests/ViewModels/NavigationViewModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs" />

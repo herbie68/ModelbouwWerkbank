@@ -4153,4 +4153,82 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="StockOrderOrderSelectionDeliverycostsLabel" xml:space="preserve">
     <value>Verzendkosten</value>
   </data>
+  <data name="StockOrderShowClosedOrders" xml:space="preserve">
+    <value>Gesloten orders tonen</value>
+  </data>
+  <data name="StockOrderExistingOrdersGroupTitle" xml:space="preserve">
+    <value>Bestaande orders</value>
+  </data>
+  <data name="StockOrderClosedLabel" xml:space="preserve">
+    <value>Gesloten</value>
+  </data>
+  <data name="StockOrderTotalLabel" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="StockOrderEditLineButton" xml:space="preserve">
+    <value>Regel wijzigen</value>
+  </data>
+  <data name="StockOrderDeleteLineButton" xml:space="preserve">
+    <value>Regel verwijderen</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductCode" xml:space="preserve">
+    <value>Productcode</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductName" xml:space="preserve">
+    <value>Productnaam</value>
+  </data>
+  <data name="StockOrderLineGridHeaderProductPrice" xml:space="preserve">
+    <value>Productprijs</value>
+  </data>
+  <data name="StockOrderLineGridHeaderOrderedAmount" xml:space="preserve">
+    <value>Aantal besteld</value>
+  </data>
+  <data name="StockOrderLineGridHeaderRowTotal" xml:space="preserve">
+    <value>Totale regelkosten</value>
+  </data>
+  <data name="StockOrderProductsGroupTitle" xml:space="preserve">
+    <value>Producten</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductCode" xml:space="preserve">
+    <value>Productcode</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductName" xml:space="preserve">
+    <value>Productnaam</value>
+  </data>
+  <data name="StockOrderProductGridHeaderProductPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="StockOrderProductGridHeaderCurrentInventory" xml:space="preserve">
+    <value>Huidige voorraad</value>
+  </data>
+  <data name="StockOrderProductGridHeaderOrderQuantity" xml:space="preserve">
+    <value>Bestelhoeveelheid</value>
+  </data>
+  <data name="StockOrderProductDialogTitle" xml:space="preserve">
+    <value>Product toevoegen</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductNumber" xml:space="preserve">
+    <value>Leverancier productnummer</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductName" xml:space="preserve">
+    <value>Leverancier productnaam</value>
+  </data>
+  <data name="StockOrderProductDialogPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="StockOrderProductDialogAmount" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="StockOrderProductDialogTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="StockOrderProductDialogCancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="StockOrderProductDialogConfirm" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
+    <value>Voeg geselecteerde product toe aan bestelling</value>
+  </data>
 </root>

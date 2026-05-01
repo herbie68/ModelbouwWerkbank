@@ -16,7 +16,28 @@ public partial class StockOrderModel : ObservableObject
 	[ObservableProperty] private DateTime? _closedDate;
 	[ObservableProperty] private bool _hasStockLog;
 
-	public double LinesTotal { get; set; }
+	private double _linesTotal;
+	public double LinesTotal
+	{
+		get => _linesTotal;
+		set
+		{
+			if ( SetProperty( ref _linesTotal, value ) )
+			{
+				OnPropertyChanged( nameof( GrandTotal ) );
+			}
+		}
+	}
 
 	public double GrandTotal => Math.Round( LinesTotal + ShippingCosts + OrderCosts, 2, MidpointRounding.AwayFromZero );
+
+	partial void OnShippingCostsChanged( double value )
+	{
+		OnPropertyChanged( nameof( GrandTotal ) );
+	}
+
+	partial void OnOrderCostsChanged( double value )
+	{
+		OnPropertyChanged( nameof( GrandTotal ) );
+	}
 }

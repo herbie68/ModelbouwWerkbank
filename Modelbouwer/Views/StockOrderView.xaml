@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:sfGrid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
+             xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
              xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+             xmlns:controls="clr-namespace:Modelbouwer.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewmodels:StockOrderViewModel}">
     <Grid Margin="12">
@@ -15,14 +17,31 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-            <Button Width="110" Margin="0,0,8,0" Command="{Binding NewOrderCommand}" Content="Nieuw" />
-            <Button Width="110" Margin="0,0,8,0" Command="{Binding SaveOrderCommand}" Content="Opslaan" />
-            <Button Width="110" Margin="0,0,8,0" Command="{Binding DeleteOrderCommand}" Content="Verwijderen" />
-            <Button Width="110" Margin="0,0,8,0" Command="{Binding ResetOrderCommand}" Content="Reset" />
+            <Button
+                Style="{StaticResource ActionBarButtonStyle}"
+                Command="{Binding NewOrderCommand}"
+                ToolTip="{x:Static language:Language.toolbarButtonActionNew}">
+                <Image Style="{DynamicResource ToolBarAddIcon}" />
+            </Button>
+
+            <Button
+                Style="{StaticResource ActionBarButtonStyle}"
+                Command="{Binding DeleteOrderCommand}"
+                ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
+                <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+            </Button>
+
+            <Button
+                Style="{StaticResource ActionBarButtonStyle}"
+                Command="{Binding SaveOrderCommand}"
+                ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
+                <Image Style="{DynamicResource ToolBarSaveIcon}" />
+            </Button>
+
             <CheckBox Margin="16,0,0,0"
                       VerticalAlignment="Center"
                       IsChecked="{Binding ShowClosedOrders, Mode=TwoWay}"
-                      Content="Gesloten orders tonen" />
+                      Content="{x:Static language:Language.StockOrderShowClosedOrders}" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" Text="{Binding EditableOrder.OrderNumber}" />
         </StackPanel>
 
@@ -32,16 +51,48 @@
                 <ColumnDefinition Width="1.8*" />
             </Grid.ColumnDefinitions>
 
-            <GroupBox Grid.Column="0" Header="Bestaande orders" Margin="0,0,12,0">
-                <sfGrid:SfDataGrid ItemsSource="{Binding Orders}"
-                                   SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
-                                   AutoGenerateColumns="True"
-                                   SelectionMode="Single"
-                                   NavigationMode="Cell" />
+            <GroupBox Grid.Column="0" Header="{x:Static language:Language.StockOrderExistingOrdersGroupTitle}" Margin="0,0,12,0">
+                <syncfusion:SfDataGrid ItemsSource="{Binding Orders}"
+                                       SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
+                                       AllowDraggingColumns="True"
+                                       AllowGrouping="True"
+                                       AllowResizingColumns="True"
+                                       AllowSorting="True"
+                                       AllowTriStateSorting="True"
+                                       AutoGenerateColumns="False"
+                                       ColumnSizer="Star"
+                                       SelectionMode="Single"
+                                       NavigationMode="Cell" >
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn MappingName="SupplierName"
+                                                   HeaderText="{x:Static language:Language.StockOrderOrderSelectionSupplierLabel}"
+                                                   AllowEditing="False" />
+                        <syncfusion:GridTextColumn MappingName="OrderNumber"
+                                                   HeaderText="{x:Static language:Language.StockOrderOrderSelectionOrdernumberLabel}"
+                                                   AllowEditing="False"
+                                                   Width="150"/>
+                        <syncfusion:GridTemplateColumn MappingName="OrderDate"
+                                                       HeaderText="{x:Static language:Language.StockOrderOrderSelectionOrderdateLabel}"
+                                                       AllowEditing="False"
+                                                       Width="120">
+                            <syncfusion:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="5,0"
+                                               Text="{Binding OrderDate, StringFormat={}{0:dd-MM-yyyy}}" />
+                                </DataTemplate>
+                            </syncfusion:GridTemplateColumn.CellTemplate>
+                        </syncfusion:GridTemplateColumn>
+                        <syncfusion:GridCheckBoxColumn MappingName="Closed"
+                                                       HeaderText="{x:Static language:Language.StockOrderClosedLabel}"
+                                                       AllowEditing="False"
+                                                       Width="90" />
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </GroupBox>
 
             <TabControl Grid.Column="1">
-                <TabItem Header="Orderinformatie">
+                <TabItem Header="{x:Static language:Language.OrderOrderGroupOrderinformation}">
                     <Grid Margin="12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -57,7 +108,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Leverancier" />
+                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionSupplierLabel}" />
                         <ComboBox Grid.Row="0" Grid.Column="1"
                                   Margin="0,0,12,8"
                                   ItemsSource="{Binding Suppliers}"
@@ -66,7 +117,7 @@
                                   SelectedValue="{Binding EditableOrder.SupplierId, Mode=TwoWay}"
                                   IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="Valuta" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionCurrencyLabel}" />
                         <ComboBox Grid.Row="0" Grid.Column="3"
                                   Margin="0,0,0,8"
                                   ItemsSource="{Binding Currencies}"
@@ -75,37 +126,37 @@
                                   SelectedValue="{Binding EditableOrder.CurrencyId, Mode=TwoWay}"
                                   IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Ordernummer" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionOrdernumberLabel}" />
                         <TextBox Grid.Row="1" Grid.Column="1"
                                  Margin="0,0,12,8"
                                  Text="{Binding EditableOrder.OrderNumber, UpdateSourceTrigger=PropertyChanged}"
                                  IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="Besteldatum" />
+                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionOrderdateLabel}" />
                         <DatePicker Grid.Row="1" Grid.Column="3"
                                     Margin="0,0,0,8"
                                     SelectedDate="{Binding EditableOrder.OrderDate, Mode=TwoWay}"
                                     IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Verzendkosten" />
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionDeliverycostsLabel}" />
                         <TextBox Grid.Row="2" Grid.Column="1"
                                  Margin="0,0,12,8"
                                  Text="{Binding EditableOrder.ShippingCosts, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}"
                                  IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="Orderkosten" />
+                        <TextBlock Grid.Row="2" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderOrderSelectionOrdercostsLabel}" />
                         <TextBox Grid.Row="2" Grid.Column="3"
                                  Margin="0,0,0,8"
                                  Text="{Binding EditableOrder.OrderCosts, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}"
                                  IsEnabled="{Binding CanEditOrder}" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="Gesloten" />
+                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderClosedLabel}" />
                         <CheckBox Grid.Row="3" Grid.Column="1"
                                   Margin="0,0,12,8"
                                   IsChecked="{Binding EditableOrder.Closed}"
                                   IsEnabled="False" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="Totaal" />
+                        <TextBlock Grid.Row="3" Grid.Column="2" Margin="0,0,8,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockOrderTotalLabel}" />
                         <TextBlock Grid.Row="3" Grid.Column="3"
                                    Margin="0,0,0,8"
                                    VerticalAlignment="Center"
@@ -114,7 +165,7 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Orderregels">
+                <TabItem Header="{x:Static language:Language.OrderTabItemHeaderOrderrows}">
                     <Grid Margin="12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -122,31 +173,65 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                            <Button Width="130" Margin="0,0,8,0" Command="{Binding EditOrderLineCommand}" Content="Regel wijzigen" />
-                            <Button Width="130" Command="{Binding DeleteOrderLineCommand}" Content="Regel verwijderen" />
+                            <Button Width="130" Margin="0,0,8,0" Command="{Binding EditOrderLineCommand}" Content="{x:Static language:Language.StockOrderEditLineButton}" />
+                            <Button Width="130" Command="{Binding DeleteOrderLineCommand}" Content="{x:Static language:Language.StockOrderDeleteLineButton}" />
                         </StackPanel>
 
-                        <sfGrid:SfDataGrid Grid.Row="1"
-                                           ItemsSource="{Binding VisibleOrderLines}"
-                                           SelectedItem="{Binding SelectedOrderLine, Mode=TwoWay}"
-                                           AutoGenerateColumns="True"
-                                           SelectionMode="Single"
-                                           NavigationMode="Cell" />
+                        <syncfusion:SfDataGrid Grid.Row="1"
+                                               ItemsSource="{Binding VisibleOrderLines}"
+                                               SelectedItem="{Binding SelectedOrderLine, Mode=TwoWay}"
+                                               AutoGenerateColumns="False"
+                                               AllowResizingColumns="True"
+                                               AllowDraggingColumns="True"
+                                               AllowGrouping="False"
+                                               AllowSorting="True"
+                                               AllowTriStateSorting="True"
+                                               ColumnSizer="Star"
+                                               SelectionMode="Single"
+                                               NavigationMode="Cell">
+                            <syncfusion:SfDataGrid.Columns>
+                                <syncfusion:GridTextColumn MappingName="ProductCode"
+                                                           HeaderText="{x:Static language:Language.StockOrderLineGridHeaderProductCode}"
+                                                           AllowEditing="False"
+                                                           Width="160"/>
+                                <syncfusion:GridTextColumn MappingName="ProductName"
+                                                           HeaderText="{x:Static language:Language.StockOrderLineGridHeaderProductName}"
+                                                           AllowEditing="False" />
+                                <syncfusion:GridNumericColumn MappingName="Price"
+                                                              HeaderText="{x:Static language:Language.StockOrderLineGridHeaderProductPrice}"
+                                                              AllowEditing="False"
+                                                              HorizontalHeaderContentAlignment="Right"
+                                                              NumberDecimalDigits="2"
+                                                              Width="110"/>
+                                <syncfusion:GridNumericColumn MappingName="Amount"
+                                                              HeaderText="{x:Static language:Language.StockOrderLineGridHeaderOrderedAmount}"
+                                                              AllowEditing="False"
+                                                              HorizontalHeaderContentAlignment="Right"
+                                                              NumberDecimalDigits="2"
+                                                              Width="110"/>
+                                <syncfusion:GridNumericColumn MappingName="RealRowTotal"
+                                                              HeaderText="{x:Static language:Language.StockOrderLineGridHeaderRowTotal}"
+                                                              AllowEditing="False"
+                                                              HorizontalHeaderContentAlignment="Right"
+                                                              NumberDecimalDigits="2"
+                                                              Width="135"/>
+                            </syncfusion:SfDataGrid.Columns>
+                        </syncfusion:SfDataGrid>
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Memo">
-                    <TextBox Margin="12"
-                             AcceptsReturn="True"
-                             VerticalScrollBarVisibility="Auto"
-                             TextWrapping="Wrap"
-                             Text="{Binding EditableOrder.Memo, UpdateSourceTrigger=PropertyChanged}"
-                             IsEnabled="{Binding CanEditOrder}" />
+                <TabItem Header="{x:Static language:Language.OrderTabItemHeaderMemo}">
+                    <controls:RtfEditor
+                        x:Name="ProjectMemoEditor"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="5"
+                        RtfText="{Binding EditableOrder.Memo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </TabItem>
             </TabControl>
         </Grid>
 
-        <GroupBox Grid.Row="2" Header="Producten" Margin="0,12,0,0">
+        <GroupBox Grid.Row="2" Header="{x:Static language:Language.StockOrderProductsGroupTitle}" Margin="0,12,0,0">
             <Grid Margin="12">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -154,15 +239,66 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                    <Button Width="150" Command="{Binding AddProductToOrderCommand}" Content="Product toevoegen" />
+                    <Button
+                        Style="{StaticResource ActionBarButtonStyle}"
+                        Command="{Binding AddProductToOrderCommand}"
+                        ToolTip="{x:Static language:Language.toolbarButtonActionAddProductToOrder}">
+                        <Image Style="{DynamicResource ToolBarAddProductToOrderIcon}" />
+                    </Button>
                 </StackPanel>
 
-                <sfGrid:SfDataGrid Grid.Row="1"
-                                   ItemsSource="{Binding AvailableProducts}"
-                                   SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-                                   AutoGenerateColumns="True"
-                                   SelectionMode="Single"
-                                   NavigationMode="Cell" />
+                <syncfusion:SfDataGrid Grid.Row="1"
+                                       ItemsSource="{Binding AvailableProducts}"
+                                       SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                                       AutoGenerateColumns="False"
+                                       AllowDraggingColumns="True"
+                                       AllowGrouping="False"
+                                       AllowResizingColumns="True"
+                                       AllowSorting="True"
+                                       AllowTriStateSorting="True"
+                                       ColumnSizer="Star"
+                                       SelectionMode="Single"
+                                       NavigationMode="Cell">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn MappingName="ProductCode"
+                                                   HeaderText="{x:Static language:Language.StockOrderProductGridHeaderProductCode}"
+                                                   AllowEditing="False"
+                                                   Width="160"/>
+                        <syncfusion:GridTextColumn MappingName="ProductName"
+                                                   HeaderText="{x:Static language:Language.StockOrderProductGridHeaderProductName}"
+                                                   AllowEditing="False" />
+                        <syncfusion:GridNumericColumn MappingName="ProductPrice"
+                                                      HeaderText="{x:Static language:Language.StockOrderProductGridHeaderProductPrice}"
+                                                      AllowEditing="False"
+                                                      HorizontalHeaderContentAlignment="Right"
+                                                      NumberDecimalDigits="2"
+                                                      Width="110"/>
+                        <syncfusion:GridNumericColumn MappingName="ProductMinimalStock"
+                                                      HeaderText="{x:Static language:Language.StockManagementDataGridHeaderMinimalStock}"
+                                                      AllowEditing="False"
+                                                      HorizontalHeaderContentAlignment="Right"
+                                                      NumberDecimalDigits="2"
+                                                      Width="140"/>
+                        <syncfusion:GridNumericColumn MappingName="CurrentInventory"
+                                                      HeaderText="{x:Static language:Language.StockOrderProductGridHeaderCurrentInventory}"
+                                                      AllowEditing="False"
+                                                      HorizontalHeaderContentAlignment="Right"
+                                                      NumberDecimalDigits="2"
+                                                      Width="140"/>
+                        <syncfusion:GridNumericColumn MappingName="InOrder"
+                                                      HeaderText="{x:Static language:Language.StockManagementDataGridHeaderOrdered}"
+                                                      AllowEditing="False"
+                                                      HorizontalHeaderContentAlignment="Right"
+                                                      NumberDecimalDigits="2"
+                                                      Width="140"/>
+                        <syncfusion:GridNumericColumn MappingName="ProductStandardQuantity"
+                                                      HeaderText="{x:Static language:Language.StockOrderProductGridHeaderOrderQuantity}"
+                                                      AllowEditing="False"
+                                                      HorizontalHeaderContentAlignment="Right"
+                                                      NumberDecimalDigits="2"
+                                                      Width="140"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
         </GroupBox>
     </Grid>

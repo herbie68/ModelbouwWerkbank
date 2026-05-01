@@ -34,6 +34,14 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="ToolBarAddProductToOrderIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource AddProduct}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
     <Style x:Key="ToolBarAddRootIcon" TargetType="Image">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
