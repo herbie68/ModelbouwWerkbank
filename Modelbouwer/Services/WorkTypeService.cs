@@ -128,7 +128,7 @@ public class WorktypeService : IWorktypeService
 
 		var parameters = new Dictionary<string, object>
 		{
-			{ $"@{DBNames.WorktypeFieldNameParentId}", parentId },
+			{ $"@{DBNames.WorktypeFieldNameParentId}", ( object? ) parentId ?? DBNull.Value },
 			{ $"@{DBNames.WorktypeFieldNameName}", worktypeName }
 		};
 

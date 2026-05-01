@@ -126,9 +126,9 @@ public class CategoryService : ICategoryService
 		if ( parentId == 0 )
 			parentId = null;
 
-		var parameters = new Dictionary<string, object?>
+		var parameters = new Dictionary<string, object>
 		{
-			{ $"@{DBNames.CategoryFieldNameParentId}", parentId },
+			{ $"@{DBNames.CategoryFieldNameParentId}", ( object? ) parentId ?? DBNull.Value },
 			{ $"@{DBNames.CategoryFieldNameName}", categoryName }
 		};
 

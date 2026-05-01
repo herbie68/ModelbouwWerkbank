@@ -54,32 +54,41 @@ public class NavigationViewModel : INotifyPropertyChanged
 		_serviceProvider = serviceProvider ?? throw new ArgumentNullException( nameof( serviceProvider ) );
 		NavigationItems = [ ];
 
-		LoadNavigationItemsAsync();
+		_ = LoadNavigationItemsAsync();
 	}
 
-	private async void LoadNavigationItemsAsync()
+	private async Task LoadNavigationItemsAsync()
 	{
-		// Wacht tot de applicatie volledig is geladen
-		await Task.Delay( 100 );
-
-		if ( Application.Current == null )
-			return;
-
-		await Application.Current.Dispatcher.InvokeAsync( () =>
+		try
 		{
-			try
+			// Wacht tot de applicatie volledig is geladen
+			await Task.Delay( 100 );
+
+			if ( Application.Current == null )
+				return;
+
+			await Application.Current.Dispatcher.InvokeAsync( () =>
 			{
-				BuildNavigationItems();
-				IsNavigationLoaded = true;
-			}
-			catch ( Exception ex )
-			{
-				Debug.WriteLine( $"Error loading navigation: {ex.Message}" );
-				// Fallback: minimaal navigatie-item
-				AddFallbackNavigation();
-				IsNavigationLoaded = true;
-			}
-		} );
+				try
+				{
+					BuildNavigationItems();
+					IsNavigationLoaded = true;
+				}
+				catch ( Exception ex )
+				{
+					Debug.WriteLine( $"Error loading navigation: {ex.Message}" );
+					// Fallback: minimaal navigatie-item
+					AddFallbackNavigation();
+					IsNavigationLoaded = true;
+				}
+			} );
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Unexpected error loading navigation: {ex}" );
+			AddFallbackNavigation();
+			IsNavigationLoaded = true;
+		}
 	}
 
 	private void AddFallbackNavigation()

@@ -128,7 +128,7 @@ public class StorageLocationService : IStorageLocationService
 
 		var parameters = new Dictionary<string, object>
 		{
-			{ $"@{DBNames.StorageFieldNameParentId}", parentId },
+			{ $"@{DBNames.StorageFieldNameParentId}", ( object? ) parentId ?? DBNull.Value },
 			{ $"@{DBNames.StorageFieldNameName}", StorageName }
 		};
 

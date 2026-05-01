@@ -64,7 +64,7 @@ public class CsvExportService : IExportService
 			File.WriteAllText( filePath, csv, Encoding );
 		} );
 
-		ShowSuccessMessage( filePath, exportData.Items.Count );
+		await ShowSuccessMessageAsync( filePath, exportData.Items.Count );
 	}
 
 	private async Task ExportSfTreeGridAsync<T>(
@@ -89,7 +89,7 @@ public class CsvExportService : IExportService
 			File.WriteAllText( filePath, csv, Encoding );
 		} );
 
-		ShowSuccessMessage( filePath, exportData.Items.Count );
+		await ShowSuccessMessageAsync( filePath, exportData.Items.Count );
 	}
 
 	#endregion
@@ -292,7 +292,7 @@ public class CsvExportService : IExportService
 		return value;
 	}
 
-	private void ShowSuccessMessage( string filePath, int recordCount )
+	private async Task ShowSuccessMessageAsync( string filePath, int recordCount )
 	{
 		try
 		{
@@ -303,10 +303,10 @@ public class CsvExportService : IExportService
 
 			if ( Application.Current != null )
 			{
-				Application.Current.Dispatcher.BeginInvoke( new Action( () =>
+				await Application.Current.Dispatcher.InvokeAsync( () =>
 				{
 					MessageBox.Show( message, "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information );
-				} ) );
+				} );
 			}
 		}
 		catch { }

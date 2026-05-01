@@ -122,21 +122,38 @@ public partial class App : Application
 
 	protected override async void OnStartup( StartupEventArgs e )
 	{
-		await _host.StartAsync();
+		try
+		{
+			await _host.StartAsync();
 
-		var navigationViewModel = _host.Services.GetRequiredService<NavigationViewModel>();
-		var mainWindow = _host.Services.GetRequiredService<MainWindow>();
-		mainWindow.Show();
+			_ = _host.Services.GetRequiredService<NavigationViewModel>();
+			var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+			mainWindow.Show();
 
-		base.OnStartup( e );
+			base.OnStartup( e );
+		}
+		catch ( Exception ex )
+		{
+			MessageBox.Show( ex.Message, Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Error );
+			Shutdown( -1 );
+		}
 	}
 
 	protected override async void OnExit( ExitEventArgs e )
 	{
-		await _host.StopAsync();
-		_host.Dispose();
-
-		base.OnExit( e );
+		try
+		{
+			await _host.StopAsync();
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error while stopping host: {ex}" );
+		}
+		finally
+		{
+			_host.Dispose();
+			base.OnExit( e );
+		}
 	}
 
 	public static T GetService<T>() where T : class

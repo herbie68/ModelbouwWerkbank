@@ -7,8 +7,8 @@ namespace Modelbouwer.UnitTests.Validators;
 [TestClass]
 public class ProductValidatorTests
 {
-	private Mock<IProductService> _mockProductService;
-	private ProductValidator _validator;
+	private Mock<IProductService> _mockProductService = null!;
+	private ProductValidator _validator = null!;
 
 	[TestInitialize]
 	public void Setup()

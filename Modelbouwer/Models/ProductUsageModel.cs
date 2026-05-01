@@ -55,14 +55,14 @@ public partial class ProductUsageModel : ObservableObject
 		}
 	}
 
-	public event PropertyChangedEventHandler? PropertyChanged;
+	public new event PropertyChangedEventHandler? PropertyChanged;
 
 	protected void NotifyPropertyChanged( [CallerMemberName] string? propertyName = null )
 	{
 		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 
-	protected bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
+	protected new bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
 	{
 		if ( EqualityComparer<T>.Default.Equals( field, value ) )
 		{

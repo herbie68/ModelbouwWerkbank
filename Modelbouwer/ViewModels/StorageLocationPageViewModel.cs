@@ -30,7 +30,7 @@ public partial class StorageLocationPageViewModel : EntityPageViewModel<StorageL
 		set { _expandCommand = value; }
 	}
 
-	private ICommand _collapseCommand;
+	private ICommand _collapseCommand = null!;
 
 	public ICommand CollapseCommand
 	{

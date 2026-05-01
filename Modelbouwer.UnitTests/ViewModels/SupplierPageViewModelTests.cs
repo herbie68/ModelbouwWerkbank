@@ -9,13 +9,13 @@ namespace Modelbouwer.UnitTests.ViewModels;
 [TestClass]
 public class SupplierPageViewModelTests
 {
-	private Mock<ISupplierService> _mockSupplierService;
-	private Mock<ICountryService> _mockCountryService;
-	private Mock<ICurrencyService> _mockCurrencyService;
-	private Mock<IContactService> _mockContactService;
-	private Mock<IContactTypeService> _mockContactTypeService;
-	private Mock<IEntityValidator<SupplierModel>> _mockValidator;
-	private SupplierPageViewModel _viewModel;
+	private Mock<ISupplierService> _mockSupplierService = null!;
+	private Mock<ICountryService> _mockCountryService = null!;
+	private Mock<ICurrencyService> _mockCurrencyService = null!;
+	private Mock<IContactService> _mockContactService = null!;
+	private Mock<IContactTypeService> _mockContactTypeService = null!;
+	private Mock<IEntityValidator<SupplierModel>> _mockValidator = null!;
+	private SupplierPageViewModel _viewModel = null!;
 
 	[TestInitialize]
 	public void Setup()

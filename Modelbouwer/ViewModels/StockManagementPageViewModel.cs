@@ -158,13 +158,20 @@ public partial class StockManagementPageViewModel : EntityPageViewModel<StockMan
 
 	private async void Item_PropertyChanged( object? sender, PropertyChangedEventArgs e )
 	{
-		if ( e.PropertyName != nameof( StockManagementModel.ProductInventory ) && e.PropertyName != nameof( StockManagementModel.ProductMinimalStock ) && e.PropertyName != nameof( StockManagementModel.ProductPrice ) )
-			return;
+		try
+		{
+			if ( e.PropertyName != nameof( StockManagementModel.ProductInventory ) && e.PropertyName != nameof( StockManagementModel.ProductMinimalStock ) && e.PropertyName != nameof( StockManagementModel.ProductPrice ) )
+				return;
 
-		if ( sender is not StockManagementModel item )
-			return;
+			if ( sender is not StockManagementModel item )
+				return;
 
-		await HandleInventoryEditAsync( item );
+			await HandleInventoryEditAsync( item );
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error handling inventory change: {ex}" );
+		}
 	}
 
 }

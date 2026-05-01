@@ -48,7 +48,7 @@ public partial class ProjectView : UserControl
 		if ( DataContext is not ProjectPageViewModel vm )
 			return;
 
-		grid.Dispatcher.BeginInvoke(
+		_ = grid.Dispatcher.BeginInvoke(
 			new Action( () =>
 			{
 				if ( grid.View == null )
@@ -104,75 +104,71 @@ public partial class ProjectView : UserControl
 
 	private async void ButtonCSVExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
-			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportProjectFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
+				DefaultExt = ".csv",
+				FileName = $"{Lang.ExportProjectFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>();
+			var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in ProjectModel.ColumnMappings )
-		{
-			// Use the first header from the array (usually the English/default one)
-			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			foreach ( var mapping in ProjectModel.ColumnMappings )
+			{
+				columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			}
+
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _csvExportService.ExportToCsvAsync<ProjectModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
 		}
-
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+		catch ( Exception ex )
 		{
-			await _csvExportService.ExportToCsvAsync<ProjectModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
 
 	private async void ButtonExcelExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
-			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportProjectFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
+				DefaultExt = ".xlsx",
+				FileName = $"{Lang.ExportProjectFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>();
+			var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in ProjectModel.ColumnMappings )
-		{
-			// Use the first header from the array (usually the English/default one)
-			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			foreach ( var mapping in ProjectModel.ColumnMappings )
+			{
+				columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			}
+
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _excelExportService.ExportToExcelAsync<ProjectModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
 		}
-
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+		catch ( Exception ex )
 		{
-			await _excelExportService.ExportToExcelAsync<ProjectModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
-		}
-	}
-
-	private void ProjectImage_Drop( object sender, DragEventArgs e )
-	{
-		if ( DataContext is not ProjectPageViewModel vm )
-			return;
-
-		if ( e.Data.GetData( DataFormats.FileDrop ) is string [ ] files &&
-			files.Length > 0 )
-		{
-			vm.SelectedProject!.ProjectImage = File.ReadAllBytes( files [ 0 ] );
-			vm.SelectedProject.ProjectImageRotationAngle = 0;
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
-
 }

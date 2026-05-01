@@ -5,8 +5,8 @@ namespace Modelbouwer.UnitTests.Services;
 [TestClass]
 public class UnitServiceTests
 {
-	private Mock<GenericDataService> _mockDataService;
-	private UnitService _unitService;
+	private Mock<GenericDataService> _mockDataService = null!;
+	private UnitService _unitService = null!;
 
 	[TestInitialize]
 	public void Setup()

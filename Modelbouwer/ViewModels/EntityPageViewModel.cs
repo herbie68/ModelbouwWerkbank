@@ -71,7 +71,6 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 
 	private IRelayCommand? _addCommand;
 	private IRelayCommand? _addContactCommand;
-	private IRelayCommand? _addImageCommand;
 	private IRelayCommand? _deleteCommand;
 	private IRelayCommand? _deleteContactCommand;
 	private IAsyncRelayCommand? _saveCommand;

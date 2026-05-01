@@ -3,14 +3,14 @@
 [TestClass]
 public class ProductPageViewModelTests
 {
-	private Mock<IProductService> _mockProductService;
-	private Mock<IUnitService> _mockUnitService;
-	private Mock<IBrandService> _mockBrandService;
-	private Mock<ICategoryService> _mockCategoryService;
-	private Mock<IEntityValidator<ProductModel>> _mockValidator;
-	private ProductPageViewModel _viewModel;
-	private Mock<IStorageLocationService> _mockStorageLocationService;
-	private Mock<ISupplierService> _mockSupplierService;
+	private Mock<IProductService> _mockProductService = null!;
+	private Mock<IUnitService> _mockUnitService = null!;
+	private Mock<IBrandService> _mockBrandService = null!;
+	private Mock<ICategoryService> _mockCategoryService = null!;
+	private Mock<IEntityValidator<ProductModel>> _mockValidator = null!;
+	private ProductPageViewModel _viewModel = null!;
+	private Mock<IStorageLocationService> _mockStorageLocationService = null!;
+	private Mock<ISupplierService> _mockSupplierService = null!;
 
 	[TestInitialize]
 	public void Setup()

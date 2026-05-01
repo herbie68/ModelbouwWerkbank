@@ -5,8 +5,8 @@ namespace Modelbouwer.UnitTests.ViewModels;
 [TestClass]
 public class NavigationViewModelTests
 {
-	private Mock<IServiceProvider> _mockServiceProvider;
-	private NavigationViewModel _viewModel;
+	private Mock<IServiceProvider> _mockServiceProvider = null!;
+	private NavigationViewModel _viewModel = null!;
 
 	[TestInitialize]
 	public void Setup()

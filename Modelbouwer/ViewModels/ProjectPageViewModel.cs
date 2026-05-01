@@ -291,17 +291,21 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 
 	private void RecalculateExpectedEndDate()
 	{
-		if ( _currentWorkStats == null || SelectedProject == null || SelectedProject.ProjectExpectedTime <= 0 || SelectedItem == null )
+		if ( _currentWorkStats == null
+			|| SelectedProject == null
+			|| !SelectedProject.ProjectStartDate.HasValue
+			|| !SelectedProject.ProjectExpectedTime.HasValue
+			|| SelectedProject.ProjectExpectedTime.Value <= 0
+			|| SelectedItem == null )
 		{
 			ProjectExpectedEndDate = null;
 			return;
 		}
 
 		var totalWorkedHours = _currentWorkStats.TotalHours;
-		var startDate = SelectedProject.ProjectStartDate.Value.ToDateTime(TimeOnly.MinValue);
-		var endDate = SelectedProject.ProjectEndDate.Value.ToDateTime(TimeOnly.MinValue);
+		var startDate = SelectedProject.ProjectStartDate.Value.ToDateTime( TimeOnly.MinValue );
 
-		var hoursToDo = SelectedItem.ProjectExpectedTime - totalWorkedHours;
+		var hoursToDo = SelectedProject.ProjectExpectedTime.Value - totalWorkedHours;
 		if ( hoursToDo <= 0 )
 		{
 			ProjectExpectedEndDate = DateTime.Now;

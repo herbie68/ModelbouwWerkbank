@@ -153,9 +153,6 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		FilteredContacts.Clear();
 
 		if ( SelectedItem == null )
-			return;
-
-		if ( SelectedItem == null )
 		{
 			RaiseContactCounters();
 			return;

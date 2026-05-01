@@ -61,14 +61,14 @@ public partial class StorageLocationModel : ObservableObject
 			"Lagerort" ]
 	};
 
-	public event PropertyChangedEventHandler? PropertyChanged;
+	public new event PropertyChangedEventHandler? PropertyChanged;
 
-	protected virtual void OnPropertyChanged( string propertyName )
+	protected new virtual void OnPropertyChanged( string propertyName )
 	{
 		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 	}
 
-	protected bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
+	protected new bool SetProperty<T>( ref T field, T value, [CallerMemberName] string? propertyName = null )
 	{
 		if ( EqualityComparer<T>.Default.Equals( field, value ) )
 		{

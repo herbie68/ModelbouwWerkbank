@@ -243,7 +243,7 @@ public partial class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 	private static Dictionary<string, object?> UpdateParameters( CategoryModel c ) => new()
 	{
 		{ $"@{DBNames.CategoryFieldNameId}", c.CategoryId == 0 ? null : c.CategoryId },
-		{ $"@{DBNames.CategoryFieldNameId}", c.ParentId == 0 ? null : c.ParentId },
+		{ $"@{DBNames.CategoryFieldNameParentId}", c.ParentId == 0 ? null : c.ParentId },
 		{ $"@{DBNames.CategoryFieldNameName}", c.CategoryName?.Trim() }
 	};
 }

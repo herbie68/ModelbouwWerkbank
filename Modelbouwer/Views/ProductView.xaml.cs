@@ -49,7 +49,7 @@ public partial class ProductView : UserControl
 		if ( DataContext is not ProductPageViewModel vm )
 			return;
 
-		grid.Dispatcher.BeginInvoke(
+		_ = grid.Dispatcher.BeginInvoke(
 			new Action( () =>
 			{
 				if ( grid.View == null )
@@ -118,61 +118,71 @@ public partial class ProductView : UserControl
 
 	private async void ButtonCSVExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
-			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
+				DefaultExt = ".csv",
+				FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>();
+			var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in ProductModel.ColumnMappings )
-		{
-			// Use the first header from the array (usually the English/default one)
-			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			foreach ( var mapping in ProductModel.ColumnMappings )
+			{
+				columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			}
+
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _csvExportService.ExportToCsvAsync<ProductModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
 		}
-
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+		catch ( Exception ex )
 		{
-			await _csvExportService.ExportToCsvAsync<ProductModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
 
 	private async void ButtonExcelExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
-			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
+				DefaultExt = ".xlsx",
+				FileName = $"{Lang.ExportProductsFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>();
+			var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in ProductModel.ColumnMappings )
-		{
-			// Use the first header from the array (usually the English/default one)
-			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			foreach ( var mapping in ProductModel.ColumnMappings )
+			{
+				columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			}
+
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _excelExportService.ExportToExcelAsync<ProductModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
 		}
-
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+		catch ( Exception ex )
 		{
-			await _excelExportService.ExportToExcelAsync<ProductModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
 

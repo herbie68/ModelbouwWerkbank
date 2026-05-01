@@ -189,7 +189,7 @@ public class ExcelExportService : IExportService
 			// Save the file
 			workbook.SaveAs( filePath );
 
-			ShowSuccessMessage( filePath, exportData.Items.Count );
+			ShowSuccessMessageAsync( filePath, exportData.Items.Count ).GetAwaiter().GetResult();
 		}
 	}
 	private string GetColumnHeader( GridColumn column, Dictionary<string, string>? columnHeaderOverrides )
@@ -226,7 +226,7 @@ public class ExcelExportService : IExportService
 		return !string.IsNullOrWhiteSpace( column.HeaderText ) ? column.HeaderText : name;
 	}
 
-	private void ShowSuccessMessage( string filePath, int recordCount )
+	private async Task ShowSuccessMessageAsync( string filePath, int recordCount )
 	{
 		try
 		{
@@ -235,10 +235,13 @@ public class ExcelExportService : IExportService
 						  ?.Replace("{file}", Path.GetFileName(filePath))
 						  ?? $"Exported {recordCount} records to {Path.GetFileName(filePath)}";
 
-			Application.Current?.Dispatcher.BeginInvoke( new Action( () =>
+			if ( Application.Current != null )
 			{
-				MessageBox.Show( message, "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information );
-			} ) );
+				await Application.Current.Dispatcher.InvokeAsync( () =>
+				{
+					MessageBox.Show( message, "Export Complete", MessageBoxButton.OK, MessageBoxImage.Information );
+				} );
+			}
 		}
 		catch { }
 	}

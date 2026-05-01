@@ -18,9 +18,6 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private readonly ISupplierService _supplierService;
 
 	private int? _lastSelectedProductId;
-	private bool _isInternalCategoryUpdate;
-	private bool _isInternalStorageLocationUpdate;
-
 	private void UpdateSelectedCategoryFromProduct()
 	{
 		if ( SelectedItem?.ProductCategoryId == null )
@@ -175,7 +172,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 				UpdateSelectedCategoryFromProduct();
 			}
 		}
-	}
+	} = [ ];
 
 	public List<StorageLocationModel> AllStorageLocations
 	{
@@ -188,7 +185,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 				UpdateSelectedStorageLocationFromProduct();
 			}
 		}
-	}
+	} = [ ];
 
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
@@ -204,7 +201,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			if ( SetProperty( ref field, value ) )
 			{
-				if ( !_isInternalCategoryUpdate && SelectedItem != null )
+				if ( SelectedItem != null )
 				{
 					SelectedItem?.ProductCategoryId = value?.CategoryId ?? 0;
 				}
@@ -219,7 +216,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			if ( SetProperty( ref field, value ) )
 			{
-				if ( !_isInternalStorageLocationUpdate && SelectedItem != null )
+				if ( SelectedItem != null )
 				{
 					SelectedItem?.ProductStorageId = value?.StorageId ?? 0;
 				}
@@ -375,9 +372,6 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private void UpdateFilteredSuppliers()
 	{
 		FilteredSuppliers.Clear();
-
-		if ( SelectedItem == null )
-			return;
 
 		if ( SelectedItem == null )
 		{
@@ -617,8 +611,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		}
 	}
 
-	public BrandModel SelectedBrand { get; set; }
-	public UnitModel SelectedUnit { get; set; }
+	public BrandModel? SelectedBrand { get; set; }
+	public UnitModel? SelectedUnit { get; set; }
 
 
 	// Parameter dictionary voor save

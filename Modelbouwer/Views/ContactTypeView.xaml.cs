@@ -48,7 +48,7 @@ public partial class ContactTypeView : UserControl
 		if ( DataContext is not ContactTypePageViewModel vm )
 			return;
 
-		grid.Dispatcher.BeginInvoke(
+		_ = grid.Dispatcher.BeginInvoke(
 			new Action( () =>
 			{
 				if ( grid.View == null )
@@ -104,57 +104,69 @@ public partial class ContactTypeView : UserControl
 
 	private async void ButtonCSVExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
-			DefaultExt = ".csv",
-			FileName = $"{Lang.ExportContactTypeFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralCSVFilter ?? "CSV files (*.csv)|*.csv",
+				DefaultExt = ".csv",
+				FileName = $"{Lang.ExportContactTypeFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		/// Defineer custom headers voor deze view
-		var columnHeaders = new Dictionary<string, string>();
+			var columnHeaders = new Dictionary<string, string>();
 
-		foreach ( var mapping in ContactTypeModel.ColumnMappings )
-		{
-			// Use the first header from the array (usually the English/default one)
-			columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			foreach ( var mapping in ContactTypeModel.ColumnMappings )
+			{
+				columnHeaders [ mapping.Key ] = mapping.Value [ 0 ];
+			}
+
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _csvExportService.ExportToCsvAsync<ContactTypeModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
 		}
-
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+		catch ( Exception ex )
 		{
-			await _csvExportService.ExportToCsvAsync<ContactTypeModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
 
 	private async void ButtonExcelExport( object sender, RoutedEventArgs e )
 	{
-		var dialog = new SaveFileDialog
+		try
 		{
-			Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
-			DefaultExt = ".xlsx",
-			FileName = $"{Lang.ExportContactTypeFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
-		};
+			var dialog = new SaveFileDialog
+			{
+				Filter = Lang.ExportGeneralExcelFilter ?? "Excel Bestanden (*.xlsx)|*.xlsx|Alle Bestanden (*.*)|*.*",
+				DefaultExt = ".xlsx",
+				FileName = $"{Lang.ExportContactTypeFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+			};
 
-		if ( dialog.ShowDialog() != true )
-			return;
+			if ( dialog.ShowDialog() != true )
+				return;
 
-		var columnHeaders = new Dictionary<string, string>
-	{
-		{ "ContactTypeName", Lang.ExportContactTypeHeaderName }
-	};
+			var columnHeaders = new Dictionary<string, string>
+			{
+				{ "ContactTypeName", Lang.ExportContactTypeHeaderName }
+			};
 
-		using ( new UiBusyScope( CustomCursors.Exporting ) )
+			using ( new UiBusyScope( CustomCursors.Exporting ) )
+			{
+				await _excelExportService.ExportToExcelAsync<ContactTypeModel>(
+				SfDataGrid,
+				dialog.FileName,
+				columnHeaders );
+			}
+		}
+		catch ( Exception ex )
 		{
-			await _excelExportService.ExportToExcelAsync<ContactTypeModel>(
-			SfDataGrid,
-			dialog.FileName,
-			columnHeaders );
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
 		}
 	}
 }
