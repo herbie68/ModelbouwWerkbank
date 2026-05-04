@@ -172,7 +172,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8" IsEnabled="{Binding CanEditOrder}">
                             <Button Width="130" Margin="0,0,8,0" Command="{Binding EditOrderLineCommand}" Content="{x:Static language:Language.StockOrderEditLineButton}" />
                             <Button Width="130" Command="{Binding DeleteOrderLineCommand}" Content="{x:Static language:Language.StockOrderDeleteLineButton}" />
                         </StackPanel>
@@ -226,6 +226,7 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="5"
+                        IsEnabled="{Binding CanEditOrder}"
                         RtfText="{Binding EditableOrder.Memo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </TabItem>
             </TabControl>
@@ -238,7 +239,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8" IsEnabled="{Binding CanEditOrder}">
                     <Button
                         Style="{StaticResource ActionBarButtonStyle}"
                         Command="{Binding AddProductToOrderCommand}"

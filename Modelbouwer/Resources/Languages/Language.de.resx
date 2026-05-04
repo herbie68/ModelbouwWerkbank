@@ -4219,6 +4219,9 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="StockOrderProductDialogAmount" xml:space="preserve">
     <value>Menge</value>
   </data>
+  <data name="StockOrderProductDialogAmountRequired" xml:space="preserve">
+    <value>Menge muss größer als null sein.</value>
+  </data>
   <data name="StockOrderProductDialogTotal" xml:space="preserve">
     <value>Gesamt</value>
   </data>
@@ -4227,6 +4230,12 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="StockOrderProductDialogConfirm" xml:space="preserve">
     <value>Bestätigen</value>
+  </data>
+  <data name="StockOrderProductDialogPriceRequired" xml:space="preserve">
+    <value>Preis muss größer als null sein.</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductNameRequired" xml:space="preserve">
+    <value>Lieferantenproduktname ist erforderlich.</value>
   </data>
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
     <value>Ausgewähltes Produkt zur Bestellung hinzufügen</value>

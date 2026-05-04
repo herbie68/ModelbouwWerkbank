@@ -2,7 +2,7 @@
 
 > Bedoeld als pragmatische backlog voor zube.io. Focus ligt op risicoreductie en snelle coverage-winst, niet op het kunstmatig verhogen van percentages.
 
-**Bron:** [CodeCoverage.xml](C:/Users/hnijk/OneDrive/Data/CodeCoverage.xml)
+**Bron:** [CodeCoverage.xml](CodeCoverage.xml)
 
 **Belangrijkste observatie:**
 - `Modelbouwer.dll` zit op ongeveer `23.87%` line coverage
@@ -19,12 +19,13 @@
 ## Wave 1: Quick Wins
 
 ### CB-01 UnitService tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: laag
 - Verwachte winst: snel, waarschijnlijk bijna volledig ongetest
 - Bestanden:
-  - [UnitService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/UnitService.cs)
-  - [Modelbouwer.UnitTests](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests)
+  - [UnitService.cs](../../../Modelbouwer/Services/UnitService.cs)
+  - [Modelbouwer.UnitTests](../../../Modelbouwer.UnitTests)
 - Aanpak:
   - test voor `GetAllUnitsAsync`
   - test voor `GetUnitByIdAsync`
@@ -37,11 +38,12 @@
   - fout- of leegpad is afgedekt waar relevant
 
 ### CB-02 CountryService tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: laag
 - Verwachte winst: snel
 - Bestanden:
-  - [CountryService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CountryService.cs)
+  - [CountryService.cs](../../../Modelbouwer/Services/CountryService.cs)
 - Aanpak:
   - CRUD-paden afdekken
   - mapping van databasevelden naar `CountryModel` valideren
@@ -50,11 +52,12 @@
   - alle publieke methods van `CountryService` getest
 
 ### CB-03 CategoryService tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: laag
 - Verwachte winst: snel
 - Bestanden:
-  - [CategoryService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CategoryService.cs)
+  - [CategoryService.cs](../../../Modelbouwer/Services/CategoryService.cs)
 - Aanpak:
   - lijst laden
   - insert/update met juiste parameterwaarden
@@ -63,11 +66,12 @@
   - CRUD-scenario's zijn afgedekt met unit tests
 
 ### CB-04 StorageLocationService tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: laag
 - Verwachte winst: snel
 - Bestanden:
-  - [StorageLocationService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/StorageLocationService.cs)
+  - [StorageLocationService.cs](../../../Modelbouwer/Services/StorageLocationService.cs)
 - Aanpak:
   - lijst laden
   - opslaan van nieuwe locatie
@@ -78,11 +82,12 @@
   - servicegedrag rond opslaglocaties is volledig regressiegetest
 
 ### CB-05 WorkTypeService tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: laag
 - Verwachte winst: snel
 - Bestanden:
-  - [WorkTypeService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/WorkTypeService.cs)
+  - [WorkTypeService.cs](../../../Modelbouwer/Services/WorkTypeService.cs)
 - Aanpak:
   - standaard CRUD-tests
   - parameteropbouw en modelmapping controleren
@@ -90,11 +95,12 @@
   - alle publieke methods van `WorkTypeService` getest
 
 ### CB-06 CurrencyService tests toevoegen
+
 - Prioriteit: middel-hoog
 - Moeite: laag-middel
 - Verwachte winst: redelijk
 - Bestanden:
-  - [CurrencyService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CurrencyService.cs)
+  - [CurrencyService.cs](../../../Modelbouwer/Services/CurrencyService.cs)
 - Aanpak:
   - lijst laden
   - insert/update/delete
@@ -107,11 +113,12 @@
 ## Wave 2: High-Risk ViewModels
 
 ### CB-07 ProjectPageViewModel tests toevoegen
+
 - Prioriteit: zeer hoog
 - Moeite: middel
 - Verwachte winst: hoog
 - Bestanden:
-  - [ProjectPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/ProjectPageViewModel.cs)
+  - [ProjectPageViewModel.cs](../../../Modelbouwer/ViewModels/ProjectPageViewModel.cs)
 - Aanpak:
   - `LoadItemsAsync`
   - selectie wisselen
@@ -125,11 +132,12 @@
   - belangrijkste gebruikersflows voor projecten zijn geautomatiseerd getest
 
 ### CB-08 StockManagementPageViewModel tests toevoegen
+
 - Prioriteit: zeer hoog
 - Moeite: middel
 - Verwachte winst: hoog
 - Bestanden:
-  - [StockManagementPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StockManagementPageViewModel.cs)
+  - [StockManagementPageViewModel.cs](../../../Modelbouwer/ViewModels/StockManagementPageViewModel.cs)
 - Aanpak:
   - voorraad laden
   - filter- en selectiegedrag
@@ -140,11 +148,12 @@
   - voorraadbeheer heeft regressietests voor de kernflows
 
 ### CB-09 CategoryPageViewModel tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: middel
 - Verwachte winst: redelijk
 - Bestanden:
-  - [CategoryPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/CategoryPageViewModel.cs)
+  - [CategoryPageViewModel.cs](../../../Modelbouwer/ViewModels/CategoryPageViewModel.cs)
 - Aanpak:
   - laden
   - selectie synchroniseren
@@ -154,11 +163,12 @@
   - standaard CRUD-viewmodelgedrag afgedekt
 
 ### CB-10 StorageLocationPageViewModel tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: middel
 - Verwachte winst: redelijk
 - Bestanden:
-  - [StorageLocationPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StorageLocationPageViewModel.cs)
+  - [StorageLocationPageViewModel.cs](../../../Modelbouwer/ViewModels/StorageLocationPageViewModel.cs)
 - Aanpak:
   - laden
   - selectie/detail sync
@@ -168,11 +178,12 @@
   - standaard CRUD-flow van opslaglocaties getest
 
 ### CB-11 WorkTypePageViewModel tests toevoegen
+
 - Prioriteit: hoog
 - Moeite: middel
 - Verwachte winst: redelijk
 - Bestanden:
-  - [WorkTypePageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/WorkTypePageViewModel.cs)
+  - [WorkTypePageViewModel.cs](../../../Modelbouwer/ViewModels/WorkTypePageViewModel.cs)
 - Aanpak:
   - laden
   - selectie/detail sync
@@ -186,12 +197,13 @@
 ## Wave 3: Deepen Existing Coverage
 
 ### CB-12 ProductPageViewModel tests uitbreiden
+
 - Prioriteit: hoog
 - Moeite: middel-hoog
 - Verwachte winst: hoog
 - Bestanden:
-  - [ProductPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/ProductPageViewModel.cs)
-  - [ProductPageViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs)
+  - [ProductPageViewModel.cs](../../../Modelbouwer/ViewModels/ProductPageViewModel.cs)
+  - [ProductPageViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs)
 - Aanpak:
   - niet-afgedekte selectieflows
   - opslaglocatie/categorie synchronisatie
@@ -202,12 +214,13 @@
   - huidige tests dekken niet alleen basisgedrag, maar ook de regressiegevoelige branches
 
 ### CB-13 SupplierPageViewModel tests uitbreiden
+
 - Prioriteit: hoog
 - Moeite: middel
 - Verwachte winst: redelijk-hoog
 - Bestanden:
-  - [SupplierPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/SupplierPageViewModel.cs)
-  - [SupplierPageViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs)
+  - [SupplierPageViewModel.cs](../../../Modelbouwer/ViewModels/SupplierPageViewModel.cs)
+  - [SupplierPageViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs)
 - Aanpak:
   - child collections
   - detail sync
@@ -217,12 +230,13 @@
   - belangrijkste supplier-scenario's zijn afgedekt
 
 ### CB-14 StockOrderViewModel tests uitbreiden
+
 - Prioriteit: hoog
 - Moeite: middel
 - Verwachte winst: hoog
 - Bestanden:
-  - [StockOrderViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StockOrderViewModel.cs)
-  - [StockOrderViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/StockOrderViewModelTests.cs)
+  - [StockOrderViewModel.cs](../../../Modelbouwer/ViewModels/StockOrderViewModel.cs)
+  - [StockOrderViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/StockOrderViewModelTests.cs)
 - Aanpak:
   - toolbar states
   - `Gesloten orders tonen`
@@ -238,11 +252,12 @@
 ## Wave 4: Import/Export Alleen Als Zakelijk Relevant
 
 ### CB-15 CsvImportService tests toevoegen
+
 - Prioriteit: middel
 - Moeite: middel
 - Verwachte winst: branch coverage en foutpaden
 - Bestanden:
-  - [CsvImportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CsvImportService.cs)
+  - [CsvImportService.cs](../../../Modelbouwer/Services/CsvImportService.cs)
 - Aanpak:
   - kolommapping
   - ontbrekende headers
@@ -252,11 +267,12 @@
   - import faalt gecontroleerd en voorspelbaar bij ongeldige input
 
 ### CB-16 CsvExportService tests toevoegen
+
 - Prioriteit: middel
 - Moeite: middel
 - Verwachte winst: redelijk
 - Bestanden:
-  - [CsvExportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CsvExportService.cs)
+  - [CsvExportService.cs](../../../Modelbouwer/Services/CsvExportService.cs)
 - Aanpak:
   - headers
   - escaping
@@ -265,11 +281,12 @@
   - export-output is stabiel en reproduceerbaar
 
 ### CB-17 ExcelExportService tests toevoegen
+
 - Prioriteit: laag-middel
 - Moeite: middel-hoog
 - Verwachte winst: afhankelijk van gebruik
 - Bestanden:
-  - [ExcelExportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/ExcelExportService.cs)
+  - [ExcelExportService.cs](../../../Modelbouwer/Services/ExcelExportService.cs)
 - Aanpak:
   - workbook-opbouw
   - kolommen

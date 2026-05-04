@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <Compile Remove="$(MSBuildProjectDirectory)\Builds\**\*.cs" />
+    <Page Remove="$(MSBuildProjectDirectory)\Builds\**\*.xaml" />
+    <Resource Remove="$(MSBuildProjectDirectory)\Builds\**\*.*" />
     <None Remove="$(MSBuildProjectDirectory)\Builds\**" />
     <Content Remove="$(MSBuildProjectDirectory)\Builds\**" />
     <EmbeddedResource Remove="$(MSBuildProjectDirectory)\Builds\**" />

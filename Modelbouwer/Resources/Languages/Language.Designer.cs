@@ -11536,6 +11536,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aantal moet groter zijn dan nul..
+        /// </summary>
+        public static string StockOrderProductDialogAmountRequired {
+            get {
+                return ResourceManager.GetString("StockOrderProductDialogAmountRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuleren.
         /// </summary>
         public static string StockOrderProductDialogCancel {
@@ -11563,11 +11572,29 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prijs moet groter zijn dan nul..
+        /// </summary>
+        public static string StockOrderProductDialogPriceRequired {
+            get {
+                return ResourceManager.GetString("StockOrderProductDialogPriceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Leverancier productnaam.
         /// </summary>
         public static string StockOrderProductDialogSupplierProductName {
             get {
                 return ResourceManager.GetString("StockOrderProductDialogSupplierProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leverancier productnaam is verplicht..
+        /// </summary>
+        public static string StockOrderProductDialogSupplierProductNameRequired {
+            get {
+                return ResourceManager.GetString("StockOrderProductDialogSupplierProductNameRequired", resourceCulture);
             }
         }
         
@@ -12410,7 +12437,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Voeg geselecteerde product toe aan bestelling.
+        ///   Looks up a localized string similar to Voeg het geselecteerde product toe aan bestelling.
         /// </summary>
         public static string toolbarButtonActionAddProductToOrder {
             get {

@@ -10,7 +10,7 @@ Deze versie is bewust geschreven als ticketset voor directe overname in zube.io.
 Voeg unit tests toe voor `UnitService`, zodat alle publieke CRUD-paden en de belangrijkste mapping- en foutscenario's zijn afgedekt.
 
 **Bestanden**
-- [UnitService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/UnitService.cs)
+- [UnitService.cs](../../../Modelbouwer/Services/UnitService.cs)
 
 **Acceptatiecriteria**
 - `GetAllUnitsAsync` is getest
@@ -28,7 +28,7 @@ Voeg unit tests toe voor `UnitService`, zodat alle publieke CRUD-paden en de bel
 Voeg unit tests toe voor `CountryService`, met focus op CRUD, modelmapping en parameteropbouw.
 
 **Bestanden**
-- [CountryService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CountryService.cs)
+- [CountryService.cs](../../../Modelbouwer/Services/CountryService.cs)
 
 **Acceptatiecriteria**
 - alle publieke CRUD-methoden zijn getest
@@ -43,7 +43,7 @@ Voeg unit tests toe voor `CountryService`, met focus op CRUD, modelmapping en pa
 Voeg unit tests toe voor `CategoryService`, zodat laden, opslaan en verwijderen regressiegetest zijn.
 
 **Bestanden**
-- [CategoryService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CategoryService.cs)
+- [CategoryService.cs](../../../Modelbouwer/Services/CategoryService.cs)
 
 **Acceptatiecriteria**
 - lijst laden is getest
@@ -60,7 +60,7 @@ Voeg unit tests toe voor `CategoryService`, zodat laden, opslaan en verwijderen 
 Voeg unit tests toe voor `StorageLocationService`, inclusief basis-CRUD en randgevallen rond lege waarden.
 
 **Bestanden**
-- [StorageLocationService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/StorageLocationService.cs)
+- [StorageLocationService.cs](../../../Modelbouwer/Services/StorageLocationService.cs)
 
 **Acceptatiecriteria**
 - lijst laden is getest
@@ -77,7 +77,7 @@ Voeg unit tests toe voor `StorageLocationService`, inclusief basis-CRUD en randg
 Voeg unit tests toe voor `WorkTypeService`, zodat CRUD-gedrag en modelmapping zijn afgedekt.
 
 **Bestanden**
-- [WorkTypeService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/WorkTypeService.cs)
+- [WorkTypeService.cs](../../../Modelbouwer/Services/WorkTypeService.cs)
 
 **Acceptatiecriteria**
 - alle publieke CRUD-methoden zijn getest
@@ -92,7 +92,7 @@ Voeg unit tests toe voor `WorkTypeService`, zodat CRUD-gedrag en modelmapping zi
 Voeg unit tests toe voor `CurrencyService`, met dekking voor CRUD en valutaveld-mapping.
 
 **Bestanden**
-- [CurrencyService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CurrencyService.cs)
+- [CurrencyService.cs](../../../Modelbouwer/Services/CurrencyService.cs)
 
 **Acceptatiecriteria**
 - lijst laden is getest
@@ -109,7 +109,7 @@ Voeg unit tests toe voor `CurrencyService`, met dekking voor CRUD en valutaveld-
 Voeg gerichte viewmodeltests toe voor `ProjectPageViewModel`, zodat de belangrijkste gebruikersflows en command states regressiegetest zijn.
 
 **Bestanden**
-- [ProjectPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/ProjectPageViewModel.cs)
+- [ProjectPageViewModel.cs](../../../Modelbouwer/ViewModels/ProjectPageViewModel.cs)
 
 **Acceptatiecriteria**
 - `LoadItemsAsync` is getest
@@ -128,7 +128,7 @@ Voeg gerichte viewmodeltests toe voor `ProjectPageViewModel`, zodat de belangrij
 Voeg tests toe voor `StockManagementPageViewModel`, met focus op voorraadladen, mutaties, filters en afgeleide berekeningen.
 
 **Bestanden**
-- [StockManagementPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StockManagementPageViewModel.cs)
+- [StockManagementPageViewModel.cs](../../../Modelbouwer/ViewModels/StockManagementPageViewModel.cs)
 
 **Acceptatiecriteria**
 - voorraad laden is getest
@@ -146,7 +146,7 @@ Voeg tests toe voor `StockManagementPageViewModel`, met focus op voorraadladen, 
 Voeg tests toe voor `CategoryPageViewModel`, zodat standaard CRUD-viewmodelgedrag is afgedekt.
 
 **Bestanden**
-- [CategoryPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/CategoryPageViewModel.cs)
+- [CategoryPageViewModel.cs](../../../Modelbouwer/ViewModels/CategoryPageViewModel.cs)
 
 **Acceptatiecriteria**
 - laden is getest
@@ -163,7 +163,7 @@ Voeg tests toe voor `CategoryPageViewModel`, zodat standaard CRUD-viewmodelgedra
 Voeg tests toe voor `StorageLocationPageViewModel`, met dekking voor laden, selectie en CRUD-commando's.
 
 **Bestanden**
-- [StorageLocationPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StorageLocationPageViewModel.cs)
+- [StorageLocationPageViewModel.cs](../../../Modelbouwer/ViewModels/StorageLocationPageViewModel.cs)
 
 **Acceptatiecriteria**
 - laden is getest
@@ -180,7 +180,7 @@ Voeg tests toe voor `StorageLocationPageViewModel`, met dekking voor laden, sele
 Voeg tests toe voor `WorkTypePageViewModel`, zodat de standaard CRUD-flow en selectie-synchronisatie zijn afgedekt.
 
 **Bestanden**
-- [WorkTypePageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/WorkTypePageViewModel.cs)
+- [WorkTypePageViewModel.cs](../../../Modelbouwer/ViewModels/WorkTypePageViewModel.cs)
 
 **Acceptatiecriteria**
 - laden is getest
@@ -197,8 +197,8 @@ Voeg tests toe voor `WorkTypePageViewModel`, zodat de standaard CRUD-flow en sel
 Breid de bestaande tests voor `ProductPageViewModel` uit, zodat niet alleen het basisgedrag maar ook de regressiegevoelige branches zijn afgedekt.
 
 **Bestanden**
-- [ProductPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/ProductPageViewModel.cs)
-- [ProductPageViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs)
+- [ProductPageViewModel.cs](../../../Modelbouwer/ViewModels/ProductPageViewModel.cs)
+- [ProductPageViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs)
 
 **Acceptatiecriteria**
 - extra selectieflows zijn getest
@@ -215,8 +215,8 @@ Breid de bestaande tests voor `ProductPageViewModel` uit, zodat niet alleen het 
 Breid de bestaande tests voor `SupplierPageViewModel` uit, met extra focus op child collections, detail-sync en async laadgedrag.
 
 **Bestanden**
-- [SupplierPageViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/SupplierPageViewModel.cs)
-- [SupplierPageViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs)
+- [SupplierPageViewModel.cs](../../../Modelbouwer/ViewModels/SupplierPageViewModel.cs)
+- [SupplierPageViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs)
 
 **Acceptatiecriteria**
 - child collections zijn getest
@@ -232,8 +232,8 @@ Breid de bestaande tests voor `SupplierPageViewModel` uit, met extra focus op ch
 Breid de bestaande tests voor `StockOrderViewModel` uit, zodat meer UI-state en closed-order gedrag regressiegetest zijn.
 
 **Bestanden**
-- [StockOrderViewModel.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/ViewModels/StockOrderViewModel.cs)
-- [StockOrderViewModelTests.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer.UnitTests/ViewModels/StockOrderViewModelTests.cs)
+- [StockOrderViewModel.cs](../../../Modelbouwer/ViewModels/StockOrderViewModel.cs)
+- [StockOrderViewModelTests.cs](../../../Modelbouwer.UnitTests/ViewModels/StockOrderViewModelTests.cs)
 
 **Acceptatiecriteria**
 - toolbar states zijn getest
@@ -251,7 +251,7 @@ Breid de bestaande tests voor `StockOrderViewModel` uit, zodat meer UI-state en 
 Voeg tests toe voor `CsvImportService`, met focus op foutafhandeling en invoervarianten.
 
 **Bestanden**
-- [CsvImportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CsvImportService.cs)
+- [CsvImportService.cs](../../../Modelbouwer/Services/CsvImportService.cs)
 
 **Acceptatiecriteria**
 - kolommapping is getest
@@ -267,7 +267,7 @@ Voeg tests toe voor `CsvImportService`, met focus op foutafhandeling en invoerva
 Voeg tests toe voor `CsvExportService`, zodat export-output stabiel en reproduceerbaar is.
 
 **Bestanden**
-- [CsvExportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/CsvExportService.cs)
+- [CsvExportService.cs](../../../Modelbouwer/Services/CsvExportService.cs)
 
 **Acceptatiecriteria**
 - headers zijn getest
@@ -282,7 +282,7 @@ Voeg tests toe voor `CsvExportService`, zodat export-output stabiel en reproduce
 Voeg tests toe voor `ExcelExportService`, met focus op de belangrijkste workbook-scenario's.
 
 **Bestanden**
-- [ExcelExportService.cs](/C:/Users/hnijk/OneDrive/DevOps/hnsoftwaredevelopment/ModelbouwWerkbank/Modelbouwer/Services/ExcelExportService.cs)
+- [ExcelExportService.cs](../../../Modelbouwer/Services/ExcelExportService.cs)
 
 **Acceptatiecriteria**
 - workbook-opbouw is getest

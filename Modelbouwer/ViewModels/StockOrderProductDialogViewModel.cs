@@ -13,19 +13,19 @@ public partial class StockOrderProductDialogViewModel : ObservableObject
 	{
 		if ( string.IsNullOrWhiteSpace( Model.SupplierProductName ) )
 		{
-			errorMessage = "Supplier product name is verplicht.";
+			errorMessage = Lang.StockOrderProductDialogSupplierProductNameRequired;
 			return false;
 		}
 
 		if ( Model.Amount <= 0 )
 		{
-			errorMessage = "Aantal moet groter zijn dan nul.";
+			errorMessage = Lang.StockOrderProductDialogAmountRequired;
 			return false;
 		}
 
 		if ( Model.UnitPrice <= 0 )
 		{
-			errorMessage = "Prijs moet groter zijn dan nul.";
+			errorMessage = Lang.StockOrderProductDialogPriceRequired;
 			return false;
 		}
 

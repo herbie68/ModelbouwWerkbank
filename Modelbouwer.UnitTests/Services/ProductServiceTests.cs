@@ -172,7 +172,14 @@ public class ProductServiceTests
 				d.ContainsKey( DBNames.ProductFieldNameProjectCosts ) &&
 				d.ContainsKey( DBNames.ProductFieldNameStandardOrderQuantity ) &&
 				d.ContainsKey( DBNames.ProductFieldNameStorageId ) &&
-				d.ContainsKey( DBNames.ProductFieldNameUnitId )
+				d.ContainsKey( DBNames.ProductFieldNameUnitId ) &&
+				( string ) d [ DBNames.ProductFieldNameName ] == "New Product" &&
+				( string ) d [ DBNames.ProductFieldNameCode ] == "NP001" &&
+				( double ) d [ DBNames.ProductFieldNamePrice ] == 10.50 &&
+				( double ) d [ DBNames.ProductFieldNameStandardOrderQuantity ] == 5d &&
+				( int ) d [ DBNames.ProductFieldNameStorageId ] == 4 &&
+				( int ) d [ DBNames.ProductFieldNameUnitId ] == 2 &&
+				( int ) d [ DBNames.ProductFieldNameBrandId ] == 5
 			) ), Times.Once );
 	}
 
@@ -208,7 +215,15 @@ public class ProductServiceTests
 				d.ContainsKey( DBNames.ProductFieldNameProjectCosts ) &&
 				d.ContainsKey( DBNames.ProductFieldNameStandardOrderQuantity ) &&
 				d.ContainsKey( DBNames.ProductFieldNameStorageId ) &&
-				d.ContainsKey( DBNames.ProductFieldNameUnitId )
+				d.ContainsKey( DBNames.ProductFieldNameUnitId ) &&
+				( int ) d [ DBNames.ProductFieldNameId ] == 1 &&
+				( string ) d [ DBNames.ProductFieldNameName ] == "Updated Product" &&
+				( string ) d [ DBNames.ProductFieldNameCode ] == "UP001" &&
+				( double ) d [ DBNames.ProductFieldNamePrice ] == 10.50 &&
+				( double ) d [ DBNames.ProductFieldNameStandardOrderQuantity ] == 5d &&
+				( int ) d [ DBNames.ProductFieldNameStorageId ] == 4 &&
+				( int ) d [ DBNames.ProductFieldNameUnitId ] == 2 &&
+				( int ) d [ DBNames.ProductFieldNameBrandId ] == 5
 			) ), Times.Once );
 	}
 

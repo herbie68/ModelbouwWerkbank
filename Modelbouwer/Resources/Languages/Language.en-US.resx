@@ -4219,6 +4219,9 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="StockOrderProductDialogAmount" xml:space="preserve">
     <value>Quantity</value>
   </data>
+  <data name="StockOrderProductDialogAmountRequired" xml:space="preserve">
+    <value>Quantity must be greater than zero.</value>
+  </data>
   <data name="StockOrderProductDialogTotal" xml:space="preserve">
     <value>Total</value>
   </data>
@@ -4227,6 +4230,12 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="StockOrderProductDialogConfirm" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="StockOrderProductDialogPriceRequired" xml:space="preserve">
+    <value>Price must be greater than zero.</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductNameRequired" xml:space="preserve">
+    <value>Supplier product name is required.</value>
   </data>
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
     <value>Add selected product to order</value>

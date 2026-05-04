@@ -419,6 +419,57 @@ public class StockOrderViewModelTests
 	}
 
 	[TestMethod]
+	public void ApplySupplierFilter_WhenSupplierChanges_RefreshesFilteredOrders()
+	{
+		_viewModel.Suppliers.Clear();
+		_viewModel.Suppliers.Add( new SupplierModel { Id = 5, CurrencyId = 1 } );
+		_viewModel.Suppliers.Add( new SupplierModel { Id = 8, CurrencyId = 2 } );
+		_viewModel.EditableOrder.SupplierId = 5;
+		_viewModel.ReplaceOrdersForTest( new List<StockOrderModel>
+		{
+			new() { Id = 1, SupplierId = 5, OrderNumber = "SO-1" },
+			new() { Id = 2, SupplierId = 8, OrderNumber = "SO-2" }
+		} );
+		_viewModel.EnableSupplierOrderFilter = true;
+
+		_viewModel.EditableOrder.SupplierId = 8;
+
+		Assert.AreEqual( 1, _viewModel.Orders.Count );
+		Assert.AreEqual( 8, _viewModel.Orders[ 0 ].SupplierId );
+	}
+
+	[TestMethod]
+	public async Task SelectedOrder_WhenOlderLoadCompletesAfterNewerSelection_KeepsLatestOrder()
+	{
+		var firstOrderLines = new TaskCompletionSource<List<StockOrderLineModel>>();
+		var secondOrder = new StockOrderModel { Id = 2, SupplierId = 8, OrderNumber = "SO-2" };
+
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 1 ) )
+			.Returns( firstOrderLines.Task );
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 2 ) )
+			.ReturnsAsync( new List<StockOrderLineModel>
+			{
+				new() { Id = 20, SupplyOrderId = 2, ProductId = 200, Amount = 1, OpenAmount = 1 }
+			} );
+
+		_viewModel.SelectedOrder = new StockOrderModel { Id = 1, SupplierId = 5, OrderNumber = "SO-1" };
+		_viewModel.SelectedOrder = secondOrder;
+		await WaitUntilAsync( () => _viewModel.EditableOrder.Id == 2 );
+
+		firstOrderLines.SetResult( new List<StockOrderLineModel>
+		{
+			new() { Id = 10, SupplyOrderId = 1, ProductId = 100, Amount = 1, OpenAmount = 1 }
+		} );
+		await Task.Delay( 25 );
+
+		Assert.AreEqual( 2, _viewModel.EditableOrder.Id );
+		Assert.AreEqual( "SO-2", _viewModel.EditableOrder.OrderNumber );
+		Assert.AreEqual( 20, _viewModel.OrderLines[ 0 ].Id );
+	}
+
+	[TestMethod]
 	public void Orders_DefaultToOpenOnly_AndCanIncludeClosedOrders()
 	{
 		_viewModel.ReplaceOrdersForTest( new List<StockOrderModel>
@@ -820,5 +871,18 @@ public class StockOrderViewModelTests
 		Assert.AreEqual( 0, _viewModel.OrderLines.Count );
 		Assert.AreEqual( 0, _viewModel.Orders.Count );
 		Assert.AreEqual( 0, _viewModel.EditableOrder.Id );
+	}
+
+	private static async Task WaitUntilAsync( Func<bool> condition )
+	{
+		for ( int attempt = 0; attempt < 40; attempt++ )
+		{
+			if ( condition() )
+				return;
+
+			await Task.Delay( 25 );
+		}
+
+		Assert.Fail( "Condition was not met before the timeout." );
 	}
 }

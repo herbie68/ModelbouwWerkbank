@@ -224,7 +224,15 @@ public class GenericDataService
 		}
 		catch
 		{
-			await transaction.RollbackAsync();
+			try
+			{
+				await transaction.RollbackAsync();
+			}
+			catch
+			{
+				// Preserve the original operation/commit exception when rollback also fails.
+			}
+
 			throw;
 		}
 	}
@@ -245,7 +253,15 @@ public class GenericDataService
 		}
 		catch
 		{
-			await transaction.RollbackAsync();
+			try
+			{
+				await transaction.RollbackAsync();
+			}
+			catch
+			{
+				// Preserve the original operation/commit exception when rollback also fails.
+			}
+
 			throw;
 		}
 	}

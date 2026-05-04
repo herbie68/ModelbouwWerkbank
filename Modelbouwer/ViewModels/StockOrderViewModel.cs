@@ -15,6 +15,7 @@ public partial class StockOrderViewModel : ObservableObject
 	private StockOrderModel? _trackedEditableOrder;
 	private List<StockOrderModel> _allOrders = [];
 	private Dictionary<int, StockManagementModel> _inventoryByProductId = [];
+	private int _selectionLoadVersion;
 
 	public ObservableCollection<StockOrderModel> Orders { get; } = [ ];
 	public ObservableCollection<StockOrderLineModel> OrderLines { get; } = [ ];
@@ -73,7 +74,8 @@ public partial class StockOrderViewModel : ObservableObject
 		if ( _suppressSelectedOrderChange || value == null )
 			return;
 
-		_ = LoadSelectedOrderAsync( value );
+		int loadVersion = ++_selectionLoadVersion;
+		_ = LoadSelectedOrderAsync( value, loadVersion );
 	}
 
 	partial void OnEditableOrderChanged( StockOrderModel value )
@@ -118,6 +120,7 @@ public partial class StockOrderViewModel : ObservableObject
 		_suppressSelectedOrderChange = true;
 		SelectedOrder = null;
 		_suppressSelectedOrderChange = false;
+		_selectionLoadVersion++;
 		SelectedOrderLine = null;
 		PendingOrderLines.Clear();
 		OrderLines.Clear();
@@ -268,9 +271,13 @@ public partial class StockOrderViewModel : ObservableObject
 		ApplyOrderFilters();
 	}
 
-	private async Task LoadSelectedOrderAsync( StockOrderModel order )
+	private async Task LoadSelectedOrderAsync( StockOrderModel order, int loadVersion )
 	{
 		var lines = await _stockOrderService.GetOrderLinesAsync( order.Id );
+
+		if ( loadVersion != _selectionLoadVersion || SelectedOrder?.Id != order.Id )
+			return;
+
 		ApplySelectedOrder( order, lines );
 	}
 
@@ -288,6 +295,10 @@ public partial class StockOrderViewModel : ObservableObject
 		{
 			case nameof( StockOrderModel.SupplierId ):
 				ApplySupplierDefaults();
+				if ( EnableSupplierOrderFilter )
+				{
+					ApplyOrderFilters();
+				}
 				break;
 			case nameof( StockOrderModel.CurrencyId ):
 				RefreshLookupsFromEditableOrder();

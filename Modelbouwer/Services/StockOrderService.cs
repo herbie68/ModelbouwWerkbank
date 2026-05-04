@@ -27,7 +27,7 @@ SELECT
 	{DBNames.OrderViewFieldNameClosed},
 	{DBNames.OrderViewFieldNameClosedDate},
 	{DBNames.OrderViewFieldNameOrderMemo},
-	{DBNames.OrderViewFieldNameHasStackLog}
+	{DBNames.OrderViewFieldNameHasStockLog}
 FROM {DBNames.Database}.{DBNames.OrderView}
 ORDER BY {DBNames.OrderViewFieldNameOrderDate} DESC, {DBNames.OrderViewFieldNameId} DESC;";
 
@@ -189,7 +189,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 				Closed = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameClosed] ) == 1,
 				ClosedDate = GetNullableDateTime( reader[DBNames.OrderViewFieldNameClosedDate] ),
 				Memo = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameOrderMemo] ),
-				HasStockLog = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameHasStackLog] ) == 1
+				HasStockLog = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameHasStockLog] ) == 1
 			};
 		}, null );
 	}
@@ -376,7 +376,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			{ $"@{DBNames.OrderLineFieldNameProductId}", line.ProductId },
 			{ $"@{DBNames.OrderLineFieldNameSupplierProductName}", line.SupplierProductName ?? string.Empty },
 			{ $"@{DBNames.OrderLineFieldNameAmount}", line.Amount },
-			{ $"@{DBNames.OrderLineFieldNameOpenAmount}", includeId ? line.OpenAmount : line.OpenAmount > 0 ? line.OpenAmount : line.Amount },
+			{ $"@{DBNames.OrderLineFieldNameOpenAmount}", line.OpenAmount > 0 || line.Closed ? line.OpenAmount : line.Amount },
 			{ $"@{DBNames.OrderLineFieldNamePrice}", line.Price },
 			{ $"@{DBNames.OrderLineFieldNameRealRowTotal}", line.RealRowTotal },
 			{ $"@{DBNames.OrderLineFieldNameClosed}", line.Closed },

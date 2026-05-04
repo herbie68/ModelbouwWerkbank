@@ -45,7 +45,8 @@ public class SupplierService : ISupplierService
 		$"ps.{DBNames.ProductSupplierFieldNameProductNumber}, " +
 		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
 		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameProductUrl} " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} " +
 		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
@@ -62,7 +63,8 @@ public class SupplierService : ISupplierService
 		$"ps.{DBNames.ProductSupplierFieldNameProductNumber}, " +
 		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
 		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameProductUrl} " +
+		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
+		$"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} " +
 		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
@@ -404,7 +406,7 @@ public class SupplierService : ISupplierService
 			ProductName = DatabaseValueConverter.GetString( reader [ "ProductName" ] ),
 			Price = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductSupplierFieldNamePrice}" ] ),
 			URL = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductSupplierFieldNameProductUrl}" ] ),
-			DefaultSupplier = false
+			DefaultSupplier = DatabaseValueConverter.GetSByte( reader [ $"{DBNames.ProductSupplierFieldNameDefaultSupplier}" ] ) == 1
 		};
 	}
 

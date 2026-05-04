@@ -36,7 +36,7 @@ public class StockOrderServiceTests
 	[TestMethod]
 	public void CompleteOrderListQuery_UsesActualHasStockLogColumnName()
 	{
-		StringAssert.Contains( _service.CompleteOrderListQuery, DBNames.OrderViewFieldNameHasStackLog );
+		StringAssert.Contains( _service.CompleteOrderListQuery, DBNames.OrderViewFieldNameHasStockLog );
 		Assert.IsFalse( _service.CompleteOrderListQuery.Contains( "HasStackLog" ) );
 	}
 
@@ -68,6 +68,35 @@ public class StockOrderServiceTests
 				( double ) p [ $"@{DBNames.OrderLineFieldNameAmount}" ] == 5d &&
 				( double ) p [ $"@{DBNames.OrderLineFieldNameOpenAmount}" ] == 5d &&
 				!p.ContainsKey( $"@{DBNames.OrderLineFieldNameSupplierId}" ) ) ),
+			Times.Once );
+	}
+
+	[TestMethod]
+	public async Task InsertOrderLineAsync_PreservesZeroOpenAmount()
+	{
+		var line = new StockOrderLineModel
+		{
+			SupplyOrderId = 4,
+			ProductId = 12,
+			SupplierProductName = "Axle",
+			Amount = 5,
+			OpenAmount = 0,
+			Price = 3.5,
+			RealRowTotal = 17.5,
+			Closed = true
+		};
+
+		_mockDataService
+			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 44u );
+
+		await _service.InsertOrderLineAsync( line );
+
+		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
+			It.IsAny<string>(),
+			It.Is<Dictionary<string, object>>( p =>
+				( double ) p [ $"@{DBNames.OrderLineFieldNameOpenAmount}" ] == 0d &&
+				( bool ) p [ $"@{DBNames.OrderLineFieldNameClosed}" ] ) ),
 			Times.Once );
 	}
 

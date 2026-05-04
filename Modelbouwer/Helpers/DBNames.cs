@@ -723,8 +723,8 @@ public class DBNames
 	public static readonly string OrderViewFieldTypeClosedDate = "date";
 	public static readonly string OrderViewFieldNameOrderMemo = "Memo";
 	public static readonly string OrderViewFieldTypeOrderMemo = "longtext";
-	public static readonly string OrderViewFieldNameHasStackLog = "HasStockLog";
-	public static readonly string OrderViewFieldTypeHasStackLog = "int";
+	public static readonly string OrderViewFieldNameHasStockLog = "HasStockLog";
+	public static readonly string OrderViewFieldTypeHasStockLog = "int";
 
 	public static readonly string OrderLineTable = "supplyorderline";
 	public static readonly string OpenOrderLineView = "view_supplyopenorderline";

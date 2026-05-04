@@ -4219,6 +4219,9 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="StockOrderProductDialogAmount" xml:space="preserve">
     <value>Aantal</value>
   </data>
+  <data name="StockOrderProductDialogAmountRequired" xml:space="preserve">
+    <value>Aantal moet groter zijn dan nul.</value>
+  </data>
   <data name="StockOrderProductDialogTotal" xml:space="preserve">
     <value>Totaal</value>
   </data>
@@ -4228,8 +4231,14 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="StockOrderProductDialogConfirm" xml:space="preserve">
     <value>Bevestigen</value>
   </data>
+  <data name="StockOrderProductDialogPriceRequired" xml:space="preserve">
+    <value>Prijs moet groter zijn dan nul.</value>
+  </data>
+  <data name="StockOrderProductDialogSupplierProductNameRequired" xml:space="preserve">
+    <value>Leverancier productnaam is verplicht.</value>
+  </data>
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
-    <value>Voeg geselecteerde product toe aan bestelling</value>
+    <value>Voeg het geselecteerde product toe aan bestelling</value>
   </data>
   <data name="StockReceiptOrdersGroupTitle" xml:space="preserve">
     <value>Orders</value>

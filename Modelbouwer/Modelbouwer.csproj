@@ -13,8 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <AssemblyVersion>26.5.13.0</AssemblyVersion>
-    <FileVersion>26.5.13.0</FileVersion>
+    <AssemblyVersion>26.5.14.0</AssemblyVersion>
+    <FileVersion>26.5.14.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -75,12 +75,8 @@
     </None>
   </ItemGroup>
 
-  <!-- Exclude pre-built/generated files under Builds directory from SDK globs to avoid duplicate compilation -->
+  <!-- Exclude temporary generated files from SDK globs to avoid duplicate compilation -->
   <ItemGroup>
-    <Compile Remove="Builds\**\*.cs" />
-    <Page Remove="Builds\**\*.xaml" />
-    <Resource Remove="Builds\**\*.*" />
-    <None Remove="Builds\**\*.*" />
     <Compile Remove="..\tmp\**\*.cs" />
     <EmbeddedResource Remove="..\tmp\**\*.*" />
     <None Remove="..\tmp\**\*.*" />
