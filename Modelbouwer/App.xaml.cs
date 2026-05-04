@@ -43,6 +43,7 @@ public partial class App : Application
 		services.AddSingleton<StockOrderService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();
+		services.AddSingleton<TimeRegistrationService>();
 		services.AddSingleton<UnitService>();
 		services.AddSingleton<WorktypeService>();
 
@@ -59,6 +60,7 @@ public partial class App : Application
 		services.AddTransient<StockReceiptViewModel>();
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<SupplierPageViewModel>();
+		services.AddTransient<TimeRegistrationViewModel>();
 		services.AddTransient<UnitPageViewModel>();
 		services.AddTransient<WorktypePageViewModel>();
 
@@ -78,6 +80,7 @@ public partial class App : Application
 		services.AddTransient<StockReceiptView>();
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<SupplierView>();
+		services.AddTransient<TimeRegistrationView>();
 		services.AddTransient<UnitView>();
 		services.AddTransient<WorktypeView>();
 
@@ -104,6 +107,7 @@ public partial class App : Application
 		services.AddScoped<IStockOrderService, StockOrderService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<ISupplierService, SupplierService>();
+		services.AddScoped<ITimeRegistrationService, TimeRegistrationService>();
 		services.AddScoped<IUnitService, UnitService>();
 		services.AddScoped<IWorktypeService, WorktypeService>();
 

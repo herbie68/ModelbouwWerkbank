@@ -408,12 +408,33 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadTimeRegistrationView()
+	{
+		try
+		{
+			var timeRegistrationView = _serviceProvider.GetRequiredService<TimeRegistrationView>();
+			CurrentView = timeRegistrationView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading TimeRegistrationView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
 
 		#region Time section
 		#region Subitems
+		TimeSubItems.Add( new NavigationModel
+		{
+			NavigationItem = "Tijd en materiaal",
+			NavigationIcon = CreateNavigationImage( "Time" ),
+			NavigationTooltip = "Registreer uren, materiaal en projectkosten",
+			Command = new SimpleCommand( () => LoadTimeRegistrationView() )
+		} );
+
 		TimeSubItems.Add( new NavigationModel
 		{
 			NavigationItem = Language.navigation_Time_SubItem_Import_Label,
