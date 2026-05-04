@@ -395,6 +395,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadStockReceiptView()
+	{
+		try
+		{
+			var stockReceiptView = _serviceProvider.GetRequiredService<StockReceiptView>();
+			CurrentView = stockReceiptView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading StockReceiptView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -454,7 +467,8 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			NavigationItem = Language.navigation_Inventory_SubItem_Receipt_Label,
 			NavigationIcon = CreateNavigationImage( "Recieve" ),
-			NavigationTooltip = Language.navigation_Inventory_SubItem_Receipt_Tooltip
+			NavigationTooltip = Language.navigation_Inventory_SubItem_Receipt_Tooltip,
+			Command = new SimpleCommand( () => LoadStockReceiptView() )
 		} );
 		#endregion
 

@@ -39,6 +39,7 @@ SELECT
 	p.{DBNames.ProductFieldNameId} AS {DBNames.OrderLineViewFieldNameProductId},
 	p.{DBNames.ProductFieldNameCode} AS {DBNames.OrderLineViewFieldNameProductCode},
 	p.{DBNames.ProductFieldNameName} AS {DBNames.OrderLineViewFieldNameProductName},
+	ps.{DBNames.ProductSupplierFieldNameProductNumber} AS {DBNames.ProductSupplierFieldNameProductNumber},
 	ol.{DBNames.OrderLineFieldNameSupplierProductName} AS {DBNames.OrderLineFieldNameSupplierProductName},
 	ol.{DBNames.OrderLineFieldNameAmount} AS {DBNames.OrderLineFieldNameAmount},
 	ol.{DBNames.OrderLineFieldNameOpenAmount} AS {DBNames.OrderLineFieldNameOpenAmount},
@@ -51,6 +52,8 @@ SELECT
 FROM {DBNames.Database}.{DBNames.OrderLineTable} ol
 INNER JOIN {DBNames.Database}.{DBNames.OrderTable} o ON ol.{DBNames.OrderLineFieldNameSupplierOrderId} = o.{DBNames.OrderFieldNameId}
 INNER JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ol.{DBNames.OrderLineFieldNameProductId} = p.{DBNames.ProductFieldNameId}
+LEFT JOIN {DBNames.Database}.{DBNames.ProductSupplierTable} ps ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = o.{DBNames.OrderFieldNameSupplierId}
+	AND ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId}
 WHERE ol.{DBNames.OrderLineFieldNameSupplierOrderId} = @OrderId
 ORDER BY ol.{DBNames.OrderLineFieldNameId};";
 
@@ -153,6 +156,21 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 	{DBNames.SqlCurrentDate}
 );";
 
+	public string InsertStocklogReceiptQuery = $@"
+INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
+	{DBNames.StocklogFieldNameProductId},
+	{DBNames.StocklogFieldNameSupplyOrderId},
+	{DBNames.StocklogFieldNameSupplyOrderlineId},
+	{DBNames.StocklogFieldNameAmountReceived},
+	{DBNames.StocklogFieldNameLogDate}
+) VALUES (
+	@{DBNames.StocklogFieldNameProductId},
+	@{DBNames.StocklogFieldNameSupplyOrderId},
+	@{DBNames.StocklogFieldNameSupplyOrderlineId},
+	@{DBNames.StocklogFieldNameAmountReceived},
+	@{DBNames.StocklogFieldNameLogDate}
+);";
+
 	public Task<List<StockOrderModel>> GetAllOrdersAsync()
 	{
 		return _dataService.ExecuteQueryAsync( CompleteOrderListQuery, reader =>
@@ -188,6 +206,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 				ProductId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameProductId] ),
 				ProductCode = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductCode] ),
 				ProductName = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductName] ),
+				SupplierProductNumber = DatabaseValueConverter.GetString( reader[DBNames.ProductSupplierFieldNameProductNumber] ),
 				SupplierProductName = DatabaseValueConverter.GetString( reader[DBNames.OrderLineFieldNameSupplierProductName] ),
 				Amount = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNameAmount] ),
 				OpenAmount = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNameOpenAmount] ),
@@ -297,6 +316,15 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 		} );
 	}
 
+	public Task RegisterReceiptAsync( StockOrderLineModel line, double receivedAmount, DateTime? deliveryDate )
+	{
+		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
+		{
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
+			await InsertStocklogReceiptAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, receivedAmount, deliveryDate );
+		} );
+	}
+
 	public Task DeleteOrderLineAsync( int lineId )
 	{
 		return _dataService.ExecuteScalarAsync<uint>( DeleteOrderLineQuery, new Dictionary<string, object>
@@ -348,7 +376,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			{ $"@{DBNames.OrderLineFieldNameProductId}", line.ProductId },
 			{ $"@{DBNames.OrderLineFieldNameSupplierProductName}", line.SupplierProductName ?? string.Empty },
 			{ $"@{DBNames.OrderLineFieldNameAmount}", line.Amount },
-			{ $"@{DBNames.OrderLineFieldNameOpenAmount}", line.OpenAmount > 0 ? line.OpenAmount : line.Amount },
+			{ $"@{DBNames.OrderLineFieldNameOpenAmount}", includeId ? line.OpenAmount : line.OpenAmount > 0 ? line.OpenAmount : line.Amount },
 			{ $"@{DBNames.OrderLineFieldNamePrice}", line.Price },
 			{ $"@{DBNames.OrderLineFieldNameRealRowTotal}", line.RealRowTotal },
 			{ $"@{DBNames.OrderLineFieldNameClosed}", line.Closed },
@@ -412,6 +440,21 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			{ $"@{DBNames.StocklogFieldNameSupplyOrderId}", supplyOrderId > 0 ? supplyOrderId : DBNull.Value },
 			{ $"@{DBNames.StocklogFieldNameSupplyOrderlineId}", supplyOrderLineId > 0 ? supplyOrderLineId : DBNull.Value },
 			{ $"@{DBNames.StocklogFieldNameAmountCorrection}", correctionAmount }
+		} );
+	}
+
+	private Task InsertStocklogReceiptAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double receivedAmount, DateTime? deliveryDate )
+	{
+		if ( productId <= 0 || receivedAmount == 0d )
+			return Task.CompletedTask;
+
+		return ExecuteNonQueryInTransactionAsync( connection, transaction, InsertStocklogReceiptQuery, new Dictionary<string, object>
+		{
+			{ $"@{DBNames.StocklogFieldNameProductId}", productId },
+			{ $"@{DBNames.StocklogFieldNameSupplyOrderId}", supplyOrderId > 0 ? supplyOrderId : DBNull.Value },
+			{ $"@{DBNames.StocklogFieldNameSupplyOrderlineId}", supplyOrderLineId > 0 ? supplyOrderLineId : DBNull.Value },
+			{ $"@{DBNames.StocklogFieldNameAmountReceived}", receivedAmount },
+			{ $"@{DBNames.StocklogFieldNameLogDate}", deliveryDate is DateTime date ? date : DateTime.Today }
 		} );
 	}
 }

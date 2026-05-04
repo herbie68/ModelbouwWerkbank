@@ -13,6 +13,7 @@ public interface IStockOrderService
 	Task<int> InsertOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection );
 	Task UpdateOrderLineAsync( StockOrderLineModel line );
 	Task UpdateOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection );
+	Task RegisterReceiptAsync( StockOrderLineModel line, double receivedAmount, DateTime? deliveryDate );
 	Task DeleteOrderLineAsync( int lineId );
 	Task DeleteOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection );
 }

@@ -4231,4 +4231,64 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
     <value>Add selected product to order</value>
   </data>
+  <data name="StockReceiptOrdersGroupTitle" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="StockReceiptOpenLinesGroupTitle" xml:space="preserve">
+    <value>Order lines</value>
+  </data>
+  <data name="StockReceiptEditReceiptTooltip" xml:space="preserve">
+    <value>Register receipt</value>
+  </data>
+  <data name="StockReceiptClosedOrderLineTooltip" xml:space="preserve">
+    <value>This order line is closed and can no longer be changed.</value>
+  </data>
+  <data name="StockReceiptDialogTitle" xml:space="preserve">
+    <value>Register receipt</value>
+  </data>
+  <data name="StockReceiptProductNumberLabel" xml:space="preserve">
+    <value>Product number</value>
+  </data>
+  <data name="StockReceiptDescriptionLabel" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="StockReceiptOrderedAmountLabel" xml:space="preserve">
+    <value>Ordered</value>
+  </data>
+  <data name="StockReceiptAlreadyReceivedLabel" xml:space="preserve">
+    <value>Already received</value>
+  </data>
+  <data name="StockReceiptReceivedAmountLabel" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="StockReceiptOpenAmountLabel" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="StockReceiptDeliveryDateLabel" xml:space="preserve">
+    <value>Delivery date</value>
+  </data>
+  <data name="StockReceiptOrderLineClosedLabel" xml:space="preserve">
+    <value>Order line closed</value>
+  </data>
+  <data name="StockReceiptSaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="StockReceiptCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="StockReceiptUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="StockReceiptLeaveOpenButton" xml:space="preserve">
+    <value>Open late</value>
+  </data>
+  <data name="StockReceiptReceivedAmountNegativeWarning" xml:space="preserve">
+    <value>Received amount cannot be negative.</value>
+  </data>
+  <data name="StockReceiptReceivedAmountTooHighWarning" xml:space="preserve">
+    <value>Received amount cannot be higher than ordered amount.</value>
+  </data>
+  <data name="StockReceiptIncompleteCloseWarning" xml:space="preserve">
+    <value>Attention not all products are received yet, click the "Update" button to update the ordered amount so the order is completed or leave the orderline open</value>
+  </data>
 </root>

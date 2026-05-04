@@ -4231,4 +4231,64 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
     <value>Voeg geselecteerde product toe aan bestelling</value>
   </data>
+  <data name="StockReceiptOrdersGroupTitle" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="StockReceiptOpenLinesGroupTitle" xml:space="preserve">
+    <value>Bestelregels</value>
+  </data>
+  <data name="StockReceiptEditReceiptTooltip" xml:space="preserve">
+    <value>Ontvangst registreren</value>
+  </data>
+  <data name="StockReceiptClosedOrderLineTooltip" xml:space="preserve">
+    <value>Deze orderregel is gesloten en kan niet meer worden aangepast.</value>
+  </data>
+  <data name="StockReceiptDialogTitle" xml:space="preserve">
+    <value>Ontvangst registreren</value>
+  </data>
+  <data name="StockReceiptProductNumberLabel" xml:space="preserve">
+    <value>Productnummer</value>
+  </data>
+  <data name="StockReceiptDescriptionLabel" xml:space="preserve">
+    <value>Omschrijving</value>
+  </data>
+  <data name="StockReceiptOrderedAmountLabel" xml:space="preserve">
+    <value>Besteld</value>
+  </data>
+  <data name="StockReceiptAlreadyReceivedLabel" xml:space="preserve">
+    <value>Al ontvangen</value>
+  </data>
+  <data name="StockReceiptReceivedAmountLabel" xml:space="preserve">
+    <value>Ontvangen</value>
+  </data>
+  <data name="StockReceiptOpenAmountLabel" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="StockReceiptDeliveryDateLabel" xml:space="preserve">
+    <value>Ontvangstdatum</value>
+  </data>
+  <data name="StockReceiptOrderLineClosedLabel" xml:space="preserve">
+    <value>Bestelregel gesloten</value>
+  </data>
+  <data name="StockReceiptSaveButton" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="StockReceiptCancelButton" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="StockReceiptUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="StockReceiptLeaveOpenButton" xml:space="preserve">
+    <value>Laat open</value>
+  </data>
+  <data name="StockReceiptIncompleteCloseWarning" xml:space="preserve">
+    <value>Let op: nog niet alle producten zijn ontvangen, klik op de knop "Update" om het bestelde aantal bij te werken zodat de bestelling voltooid is of laat de bestellijn open</value>
+  </data>
+  <data name="StockReceiptReceivedAmountNegativeWarning" xml:space="preserve">
+    <value>Het ontvangen bedrag kan niet negatief zijn.</value>
+  </data>
+  <data name="StockReceiptReceivedAmountTooHighWarning" xml:space="preserve">
+    <value>Het ontvangen bedrag kan niet hoger zijn dan het bestelde bedrag.</value>
+  </data>
 </root>

@@ -81,6 +81,14 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="ToolBarReceiveIcon" TargetType="Image">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Source" Value="{StaticResource Recieve}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
     <Style x:Key="ToolBarImportIcon" TargetType="Image">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />

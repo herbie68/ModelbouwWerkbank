@@ -4231,4 +4231,64 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="toolbarButtonActionAddProductToOrder" xml:space="preserve">
     <value>Ausgewähltes Produkt zur Bestellung hinzufügen</value>
   </data>
+  <data name="StockReceiptOrdersGroupTitle" xml:space="preserve">
+    <value>Bestellungen</value>
+  </data>
+  <data name="StockReceiptOpenLinesGroupTitle" xml:space="preserve">
+    <value>Bestellpositionen</value>
+  </data>
+  <data name="StockReceiptEditReceiptTooltip" xml:space="preserve">
+    <value>Wareneingang erfassen</value>
+  </data>
+  <data name="StockReceiptClosedOrderLineTooltip" xml:space="preserve">
+    <value>Diese Bestellposition ist geschlossen und kann nicht mehr geandert werden.</value>
+  </data>
+  <data name="StockReceiptDialogTitle" xml:space="preserve">
+    <value>Wareneingang erfassen</value>
+  </data>
+  <data name="StockReceiptProductNumberLabel" xml:space="preserve">
+    <value>Produktnummer</value>
+  </data>
+  <data name="StockReceiptDescriptionLabel" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="StockReceiptOrderedAmountLabel" xml:space="preserve">
+    <value>Bestellt</value>
+  </data>
+  <data name="StockReceiptAlreadyReceivedLabel" xml:space="preserve">
+    <value>Bereits erhalten</value>
+  </data>
+  <data name="StockReceiptReceivedAmountLabel" xml:space="preserve">
+    <value>Erhalten</value>
+  </data>
+  <data name="StockReceiptOpenAmountLabel" xml:space="preserve">
+    <value>Offen</value>
+  </data>
+  <data name="StockReceiptDeliveryDateLabel" xml:space="preserve">
+    <value>Lieferdatum</value>
+  </data>
+  <data name="StockReceiptOrderLineClosedLabel" xml:space="preserve">
+    <value>Bestellposition geschlossen</value>
+  </data>
+  <data name="StockReceiptSaveButton" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="StockReceiptCancelButton" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="StockReceiptUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="StockReceiptLeaveOpenButton" xml:space="preserve">
+    <value>Bis spät in die Nacht geöffnet</value>
+  </data>
+  <data name="StockReceiptIncompleteCloseWarning" xml:space="preserve">
+    <value>Achtung, es sind noch nicht alle Produkte eingegangen. Klicken Sie auf die Schaltfläche „Aktualisieren“, um die Bestellmenge zu aktualisieren, damit die Bestellung abgeschlossen wird, oder lassen Sie die Bestellzeile offen</value>
+  </data>
+  <data name="StockReceiptReceivedAmountNegativeWarning" xml:space="preserve">
+    <value>Der erhaltene Betrag darf nicht negativ sein.</value>
+  </data>
+  <data name="StockReceiptReceivedAmountTooHighWarning" xml:space="preserve">
+    <value>Der erhaltene Betrag darf nicht höher sein als der bestellte Betrag.</value>
+  </data>
 </root>

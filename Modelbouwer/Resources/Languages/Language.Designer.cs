@@ -11671,6 +11671,186 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Al ontvangen.
+        /// </summary>
+        public static string StockReceiptAlreadyReceivedLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptAlreadyReceivedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Annuleren.
+        /// </summary>
+        public static string StockReceiptCancelButton {
+            get {
+                return ResourceManager.GetString("StockReceiptCancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This order line is closed and can no longer be changed..
+        /// </summary>
+        public static string StockReceiptClosedOrderLineTooltip {
+            get {
+                return ResourceManager.GetString("StockReceiptClosedOrderLineTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ontvangstdatum.
+        /// </summary>
+        public static string StockReceiptDeliveryDateLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptDeliveryDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omschrijving.
+        /// </summary>
+        public static string StockReceiptDescriptionLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register receipt.
+        /// </summary>
+        public static string StockReceiptDialogTitle {
+            get {
+                return ResourceManager.GetString("StockReceiptDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register receipt.
+        /// </summary>
+        public static string StockReceiptEditReceiptTooltip {
+            get {
+                return ResourceManager.GetString("StockReceiptEditReceiptTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let op: nog niet alle producten zijn ontvangen, klik op de knop &quot;Update&quot; om het bestelde aantal bij te werken zodat de bestelling voltooid is of laat de bestellijn open.
+        /// </summary>
+        public static string StockReceiptIncompleteCloseWarning {
+            get {
+                return ResourceManager.GetString("StockReceiptIncompleteCloseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laat open.
+        /// </summary>
+        public static string StockReceiptLeaveOpenButton {
+            get {
+                return ResourceManager.GetString("StockReceiptLeaveOpenButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string StockReceiptOpenAmountLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptOpenAmountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order lines.
+        /// </summary>
+        public static string StockReceiptOpenLinesGroupTitle {
+            get {
+                return ResourceManager.GetString("StockReceiptOpenLinesGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Besteld.
+        /// </summary>
+        public static string StockReceiptOrderedAmountLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptOrderedAmountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bestelregel gesloten.
+        /// </summary>
+        public static string StockReceiptOrderLineClosedLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptOrderLineClosedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string StockReceiptOrdersGroupTitle {
+            get {
+                return ResourceManager.GetString("StockReceiptOrdersGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product number.
+        /// </summary>
+        public static string StockReceiptProductNumberLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptProductNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ontvangen.
+        /// </summary>
+        public static string StockReceiptReceivedAmountLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptReceivedAmountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het ontvangen bedrag kan niet negatief zijn..
+        /// </summary>
+        public static string StockReceiptReceivedAmountNegativeWarning {
+            get {
+                return ResourceManager.GetString("StockReceiptReceivedAmountNegativeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het ontvangen bedrag kan niet hoger zijn dan het bestelde bedrag..
+        /// </summary>
+        public static string StockReceiptReceivedAmountTooHighWarning {
+            get {
+                return ResourceManager.GetString("StockReceiptReceivedAmountTooHighWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opslaan.
+        /// </summary>
+        public static string StockReceiptSaveButton {
+            get {
+                return ResourceManager.GetString("StockReceiptSaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string StockReceiptUpdateButton {
+            get {
+                return ResourceManager.GetString("StockReceiptUpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Op voorraad.
         /// </summary>
         public static string storageStockDatagridHeaderAmount {

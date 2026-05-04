@@ -56,6 +56,7 @@ public partial class App : Application
 		services.AddTransient<ProjectPageViewModel>();
 		services.AddTransient<StockManagementPageViewModel>();
 		services.AddTransient<StockOrderViewModel>();
+		services.AddTransient<StockReceiptViewModel>();
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<SupplierPageViewModel>();
 		services.AddTransient<UnitPageViewModel>();
@@ -74,6 +75,7 @@ public partial class App : Application
 		services.AddTransient<ProjectView>();
 		services.AddTransient<StockManagementView>();
 		services.AddTransient<StockOrderView>();
+		services.AddTransient<StockReceiptView>();
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<SupplierView>();
 		services.AddTransient<UnitView>();

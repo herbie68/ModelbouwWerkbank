@@ -114,6 +114,36 @@ public class StockOrderServiceTests
 	}
 
 	[TestMethod]
+	public async Task UpdateOrderLineAsync_PassesZeroOpenAmount()
+	{
+		var line = new StockOrderLineModel
+		{
+			Id = 40,
+			SupplyOrderId = 25,
+			ProductId = 5,
+			Amount = 5,
+			OpenAmount = 0,
+			Price = 12.5,
+			RealRowTotal = 62.5,
+			Closed = true
+		};
+
+		_mockDataService
+			.Setup( s => s.ExecuteScalarAsync<uint>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 0u );
+
+		await _service.UpdateOrderLineAsync( line );
+
+		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
+			It.IsAny<string>(),
+			It.Is<Dictionary<string, object>>( p =>
+				( int ) p [ $"@{DBNames.OrderLineFieldNameId}" ] == 40 &&
+				( double ) p [ $"@{DBNames.OrderLineFieldNameOpenAmount}" ] == 0d &&
+				( bool ) p [ $"@{DBNames.OrderLineFieldNameClosed}" ] ) ),
+			Times.Once );
+	}
+
+	[TestMethod]
 	public async Task DeleteOrderWithLinesAsync_UsesTransactionalDataService()
 	{
 		var lines = new List<StockOrderLineModel>
@@ -127,6 +157,28 @@ public class StockOrderServiceTests
 			.Returns( Task.CompletedTask );
 
 		await _service.DeleteOrderWithLinesAsync( 25, lines );
+
+		_mockDataService.Verify( s => s.ExecuteInTransactionAsync( It.IsAny<Func<MySqlConnection, MySqlTransaction, Task>>() ), Times.Once );
+	}
+
+	[TestMethod]
+	public async Task RegisterReceiptAsync_UsesTransactionalDataService()
+	{
+		var line = new StockOrderLineModel
+		{
+			Id = 40,
+			SupplyOrderId = 25,
+			ProductId = 5,
+			Amount = 5,
+			OpenAmount = 1,
+			Received = 4
+		};
+
+		_mockDataService
+			.Setup( s => s.ExecuteInTransactionAsync( It.IsAny<Func<MySqlConnection, MySqlTransaction, Task>>() ) )
+			.Returns( Task.CompletedTask );
+
+		await _service.RegisterReceiptAsync( line, 2d, new DateTime( 2026, 5, 4 ) );
 
 		_mockDataService.Verify( s => s.ExecuteInTransactionAsync( It.IsAny<Func<MySqlConnection, MySqlTransaction, Task>>() ), Times.Once );
 	}

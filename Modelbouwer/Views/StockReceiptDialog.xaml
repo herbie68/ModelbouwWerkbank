@@ -1,0 +1,70 @@
+<Window x:Class="Modelbouwer.Views.StockReceiptDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+        Title="{x:Static language:Language.StockReceiptDialogTitle}"
+        Width="520"
+        Height="330"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptProductNumberLabel}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.ProductNumber}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptDescriptionLabel}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.ProductDescription}" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptOrderedAmountLabel}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.OrderedAmount, StringFormat={}{0:N2}}" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptAlreadyReceivedLabel}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.AlreadyReceivedAmount, StringFormat={}{0:N2}}" />
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,12,8" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptOpenAmountLabel}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="0,0,0,8" IsReadOnly="True" Text="{Binding Model.OpenAmount, StringFormat={}{0:N2}}" />
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+            <DockPanel Margin="0,0,0,8">
+                <TextBlock Margin="0,0,0,8" Width="180" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptReceivedAmountLabel}" />
+                <TextBox Margin="0,0,0,8" Text="{Binding Model.ReceivedAmount, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}" />
+            </DockPanel>
+            <DockPanel Margin="0,0,0,8">
+                <TextBlock Width="180" VerticalAlignment="Center" Text="{x:Static language:Language.StockReceiptDeliveryDateLabel}" />
+                <DatePicker SelectedDate="{Binding Model.DeliveryDate, Mode=TwoWay}" />
+            </DockPanel>
+
+            <CheckBox Margin="180,8,0,0" Content="{x:Static language:Language.StockReceiptOrderLineClosedLabel}"
+                      IsChecked="{Binding Model.IsOrderLineClosed, Mode=TwoWay}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button
+                Style="{StaticResource ActionBarButtonStyle}"
+                Click="SaveClick"
+                IsDefault="True"
+                ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
+                <Image Style="{DynamicResource ToolBarSaveIcon}" />
+            </Button>
+            <Button
+                Style="{StaticResource ActionBarButtonStyle}"
+                IsCancel="True"
+                ToolTip="{x:Static language:Language.toolbarButtonActionCancel}">
+                <Image Style="{DynamicResource ToolBarCancelIcon}" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
