@@ -12,4 +12,9 @@ public interface ITimeRegistrationService
 	Task DeleteMaterialUsageAsync( int materialUsageId );
 	Task<double> GetHourRateAsync();
 	Task<CultureInfo> GetCultureAsync();
+	Task<List<TimeReportItemModel>> GetWorkedHoursByWeekdayAsync( int projectId );
+	Task<List<TimeReportItemModel>> GetWorkedHoursByMonthAsync( int projectId );
+	Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId );
+	Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId );
+	Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId );
 }

@@ -4361,4 +4361,20 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="TimeRegistrationUnitPriceHeader" xml:space="preserve"><value>Satz/Preis</value></data>
   <data name="TimeRegistrationWorkedHeader" xml:space="preserve"><value>Geleistet</value></data>
   <data name="TimeRegistrationWorktypeHeader" xml:space="preserve"><value>Stundenart</value></data>
+  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve"><value>Stunden pro Zeitraum</value></data>
+  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve"><value>Übersicht der Stunden pro Tag, Monat und Jahr</value></data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve"><value>Stunden pro Arbeitsart</value></data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve"><value>Übersicht der Stunden pro Arbeitsart</value></data>
+  <data name="ProjectReportsHeaderTitle" xml:space="preserve"><value>Stundenübersichten</value></data>
+  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve"><value>Analyse der aufgewendeten Stunden pro Projekt</value></data>
+  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve"><value>Gesamtstunden: </value></data>
+  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve"><value>Tag</value></data>
+  <data name="ProjectReportsMonthTabTitle" xml:space="preserve"><value>Monat</value></data>
+  <data name="ProjectReportsYearTabTitle" xml:space="preserve"><value>Jahr</value></data>
+  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve"><value>Monat/Jahr</value></data>
+  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve"><value>Arbeitsart</value></data>
+  <data name="ProjectReportsPeriodHeader" xml:space="preserve"><value>Zeitraum</value></data>
+  <data name="ProjectReportsWorktypeHeader" xml:space="preserve"><value>Arbeitsart</value></data>
+  <data name="ProjectReportsHoursHeader" xml:space="preserve"><value>Stunden</value></data>
+  <data name="ProjectReportsPercentageHeader" xml:space="preserve"><value>Prozentsatz</value></data>
 </root>

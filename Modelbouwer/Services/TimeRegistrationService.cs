@@ -198,6 +198,59 @@ public class TimeRegistrationService : ITimeRegistrationService
 		}
 	}
 
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWeekdayAsync( int projectId )
+	{
+		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		var culture = await GetCultureAsync();
+		return BuildReport(
+			entries,
+			entry => ( ( int ) entry.WorkDate.DayOfWeek + 6 ) % 7,
+			entry => culture.DateTimeFormat.GetDayName( entry.WorkDate.DayOfWeek ),
+			sortOrder => sortOrder );
+	}
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthAsync( int projectId )
+	{
+		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		var culture = await GetCultureAsync();
+		return BuildReport(
+			entries,
+			entry => entry.WorkDate.Month,
+			entry => culture.DateTimeFormat.GetMonthName( entry.WorkDate.Month ),
+			sortOrder => sortOrder );
+	}
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId )
+	{
+		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		return BuildReport(
+			entries,
+			entry => entry.WorkDate.Year,
+			entry => entry.WorkDate.Year.ToString( CultureInfo.CurrentCulture ),
+			sortOrder => sortOrder );
+	}
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId )
+	{
+		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		var culture = await GetCultureAsync();
+		return BuildReport(
+			entries,
+			entry => ( entry.WorkDate.Year * 100 ) + entry.WorkDate.Month,
+			entry => $"{culture.DateTimeFormat.GetMonthName( entry.WorkDate.Month )} {entry.WorkDate.Year}",
+			sortOrder => sortOrder );
+	}
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId )
+	{
+		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		return BuildReport(
+			entries,
+			entry => string.IsNullOrWhiteSpace( entry.WorktypeName ) ? "?" : entry.WorktypeName!,
+			entry => string.IsNullOrWhiteSpace( entry.WorktypeName ) ? "?" : entry.WorktypeName!,
+			_ => 0 );
+	}
+
 	private static Dictionary<string, object> CreateTimeParameters( TimeEntryModel entry ) => new()
 	{
 		{ "@ProjectId", entry.ProjectId },
@@ -222,6 +275,42 @@ public class TimeRegistrationService : ITimeRegistrationService
 		value == null || value == DBNull.Value
 			? DateTime.MinValue
 			: Convert.ToDateTime( value, CultureInfo.CurrentCulture );
+
+	private static List<TimeReportItemModel> BuildReport<TKey>(
+		IEnumerable<TimeEntryModel> entries,
+		Func<TimeEntryModel, TKey> keySelector,
+		Func<TimeEntryModel, string> nameSelector,
+		Func<TKey, int> sortOrderSelector )
+		where TKey : notnull
+	{
+		var grouped = entries
+			.Where( entry => entry.WorkedMinutes > 0 )
+			.GroupBy( keySelector )
+			.Select( group =>
+			{
+				var first = group.First();
+				return new
+				{
+					Name = nameSelector( first ),
+					Hours = group.Sum( entry => entry.WorkedMinutes ) / 60,
+					SortOrder = sortOrderSelector( group.Key )
+				};
+			} )
+			.OrderBy( item => item.SortOrder )
+			.ThenBy( item => item.Name )
+			.ToList();
+
+		var totalHours = grouped.Sum( item => item.Hours );
+		return grouped
+			.Select( item => new TimeReportItemModel
+			{
+				Name = item.Name,
+				Hours = item.Hours,
+				Percentage = totalHours <= 0 ? 0 : item.Hours / totalHours,
+				SortOrder = item.SortOrder
+			} )
+			.ToList();
+	}
 
 	private async Task EnrichMaterialUsageAsync( List<MaterialUsageModel> usages )
 	{

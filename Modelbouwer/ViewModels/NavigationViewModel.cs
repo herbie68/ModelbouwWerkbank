@@ -421,6 +421,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadProjectReportsView()
+	{
+		try
+		{
+			var projectReportsView = _serviceProvider.GetRequiredService<ProjectReportsView>();
+			CurrentView = projectReportsView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading ProjectReportsView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -453,7 +466,24 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			NavigationItem = Language.navigation_Time_SubItem_Report_Label,
 			NavigationIcon = CreateNavigationImage( "Report" ),
-			NavigationTooltip = Language.navigation_Time_SubItem_Report_Tooltip
+			NavigationTooltip = Language.navigation_Time_SubItem_Report_Tooltip,
+			Command = new SimpleCommand( () => LoadProjectReportsView() )
+		} );
+
+		TimeSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Time_SubItem_PeriodReport_Label,
+			NavigationIcon = CreateNavigationImage( "Report" ),
+			NavigationTooltip = Language.navigation_Time_SubItem_PeriodReport_Tooltip,
+			Command = new SimpleCommand( () => LoadProjectReportsView() )
+		} );
+
+		TimeSubItems.Add( new NavigationModel
+		{
+			NavigationItem = Language.navigation_Time_SubItem_WorktypeReport_Label,
+			NavigationIcon = CreateNavigationImage( "Worktype" ),
+			NavigationTooltip = Language.navigation_Time_SubItem_WorktypeReport_Tooltip,
+			Command = new SimpleCommand( () => LoadProjectReportsView() )
 		} );
 		#endregion
 

@@ -9754,6 +9754,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uren per periode.
+        /// </summary>
+        public static string navigation_Time_SubItem_PeriodReport_Label {
+            get {
+                return ResourceManager.GetString("navigation.Time.SubItem.PeriodReport.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overzicht van uren per dag, maand en jaar.
+        /// </summary>
+        public static string navigation_Time_SubItem_PeriodReport_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Time.SubItem.PeriodReport.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Urenoverzicht.
         /// </summary>
         public static string navigation_Time_SubItem_Report_Label {
@@ -9768,6 +9786,24 @@ namespace Modelbouwer.Resources.Languages {
         public static string navigation_Time_SubItem_Report_Tooltip {
             get {
                 return ResourceManager.GetString("navigation.Time.SubItem.Report.Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uren per werksoort.
+        /// </summary>
+        public static string navigation_Time_SubItem_WorktypeReport_Label {
+            get {
+                return ResourceManager.GetString("navigation.Time.SubItem.WorktypeReport.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overzicht van uren per werksoort.
+        /// </summary>
+        public static string navigation_Time_SubItem_WorktypeReport_Tooltip {
+            get {
+                return ResourceManager.GetString("navigation.Time.SubItem.WorktypeReport.Tooltip", resourceCulture);
             }
         }
         
@@ -10758,6 +10794,114 @@ namespace Modelbouwer.Resources.Languages {
         public static string ProjectEntryStatus {
             get {
                 return ResourceManager.GetString("ProjectEntryStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analyse van bestede uren per project.
+        /// </summary>
+        public static string ProjectReportsHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urenoverzichten.
+        /// </summary>
+        public static string ProjectReportsHeaderTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uren.
+        /// </summary>
+        public static string ProjectReportsHoursHeader {
+            get {
+                return ResourceManager.GetString("ProjectReportsHoursHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maand.
+        /// </summary>
+        public static string ProjectReportsMonthTabTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsMonthTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maand/jaar.
+        /// </summary>
+        public static string ProjectReportsMonthYearTabTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsMonthYearTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage.
+        /// </summary>
+        public static string ProjectReportsPercentageHeader {
+            get {
+                return ResourceManager.GetString("ProjectReportsPercentageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periode.
+        /// </summary>
+        public static string ProjectReportsPeriodHeader {
+            get {
+                return ResourceManager.GetString("ProjectReportsPeriodHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Totaal uren: .
+        /// </summary>
+        public static string ProjectReportsTotalHoursPrefix {
+            get {
+                return ResourceManager.GetString("ProjectReportsTotalHoursPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dag.
+        /// </summary>
+        public static string ProjectReportsWeekdayTabTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsWeekdayTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoort.
+        /// </summary>
+        public static string ProjectReportsWorktypeHeader {
+            get {
+                return ResourceManager.GetString("ProjectReportsWorktypeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werksoort.
+        /// </summary>
+        public static string ProjectReportsWorktypeTabTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsWorktypeTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jaar.
+        /// </summary>
+        public static string ProjectReportsYearTabTitle {
+            get {
+                return ResourceManager.GetString("ProjectReportsYearTabTitle", resourceCulture);
             }
         }
         
@@ -13470,5 +13614,6 @@ namespace Modelbouwer.Resources.Languages {
                 return ResourceManager.GetString("toolbarVisibleRowLabelUnit", resourceCulture);
             }
         }
+
     }
 }

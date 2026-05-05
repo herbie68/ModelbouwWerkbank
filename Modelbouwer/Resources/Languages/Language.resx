@@ -4483,4 +4483,52 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="TimeRegistrationCostsTabTitle" xml:space="preserve">
     <value>Projectkosten</value>
   </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve">
+    <value>Uren per periode</value>
+  </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van uren per dag, maand en jaar</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve">
+    <value>Uren per werksoort</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van uren per werksoort</value>
+  </data>
+  <data name="ProjectReportsHeaderTitle" xml:space="preserve">
+    <value>Urenoverzichten</value>
+  </data>
+  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
+    <value>Analyse van bestede uren per project</value>
+  </data>
+  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
+    <value>Totaal uren: </value>
+  </data>
+  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="ProjectReportsMonthTabTitle" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="ProjectReportsYearTabTitle" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve">
+    <value>Maand/jaar</value>
+  </data>
+  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="ProjectReportsPeriodHeader" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="ProjectReportsWorktypeHeader" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="ProjectReportsHoursHeader" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="ProjectReportsPercentageHeader" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
 </root>

@@ -50,6 +50,7 @@ public partial class App : Application
 		services.AddTransient<CurrencyPageViewModel>();
 		services.AddTransient<ProductPageViewModel>();
 		services.AddTransient<ProjectPageViewModel>();
+		services.AddTransient<ProjectReportsViewModel>();
 		services.AddTransient<StockManagementPageViewModel>();
 		services.AddTransient<StockOrderViewModel>();
 		services.AddTransient<StockReceiptViewModel>();
@@ -70,6 +71,7 @@ public partial class App : Application
 		services.AddTransient<CurrencyView>();
 		services.AddTransient<ProductView>();
 		services.AddTransient<ProjectView>();
+		services.AddTransient<ProjectReportsView>();
 		services.AddTransient<StockManagementView>();
 		services.AddTransient<StockOrderView>();
 		services.AddTransient<StockReceiptView>();

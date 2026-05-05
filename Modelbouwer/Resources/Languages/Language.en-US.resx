@@ -4361,4 +4361,20 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="TimeRegistrationUnitPriceHeader" xml:space="preserve"><value>Rate/price</value></data>
   <data name="TimeRegistrationWorkedHeader" xml:space="preserve"><value>Worked</value></data>
   <data name="TimeRegistrationWorktypeHeader" xml:space="preserve"><value>Work type</value></data>
+  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve"><value>Hours by period</value></data>
+  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve"><value>Overview of hours by day, month, and year</value></data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve"><value>Hours by work type</value></data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve"><value>Overview of hours by work type</value></data>
+  <data name="ProjectReportsHeaderTitle" xml:space="preserve"><value>Time reports</value></data>
+  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve"><value>Analysis of spent hours per project</value></data>
+  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve"><value>Total hours: </value></data>
+  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve"><value>Day</value></data>
+  <data name="ProjectReportsMonthTabTitle" xml:space="preserve"><value>Month</value></data>
+  <data name="ProjectReportsYearTabTitle" xml:space="preserve"><value>Year</value></data>
+  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve"><value>Month/year</value></data>
+  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve"><value>Work type</value></data>
+  <data name="ProjectReportsPeriodHeader" xml:space="preserve"><value>Period</value></data>
+  <data name="ProjectReportsWorktypeHeader" xml:space="preserve"><value>Work type</value></data>
+  <data name="ProjectReportsHoursHeader" xml:space="preserve"><value>Hours</value></data>
+  <data name="ProjectReportsPercentageHeader" xml:space="preserve"><value>Percentage</value></data>
 </root>
