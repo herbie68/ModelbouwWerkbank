@@ -11,12 +11,7 @@ public partial class App : Application
 
 	public App()
 	{
-		// Set culture before anything else
-		CultureInfo.DefaultThreadCurrentCulture = new CultureInfo( "nl-NL" );
-		CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo( "nl-NL" );
-		CultureInfo culture = new("nl-NL");
-		Thread.CurrentThread.CurrentCulture = culture;
-		Thread.CurrentThread.CurrentUICulture = culture;
+		SetCurrentCulture( "nl-NL" );
 
 		_host = Host.CreateDefaultBuilder()
 		   .ConfigureServices( ConfigureServices )
@@ -43,6 +38,7 @@ public partial class App : Application
 		services.AddSingleton<StockOrderService>();
 		services.AddSingleton<StorageLocationService>();
 		services.AddSingleton<SupplierService>();
+		services.AddSingleton<TimeRegistrationService>();
 		services.AddSingleton<UnitService>();
 		services.AddSingleton<WorktypeService>();
 
@@ -59,6 +55,7 @@ public partial class App : Application
 		services.AddTransient<StockReceiptViewModel>();
 		services.AddTransient<StorageLocationPageViewModel>();
 		services.AddTransient<SupplierPageViewModel>();
+		services.AddTransient<TimeRegistrationViewModel>();
 		services.AddTransient<UnitPageViewModel>();
 		services.AddTransient<WorktypePageViewModel>();
 
@@ -78,6 +75,7 @@ public partial class App : Application
 		services.AddTransient<StockReceiptView>();
 		services.AddTransient<StorageLocationView>();
 		services.AddTransient<SupplierView>();
+		services.AddTransient<TimeRegistrationView>();
 		services.AddTransient<UnitView>();
 		services.AddTransient<WorktypeView>();
 
@@ -104,6 +102,7 @@ public partial class App : Application
 		services.AddScoped<IStockOrderService, StockOrderService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<ISupplierService, SupplierService>();
+		services.AddScoped<ITimeRegistrationService, TimeRegistrationService>();
 		services.AddScoped<IUnitService, UnitService>();
 		services.AddScoped<IWorktypeService, WorktypeService>();
 
@@ -127,6 +126,10 @@ public partial class App : Application
 		try
 		{
 			await _host.StartAsync();
+
+			var settingsService = _host.Services.GetRequiredService<SettingsService>();
+			await settingsService.LoadSettingsAsync();
+			SetCurrentCulture( settingsService.Settings.Culture );
 
 			_ = _host.Services.GetRequiredService<NavigationViewModel>();
 			var mainWindow = _host.Services.GetRequiredService<MainWindow>();
@@ -167,4 +170,24 @@ public partial class App : Application
 
 		return service;
 	}
+
+	private static void SetCurrentCulture( string? cultureName )
+	{
+		CultureInfo culture;
+		try
+		{
+			culture = new CultureInfo( string.IsNullOrWhiteSpace( cultureName ) ? "nl-NL" : cultureName );
+		}
+		catch ( CultureNotFoundException )
+		{
+			culture = new CultureInfo( "nl-NL" );
+		}
+
+		CultureInfo.DefaultThreadCurrentCulture = culture;
+		CultureInfo.DefaultThreadCurrentUICulture = culture;
+		Thread.CurrentThread.CurrentCulture = culture;
+		Thread.CurrentThread.CurrentUICulture = culture;
+		Lang.Culture = culture;
+	}
+
 }

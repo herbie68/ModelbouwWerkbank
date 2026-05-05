@@ -11,6 +11,69 @@
     <SolidColorBrush x:Key="TextBox.Red.Borderbrush.Color" Color="#761107" />
     <SolidColorBrush x:Key="TextBox.Red.Foreground.Color" Color="#F7EF80" />
 
+    <Style x:Key="ToggleSwitchStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Width" Value="74" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Border
+                            x:Name="Track"
+                            Background="#C7CEDA"
+                            BorderBrush="#7C8797"
+                            BorderThickness="1"
+                            CornerRadius="14" />
+                        <Ellipse
+                            x:Name="Thumb"
+                            Width="22"
+                            Height="22"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Fill="White"
+                            Stroke="#7C8797"
+                            StrokeThickness="1" />
+                        <TextBlock
+                            x:Name="OffText"
+                            Margin="30,0,8,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            FontWeight="Bold"
+                            Foreground="#2F3B4A"
+                            Text="Nee" />
+                        <TextBlock
+                            x:Name="OnText"
+                            Margin="8,0,30,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="Ja"
+                            Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Track" Property="Background" Value="#2E7D5B" />
+                            <Setter TargetName="Track" Property="BorderBrush" Value="#1F5D44" />
+                            <Setter TargetName="Thumb" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="Thumb" Property="Margin" Value="0,0,4,0" />
+                            <Setter TargetName="OffText" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="OnText" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value=".55" />
+                            <Setter Property="Cursor" Value="Arrow" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="SwitchButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="{StaticResource SwitchButton.Background.Color}" />
         <Setter Property="BorderBrush" Value="{StaticResource SwitchButton.Border.Color}" />
