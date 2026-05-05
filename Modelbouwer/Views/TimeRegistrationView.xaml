@@ -6,66 +6,13 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
              xmlns:converters="clr-namespace:Modelbouwer.Converters"
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
              d:DataContext="{d:DesignInstance Type=viewmodels:TimeRegistrationViewModel, IsDesignTimeCreatable=False}"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-        <Style x:Key="HourCostToggleStyle" TargetType="ToggleButton">
-            <Setter Property="Width" Value="74" />
-            <Setter Property="Height" Value="28" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Grid>
-                            <Border x:Name="Track"
-                                    CornerRadius="14"
-                                    Background="#C7CEDA"
-                                    BorderBrush="#7C8797"
-                                    BorderThickness="1" />
-                            <Ellipse x:Name="Thumb"
-                                     Width="22"
-                                     Height="22"
-                                     Margin="4,0,0,0"
-                                     HorizontalAlignment="Left"
-                                     VerticalAlignment="Center"
-                                     Fill="White"
-                                     Stroke="#7C8797"
-                                     StrokeThickness="1" />
-                            <TextBlock x:Name="OffText"
-                                       Margin="30,0,8,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Right"
-                                       FontSize="10"
-                                       FontWeight="Bold"
-                                       Foreground="#2F3B4A"
-                                       Text="Nee" />
-                            <TextBlock x:Name="OnText"
-                                       Margin="8,0,30,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       FontSize="10"
-                                       FontWeight="Bold"
-                                       Foreground="White"
-                                       Visibility="Collapsed"
-                                       Text="Ja" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Track" Property="Background" Value="#2E7D5B" />
-                                <Setter TargetName="Track" Property="BorderBrush" Value="#1F5D44" />
-                                <Setter TargetName="Thumb" Property="HorizontalAlignment" Value="Right" />
-                                <Setter TargetName="Thumb" Property="Margin" Value="0,0,4,0" />
-                                <Setter TargetName="OffText" Property="Visibility" Value="Collapsed" />
-                                <Setter TargetName="OnText" Property="Visibility" Value="Visible" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -81,16 +28,15 @@
                     Background="{DynamicResource HeaderBackground}">
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                 <Image Style="{DynamicResource HeaderIconStyle}" Source="{StaticResource Time}" />
-                <TextBlock Style="{DynamicResource HeaderTitle}" Text="Tijd en materiaal" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.TimeRegistrationHeaderTitle}" />
             </StackPanel>
             <Canvas>
                 <Path Style="{DynamicResource HeadertTitleLine}" />
             </Canvas>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="Registreer gewerkte uren, gebruikte materialen en projectkosten" />
+                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.TimeRegistrationHeaderSubtitle}" />
                 <TextBlock Text="{x:Static language:Language.generalUnsavedChanges}"
-                           xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
-                           Visibility="{Binding HasUnsavedTimeChanges, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           Visibility="{Binding HasUnsavedChanges, Converter={StaticResource BooleanToVisibilityConverter}}"
                            Style="{DynamicResource TextBlockUnsavedChangesWarning}" />
             </StackPanel>
         </StackPanel>
@@ -99,7 +45,7 @@
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{StaticResource Projects}" Style="{DynamicResource ImageHeaderGroup}" />
-                    <TextBlock Text="Project" Style="{DynamicResource TextBlockBold}" />
+                    <TextBlock Text="{x:Static language:Language.TimeRegistrationProjectGroupTitle}" Style="{DynamicResource TextBlockBold}" />
                 </StackPanel>
             </GroupBox.Header>
             <Grid Margin="6,2">
@@ -112,13 +58,13 @@
 
                 <Label Grid.Column="0"
                        VerticalAlignment="Center"
-                       Content="Selecteer project"
+                       Content="{x:Static language:Language.TimeRegistrationSelectProjectLabel}"
                        Style="{DynamicResource EntryLabelHorizontal}" />
                 <syncfusion:ComboBoxAdv Grid.Column="1"
                                         Height="28"
                                         VerticalAlignment="Center"
                                         AutoCompleteMode="Suggest"
-                                        DefaultText="Kies een project"
+                                        DefaultText="{x:Static language:Language.TimeRegistrationDefaultProjectText}"
                                         DisplayMemberPath="ProjectName"
                                         ItemsSource="{Binding Projects}"
                                         SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
@@ -129,7 +75,7 @@
                         Height="28"
                         Command="{Binding RefreshCommand}"
                         Style="{StaticResource ActionBarButtonStyle}"
-                        ToolTip="Vernieuwen">
+                        ToolTip="{x:Static language:Language.TimeRegistrationRefreshTooltip}">
                     <Image Style="{DynamicResource ToolBarResetSettingsIcon}" />
                 </Button>
                 <TextBlock Grid.Column="3"
@@ -137,12 +83,12 @@
                            HorizontalAlignment="Right"
                            Margin="10,0"
                            FontWeight="SemiBold">
-                    <Run Text="Uren: " />
+                    <Run Text="{x:Static language:Language.TimeRegistrationHoursPrefix}" />
                     <Run Text="{Binding TotalWorkedHours, Mode=OneWay, StringFormat={}{0:N2}}" />
-                    <Run Text="   Materialen: " />
-                    <Run Text="{Binding MaterialCosts, Mode=OneWay, StringFormat={}{0:C2}}" />
-                    <Run Text="   Totaal: " />
-                    <Run Text="{Binding ProjectTotalCosts, Mode=OneWay, StringFormat={}{0:C2}}" />
+                    <Run Text="{x:Static language:Language.TimeRegistrationMaterialsPrefix}" />
+                    <Run Text="{Binding MaterialCostsDisplay, Mode=OneWay}" />
+                    <Run Text="{x:Static language:Language.TimeRegistrationTotalPrefix}" />
+                    <Run Text="{Binding ProjectTotalCostsDisplay, Mode=OneWay}" />
                 </TextBlock>
             </Grid>
         </GroupBox>
@@ -153,7 +99,7 @@
                                   CloseButtonType="Hide"
                                   TabItemHeaderStyle="Curve">
 
-            <syncfusion:TabItemExt Header="Tijdregistratie"
+            <syncfusion:TabItemExt Header="{x:Static language:Language.TimeRegistrationTimeTabTitle}"
                                    Image="{StaticResource Time}"
                                    ImageWidth="17"
                                    ImageHeight="17">
@@ -168,71 +114,112 @@
                         <GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{StaticResource Time}" Style="{DynamicResource ImageHeaderGroup}" />
-                                <TextBlock Text="Nieuwe urenregel" Style="{DynamicResource TextBlockBold}" />
+                                <TextBlock Text="{x:Static language:Language.TimeRegistrationTimeEntryGroupTitle}" Style="{DynamicResource TextBlockBold}" />
                             </StackPanel>
                         </GroupBox.Header>
                         <Grid Margin="6,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="130" />
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="230" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="40" />
                             </Grid.ColumnDefinitions>
                             <DatePicker Grid.Column="0"
+                                        Style="{DynamicResource DefaultDatePicker}"
                                         Width="120"
-                                        SelectedDate="{Binding SelectedWorkDate, Mode=TwoWay}" />
+                                        IsEnabled="{Binding IsTimeEntrySelected}"
+                                        SelectedDate="{Binding SelectedTimeEntry.WorkDate, Mode=TwoWay}" />
                             <TextBox Grid.Column="1"
-                                     Width="86"
+                                     Width="56"
+                                     HorizontalContentAlignment="Right"
+                                     IsEnabled="{Binding IsTimeEntrySelected}"
                                      Style="{DynamicResource DefaultTextBox}"
-                                     Tag="Start"
-                                     Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                     Tag="{x:Static language:Language.TimeRegistrationStartTag}"
+                                     Text="{Binding SelectedTimeEntry.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <TextBox Grid.Column="2"
-                                     Width="86"
+                                     Width="56"
+                                     HorizontalContentAlignment="Left"
+                                     IsEnabled="{Binding IsTimeEntrySelected}"
                                      Style="{DynamicResource DefaultTextBox}"
-                                     Tag="Einde"
-                                     Text="{Binding EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <syncfusion:ComboBoxAdv Grid.Column="3"
-                                                    Width="220"
-                                                    AutoCompleteMode="Suggest"
-                                                    DefaultText="Uursoort"
-                                                    DisplayMemberPath="WorktypeName"
-                                                    ItemsSource="{Binding Worktypes}"
-                                                    SelectedItem="{Binding SelectedWorktype, Mode=TwoWay}" />
+                                     Tag="{x:Static language:Language.TimeRegistrationEndTag}"
+                                     Text="{Binding SelectedTimeEntry.EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Grid Grid.Column="3" Width="220">
+                                <Button HorizontalContentAlignment="Left" Width="220" Margin="0 10 0 10"
+                                        Command="{Binding ToggleWorktypePopupCommand}"
+                                        Content="{Binding SelectedWorktypeName}"
+                                        IsEnabled="{Binding IsTimeEntrySelected}"
+                                        Style="{DynamicResource ComboBoxButtonStyle}" />
+                                <Popup Width="420"
+                                       MaxHeight="360"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsWorktypePopupOpen, Mode=TwoWay}"
+                                       Placement="Bottom"
+                                       StaysOpen="False">
+                                    <Border Background="White"
+                                            BorderBrush="#7C8797"
+                                            BorderThickness="1">
+                                        <ScrollViewer MaxHeight="360"
+                                                      VerticalScrollBarVisibility="Auto">
+                                            <TreeView ItemsSource="{Binding WorktypeTree}"
+                                                      SelectedItemChanged="WorktypeTree_SelectedItemChanged">
+                                                <TreeView.ItemTemplate>
+                                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                                        <TextBlock Text="{Binding WorktypeName}" />
+                                                    </HierarchicalDataTemplate>
+                                                </TreeView.ItemTemplate>
+                                            </TreeView>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
                             <TextBox Grid.Column="4"
-                                     MinWidth="220"
+                                     Width="320"
+                                     IsEnabled="{Binding IsTimeEntrySelected}"
                                      Style="{DynamicResource DefaultTextBox}"
-                                     Tag="Opmerking"
-                                     Text="{Binding TimeComment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Grid.Column="5"
-                                    Width="30"
-                                    Height="28"
-                                    Command="{Binding AddTimeEntryCommand}"
-                                    Style="{StaticResource ActionBarButtonStyle}"
-                                    ToolTip="Urenregel toevoegen">
-                                <Image Style="{DynamicResource ToolBarAddIcon}" />
-                            </Button>
+                                     Tag="{x:Static language:Language.TimeRegistrationCommentTag}"
+                                     Text="{Binding SelectedTimeEntry.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
                     </GroupBox>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,3">
+                        <Button Grid.Column="5"
+                                Width="30"
+                                Height="28"
+                                Margin="20 0 0 0"
+                                Command="{Binding AddTimeEntryCommand}"
+                                Style="{StaticResource ActionBarButtonStyle}"
+                                ToolTip="{x:Static language:Language.TimeRegistrationTimeAddTooltip}">
+                            <Image Style="{DynamicResource ToolBarAddIcon}" />
+                        </Button>
                         <Button Width="30"
                                 Height="28"
-                                Command="{Binding SaveTimeEntriesCommand}"
+                                Margin="4,0,0,0"
+                                Command="{Binding DeleteTimeEntryCommand}"
                                 Style="{StaticResource ActionBarButtonStyle}"
-                                ToolTip="Uren opslaan">
+                                ToolTip="{x:Static language:Language.TimeRegistrationTimeDeleteTooltip}">
+                            <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+                        </Button>
+                        <Button x:Name="SaveTimeEntriesButton"
+                                Width="30"
+                                Height="28"
+                                Click="SaveTimeEntriesButton_Click"
+                                Style="{StaticResource ActionBarButtonStyle}"
+                                ToolTip="{x:Static language:Language.TimeRegistrationTimeSaveTooltip}">
                             <Image Style="{DynamicResource ToolBarSaveIcon}" />
                         </Button>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
-                                   FontWeight="SemiBold"
-                                   Text="{Binding TimeEntryCount, StringFormat=Regels: {0:N0}}" />
+                                   FontWeight="SemiBold">
+                            <Run Text="{x:Static language:Language.TimeRegistrationRowsPrefix}" />
+                            <Run Text="{Binding TimeEntryCount, Mode=OneWay, StringFormat={}{0:N0}}" />
+                        </TextBlock>
                     </StackPanel>
 
-                    <syncfusion:SfDataGrid Grid.Row="2"
+                    <syncfusion:SfDataGrid x:Name="TimeEntriesDataGrid"
+                                           Grid.Row="2"
                                            Margin="0,4"
-                                           AllowEditing="True"
+                                           AllowEditing="False"
                                            AllowFiltering="True"
                                            AllowGrouping="True"
                                            AllowResizingColumns="True"
@@ -240,22 +227,27 @@
                                            AutoGenerateColumns="False"
                                            ColumnSizer="Star"
                                            ItemsSource="{Binding TimeEntries}"
+                                           SelectedItem="{Binding SelectedTimeEntry, Mode=TwoWay}"
                                            SelectionMode="Single"
                                            ShowGroupDropArea="True">
+                        <syncfusion:SfDataGrid.SortColumnDescriptions>
+                            <syncfusion:SortColumnDescription ColumnName="WorkDate" SortDirection="Descending" />
+                            <syncfusion:SortColumnDescription ColumnName="StartTime" SortDirection="Ascending" />
+                        </syncfusion:SfDataGrid.SortColumnDescriptions>
                         <syncfusion:SfDataGrid.Columns>
                             <syncfusion:GridTextColumn Width="36" MappingName="StatusMarker" HeaderText="" AllowEditing="False" />
-                            <syncfusion:GridDateTimeColumn Width="110" MappingName="WorkDate" HeaderText="Datum" Pattern="ShortDate" />
-                            <syncfusion:GridTextColumn Width="90" MappingName="StartTime" HeaderText="Start" />
-                            <syncfusion:GridTextColumn Width="90" MappingName="EndTime" HeaderText="Einde" />
-                            <syncfusion:GridTextColumn Width="110" MappingName="WorkedTime" HeaderText="Gewerkt" AllowEditing="False" HorizontalHeaderContentAlignment="Right" TextAlignment="Right" />
-                            <syncfusion:GridTextColumn Width="220" MappingName="WorktypeName" HeaderText="Uursoort" AllowEditing="False" />
-                            <syncfusion:GridTextColumn Width="260" MappingName="Comment" HeaderText="Opmerking" />
+                            <syncfusion:GridDateTimeColumn Width="110" MappingName="WorkDate" HeaderText="{x:Static language:Language.TimeRegistrationDateHeader}" Pattern="ShortDate" AllowEditing="False" />
+                            <syncfusion:GridTextColumn Width="90" MappingName="StartTime" HeaderText="{x:Static language:Language.TimeRegistrationStartHeader}" AllowEditing="False" TextAlignment="Right" />
+                            <syncfusion:GridTextColumn Width="90" MappingName="EndTime" HeaderText="{x:Static language:Language.TimeRegistrationEndHeader}" AllowEditing="False" TextAlignment="Right" />
+                            <syncfusion:GridTextColumn Width="110" MappingName="WorkedTime" HeaderText="{x:Static language:Language.TimeRegistrationWorkedHeader}" AllowEditing="False" HorizontalHeaderContentAlignment="Right" TextAlignment="Right" />
+                            <syncfusion:GridTextColumn Width="220" MappingName="WorktypeName" HeaderText="{x:Static language:Language.TimeRegistrationWorktypeHeader}" AllowEditing="False" />
+                            <syncfusion:GridTextColumn Width="260" MappingName="Comment" HeaderText="{x:Static language:Language.TimeRegistrationCommentHeader}" AllowEditing="False" />
                         </syncfusion:SfDataGrid.Columns>
                     </syncfusion:SfDataGrid>
                 </Grid>
             </syncfusion:TabItemExt>
 
-            <syncfusion:TabItemExt Header="Materiaalregistratie"
+            <syncfusion:TabItemExt Header="{x:Static language:Language.TimeRegistrationMaterialTabTitle}"
                                    Image="{StaticResource product}"
                                    ImageWidth="17"
                                    ImageHeight="17">
@@ -269,7 +261,7 @@
                         <GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{StaticResource product}" Style="{DynamicResource ImageHeaderGroup}" />
-                                <TextBlock Text="Nieuw materiaalgebruik" Style="{DynamicResource TextBlockBold}" />
+                                <TextBlock Text="{x:Static language:Language.TimeRegistrationMaterialGroupTitle}" Style="{DynamicResource TextBlockBold}" />
                             </StackPanel>
                         </GroupBox.Header>
                         <Grid Margin="6,0">
@@ -280,64 +272,136 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="40" />
                             </Grid.ColumnDefinitions>
-                            <syncfusion:ComboBoxAdv Grid.Column="0"
-                                                    Width="350"
-                                                    AutoCompleteMode="Suggest"
-                                                    DefaultText="Product"
-                                                    DisplayMemberPath="ProductName"
-                                                    ItemsSource="{Binding Products}"
-                                                    SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" />
+                            <Grid Grid.Column="0" Width="350">
+                                <Button HorizontalContentAlignment="Left"
+                                        Width="350"
+                                        Margin="0 10 0 10"
+                                        Command="{Binding ToggleProductPopupCommand}"
+                                        Content="{Binding SelectedProductName}"
+                                        Style="{DynamicResource ComboBoxButtonStyle}" />
+                                <Popup Width="520"
+                                       MaxHeight="420"
+                                       AllowsTransparency="True"
+                                       IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}"
+                                       Placement="Bottom"
+                                       StaysOpen="False">
+                                    <Border Background="White"
+                                            BorderBrush="#7C8797"
+                                            BorderThickness="1">
+                                        <ScrollViewer MaxHeight="420"
+                                                      VerticalScrollBarVisibility="Auto">
+                                            <TreeView ItemsSource="{Binding ProductTree}"
+                                                      SelectedItemChanged="ProductTree_SelectedItemChanged">
+                                                <TreeView.ItemTemplate>
+                                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                                        <TextBlock Text="{Binding DisplayName}">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="FontWeight" Value="Normal" />
+                                                                    <Setter Property="FontStyle" Value="Normal" />
+                                                                    <Setter Property="Foreground" Value="#111827" />
+                                                                    <Setter Property="Margin" Value="0,1" />
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding IsCategory}" Value="True">
+                                                                            <Setter Property="FontWeight" Value="SemiBold" />
+                                                                            <Setter Property="FontStyle" Value="Italic" />
+                                                                            <Setter Property="Foreground" Value="#4B5563" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </HierarchicalDataTemplate>
+                                                </TreeView.ItemTemplate>
+                                            </TreeView>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
                             <TextBox Grid.Column="1"
                                      Width="82"
                                      HorizontalContentAlignment="Right"
                                      Style="{DynamicResource DefaultTextBox}"
-                                     Tag="Aantal"
+                                     Tag="{x:Static language:Language.TimeRegistrationAmountTag}"
                                      Text="{Binding MaterialAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <DatePicker Grid.Column="2"
+                            <DatePicker Grid.Column="2" Style="{DynamicResource DefaultDatePicker}"
                                         Width="120"
                                         SelectedDate="{Binding MaterialUsageDate, Mode=TwoWay}" />
                             <TextBox Grid.Column="3"
-                                     MinWidth="220"
+                                     Width="320"
                                      Style="{DynamicResource DefaultTextBox}"
-                                     Tag="Opmerking"
+                                     Tag="{x:Static language:Language.TimeRegistrationCommentTag}"
                                      Text="{Binding MaterialComment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <Button Grid.Column="4"
-                                    Width="30"
-                                    Height="28"
-                                    Command="{Binding AddMaterialUsageCommand}"
-                                    Style="{StaticResource ActionBarButtonStyle}"
-                                    ToolTip="Materiaal registreren">
-                                <Image Style="{DynamicResource ToolBarAddIcon}" />
-                            </Button>
                         </Grid>
                     </GroupBox>
 
-                    <syncfusion:SfDataGrid Grid.Row="1"
-                                           Margin="0,4"
-                                           AllowEditing="False"
-                                           AllowFiltering="True"
-                                           AllowGrouping="True"
-                                           AllowResizingColumns="True"
-                                           AllowSorting="True"
-                                           AutoGenerateColumns="False"
-                                           ColumnSizer="Star"
-                                           ItemsSource="{Binding MaterialUsages}"
-                                           SelectionMode="Single"
-                                           ShowGroupDropArea="True">
-                        <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:GridTextColumn Width="240" MappingName="ProductName" HeaderText="Artikel" />
-                            <syncfusion:GridTextColumn Width="180" MappingName="CategoryName" HeaderText="Categorie" />
-                            <syncfusion:GridNumericColumn Width="95" MappingName="Amount" HeaderText="Aantal" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
-                            <syncfusion:GridNumericColumn Width="100" MappingName="Price" HeaderText="Prijs" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
-                            <syncfusion:GridNumericColumn Width="110" MappingName="Costs" HeaderText="Kosten" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
-                            <syncfusion:GridDateTimeColumn Width="110" MappingName="UsageDate" HeaderText="Datum" Pattern="ShortDate" />
-                            <syncfusion:GridTextColumn Width="240" MappingName="Comment" HeaderText="Opmerking" />
-                        </syncfusion:SfDataGrid.Columns>
-                    </syncfusion:SfDataGrid>
+                    <StackPanel Grid.Row="1">
+                        <StackPanel Orientation="Horizontal" Margin="0,3">
+                            <Button Grid.Column="4"
+                                    Width="30"
+                                    Height="28"
+                                    Margin="20 0 0 0"
+                                    Command="{Binding AddMaterialUsageCommand}"
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    ToolTip="{x:Static language:Language.TimeRegistrationMaterialAddTooltip}">
+                                <Image Style="{DynamicResource ToolBarAddIcon}" />
+                            </Button>
+                            <Button Width="30"
+                                    Height="28"
+                                    Margin="4,0,0,0"
+                                    Command="{Binding DeleteMaterialUsageCommand}"
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    ToolTip="{x:Static language:Language.TimeRegistrationMaterialDeleteTooltip}">
+                                <Image Style="{DynamicResource ToolBarDeleteIcon}" />
+                            </Button>
+                            <Button Width="30"
+                                    Height="28"
+                                    Margin="4,0,0,0"
+                                    Command="{Binding SaveMaterialUsagesCommand}"
+                                    Style="{StaticResource ActionBarButtonStyle}"
+                                    ToolTip="{x:Static language:Language.TimeRegistrationMaterialSaveTooltip}">
+                                <Image Style="{DynamicResource ToolBarSaveIcon}" />
+                            </Button>
+                            <TextBlock Margin="10,0"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold">
+                                <Run Text="{x:Static language:Language.TimeRegistrationRowsPrefix}" />
+                                <Run Text="{Binding MaterialUsageCount, Mode=OneWay, StringFormat={}{0:N0}}" />
+                            </TextBlock>
+                        </StackPanel>
+                        <syncfusion:SfDataGrid
+                            Margin="0,4"
+                            AllowEditing="False"
+                            AllowFiltering="True"
+                            AllowGrouping="True"
+                            AllowResizingColumns="True"
+                            AllowSorting="True"
+                            AutoGenerateColumns="False"
+                            ColumnSizer="Star"
+                            ItemsSource="{Binding MaterialUsages}"
+                            SelectedItem="{Binding SelectedMaterialUsage, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            ShowGroupDropArea="True">
+                            <syncfusion:SfDataGrid.SortColumnDescriptions>
+                                <syncfusion:SortColumnDescription ColumnName="UsageDate" SortDirection="Descending" />
+                                <syncfusion:SortColumnDescription ColumnName="ProductName" SortDirection="Ascending" />
+                            </syncfusion:SfDataGrid.SortColumnDescriptions>
+                            <syncfusion:SfDataGrid.Columns>
+                                <syncfusion:GridTextColumn Width="36" MappingName="StatusMarker" HeaderText="" AllowEditing="False" />
+                                <syncfusion:GridTextColumn Width="240" MappingName="ProductName" HeaderText="{x:Static language:Language.TimeRegistrationProductHeader}" />
+                                <syncfusion:GridTextColumn Width="180" MappingName="CategoryName" HeaderText="{x:Static language:Language.TimeRegistrationCategoryHeader}" />
+                                <syncfusion:GridNumericColumn Width="95" MappingName="Amount" HeaderText="{x:Static language:Language.TimeRegistrationAmountHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                                <syncfusion:GridNumericColumn Width="100" MappingName="Price" HeaderText="{x:Static language:Language.TimeRegistrationPriceHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                                <syncfusion:GridNumericColumn Width="110" MappingName="Costs" HeaderText="{x:Static language:Language.TimeRegistrationCostsHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                                <syncfusion:GridDateTimeColumn Width="110" MappingName="UsageDate" HeaderText="{x:Static language:Language.TimeRegistrationDateHeader}" Pattern="ShortDate" />
+                                <syncfusion:GridTextColumn Width="240" MappingName="Comment" HeaderText="{x:Static language:Language.TimeRegistrationCommentHeader}" />
+                            </syncfusion:SfDataGrid.Columns>
+                        </syncfusion:SfDataGrid>
+                    </StackPanel>
                 </Grid>
             </syncfusion:TabItemExt>
 
-            <syncfusion:TabItemExt Header="Projectkosten"
+            <syncfusion:TabItemExt Header="{x:Static language:Language.TimeRegistrationCostsTabTitle}"
                                    Image="{StaticResource inventorycheck}"
                                    ImageWidth="17"
                                    ImageHeight="17">
@@ -352,13 +416,13 @@
                         <TextBlock Margin="6,0,10,0"
                                    VerticalAlignment="Center"
                                    FontWeight="SemiBold"
-                                   Text="Uren meerekenen" />
-                        <ToggleButton Style="{StaticResource HourCostToggleStyle}"
+                                   Text="{x:Static language:Language.TimeRegistrationIncludeHoursLabel}" />
+                        <ToggleButton Style="{StaticResource ToggleSwitchStyle}"
                                       IsChecked="{Binding IncludeHoursInCosts, Mode=TwoWay}" />
                         <TextBlock Margin="18,0,0,0"
                                    VerticalAlignment="Center">
-                            <Run Text="Uurtarief: " />
-                            <Run Text="{Binding HourRate, Mode=OneWay, StringFormat={}{0:C2}}" />
+                            <Run Text="{x:Static language:Language.TimeRegistrationHourRatePrefix}" />
+                            <Run Text="{Binding HourRateDisplay, Mode=OneWay}" />
                         </TextBlock>
                     </StackPanel>
 
@@ -374,11 +438,11 @@
                                            ItemsSource="{Binding CostLines}"
                                            ShowGroupDropArea="True">
                         <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:GridTextColumn Width="180" MappingName="GroupName" HeaderText="Groep" />
-                            <syncfusion:GridTextColumn Width="320" MappingName="Description" HeaderText="Omschrijving" />
-                            <syncfusion:GridNumericColumn Width="110" MappingName="Amount" HeaderText="Aantal/uren" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
-                            <syncfusion:GridNumericColumn Width="110" MappingName="UnitPrice" HeaderText="Tarief/prijs" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
-                            <syncfusion:GridNumericColumn Width="130" MappingName="TotalCosts" HeaderText="Totaal" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridTextColumn Width="180" MappingName="GroupName" HeaderText="{x:Static language:Language.TimeRegistrationCostGroupHeader}" />
+                            <syncfusion:GridTextColumn Width="320" MappingName="Description" HeaderText="{x:Static language:Language.TimeRegistrationCostDescriptionHeader}" />
+                            <syncfusion:GridNumericColumn Width="110" MappingName="Amount" HeaderText="{x:Static language:Language.TimeRegistrationAmountHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="110" MappingName="UnitPrice" HeaderText="{x:Static language:Language.TimeRegistrationUnitPriceHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="130" MappingName="TotalCosts" HeaderText="{x:Static language:Language.TimeRegistrationTotalHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
                         </syncfusion:SfDataGrid.Columns>
                     </syncfusion:SfDataGrid>
 
@@ -388,8 +452,8 @@
                                VerticalAlignment="Center"
                                FontSize="16"
                                FontWeight="Bold">
-                        <Run Text="Projecttotaal: " />
-                        <Run Text="{Binding ProjectTotalCosts, Mode=OneWay, StringFormat={}{0:C2}}" />
+                        <Run Text="{x:Static language:Language.TimeRegistrationProjectTotalPrefix}" />
+                        <Run Text="{Binding ProjectTotalCostsDisplay, Mode=OneWay}" />
                     </TextBlock>
                 </Grid>
             </syncfusion:TabItemExt>

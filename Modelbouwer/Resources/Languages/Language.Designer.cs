@@ -12266,6 +12266,555 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aantal.
+        /// </summary>
+        public static string TimeRegistrationAmountHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationAmountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal/uren.
+        /// </summary>
+        public static string TimeRegistrationAmountHoursHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationAmountHoursHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aantal.
+        /// </summary>
+        public static string TimeRegistrationAmountTag {
+            get {
+                return ResourceManager.GetString("TimeRegistrationAmountTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categorie.
+        /// </summary>
+        public static string TimeRegistrationCategoryHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCategoryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opmerking.
+        /// </summary>
+        public static string TimeRegistrationCommentHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCommentHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opmerking.
+        /// </summary>
+        public static string TimeRegistrationCommentTag {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCommentTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omschrijving.
+        /// </summary>
+        public static string TimeRegistrationCostDescriptionHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCostDescriptionHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Groep.
+        /// </summary>
+        public static string TimeRegistrationCostGroupHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCostGroupHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kosten.
+        /// </summary>
+        public static string TimeRegistrationCostsHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCostsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projectkosten.
+        /// </summary>
+        public static string TimeRegistrationCostsTabTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationCostsTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum.
+        /// </summary>
+        public static string TimeRegistrationDateHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        public static string TimeRegistrationDefaultProductText {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDefaultProductText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kies een project.
+        /// </summary>
+        public static string TimeRegistrationDefaultProjectText {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDefaultProjectText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uursoort.
+        /// </summary>
+        public static string TimeRegistrationDefaultWorktypeText {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDefaultWorktypeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wil je deze materiaalregel verwijderen?.
+        /// </summary>
+        public static string TimeRegistrationDeleteMaterialQuestion {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDeleteMaterialQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wil je deze urenregel verwijderen?.
+        /// </summary>
+        public static string TimeRegistrationDeleteTimeQuestion {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDeleteTimeQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze tijdsregistratie komt al voor..
+        /// </summary>
+        public static string TimeRegistrationDuplicateTimeWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationDuplicateTimeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De eindtijd moet na de begintijd liggen..
+        /// </summary>
+        public static string TimeRegistrationEndAfterStartWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationEndAfterStartWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Einde.
+        /// </summary>
+        public static string TimeRegistrationEndHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationEndHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De eindtijd valt binnen een reeds ingevoerde regel..
+        /// </summary>
+        public static string TimeRegistrationEndOverlapWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationEndOverlapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Einde.
+        /// </summary>
+        public static string TimeRegistrationEndTag {
+            get {
+                return ResourceManager.GetString("TimeRegistrationEndTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registreer gewerkte uren, gebruikte materialen en projectkosten.
+        /// </summary>
+        public static string TimeRegistrationHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijd en materiaal.
+        /// </summary>
+        public static string TimeRegistrationHeaderTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uurtarief: .
+        /// </summary>
+        public static string TimeRegistrationHourRatePrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationHourRatePrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uren: .
+        /// </summary>
+        public static string TimeRegistrationHoursPrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationHoursPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uren meerekenen.
+        /// </summary>
+        public static string TimeRegistrationIncludeHoursLabel {
+            get {
+                return ResourceManager.GetString("TimeRegistrationIncludeHoursLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De eindtijd is geen geldige tijd..
+        /// </summary>
+        public static string TimeRegistrationInvalidEndTimeWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationInvalidEndTimeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De begintijd is geen geldige tijd..
+        /// </summary>
+        public static string TimeRegistrationInvalidStartTimeWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationInvalidStartTimeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arbeid.
+        /// </summary>
+        public static string TimeRegistrationLabourGroupName {
+            get {
+                return ResourceManager.GetString("TimeRegistrationLabourGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaal registreren.
+        /// </summary>
+        public static string TimeRegistrationMaterialAddTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialAddTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaalregel verwijderen.
+        /// </summary>
+        public static string TimeRegistrationMaterialDeleteTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialDeleteTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaalregel.
+        /// </summary>
+        public static string TimeRegistrationMaterialGroupTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaalregistratie.
+        /// </summary>
+        public static string TimeRegistrationMaterialRegistrationTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialRegistrationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaal opslaan.
+        /// </summary>
+        public static string TimeRegistrationMaterialSaveTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialSaveTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    Materialen: .
+        /// </summary>
+        public static string TimeRegistrationMaterialsPrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialsPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materiaalregistratie.
+        /// </summary>
+        public static string TimeRegistrationMaterialTabTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationMaterialTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het aantal moet groter zijn dan 0..
+        /// </summary>
+        public static string TimeRegistrationPositiveAmountWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationPositiveAmountWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prijs.
+        /// </summary>
+        public static string TimeRegistrationPriceHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationPriceHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artikel.
+        /// </summary>
+        public static string TimeRegistrationProductHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationProductHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string TimeRegistrationProjectGroupTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationProjectGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projecttotaal: .
+        /// </summary>
+        public static string TimeRegistrationProjectTotalPrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationProjectTotalPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vernieuwen.
+        /// </summary>
+        public static string TimeRegistrationRefreshTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationRefreshTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regels: .
+        /// </summary>
+        public static string TimeRegistrationRowsPrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationRowsPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer een product voor de materiaalregel..
+        /// </summary>
+        public static string TimeRegistrationSelectProductWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationSelectProductWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer project.
+        /// </summary>
+        public static string TimeRegistrationSelectProjectLabel {
+            get {
+                return ResourceManager.GetString("TimeRegistrationSelectProjectLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string TimeRegistrationStartHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationStartHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De begintijd valt binnen een reeds ingevoerde regel..
+        /// </summary>
+        public static string TimeRegistrationStartOverlapWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationStartOverlapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string TimeRegistrationStartTag {
+            get {
+                return ResourceManager.GetString("TimeRegistrationStartTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urenregel toevoegen.
+        /// </summary>
+        public static string TimeRegistrationTimeAddTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeAddTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gewerkte uren.
+        /// </summary>
+        public static string TimeRegistrationTimeCostsDescription {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeCostsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urenregel verwijderen.
+        /// </summary>
+        public static string TimeRegistrationTimeDeleteTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeDeleteTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urenregel.
+        /// </summary>
+        public static string TimeRegistrationTimeEntryGroupTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeEntryGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deze tijdsregistratie overlapt een reeds ingevoerde regel..
+        /// </summary>
+        public static string TimeRegistrationTimeOverlapWarning {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeOverlapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijdregistratie.
+        /// </summary>
+        public static string TimeRegistrationTimeRegistrationTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeRegistrationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uren opslaan.
+        /// </summary>
+        public static string TimeRegistrationTimeSaveTooltip {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeSaveTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijdregistratie.
+        /// </summary>
+        public static string TimeRegistrationTimeTabTitle {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTimeTabTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Totaal.
+        /// </summary>
+        public static string TimeRegistrationTotalHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTotalHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    Totaal: .
+        /// </summary>
+        public static string TimeRegistrationTotalPrefix {
+            get {
+                return ResourceManager.GetString("TimeRegistrationTotalPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tarief/prijs.
+        /// </summary>
+        public static string TimeRegistrationUnitPriceHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationUnitPriceHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gewerkt.
+        /// </summary>
+        public static string TimeRegistrationWorkedHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationWorkedHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uursoort.
+        /// </summary>
+        public static string TimeRegistrationWorktypeHeader {
+            get {
+                return ResourceManager.GetString("TimeRegistrationWorktypeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Per dag.
         /// </summary>
         public static string TimeReportButtonGroupDay {

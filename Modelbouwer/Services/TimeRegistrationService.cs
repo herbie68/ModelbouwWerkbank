@@ -19,7 +19,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 			$"{DBNames.TimeViewFieldNameStartTime}, {DBNames.TimeViewFieldNameEndTime}, {DBNames.TimeViewFieldNameComment} " +
 			$"FROM {DBNames.Database}.{DBNames.TimeView} " +
 			$"WHERE {DBNames.TimeViewFieldNameProjectId} = @ProjectId " +
-			$"ORDER BY {DBNames.TimeViewFieldNameWorkDate} DESC, {DBNames.TimeViewFieldNameStartTime} DESC;";
+			$"ORDER BY {DBNames.TimeViewFieldNameWorkDate} DESC, {DBNames.TimeViewFieldNameStartTime} ASC;";
 
 		return _dataService.ExecuteQueryAsync( query, reader =>
 		{
@@ -71,6 +71,18 @@ public class TimeRegistrationService : ITimeRegistrationService
 		return _dataService.ExecuteNonQueryAsync( query, parameters );
 	}
 
+	public Task DeleteTimeEntryAsync( int timeEntryId )
+	{
+		string query =
+			$"DELETE FROM {DBNames.Database}.{DBNames.TimeTable} " +
+			$"WHERE {DBNames.TimeFieldNameId} = @TimeId;";
+
+		return _dataService.ExecuteNonQueryAsync( query, new Dictionary<string, object>
+		{
+			{ "@TimeId", timeEntryId }
+		} );
+	}
+
 	public async Task<List<MaterialUsageModel>> GetMaterialUsageByProjectAsync( int projectId )
 	{
 		List<MaterialUsageModel> usages = [];
@@ -95,17 +107,20 @@ public class TimeRegistrationService : ITimeRegistrationService
 					ProductName = DatabaseValueConverter.GetString( reader[3] ),
 					UsageDate = usageDate == default ? DateTime.Today : usageDate,
 					Amount = DatabaseValueConverter.GetDouble( reader[4] ),
-					Comment = DatabaseValueConverter.GetString( reader[6] )
+					Comment = DatabaseValueConverter.GetString( reader[6] ),
+					State = MaterialUsageModel.RecordState.Unchanged
 				} );
 			}
 		}
 
 		await EnrichMaterialUsageAsync( usages );
+		foreach ( MaterialUsageModel usage in usages )
+			usage.State = MaterialUsageModel.RecordState.Unchanged;
 
 		return usages;
 	}
 
-	public async Task<int> InsertMaterialUsageAsync( int projectId, ProductModel product, double amount, DateTime usageDate, string? comment )
+	public async Task<int> InsertMaterialUsageAsync( MaterialUsageModel usage )
 	{
 		string query =
 			$"INSERT INTO {DBNames.Database}.{DBNames.ProductUsageTable} " +
@@ -114,14 +129,48 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 		uint id = await _dataService.ExecuteScalarAsync<uint>( query, new Dictionary<string, object>
 		{
-			{ "@ProjectId", projectId },
-			{ "@ProductId", product.ProductId },
-			{ "@AmountUsed", amount },
-			{ "@UsageDate", usageDate.Date },
-			{ "@Comment", comment ?? string.Empty }
+			{ "@ProjectId", usage.ProjectId },
+			{ "@ProductId", usage.ProductId },
+			{ "@AmountUsed", usage.Amount },
+			{ "@UsageDate", usage.UsageDate.Date },
+			{ "@Comment", usage.Comment ?? string.Empty }
 		} );
 
 		return ( int ) id;
+	}
+
+	public Task UpdateMaterialUsageAsync( MaterialUsageModel usage )
+	{
+		string query =
+			$"UPDATE {DBNames.Database}.{DBNames.ProductUsageTable} SET " +
+			$"{DBNames.ProductUsageFieldNameProjectId} = @ProjectId, " +
+			$"{DBNames.ProductUsageFieldNameProductId} = @ProductId, " +
+			$"{DBNames.ProductUsageFieldNameAmountUsed} = @AmountUsed, " +
+			$"{DBNames.ProductUsageFieldNameUsageDate} = @UsageDate, " +
+			$"{DBNames.ProductUsageFieldNameComment} = @Comment " +
+			$"WHERE {DBNames.ProductUsageFieldNameId} = @ProductUsageId;";
+
+		return _dataService.ExecuteNonQueryAsync( query, new Dictionary<string, object>
+		{
+			{ "@ProjectId", usage.ProjectId },
+			{ "@ProductId", usage.ProductId },
+			{ "@AmountUsed", usage.Amount },
+			{ "@UsageDate", usage.UsageDate.Date },
+			{ "@Comment", usage.Comment ?? string.Empty },
+			{ "@ProductUsageId", usage.ProductUsageId }
+		} );
+	}
+
+	public Task DeleteMaterialUsageAsync( int materialUsageId )
+	{
+		string query =
+			$"DELETE FROM {DBNames.Database}.{DBNames.ProductUsageTable} " +
+			$"WHERE {DBNames.ProductUsageFieldNameId} = @ProductUsageId;";
+
+		return _dataService.ExecuteNonQueryAsync( query, new Dictionary<string, object>
+		{
+			{ "@ProductUsageId", materialUsageId }
+		} );
 	}
 
 	public async Task<double> GetHourRateAsync()
@@ -134,6 +183,19 @@ public class TimeRegistrationService : ITimeRegistrationService
 			return invariantRate;
 
 		return 0;
+	}
+
+	public async Task<CultureInfo> GetCultureAsync()
+	{
+		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameCulture );
+		try
+		{
+			return new CultureInfo( string.IsNullOrWhiteSpace( value ) ? "nl-NL" : value );
+		}
+		catch ( CultureNotFoundException )
+		{
+			return new CultureInfo( "nl-NL" );
+		}
 	}
 
 	private static Dictionary<string, object> CreateTimeParameters( TimeEntryModel entry ) => new()

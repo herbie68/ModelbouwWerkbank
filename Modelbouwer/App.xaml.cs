@@ -11,12 +11,7 @@ public partial class App : Application
 
 	public App()
 	{
-		// Set culture before anything else
-		CultureInfo.DefaultThreadCurrentCulture = new CultureInfo( "nl-NL" );
-		CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo( "nl-NL" );
-		CultureInfo culture = new("nl-NL");
-		Thread.CurrentThread.CurrentCulture = culture;
-		Thread.CurrentThread.CurrentUICulture = culture;
+		SetCurrentCulture( "nl-NL" );
 
 		_host = Host.CreateDefaultBuilder()
 		   .ConfigureServices( ConfigureServices )
@@ -132,6 +127,10 @@ public partial class App : Application
 		{
 			await _host.StartAsync();
 
+			var settingsService = _host.Services.GetRequiredService<SettingsService>();
+			await settingsService.LoadSettingsAsync();
+			SetCurrentCulture( settingsService.Settings.Culture );
+
 			_ = _host.Services.GetRequiredService<NavigationViewModel>();
 			var mainWindow = _host.Services.GetRequiredService<MainWindow>();
 			mainWindow.Show();
@@ -171,4 +170,24 @@ public partial class App : Application
 
 		return service;
 	}
+
+	private static void SetCurrentCulture( string? cultureName )
+	{
+		CultureInfo culture;
+		try
+		{
+			culture = new CultureInfo( string.IsNullOrWhiteSpace( cultureName ) ? "nl-NL" : cultureName );
+		}
+		catch ( CultureNotFoundException )
+		{
+			culture = new CultureInfo( "nl-NL" );
+		}
+
+		CultureInfo.DefaultThreadCurrentCulture = culture;
+		CultureInfo.DefaultThreadCurrentUICulture = culture;
+		Thread.CurrentThread.CurrentCulture = culture;
+		Thread.CurrentThread.CurrentUICulture = culture;
+		Lang.Culture = culture;
+	}
+
 }

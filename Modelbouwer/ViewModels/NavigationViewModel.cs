@@ -429,9 +429,9 @@ public class NavigationViewModel : INotifyPropertyChanged
 		#region Subitems
 		TimeSubItems.Add( new NavigationModel
 		{
-			NavigationItem = "Tijd en materiaal",
+			NavigationItem = Language.TimeRegistrationHeaderTitle,
 			NavigationIcon = CreateNavigationImage( "Time" ),
-			NavigationTooltip = "Registreer uren, materiaal en projectkosten",
+			NavigationTooltip = Language.TimeRegistrationHeaderSubtitle,
 			Command = new SimpleCommand( () => LoadTimeRegistrationView() )
 		} );
 

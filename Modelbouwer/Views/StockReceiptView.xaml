@@ -22,10 +22,14 @@
                 <Image Style="{DynamicResource ToolBarReceiveIcon}" />
             </Button>
 
-            <CheckBox Margin="16,0,0,0"
-                      VerticalAlignment="Center"
-                      IsChecked="{Binding ShowClosedOrders, Mode=TwoWay}"
-                      Content="{x:Static language:Language.StockOrderShowClosedOrders}" />
+            <TextBlock Margin="16,0,8,0"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Text="{x:Static language:Language.StockOrderShowClosedOrders}" />
+            <ToggleButton VerticalAlignment="Center"
+                          IsChecked="{Binding ShowClosedOrders, Mode=TwoWay}"
+                          Style="{StaticResource ToggleSwitchStyle}"
+                          ToolTip="{x:Static language:Language.StockOrderShowClosedOrders}" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Text="{Binding SelectedOrder.SupplierName}" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Text="{Binding SelectedOrder.OrderNumber}" />
         </StackPanel>
