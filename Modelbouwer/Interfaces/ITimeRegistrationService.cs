@@ -17,4 +17,7 @@ public interface ITimeRegistrationService
 	Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId );
 	Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId );
 	Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId );
+	Task<List<CostAllocationReportItemModel>> GetCostAllocationByWorktypeAsync( int projectId, bool includeHoursInCosts, double hourRate );
+	Task<List<CostDeclarationReportItemModel>> GetCostDeclarationsAsync( int projectId );
+	Task<List<CostReportItemModel>> GetCostDeclarationSummaryAsync( int projectId, bool includeHoursInCosts, double hourRate );
 }

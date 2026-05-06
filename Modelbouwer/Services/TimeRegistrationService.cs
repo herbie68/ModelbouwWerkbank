@@ -244,11 +244,128 @@ public class TimeRegistrationService : ITimeRegistrationService
 	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId )
 	{
 		var entries = await GetTimeEntriesByProjectAsync( projectId );
-		return BuildReport(
-			entries,
-			entry => string.IsNullOrWhiteSpace( entry.WorktypeName ) ? "?" : entry.WorktypeName!,
-			entry => string.IsNullOrWhiteSpace( entry.WorktypeName ) ? "?" : entry.WorktypeName!,
-			_ => 0 );
+		var worktypes = await GetWorktypeLookupAsync();
+		var grouped = entries
+			.Where( entry => entry.WorkedMinutes > 0 )
+			.GroupBy( entry => entry.WorktypeId )
+			.Select( group =>
+			{
+				var first = group.First();
+				var worktypeName = GetWorktypeName( first.WorktypeId, first.WorktypeName, worktypes );
+				var groupName = GetRootWorktypeName( first.WorktypeId, worktypeName, worktypes );
+				var sortOrder = GetWorktypeSortOrder( first.WorktypeId, worktypes );
+
+				return new
+				{
+					Name = worktypeName,
+					GroupName = groupName,
+					Hours = group.Sum( entry => entry.WorkedMinutes ) / 60,
+					SortOrder = sortOrder
+				};
+			} )
+			.OrderBy( item => item.SortOrder )
+			.ThenBy( item => item.Name )
+			.ToList();
+
+		var totalHours = grouped.Sum( item => item.Hours );
+		return grouped
+			.Select( item => new TimeReportItemModel
+			{
+				Name = item.Name,
+				WorktypeName = item.Name,
+				WorktypeGroupName = item.GroupName,
+				Hours = item.Hours,
+				Percentage = totalHours <= 0 ? 0 : item.Hours / totalHours,
+				SortOrder = item.SortOrder
+			} )
+			.ToList();
+	}
+
+	public async Task<List<CostAllocationReportItemModel>> GetCostAllocationByWorktypeAsync( int projectId, bool includeHoursInCosts, double hourRate )
+	{
+		var worktypeHours = await GetWorkedHoursByWorktypeAsync( projectId );
+		var materialCosts = ( await GetMaterialUsageByProjectAsync( projectId ) )
+			.Sum( usage => usage.Costs );
+
+		if ( worktypeHours.Count == 0 )
+			return [];
+
+		return worktypeHours
+			.Select( worktype =>
+			{
+				var allocatedMaterialCosts = materialCosts * worktype.Percentage;
+				var timeCosts = includeHoursInCosts ? worktype.Hours * hourRate : 0;
+
+				return new CostAllocationReportItemModel
+				{
+					Name = worktype.Name,
+					WorktypeGroupName = worktype.WorktypeGroupName,
+					WorktypeName = worktype.Name,
+					Hours = worktype.Hours,
+					Percentage = worktype.Percentage,
+					WorktypePercentage = worktype.Percentage,
+					MaterialCosts = allocatedMaterialCosts,
+					TimeCosts = timeCosts,
+					TotalCosts = allocatedMaterialCosts + timeCosts
+				};
+			} )
+			.Where( item => item.TotalCosts > 0 )
+			.OrderByDescending( item => item.TotalCosts )
+			.ThenBy( item => item.WorktypeName )
+			.ToList();
+	}
+
+	public async Task<List<CostDeclarationReportItemModel>> GetCostDeclarationsAsync( int projectId )
+	{
+		return ( await GetMaterialUsageByProjectAsync( projectId ) )
+			.Where( usage => usage.Costs > 0 )
+			.OrderByDescending( usage => usage.UsageDate )
+			.ThenBy( usage => usage.CategoryName )
+			.ThenBy( usage => usage.ProductName )
+			.Select( usage => new CostDeclarationReportItemModel
+			{
+				UsageDate = usage.UsageDate,
+				ProductName = usage.ProductName ?? string.Empty,
+				CategoryName = string.IsNullOrWhiteSpace( usage.CategoryName ) ? "?" : usage.CategoryName!,
+				Amount = usage.Amount,
+				UnitPrice = usage.Price,
+				TotalCosts = usage.Costs,
+				Comment = usage.Comment
+			} )
+			.ToList();
+	}
+
+	public async Task<List<CostReportItemModel>> GetCostDeclarationSummaryAsync( int projectId, bool includeHoursInCosts, double hourRate )
+	{
+		var declarations = await GetCostDeclarationsAsync( projectId );
+		var items = declarations
+			.GroupBy( item => item.CategoryName )
+			.Select( group => new
+			{
+				Name = group.Key,
+				TotalCosts = group.Sum( item => item.TotalCosts )
+			} )
+			.ToList();
+
+		if ( includeHoursInCosts )
+		{
+			var totalHours = ( await GetWorkedHoursByWorktypeAsync( projectId ) ).Sum( item => item.Hours );
+			var timeCosts = totalHours * hourRate;
+			if ( timeCosts > 0 )
+				items.Add( new { Name = Lang.TimeRegistrationTimeCostsDescription, TotalCosts = timeCosts } );
+		}
+
+		var totalCosts = items.Sum( item => item.TotalCosts );
+		return items
+			.Select( item => new CostReportItemModel
+			{
+				Name = item.Name,
+				TotalCosts = item.TotalCosts,
+				Percentage = totalCosts <= 0 ? 0 : item.TotalCosts / totalCosts
+			} )
+			.OrderByDescending( item => item.TotalCosts )
+			.ThenBy( item => item.Name )
+			.ToList();
 	}
 
 	private static Dictionary<string, object> CreateTimeParameters( TimeEntryModel entry ) => new()
@@ -310,6 +427,69 @@ public class TimeRegistrationService : ITimeRegistrationService
 				SortOrder = item.SortOrder
 			} )
 			.ToList();
+	}
+
+	private Task<List<WorktypeModel>> GetWorktypesAsync()
+	{
+		string query =
+			$"SELECT {DBNames.WorktypeFieldNameId}, {DBNames.WorktypeFieldNameParentId}, {DBNames.WorktypeFieldNameName} " +
+			$"FROM {DBNames.Database}.{DBNames.WorktypeTable};";
+
+		return _dataService.ExecuteQueryAsync( query, reader => new WorktypeModel
+		{
+			WorktypeId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameId] ),
+			ParentId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameParentId] ),
+			WorktypeName = DatabaseValueConverter.GetString( reader[DBNames.WorktypeFieldNameName] )
+		} );
+	}
+
+	private async Task<Dictionary<int, WorktypeModel>> GetWorktypeLookupAsync() =>
+		( await GetWorktypesAsync() )
+			.Where( worktype => worktype.WorktypeId > 0 )
+			.ToDictionary( worktype => worktype.WorktypeId );
+
+	private static string GetWorktypeName( int worktypeId, string? fallbackName, IReadOnlyDictionary<int, WorktypeModel> worktypes )
+	{
+		if ( worktypeId > 0 &&
+			worktypes.TryGetValue( worktypeId, out var worktype ) &&
+			!string.IsNullOrWhiteSpace( worktype.WorktypeName ) )
+			return worktype.WorktypeName;
+
+		return string.IsNullOrWhiteSpace( fallbackName ) ? "?" : fallbackName!;
+	}
+
+	private static string GetRootWorktypeName( int worktypeId, string fallbackName, IReadOnlyDictionary<int, WorktypeModel> worktypes )
+	{
+		if ( worktypeId <= 0 || !worktypes.TryGetValue( worktypeId, out var current ) )
+			return fallbackName;
+
+		var visited = new HashSet<int>();
+		while ( current.ParentId is > 0 &&
+			visited.Add( current.WorktypeId ) &&
+			worktypes.TryGetValue( current.ParentId.Value, out var parent ) )
+		{
+			current = parent;
+		}
+
+		return string.IsNullOrWhiteSpace( current.WorktypeName ) ? fallbackName : current.WorktypeName;
+	}
+
+	private static int GetWorktypeSortOrder( int worktypeId, IReadOnlyDictionary<int, WorktypeModel> worktypes )
+	{
+		if ( worktypeId <= 0 || !worktypes.TryGetValue( worktypeId, out var current ) )
+			return 0;
+
+		var rootId = current.WorktypeId;
+		var visited = new HashSet<int>();
+		while ( current.ParentId is > 0 &&
+			visited.Add( current.WorktypeId ) &&
+			worktypes.TryGetValue( current.ParentId.Value, out var parent ) )
+		{
+			current = parent;
+			rootId = current.WorktypeId;
+		}
+
+		return ( rootId * 1000 ) + worktypeId;
 	}
 
 	private async Task EnrichMaterialUsageAsync( List<MaterialUsageModel> usages )

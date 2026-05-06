@@ -4300,81 +4300,277 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="StockReceiptReceivedAmountTooHighWarning" xml:space="preserve">
     <value>Der erhaltene Betrag darf nicht höher sein als der bestellte Betrag.</value>
   </data>
-  <data name="TimeRegistrationAmountHeader" xml:space="preserve"><value>Anzahl</value></data>
-  <data name="TimeRegistrationAmountHoursHeader" xml:space="preserve"><value>Anzahl/Stunden</value></data>
-  <data name="TimeRegistrationAmountTag" xml:space="preserve"><value>Anzahl</value></data>
-  <data name="TimeRegistrationCategoryHeader" xml:space="preserve"><value>Kategorie</value></data>
-  <data name="TimeRegistrationCommentHeader" xml:space="preserve"><value>Bemerkung</value></data>
-  <data name="TimeRegistrationCommentTag" xml:space="preserve"><value>Bemerkung</value></data>
-  <data name="TimeRegistrationCostDescriptionHeader" xml:space="preserve"><value>Beschreibung</value></data>
-  <data name="TimeRegistrationCostGroupHeader" xml:space="preserve"><value>Gruppe</value></data>
-  <data name="TimeRegistrationCostsHeader" xml:space="preserve"><value>Kosten</value></data>
-  <data name="TimeRegistrationCostsTabTitle" xml:space="preserve"><value>Projektkosten</value></data>
-  <data name="TimeRegistrationDateHeader" xml:space="preserve"><value>Datum</value></data>
-  <data name="TimeRegistrationDefaultProjectText" xml:space="preserve"><value>Projekt auswählen</value></data>
-  <data name="TimeRegistrationDefaultProductText" xml:space="preserve"><value>Produkt</value></data>
-  <data name="TimeRegistrationDefaultWorktypeText" xml:space="preserve"><value>Stundenart</value></data>
-  <data name="TimeRegistrationDeleteMaterialQuestion" xml:space="preserve"><value>Möchtest du diese Materialzeile löschen?</value></data>
-  <data name="TimeRegistrationDeleteTimeQuestion" xml:space="preserve"><value>Möchtest du diese Stundenzeile löschen?</value></data>
-  <data name="TimeRegistrationDuplicateTimeWarning" xml:space="preserve"><value>Diese Zeiterfassung existiert bereits.</value></data>
-  <data name="TimeRegistrationEndAfterStartWarning" xml:space="preserve"><value>Die Endzeit muss nach der Startzeit liegen.</value></data>
-  <data name="TimeRegistrationEndHeader" xml:space="preserve"><value>Ende</value></data>
-  <data name="TimeRegistrationEndOverlapWarning" xml:space="preserve"><value>Die Endzeit liegt innerhalb einer vorhandenen Zeile.</value></data>
-  <data name="TimeRegistrationEndTag" xml:space="preserve"><value>Ende</value></data>
-  <data name="TimeRegistrationHeaderSubtitle" xml:space="preserve"><value>Erfasste Stunden, verwendete Materialien und Projektkosten verwalten</value></data>
-  <data name="TimeRegistrationHeaderTitle" xml:space="preserve"><value>Zeit und Material</value></data>
-  <data name="TimeRegistrationHourRatePrefix" xml:space="preserve"><value>Stundensatz: </value></data>
-  <data name="TimeRegistrationHoursPrefix" xml:space="preserve"><value>Stunden: </value></data>
-  <data name="TimeRegistrationIncludeHoursLabel" xml:space="preserve"><value>Stunden einbeziehen</value></data>
-  <data name="TimeRegistrationInvalidEndTimeWarning" xml:space="preserve"><value>Die Endzeit ist keine gültige Zeit.</value></data>
-  <data name="TimeRegistrationInvalidStartTimeWarning" xml:space="preserve"><value>Die Startzeit ist keine gültige Zeit.</value></data>
-  <data name="TimeRegistrationLabourGroupName" xml:space="preserve"><value>Arbeit</value></data>
-  <data name="TimeRegistrationMaterialAddTooltip" xml:space="preserve"><value>Material erfassen</value></data>
-  <data name="TimeRegistrationMaterialDeleteTooltip" xml:space="preserve"><value>Materialzeile löschen</value></data>
-  <data name="TimeRegistrationMaterialGroupTitle" xml:space="preserve"><value>Materialzeile</value></data>
-  <data name="TimeRegistrationMaterialRegistrationTitle" xml:space="preserve"><value>Materialerfassung</value></data>
-  <data name="TimeRegistrationMaterialSaveTooltip" xml:space="preserve"><value>Material speichern</value></data>
-  <data name="TimeRegistrationMaterialsPrefix" xml:space="preserve"><value>   Materialien: </value></data>
-  <data name="TimeRegistrationMaterialTabTitle" xml:space="preserve"><value>Materialerfassung</value></data>
-  <data name="TimeRegistrationPositiveAmountWarning" xml:space="preserve"><value>Die Anzahl muss größer als 0 sein.</value></data>
-  <data name="TimeRegistrationPriceHeader" xml:space="preserve"><value>Preis</value></data>
-  <data name="TimeRegistrationProductHeader" xml:space="preserve"><value>Artikel</value></data>
-  <data name="TimeRegistrationProjectGroupTitle" xml:space="preserve"><value>Projekt</value></data>
-  <data name="TimeRegistrationProjectTotalPrefix" xml:space="preserve"><value>Projektsumme: </value></data>
-  <data name="TimeRegistrationRefreshTooltip" xml:space="preserve"><value>Aktualisieren</value></data>
-  <data name="TimeRegistrationRowsPrefix" xml:space="preserve"><value>Zeilen: </value></data>
-  <data name="TimeRegistrationSelectProductWarning" xml:space="preserve"><value>Wähle ein Produkt für die Materialzeile aus.</value></data>
-  <data name="TimeRegistrationSelectProjectLabel" xml:space="preserve"><value>Projekt auswählen</value></data>
-  <data name="TimeRegistrationStartHeader" xml:space="preserve"><value>Start</value></data>
-  <data name="TimeRegistrationStartOverlapWarning" xml:space="preserve"><value>Die Startzeit liegt innerhalb einer vorhandenen Zeile.</value></data>
-  <data name="TimeRegistrationStartTag" xml:space="preserve"><value>Start</value></data>
-  <data name="TimeRegistrationTimeAddTooltip" xml:space="preserve"><value>Stundenzeile hinzufügen</value></data>
-  <data name="TimeRegistrationTimeCostsDescription" xml:space="preserve"><value>Geleistete Stunden</value></data>
-  <data name="TimeRegistrationTimeDeleteTooltip" xml:space="preserve"><value>Stundenzeile löschen</value></data>
-  <data name="TimeRegistrationTimeEntryGroupTitle" xml:space="preserve"><value>Stundenzeile</value></data>
-  <data name="TimeRegistrationTimeOverlapWarning" xml:space="preserve"><value>Diese Zeiterfassung überschneidet sich mit einer vorhandenen Zeile.</value></data>
-  <data name="TimeRegistrationTimeRegistrationTitle" xml:space="preserve"><value>Zeiterfassung</value></data>
-  <data name="TimeRegistrationTimeSaveTooltip" xml:space="preserve"><value>Stunden speichern</value></data>
-  <data name="TimeRegistrationTimeTabTitle" xml:space="preserve"><value>Zeiterfassung</value></data>
-  <data name="TimeRegistrationTotalHeader" xml:space="preserve"><value>Summe</value></data>
-  <data name="TimeRegistrationTotalPrefix" xml:space="preserve"><value>   Summe: </value></data>
-  <data name="TimeRegistrationUnitPriceHeader" xml:space="preserve"><value>Satz/Preis</value></data>
-  <data name="TimeRegistrationWorkedHeader" xml:space="preserve"><value>Geleistet</value></data>
-  <data name="TimeRegistrationWorktypeHeader" xml:space="preserve"><value>Stundenart</value></data>
-  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve"><value>Stunden pro Zeitraum</value></data>
-  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve"><value>Übersicht der Stunden pro Tag, Monat und Jahr</value></data>
-  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve"><value>Stunden pro Arbeitsart</value></data>
-  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve"><value>Übersicht der Stunden pro Arbeitsart</value></data>
-  <data name="ProjectReportsHeaderTitle" xml:space="preserve"><value>Stundenübersichten</value></data>
-  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve"><value>Analyse der aufgewendeten Stunden pro Projekt</value></data>
-  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve"><value>Gesamtstunden: </value></data>
-  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve"><value>Tag</value></data>
-  <data name="ProjectReportsMonthTabTitle" xml:space="preserve"><value>Monat</value></data>
-  <data name="ProjectReportsYearTabTitle" xml:space="preserve"><value>Jahr</value></data>
-  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve"><value>Monat/Jahr</value></data>
-  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve"><value>Arbeitsart</value></data>
-  <data name="ProjectReportsPeriodHeader" xml:space="preserve"><value>Zeitraum</value></data>
-  <data name="ProjectReportsWorktypeHeader" xml:space="preserve"><value>Arbeitsart</value></data>
-  <data name="ProjectReportsHoursHeader" xml:space="preserve"><value>Stunden</value></data>
-  <data name="ProjectReportsPercentageHeader" xml:space="preserve"><value>Prozentsatz</value></data>
+  <data name="TimeRegistrationAmountHeader" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="TimeRegistrationAmountHoursHeader" xml:space="preserve">
+    <value>Anzahl/Stunden</value>
+  </data>
+  <data name="TimeRegistrationAmountTag" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="TimeRegistrationCategoryHeader" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="TimeRegistrationCommentHeader" xml:space="preserve">
+    <value>Bemerkung</value>
+  </data>
+  <data name="TimeRegistrationCommentTag" xml:space="preserve">
+    <value>Bemerkung</value>
+  </data>
+  <data name="TimeRegistrationCostDescriptionHeader" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="TimeRegistrationCostGroupHeader" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="TimeRegistrationCostsHeader" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="TimeRegistrationCostsTabTitle" xml:space="preserve">
+    <value>Projektkosten</value>
+  </data>
+  <data name="TimeRegistrationDateHeader" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TimeRegistrationDefaultProjectText" xml:space="preserve">
+    <value>Projekt auswählen</value>
+  </data>
+  <data name="TimeRegistrationDefaultProductText" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="TimeRegistrationDefaultWorktypeText" xml:space="preserve">
+    <value>Stundenart</value>
+  </data>
+  <data name="TimeRegistrationDeleteMaterialQuestion" xml:space="preserve">
+    <value>Möchtest du diese Materialzeile löschen?</value>
+  </data>
+  <data name="TimeRegistrationDeleteTimeQuestion" xml:space="preserve">
+    <value>Möchtest du diese Stundenzeile löschen?</value>
+  </data>
+  <data name="TimeRegistrationDuplicateTimeWarning" xml:space="preserve">
+    <value>Diese Zeiterfassung existiert bereits.</value>
+  </data>
+  <data name="TimeRegistrationEndAfterStartWarning" xml:space="preserve">
+    <value>Die Endzeit muss nach der Startzeit liegen.</value>
+  </data>
+  <data name="TimeRegistrationEndHeader" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="TimeRegistrationEndOverlapWarning" xml:space="preserve">
+    <value>Die Endzeit liegt innerhalb einer vorhandenen Zeile.</value>
+  </data>
+  <data name="TimeRegistrationEndTag" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="TimeRegistrationHeaderSubtitle" xml:space="preserve">
+    <value>Erfasste Stunden, verwendete Materialien und Projektkosten verwalten</value>
+  </data>
+  <data name="TimeRegistrationHeaderTitle" xml:space="preserve">
+    <value>Zeit und Material</value>
+  </data>
+  <data name="TimeRegistrationHourRatePrefix" xml:space="preserve">
+    <value>Stundensatz: </value>
+  </data>
+  <data name="TimeRegistrationHoursPrefix" xml:space="preserve">
+    <value>Stunden: </value>
+  </data>
+  <data name="TimeRegistrationIncludeHoursLabel" xml:space="preserve">
+    <value>Stunden einbeziehen</value>
+  </data>
+  <data name="TimeRegistrationInvalidEndTimeWarning" xml:space="preserve">
+    <value>Die Endzeit ist keine gültige Zeit.</value>
+  </data>
+  <data name="TimeRegistrationInvalidStartTimeWarning" xml:space="preserve">
+    <value>Die Startzeit ist keine gültige Zeit.</value>
+  </data>
+  <data name="TimeRegistrationLabourGroupName" xml:space="preserve">
+    <value>Arbeit</value>
+  </data>
+  <data name="TimeRegistrationMaterialAddTooltip" xml:space="preserve">
+    <value>Material erfassen</value>
+  </data>
+  <data name="TimeRegistrationMaterialDeleteTooltip" xml:space="preserve">
+    <value>Materialzeile löschen</value>
+  </data>
+  <data name="TimeRegistrationMaterialGroupTitle" xml:space="preserve">
+    <value>Materialzeile</value>
+  </data>
+  <data name="TimeRegistrationMaterialRegistrationTitle" xml:space="preserve">
+    <value>Materialerfassung</value>
+  </data>
+  <data name="TimeRegistrationMaterialSaveTooltip" xml:space="preserve">
+    <value>Material speichern</value>
+  </data>
+  <data name="TimeRegistrationMaterialsPrefix" xml:space="preserve">
+    <value>   Materialien: </value>
+  </data>
+  <data name="TimeRegistrationMaterialTabTitle" xml:space="preserve">
+    <value>Materialerfassung</value>
+  </data>
+  <data name="TimeRegistrationPositiveAmountWarning" xml:space="preserve">
+    <value>Die Anzahl muss größer als 0 sein.</value>
+  </data>
+  <data name="TimeRegistrationPriceHeader" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="TimeRegistrationProductHeader" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="TimeRegistrationProjectGroupTitle" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="TimeRegistrationProjectTotalPrefix" xml:space="preserve">
+    <value>Projektsumme: </value>
+  </data>
+  <data name="TimeRegistrationRefreshTooltip" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="TimeRegistrationRowsPrefix" xml:space="preserve">
+    <value>Zeilen: </value>
+  </data>
+  <data name="TimeRegistrationSelectProductWarning" xml:space="preserve">
+    <value>Wähle ein Produkt für die Materialzeile aus.</value>
+  </data>
+  <data name="TimeRegistrationSelectProjectLabel" xml:space="preserve">
+    <value>Projekt auswählen</value>
+  </data>
+  <data name="TimeRegistrationStartHeader" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TimeRegistrationStartOverlapWarning" xml:space="preserve">
+    <value>Die Startzeit liegt innerhalb einer vorhandenen Zeile.</value>
+  </data>
+  <data name="TimeRegistrationStartTag" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TimeRegistrationTimeAddTooltip" xml:space="preserve">
+    <value>Stundenzeile hinzufügen</value>
+  </data>
+  <data name="TimeRegistrationTimeCostsDescription" xml:space="preserve">
+    <value>Geleistete Stunden</value>
+  </data>
+  <data name="TimeRegistrationTimeDeleteTooltip" xml:space="preserve">
+    <value>Stundenzeile löschen</value>
+  </data>
+  <data name="TimeRegistrationTimeEntryGroupTitle" xml:space="preserve">
+    <value>Stundenzeile</value>
+  </data>
+  <data name="TimeRegistrationTimeOverlapWarning" xml:space="preserve">
+    <value>Diese Zeiterfassung überschneidet sich mit einer vorhandenen Zeile.</value>
+  </data>
+  <data name="TimeRegistrationTimeRegistrationTitle" xml:space="preserve">
+    <value>Zeiterfassung</value>
+  </data>
+  <data name="TimeRegistrationTimeSaveTooltip" xml:space="preserve">
+    <value>Stunden speichern</value>
+  </data>
+  <data name="TimeRegistrationTimeTabTitle" xml:space="preserve">
+    <value>Zeiterfassung</value>
+  </data>
+  <data name="TimeRegistrationTotalHeader" xml:space="preserve">
+    <value>Summe</value>
+  </data>
+  <data name="TimeRegistrationTotalPrefix" xml:space="preserve">
+    <value>   Summe: </value>
+  </data>
+  <data name="TimeRegistrationUnitPriceHeader" xml:space="preserve">
+    <value>Satz/Preis</value>
+  </data>
+  <data name="TimeRegistrationWorkedHeader" xml:space="preserve">
+    <value>Geleistet</value>
+  </data>
+  <data name="TimeRegistrationWorktypeHeader" xml:space="preserve">
+    <value>Stundenart</value>
+  </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve">
+    <value>Stunden pro Zeitraum</value>
+  </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve">
+    <value>Übersicht der Stunden pro Tag, Monat und Jahr</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve">
+    <value>Stunden pro Arbeitsart</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve">
+    <value>Übersicht der Stunden pro Arbeitsart</value>
+  </data>
+  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
+    <value>Gesamtstunden: </value>
+  </data>
+  <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="ProjectReportsMonthTabTitle" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="ProjectReportsYearTabTitle" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve">
+    <value>Monat/Jahr</value>
+  </data>
+  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve">
+    <value>Arbeitsart</value>
+  </data>
+  <data name="ProjectReportsPeriodHeader" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="ProjectReportsWorktypeHeader" xml:space="preserve">
+    <value>Arbeitsart</value>
+  </data>
+  <data name="ProjectReportsHoursHeader" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="ProjectReportsPercentageHeader" xml:space="preserve">
+    <value>Prozentsatz</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostAllocationReport.Label" xml:space="preserve">
+    <value>Kosten pro Bearbeitung</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostAllocationReport.Tooltip" xml:space="preserve">
+    <value>Übersicht der Materialkosten verteilt auf Arbeitsarten</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostDeclarationReport.Label" xml:space="preserve">
+    <value>Kostendeklarationen</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostDeclarationReport.Tooltip" xml:space="preserve">
+    <value>Übersicht der verwendeten Materialien und Kosten pro Projekt</value>
+  </data>
+  <data name="ProjectReportsCostAllocationTabTitle" xml:space="preserve">
+    <value>Kosten pro Bearbeitung</value>
+  </data>
+  <data name="ProjectReportsCostDeclarationsTabTitle" xml:space="preserve">
+    <value>Kostendeklarationen</value>
+  </data>
+  <data name="ProjectReportsCategoryHeader" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="ProjectReportsCategoryTotalCostsHeader" xml:space="preserve">
+    <value>Kategoriesumme</value>
+  </data>
+  <data name="ProjectReportsAllocatedCostsHeader" xml:space="preserve">
+    <value>Zugeordnet</value>
+  </data>
+  <data name="ProjectReportsMaterialCostsHeader" xml:space="preserve">
+    <value>Materialkosten</value>
+  </data>
+  <data name="ProjectReportsTimeCostsHeader" xml:space="preserve">
+    <value>Zeitkosten</value>
+  </data>
+  <data name="ProjectReportsTotalCostsHeader" xml:space="preserve">
+    <value>Gesamtkosten</value>
+  </data>
+  <data name="ProjectReportsTotalCostsPrefix" xml:space="preserve">
+    <value>   Kosten: </value>
+  </data>
+  <data name="ProjectReportsHeaderTitle" xml:space="preserve">
+    <value>Zeit- und Materialübersichten</value>
+  </data>
+  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
+    <value>Analyse der pro Projekt aufgewendeten Stunden und Materialien</value>
+  </data>
 </root>
