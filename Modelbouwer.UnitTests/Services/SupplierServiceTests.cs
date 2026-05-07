@@ -43,12 +43,12 @@ public class SupplierServiceTests
 		StringAssert.Contains( _service.CompleteProductSupplierList, $"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}" );
 		StringAssert.Contains( _service.CompleteProductSupplierList, $"c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId}" );
 		Assert.IsFalse( _service.CompleteProductSupplierList.Contains( $"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " ) );
-		StringAssert.Contains( _service.CompleteProductSupplierList, $"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier}" );
+		StringAssert.Contains( _service.CompleteProductSupplierList, $"ps.PreferredSupplier AS {DBNames.ProductSupplierFieldNameDefaultSupplier}" );
 
 		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"s.{DBNames.SupplierFieldNameCurrencyId} AS {DBNames.SupplierFieldNameCurrencyId}" );
 		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"c ON s.{DBNames.SupplierFieldNameCurrencyId} = c.{DBNames.CurrencyFieldNameId}" );
 		Assert.IsFalse( _service.ProductSupplierBySupplierAndProductQuery.Contains( $"ps.{DBNames.ProductSupplierFieldNameCurrencyId}, " ) );
-		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier}" );
+		StringAssert.Contains( _service.ProductSupplierBySupplierAndProductQuery, $"ps.PreferredSupplier AS {DBNames.ProductSupplierFieldNameDefaultSupplier}" );
 	}
 
 	[TestMethod]

@@ -458,38 +458,6 @@ public class NavigationViewModel : INotifyPropertyChanged
 			NavigationTooltip = Language.navigation_Time_SubItem_Report_Tooltip,
 			Command = new SimpleCommand( () => LoadProjectReportsView( 0 ) )
 		} );
-
-		TimeSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Time_SubItem_PeriodReport_Label,
-			NavigationIcon = CreateNavigationImage( "Report" ),
-			NavigationTooltip = Language.navigation_Time_SubItem_PeriodReport_Tooltip,
-			Command = new SimpleCommand( () => LoadProjectReportsView( 1 ) )
-		} );
-
-		TimeSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Time_SubItem_WorktypeReport_Label,
-			NavigationIcon = CreateNavigationImage( "Worktype" ),
-			NavigationTooltip = Language.navigation_Time_SubItem_WorktypeReport_Tooltip,
-			Command = new SimpleCommand( () => LoadProjectReportsView( 4 ) )
-		} );
-
-		TimeSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Time_SubItem_CostAllocationReport_Label,
-			NavigationIcon = CreateNavigationImage( "Report" ),
-			NavigationTooltip = Language.navigation_Time_SubItem_CostAllocationReport_Tooltip,
-			Command = new SimpleCommand( () => LoadProjectReportsView( 5 ) )
-		} );
-
-		TimeSubItems.Add( new NavigationModel
-		{
-			NavigationItem = Language.navigation_Time_SubItem_CostDeclarationReport_Label,
-			NavigationIcon = CreateNavigationImage( "inventorycheck" ),
-			NavigationTooltip = Language.navigation_Time_SubItem_CostDeclarationReport_Tooltip,
-			Command = new SimpleCommand( () => LoadProjectReportsView( 6 ) )
-		} );
 		#endregion
 
 		NavigationItems.Add( new NavigationModel

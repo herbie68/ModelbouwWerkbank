@@ -3232,10 +3232,10 @@
     <value>Importieren Sie die Stunden aus einer CSV-Datei</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Label">
-    <value>Stundenübersicht</value>
+    <value>Übersichten</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Tooltip">
-    <value>Übersicht über die für dieses Projekt aufgewendeten Stunden</value>
+    <value>Übersichten über Stunden, Arbeitsarten und Kosten pro Projekt</value>
   </data>
   <data name="OrderDatagridHeaderId">
     <value>Leerlauf</value>

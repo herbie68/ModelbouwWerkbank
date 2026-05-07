@@ -31,8 +31,10 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	}
 
 	/// <summary>
-	/// Since suppliers is a nested part inside the productpage, it has to have its own "unsaved changes" tracking, otherwise when you change a supplier, 
-	/// it would mark the entire product as having unsaved changes, which is not ideal UX
+	/// Since suppliers is a nested part inside the productpage, it has to have
+	/// its own "unsaved changes" tracking, otherwise when you change a
+	/// supplier, it would mark the entire product as having unsaved changes,
+	/// which is not ideal UX
 	/// </summary>
 	private bool _hasUnsavedSupplierChanges;
 	public bool HasUnsavedSupplierChanges

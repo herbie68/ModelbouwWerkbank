@@ -9808,7 +9808,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Urenoverzicht.
+        ///   Looks up a localized string similar to Overzichten.
         /// </summary>
         public static string navigation_Time_SubItem_Report_Label {
             get {
@@ -9817,7 +9817,7 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overzicht van de bestede uren voor dit project.
+        ///   Looks up a localized string similar to Overzichten van uren, werksoorten en kosten per project.
         /// </summary>
         public static string navigation_Time_SubItem_Report_Tooltip {
             get {

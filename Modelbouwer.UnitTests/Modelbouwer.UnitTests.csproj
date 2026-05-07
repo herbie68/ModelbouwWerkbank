@@ -8,8 +8,8 @@
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
     <DisableTransitiveProjectReferences>false</DisableTransitiveProjectReferences>
-    <AssemblyVersion>26.5.4.0</AssemblyVersion>
-    <FileVersion>26.5.4.0</FileVersion>
+    <AssemblyVersion>26.5.11.0</AssemblyVersion>
+    <FileVersion>26.5.11.0</FileVersion>
     <RunSettingsFilePath Condition="Exists('$(MSBuildThisFileDirectory)..\Builds\Debug\net10.0-windows\fine-code-coverage\coverage-tool-output\Modelbouwer.UnitTests-fcc-mscodecoverage-generated.runsettings')">$(MSBuildThisFileDirectory)..\Builds\Debug\net10.0-windows\fine-code-coverage\coverage-tool-output\Modelbouwer.UnitTests-fcc-mscodecoverage-generated.runsettings</RunSettingsFilePath>
   </PropertyGroup>
 

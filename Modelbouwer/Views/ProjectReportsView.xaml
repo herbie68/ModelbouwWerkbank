@@ -10,11 +10,70 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="ReportChartBarStyle" TargetType="ProgressBar">
-            <Setter Property="Height" Value="16" />
+            <Setter Property="Height" Value="20" />
             <Setter Property="Minimum" Value="0" />
             <Setter Property="Maximum" Value="1" />
             <Setter Property="Foreground" Value="#2F80ED" />
-            <Setter Property="Background" Value="#E5E7EB" />
+            <Setter Property="Background" Value="#D7DEE8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid Height="{TemplateBinding Height}"
+                              SnapsToDevicePixels="True">
+                            <Border Margin="0,3,0,0"
+                                    Background="#9AA8B8"
+                                    CornerRadius="3"
+                                    Opacity="0.55" />
+                            <Border x:Name="PART_Track"
+                                    Margin="0,0,0,2"
+                                    CornerRadius="3"
+                                    BorderBrush="#AAB5C3"
+                                    BorderThickness="1">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#F7F9FC" Offset="0" />
+                                        <GradientStop Color="#DCE3EC" Offset="0.48" />
+                                        <GradientStop Color="#B8C4D1" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border x:Name="PART_Indicator"
+                                    Margin="1,1,1,3"
+                                    HorizontalAlignment="Left"
+                                    CornerRadius="2"
+                                    BorderBrush="#1B5FAE"
+                                    BorderThickness="1">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="4"
+                                                      Direction="315"
+                                                      Opacity="0.26"
+                                                      ShadowDepth="2"
+                                                      Color="#394B5F" />
+                                </Border.Effect>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#8FC5FF" Offset="0" />
+                                        <GradientStop Color="#2F80ED" Offset="0.42" />
+                                        <GradientStop Color="#1756AA" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border Margin="2,2,2,0"
+                                    Height="5"
+                                    VerticalAlignment="Top"
+                                    CornerRadius="2"
+                                    Opacity="0.55">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <DataTemplate x:Key="ReportChartItemTemplate">
@@ -36,6 +95,62 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Right"
                            Text="{Binding Hours, StringFormat={}{0:N2}}" />
+            </Grid>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="PieChartItemsPanelTemplate">
+            <Canvas Width="220" Height="150" />
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="PieChartSliceTemplate">
+            <Grid>
+                <Path Data="{Binding ShadowGeometry}"
+                      Fill="{Binding ShadowFill}"
+                      Opacity="0.72"
+                      Stroke="#506070"
+                      StrokeThickness="0.35" />
+                <Path Data="{Binding SliceGeometry}"
+                      Fill="{Binding Fill}"
+                      Stroke="#FFFFFF"
+                      StrokeThickness="1.2">
+                    <Path.Effect>
+                        <DropShadowEffect BlurRadius="3"
+                                          Direction="315"
+                                          Opacity="0.18"
+                                          ShadowDepth="1"
+                                          Color="#263544" />
+                    </Path.Effect>
+                </Path>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PieChartLegendTemplate">
+            <Grid Margin="0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="76" />
+                    <ColumnDefinition Width="58" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Width="12"
+                        Height="12"
+                        VerticalAlignment="Center"
+                        Background="{Binding Fill}"
+                        BorderBrush="#FFFFFF"
+                        BorderThickness="1" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{Binding Name}"
+                           TextTrimming="CharacterEllipsis" />
+                <TextBlock Grid.Column="2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Text="{Binding Hours, StringFormat={}{0:N2}}" />
+                <TextBlock Grid.Column="3"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Text="{Binding Percentage, StringFormat={}{0:P1}}" />
             </Grid>
         </DataTemplate>
 
@@ -166,9 +281,34 @@
                         <RowDefinition Height="190" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding WeekdayHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
-                    </ScrollViewer>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="230"
+                                Height="160"
+                                Padding="4"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166"
+                                         Height="118"
+                                         Margin="0,16,0,0"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Fill="#334456"
+                                         Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding WeekdayPieSlices}"
+                                              ItemTemplate="{StaticResource PieChartSliceTemplate}"
+                                              ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding WeekdayPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
                     <syncfusion:SfDataGrid Grid.Row="1"
                                            Margin="0,4"
                                            AllowEditing="False"
@@ -209,9 +349,21 @@
                         <RowDefinition Height="190" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding MonthHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
-                    </ScrollViewer>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
                     <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthHours}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
@@ -235,9 +387,21 @@
                         <RowDefinition Height="190" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding YearHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
-                    </ScrollViewer>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
                     <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding YearHours}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">

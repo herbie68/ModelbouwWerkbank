@@ -3232,10 +3232,10 @@
     <value>Importeer uren vanuit een CSV bestand</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Label">
-    <value>Urenoverzicht</value>
+    <value>Overzichten</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Tooltip">
-    <value>Overzicht van de bestede uren voor dit project</value>
+    <value>Overzichten van uren, werksoorten en kosten per project</value>
   </data>
   <data name="OrderDatagridHeaderId">
     <value>ID</value>
