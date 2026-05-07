@@ -46,7 +46,7 @@ public class SupplierService : ISupplierService
 		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
 		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
 		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} " +
+		$"ps.PreferredSupplier AS {DBNames.ProductSupplierFieldNameDefaultSupplier} " +
 		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +
@@ -64,7 +64,7 @@ public class SupplierService : ISupplierService
 		$"(CASE ps.{DBNames.ProductSupplierFieldNameProductName} WHEN '' THEN p.{DBNames.ProductFieldNameName} ELSE ps.{DBNames.ProductSupplierFieldNameProductName} END) AS ProductName, " +
 		$"ps.{DBNames.ProductSupplierFieldNamePrice}, " +
 		$"ps.{DBNames.ProductSupplierFieldNameProductUrl}, " +
-		$"ps.{DBNames.ProductSupplierFieldNameDefaultSupplier} " +
+		$"ps.PreferredSupplier AS {DBNames.ProductSupplierFieldNameDefaultSupplier} " +
 		$"FROM {DBNames.Database}.{DBNames.ProductSupplierTable} ps " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.ProductTable} p ON ps.{DBNames.ProductSupplierFieldNameProductId} = p.{DBNames.ProductFieldNameId} " +
 		$"LEFT JOIN {DBNames.Database}.{DBNames.SupplierTable} s ON ps.{DBNames.ProductSupplierFieldNameSupplierId} = s.{DBNames.SupplierFieldNameId} " +

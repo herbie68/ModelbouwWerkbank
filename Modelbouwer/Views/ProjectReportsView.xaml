@@ -1,0 +1,609 @@
+<UserControl x:Class="Modelbouwer.Views.ProjectReportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
+             xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProjectReportsViewModel, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="ReportChartBarStyle" TargetType="ProgressBar">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Minimum" Value="0" />
+            <Setter Property="Maximum" Value="1" />
+            <Setter Property="Foreground" Value="#2F80ED" />
+            <Setter Property="Background" Value="#D7DEE8" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid Height="{TemplateBinding Height}"
+                              SnapsToDevicePixels="True">
+                            <Border Margin="0,3,0,0"
+                                    Background="#9AA8B8"
+                                    CornerRadius="3"
+                                    Opacity="0.55" />
+                            <Border x:Name="PART_Track"
+                                    Margin="0,0,0,2"
+                                    CornerRadius="3"
+                                    BorderBrush="#AAB5C3"
+                                    BorderThickness="1">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#F7F9FC" Offset="0" />
+                                        <GradientStop Color="#DCE3EC" Offset="0.48" />
+                                        <GradientStop Color="#B8C4D1" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border x:Name="PART_Indicator"
+                                    Margin="1,1,1,3"
+                                    HorizontalAlignment="Left"
+                                    CornerRadius="2"
+                                    BorderBrush="#1B5FAE"
+                                    BorderThickness="1">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="4"
+                                                      Direction="315"
+                                                      Opacity="0.26"
+                                                      ShadowDepth="2"
+                                                      Color="#394B5F" />
+                                </Border.Effect>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#8FC5FF" Offset="0" />
+                                        <GradientStop Color="#2F80ED" Offset="0.42" />
+                                        <GradientStop Color="#1756AA" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Border Margin="2,2,2,0"
+                                    Height="5"
+                                    VerticalAlignment="Top"
+                                    CornerRadius="2"
+                                    Opacity="0.55">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ReportChartItemTemplate">
+            <Grid Margin="0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="{Binding Name}"
+                           TextTrimming="CharacterEllipsis" />
+                <ProgressBar Grid.Column="1"
+                             Margin="8,0"
+                             Style="{StaticResource ReportChartBarStyle}"
+                             Value="{Binding Percentage}" />
+                <TextBlock Grid.Column="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Text="{Binding Hours, StringFormat={}{0:N2}}" />
+            </Grid>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="PieChartItemsPanelTemplate">
+            <Canvas Width="220" Height="150" />
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="PieChartSliceTemplate">
+            <Grid>
+                <Path Data="{Binding ShadowGeometry}"
+                      Fill="{Binding ShadowFill}"
+                      Opacity="0.72"
+                      Stroke="#506070"
+                      StrokeThickness="0.35" />
+                <Path Data="{Binding SliceGeometry}"
+                      Fill="{Binding Fill}"
+                      Stroke="#FFFFFF"
+                      StrokeThickness="1.2">
+                    <Path.Effect>
+                        <DropShadowEffect BlurRadius="3"
+                                          Direction="315"
+                                          Opacity="0.18"
+                                          ShadowDepth="1"
+                                          Color="#263544" />
+                    </Path.Effect>
+                </Path>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PieChartLegendTemplate">
+            <Grid Margin="0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="76" />
+                    <ColumnDefinition Width="58" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Width="12"
+                        Height="12"
+                        VerticalAlignment="Center"
+                        Background="{Binding Fill}"
+                        BorderBrush="#FFFFFF"
+                        BorderThickness="1" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{Binding Name}"
+                           TextTrimming="CharacterEllipsis" />
+                <TextBlock Grid.Column="2"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Text="{Binding Hours, StringFormat={}{0:N2}}" />
+                <TextBlock Grid.Column="3"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Text="{Binding Percentage, StringFormat={}{0:P1}}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CostChartItemTemplate">
+            <Grid Margin="0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="{Binding Name}"
+                           TextTrimming="CharacterEllipsis" />
+                <ProgressBar Grid.Column="1"
+                             Margin="8,0"
+                             Style="{StaticResource ReportChartBarStyle}"
+                             Value="{Binding Percentage}" />
+                <TextBlock Grid.Column="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Text="{Binding TotalCosts, StringFormat={}{0:N2}}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85" />
+            <RowDefinition Height="92" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    VerticalAlignment="Center"
+                    Background="{DynamicResource HeaderBackground}">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Image Style="{DynamicResource HeaderIconStyle}" Source="{StaticResource Report}" />
+                <TextBlock Style="{DynamicResource HeaderTitle}" Text="{x:Static language:Language.ProjectReportsHeaderTitle}" />
+            </StackPanel>
+            <Canvas>
+                <Path Style="{DynamicResource HeadertTitleLine}" />
+            </Canvas>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{DynamicResource HeaderSubTitle}" Text="{x:Static language:Language.ProjectReportsHeaderSubtitle}" />
+            </StackPanel>
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Margin="10,6">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{StaticResource Projects}" Style="{DynamicResource ImageHeaderGroup}" />
+                    <TextBlock Text="{x:Static language:Language.TimeRegistrationProjectGroupTitle}" Style="{DynamicResource TextBlockBold}" />
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid Margin="6,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="360" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="210" />
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Content="{x:Static language:Language.TimeRegistrationSelectProjectLabel}"
+                       Style="{DynamicResource EntryLabelHorizontal}" />
+                <syncfusion:ComboBoxAdv Grid.Column="1"
+                                        Height="28"
+                                        VerticalAlignment="Center"
+                                        AutoCompleteMode="Suggest"
+                                        DefaultText="{x:Static language:Language.TimeRegistrationDefaultProjectText}"
+                                        DisplayMemberPath="ProjectName"
+                                        ItemsSource="{Binding Projects}"
+                                        SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                                        SelectedValuePath="ProjectId"
+                                        TextSearch.TextPath="ProjectName" />
+                <Button Grid.Column="2"
+                        Width="28"
+                        Height="28"
+                        Command="{Binding RefreshCommand}"
+                        Style="{StaticResource ActionBarButtonStyle}"
+                        ToolTip="{x:Static language:Language.TimeRegistrationRefreshTooltip}">
+                    <Image Style="{DynamicResource ToolBarResetSettingsIcon}" />
+                </Button>
+                <StackPanel Grid.Column="3"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0">
+                    <TextBlock VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               Text="{x:Static language:Language.TimeRegistrationIncludeHoursLabel}" />
+                    <ToggleButton Margin="8,0,0,0"
+                                  Style="{StaticResource ToggleSwitchStyle}"
+                                  IsChecked="{Binding IncludeHoursInCosts, Mode=TwoWay}" />
+                </StackPanel>
+                <TextBlock Grid.Column="4"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="10,0">
+                    <Run Text="{x:Static language:Language.TimeRegistrationHourRatePrefix}" />
+                    <Run Text="{Binding HourRateDisplay, Mode=OneWay}" />
+                </TextBlock>
+                <TextBlock Grid.Column="5"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="10,0"
+                           FontWeight="SemiBold">
+                    <Run Text="{x:Static language:Language.ProjectReportsTotalHoursPrefix}" />
+                    <Run Text="{Binding TotalHours, Mode=OneWay, StringFormat={}{0:N2}}" />
+                    <Run Text="{x:Static language:Language.ProjectReportsTotalCostsPrefix}" />
+                    <Run Text="{Binding TotalReportCosts, Mode=OneWay, StringFormat={}{0:N2}}" />
+                </TextBlock>
+            </Grid>
+        </GroupBox>
+
+        <syncfusion:TabControlExt Grid.Row="2"
+                                  Margin="10,4,10,8"
+                                  SelectedIndex="{Binding SelectedReportTabIndex, Mode=TwoWay}"
+                                  TabStripPlacement="Bottom"
+                                  CloseButtonType="Hide"
+                                  TabItemHeaderStyle="Curve">
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsWeekdayTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="190" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                Width="230"
+                                Height="160"
+                                Padding="4"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166"
+                                         Height="118"
+                                         Margin="0,16,0,0"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Fill="#334456"
+                                         Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding WeekdayPieSlices}"
+                                              ItemTemplate="{StaticResource PieChartSliceTemplate}"
+                                              ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding WeekdayPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
+                    <syncfusion:SfDataGrid Grid.Row="1"
+                                           Margin="0,4"
+                                           AllowEditing="False"
+                                           AllowFiltering="True"
+                                           AllowGrouping="False"
+                                           AllowResizingColumns="True"
+                                           AllowSorting="True"
+                                           AutoGenerateColumns="False"
+                                           ColumnSizer="Star"
+                                           ItemsSource="{Binding WeekdayHours}">
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow
+                                Position="Bottom"
+                                ShowSummaryInRow="False"
+                                Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}"
+                                TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn
+                                        Name="Hours"
+                                        MappingName="Hours"
+                                        SummaryType="DoubleAggregate"
+                                        Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="220" MappingName="Name" HeaderText="{x:Static language:Language.ProjectReportsPeriodHeader}" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="Percentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsMonthTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="190" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthHours}">
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="220" MappingName="Name" HeaderText="{x:Static language:Language.ProjectReportsPeriodHeader}" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="Percentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsYearTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="190" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
+                                <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
+                        </ScrollViewer>
+                    </Grid>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding YearHours}">
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="220" MappingName="Name" HeaderText="{x:Static language:Language.ProjectReportsPeriodHeader}" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="Percentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsMonthYearTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="190" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding MonthYearHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
+                    </ScrollViewer>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthYearHours}">
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="220" MappingName="Name" HeaderText="{x:Static language:Language.ProjectReportsPeriodHeader}" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="Percentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsWorktypeTabTitle}" Image="{StaticResource Worktype}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="220" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding WorktypeHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
+                    </ScrollViewer>
+                    <syncfusion:SfDataGrid Grid.Row="1"
+                                           Margin="0,4"
+                                           AllowEditing="False"
+                                           AllowFiltering="True"
+                                           AllowGrouping="True"
+                                           AllowResizingColumns="True"
+                                           AllowSorting="True"
+                                           AutoGenerateColumns="False"
+                                           ColumnSizer="Star"
+                                           ItemsSource="{Binding WorktypeHours}"
+                                           ShowGroupDropArea="True">
+                        <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                            <syncfusion:GroupColumnDescription ColumnName="WorktypeGroupName" />
+                        </syncfusion:SfDataGrid.GroupColumnDescriptions>
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.CaptionSummaryRow>
+                            <syncfusion:GridSummaryRow
+                                Title="{}{Key}"
+                                ShowSummaryInRow="False"
+                                TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridSummaryRow>
+                        </syncfusion:SfDataGrid.CaptionSummaryRow>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="300" MappingName="Name" HeaderText="{x:Static language:Language.ProjectReportsWorktypeHeader}" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="Percentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsCostAllocationTabTitle}" Image="{StaticResource Report}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="220" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding CostAllocationLines}" ItemTemplate="{StaticResource CostChartItemTemplate}" />
+                    </ScrollViewer>
+                    <syncfusion:SfDataGrid Grid.Row="1"
+                                           Margin="0,4"
+                                           AllowEditing="False"
+                                           AllowFiltering="True"
+                                           AllowGrouping="True"
+                                           AllowResizingColumns="True"
+                                           AllowSorting="True"
+                                           AutoGenerateColumns="False"
+                                           ColumnSizer="Star"
+                                           ItemsSource="{Binding CostAllocationLines}"
+                                           ShowGroupDropArea="True">
+                        <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                            <syncfusion:GroupColumnDescription ColumnName="WorktypeGroupName" />
+                        </syncfusion:SfDataGrid.GroupColumnDescriptions>
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                    <syncfusion:GridSummaryColumn Name="MaterialCosts" MappingName="MaterialCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                    <syncfusion:GridSummaryColumn Name="TimeCosts" MappingName="TimeCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                    <syncfusion:GridSummaryColumn Name="TotalCosts" MappingName="TotalCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.CaptionSummaryRow>
+                            <syncfusion:GridSummaryRow
+                                Title="{}{Key}"
+                                ShowSummaryInRow="False"
+                                TitleColumnCount="1">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="Hours" MappingName="Hours" SummaryType="DoubleAggregate" Format="'{Sum:N2}'" />
+                                    <syncfusion:GridSummaryColumn Name="MaterialCosts" MappingName="MaterialCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                    <syncfusion:GridSummaryColumn Name="TimeCosts" MappingName="TimeCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                    <syncfusion:GridSummaryColumn Name="TotalCosts" MappingName="TotalCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridSummaryRow>
+                        </syncfusion:SfDataGrid.CaptionSummaryRow>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn Width="240" MappingName="WorktypeName" HeaderText="{x:Static language:Language.ProjectReportsWorktypeHeader}" />
+                            <syncfusion:GridNumericColumn Width="110" MappingName="Hours" HeaderText="{x:Static language:Language.ProjectReportsHoursHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridPercentColumn Width="120" MappingName="WorktypePercentage" HeaderText="{x:Static language:Language.ProjectReportsPercentageHeader}" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="140" MappingName="MaterialCosts" HeaderText="{x:Static language:Language.ProjectReportsMaterialCostsHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="140" MappingName="TimeCosts" HeaderText="{x:Static language:Language.ProjectReportsTimeCostsHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="140" MappingName="TotalCosts" HeaderText="{x:Static language:Language.ProjectReportsTotalCostsHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+
+            <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsCostDeclarationsTabTitle}" Image="{StaticResource inventorycheck}" ImageWidth="17" ImageHeight="17">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="220" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding CostDeclarationSummary}" ItemTemplate="{StaticResource CostChartItemTemplate}" />
+                    </ScrollViewer>
+                    <syncfusion:SfDataGrid Grid.Row="1"
+                                           Margin="0,4"
+                                           AllowEditing="False"
+                                           AllowFiltering="True"
+                                           AllowGrouping="True"
+                                           AllowResizingColumns="True"
+                                           AllowSorting="True"
+                                           AutoGenerateColumns="False"
+                                           ColumnSizer="Star"
+                                           ItemsSource="{Binding CostDeclarationLines}"
+                                           ShowGroupDropArea="True">
+                        <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                            <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
+                        </syncfusion:SfDataGrid.GroupColumnDescriptions>
+                        <syncfusion:SfDataGrid.TableSummaryRows>
+                            <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="5">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="TotalCosts" MappingName="TotalCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridTableSummaryRow>
+                        </syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:SfDataGrid.CaptionSummaryRow>
+                            <syncfusion:GridSummaryRow
+                                Title=" {ColumnName}: {Key}"
+                                ShowSummaryInRow="False"
+                                TitleColumnCount="5">
+                                <syncfusion:GridSummaryRow.SummaryColumns>
+                                    <syncfusion:GridSummaryColumn Name="TotalCosts" MappingName="TotalCosts" SummaryType="DoubleAggregate" Format="'{Sum:c}'" />
+                                </syncfusion:GridSummaryRow.SummaryColumns>
+                            </syncfusion:GridSummaryRow>
+                        </syncfusion:SfDataGrid.CaptionSummaryRow>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridDateTimeColumn Width="115" MappingName="UsageDate" HeaderText="{x:Static language:Language.TimeRegistrationDateHeader}" Pattern="ShortDate" />
+                            <syncfusion:GridTextColumn Width="240" MappingName="ProductName" HeaderText="{x:Static language:Language.TimeRegistrationProductHeader}" />
+                            <syncfusion:GridTextColumn Width="200" MappingName="CategoryName" HeaderText="{x:Static language:Language.ProjectReportsCategoryHeader}" />
+                            <syncfusion:GridNumericColumn Width="110" MappingName="Amount" HeaderText="{x:Static language:Language.TimeRegistrationAmountHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="120" MappingName="UnitPrice" HeaderText="{x:Static language:Language.TimeRegistrationUnitPriceHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridNumericColumn Width="130" MappingName="TotalCosts" HeaderText="{x:Static language:Language.TimeRegistrationTotalHeader}" NumberDecimalDigits="2" HorizontalHeaderContentAlignment="Right" />
+                            <syncfusion:GridTextColumn Width="240" MappingName="Comment" HeaderText="{x:Static language:Language.TimeRegistrationCommentHeader}" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
+    </Grid>
+</UserControl>

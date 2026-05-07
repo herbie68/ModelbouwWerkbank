@@ -3232,10 +3232,10 @@
     <value>Importeer uren vanuit een CSV bestand</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Label">
-    <value>Urenoverzicht</value>
+    <value>Overzichten</value>
   </data>
   <data name="navigation.Time.SubItem.Report.Tooltip">
-    <value>Overzicht van de bestede uren voor dit project</value>
+    <value>Overzichten van uren, werksoorten en kosten per project</value>
   </data>
   <data name="OrderDatagridHeaderId">
     <value>ID</value>
@@ -4482,5 +4482,95 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="TimeRegistrationCostsTabTitle" xml:space="preserve">
     <value>Projectkosten</value>
+  </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Label" xml:space="preserve">
+    <value>Uren per periode</value>
+  </data>
+  <data name="navigation.Time.SubItem.PeriodReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van uren per dag, maand en jaar</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Label" xml:space="preserve">
+    <value>Uren per werksoort</value>
+  </data>
+  <data name="navigation.Time.SubItem.WorktypeReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van uren per werksoort</value>
+  </data>
+  <data name="ProjectReportsHeaderTitle" xml:space="preserve">
+    <value>Overzichten tijd en materiaal</value>
+  </data>
+  <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
+    <value>Analyse van bestede uren en materiaal per project</value>
+  </data>
+  <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
+    <value>Totaal uren: </value>
+  </data>
+  <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="ProjectReportsWeekdayTabTitle" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="ProjectReportsMonthTabTitle" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="ProjectReportsYearTabTitle" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+  <data name="ProjectReportsMonthYearTabTitle" xml:space="preserve">
+    <value>Maand/jaar</value>
+  </data>
+  <data name="ProjectReportsWorktypeTabTitle" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="ProjectReportsPeriodHeader" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="ProjectReportsWorktypeHeader" xml:space="preserve">
+    <value>Werksoort</value>
+  </data>
+  <data name="ProjectReportsHoursHeader" xml:space="preserve">
+    <value>Uren</value>
+  </data>
+  <data name="ProjectReportsPercentageHeader" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostAllocationReport.Label" xml:space="preserve">
+    <value>Kosten per bewerking</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostAllocationReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van materiaalkosten verdeeld over werksoorten</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostDeclarationReport.Label" xml:space="preserve">
+    <value>Kosten declaraties</value>
+  </data>
+  <data name="navigation.Time.SubItem.CostDeclarationReport.Tooltip" xml:space="preserve">
+    <value>Overzicht van gebruikte materialen en kosten per project</value>
+  </data>
+  <data name="ProjectReportsCostAllocationTabTitle" xml:space="preserve">
+    <value>Kosten per bewerking</value>
+  </data>
+  <data name="ProjectReportsCostDeclarationsTabTitle" xml:space="preserve">
+    <value>Kosten declaraties</value>
+  </data>
+  <data name="ProjectReportsCategoryHeader" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="ProjectReportsCategoryTotalCostsHeader" xml:space="preserve">
+    <value>Categorietotaal</value>
+  </data>
+  <data name="ProjectReportsAllocatedCostsHeader" xml:space="preserve">
+    <value>Toegerekend</value>
+  </data>
+  <data name="ProjectReportsMaterialCostsHeader" xml:space="preserve">
+    <value>Materiaalkosten</value>
+  </data>
+  <data name="ProjectReportsTimeCostsHeader" xml:space="preserve">
+    <value>Uurkosten</value>
+  </data>
+  <data name="ProjectReportsTotalCostsHeader" xml:space="preserve">
+    <value>Totale kosten</value>
+  </data>
+  <data name="ProjectReportsTotalCostsPrefix" xml:space="preserve">
+    <value>   Kosten: </value>
   </data>
 </root>
