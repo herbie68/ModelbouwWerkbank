@@ -10861,6 +10861,15 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grafiek.
+        /// </summary>
+        public static string ProjectReportsChartViewLabel {
+            get {
+                return ResourceManager.GetString("ProjectReportsChartViewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kosten per bewerking.
         /// </summary>
         public static string ProjectReportsCostAllocationTabTitle {
@@ -10956,6 +10965,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string ProjectReportsPeriodHeader {
             get {
                 return ResourceManager.GetString("ProjectReportsPeriodHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabel.
+        /// </summary>
+        public static string ProjectReportsTableViewLabel {
+            get {
+                return ResourceManager.GetString("ProjectReportsTableViewLabel", resourceCulture);
             }
         }
         

@@ -4498,6 +4498,12 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
     <value>Total hours: </value>
   </data>
+  <data name="ProjectReportsChartViewLabel" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="ProjectReportsTableViewLabel" xml:space="preserve">
+    <value>Table</value>
+  </data>
   <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
     <value>Total</value>
   </data>

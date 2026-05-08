@@ -4498,6 +4498,12 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
     <value>Gesamtstunden: </value>
   </data>
+  <data name="ProjectReportsChartViewLabel" xml:space="preserve">
+    <value>Diagramm</value>
+  </data>
+  <data name="ProjectReportsTableViewLabel" xml:space="preserve">
+    <value>Tabelle</value>
+  </data>
   <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
     <value>Gesamt</value>
   </data>

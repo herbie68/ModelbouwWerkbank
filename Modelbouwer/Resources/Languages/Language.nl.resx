@@ -4498,6 +4498,12 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
     <value>Totaal uren: </value>
   </data>
+  <data name="ProjectReportsChartViewLabel" xml:space="preserve">
+    <value>Grafiek</value>
+  </data>
+  <data name="ProjectReportsTableViewLabel" xml:space="preserve">
+    <value>Tabel</value>
+  </data>
   <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
     <value>Totaal</value>
   </data>
