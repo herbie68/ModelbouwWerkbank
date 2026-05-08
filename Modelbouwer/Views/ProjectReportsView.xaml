@@ -426,6 +426,7 @@
                                      Depth="70"
                                      PerspectiveAngle="55"
                                      EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
                                      Visibility="{Binding WeekdayShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                         <chart:SfChart3D.Legend>
                             <chart:ChartLegend DockPosition="Right"
@@ -434,7 +435,7 @@
                         <chart:DoughnutSeries3D ItemsSource="{Binding WeekdayHours}"
                                                 XBindingPath="Name"
                                                 YBindingPath="Hours"
-                                                DoughnutCoefficient="0.32"
+                                                DoughnutCoefficient="0.95"
                                                 CircleCoefficient="0.78"
                                                 EnableAnimation="True"
                                                 AnimationDuration="0:0:0.7"
@@ -501,6 +502,7 @@
                                      Depth="70"
                                      PerspectiveAngle="55"
                                      EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
                                      Visibility="{Binding MonthShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                         <chart:SfChart3D.Legend>
                             <chart:ChartLegend DockPosition="Bottom"
@@ -510,7 +512,7 @@
                         <chart:DoughnutSeries3D ItemsSource="{Binding MonthHours}"
                                                 XBindingPath="Name"
                                                 YBindingPath="Hours"
-                                                DoughnutCoefficient="0.32"
+                                                DoughnutCoefficient="0.95"
                                                 CircleCoefficient="0.58"
                                                 EnableAnimation="True"
                                                 AnimationDuration="0:0:0.7"
@@ -559,6 +561,7 @@
                                      Depth="70"
                                      PerspectiveAngle="55"
                                      EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
                                      Visibility="{Binding YearShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                         <chart:SfChart3D.Legend>
                             <chart:ChartLegend DockPosition="Bottom"
@@ -568,7 +571,7 @@
                         <chart:DoughnutSeries3D ItemsSource="{Binding YearHours}"
                                                 XBindingPath="Name"
                                                 YBindingPath="Hours"
-                                                DoughnutCoefficient="0.32"
+                                                DoughnutCoefficient="0.95"
                                                 CircleCoefficient="0.62"
                                                 EnableAnimation="True"
                                                 AnimationDuration="0:0:0.7"

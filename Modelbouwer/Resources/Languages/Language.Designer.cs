@@ -11320,6 +11320,141 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beheer regionale voorkeuren, taal en uurtarief.
+        /// </summary>
+        public static string SettingsHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("SettingsHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instellingen.
+        /// </summary>
+        public static string SettingsHeaderTitle {
+            get {
+                return ResourceManager.GetString("SettingsHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vast uurtarief.
+        /// </summary>
+        public static string SettingsHourRateLabel {
+            get {
+                return ResourceManager.GetString("SettingsHourRateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nederlands.
+        /// </summary>
+        public static string SettingsLanguageDutch {
+            get {
+                return ResourceManager.GetString("SettingsLanguageDutch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engels.
+        /// </summary>
+        public static string SettingsLanguageEnglish {
+            get {
+                return ResourceManager.GetString("SettingsLanguageEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duits.
+        /// </summary>
+        public static string SettingsLanguageGerman {
+            get {
+                return ResourceManager.GetString("SettingsLanguageGerman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taal.
+        /// </summary>
+        public static string SettingsLanguageLabel {
+            get {
+                return ResourceManager.GetString("SettingsLanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikersinstellingen.
+        /// </summary>
+        public static string SettingsRegionalGroupTitle {
+            get {
+                return ResourceManager.GetString("SettingsRegionalGroupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engeland.
+        /// </summary>
+        public static string SettingsRegionEngland {
+            get {
+                return ResourceManager.GetString("SettingsRegionEngland", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Europa.
+        /// </summary>
+        public static string SettingsRegionEurope {
+            get {
+                return ResourceManager.GetString("SettingsRegionEurope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regio.
+        /// </summary>
+        public static string SettingsRegionLabel {
+            get {
+                return ResourceManager.GetString("SettingsRegionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verenigde Staten.
+        /// </summary>
+        public static string SettingsRegionUnitedStates {
+            get {
+                return ResourceManager.GetString("SettingsRegionUnitedStates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start de applicatie opnieuw om taal- en regio-instellingen overal toe te passen..
+        /// </summary>
+        public static string SettingsRestartNotice {
+            get {
+                return ResourceManager.GetString("SettingsRestartNotice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instellingen opgeslagen.
+        /// </summary>
+        public static string SettingsSavedMessage {
+            get {
+                return ResourceManager.GetString("SettingsSavedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instellingen konden niet worden opgeslagen.
+        /// </summary>
+        public static string SettingsSaveFailedMessage {
+            get {
+                return ResourceManager.GetString("SettingsSaveFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ingelezen.
         /// </summary>
         public static string StatusRead {

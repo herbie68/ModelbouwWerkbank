@@ -4579,4 +4579,49 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
     <value>Analysis of hours and materials spent per project</value>
   </data>
+  <data name="SettingsHeaderTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsHeaderSubtitle" xml:space="preserve">
+    <value>Manage regional preferences, language and hourly rate</value>
+  </data>
+  <data name="SettingsRegionalGroupTitle" xml:space="preserve">
+    <value>User settings</value>
+  </data>
+  <data name="SettingsRegionLabel" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="SettingsLanguageLabel" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsHourRateLabel" xml:space="preserve">
+    <value>Fixed hourly rate</value>
+  </data>
+  <data name="SettingsRegionEurope" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="SettingsRegionUnitedStates" xml:space="preserve">
+    <value>United States</value>
+  </data>
+  <data name="SettingsRegionEngland" xml:space="preserve">
+    <value>England</value>
+  </data>
+  <data name="SettingsLanguageDutch" xml:space="preserve">
+    <value>Dutch</value>
+  </data>
+  <data name="SettingsLanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="SettingsLanguageGerman" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="SettingsSavedMessage" xml:space="preserve">
+    <value>Settings saved</value>
+  </data>
+  <data name="SettingsSaveFailedMessage" xml:space="preserve">
+    <value>Settings could not be saved</value>
+  </data>
+  <data name="SettingsRestartNotice" xml:space="preserve">
+    <value>Restart the application to apply language and region settings everywhere.</value>
+  </data>
 </root>

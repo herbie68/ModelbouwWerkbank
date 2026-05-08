@@ -4579,4 +4579,49 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ProjectReportsTotalCostsPrefix" xml:space="preserve">
     <value>   Kosten: </value>
   </data>
+  <data name="SettingsHeaderTitle" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SettingsHeaderSubtitle" xml:space="preserve">
+    <value>Beheer regionale voorkeuren, taal en uurtarief</value>
+  </data>
+  <data name="SettingsRegionalGroupTitle" xml:space="preserve">
+    <value>Gebruikersinstellingen</value>
+  </data>
+  <data name="SettingsRegionLabel" xml:space="preserve">
+    <value>Regio</value>
+  </data>
+  <data name="SettingsLanguageLabel" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="SettingsHourRateLabel" xml:space="preserve">
+    <value>Vast uurtarief</value>
+  </data>
+  <data name="SettingsRegionEurope" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="SettingsRegionUnitedStates" xml:space="preserve">
+    <value>Verenigde Staten</value>
+  </data>
+  <data name="SettingsRegionEngland" xml:space="preserve">
+    <value>Engeland</value>
+  </data>
+  <data name="SettingsLanguageDutch" xml:space="preserve">
+    <value>Nederlands</value>
+  </data>
+  <data name="SettingsLanguageEnglish" xml:space="preserve">
+    <value>Engels</value>
+  </data>
+  <data name="SettingsLanguageGerman" xml:space="preserve">
+    <value>Duits</value>
+  </data>
+  <data name="SettingsSavedMessage" xml:space="preserve">
+    <value>Instellingen opgeslagen</value>
+  </data>
+  <data name="SettingsSaveFailedMessage" xml:space="preserve">
+    <value>Instellingen konden niet worden opgeslagen</value>
+  </data>
+  <data name="SettingsRestartNotice" xml:space="preserve">
+    <value>Start de applicatie opnieuw om taal- en regio-instellingen overal toe te passen.</value>
+  </data>
 </root>

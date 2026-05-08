@@ -437,6 +437,19 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadSettingsView()
+	{
+		try
+		{
+			var settingsView = _serviceProvider.GetRequiredService<SettingsView>();
+			CurrentView = settingsView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading SettingsView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
@@ -638,7 +651,8 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			NavigationItem = Language.navigation_Settings_MainItem_Label,
 			NavigationIcon = CreateNavigationImage( "Settings" ),
-			NavigationTooltip = Language.navigation_Settings_MainItem_Tooltip
+			NavigationTooltip = Language.navigation_Settings_MainItem_Tooltip,
+			Command = new SimpleCommand( () => LoadSettingsView() )
 		} );
 		#endregion
 	}

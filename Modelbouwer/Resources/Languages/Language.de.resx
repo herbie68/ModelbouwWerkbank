@@ -4579,4 +4579,49 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
     <value>Analyse der pro Projekt aufgewendeten Stunden und Materialien</value>
   </data>
+  <data name="SettingsHeaderTitle" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SettingsHeaderSubtitle" xml:space="preserve">
+    <value>Regionale Einstellungen, Sprache und Stundensatz verwalten</value>
+  </data>
+  <data name="SettingsRegionalGroupTitle" xml:space="preserve">
+    <value>Benutzereinstellungen</value>
+  </data>
+  <data name="SettingsRegionLabel" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="SettingsLanguageLabel" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="SettingsHourRateLabel" xml:space="preserve">
+    <value>Fester Stundensatz</value>
+  </data>
+  <data name="SettingsRegionEurope" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="SettingsRegionUnitedStates" xml:space="preserve">
+    <value>Vereinigte Staaten</value>
+  </data>
+  <data name="SettingsRegionEngland" xml:space="preserve">
+    <value>England</value>
+  </data>
+  <data name="SettingsLanguageDutch" xml:space="preserve">
+    <value>Niederländisch</value>
+  </data>
+  <data name="SettingsLanguageEnglish" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="SettingsLanguageGerman" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="SettingsSavedMessage" xml:space="preserve">
+    <value>Einstellungen gespeichert</value>
+  </data>
+  <data name="SettingsSaveFailedMessage" xml:space="preserve">
+    <value>Einstellungen konnten nicht gespeichert werden</value>
+  </data>
+  <data name="SettingsRestartNotice" xml:space="preserve">
+    <value>Starten Sie die Anwendung neu, um Sprach- und Regionseinstellungen überall anzuwenden.</value>
+  </data>
 </root>
