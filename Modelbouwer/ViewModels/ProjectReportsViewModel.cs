@@ -163,7 +163,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 		{
 			var label = monthNames.TryGetValue( month, out var monthName ) ? monthName : month.ToString( CultureInfo.CurrentCulture );
 			var points = years
-				.Select( year => new ChartPoint( year.ToString( CultureInfo.CurrentCulture ), rows.Where( item => item.Year == year && item.Month == month ).Sum( item => item.Hours ) ) )
+				.Select( year => CreateHoursChartPoint( year.ToString( CultureInfo.CurrentCulture ), rows.Where( item => item.Year == year && item.Month == month ).Sum( item => item.Hours ) ) )
 				.ToList();
 			series.Add( CreateStackingColumnSeries( label, points, colors[index % colors.Length] ) );
 		}
@@ -194,7 +194,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 		foreach ( var ( worktype, index ) in worktypes.Select( ( worktype, index ) => ( worktype, index ) ) )
 		{
 			var points = groups
-				.Select( group => new ChartPoint( group, rows
+				.Select( group => CreateHoursChartPoint( group, rows
 					.Where( item => item.Name == worktype && ( string.IsNullOrWhiteSpace( item.WorktypeGroupName ) ? item.Name : item.WorktypeGroupName ) == group )
 					.Sum( item => item.Hours ) ) )
 				.ToList();
@@ -226,8 +226,8 @@ public partial class ProjectReportsViewModel : ObservableObject
 
 		var series = new ChartSeriesCollection
 		{
-			CreateStackingColumnSeries( Lang.ProjectReportsMaterialCostsHeader, groups.Select( ( group, index ) => new ChartPoint( group, materialValues[index] ) ).ToList(), Color.FromRgb( 47, 128, 237 ) ),
-			CreateStackingColumnSeries( Lang.ProjectReportsTimeCostsHeader, groups.Select( ( group, index ) => new ChartPoint( group, timeValues[index] ) ).ToList(), Color.FromRgb( 39, 174, 96 ) )
+			CreateStackingColumnSeries( Lang.ProjectReportsMaterialCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, materialValues[index] ) ).ToList(), Color.FromRgb( 47, 128, 237 ) ),
+			CreateStackingColumnSeries( Lang.ProjectReportsTimeCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, timeValues[index] ) ).ToList(), Color.FromRgb( 39, 174, 96 ) )
 		};
 
 		return series;
@@ -258,7 +258,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 		foreach ( var ( product, index ) in topProducts.Select( ( product, index ) => ( product, index ) ) )
 		{
 			var points = categories
-				.Select( category => new ChartPoint( category, rows.Where( item => item.CategoryName == category && item.ProductName == product ).Sum( item => item.TotalCosts ) ) )
+				.Select( category => CreateCurrencyChartPoint( category, rows.Where( item => item.CategoryName == category && item.ProductName == product ).Sum( item => item.TotalCosts ) ) )
 				.ToList();
 			series.Add( CreateStackingColumnSeries( product, points, colors[index % colors.Length] ) );
 		}
@@ -269,7 +269,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 
 		if ( otherValues.Any( value => value > 0 ) )
 		{
-			series.Add( CreateStackingColumnSeries( "Overig", categories.Select( ( category, index ) => new ChartPoint( category, otherValues[index] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
+			series.Add( CreateStackingColumnSeries( "Overig", categories.Select( ( category, index ) => CreateCurrencyChartPoint( category, otherValues[index] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
 		}
 
 		return series;
@@ -316,7 +316,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 		var value = new FrameworkElementFactory( typeof( TextBlock ) );
 		value.SetValue( TextBlock.FontWeightProperty, FontWeights.SemiBold );
 		value.SetValue( TextBlock.ForegroundProperty, new SolidColorBrush( Color.FromRgb( 31, 53, 80 ) ) );
-		value.SetBinding( TextBlock.TextProperty, new Binding( "Item.Value" ) { StringFormat = "{0:N2}" } );
+		value.SetBinding( TextBlock.TextProperty, new Binding( "Item.DisplayValue" ) );
 		stack.AppendChild( value );
 
 		border.AppendChild( stack );
@@ -339,5 +339,11 @@ public partial class ProjectReportsViewModel : ObservableObject
 		Color.FromRgb( 0, 150, 136 )
 	];
 
-	private sealed record ChartPoint( string Category, double Value );
+	private static ChartPoint CreateHoursChartPoint( string category, double value ) =>
+		new( category, value, value.ToString( "N2", CultureInfo.CurrentCulture ) );
+
+	private static ChartPoint CreateCurrencyChartPoint( string category, double value ) =>
+		new( category, value, value.ToString( "C2", CultureInfo.CurrentCulture ) );
+
+	private sealed record ChartPoint( string Category, double Value, string DisplayValue );
 }

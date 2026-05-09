@@ -31,6 +31,7 @@ public partial class App : Application
 		services.AddSingleton<CountryService>();
 		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<GenericDataService>();
+		services.AddSingleton<GitHubReleaseHistoryService>();
 		services.AddSingleton<ProductService>();
 		services.AddSingleton<ProjectService>();
 		services.AddSingleton<SettingsService>();
@@ -44,6 +45,7 @@ public partial class App : Application
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
+		services.AddTransient<AboutPageViewModel>();
 		services.AddTransient<CategoryPageViewModel>();
 		services.AddTransient<ContactTypePageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
@@ -66,6 +68,7 @@ public partial class App : Application
 
 		// Register Views
 		services.AddTransient<BrandView>();
+		services.AddTransient<AboutView>();
 		services.AddTransient<CategoryView>();
 		services.AddTransient<ContactTypeView>();
 		services.AddTransient<CountryView>();
@@ -133,7 +136,7 @@ public partial class App : Application
 
 			var settingsService = _host.Services.GetRequiredService<SettingsService>();
 			await settingsService.LoadSettingsAsync();
-			SetCurrentCulture( settingsService.Settings.Culture, settingsService.Settings.Language );
+			ApplyCulture( settingsService.Settings.Culture, settingsService.Settings.Language );
 
 			_ = _host.Services.GetRequiredService<NavigationViewModel>();
 			var mainWindow = _host.Services.GetRequiredService<MainWindow>();
@@ -174,6 +177,9 @@ public partial class App : Application
 
 		return service;
 	}
+
+	public static void ApplyCulture( string? cultureName, string? language = null ) =>
+		SetCurrentCulture( cultureName, language );
 
 	private static void SetCurrentCulture( string? cultureName, string? language = null )
 	{

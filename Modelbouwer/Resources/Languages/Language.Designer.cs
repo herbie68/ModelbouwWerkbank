@@ -61,6 +61,141 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commitdetails konden niet worden geladen.
+        /// </summary>
+        public static string AboutCommitDetailFailed {
+            get {
+                return ResourceManager.GetString("AboutCommitDetailFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modelbouwer Werkbank ondersteunt het beheren van modelbouwprojecten, voorraad, leveranciers, tijdregistratie en rapportages in een centrale werkruimte..
+        /// </summary>
+        public static string AboutDescription {
+            get {
+                return ResourceManager.GetString("AboutDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auteur.
+        /// </summary>
+        public static string AboutGridAuthorHeader {
+            get {
+                return ResourceManager.GetString("AboutGridAuthorHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commit tekst.
+        /// </summary>
+        public static string AboutGridCommitTextHeader {
+            get {
+                return ResourceManager.GetString("AboutGridCommitTextHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum.
+        /// </summary>
+        public static string AboutGridDateHeader {
+            get {
+                return ResourceManager.GetString("AboutGridDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicatie-informatie en release historie.
+        /// </summary>
+        public static string AboutHeaderSubtitle {
+            get {
+                return ResourceManager.GetString("AboutHeaderSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Over Modelbouwer.
+        /// </summary>
+        public static string AboutHeaderTitle {
+            get {
+                return ResourceManager.GetString("AboutHeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release historie kon niet worden geladen.
+        /// </summary>
+        public static string AboutLoadFailed {
+            get {
+                return ResourceManager.GetString("AboutLoadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commitdetails worden geladen....
+        /// </summary>
+        public static string AboutLoadingCommitDetail {
+            get {
+                return ResourceManager.GetString("AboutLoadingCommitDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release historie wordt geladen....
+        /// </summary>
+        public static string AboutLoadingCommits {
+            get {
+                return ResourceManager.GetString("AboutLoadingCommits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meer laden.
+        /// </summary>
+        public static string AboutLoadMoreButton {
+            get {
+                return ResourceManager.GetString("AboutLoadMoreButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Over Modelbouwer.
+        /// </summary>
+        public static string AboutNavigationLabel {
+            get {
+                return ResourceManager.GetString("AboutNavigationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informatie over Modelbouwer en de release historie.
+        /// </summary>
+        public static string AboutNavigationTooltip {
+            get {
+                return ResourceManager.GetString("AboutNavigationTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Er zijn geen extra commits gevonden..
+        /// </summary>
+        public static string AboutNoMoreCommits {
+            get {
+                return ResourceManager.GetString("AboutNoMoreCommits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release historie.
+        /// </summary>
+        public static string AboutReleaseHistoryTitle {
+            get {
+                return ResourceManager.GetString("AboutReleaseHistoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HN Software Development.
         /// </summary>
         public static string AppDeveloper {
@@ -1560,6 +1695,15 @@ namespace Modelbouwer.Resources.Languages {
         public static string generalAmount {
             get {
                 return ResourceManager.GetString("generalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sluiten.
+        /// </summary>
+        public static string generalButtonClose {
+            get {
+                return ResourceManager.GetString("generalButtonClose", resourceCulture);
             }
         }
         

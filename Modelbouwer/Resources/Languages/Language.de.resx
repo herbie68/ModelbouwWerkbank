@@ -1281,17 +1281,17 @@
   <data name="mainRibbonSaveTooltip">
     <value>Speichern</value>
   </data>
-  <data name="mainRibbonSettingsHeader">
-    <value>Institut</value>
+  <data name="mainRibbonSettingsHeader" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
   <data name="mainRibbonSettingsTooltip">
     <value>Anwendungseinstellungen</value>
   </data>
-  <data name="mainRibbonTabConfigButtonLabel">
-    <value>Institutionen</value>
+  <data name="mainRibbonTabConfigButtonLabel" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
-  <data name="mainRibbonTabConfigHeader">
-    <value>Institutionen</value>
+  <data name="mainRibbonTabConfigHeader" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
   <data name="mainRibbonTabManageHeader">
     <value>Management</value>
@@ -3207,8 +3207,8 @@
   <data name="navigation.Resources.SubItem.Worktype.Tooltip">
     <value>Verwaltung der Arbeitsarten</value>
   </data>
-  <data name="navigation.Settings.MainItem.Label">
-    <value>Institutionen</value>
+  <data name="navigation.Settings.MainItem.Label" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
   <data name="navigation.Settings.MainItem.Tooltip">
     <value>Benutzereinstellungen</value>
@@ -4623,5 +4623,53 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   </data>
   <data name="SettingsRestartNotice" xml:space="preserve">
     <value>Starten Sie die Anwendung neu, um Sprach- und Regionseinstellungen überall anzuwenden.</value>
+  </data>
+  <data name="AboutNavigationLabel" xml:space="preserve">
+    <value>Über Modelbouwer</value>
+  </data>
+  <data name="AboutNavigationTooltip" xml:space="preserve">
+    <value>Informationen über Modelbouwer und die Release-Historie</value>
+  </data>
+  <data name="AboutHeaderTitle" xml:space="preserve">
+    <value>Über Modelbouwer</value>
+  </data>
+  <data name="AboutHeaderSubtitle" xml:space="preserve">
+    <value>Anwendungsinformationen und Release-Historie</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Modelbouwer Werkbank unterstützt die Verwaltung von Modellbauprojekten, Lagerbestand, Lieferanten, Zeiterfassung und Berichten in einem zentralen Arbeitsbereich.</value>
+  </data>
+  <data name="AboutReleaseHistoryTitle" xml:space="preserve">
+    <value>Release-Historie</value>
+  </data>
+  <data name="AboutLoadMoreButton" xml:space="preserve">
+    <value>Mehr laden</value>
+  </data>
+  <data name="AboutGridDateHeader" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="AboutGridAuthorHeader" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="AboutGridCommitTextHeader" xml:space="preserve">
+    <value>Commit-Text</value>
+  </data>
+  <data name="AboutLoadingCommits" xml:space="preserve">
+    <value>Release-Historie wird geladen...</value>
+  </data>
+  <data name="AboutNoMoreCommits" xml:space="preserve">
+    <value>Es wurden keine weiteren Commits gefunden.</value>
+  </data>
+  <data name="AboutLoadFailed" xml:space="preserve">
+    <value>Release-Historie konnte nicht geladen werden</value>
+  </data>
+  <data name="AboutLoadingCommitDetail" xml:space="preserve">
+    <value>Commitdetails werden geladen...</value>
+  </data>
+  <data name="AboutCommitDetailFailed" xml:space="preserve">
+    <value>Commitdetails konnten nicht geladen werden</value>
+  </data>
+  <data name="generalButtonClose" xml:space="preserve">
+    <value>Schließen</value>
   </data>
 </root>

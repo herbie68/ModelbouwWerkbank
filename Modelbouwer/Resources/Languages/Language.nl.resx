@@ -4624,4 +4624,52 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="SettingsRestartNotice" xml:space="preserve">
     <value>Start de applicatie opnieuw om taal- en regio-instellingen overal toe te passen.</value>
   </data>
+  <data name="AboutNavigationLabel" xml:space="preserve">
+    <value>Over Modelbouwer</value>
+  </data>
+  <data name="AboutNavigationTooltip" xml:space="preserve">
+    <value>Informatie over Modelbouwer en de release historie</value>
+  </data>
+  <data name="AboutHeaderTitle" xml:space="preserve">
+    <value>Over Modelbouwer</value>
+  </data>
+  <data name="AboutHeaderSubtitle" xml:space="preserve">
+    <value>Applicatie-informatie en release historie</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Modelbouwer Werkbank ondersteunt het beheren van modelbouwprojecten, voorraad, leveranciers, tijdregistratie en rapportages in een centrale werkruimte.</value>
+  </data>
+  <data name="AboutReleaseHistoryTitle" xml:space="preserve">
+    <value>Release historie</value>
+  </data>
+  <data name="AboutLoadMoreButton" xml:space="preserve">
+    <value>Meer laden</value>
+  </data>
+  <data name="AboutGridDateHeader" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="AboutGridAuthorHeader" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="AboutGridCommitTextHeader" xml:space="preserve">
+    <value>Commit tekst</value>
+  </data>
+  <data name="AboutLoadingCommits" xml:space="preserve">
+    <value>Release historie wordt geladen...</value>
+  </data>
+  <data name="AboutNoMoreCommits" xml:space="preserve">
+    <value>Er zijn geen extra commits gevonden.</value>
+  </data>
+  <data name="AboutLoadFailed" xml:space="preserve">
+    <value>Release historie kon niet worden geladen</value>
+  </data>
+  <data name="AboutLoadingCommitDetail" xml:space="preserve">
+    <value>Commitdetails worden geladen...</value>
+  </data>
+  <data name="AboutCommitDetailFailed" xml:space="preserve">
+    <value>Commitdetails konden niet worden geladen</value>
+  </data>
+  <data name="generalButtonClose" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
 </root>

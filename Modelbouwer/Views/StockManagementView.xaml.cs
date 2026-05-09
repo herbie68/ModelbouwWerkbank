@@ -14,6 +14,7 @@ public partial class StockManagementView : UserControl
 	public StockManagementView( StockManagementPageViewModel viewModel, SettingsService settingsService )
 	{
 		InitializeComponent();
+		ApplyCurrentCultureFormatting();
 
 		_settingsService = settingsService ??
 		throw new ArgumentNullException( nameof( settingsService ) );
@@ -38,6 +39,7 @@ public partial class StockManagementView : UserControl
 			};
 
 			await LoadGridLayoutAsync( dataGrid );
+			ApplyCurrentCultureFormatting();
 		}
 		catch ( Exception ex )
 		{
@@ -140,5 +142,18 @@ public partial class StockManagementView : UserControl
 			DeserializeFiltering = true,
 			DeserializeSorting = true
 		} );
+	}
+
+	private void ApplyCurrentCultureFormatting()
+	{
+		var culture = CultureInfo.CurrentCulture;
+		Language = System.Windows.Markup.XmlLanguage.GetLanguage( culture.IetfLanguageTag );
+
+		foreach ( var column in dataGrid.Columns.OfType<GridNumericColumn>() )
+		{
+			column.NumberDecimalSeparator = culture.NumberFormat.NumberDecimalSeparator;
+			column.NumberGroupSeparator = culture.NumberFormat.NumberGroupSeparator;
+			column.NumberGroupSizes = new System.Windows.Media.Int32Collection( culture.NumberFormat.NumberGroupSizes );
+		}
 	}
 }

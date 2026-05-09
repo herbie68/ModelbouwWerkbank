@@ -123,7 +123,7 @@
                     Width="120"
                     HorizontalContentAlignment="Right"
                     Style="{DynamicResource DefaultTextBox}"
-                    Text="{Binding HourRate, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat={}{0:N2}}" />
+                    Text="{Binding HourRateText, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
 
                 <TextBlock
                     Grid.Row="3"

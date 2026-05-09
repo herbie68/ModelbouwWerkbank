@@ -181,7 +181,8 @@
                             <Button Width="130" Command="{Binding DeleteOrderLineCommand}" Content="{x:Static language:Language.StockOrderDeleteLineButton}" />
                         </StackPanel>
 
-                        <syncfusion:SfDataGrid Grid.Row="1"
+                        <syncfusion:SfDataGrid x:Name="OrderLinesGrid"
+                                               Grid.Row="1"
                                                ItemsSource="{Binding VisibleOrderLines}"
                                                SelectedItem="{Binding SelectedOrderLine, Mode=TwoWay}"
                                                AutoGenerateColumns="False"
@@ -252,7 +253,8 @@
                     </Button>
                 </StackPanel>
 
-                <syncfusion:SfDataGrid Grid.Row="1"
+                <syncfusion:SfDataGrid x:Name="AvailableProductsGrid"
+                                       Grid.Row="1"
                                        ItemsSource="{Binding AvailableProducts}"
                                        SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
                                        AutoGenerateColumns="False"

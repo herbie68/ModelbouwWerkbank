@@ -21,12 +21,12 @@ public class CaptionSummaryRowConverter : IValueConverter
 					{
 						if ( columnName == "ProductInventoryValue" )
 						{
-							return string.Format( "{0:c}", item.AggregateValues.Values.ToArray() );
+							return FormatCurrencySummary( item, culture );
 						}
 
 						if ( columnName == "ProductVirtualInventoryValue" )
 						{
-							return string.Format( "{0:c}", item.AggregateValues.Values.ToArray() );
+							return FormatCurrencySummary( item, culture );
 						}
 					}
 				}
@@ -37,4 +37,10 @@ public class CaptionSummaryRowConverter : IValueConverter
 	}
 
 	public object? ConvertBack( object value, Type targetType, object parameter, CultureInfo culture ) => null;
+
+	private static string FormatCurrencySummary( SummaryValue item, CultureInfo culture )
+	{
+		var summaryValue = item.AggregateValues.Values.FirstOrDefault();
+		return string.Format( culture, "{0:C2}", summaryValue );
+	}
 }

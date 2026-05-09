@@ -13,6 +13,7 @@ public partial class SettingsPageViewModel : ObservableObject
 	[ObservableProperty] private string selectedRegion = "nl-NL";
 	[ObservableProperty] private string selectedLanguage = "NL";
 	[ObservableProperty] private double hourRate = 15.00;
+	[ObservableProperty] private string hourRateText = "15,00";
 	[ObservableProperty] private bool hasUnsavedChanges;
 	[ObservableProperty] private bool isSaving;
 	[ObservableProperty] private string statusMessage = string.Empty;
@@ -48,6 +49,7 @@ public partial class SettingsPageViewModel : ObservableObject
 			SelectedRegion = NormalizeRegion( _settingsService.Settings.Culture );
 			SelectedLanguage = NormalizeLanguage( _settingsService.Settings.Language );
 			HourRate = _settingsService.Settings.HourRate;
+			HourRateText = SettingsService.FormatSettingsDouble( HourRate );
 			StatusMessage = string.Empty;
 			HasUnsavedChanges = false;
 		}
@@ -64,7 +66,11 @@ public partial class SettingsPageViewModel : ObservableObject
 		{
 			var normalizedRegion = NormalizeRegion( SelectedRegion );
 			var normalizedLanguage = NormalizeLanguage( SelectedLanguage );
+			if ( SettingsService.TryParseSettingsDouble( HourRateText, out var parsedHourRate ) )
+				HourRate = parsedHourRate;
+
 			var normalizedHourRate = SettingsService.FormatSettingsDouble( HourRate );
+			HourRateText = normalizedHourRate;
 
 			await _settingsService.SaveSettingAsync( "Culture", normalizedRegion );
 			await _settingsService.SaveSettingAsync( "Language", normalizedLanguage );
@@ -74,8 +80,10 @@ public partial class SettingsPageViewModel : ObservableObject
 			_settingsService.Settings.Language = normalizedLanguage;
 			_settingsService.Settings.HourRate = HourRate;
 
+			App.ApplyCulture( normalizedRegion, normalizedLanguage );
 			HasUnsavedChanges = false;
 			StatusMessage = Lang.SettingsSavedMessage;
+			_settingsService.NotifySettingsChanged();
 		}
 		catch ( Exception ex )
 		{
@@ -90,6 +98,7 @@ public partial class SettingsPageViewModel : ObservableObject
 	partial void OnSelectedRegionChanged( string value ) => MarkDirty();
 	partial void OnSelectedLanguageChanged( string value ) => MarkDirty();
 	partial void OnHourRateChanged( double value ) => MarkDirty();
+	partial void OnHourRateTextChanged( string value ) => MarkDirty();
 
 	private void MarkDirty()
 	{
