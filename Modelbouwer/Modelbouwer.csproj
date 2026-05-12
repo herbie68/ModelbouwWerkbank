@@ -73,6 +73,7 @@
   <ItemGroup>
     <None Update="Resources\Config\modelbouwer.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
