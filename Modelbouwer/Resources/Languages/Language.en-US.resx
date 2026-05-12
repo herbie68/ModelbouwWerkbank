@@ -1281,17 +1281,17 @@
   <data name="mainRibbonSaveTooltip">
     <value>Save</value>
   </data>
-  <data name="mainRibbonSettingsHeader">
-    <value>Institute</value>
+  <data name="mainRibbonSettingsHeader" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="mainRibbonSettingsTooltip">
     <value>Application Settings</value>
   </data>
-  <data name="mainRibbonTabConfigButtonLabel">
-    <value>Institutions</value>
+  <data name="mainRibbonTabConfigButtonLabel" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="mainRibbonTabConfigHeader">
-    <value>Institutions</value>
+  <data name="mainRibbonTabConfigHeader" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="mainRibbonTabManageHeader">
     <value>Management</value>
@@ -3207,8 +3207,8 @@
   <data name="navigation.Resources.SubItem.Worktype.Tooltip">
     <value>Management of the types of work</value>
   </data>
-  <data name="navigation.Settings.MainItem.Label">
-    <value>Institutions</value>
+  <data name="navigation.Settings.MainItem.Label" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="navigation.Settings.MainItem.Tooltip">
     <value>User settings</value>
@@ -4498,6 +4498,12 @@ In order to be able to add a new time registration, a date and project must firs
   <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
     <value>Total hours: </value>
   </data>
+  <data name="ProjectReportsChartViewLabel" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="ProjectReportsTableViewLabel" xml:space="preserve">
+    <value>Table</value>
+  </data>
   <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
     <value>Total</value>
   </data>
@@ -4572,5 +4578,98 @@ In order to be able to add a new time registration, a date and project must firs
   </data>
   <data name="ProjectReportsHeaderSubtitle" xml:space="preserve">
     <value>Analysis of hours and materials spent per project</value>
+  </data>
+  <data name="SettingsHeaderTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsHeaderSubtitle" xml:space="preserve">
+    <value>Manage regional preferences, language and hourly rate</value>
+  </data>
+  <data name="SettingsRegionalGroupTitle" xml:space="preserve">
+    <value>User settings</value>
+  </data>
+  <data name="SettingsRegionLabel" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="SettingsLanguageLabel" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsHourRateLabel" xml:space="preserve">
+    <value>Fixed hourly rate</value>
+  </data>
+  <data name="SettingsRegionEurope" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="SettingsRegionUnitedStates" xml:space="preserve">
+    <value>United States</value>
+  </data>
+  <data name="SettingsRegionEngland" xml:space="preserve">
+    <value>England</value>
+  </data>
+  <data name="SettingsLanguageDutch" xml:space="preserve">
+    <value>Dutch</value>
+  </data>
+  <data name="SettingsLanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="SettingsLanguageGerman" xml:space="preserve">
+    <value>German</value>
+  </data>
+  <data name="SettingsSavedMessage" xml:space="preserve">
+    <value>Settings saved</value>
+  </data>
+  <data name="SettingsSaveFailedMessage" xml:space="preserve">
+    <value>Settings could not be saved</value>
+  </data>
+  <data name="SettingsRestartNotice" xml:space="preserve">
+    <value>Restart the application to apply language and region settings everywhere.</value>
+  </data>
+  <data name="AboutNavigationLabel" xml:space="preserve">
+    <value>About Modelbouwer</value>
+  </data>
+  <data name="AboutNavigationTooltip" xml:space="preserve">
+    <value>Information about Modelbouwer and the release history</value>
+  </data>
+  <data name="AboutHeaderTitle" xml:space="preserve">
+    <value>About Modelbouwer</value>
+  </data>
+  <data name="AboutHeaderSubtitle" xml:space="preserve">
+    <value>Application information and release history</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Modelbouwer Werkbank supports managing scale modelling projects, inventory, suppliers, time registration, and reports in one central workspace.</value>
+  </data>
+  <data name="AboutReleaseHistoryTitle" xml:space="preserve">
+    <value>Release history</value>
+  </data>
+  <data name="AboutLoadMoreButton" xml:space="preserve">
+    <value>Load more</value>
+  </data>
+  <data name="AboutGridDateHeader" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="AboutGridAuthorHeader" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="AboutGridCommitTextHeader" xml:space="preserve">
+    <value>Commit text</value>
+  </data>
+  <data name="AboutLoadingCommits" xml:space="preserve">
+    <value>Loading release history...</value>
+  </data>
+  <data name="AboutNoMoreCommits" xml:space="preserve">
+    <value>No additional commits were found.</value>
+  </data>
+  <data name="AboutLoadFailed" xml:space="preserve">
+    <value>Release history could not be loaded</value>
+  </data>
+  <data name="AboutLoadingCommitDetail" xml:space="preserve">
+    <value>Loading commit details...</value>
+  </data>
+  <data name="AboutCommitDetailFailed" xml:space="preserve">
+    <value>Commit details could not be loaded</value>
+  </data>
+  <data name="generalButtonClose" xml:space="preserve">
+    <value>Close</value>
   </data>
 </root>

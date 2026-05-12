@@ -13,8 +13,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <AssemblyVersion>26.5.44.0</AssemblyVersion>
-    <FileVersion>26.5.44.0</FileVersion>
+    <AssemblyVersion>26.5.81.0</AssemblyVersion>
+    <FileVersion>26.5.81.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,6 +38,7 @@
     <PackageReference Include="Syncfusion.GridExcelExport.Wpf" Version="32.1.21" />
     <PackageReference Include="Syncfusion.Licensing" Version="32.1.21" />
     <PackageReference Include="Syncfusion.PivotTableExport.Wpf" Version="32.1.21" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="32.1.21" />
     <PackageReference Include="Syncfusion.SfGrid.WPF" Version="32.1.21" />
     <PackageReference Include="Syncfusion.SfNavigationDrawer.WPF" Version="32.1.21" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="32.1.21" />
@@ -72,6 +73,7 @@
   <ItemGroup>
     <None Update="Resources\Config\modelbouwer.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 

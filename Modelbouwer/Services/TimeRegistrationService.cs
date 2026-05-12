@@ -176,11 +176,8 @@ public class TimeRegistrationService : ITimeRegistrationService
 	public async Task<double> GetHourRateAsync()
 	{
 		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameHourRate );
-		if ( double.TryParse( value, NumberStyles.Any, CultureInfo.CurrentCulture, out var currentRate ) )
-			return currentRate;
-
-		if ( double.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out var invariantRate ) )
-			return invariantRate;
+		if ( SettingsService.TryParseSettingsDouble( value, out var hourRate ) )
+			return hourRate;
 
 		return 0;
 	}

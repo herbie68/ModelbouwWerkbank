@@ -4504,6 +4504,12 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="ProjectReportsTotalHoursPrefix" xml:space="preserve">
     <value>Totaal uren: </value>
   </data>
+  <data name="ProjectReportsChartViewLabel" xml:space="preserve">
+    <value>Grafiek</value>
+  </data>
+  <data name="ProjectReportsTableViewLabel" xml:space="preserve">
+    <value>Tabel</value>
+  </data>
   <data name="ProjectReportsDataGridSummaryText" xml:space="preserve">
     <value>Totaal</value>
   </data>
@@ -4572,5 +4578,98 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   </data>
   <data name="ProjectReportsTotalCostsPrefix" xml:space="preserve">
     <value>   Kosten: </value>
+  </data>
+  <data name="SettingsHeaderTitle" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SettingsHeaderSubtitle" xml:space="preserve">
+    <value>Beheer regionale voorkeuren, taal en uurtarief</value>
+  </data>
+  <data name="SettingsRegionalGroupTitle" xml:space="preserve">
+    <value>Gebruikersinstellingen</value>
+  </data>
+  <data name="SettingsRegionLabel" xml:space="preserve">
+    <value>Regio</value>
+  </data>
+  <data name="SettingsLanguageLabel" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="SettingsHourRateLabel" xml:space="preserve">
+    <value>Vast uurtarief</value>
+  </data>
+  <data name="SettingsRegionEurope" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="SettingsRegionUnitedStates" xml:space="preserve">
+    <value>Verenigde Staten</value>
+  </data>
+  <data name="SettingsRegionEngland" xml:space="preserve">
+    <value>Engeland</value>
+  </data>
+  <data name="SettingsLanguageDutch" xml:space="preserve">
+    <value>Nederlands</value>
+  </data>
+  <data name="SettingsLanguageEnglish" xml:space="preserve">
+    <value>Engels</value>
+  </data>
+  <data name="SettingsLanguageGerman" xml:space="preserve">
+    <value>Duits</value>
+  </data>
+  <data name="SettingsSavedMessage" xml:space="preserve">
+    <value>Instellingen opgeslagen</value>
+  </data>
+  <data name="SettingsSaveFailedMessage" xml:space="preserve">
+    <value>Instellingen konden niet worden opgeslagen</value>
+  </data>
+  <data name="SettingsRestartNotice" xml:space="preserve">
+    <value>Start de applicatie opnieuw om taal- en regio-instellingen overal toe te passen.</value>
+  </data>
+  <data name="AboutNavigationLabel" xml:space="preserve">
+    <value>Over Modelbouwer</value>
+  </data>
+  <data name="AboutNavigationTooltip" xml:space="preserve">
+    <value>Informatie over Modelbouwer en de release historie</value>
+  </data>
+  <data name="AboutHeaderTitle" xml:space="preserve">
+    <value>Over Modelbouwer</value>
+  </data>
+  <data name="AboutHeaderSubtitle" xml:space="preserve">
+    <value>Applicatie-informatie en release historie</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Modelbouwer Werkbank ondersteunt het beheren van modelbouwprojecten, voorraad, leveranciers, tijdregistratie en rapportages in een centrale werkruimte.</value>
+  </data>
+  <data name="AboutReleaseHistoryTitle" xml:space="preserve">
+    <value>Release historie</value>
+  </data>
+  <data name="AboutLoadMoreButton" xml:space="preserve">
+    <value>Meer laden</value>
+  </data>
+  <data name="AboutGridDateHeader" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="AboutGridAuthorHeader" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="AboutGridCommitTextHeader" xml:space="preserve">
+    <value>Commit tekst</value>
+  </data>
+  <data name="AboutLoadingCommits" xml:space="preserve">
+    <value>Release historie wordt geladen...</value>
+  </data>
+  <data name="AboutNoMoreCommits" xml:space="preserve">
+    <value>Er zijn geen extra commits gevonden.</value>
+  </data>
+  <data name="AboutLoadFailed" xml:space="preserve">
+    <value>Release historie kon niet worden geladen</value>
+  </data>
+  <data name="AboutLoadingCommitDetail" xml:space="preserve">
+    <value>Commitdetails worden geladen...</value>
+  </data>
+  <data name="AboutCommitDetailFailed" xml:space="preserve">
+    <value>Commitdetails konden niet worden geladen</value>
+  </data>
+  <data name="generalButtonClose" xml:space="preserve">
+    <value>Sluiten</value>
   </data>
 </root>

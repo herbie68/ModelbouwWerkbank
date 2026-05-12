@@ -31,6 +31,7 @@ public partial class App : Application
 		services.AddSingleton<CountryService>();
 		services.AddSingleton<CurrencyService>();
 		services.AddSingleton<GenericDataService>();
+		services.AddSingleton<GitHubReleaseHistoryService>();
 		services.AddSingleton<ProductService>();
 		services.AddSingleton<ProjectService>();
 		services.AddSingleton<SettingsService>();
@@ -44,6 +45,7 @@ public partial class App : Application
 
 		// Register ViewModels
 		services.AddTransient<BrandPageViewModel>();
+		services.AddTransient<AboutPageViewModel>();
 		services.AddTransient<CategoryPageViewModel>();
 		services.AddTransient<ContactTypePageViewModel>();
 		services.AddTransient<CountryPageViewModel>();
@@ -51,6 +53,7 @@ public partial class App : Application
 		services.AddTransient<ProductPageViewModel>();
 		services.AddTransient<ProjectPageViewModel>();
 		services.AddTransient<ProjectReportsViewModel>();
+		services.AddTransient<SettingsPageViewModel>();
 		services.AddTransient<StockManagementPageViewModel>();
 		services.AddTransient<StockOrderViewModel>();
 		services.AddTransient<StockReceiptViewModel>();
@@ -65,6 +68,7 @@ public partial class App : Application
 
 		// Register Views
 		services.AddTransient<BrandView>();
+		services.AddTransient<AboutView>();
 		services.AddTransient<CategoryView>();
 		services.AddTransient<ContactTypeView>();
 		services.AddTransient<CountryView>();
@@ -72,6 +76,7 @@ public partial class App : Application
 		services.AddTransient<ProductView>();
 		services.AddTransient<ProjectView>();
 		services.AddTransient<ProjectReportsView>();
+		services.AddTransient<SettingsView>();
 		services.AddTransient<StockManagementView>();
 		services.AddTransient<StockOrderView>();
 		services.AddTransient<StockReceiptView>();
@@ -131,7 +136,7 @@ public partial class App : Application
 
 			var settingsService = _host.Services.GetRequiredService<SettingsService>();
 			await settingsService.LoadSettingsAsync();
-			SetCurrentCulture( settingsService.Settings.Culture );
+			ApplyCulture( settingsService.Settings.Culture, settingsService.Settings.Language );
 
 			_ = _host.Services.GetRequiredService<NavigationViewModel>();
 			var mainWindow = _host.Services.GetRequiredService<MainWindow>();
@@ -173,9 +178,13 @@ public partial class App : Application
 		return service;
 	}
 
-	private static void SetCurrentCulture( string? cultureName )
+	public static void ApplyCulture( string? cultureName, string? language = null ) =>
+		SetCurrentCulture( cultureName, language );
+
+	private static void SetCurrentCulture( string? cultureName, string? language = null )
 	{
 		CultureInfo culture;
+		CultureInfo uiCulture;
 		try
 		{
 			culture = new CultureInfo( string.IsNullOrWhiteSpace( cultureName ) ? "nl-NL" : cultureName );
@@ -185,11 +194,28 @@ public partial class App : Application
 			culture = new CultureInfo( "nl-NL" );
 		}
 
+		try
+		{
+			uiCulture = new CultureInfo( GetLanguageCulture( language ) );
+		}
+		catch ( CultureNotFoundException )
+		{
+			uiCulture = new CultureInfo( "nl-NL" );
+		}
+
 		CultureInfo.DefaultThreadCurrentCulture = culture;
-		CultureInfo.DefaultThreadCurrentUICulture = culture;
+		CultureInfo.DefaultThreadCurrentUICulture = uiCulture;
 		Thread.CurrentThread.CurrentCulture = culture;
-		Thread.CurrentThread.CurrentUICulture = culture;
-		Lang.Culture = culture;
+		Thread.CurrentThread.CurrentUICulture = uiCulture;
+		Lang.Culture = uiCulture;
 	}
+
+	private static string GetLanguageCulture( string? language ) =>
+		language?.ToUpperInvariant() switch
+		{
+			"EN" => "en-US",
+			"DE" => "de",
+			_ => "nl-NL"
+		};
 
 }

@@ -4,11 +4,137 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
              xmlns:viewmodels="clr-namespace:Modelbouwer.ViewModels"
              xmlns:language="clr-namespace:Modelbouwer.Resources.Languages"
              d:DataContext="{d:DesignInstance Type=viewmodels:ProjectReportsViewModel, IsDesignTimeCreatable=False}"
              mc:Ignorable="d">
     <UserControl.Resources>
+        <Style x:Key="ReportViewToggleStyle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="46" />
+            <Setter Property="Height" Value="22" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid Width="{TemplateBinding Width}"
+                              Height="{TemplateBinding Height}">
+                            <Border x:Name="Track"
+                                    CornerRadius="11"
+                                    BorderBrush="#9AA8B8"
+                                    BorderThickness="1"
+                                    Background="#E8EEF6" />
+                            <Ellipse x:Name="Thumb"
+                                     Width="18"
+                                     Height="18"
+                                     Margin="2"
+                                     HorizontalAlignment="Left"
+                                     Fill="#FFFFFF"
+                                     Stroke="#8B99AA"
+                                     StrokeThickness="1">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect BlurRadius="3"
+                                                      Direction="315"
+                                                      Opacity="0.22"
+                                                      ShadowDepth="1" />
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Track" Property="BorderBrush" Value="#5F8DB8" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Track" Property="Background" Value="#D6E7F7" />
+                                <Setter TargetName="Track" Property="BorderBrush" Value="#5F8DB8" />
+                                <Setter TargetName="Thumb" Property="HorizontalAlignment" Value="Right" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TimePieTooltipPathStyle" TargetType="Path">
+            <Setter Property="Fill" Value="#F5F5F5" />
+            <Setter Property="Stroke" Value="#183A5A" />
+            <Setter Property="StrokeThickness" Value="1" />
+        </Style>
+
+        <DataTemplate x:Key="TimePieTooltipTemplate">
+            <Border Padding="8,6"
+                    Background="#F5F5F5"
+                    BorderBrush="#183A5A"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                <StackPanel MinWidth="130">
+                    <TextBlock FontWeight="SemiBold"
+                               Foreground="#1F3550"
+                               Text="{Binding Item.Name}" />
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Foreground="#43566A"
+                                   Text="{x:Static language:Language.ProjectReportsHoursHeader}" />
+                        <TextBlock Grid.Column="1"
+                                   Margin="12,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1F3550"
+                                   Text="{Binding Item.Hours, StringFormat={}{0:N2}}" />
+                    </Grid>
+                    <Grid Margin="0,2,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Foreground="#43566A"
+                                   Text="{x:Static language:Language.ProjectReportsPercentageHeader}" />
+                        <TextBlock Grid.Column="1"
+                                   Margin="12,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1F3550"
+                                   Text="{Binding Item.Percentage, StringFormat={}{0:P1}}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="BarChartTooltipTemplate">
+            <Border Padding="8,6"
+                    Background="#F5F5F5"
+                    BorderBrush="#183A5A"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                <StackPanel MinWidth="130">
+                    <TextBlock FontWeight="SemiBold"
+                               Foreground="#1F3550"
+                               Text="{Binding Series.Label}" />
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Foreground="#43566A"
+                                   Text="{Binding Item.Category}" />
+                        <TextBlock Grid.Column="1"
+                                   Margin="12,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1F3550"
+                                   Text="{Binding Item.Value, StringFormat={}{0:N2}}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
         <Style x:Key="ReportChartBarStyle" TargetType="ProgressBar">
             <Setter Property="Height" Value="20" />
             <Setter Property="Minimum" Value="0" />
@@ -274,41 +400,49 @@
                                   SelectedIndex="{Binding SelectedReportTabIndex, Mode=TwoWay}"
                                   TabStripPlacement="Bottom"
                                   CloseButtonType="Hide"
+                                  TabListContextMenuOptions="Default"
                                   TabItemHeaderStyle="Curve">
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsWeekdayTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="190" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0"
-                                Width="230"
-                                Height="160"
-                                Padding="4"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
-                            <Grid>
-                                <Ellipse Width="166"
-                                         Height="118"
-                                         Margin="0,16,0,0"
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Fill="#334456"
-                                         Opacity="0.12" />
-                                <ItemsControl ItemsSource="{Binding WeekdayPieSlices}"
-                                              ItemTemplate="{StaticResource PieChartSliceTemplate}"
-                                              ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
-                            </Grid>
-                        </Border>
-                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                            <ItemsControl ItemsSource="{Binding WeekdayPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
-                        </ScrollViewer>
-                    </Grid>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding WeekdayShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart3D Grid.Row="1"
+                                     Margin="0,4"
+                                     Background="Transparent"
+                                     Rotation="35"
+                                     Tilt="-25"
+                                     Depth="70"
+                                     PerspectiveAngle="55"
+                                     EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
+                                     Visibility="{Binding WeekdayShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart3D.Legend>
+                            <chart:ChartLegend DockPosition="Right"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart3D.Legend>
+                        <chart:DoughnutSeries3D ItemsSource="{Binding WeekdayHours}"
+                                                XBindingPath="Name"
+                                                YBindingPath="Hours"
+                                                DoughnutCoefficient="0.95"
+                                                CircleCoefficient="0.78"
+                                                EnableAnimation="True"
+                                                AnimationDuration="0:0:0.7"
+                                                ShowTooltip="True"
+                                                TooltipTemplate="{StaticResource TimePieTooltipTemplate}"
+                                                chart:ChartTooltip.EnableAnimation="True" />
+                    </chart:SfChart3D>
                     <syncfusion:SfDataGrid Grid.Row="1"
                                            Margin="0,4"
                                            AllowEditing="False"
@@ -318,7 +452,8 @@
                                            AllowSorting="True"
                                            AutoGenerateColumns="False"
                                            ColumnSizer="Star"
-                                           ItemsSource="{Binding WeekdayHours}">
+                                           ItemsSource="{Binding WeekdayHours}"
+                                           Visibility="{Binding WeekdayShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow
                                 Position="Bottom"
@@ -346,25 +481,46 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsMonthTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="190" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid>
-                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
-                                <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
-                            </Grid>
-                        </Border>
-                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                            <ItemsControl ItemsSource="{Binding MonthPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
-                        </ScrollViewer>
-                    </Grid>
-                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthHours}">
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding MonthShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart3D Grid.Row="1"
+                                     Margin="0,4,0,16"
+                                     Background="Transparent"
+                                     Rotation="35"
+                                     Tilt="-25"
+                                     Depth="70"
+                                     PerspectiveAngle="55"
+                                     EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
+                                     Visibility="{Binding MonthShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart3D.Legend>
+                            <chart:ChartLegend DockPosition="Bottom"
+                                               Orientation="Horizontal"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart3D.Legend>
+                        <chart:DoughnutSeries3D ItemsSource="{Binding MonthHours}"
+                                                XBindingPath="Name"
+                                                YBindingPath="Hours"
+                                                DoughnutCoefficient="0.95"
+                                                CircleCoefficient="0.58"
+                                                EnableAnimation="True"
+                                                AnimationDuration="0:0:0.7"
+                                                ShowTooltip="True"
+                                                TooltipTemplate="{StaticResource TimePieTooltipTemplate}"
+                                                chart:ChartTooltip.EnableAnimation="True" />
+                    </chart:SfChart3D>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthHours}" Visibility="{Binding MonthShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
                                 <syncfusion:GridSummaryRow.SummaryColumns>
@@ -384,25 +540,46 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsYearTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="190" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" Width="230" Height="160" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid>
-                                <Ellipse Width="166" Height="118" Margin="0,16,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#334456" Opacity="0.12" />
-                                <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartSliceTemplate}" ItemsPanel="{StaticResource PieChartItemsPanelTemplate}" />
-                            </Grid>
-                        </Border>
-                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                            <ItemsControl ItemsSource="{Binding YearPieSlices}" ItemTemplate="{StaticResource PieChartLegendTemplate}" />
-                        </ScrollViewer>
-                    </Grid>
-                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding YearHours}">
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding YearShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart3D Grid.Row="1"
+                                     Margin="0,4,0,16"
+                                     Background="Transparent"
+                                     Rotation="35"
+                                     Tilt="-25"
+                                     Depth="70"
+                                     PerspectiveAngle="55"
+                                     EnableRotation="True"
+                                     chart:DoughnutSeries3D.DoughnutHoleSize="0.2"
+                                     Visibility="{Binding YearShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart3D.Legend>
+                            <chart:ChartLegend DockPosition="Bottom"
+                                               Orientation="Horizontal"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart3D.Legend>
+                        <chart:DoughnutSeries3D ItemsSource="{Binding YearHours}"
+                                                XBindingPath="Name"
+                                                YBindingPath="Hours"
+                                                DoughnutCoefficient="0.95"
+                                                CircleCoefficient="0.62"
+                                                EnableAnimation="True"
+                                                AnimationDuration="0:0:0.7"
+                                                ShowTooltip="True"
+                                                TooltipTemplate="{StaticResource TimePieTooltipTemplate}"
+                                                chart:ChartTooltip.EnableAnimation="True" />
+                    </chart:SfChart3D>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding YearHours}" Visibility="{Binding YearShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
                                 <syncfusion:GridSummaryRow.SummaryColumns>
@@ -422,13 +599,44 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsMonthYearTabTitle}" Image="{StaticResource Time}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="190" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding MonthYearHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
-                    </ScrollViewer>
-                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthYearHours}">
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding MonthYearShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart Grid.Row="1"
+                                   Margin="0,4"
+                                   AreaBorderThickness="0"
+                                   Background="Transparent"
+                                   Series="{Binding MonthYearStackedSeries}"
+                                   Visibility="{Binding MonthYearShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Right"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Behaviors>
+                            <chart:ChartTooltipBehavior Position="Pointer"
+                                                        EnableAnimation="True"
+                                                        Style="{StaticResource TimePieTooltipPathStyle}"
+                                                        ShowDuration="4000" />
+                        </chart:SfChart.Behaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis LabelsIntersectAction="MultipleRows"
+                                                LabelRotationAngle="35" />
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Header="{x:Static language:Language.ProjectReportsHoursHeader}" />
+                        </chart:SfChart.SecondaryAxis>
+                    </chart:SfChart>
+                    <syncfusion:SfDataGrid Grid.Row="1" Margin="0,4" AllowEditing="False" AllowFiltering="True" AllowResizingColumns="True" AllowSorting="True" AutoGenerateColumns="False" ColumnSizer="Star" ItemsSource="{Binding MonthYearHours}" Visibility="{Binding MonthYearShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.TableSummaryRows>
                             <syncfusion:GridTableSummaryRow Position="Bottom" ShowSummaryInRow="False" Title="{x:Static language:Language.ProjectReportsDataGridSummaryText}" TitleColumnCount="1">
                                 <syncfusion:GridSummaryRow.SummaryColumns>
@@ -448,12 +656,43 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsWorktypeTabTitle}" Image="{StaticResource Worktype}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="220" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding WorktypeHours}" ItemTemplate="{StaticResource ReportChartItemTemplate}" />
-                    </ScrollViewer>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding WorktypeShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart Grid.Row="1"
+                                   Margin="0,4"
+                                   AreaBorderThickness="0"
+                                   Background="Transparent"
+                                   Series="{Binding WorktypeStackedSeries}"
+                                   Visibility="{Binding WorktypeShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Right"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Behaviors>
+                            <chart:ChartTooltipBehavior Position="Pointer"
+                                                        EnableAnimation="True"
+                                                        Style="{StaticResource TimePieTooltipPathStyle}"
+                                                        ShowDuration="4000" />
+                        </chart:SfChart.Behaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis LabelsIntersectAction="MultipleRows"
+                                                LabelRotationAngle="35" />
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Header="{x:Static language:Language.ProjectReportsHoursHeader}" />
+                        </chart:SfChart.SecondaryAxis>
+                    </chart:SfChart>
                     <syncfusion:SfDataGrid Grid.Row="1"
                                            Margin="0,4"
                                            AllowEditing="False"
@@ -464,7 +703,8 @@
                                            AutoGenerateColumns="False"
                                            ColumnSizer="Star"
                                            ItemsSource="{Binding WorktypeHours}"
-                                           ShowGroupDropArea="True">
+                                           ShowGroupDropArea="True"
+                                           Visibility="{Binding WorktypeShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.GroupColumnDescriptions>
                             <syncfusion:GroupColumnDescription ColumnName="WorktypeGroupName" />
                         </syncfusion:SfDataGrid.GroupColumnDescriptions>
@@ -497,12 +737,43 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsCostAllocationTabTitle}" Image="{StaticResource Report}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="220" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding CostAllocationLines}" ItemTemplate="{StaticResource CostChartItemTemplate}" />
-                    </ScrollViewer>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding CostAllocationShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart Grid.Row="1"
+                                   Margin="0,4"
+                                   AreaBorderThickness="0"
+                                   Background="Transparent"
+                                   Series="{Binding CostAllocationStackedSeries}"
+                                   Visibility="{Binding CostAllocationShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Right"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Behaviors>
+                            <chart:ChartTooltipBehavior Position="Pointer"
+                                                        EnableAnimation="True"
+                                                        Style="{StaticResource TimePieTooltipPathStyle}"
+                                                        ShowDuration="4000" />
+                        </chart:SfChart.Behaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis LabelsIntersectAction="MultipleRows"
+                                                LabelRotationAngle="35" />
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Header="{x:Static language:Language.ProjectReportsTotalCostsHeader}" />
+                        </chart:SfChart.SecondaryAxis>
+                    </chart:SfChart>
                     <syncfusion:SfDataGrid Grid.Row="1"
                                            Margin="0,4"
                                            AllowEditing="False"
@@ -513,7 +784,8 @@
                                            AutoGenerateColumns="False"
                                            ColumnSizer="Star"
                                            ItemsSource="{Binding CostAllocationLines}"
-                                           ShowGroupDropArea="True">
+                                           ShowGroupDropArea="True"
+                                           Visibility="{Binding CostAllocationShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.GroupColumnDescriptions>
                             <syncfusion:GroupColumnDescription ColumnName="WorktypeGroupName" />
                         </syncfusion:SfDataGrid.GroupColumnDescriptions>
@@ -555,12 +827,43 @@
             <syncfusion:TabItemExt Header="{x:Static language:Language.ProjectReportsCostDeclarationsTabTitle}" Image="{StaticResource inventorycheck}" ImageWidth="17" ImageHeight="17">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="220" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" Margin="0,4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl ItemsSource="{Binding CostDeclarationSummary}" ItemTemplate="{StaticResource CostChartItemTemplate}" />
-                    </ScrollViewer>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,4">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsChartViewLabel}" />
+                        <ToggleButton Margin="8,0"
+                                      IsChecked="{Binding CostDeclarationsShowsTable, Mode=TwoWay}"
+                                      Style="{StaticResource ReportViewToggleStyle}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static language:Language.ProjectReportsTableViewLabel}" />
+                    </StackPanel>
+                    <chart:SfChart Grid.Row="1"
+                                   Margin="0,4"
+                                   AreaBorderThickness="0"
+                                   Background="Transparent"
+                                   Series="{Binding CostDeclarationStackedSeries}"
+                                   Visibility="{Binding CostDeclarationsShowsTable, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Right"
+                                               CheckBoxVisibility="Collapsed" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Behaviors>
+                            <chart:ChartTooltipBehavior Position="Pointer"
+                                                        EnableAnimation="True"
+                                                        Style="{StaticResource TimePieTooltipPathStyle}"
+                                                        ShowDuration="4000" />
+                        </chart:SfChart.Behaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis LabelsIntersectAction="MultipleRows"
+                                                LabelRotationAngle="35" />
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Header="{x:Static language:Language.ProjectReportsTotalCostsHeader}" />
+                        </chart:SfChart.SecondaryAxis>
+                    </chart:SfChart>
                     <syncfusion:SfDataGrid Grid.Row="1"
                                            Margin="0,4"
                                            AllowEditing="False"
@@ -571,7 +874,8 @@
                                            AutoGenerateColumns="False"
                                            ColumnSizer="Star"
                                            ItemsSource="{Binding CostDeclarationLines}"
-                                           ShowGroupDropArea="True">
+                                           ShowGroupDropArea="True"
+                                           Visibility="{Binding CostDeclarationsShowsTable, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <syncfusion:SfDataGrid.GroupColumnDescriptions>
                             <syncfusion:GroupColumnDescription ColumnName="CategoryName" />
                         </syncfusion:SfDataGrid.GroupColumnDescriptions>

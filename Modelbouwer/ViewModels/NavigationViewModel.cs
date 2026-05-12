@@ -49,12 +49,26 @@ public class NavigationViewModel : INotifyPropertyChanged
 	protected void OnPropertyChanged( [CallerMemberName] string? propertyName = null ) =>
 		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( propertyName ) );
 
-	public NavigationViewModel( IServiceProvider serviceProvider )
+	public NavigationViewModel( IServiceProvider serviceProvider, SettingsService? settingsService = null )
 	{
 		_serviceProvider = serviceProvider ?? throw new ArgumentNullException( nameof( serviceProvider ) );
 		NavigationItems = [ ];
+		if ( settingsService != null )
+			settingsService.SettingsChanged += OnSettingsChanged;
 
 		_ = LoadNavigationItemsAsync();
+	}
+
+	private void OnSettingsChanged( object? sender, EventArgs e )
+	{
+		if ( Application.Current == null )
+			return;
+
+		Application.Current.Dispatcher.Invoke( () =>
+		{
+			BuildNavigationItems();
+			LoadSettingsView();
+		} );
 	}
 
 	private async Task LoadNavigationItemsAsync()
@@ -437,9 +451,41 @@ public class NavigationViewModel : INotifyPropertyChanged
 		}
 	}
 
+	private void LoadSettingsView()
+	{
+		try
+		{
+			var settingsView = _serviceProvider.GetRequiredService<SettingsView>();
+			CurrentView = settingsView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading SettingsView: {ex.Message}" );
+		}
+	}
+
+	private void LoadAboutView()
+	{
+		try
+		{
+			var aboutView = _serviceProvider.GetRequiredService<AboutView>();
+			CurrentView = aboutView;
+		}
+		catch ( Exception ex )
+		{
+			Debug.WriteLine( $"Error loading AboutView: {ex.Message}" );
+		}
+	}
+
 	private void BuildNavigationItems()
 	{
 		NavigationItems.Clear();
+		TimeSubItems.Clear();
+		InventorySubItems.Clear();
+		ProjectSubItems.Clear();
+		MetadataSubItems.Clear();
+		MetadataCountriesSubItems.Clear();
+		MetadataCurrenciesSubItems.Clear();
 
 		#region Time section
 		#region Subitems
@@ -638,7 +684,18 @@ public class NavigationViewModel : INotifyPropertyChanged
 		{
 			NavigationItem = Language.navigation_Settings_MainItem_Label,
 			NavigationIcon = CreateNavigationImage( "Settings" ),
-			NavigationTooltip = Language.navigation_Settings_MainItem_Tooltip
+			NavigationTooltip = Language.navigation_Settings_MainItem_Tooltip,
+			Command = new SimpleCommand( () => LoadSettingsView() )
+		} );
+		#endregion
+
+		#region About section
+		NavigationItems.Add( new NavigationModel
+		{
+			NavigationItem = Lang.ResourceManager.GetString( "AboutNavigationLabel", Lang.Culture ) ?? "Over Modelbouwer",
+			NavigationIcon = CreateNavigationImage( "AppLogo" ),
+			NavigationTooltip = Lang.ResourceManager.GetString( "AboutNavigationTooltip", Lang.Culture ) ?? "Informatie over Modelbouwer en de release historie",
+			Command = new SimpleCommand( () => LoadAboutView() )
 		} );
 		#endregion
 	}
