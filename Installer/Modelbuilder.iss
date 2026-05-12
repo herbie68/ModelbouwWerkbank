@@ -64,4 +64,5 @@ Source: "..\Builds\Publish\*"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Builds\Publish\Resources\Config\modelbouwer.config"; DestDir: "{app}\Resources\Config"; Flags: ignoreversion onlyifdoesntexist
 
 [Icons]
+Name: "{autoprograms}\Modelbouwer"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\{#AppExeName}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\{#AppExeName}"
