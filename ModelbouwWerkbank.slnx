@@ -1,4 +1,8 @@
-﻿<Solution>
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+  </Configurations>
   <Folder Name="/Models/">
     <File Path="Modelbouwer.UnitTests/Models/ProductModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/Models/ProductUsageModelTests.cs" />
@@ -16,6 +20,10 @@
     <File Path="Modelbouwer.UnitTests/ViewModels/ProductPageViewModelTests.cs" />
     <File Path="Modelbouwer.UnitTests/ViewModels/SupplierPageViewModelTests.cs" />
   </Folder>
+  <Project Path="Modelbouwer.Mobile/Modelbouwer.Mobile.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Deploy />
+  </Project>
   <Project Path="Modelbouwer.UnitTests/Modelbouwer.UnitTests.csproj" />
   <Project Path="Modelbouwer/Modelbouwer.csproj" />
 </Solution>

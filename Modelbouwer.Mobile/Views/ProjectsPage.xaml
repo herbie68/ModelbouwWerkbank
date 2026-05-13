@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Modelbouwer.Mobile.Views.ProjectsPage"
+             Title="Projecten">
+    <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="14">
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <VerticalStackLayout>
+                <Label Text="Projecten" Style="{StaticResource PageTitle}" />
+                <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
+                <Button Text="Database laden" Command="{Binding LoadCommand}" />
+            </VerticalStackLayout>
+            <Button Grid.Column="1" Text="Nieuw" Command="{Binding NewProjectCommand}" />
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="2*,3*" ColumnSpacing="14">
+            <Border Style="{StaticResource Panel}">
+                <CollectionView ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectedProject}" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,10" RowDefinitions="Auto,Auto">
+                                <Label Text="{Binding Name}" FontFamily="OpenSansSemibold" />
+                                <Label Grid.Row="1" Text="{Binding Code}" TextColor="{StaticResource Gray500}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource Panel}">
+                <ScrollView>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Onderhouden" Style="{StaticResource SectionTitle}" />
+                        <Label Text="Code" Style="{StaticResource FieldLabel}" />
+                        <Entry Text="{Binding SelectedProject.Code}" />
+                        <Label Text="Naam" Style="{StaticResource FieldLabel}" />
+                        <Entry Text="{Binding SelectedProject.Name}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <VerticalStackLayout>
+                                <Label Text="Startdatum" Style="{StaticResource FieldLabel}" />
+                                <DatePicker Date="{Binding SelectedProject.StartDate}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Afgesloten" Style="{StaticResource FieldLabel}" />
+                                <Switch IsToggled="{Binding SelectedProject.IsClosed}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Button Text="Project opslaan" Command="{Binding SaveProjectCommand}" />
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
