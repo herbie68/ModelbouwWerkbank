@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Modelbouwer.Mobile.Views.MaterialUsagePage"
+             Title="Materiaalverbruik">
+    <ScrollView>
+        <Grid Padding="18" RowDefinitions="Auto,Auto,Auto" RowSpacing="14">
+            <VerticalStackLayout Spacing="2">
+                <Label Text="Materiaalverbruik" Style="{StaticResource PageTitle}" />
+                <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
+                <Button Text="Database laden" Command="{Binding LoadCommand}" />
+            </VerticalStackLayout>
+
+            <Border Grid.Row="1" Style="{StaticResource Panel}">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="16" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Materiaal" Style="{StaticResource SectionTitle}" Grid.ColumnSpan="2" />
+                    <Label Text="Project" Style="{StaticResource FieldLabel}" Grid.Row="1" />
+                    <Picker Grid.Row="2" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}" />
+                    <Label Text="Datum" Style="{StaticResource FieldLabel}" Grid.Row="1" Grid.Column="1" />
+                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding MaterialDate}" />
+                    <Label Text="Product" Style="{StaticResource FieldLabel}" Grid.Row="3" />
+                    <Picker Grid.Row="4" ItemsSource="{Binding Products}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProduct}" />
+                    <Label Text="Hoeveelheid" Style="{StaticResource FieldLabel}" Grid.Row="3" Grid.Column="1" />
+                    <Entry Grid.Row="4" Grid.Column="1" Keyboard="Numeric" Text="{Binding MaterialAmount}" />
+                    <VerticalStackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="8" Margin="0,12,0,0">
+                        <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding MaterialComment}" />
+                        <Button Text="Materiaal opslaan" Command="{Binding SaveMaterialCommand}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource Panel}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Laatste materiaalverbruik" Style="{StaticResource SectionTitle}" />
+                    <CollectionView ItemsSource="{Binding MaterialEntries}" HeightRequest="150">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="0,8" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                    <Label Text="{Binding Product.Name}" FontFamily="OpenSansSemibold" />
+                                    <Label Grid.Column="1" Text="{Binding Costs, StringFormat='EUR {0:0.00}'}" />
+                                    <Label Grid.Row="1" Text="{Binding Project.Name}" TextColor="{StaticResource Gray500}" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Modelbouwer.Mobile.Views.ProductsPage"
+             Title="Producten">
+    <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="14">
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <VerticalStackLayout>
+                <Label Text="Producten" Style="{StaticResource PageTitle}" />
+                <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
+                <Button Text="Database laden" Command="{Binding LoadCommand}" />
+            </VerticalStackLayout>
+            <Button Grid.Column="1" Text="Nieuw" Command="{Binding NewProductCommand}" />
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="2*,3*" ColumnSpacing="14">
+            <Border Style="{StaticResource Panel}">
+                <CollectionView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,10" RowDefinitions="Auto,Auto">
+                                <Label Text="{Binding Name}" FontFamily="OpenSansSemibold" />
+                                <Label Grid.Row="1" Text="{Binding Code}" TextColor="{StaticResource Gray500}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            <Border Grid.Column="1" Style="{StaticResource Panel}">
+                <ScrollView>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Onderhouden" Style="{StaticResource SectionTitle}" />
+                        <Label Text="Code" Style="{StaticResource FieldLabel}" />
+                        <Entry Text="{Binding SelectedProduct.Code}" />
+                        <Label Text="Naam" Style="{StaticResource FieldLabel}" />
+                        <Entry Text="{Binding SelectedProduct.Name}" />
+                        <Label Text="Categorie" Style="{StaticResource FieldLabel}" />
+                        <Picker ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding DisplayName}" SelectedItem="{Binding SelectedCategory}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <VerticalStackLayout>
+                                <Label Text="Eenheid" Style="{StaticResource FieldLabel}" />
+                                <Picker ItemsSource="{Binding Units}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedUnit}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Prijs" Style="{StaticResource FieldLabel}" />
+                                <Entry Keyboard="Numeric" Text="{Binding SelectedProduct.Price}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <VerticalStackLayout>
+                                <Label Text="Voorraad" Style="{StaticResource FieldLabel}" />
+                                <Entry Keyboard="Numeric" Text="{Binding SelectedProduct.CurrentInventory}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="Minimum" Style="{StaticResource FieldLabel}" />
+                                <Entry Keyboard="Numeric" Text="{Binding SelectedProduct.MinimalStock}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Button Text="Product opslaan" Command="{Binding SaveProductCommand}" />
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

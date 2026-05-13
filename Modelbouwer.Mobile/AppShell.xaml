@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Modelbouwer.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Modelbouwer.Mobile.Views"
+    Title="Modelbouwer"
+    FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+            Title="Tijd"
+            Route="time-registration"
+            ContentTemplate="{DataTemplate views:TimeRegistrationPage}" />
+        <ShellContent
+            Title="Materiaal"
+            Route="material-usage"
+            ContentTemplate="{DataTemplate views:MaterialUsagePage}" />
+        <ShellContent
+            Title="Producten"
+            Route="products"
+            ContentTemplate="{DataTemplate views:ProductsPage}" />
+        <ShellContent
+            Title="Projecten"
+            Route="projects"
+            ContentTemplate="{DataTemplate views:ProjectsPage}" />
+    </TabBar>
+</Shell>

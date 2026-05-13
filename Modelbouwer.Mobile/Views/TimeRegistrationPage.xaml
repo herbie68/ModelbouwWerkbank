@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Modelbouwer.Mobile.Views.TimeRegistrationPage"
+             Title="Tijdregistratie">
+    <ScrollView>
+        <Grid Padding="18" RowDefinitions="Auto,Auto,Auto" RowSpacing="14">
+            <VerticalStackLayout Spacing="2">
+                <Label Text="Tijdregistratie" Style="{StaticResource PageTitle}" />
+                <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
+                <Button Text="Database laden" Command="{Binding LoadCommand}" />
+            </VerticalStackLayout>
+
+            <Border Grid.Row="1" Style="{StaticResource Panel}">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="16" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Uren" Style="{StaticResource SectionTitle}" Grid.ColumnSpan="2" />
+                    <Label Text="Project" Style="{StaticResource FieldLabel}" Grid.Row="1" />
+                    <Picker Grid.Row="2" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}" />
+                    <Label Text="Datum" Style="{StaticResource FieldLabel}" Grid.Row="1" Grid.Column="1" />
+                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding WorkDate}" />
+                    <Label Text="Start" Style="{StaticResource FieldLabel}" Grid.Row="3" />
+                    <TimePicker Grid.Row="4" Time="{Binding StartTime}" />
+                    <Label Text="Einde" Style="{StaticResource FieldLabel}" Grid.Row="3" Grid.Column="1" />
+                    <TimePicker Grid.Row="4" Grid.Column="1" Time="{Binding EndTime}" />
+                    <VerticalStackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="8" Margin="0,12,0,0">
+                        <Label Text="Werksoort" Style="{StaticResource FieldLabel}" />
+                        <Picker ItemsSource="{Binding WorkTypes}" ItemDisplayBinding="{Binding DisplayName}" SelectedItem="{Binding SelectedWorkType}" />
+                        <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding TimeComment}" />
+                        <Button Text="Uren opslaan" Command="{Binding SaveTimeCommand}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource Panel}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Laatste urenregistraties" Style="{StaticResource SectionTitle}" />
+                    <CollectionView ItemsSource="{Binding TimeEntries}" HeightRequest="150">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="0,8" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                    <Label Text="{Binding Project.Name}" FontFamily="OpenSansSemibold" />
+                                    <Label Grid.Column="1" Text="{Binding WorkedHours, StringFormat='{0:0.##} u'}" />
+                                    <Label Grid.Row="1" Text="{Binding WorkType}" TextColor="{StaticResource Gray500}" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>
