@@ -26,21 +26,26 @@
                         <Label Text="Werksoort" Style="{StaticResource FieldLabel}" />
                         <Picker ItemsSource="{Binding WorkTypes}" ItemDisplayBinding="{Binding DisplayName}" SelectedItem="{Binding SelectedWorkType}" />
                         <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding TimeComment}" />
-                        <Button Text="Uren opslaan" Command="{Binding SaveTimeCommand}" />
+                        <ImageButton Source="save.svg"
+                                     Command="{Binding SaveTimeCommand}"
+                                     Style="{StaticResource ToolbarIconButton}"
+                                     HorizontalOptions="End"
+                                     SemanticProperties.Description="Gewerkte uren opslaan" />
                     </VerticalStackLayout>
                 </Grid>
             </Border>
 
             <Border Grid.Row="2" Style="{StaticResource Panel}">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Laatste urenregistraties" Style="{StaticResource SectionTitle}" />
-                    <CollectionView ItemsSource="{Binding TimeEntries}" HeightRequest="150">
+                    <Label Text="Laatste urenregistraties (maximaal 100 regels)" Style="{StaticResource SectionTitle}" />
+                    <CollectionView ItemsSource="{Binding FilteredTimeEntries}" HeightRequest="275">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="0,8" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
                                     <Label Text="{Binding Project.Name}" FontFamily="OpenSansSemibold" />
                                     <Label Grid.Column="1" Text="{Binding WorkedHours, StringFormat='{0:0.##} u'}" />
                                     <Label Grid.Row="1" Text="{Binding WorkType}" TextColor="{StaticResource Gray500}" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding WorkDate, StringFormat='{0:dd-MM-yyyy}'}" TextColor="{StaticResource Gray500}" />
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

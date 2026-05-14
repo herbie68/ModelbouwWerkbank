@@ -4,13 +4,12 @@
              x:Class="Modelbouwer.Mobile.Views.ProjectsPage"
              Title="Projecten">
     <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="14">
-        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+        <Grid>
             <VerticalStackLayout>
                 <Label Text="Projecten" Style="{StaticResource PageTitle}" />
                 <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
                 <Button Text="Database laden" Command="{Binding LoadCommand}" />
             </VerticalStackLayout>
-            <Button Grid.Column="1" Text="Nieuw" Command="{Binding NewProjectCommand}" />
         </Grid>
         <Grid Grid.Row="1" ColumnDefinitions="2*,3*" ColumnSpacing="14">
             <Border Style="{StaticResource Panel}">
@@ -43,7 +42,16 @@
                                 <Switch IsToggled="{Binding SelectedProject.IsClosed}" />
                             </VerticalStackLayout>
                         </Grid>
-                        <Button Text="Project opslaan" Command="{Binding SaveProjectCommand}" />
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                            <ImageButton Source="addnew.svg"
+                                         Command="{Binding NewProjectCommand}"
+                                         Style="{StaticResource ToolbarIconButton}"
+                                         SemanticProperties.Description="Nieuw project" />
+                            <ImageButton Source="save.svg"
+                                         Command="{Binding SaveProjectCommand}"
+                                         Style="{StaticResource ToolbarIconButton}"
+                                         SemanticProperties.Description="Project opslaan" />
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </ScrollView>
             </Border>

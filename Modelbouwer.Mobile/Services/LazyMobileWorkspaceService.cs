@@ -53,13 +53,13 @@ public sealed class LazyMobileWorkspaceService : IMobileWorkspaceService
     public async Task AddTimeEntryAsync(MobileTimeEntry entry)
     {
         await GetInner().AddTimeEntryAsync(entry);
-        CopyFromInner();
+        Replace(TimeEntries, GetInner().TimeEntries);
     }
 
     public async Task AddMaterialEntryAsync(MobileMaterialEntry entry)
     {
         await GetInner().AddMaterialEntryAsync(entry);
-        CopyFromInner();
+        Replace(MaterialEntries, GetInner().MaterialEntries);
     }
 
     private MySqlMobileWorkspaceService GetInner()

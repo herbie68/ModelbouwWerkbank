@@ -24,21 +24,26 @@
                     <Entry Grid.Row="4" Grid.Column="1" Keyboard="Numeric" Text="{Binding MaterialAmount}" />
                     <VerticalStackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="8" Margin="0,12,0,0">
                         <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding MaterialComment}" />
-                        <Button Text="Materiaal opslaan" Command="{Binding SaveMaterialCommand}" />
+                        <ImageButton Source="save.svg"
+                                     Command="{Binding SaveMaterialCommand}"
+                                     Style="{StaticResource ToolbarIconButton}"
+                                     HorizontalOptions="End"
+                                     SemanticProperties.Description="Materiaal opslaan" />
                     </VerticalStackLayout>
                 </Grid>
             </Border>
 
             <Border Grid.Row="2" Style="{StaticResource Panel}">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Laatste materiaalverbruik" Style="{StaticResource SectionTitle}" />
-                    <CollectionView ItemsSource="{Binding MaterialEntries}" HeightRequest="150">
+                    <Label Text="Laatste materiaalverbruik (maximaal 100 regels)" Style="{StaticResource SectionTitle}" />
+                    <CollectionView ItemsSource="{Binding FilteredMaterialEntries}" HeightRequest="275">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="0,8" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
                                     <Label Text="{Binding Product.Name}" FontFamily="OpenSansSemibold" />
                                     <Label Grid.Column="1" Text="{Binding Costs, StringFormat='EUR {0:0.00}'}" />
                                     <Label Grid.Row="1" Text="{Binding Project.Name}" TextColor="{StaticResource Gray500}" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding UsageDate, StringFormat='{0:dd-MM-yyyy}'}" TextColor="{StaticResource Gray500}" />
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

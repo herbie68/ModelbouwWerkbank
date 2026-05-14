@@ -47,8 +47,8 @@
 		<RuntimeIdentifiers Condition="'$(TargetFramework)' == 'net10.0-android'">android-arm64;android-x64</RuntimeIdentifiers>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<AssemblyVersion>26.5.18.0</AssemblyVersion>
-		<FileVersion>26.5.18.0</FileVersion>
+		<AssemblyVersion>26.5.25.0</AssemblyVersion>
+		<FileVersion>26.5.25.0</FileVersion>
 		<Platforms>AnyCPU;ARM64</Platforms>
 		<SignAssembly>False</SignAssembly>
 		<Copyright>HN Softwaredevelopment</Copyright>

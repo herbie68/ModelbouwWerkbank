@@ -4,13 +4,12 @@
              x:Class="Modelbouwer.Mobile.Views.ProductsPage"
              Title="Producten">
     <Grid Padding="18" RowDefinitions="Auto,*" RowSpacing="14">
-        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+        <Grid>
             <VerticalStackLayout>
                 <Label Text="Producten" Style="{StaticResource PageTitle}" />
                 <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
                 <Button Text="Database laden" Command="{Binding LoadCommand}" />
             </VerticalStackLayout>
-            <Button Grid.Column="1" Text="Nieuw" Command="{Binding NewProductCommand}" />
         </Grid>
         <Grid Grid.Row="1" ColumnDefinitions="2*,3*" ColumnSpacing="14">
             <Border Style="{StaticResource Panel}">
@@ -55,7 +54,16 @@
                                 <Entry Keyboard="Numeric" Text="{Binding SelectedProduct.MinimalStock}" />
                             </VerticalStackLayout>
                         </Grid>
-                        <Button Text="Product opslaan" Command="{Binding SaveProductCommand}" />
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                            <ImageButton Source="addnew.svg"
+                                         Command="{Binding NewProductCommand}"
+                                         Style="{StaticResource ToolbarIconButton}"
+                                         SemanticProperties.Description="Nieuw product" />
+                            <ImageButton Source="save.svg"
+                                         Command="{Binding SaveProductCommand}"
+                                         Style="{StaticResource ToolbarIconButton}"
+                                         SemanticProperties.Description="Product opslaan" />
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </ScrollView>
             </Border>

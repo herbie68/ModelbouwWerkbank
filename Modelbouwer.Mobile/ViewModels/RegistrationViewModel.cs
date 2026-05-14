@@ -33,6 +33,8 @@ public partial class RegistrationViewModel : BaseViewModel
     public ObservableCollection<MobileWorkType> WorkTypes => workspace.WorkTypes;
     public ObservableCollection<MobileTimeEntry> TimeEntries => workspace.TimeEntries;
     public ObservableCollection<MobileMaterialEntry> MaterialEntries => workspace.MaterialEntries;
+    public ObservableCollection<MobileTimeEntry> FilteredTimeEntries { get; } = [];
+    public ObservableCollection<MobileMaterialEntry> FilteredMaterialEntries { get; } = [];
 
     [RelayCommand]
     private Task LoadAsync()
@@ -43,6 +45,7 @@ public partial class RegistrationViewModel : BaseViewModel
             SelectedProject ??= Projects.FirstOrDefault();
             SelectedProduct ??= Products.FirstOrDefault();
             SelectedWorkType ??= WorkTypes.FirstOrDefault();
+            RefreshFilteredRegistrations();
         }, "Database geladen.");
     }
 
@@ -69,6 +72,7 @@ public partial class RegistrationViewModel : BaseViewModel
             });
 
             TimeComment = string.Empty;
+            RefreshFilteredRegistrations();
         }, "Urenregistratie opgeslagen.");
     }
 
@@ -95,6 +99,40 @@ public partial class RegistrationViewModel : BaseViewModel
 
             MaterialAmount = 1;
             MaterialComment = string.Empty;
+            RefreshFilteredRegistrations();
         }, "Materiaalregistratie opgeslagen.");
+    }
+
+    partial void OnSelectedProjectChanged(MobileProject? value)
+    {
+        RefreshFilteredRegistrations();
+    }
+
+    private void RefreshFilteredRegistrations()
+    {
+        var projectId = SelectedProject?.Id;
+        Replace(
+            FilteredTimeEntries,
+            TimeEntries
+                .Where(entry => projectId is null || entry.Project?.Id == projectId)
+                .OrderByDescending(entry => entry.WorkDate.Date)
+                .ThenByDescending(entry => entry.StartTime)
+                .ThenByDescending(entry => entry.Id)
+                .Take(100));
+
+        Replace(
+            FilteredMaterialEntries,
+            MaterialEntries
+                .Where(entry => projectId is null || entry.Project?.Id == projectId)
+                .OrderByDescending(entry => entry.UsageDate.Date)
+                .ThenByDescending(entry => entry.Id)
+                .Take(100));
+    }
+
+    private static void Replace<T>(ObservableCollection<T> target, IEnumerable<T> source)
+    {
+        target.Clear();
+        foreach (var item in source)
+            target.Add(item);
     }
 }
