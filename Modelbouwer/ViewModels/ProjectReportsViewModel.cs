@@ -165,7 +165,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 			var points = years
 				.Select( year => CreateHoursChartPoint( year.ToString( CultureInfo.CurrentCulture ), rows.Where( item => item.Year == year && item.Month == month ).Sum( item => item.Hours ) ) )
 				.ToList();
-			series.Add( CreateStackingColumnSeries( label, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( label, points, colors[index % colors.Length] ) );
 		}
 
 		return series;
@@ -198,7 +198,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 					.Where( item => item.Name == worktype && ( string.IsNullOrWhiteSpace( item.WorktypeGroupName ) ? item.Name : item.WorktypeGroupName ) == group )
 					.Sum( item => item.Hours ) ) )
 				.ToList();
-			series.Add( CreateStackingColumnSeries( worktype, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( worktype, points, colors[index % colors.Length] ) );
 		}
 
 		return series;
@@ -226,8 +226,8 @@ public partial class ProjectReportsViewModel : ObservableObject
 
 		var series = new ChartSeriesCollection
 		{
-			CreateStackingColumnSeries( Lang.ProjectReportsMaterialCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, materialValues[index] ) ).ToList(), Color.FromRgb( 47, 128, 237 ) ),
-			CreateStackingColumnSeries( Lang.ProjectReportsTimeCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, timeValues[index] ) ).ToList(), Color.FromRgb( 39, 174, 96 ) )
+			CreateColumnSeries( Lang.ProjectReportsMaterialCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, materialValues[index] ) ).ToList(), Color.FromRgb( 47, 128, 237 ) ),
+			CreateColumnSeries( Lang.ProjectReportsTimeCostsHeader, groups.Select( ( group, index ) => CreateCurrencyChartPoint( group, timeValues[index] ) ).ToList(), Color.FromRgb( 39, 174, 96 ) )
 		};
 
 		return series;
@@ -260,7 +260,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 			var points = categories
 				.Select( category => CreateCurrencyChartPoint( category, rows.Where( item => item.CategoryName == category && item.ProductName == product ).Sum( item => item.TotalCosts ) ) )
 				.ToList();
-			series.Add( CreateStackingColumnSeries( product, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( product, points, colors[index % colors.Length] ) );
 		}
 
 		var otherValues = categories
@@ -269,13 +269,13 @@ public partial class ProjectReportsViewModel : ObservableObject
 
 		if ( otherValues.Any( value => value > 0 ) )
 		{
-			series.Add( CreateStackingColumnSeries( "Overig", categories.Select( ( category, index ) => CreateCurrencyChartPoint( category, otherValues[index] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
+			series.Add( CreateColumnSeries( "Overig", categories.Select( ( category, index ) => CreateCurrencyChartPoint( category, otherValues[index] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
 		}
 
 		return series;
 	}
 
-	private static StackingColumnSeries CreateStackingColumnSeries( string label, IList<ChartPoint> points, Color color ) =>
+	private static ColumnSeries CreateColumnSeries( string label, IList<ChartPoint> points, Color color ) =>
 		new()
 		{
 			Label = label,
@@ -283,6 +283,7 @@ public partial class ProjectReportsViewModel : ObservableObject
 			XBindingPath = nameof( ChartPoint.Category ),
 			YBindingPath = nameof( ChartPoint.Value ),
 			Interior = new SolidColorBrush( color ),
+			SegmentSpacing = 0.08,
 			EnableAnimation = true,
 			AnimationDuration = TimeSpan.FromMilliseconds( 700 ),
 			ShowTooltip = true,

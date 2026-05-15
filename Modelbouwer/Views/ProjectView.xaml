@@ -250,7 +250,7 @@
                     ImageSource="{Binding SelectedItem.ProjectImage, Mode=TwoWay}"
                     RotationAngle="{Binding SelectedItem.ProjectImageRotationAngle, Mode=TwoWay}"
                     AddImageCommand="{Binding AddImageCommand}"
-                    DeleteImageCommand="{Binding DeleteProjectImageCommand}"
+                    DeleteImageCommand="{Binding DeleteImageCommand}"
                     RotateCommand="{Binding RotateCommand}" />
             </Grid>
             <!--#endregion-->

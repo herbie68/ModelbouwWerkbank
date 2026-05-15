@@ -31,11 +31,13 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	public new IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
+	public IRelayCommand DeleteImageCommand => _deleteImageCommand ??= new RelayCommand( DeleteImage );
 
 	private ProjectModel? _previousProject;
 
 	private IRelayCommand? _rotateCommand;
 	private IRelayCommand? _addImageCommand;
+	private IRelayCommand? _deleteImageCommand;
 
 	private IRelayCommand? _clearSearchCommand;
 
@@ -143,6 +145,15 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 			return;
 
 		SelectedProject.ProjectImage = File.ReadAllBytes( dialog.FileName );
+		SelectedProject.ProjectImageRotationAngle = 0;
+	}
+
+	private void DeleteImage()
+	{
+		if ( SelectedProject == null )
+			return;
+
+		SelectedProject.ProjectImage = null;
 		SelectedProject.ProjectImageRotationAngle = 0;
 	}
 

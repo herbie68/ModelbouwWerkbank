@@ -18,6 +18,7 @@ public partial class StockOrderLineModel : ObservableObject
 	[ObservableProperty] private double _expected;
 	[ObservableProperty] private bool _closed;
 	[ObservableProperty] private DateTime? _closedDate;
+	[ObservableProperty] private bool _isSelected;
 
 	public string DisplayProductNumber => string.IsNullOrWhiteSpace( SupplierProductNumber ) ? ProductCode ?? string.Empty : SupplierProductNumber;
 	public string DisplayProductDescription => string.IsNullOrWhiteSpace( SupplierProductName ) ? ProductName ?? string.Empty : SupplierProductName;

@@ -32,6 +32,10 @@
                           ToolTip="{x:Static language:Language.StockOrderShowClosedOrders}" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Text="{Binding SelectedOrder.SupplierName}" />
             <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Text="{Binding SelectedOrder.OrderNumber}" />
+            <CheckBox Margin="24,0,0,0"
+                      VerticalAlignment="Center"
+                      Content="{x:Static language:Language.StockReceiptSelectAllLinesLabel}"
+                      IsChecked="{Binding AreAllOrderLinesSelected, Mode=TwoWay}" />
         </StackPanel>
 
         <Grid Grid.Row="1">
@@ -99,6 +103,10 @@
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditReceiptCommand}" />
                     </syncfusion:SfDataGrid.InputBindings>
                     <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridCheckBoxColumn MappingName="IsSelected"
+                                                       HeaderText="{x:Static language:Language.StockReceiptSelectLineLabel}"
+                                                       AllowEditing="True"
+                                                       Width="80" />
                         <syncfusion:GridTextColumn MappingName="DisplayProductNumber"
                                                    HeaderText="{x:Static language:Language.StockReceiptProductNumberLabel}"
                                                    AllowEditing="False"

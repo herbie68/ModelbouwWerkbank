@@ -398,6 +398,8 @@
         <syncfusion:TabControlExt Grid.Row="2"
                                   Margin="10,4,10,8"
                                   SelectedIndex="{Binding SelectedReportTabIndex, Mode=TwoWay}"
+                                  IsLazyLoaded="False"
+                                  IsDisableUnloadTabItemExtContent="True"
                                   TabStripPlacement="Bottom"
                                   CloseButtonType="Hide"
                                   TabListContextMenuOptions="Default"

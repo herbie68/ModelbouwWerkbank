@@ -12,17 +12,25 @@ public partial class ImageEditor : UserControl
 
 	// Image byte[]
 	public static readonly DependencyProperty ImageSourceProperty =
-		DependencyProperty.Register(nameof(ImageSource), typeof(byte[]), typeof(ImageEditor), new PropertyMetadata(null));
+		DependencyProperty.Register(
+			nameof(ImageSource),
+			typeof(byte[]),
+			typeof(ImageEditor),
+			new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-	public byte [ ] ImageSource
+	public byte [ ]? ImageSource
 	{
-		get => ( byte [ ] ) GetValue( ImageSourceProperty );
+		get => ( byte [ ]? ) GetValue( ImageSourceProperty );
 		set => SetValue( ImageSourceProperty, value );
 	}
 
 	// Rotation angle
 	public static readonly DependencyProperty RotationAngleProperty =
-		DependencyProperty.Register(nameof(RotationAngle), typeof(double), typeof(ImageEditor), new PropertyMetadata(0.0));
+		DependencyProperty.Register(
+			nameof(RotationAngle),
+			typeof(double),
+			typeof(ImageEditor),
+			new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 	public double RotationAngle
 	{
@@ -66,7 +74,7 @@ public partial class ImageEditor : UserControl
 			var files = (string[])e.Data.GetData(DataFormats.FileDrop);
 			if ( files.Length > 0 )
 			{
-				ImageSource = File.ReadAllBytes( files [ 0 ] );
+				SetCurrentValue( ImageSourceProperty, File.ReadAllBytes( files [ 0 ] ) );
 			}
 		}
 	}

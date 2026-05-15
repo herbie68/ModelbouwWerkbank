@@ -14,8 +14,10 @@ public partial class StockOrderViewModel : ObservableObject
 	private bool _orderCostsOverridden;
 	private StockOrderModel? _trackedEditableOrder;
 	private List<StockOrderModel> _allOrders = [];
+	private List<ProductModel> _allAvailableProducts = [];
 	private Dictionary<int, StockManagementModel> _inventoryByProductId = [];
 	private int _selectionLoadVersion;
+	private IRelayCommand? _clearSearchCommand;
 
 	public ObservableCollection<StockOrderModel> Orders { get; } = [ ];
 	public ObservableCollection<StockOrderLineModel> OrderLines { get; } = [ ];
@@ -34,6 +36,7 @@ public partial class StockOrderViewModel : ObservableObject
 	[ObservableProperty] private bool _hasUnsavedChanges;
 	[ObservableProperty] private bool _enableSupplierOrderFilter;
 	[ObservableProperty] private bool _showClosedOrders;
+	[ObservableProperty] private string? _searchText;
 
 	public bool IsClosedOrder => EditableOrder.Closed;
 	public bool CanEditOrder => !EditableOrder.Closed;
@@ -46,6 +49,7 @@ public partial class StockOrderViewModel : ObservableObject
 	public IAsyncRelayCommand AddProductToOrderCommand { get; }
 	public IAsyncRelayCommand EditOrderLineCommand { get; }
 	public IAsyncRelayCommand DeleteOrderLineCommand { get; }
+	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	public StockOrderViewModel(
 		IStockOrderService stockOrderService,
@@ -98,6 +102,11 @@ public partial class StockOrderViewModel : ObservableObject
 	partial void OnShowClosedOrdersChanged( bool value )
 	{
 		ApplyOrderFilters();
+	}
+
+	partial void OnSearchTextChanged( string? value )
+	{
+		ApplyProductSearchFilter();
 	}
 
 	public async Task InitializeAsync()
@@ -234,19 +243,40 @@ public partial class StockOrderViewModel : ObservableObject
 		return null;
 	}
 
+	private void ApplyProductSearchFilter()
+	{
+		AvailableProducts.Clear();
+		IEnumerable<ProductModel> filtered = _allAvailableProducts;
+
+		if ( !string.IsNullOrWhiteSpace( SearchText ) )
+		{
+			filtered = filtered.Where( ProductMatchesSearch );
+		}
+
+		foreach ( var product in filtered )
+		{
+			AvailableProducts.Add( product );
+		}
+	}
+
+	private bool ProductMatchesSearch( ProductModel product )
+	{
+		return product.ProductCode?.Contains( SearchText!, StringComparison.CurrentCultureIgnoreCase ) == true
+			|| product.ProductName?.Contains( SearchText!, StringComparison.CurrentCultureIgnoreCase ) == true;
+	}
+
 	private async Task LoadReferenceDataAsync()
 	{
 		var inventory = await _stockService.GetCompleteInventoryAsync();
 		_inventoryByProductId = inventory.ToDictionary( item => item.ProductId );
 
 		var products = await _productService.GetAllProductsAsync();
-		AvailableProducts.Clear();
-		foreach ( var product in products )
+		_allAvailableProducts = products;
+		foreach ( var product in _allAvailableProducts )
 		{
 			ApplyInventorySnapshotToProduct( product );
-
-			AvailableProducts.Add( product );
 		}
+		ApplyProductSearchFilter();
 
 		var suppliers = await _supplierService.GetAllSuppliersAsync();
 		Suppliers.Clear();
@@ -314,7 +344,7 @@ public partial class StockOrderViewModel : ObservableObject
 
 	private ProductModel BuildProductForLine( StockOrderLineModel line )
 	{
-		ProductModel? existingProduct = AvailableProducts.FirstOrDefault( p => p.ProductId == line.ProductId );
+		ProductModel? existingProduct = _allAvailableProducts.FirstOrDefault( p => p.ProductId == line.ProductId );
 		if ( existingProduct != null )
 			return existingProduct;
 
@@ -566,7 +596,7 @@ public partial class StockOrderViewModel : ObservableObject
 			inventory.ProductInOrder += inOrderCorrection;
 		}
 
-		ProductModel? product = AvailableProducts.FirstOrDefault( p => p.ProductId == productId );
+		ProductModel? product = _allAvailableProducts.FirstOrDefault( p => p.ProductId == productId );
 		if ( product != null )
 		{
 			product.CurrentInventory += inventoryCorrection;

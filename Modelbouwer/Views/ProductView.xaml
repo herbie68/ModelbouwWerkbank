@@ -18,6 +18,7 @@
         <converters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+        <converters:ByteToImageConverter x:Key="ByteToImageConverter" DefaultImage="{StaticResource noimage}" />
     </UserControl.Resources>
 
     <Grid>
@@ -414,7 +415,7 @@
                             ImageSource="{Binding SelectedItem.ProductImage, Mode=TwoWay}"
                             RotationAngle="{Binding SelectedItem.ProductImageRotationAngle, Mode=TwoWay}"
                             AddImageCommand="{Binding AddImageCommand}"
-                            DeleteImageCommand="{Binding DeleteProjectImageCommand}"
+                            DeleteImageCommand="{Binding DeleteImageCommand}"
                             RotateCommand="{Binding RotateCommand}" />
                     </Grid>
                     <!--#endregion-->
@@ -732,14 +733,14 @@
 
                                         <Button
                                             Style="{StaticResource ActionBarButtonStyle}"
-                                            Command="{Binding DataContext.DeleteProductSupplierCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.DeleteSupplierCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             ToolTip="{x:Static language:Language.toolbarButtonActionDelete}">
                                             <Image Style="{DynamicResource ToolBarDeleteIcon}" />
                                         </Button>
 
                                         <Button
                                             Style="{StaticResource ActionBarButtonStyle}"
-                                            Command="{Binding DataContext.SaveProductSupplierCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.SaveSupplierCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             ToolTip="{x:Static language:Language.toolbarButtonActionSave}">
                                             <Image Style="{DynamicResource ToolBarSaveIcon}" />
                                         </Button>

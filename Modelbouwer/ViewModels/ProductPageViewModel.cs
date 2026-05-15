@@ -61,6 +61,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			// Only mark supplier changes, not product changes
 			HasUnsavedSupplierChanges = true;
+
+			if ( e.PropertyName == nameof( ProductSupplierModel.SupplierId ) )
+			{
+				UpdateAvailableSuppliers();
+			}
 		};
 	}
 
@@ -114,8 +119,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	public ObservableCollection<SupplierModel> Suppliers { get; } = [ ];
 	public ObservableCollection<ProductSupplierModel> ProductSuppliers { get; set; } = [ ];
 	public ObservableCollection<ProductSupplierModel> FilteredSuppliers { get; } = [ ];
-	//Filter suplliers list voor Suppliers per product tab, to filter out suppliers alteide in the datagrid
-	public IEnumerable<SupplierModel> AvailableSuppliers => Suppliers.Where( s => !ProductSuppliers.Any( ps => ps.SupplierId == s.Id ) );
+	public ObservableCollection<SupplierModel> AvailableSuppliers { get; } = [ ];
 
 	private ProductSupplierModel? _selectedSupplier;
 
@@ -129,6 +133,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 				HasUnsavedSupplierChanges = false;
 
 				OnPropertyChanged( nameof( SelectedSupplierSupplier ) );
+				UpdateAvailableSuppliers();
 				OpenWebsiteCommand.NotifyCanExecuteChanged();
 			}
 		}
@@ -147,10 +152,16 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			if ( SelectedSupplier != null && value != null )
 			{
+				if ( SelectedSupplier.SupplierId == value.Id )
+					return;
+
 				SelectedSupplier.SupplierId = value.Id;
 				SelectedSupplier.SupplierName = value.Name;
+				SelectedSupplier.CurrencyId = value.CurrencyId;
 
 				OnPropertyChanged( nameof( SelectedSupplier ) );
+				OnPropertyChanged( nameof( SelectedSupplierSupplier ) );
+				UpdateAvailableSuppliers();
 			}
 		}
 	}
@@ -191,9 +202,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 	public IRelayCommand RotateCommand => _rotateCommand ??= new RelayCommand( RotateImage );
 	public IRelayCommand AddImageCommand => _addImageCommand ??= new RelayCommand( AddImage );
+	public IRelayCommand DeleteImageCommand => _deleteImageCommand ??= new RelayCommand( DeleteImage );
 
 	private IRelayCommand? _rotateCommand;
 	private IRelayCommand? _addImageCommand;
+	private IRelayCommand? _deleteImageCommand;
 
 
 	public CategoryModel? SelectedCategory
@@ -287,8 +300,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	#region CRUD Contacts
 	private IRelayCommand? _addSupplierCommand;
 	public IRelayCommand AddSupplierCommand => _addSupplierCommand ??= new RelayCommand( AddSupplier );
-	private IRelayCommand? _saveSupplierCommand;
-	public IRelayCommand SaveSupplierCommand => _saveSupplierCommand ??= new RelayCommand( SaveSupplier );
+	private IAsyncRelayCommand? _saveSupplierCommand;
+	public IAsyncRelayCommand SaveSupplierCommand => _saveSupplierCommand ??= new AsyncRelayCommand( SaveSupplierAsync );
 	private IRelayCommand? _deleteSupplierCommand;
 	public IRelayCommand DeleteSupplierCommand => _deleteSupplierCommand ??= new RelayCommand( DeleteSupplier );
 
@@ -343,7 +356,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 		HasUnsavedSupplierChanges = true;
 
-		OnPropertyChanged( nameof( AvailableSuppliers ) );
+		UpdateAvailableSuppliers();
 
 		RaiseSupplierCounters();
 	}
@@ -356,19 +369,28 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		ProductSuppliers.Remove( SelectedSupplier );
 		FilteredSuppliers.Remove( SelectedSupplier );
 
-		OnPropertyChanged( nameof( AvailableSuppliers ) );
+		UpdateAvailableSuppliers();
 
 		HasUnsavedSupplierChanges = false;
 
 		RaiseSupplierCounters();
 	}
 
-	private void SaveSupplier()
+	private async Task SaveSupplierAsync()
 	{
-		// Implement contact save logic here
-		// This would typically call a service method to persist the contact
+		if ( SelectedItem == null || SelectedSupplier == null || SelectedSupplier.SupplierId <= 0 )
+			return;
 
+		SelectedSupplier.ProductId = SelectedItem.ProductId;
+		SelectedSupplier.ProductName ??= string.Empty;
+		SelectedSupplier.ProductNumber ??= string.Empty;
+		SelectedSupplier.URL ??= string.Empty;
+
+		var id = await _supplierService.UpsertProductSupplierAsync( SelectedSupplier );
+		SelectedSupplier.ProductSupplierId = id;
 		HasUnsavedSupplierChanges = false;
+
+		RaiseSupplierCounters();
 	}
 
 	private void UpdateFilteredSuppliers()
@@ -384,6 +406,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		foreach ( var c in ProductSuppliers.Where( c => c.ProductId == SelectedItem.ProductId ) )
 			FilteredSuppliers.Add( c );
 
+		UpdateAvailableSuppliers();
 
 		RaiseSupplierCounters();
 	}
@@ -391,6 +414,27 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private void RaiseSupplierCounters()
 	{
 		OnPropertyChanged( nameof( TotalSupplierCount ) );
+	}
+
+	private void UpdateAvailableSuppliers()
+	{
+		AvailableSuppliers.Clear();
+
+		if ( SelectedItem == null )
+		{
+			foreach ( var supplier in Suppliers )
+				AvailableSuppliers.Add( supplier );
+			return;
+		}
+
+		var selectedSupplierId = SelectedSupplier?.SupplierId ?? 0;
+		var unavailableSupplierIds = FilteredSuppliers
+			.Where( ps => ps.SupplierId != 0 && ps.SupplierId != selectedSupplierId )
+			.Select( ps => ps.SupplierId )
+			.ToHashSet();
+
+		foreach ( var supplier in Suppliers.Where( s => !unavailableSupplierIds.Contains( s.Id ) ) )
+			AvailableSuppliers.Add( supplier );
 	}
 
 	public int TotalSupplierCount => FilteredSuppliers.Count;
@@ -578,13 +622,22 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		SelectedItem.ProductImageRotationAngle = 0;
 	}
 
+	private void DeleteImage()
+	{
+		if ( SelectedItem == null )
+			return;
+
+		SelectedItem.ProductImage = null;
+		SelectedItem.ProductImageRotationAngle = 0;
+	}
+
 	private async Task LoadSuppliersAsync()
 	{
 		var allSuppliers = await _supplierService.GetAllSuppliersAsync();
 		Suppliers.Clear();
 		foreach ( var c in allSuppliers )
 			Suppliers.Add( c );
-		OnPropertyChanged( nameof( AvailableSuppliers ) );
+		UpdateAvailableSuppliers();
 	}
 
 	private async Task LoadProductSuppliersAsync()
@@ -620,6 +673,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	// Parameter dictionary voor save
 	private static Dictionary<string, object?> CreateParameters( ProductModel c ) => new()
 	{
+		{ $"@{DBNames.ProductFieldNameId}", c.ProductId },
 		{ $"@{DBNames.ProductFieldNameBrandId}", c.ProductBrandId },
 		{ $"@{DBNames.ProductFieldNameCategoryId}", c.ProductCategoryId },
 		{ $"@{DBNames.ProductFieldNameCode}", c.ProductCode },

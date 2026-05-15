@@ -20,7 +20,7 @@
                        Stretch="Uniform"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Source="{Binding ImageSource, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       Source="{Binding ImageSource, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource ByteToImageConverter}}"
                        RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <RotateTransform Angle="{Binding RotationAngle, RelativeSource={RelativeSource AncestorType=UserControl}}" />

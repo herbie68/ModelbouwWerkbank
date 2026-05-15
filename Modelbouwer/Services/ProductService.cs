@@ -146,7 +146,7 @@ public class ProductService : IProductService
 				ProductDimensions = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductFieldNameDimensions}" ] ),
 				ProductHide = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductFieldNameHide}" ] ),
 				ProductId = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProductFieldNameId}" ] ),
-				ProductImage = reader [ $"{DBNames.ProductFieldNameImage}" ] as byte [ ],
+				ProductImage = DatabaseValueConverter.GetBytes( reader [ $"{DBNames.ProductFieldNameImage}" ] ),
 				ProductImageRotationAngle = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductFieldNameImageRotationAngle}" ] ),
 				ProductMemo = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProductFieldNameMemo}" ] ),
 				ProductMinimalStock = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProductFieldNameMinimalStock}" ] ),

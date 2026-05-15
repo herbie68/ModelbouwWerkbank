@@ -318,12 +318,12 @@
                                     </Border>
                                 </Popup>
                             </Grid>
-                            <TextBox Grid.Column="1"
-                                     Width="82"
-                                     HorizontalContentAlignment="Right"
-                                     Style="{DynamicResource DefaultTextBox}"
-                                     Tag="{x:Static language:Language.TimeRegistrationAmountTag}"
-                                     Text="{Binding MaterialAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <syncfusion:DoubleTextBox Grid.Column="1"
+                                                      Width="82"
+                                                      NumberDecimalDigits="2"
+                                                      Style="{DynamicResource SyncfusionDoubleTextBox}"
+                                                      WatermarkText="{x:Static language:Language.TimeRegistrationAmountTag}"
+                                                      Value="{Binding MaterialAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <DatePicker Grid.Column="2" Style="{DynamicResource DefaultDatePicker}"
                                         Width="120"
                                         SelectedDate="{Binding MaterialUsageDate, Mode=TwoWay}" />

@@ -359,4 +359,56 @@ public class ProductPageViewModelTests
 		// Assert
 		Assert.IsTrue( propertyChanged );
 	}
+
+	[TestMethod]
+	public async Task UpdateAsync_PassesProductIdToProductService()
+	{
+		// Arrange
+		var product = new ProductModel
+		{
+			ProductId = 42,
+			ProductName = "Existing Product"
+		};
+		_viewModel.SelectedItem = product;
+
+		Dictionary<string, object?>? capturedParameters = null;
+		_mockProductService
+			.Setup( s => s.UpdateProductAsync( It.IsAny<Dictionary<string, object?>>() ) )
+			.Callback<Dictionary<string, object?>>( p => capturedParameters = p )
+			.Returns( Task.CompletedTask );
+
+		// Act
+		var method = _viewModel.GetType()
+			.GetMethod( "UpdateAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance );
+		var task = method?.Invoke( _viewModel, new object[] { product } ) as Task;
+		await task!;
+
+		// Assert
+		Assert.IsNotNull( capturedParameters );
+		Assert.IsTrue( capturedParameters.ContainsKey( $"@{DBNames.ProductFieldNameId}" ) );
+		Assert.AreEqual( 42, capturedParameters [ $"@{DBNames.ProductFieldNameId}" ] );
+	}
+
+	[TestMethod]
+	public void SelectedSupplierSupplier_UpdatesSupplierWithoutReplacingAvailableSuppliersCollection()
+	{
+		// Arrange
+		var product = new ProductModel { ProductId = 10, ProductName = "Product" };
+		var supplier = new SupplierModel { Id = 5, Name = "Supplier" };
+		_viewModel.SelectedItem = product;
+		_viewModel.Suppliers.Add( supplier );
+
+		_viewModel.AddSupplierCommand.Execute( null );
+		var selectedProductSupplier = _viewModel.SelectedSupplier;
+		var availableSuppliers = _viewModel.AvailableSuppliers;
+
+		// Act
+		_viewModel.SelectedSupplierSupplier = supplier;
+
+		// Assert
+		Assert.IsNotNull( selectedProductSupplier );
+		Assert.AreSame( availableSuppliers, _viewModel.AvailableSuppliers );
+		Assert.AreEqual( supplier.Id, selectedProductSupplier.SupplierId );
+		Assert.AreEqual( supplier.Name, selectedProductSupplier.SupplierName );
+	}
 }

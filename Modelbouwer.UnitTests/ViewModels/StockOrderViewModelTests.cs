@@ -257,6 +257,47 @@ public class StockOrderViewModelTests
 	}
 
 	[TestMethod]
+	public async Task SearchText_FiltersAvailableProductsByCodeAndName()
+	{
+		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>
+		{
+			new() { ProductId = 5, ProductCode = "AX-005", ProductName = "Wheel Set" },
+			new() { ProductId = 6, ProductCode = "BR-006", ProductName = "Brake Hose" },
+			new() { ProductId = 7, ProductCode = "LN-007", ProductName = "Lantern" }
+		} );
+
+		await _viewModel.InitializeAsync();
+
+		_viewModel.SearchText = "BR";
+
+		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
+		Assert.AreEqual( "BR-006", _viewModel.AvailableProducts[ 0 ].ProductCode );
+
+		_viewModel.SearchText = "wheel";
+
+		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
+		Assert.AreEqual( "Wheel Set", _viewModel.AvailableProducts[ 0 ].ProductName );
+	}
+
+	[TestMethod]
+	public async Task ClearSearchCommand_RestoresAvailableProducts()
+	{
+		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>
+		{
+			new() { ProductId = 5, ProductCode = "AX-005", ProductName = "Wheel Set" },
+			new() { ProductId = 6, ProductCode = "BR-006", ProductName = "Brake Hose" }
+		} );
+
+		await _viewModel.InitializeAsync();
+
+		_viewModel.SearchText = "wheel";
+		_viewModel.ClearSearchCommand.Execute( null );
+
+		Assert.AreEqual( string.Empty, _viewModel.SearchText );
+		Assert.AreEqual( 2, _viewModel.AvailableProducts.Count );
+	}
+
+	[TestMethod]
 	public async Task SaveOrderAsync_WithNewOrder_InsertsOrderAndPendingLines()
 	{
 		_viewModel.EditableOrder.SupplierId = 11;

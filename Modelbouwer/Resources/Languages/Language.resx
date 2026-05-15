@@ -4255,6 +4255,12 @@ Om een nieuwe tijdsregistratie toe te kunnen voegen moet eerst een Datum en proj
   <data name="StockReceiptDialogTitle" xml:space="preserve">
     <value>Register receipt</value>
   </data>
+  <data name="StockReceiptSelectAllLinesLabel" xml:space="preserve">
+    <value>Select all lines</value>
+  </data>
+  <data name="StockReceiptSelectLineLabel" xml:space="preserve">
+    <value>Select</value>
+  </data>
   <data name="StockReceiptProductNumberLabel" xml:space="preserve">
     <value>Product number</value>
   </data>

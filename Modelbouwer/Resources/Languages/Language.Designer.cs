@@ -12436,6 +12436,24 @@ namespace Modelbouwer.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select all lines.
+        /// </summary>
+        public static string StockReceiptSelectAllLinesLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptSelectAllLinesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string StockReceiptSelectLineLabel {
+            get {
+                return ResourceManager.GetString("StockReceiptSelectLineLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         public static string StockReceiptUpdateButton {

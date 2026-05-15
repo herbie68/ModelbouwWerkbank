@@ -100,7 +100,7 @@ public class ProjectService : IProjectService
 				ProjectEndDate = DatabaseValueConverter.GetDateOnly( reader [ $"{DBNames.ProjectFieldNameEndDate}" ] ),
 				ProjectExpectedTime = DatabaseValueConverter.GetInt( reader [ $"{DBNames.ProjectFieldNameExpectedTime}" ] ),
 				ProjectClosed = DatabaseValueConverter.GetSByte( reader [ $"{DBNames.ProjectFieldNameClosed}" ] ) == 1,
-				ProjectImage = reader [ $"{DBNames.ProjectFieldNameImage}" ] as byte [ ],
+				ProjectImage = DatabaseValueConverter.GetBytes( reader [ $"{DBNames.ProjectFieldNameImage}" ] ),
 				ProjectImageRotationAngle = DatabaseValueConverter.GetDouble( reader [ $"{DBNames.ProjectFieldNameImageRotationAngle}" ] ),
 				ProjectMemo = DatabaseValueConverter.GetString( reader [ $"{DBNames.ProjectFieldNameMemo}" ] )
 			};

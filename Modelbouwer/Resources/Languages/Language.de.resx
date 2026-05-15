@@ -4255,6 +4255,12 @@ Um eine neue Zeitregistrierung hinzufügen zu können, muss zuerst ein Datum und
   <data name="StockReceiptDialogTitle" xml:space="preserve">
     <value>Wareneingang erfassen</value>
   </data>
+  <data name="StockReceiptSelectAllLinesLabel" xml:space="preserve">
+    <value>Alle Positionen auswählen</value>
+  </data>
+  <data name="StockReceiptSelectLineLabel" xml:space="preserve">
+    <value>Auswahl</value>
+  </data>
   <data name="StockReceiptProductNumberLabel" xml:space="preserve">
     <value>Produktnummer</value>
   </data>
