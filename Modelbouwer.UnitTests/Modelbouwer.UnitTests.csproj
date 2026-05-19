@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
@@ -25,6 +25,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modelbouwer\Modelbouwer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Modelbouwer.Mobile\Models\MobileModels.cs" Link="Mobile\Models\MobileModels.cs" />
+    <Compile Include="..\Modelbouwer.Mobile\Services\IMobileWorkspaceService.cs" Link="Mobile\Services\IMobileWorkspaceService.cs" />
+    <Compile Include="..\Modelbouwer.Mobile\ViewModels\BaseViewModel.cs" Link="Mobile\ViewModels\BaseViewModel.cs" />
+    <Compile Include="..\Modelbouwer.Mobile\ViewModels\RegistrationViewModel.cs" Link="Mobile\ViewModels\RegistrationViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -20,4 +20,7 @@ public interface IMobileWorkspaceService
     Task UpdateProductAsync(MobileProduct product);
     Task AddTimeEntryAsync(MobileTimeEntry entry);
     Task AddMaterialEntryAsync(MobileMaterialEntry entry);
+    Task<MobileTimerSession?> GetActiveTimerAsync();
+    Task StartTimerAsync(MobileTimerSession session);
+    Task ClearActiveTimerAsync();
 }

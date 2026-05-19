@@ -9,6 +9,7 @@ public sealed class DesignTimeWorkspaceService : IMobileWorkspaceService
     private int nextProductId = 4;
     private int nextTimeEntryId = 2;
     private int nextMaterialEntryId = 2;
+    private MobileTimerSession? activeTimer;
 
     public ObservableCollection<MobileProject> Projects { get; } =
     [
@@ -111,6 +112,26 @@ public sealed class DesignTimeWorkspaceService : IMobileWorkspaceService
     {
         entry.Id = nextMaterialEntryId++;
         MaterialEntries.Insert(0, entry);
+        return Task.CompletedTask;
+    }
+
+    public Task<MobileTimerSession?> GetActiveTimerAsync()
+    {
+        return Task.FromResult(activeTimer);
+    }
+
+    public Task StartTimerAsync(MobileTimerSession session)
+    {
+        if (activeTimer is not null)
+            throw new InvalidOperationException("Er loopt al een timer.");
+
+        activeTimer = session;
+        return Task.CompletedTask;
+    }
+
+    public Task ClearActiveTimerAsync()
+    {
+        activeTimer = null;
         return Task.CompletedTask;
     }
 }

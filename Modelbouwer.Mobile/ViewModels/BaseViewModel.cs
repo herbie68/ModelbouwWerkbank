@@ -8,6 +8,15 @@ public abstract partial class BaseViewModel : ObservableObject
     [ObservableProperty] private string statusText = "Gereed";
     [ObservableProperty] private bool isBusy;
 
+    partial void OnIsBusyChanged(bool value)
+    {
+        OnBusyStateChanged();
+    }
+
+    protected virtual void OnBusyStateChanged()
+    {
+    }
+
     protected async Task RunBusyAsync(Func<Task> action, string? successText = null)
     {
         if (IsBusy)

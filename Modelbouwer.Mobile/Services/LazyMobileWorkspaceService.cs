@@ -62,6 +62,21 @@ public sealed class LazyMobileWorkspaceService : IMobileWorkspaceService
         Replace(MaterialEntries, GetInner().MaterialEntries);
     }
 
+    public Task<MobileTimerSession?> GetActiveTimerAsync()
+    {
+        return GetInner().GetActiveTimerAsync();
+    }
+
+    public Task StartTimerAsync(MobileTimerSession session)
+    {
+        return GetInner().StartTimerAsync(session);
+    }
+
+    public Task ClearActiveTimerAsync()
+    {
+        return GetInner().ClearActiveTimerAsync();
+    }
+
     private MySqlMobileWorkspaceService GetInner()
     {
         return inner ??= new MySqlMobileWorkspaceService(settings);

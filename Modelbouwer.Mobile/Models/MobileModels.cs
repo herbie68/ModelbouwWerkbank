@@ -40,6 +40,15 @@ public partial class MobileTimeEntry : ObservableObject
     public double WorkedHours => EndTime > StartTime ? Math.Round((EndTime - StartTime).TotalHours, 2) : 0;
 }
 
+public partial class MobileTimerSession : ObservableObject
+{
+    [ObservableProperty] private MobileProject? project;
+    [ObservableProperty] private MobileWorkType? workTypeItem;
+    [ObservableProperty] private DateTime workDate = DateTime.Today;
+    [ObservableProperty] private TimeSpan startTime = DateTime.Now.TimeOfDay;
+    [ObservableProperty] private string comment = string.Empty;
+}
+
 public sealed class MobileWorkType
 {
     public int Id { get; set; }

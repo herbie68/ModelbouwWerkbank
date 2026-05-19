@@ -4,7 +4,7 @@
              x:Class="Modelbouwer.Mobile.Views.TimeRegistrationPage"
              Title="Tijdregistratie">
     <ScrollView>
-        <Grid Padding="18" RowDefinitions="Auto,Auto,Auto" RowSpacing="14">
+        <Grid Padding="18" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="14">
             <VerticalStackLayout Spacing="2">
                 <Label Text="Tijdregistratie" Style="{StaticResource PageTitle}" />
                 <Label Text="{Binding StatusText}" TextColor="{StaticResource Primary}" />
@@ -12,22 +12,57 @@
             </VerticalStackLayout>
 
             <Border Grid.Row="1" Style="{StaticResource Panel}">
+                <Grid ColumnDefinitions="Auto,*,Auto,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="8">
+                    <Image Source="stopwatch.svg" WidthRequest="32" HeightRequest="32" VerticalOptions="Start" />
+                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                        <Label Text="Timer" Style="{StaticResource SectionTitle}" />
+                        <Label Text="{Binding TimerStatusText}" TextColor="{StaticResource Gray500}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2"
+                           Text="{Binding TimerElapsedText}"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="End"
+                           VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Column="3" Spacing="8" VerticalOptions="Center">
+                        <ImageButton Source="timer_start.svg"
+                                     Command="{Binding StartTimerCommand}"
+                                     Style="{StaticResource ToolbarIconButton}"
+                                     SemanticProperties.Description="Timer starten" />
+                        <ImageButton Source="timer_stop.svg"
+                                     Command="{Binding StopTimerCommand}"
+                                     Style="{StaticResource ToolbarIconButton}"
+                                     SemanticProperties.Description="Timer stoppen" />
+                    </HorizontalStackLayout>
+                    <Label Grid.Row="1" Grid.ColumnSpan="4" Text="Starttijd" Style="{StaticResource FieldLabel}" />
+                    <TimePicker Grid.Row="2" Grid.ColumnSpan="2" Time="{Binding StartTime}" IsEnabled="{Binding CanEditTimerSetup}" />
+                    <Label Grid.Row="2"
+                           Grid.Column="2"
+                           Grid.ColumnSpan="2"
+                           Text="Er kan maar een timer tegelijk lopen."
+                           TextColor="{StaticResource Gray500}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Style="{StaticResource Panel}">
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="16" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
                     <Label Text="Uren" Style="{StaticResource SectionTitle}" Grid.ColumnSpan="2" />
                     <Label Text="Project" Style="{StaticResource FieldLabel}" Grid.Row="1" />
-                    <Picker Grid.Row="2" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}" />
+                    <Picker Grid.Row="2" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}" IsEnabled="{Binding CanEditTimerSetup}" />
                     <Label Text="Datum" Style="{StaticResource FieldLabel}" Grid.Row="1" Grid.Column="1" />
-                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding WorkDate}" />
+                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding WorkDate}" IsEnabled="{Binding CanEditTimerSetup}" />
                     <Label Text="Start" Style="{StaticResource FieldLabel}" Grid.Row="3" />
-                    <TimePicker Grid.Row="4" Time="{Binding StartTime}" />
+                    <TimePicker Grid.Row="4" Time="{Binding StartTime}" IsEnabled="{Binding CanEditTimerSetup}" />
                     <Label Text="Einde" Style="{StaticResource FieldLabel}" Grid.Row="3" Grid.Column="1" />
-                    <TimePicker Grid.Row="4" Grid.Column="1" Time="{Binding EndTime}" />
+                    <TimePicker Grid.Row="4" Grid.Column="1" Time="{Binding EndTime}" IsEnabled="{Binding CanEditTimerSetup}" />
                     <VerticalStackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="8" Margin="0,12,0,0">
                         <Label Text="Werksoort" Style="{StaticResource FieldLabel}" />
-                        <Picker ItemsSource="{Binding WorkTypes}" ItemDisplayBinding="{Binding DisplayName}" SelectedItem="{Binding SelectedWorkType}" />
-                        <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding TimeComment}" />
+                        <Picker ItemsSource="{Binding WorkTypes}" ItemDisplayBinding="{Binding DisplayName}" SelectedItem="{Binding SelectedWorkType}" IsEnabled="{Binding CanEditTimerSetup}" />
+                        <Editor Placeholder="Opmerking" AutoSize="TextChanges" Text="{Binding TimeComment}" IsEnabled="{Binding CanEditTimerSetup}" />
                         <ImageButton Source="save.svg"
                                      Command="{Binding SaveTimeCommand}"
+                                     IsEnabled="{Binding CanEditTimerSetup}"
                                      Style="{StaticResource ToolbarIconButton}"
                                      HorizontalOptions="End"
                                      SemanticProperties.Description="Gewerkte uren opslaan" />
@@ -35,7 +70,7 @@
                 </Grid>
             </Border>
 
-            <Border Grid.Row="2" Style="{StaticResource Panel}">
+            <Border Grid.Row="3" Style="{StaticResource Panel}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Laatste urenregistraties (maximaal 100 regels)" Style="{StaticResource SectionTitle}" />
                     <CollectionView ItemsSource="{Binding FilteredTimeEntries}" HeightRequest="275">

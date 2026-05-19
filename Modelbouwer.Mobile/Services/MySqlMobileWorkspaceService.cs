@@ -1,15 +1,18 @@
 using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Globalization;
+using System.Text.Json;
 
 using Modelbouwer.Mobile.Models;
 
+using Microsoft.Maui.Storage;
 using MySql.Data.MySqlClient;
 
 namespace Modelbouwer.Mobile.Services;
 
 public sealed class MySqlMobileWorkspaceService : IMobileWorkspaceService
 {
+	private const string ActiveTimerPreferenceKey = "time.registration.activeTimer";
 	private readonly MobileDbConnectionSettings settings;
 
 	public ObservableCollection<MobileProject> Projects { get; } = [ ];
@@ -254,6 +257,61 @@ public sealed class MySqlMobileWorkspaceService : IMobileWorkspaceService
 
 		MaterialEntries.Insert( 0, entry );
 		SortMaterialEntries();
+	}
+
+	public Task<MobileTimerSession?> GetActiveTimerAsync()
+	{
+		var json = Preferences.Default.Get( ActiveTimerPreferenceKey, string.Empty );
+		if ( string.IsNullOrWhiteSpace( json ) )
+			return Task.FromResult<MobileTimerSession?>( null );
+
+		try
+		{
+			var stored = JsonSerializer.Deserialize<StoredTimerSession>( json );
+			if ( stored is null )
+				return Task.FromResult<MobileTimerSession?>( null );
+
+			var project = FindProject( stored.ProjectId, stored.ProjectName );
+			var workType = FindWorkType( stored.WorkTypeId, stored.WorkTypeName );
+			return Task.FromResult<MobileTimerSession?>( new MobileTimerSession
+			{
+				Project = project,
+				WorkTypeItem = workType,
+				WorkDate = stored.WorkDate.Date,
+				StartTime = stored.StartTime,
+				Comment = stored.Comment
+			} );
+		}
+		catch ( JsonException )
+		{
+			Preferences.Default.Remove( ActiveTimerPreferenceKey );
+			return Task.FromResult<MobileTimerSession?>( null );
+		}
+	}
+
+	public async Task StartTimerAsync( MobileTimerSession session )
+	{
+		if ( await GetActiveTimerAsync() is not null )
+			throw new InvalidOperationException( "Er loopt al een timer." );
+
+		var stored = new StoredTimerSession
+		{
+			ProjectId = session.Project?.Id ?? 0,
+			ProjectName = session.Project?.Name ?? string.Empty,
+			WorkTypeId = session.WorkTypeItem?.Id ?? 0,
+			WorkTypeName = session.WorkTypeItem?.Name ?? string.Empty,
+			WorkDate = session.WorkDate.Date,
+			StartTime = session.StartTime,
+			Comment = session.Comment
+		};
+
+		Preferences.Default.Set( ActiveTimerPreferenceKey, JsonSerializer.Serialize( stored ) );
+	}
+
+	public Task ClearActiveTimerAsync()
+	{
+		Preferences.Default.Remove( ActiveTimerPreferenceKey );
+		return Task.CompletedTask;
 	}
 
 	private async Task ReloadRecentRegistrationsAsync()
@@ -529,5 +587,16 @@ public sealed class MySqlMobileWorkspaceService : IMobileWorkspaceService
 	{
 		var text = GetString(value);
 		return TimeSpan.TryParse( text, out var parsed ) ? parsed : TimeSpan.Zero;
+	}
+
+	private sealed class StoredTimerSession
+	{
+		public int ProjectId { get; set; }
+		public string ProjectName { get; set; } = string.Empty;
+		public int WorkTypeId { get; set; }
+		public string WorkTypeName { get; set; } = string.Empty;
+		public DateTime WorkDate { get; set; }
+		public TimeSpan StartTime { get; set; }
+		public string Comment { get; set; } = string.Empty;
 	}
 }
