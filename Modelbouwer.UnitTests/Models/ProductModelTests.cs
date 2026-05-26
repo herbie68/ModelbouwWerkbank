@@ -203,6 +203,25 @@ public class ProductModelTests
 	}
 
 	[TestMethod]
+	public void OnProductStandardQuantityChanged_ToZeroWithExistingPackagePrice_DoesNotCreateInfinitePrice()
+	{
+		// Arrange
+		var product = new ProductModel
+		{
+			ProductStandardQuantity = 5,
+			ProductPrice = 10.0
+		};
+
+		// Act
+		product.ProductStandardQuantity = 0;
+
+		// Assert
+		Assert.AreEqual( 10.0, product.ProductPrice );
+		Assert.IsFalse( double.IsInfinity( product.ProductPrice ) );
+		Assert.IsFalse( double.IsNaN( product.ProductPrice ) );
+	}
+
+	[TestMethod]
 	public void Name_Property_ReturnsProductName()
 	{
 		// Arrange

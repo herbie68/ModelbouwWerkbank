@@ -5,7 +5,7 @@ namespace Modelbouwer.ViewModels;
 public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 {
 	private readonly ICountryService _countryService;
-	private readonly CurrencyService _currencyService;
+	private readonly ICurrencyService _currencyService;
 
 	// Collections
 	public ObservableCollection<CurrencyModel> Currencies { get; } = new();
@@ -28,15 +28,20 @@ public partial class CountryPageViewModel : EntityPageViewModel<CountryModel>
 	// Constructor
 	public CountryPageViewModel(
 		ICountryService countryService,
-		CurrencyService currencyService,
+		ICurrencyService currencyService,
 		IEntityValidator<CountryModel> validator
 	) : base( validator )
 	{
 		_countryService = countryService;
 		_currencyService = currencyService;
 
-		_ = LoadCurrenciesAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( InitializeAsync() );
+	}
+
+	private async Task InitializeAsync()
+	{
+		await LoadCurrenciesAsync();
+		await ReloadAsync();
 	}
 
 	// Override SelectedItem changed om DefaultCurrency te zetten

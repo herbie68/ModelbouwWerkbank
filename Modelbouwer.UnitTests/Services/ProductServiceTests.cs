@@ -329,60 +329,42 @@ public class ProductServiceTests
 	[TestMethod]
 	public async Task NameExistsAsync_WithExistingName_ReturnsTrue()
 	{
-		// Arrange
-		var existingProducts = new List<ProductModel>
-		{
-			new ProductModel { ProductId = 1, ProductName = "Existing Product" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProductModel>>() ) )
-			.ReturnsAsync( existingProducts );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 1 );
 
-		// Act
 		var result = await _productService.NameExistsAsync("Existing Product");
 
-		// Assert
 		Assert.IsTrue( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, ProductModel>>() ), Times.Never );
 	}
 
 	[TestMethod]
 	public async Task NameExistsAsync_WithNonExistingName_ReturnsFalse()
 	{
-		// Arrange
-		var existingProducts = new List<ProductModel>
-		{
-			new ProductModel { ProductId = 1, ProductName = "Product A" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProductModel>>() ) )
-			.ReturnsAsync( existingProducts );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 0 );
 
-		// Act
 		var result = await _productService.NameExistsAsync("Product B");
 
-		// Assert
 		Assert.IsFalse( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, ProductModel>>() ), Times.Never );
 	}
 
 	[TestMethod]
 	public async Task NameExistsAsync_IsCaseInsensitive()
 	{
-		// Arrange
-		var existingProducts = new List<ProductModel>
-		{
-			new ProductModel { ProductId = 1, ProductName = "Test Product" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProductModel>>() ) )
-			.ReturnsAsync( existingProducts );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.Is<string>( query => query.Contains( "LOWER(" ) ), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 1 );
 
-		// Act
 		var result = await _productService.NameExistsAsync("TEST PRODUCT");
 
-		// Assert
 		Assert.IsTrue( result );
 	}
 

@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class StockReceiptViewModel : ObservableObject
+public partial class StockReceiptViewModel : AsyncObservableObject
 {
 	private readonly IStockOrderService _stockOrderService;
 	private bool _suppressSelectedOrderChange;
@@ -15,6 +15,7 @@ public partial class StockReceiptViewModel : ObservableObject
 	[ObservableProperty] private StockOrderLineModel? _selectedOrderLine;
 	[ObservableProperty] private bool _showClosedOrders;
 	[ObservableProperty] private bool _areAllOrderLinesSelected;
+	[ObservableProperty] private bool _isEditingReceipt;
 
 	public Func<StockReceiptDialogViewModel, bool>? ShowReceiptDialog { get; set; }
 	public Func<StockReceiptDateDialogViewModel, bool>? ShowReceiptDateDialog { get; set; }
@@ -23,22 +24,24 @@ public partial class StockReceiptViewModel : ObservableObject
 	public StockReceiptViewModel( IStockOrderService stockOrderService )
 	{
 		_stockOrderService = stockOrderService;
-		EditReceiptCommand = new AsyncRelayCommand( EditSelectedOrderLineAsync );
-		_ = InitializeAsync();
+		EditReceiptCommand = new AsyncRelayCommand( () => EditSelectedOrderLineAsync(), () => !IsEditingReceipt );
+		ObserveBackgroundTask( InitializeAsync() );
 	}
+
+	partial void OnIsEditingReceiptChanged( bool value ) => EditReceiptCommand.NotifyCanExecuteChanged();
 
 	partial void OnSelectedOrderChanged( StockOrderModel? value )
 	{
 		if ( _suppressSelectedOrderChange || value == null )
 			return;
 
-		_ = LoadSelectedOrderAsync( value );
+		ObserveBackgroundTask( LoadSelectedOrderAsync( value ) );
 	}
 
 	partial void OnShowClosedOrdersChanged( bool value )
 	{
 		ApplyOrderFilters();
-		_ = RefreshSelectedOrderLinesAsync();
+		ObserveBackgroundTask( RefreshSelectedOrderLinesAsync() );
 	}
 
 	partial void OnAreAllOrderLinesSelectedChanged( bool value )
@@ -52,6 +55,12 @@ public partial class StockReceiptViewModel : ObservableObject
 	public async Task InitializeAsync()
 	{
 		_allOrders = await _stockOrderService.GetAllOrdersAsync();
+		ApplyOrderFilters();
+	}
+
+	public async Task InitializeAsync( CancellationToken cancellationToken )
+	{
+		_allOrders = await _stockOrderService.GetAllOrdersAsync( cancellationToken );
 		ApplyOrderFilters();
 	}
 
@@ -81,6 +90,12 @@ public partial class StockReceiptViewModel : ObservableObject
 		ApplySelectedOrder( order, lines );
 	}
 
+	private async Task LoadSelectedOrderAsync( StockOrderModel order, CancellationToken cancellationToken )
+	{
+		var lines = await _stockOrderService.GetOrderLinesAsync( order.Id, cancellationToken );
+		ApplySelectedOrder( order, lines );
+	}
+
 	private async Task RefreshSelectedOrderLinesAsync()
 	{
 		if ( SelectedOrder == null )
@@ -89,48 +104,69 @@ public partial class StockReceiptViewModel : ObservableObject
 		await LoadSelectedOrderAsync( SelectedOrder );
 	}
 
-	private async Task EditSelectedOrderLineAsync()
+	public async Task EditSelectedOrderLineAsync()
 	{
+		await EditSelectedOrderLineCoreAsync( null );
+	}
+
+	public async Task EditSelectedOrderLineAsync( CancellationToken cancellationToken )
+	{
+		await EditSelectedOrderLineCoreAsync( cancellationToken == CancellationToken.None ? null : cancellationToken );
+	}
+
+	private async Task EditSelectedOrderLineCoreAsync( CancellationToken? cancellationToken )
+	{
+		if ( IsEditingReceipt )
+			return;
+
 		if ( SelectedOrder == null )
 			return;
 
-		var selectedLines = OpenOrderLines.Where( line => line.IsSelected && !line.Closed ).ToList();
-		if ( selectedLines.Count > 0 )
+		IsEditingReceipt = true;
+		try
 		{
-			await ReceiveSelectedOrderLinesAsync( SelectedOrder, selectedLines );
-			return;
+			var selectedLines = OpenOrderLines.Where( line => line.IsSelected && !line.Closed ).ToList();
+			if ( selectedLines.Count > 0 )
+			{
+				await ReceiveSelectedOrderLinesAsync( SelectedOrder, selectedLines, cancellationToken );
+				return;
+			}
+
+			if ( SelectedOrderLine == null || SelectedOrderLine.Closed )
+				return;
+
+			var order = SelectedOrder;
+			var line = SelectedOrderLine;
+			var dialogVm = new StockReceiptDialogViewModel( StockReceiptDialogModel.Create( line ) );
+			var confirmed = ShowReceiptDialog?.Invoke( dialogVm ) ?? ShowReceiptDialogWindow( dialogVm );
+			if ( !confirmed )
+				return;
+
+			var validationMessage = dialogVm.Validate();
+			if ( validationMessage != null )
+			{
+				MessageBox.Show( validationMessage, Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+				return;
+			}
+
+			double receivedDelta = dialogVm.Model.ReceivedDelta;
+			line.Amount = dialogVm.Model.OrderedAmount;
+			line.Received = dialogVm.Model.ReceivedAmount;
+			line.OpenAmount = dialogVm.Model.OpenAmount;
+			line.Closed = dialogVm.Model.IsOrderLineClosed;
+			line.ClosedDate = line.Closed ? dialogVm.Model.DeliveryDate : null;
+
+			await RegisterReceiptAsync( line, receivedDelta, dialogVm.Model.DeliveryDate, cancellationToken );
+
+			await RefreshOrderAfterReceiptAsync( order, dialogVm.Model.DeliveryDate, cancellationToken );
 		}
-
-		if ( SelectedOrderLine == null || SelectedOrderLine.Closed )
-			return;
-
-		var order = SelectedOrder;
-		var line = SelectedOrderLine;
-		var dialogVm = new StockReceiptDialogViewModel( StockReceiptDialogModel.Create( line ) );
-		var confirmed = ShowReceiptDialog?.Invoke( dialogVm ) ?? ShowReceiptDialogWindow( dialogVm );
-		if ( !confirmed )
-			return;
-
-		var validationMessage = dialogVm.Validate();
-		if ( validationMessage != null )
+		finally
 		{
-			MessageBox.Show( validationMessage, Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
-			return;
+			IsEditingReceipt = false;
 		}
-
-		double receivedDelta = dialogVm.Model.ReceivedDelta;
-		line.Amount = dialogVm.Model.OrderedAmount;
-		line.Received = dialogVm.Model.ReceivedAmount;
-		line.OpenAmount = dialogVm.Model.OpenAmount;
-		line.Closed = dialogVm.Model.IsOrderLineClosed;
-		line.ClosedDate = line.Closed ? dialogVm.Model.DeliveryDate : null;
-
-		await _stockOrderService.RegisterReceiptAsync( line, receivedDelta, dialogVm.Model.DeliveryDate );
-
-		await RefreshOrderAfterReceiptAsync( order, dialogVm.Model.DeliveryDate );
 	}
 
-	private async Task ReceiveSelectedOrderLinesAsync( StockOrderModel order, IReadOnlyCollection<StockOrderLineModel> selectedLines )
+	private async Task ReceiveSelectedOrderLinesAsync( StockOrderModel order, IReadOnlyCollection<StockOrderLineModel> selectedLines, CancellationToken? cancellationToken )
 	{
 		StockReceiptDateDialogViewModel dialogVm = new();
 		var confirmed = ShowReceiptDateDialog?.Invoke( dialogVm ) ?? ShowReceiptDateDialogWindow( dialogVm );
@@ -146,28 +182,49 @@ public partial class StockReceiptViewModel : ObservableObject
 			line.ClosedDate = dialogVm.DeliveryDate;
 			line.IsSelected = false;
 
-			await _stockOrderService.RegisterReceiptAsync( line, receivedDelta, dialogVm.DeliveryDate );
+			await RegisterReceiptAsync( line, receivedDelta, dialogVm.DeliveryDate, cancellationToken );
 		}
 
-		await RefreshOrderAfterReceiptAsync( order, dialogVm.DeliveryDate );
+		await RefreshOrderAfterReceiptAsync( order, dialogVm.DeliveryDate, cancellationToken );
 	}
 
-	private async Task RefreshOrderAfterReceiptAsync( StockOrderModel order, DateTime? deliveryDate )
+	private async Task RefreshOrderAfterReceiptAsync( StockOrderModel order, DateTime? deliveryDate, CancellationToken? cancellationToken )
 	{
-		var refreshedLines = await _stockOrderService.GetOrderLinesAsync( order.Id );
-		await CloseOrderWhenAllLinesAreClosedAsync( order, refreshedLines, deliveryDate );
+		var refreshedLines = await GetOrderLinesAsync( order.Id, cancellationToken );
+		await CloseOrderWhenAllLinesAreClosedAsync( order, refreshedLines, deliveryDate, cancellationToken );
 		ApplyOrderFilters();
 		ApplySelectedOrder( order, refreshedLines );
 	}
 
-	private async Task CloseOrderWhenAllLinesAreClosedAsync( StockOrderModel order, IReadOnlyCollection<StockOrderLineModel> lines, DateTime? deliveryDate )
+	private async Task CloseOrderWhenAllLinesAreClosedAsync( StockOrderModel order, IReadOnlyCollection<StockOrderLineModel> lines, DateTime? deliveryDate, CancellationToken? cancellationToken )
 	{
 		if ( order.Closed || lines.Count == 0 || lines.Any( line => !line.Closed ) )
 			return;
 
 		order.Closed = true;
 		order.ClosedDate = deliveryDate ?? DateTime.Today;
-		await _stockOrderService.UpdateOrderAsync( order );
+		await UpdateOrderAsync( order, cancellationToken );
+	}
+
+	private Task RegisterReceiptAsync( StockOrderLineModel line, double receivedAmount, DateTime? deliveryDate, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.RegisterReceiptAsync( line, receivedAmount, deliveryDate, cancellationToken.Value )
+			: _stockOrderService.RegisterReceiptAsync( line, receivedAmount, deliveryDate );
+	}
+
+	private Task<List<StockOrderLineModel>> GetOrderLinesAsync( int orderId, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.GetOrderLinesAsync( orderId, cancellationToken.Value )
+			: _stockOrderService.GetOrderLinesAsync( orderId );
+	}
+
+	private Task UpdateOrderAsync( StockOrderModel order, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.UpdateOrderAsync( order, cancellationToken.Value )
+			: _stockOrderService.UpdateOrderAsync( order );
 	}
 
 	private void ApplyOrderFilters()

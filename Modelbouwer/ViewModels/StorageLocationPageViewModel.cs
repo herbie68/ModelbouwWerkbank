@@ -46,8 +46,7 @@ public partial class StorageLocationPageViewModel : EntityPageViewModel<StorageL
 	{
 		_dataService = dataService;
 
-		_ = LoadStorageLocationsAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 
 		AddSubStorageLocationCommand = new RelayCommand( AddSubStorageLocation, () => SelectedItem != null );
 
@@ -70,15 +69,6 @@ public partial class StorageLocationPageViewModel : EntityPageViewModel<StorageL
 		base.OnSelectedItemChanged( oldValue, newValue );
 
 		AddSubStorageLocationCommand.NotifyCanExecuteChanged();
-	}
-
-	private async Task LoadStorageLocationsAsync()
-	{
-		var categoryList = await _dataService.GetAllStorageLocationsAsync();
-
-		StorageLocations.Clear();
-		foreach ( var c in categoryList )
-			StorageLocations.Add( c );
 	}
 
 	public bool FilterStorageLocation( object obj )

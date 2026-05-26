@@ -18,16 +18,23 @@ public partial class AboutView : UserControl
 
 	private async void CommitGrid_SelectionChanged( object sender, GridSelectionChangedEventArgs e )
 	{
-		if ( DataContext is not AboutPageViewModel viewModel )
-			return;
+		try
+		{
+			if ( DataContext is not AboutPageViewModel viewModel )
+				return;
 
-		if ( sender is not SfDataGrid grid )
-			return;
+			if ( sender is not SfDataGrid grid )
+				return;
 
-		if ( grid.SelectedItem is not ReleaseCommitModel commit )
-			return;
+			if ( grid.SelectedItem is not ReleaseCommitModel commit )
+				return;
 
-		await viewModel.ShowCommitDetailCommand.ExecuteAsync( commit );
-		grid.SelectedItem = null;
+			await viewModel.ShowCommitDetailCommand.ExecuteAsync( commit );
+			grid.SelectedItem = null;
+		}
+		catch ( Exception ex )
+		{
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
+		}
 	}
 }

@@ -4,7 +4,7 @@ using Syncfusion.UI.Xaml.TreeGrid;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class StorageLocationPickerViewModel : ObservableObject
+public partial class StorageLocationPickerViewModel : AsyncObservableObject
 {
 	private readonly IStorageLocationService _storagelocationService;
 
@@ -42,7 +42,7 @@ public partial class StorageLocationPickerViewModel : ObservableObject
 		ExpandAllCommand = new RelayCommand<object>( OnExpandAll );
 		CollapseAllCommand = new RelayCommand<object>( OnCollapseAll );
 
-		_ = LoadAsync( currentSelection );
+		ObserveBackgroundTask( LoadAsync( currentSelection ) );
 	}
 
 	private async Task LoadAsync( StorageLocationModel? currentSelection )

@@ -11,7 +11,10 @@ public class TimeRegistrationService : ITimeRegistrationService
 		_settingsService = settingsService;
 	}
 
-	public Task<List<TimeEntryModel>> GetTimeEntriesByProjectAsync( int projectId )
+	public Task<List<TimeEntryModel>> GetTimeEntriesByProjectAsync( int projectId ) =>
+		GetTimeEntriesByProjectAsync( projectId, CancellationToken.None );
+
+	public Task<List<TimeEntryModel>> GetTimeEntriesByProjectAsync( int projectId, CancellationToken cancellationToken )
 	{
 		string query =
 			$"SELECT {DBNames.TimeViewFieldNameId}, {DBNames.TimeViewFieldNameProjectId}, {DBNames.TimeViewFieldNameProjectName}, " +
@@ -40,21 +43,27 @@ public class TimeRegistrationService : ITimeRegistrationService
 				Comment = DatabaseValueConverter.GetString( reader[DBNames.TimeViewFieldNameComment] ),
 				State = TimeEntryModel.RecordState.Unchanged
 			};
-		}, new Dictionary<string, object> { { "@ProjectId", projectId } } );
+		}, new Dictionary<string, object> { { "@ProjectId", projectId } }, cancellationToken );
 	}
 
-	public async Task<int> InsertTimeEntryAsync( TimeEntryModel entry )
+	public Task<int> InsertTimeEntryAsync( TimeEntryModel entry ) =>
+		InsertTimeEntryAsync( entry, CancellationToken.None );
+
+	public async Task<int> InsertTimeEntryAsync( TimeEntryModel entry, CancellationToken cancellationToken )
 	{
 		string query =
 			$"INSERT INTO {DBNames.Database}.{DBNames.TimeTable} " +
 			$"({DBNames.TimeFieldNameProjectId}, {DBNames.TimeFieldNameWorktypeId}, {DBNames.TimeFieldNameWorkDate}, {DBNames.TimeFieldNameStartTime}, {DBNames.TimeFieldNameEndTime}, {DBNames.TimeFieldNameComment}) " +
 			$"VALUES (@ProjectId, @WorktypeId, @WorkDate, @StartTime, @EndTime, @Comment); {DBNames.SqlSelectLastId}";
 
-		uint id = await _dataService.ExecuteScalarAsync<uint>( query, CreateTimeParameters( entry ) );
+		uint id = await _dataService.ExecuteScalarAsync<uint>( query, CreateTimeParameters( entry ), cancellationToken );
 		return ( int ) id;
 	}
 
-	public Task UpdateTimeEntryAsync( TimeEntryModel entry )
+	public Task UpdateTimeEntryAsync( TimeEntryModel entry ) =>
+		UpdateTimeEntryAsync( entry, CancellationToken.None );
+
+	public Task UpdateTimeEntryAsync( TimeEntryModel entry, CancellationToken cancellationToken )
 	{
 		string query =
 			$"UPDATE {DBNames.Database}.{DBNames.TimeTable} SET " +
@@ -68,10 +77,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 		var parameters = CreateTimeParameters( entry );
 		parameters.Add( "@TimeId", entry.TimeId );
-		return _dataService.ExecuteNonQueryAsync( query, parameters );
+		return _dataService.ExecuteNonQueryAsync( query, parameters, cancellationToken );
 	}
 
-	public Task DeleteTimeEntryAsync( int timeEntryId )
+	public Task DeleteTimeEntryAsync( int timeEntryId ) =>
+		DeleteTimeEntryAsync( timeEntryId, CancellationToken.None );
+
+	public Task DeleteTimeEntryAsync( int timeEntryId, CancellationToken cancellationToken )
 	{
 		string query =
 			$"DELETE FROM {DBNames.Database}.{DBNames.TimeTable} " +
@@ -80,23 +92,26 @@ public class TimeRegistrationService : ITimeRegistrationService
 		return _dataService.ExecuteNonQueryAsync( query, new Dictionary<string, object>
 		{
 			{ "@TimeId", timeEntryId }
-		} );
+		}, cancellationToken );
 	}
 
-	public async Task<List<MaterialUsageModel>> GetMaterialUsageByProjectAsync( int projectId )
+	public Task<List<MaterialUsageModel>> GetMaterialUsageByProjectAsync( int projectId ) =>
+		GetMaterialUsageByProjectAsync( projectId, CancellationToken.None );
+
+	public async Task<List<MaterialUsageModel>> GetMaterialUsageByProjectAsync( int projectId, CancellationToken cancellationToken )
 	{
 		List<MaterialUsageModel> usages = [];
 
 		await using ( MySqlConnection connection = new( DBConnect.ConnectionString ) )
 		{
-			await connection.OpenAsync();
+			await connection.OpenAsync( cancellationToken );
 
 			await using MySqlCommand command = new( DBNames.SPGetProductsUsageByProject, connection );
 			command.CommandType = CommandType.StoredProcedure;
 			command.Parameters.AddWithValue( DBNames.SPGetProductsUsageByProjectInputParameter, projectId );
 
-			await using MySqlDataReader reader = ( MySqlDataReader ) await command.ExecuteReaderAsync();
-			while ( await reader.ReadAsync() )
+			await using MySqlDataReader reader = ( MySqlDataReader ) await command.ExecuteReaderAsync( cancellationToken );
+			while ( await reader.ReadAsync( cancellationToken ) )
 			{
 				var usageDate = GetDateTime( reader[5] );
 				usages.Add( new MaterialUsageModel
@@ -113,14 +128,17 @@ public class TimeRegistrationService : ITimeRegistrationService
 			}
 		}
 
-		await EnrichMaterialUsageAsync( usages );
+		await EnrichMaterialUsageAsync( usages, cancellationToken );
 		foreach ( MaterialUsageModel usage in usages )
 			usage.State = MaterialUsageModel.RecordState.Unchanged;
 
 		return usages;
 	}
 
-	public async Task<int> InsertMaterialUsageAsync( MaterialUsageModel usage )
+	public Task<int> InsertMaterialUsageAsync( MaterialUsageModel usage ) =>
+		InsertMaterialUsageAsync( usage, CancellationToken.None );
+
+	public async Task<int> InsertMaterialUsageAsync( MaterialUsageModel usage, CancellationToken cancellationToken )
 	{
 		string query =
 			$"INSERT INTO {DBNames.Database}.{DBNames.ProductUsageTable} " +
@@ -134,12 +152,15 @@ public class TimeRegistrationService : ITimeRegistrationService
 			{ "@AmountUsed", usage.Amount },
 			{ "@UsageDate", usage.UsageDate.Date },
 			{ "@Comment", usage.Comment ?? string.Empty }
-		} );
+		}, cancellationToken );
 
 		return ( int ) id;
 	}
 
-	public Task UpdateMaterialUsageAsync( MaterialUsageModel usage )
+	public Task UpdateMaterialUsageAsync( MaterialUsageModel usage ) =>
+		UpdateMaterialUsageAsync( usage, CancellationToken.None );
+
+	public Task UpdateMaterialUsageAsync( MaterialUsageModel usage, CancellationToken cancellationToken )
 	{
 		string query =
 			$"UPDATE {DBNames.Database}.{DBNames.ProductUsageTable} SET " +
@@ -158,10 +179,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 			{ "@UsageDate", usage.UsageDate.Date },
 			{ "@Comment", usage.Comment ?? string.Empty },
 			{ "@ProductUsageId", usage.ProductUsageId }
-		} );
+		}, cancellationToken );
 	}
 
-	public Task DeleteMaterialUsageAsync( int materialUsageId )
+	public Task DeleteMaterialUsageAsync( int materialUsageId ) =>
+		DeleteMaterialUsageAsync( materialUsageId, CancellationToken.None );
+
+	public Task DeleteMaterialUsageAsync( int materialUsageId, CancellationToken cancellationToken )
 	{
 		string query =
 			$"DELETE FROM {DBNames.Database}.{DBNames.ProductUsageTable} " +
@@ -170,21 +194,27 @@ public class TimeRegistrationService : ITimeRegistrationService
 		return _dataService.ExecuteNonQueryAsync( query, new Dictionary<string, object>
 		{
 			{ "@ProductUsageId", materialUsageId }
-		} );
+		}, cancellationToken );
 	}
 
-	public async Task<double> GetHourRateAsync()
+	public Task<double> GetHourRateAsync() =>
+		GetHourRateAsync( CancellationToken.None );
+
+	public async Task<double> GetHourRateAsync( CancellationToken cancellationToken )
 	{
-		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameHourRate );
+		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameHourRate, cancellationToken );
 		if ( SettingsService.TryParseSettingsDouble( value, out var hourRate ) )
 			return hourRate;
 
 		return 0;
 	}
 
-	public async Task<CultureInfo> GetCultureAsync()
+	public Task<CultureInfo> GetCultureAsync() =>
+		GetCultureAsync( CancellationToken.None );
+
+	public async Task<CultureInfo> GetCultureAsync( CancellationToken cancellationToken )
 	{
-		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameCulture );
+		var value = await _settingsService.GetSettingsAsync( DBNames.SettingsFieldNameCulture, cancellationToken );
 		try
 		{
 			return new CultureInfo( string.IsNullOrWhiteSpace( value ) ? "nl-NL" : value );
@@ -195,10 +225,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 		}
 	}
 
-	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWeekdayAsync( int projectId )
+	public Task<List<TimeReportItemModel>> GetWorkedHoursByWeekdayAsync( int projectId ) =>
+		GetWorkedHoursByWeekdayAsync( projectId, CancellationToken.None );
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWeekdayAsync( int projectId, CancellationToken cancellationToken )
 	{
-		var entries = await GetTimeEntriesByProjectAsync( projectId );
-		var culture = await GetCultureAsync();
+		var entries = await GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		var culture = await GetCultureAsync( cancellationToken );
 		return BuildReport(
 			entries,
 			entry => ( ( int ) entry.WorkDate.DayOfWeek + 6 ) % 7,
@@ -206,10 +239,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 			sortOrder => sortOrder );
 	}
 
-	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthAsync( int projectId )
+	public Task<List<TimeReportItemModel>> GetWorkedHoursByMonthAsync( int projectId ) =>
+		GetWorkedHoursByMonthAsync( projectId, CancellationToken.None );
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthAsync( int projectId, CancellationToken cancellationToken )
 	{
-		var entries = await GetTimeEntriesByProjectAsync( projectId );
-		var culture = await GetCultureAsync();
+		var entries = await GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		var culture = await GetCultureAsync( cancellationToken );
 		return BuildReport(
 			entries,
 			entry => entry.WorkDate.Month,
@@ -217,9 +253,12 @@ public class TimeRegistrationService : ITimeRegistrationService
 			sortOrder => sortOrder );
 	}
 
-	public async Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId )
+	public Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId ) =>
+		GetWorkedHoursByYearAsync( projectId, CancellationToken.None );
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByYearAsync( int projectId, CancellationToken cancellationToken )
 	{
-		var entries = await GetTimeEntriesByProjectAsync( projectId );
+		var entries = await GetTimeEntriesByProjectAsync( projectId, cancellationToken );
 		return BuildReport(
 			entries,
 			entry => entry.WorkDate.Year,
@@ -227,10 +266,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 			sortOrder => sortOrder );
 	}
 
-	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId )
+	public Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId ) =>
+		GetWorkedHoursByMonthYearAsync( projectId, CancellationToken.None );
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByMonthYearAsync( int projectId, CancellationToken cancellationToken )
 	{
-		var entries = await GetTimeEntriesByProjectAsync( projectId );
-		var culture = await GetCultureAsync();
+		var entries = await GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		var culture = await GetCultureAsync( cancellationToken );
 		return BuildReport(
 			entries,
 			entry => ( entry.WorkDate.Year * 100 ) + entry.WorkDate.Month,
@@ -238,10 +280,66 @@ public class TimeRegistrationService : ITimeRegistrationService
 			sortOrder => sortOrder );
 	}
 
-	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId )
+	public Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId ) =>
+		GetWorkedHoursByWorktypeAsync( projectId, CancellationToken.None );
+
+	public async Task<List<TimeReportItemModel>> GetWorkedHoursByWorktypeAsync( int projectId, CancellationToken cancellationToken )
 	{
-		var entries = await GetTimeEntriesByProjectAsync( projectId );
-		var worktypes = await GetWorktypeLookupAsync();
+		var entries = await GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		var worktypes = await GetWorktypeLookupAsync( cancellationToken );
+		return BuildWorkedHoursByWorktype( entries, worktypes );
+	}
+
+	public Task<ProjectReportsDataModel> GetProjectReportsAsync( int projectId, bool includeHoursInCosts, double hourRate ) =>
+		GetProjectReportsAsync( projectId, includeHoursInCosts, hourRate, CancellationToken.None );
+
+	public async Task<ProjectReportsDataModel> GetProjectReportsAsync( int projectId, bool includeHoursInCosts, double hourRate, CancellationToken cancellationToken )
+	{
+		var entriesTask = GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		var usagesTask = GetMaterialUsageByProjectAsync( projectId, cancellationToken );
+		var cultureTask = GetCultureAsync( cancellationToken );
+		var worktypesTask = GetWorktypeLookupAsync( cancellationToken );
+
+		await Task.WhenAll( entriesTask, usagesTask, cultureTask, worktypesTask );
+
+		var entries = await entriesTask;
+		var usages = await usagesTask;
+		var culture = await cultureTask;
+		var worktypes = await worktypesTask;
+		var worktypeHours = BuildWorkedHoursByWorktype( entries, worktypes );
+		var declarations = BuildCostDeclarations( usages );
+
+		return new ProjectReportsDataModel
+		{
+			WeekdayHours = BuildReport(
+				entries,
+				entry => ( ( int ) entry.WorkDate.DayOfWeek + 6 ) % 7,
+				entry => culture.DateTimeFormat.GetDayName( entry.WorkDate.DayOfWeek ),
+				sortOrder => sortOrder ),
+			MonthHours = BuildReport(
+				entries,
+				entry => entry.WorkDate.Month,
+				entry => culture.DateTimeFormat.GetMonthName( entry.WorkDate.Month ),
+				sortOrder => sortOrder ),
+			YearHours = BuildReport(
+				entries,
+				entry => entry.WorkDate.Year,
+				entry => entry.WorkDate.Year.ToString( CultureInfo.CurrentCulture ),
+				sortOrder => sortOrder ),
+			MonthYearHours = BuildReport(
+				entries,
+				entry => ( entry.WorkDate.Year * 100 ) + entry.WorkDate.Month,
+				entry => $"{culture.DateTimeFormat.GetMonthName( entry.WorkDate.Month )} {entry.WorkDate.Year}",
+				sortOrder => sortOrder ),
+			WorktypeHours = worktypeHours,
+			CostAllocationLines = BuildCostAllocationByWorktype( worktypeHours, usages, includeHoursInCosts, hourRate ),
+			CostDeclarationLines = declarations,
+			CostDeclarationSummary = BuildCostDeclarationSummary( declarations, worktypeHours, includeHoursInCosts, hourRate )
+		};
+	}
+
+	private static List<TimeReportItemModel> BuildWorkedHoursByWorktype( IEnumerable<TimeEntryModel> entries, IReadOnlyDictionary<int, WorktypeModel> worktypes )
+	{
 		var grouped = entries
 			.Where( entry => entry.WorkedMinutes > 0 )
 			.GroupBy( entry => entry.WorktypeId )
@@ -278,11 +376,24 @@ public class TimeRegistrationService : ITimeRegistrationService
 			.ToList();
 	}
 
-	public async Task<List<CostAllocationReportItemModel>> GetCostAllocationByWorktypeAsync( int projectId, bool includeHoursInCosts, double hourRate )
+	public Task<List<CostAllocationReportItemModel>> GetCostAllocationByWorktypeAsync( int projectId, bool includeHoursInCosts, double hourRate ) =>
+		GetCostAllocationByWorktypeAsync( projectId, includeHoursInCosts, hourRate, CancellationToken.None );
+
+	public async Task<List<CostAllocationReportItemModel>> GetCostAllocationByWorktypeAsync( int projectId, bool includeHoursInCosts, double hourRate, CancellationToken cancellationToken )
 	{
-		var worktypeHours = await GetWorkedHoursByWorktypeAsync( projectId );
-		var materialCosts = ( await GetMaterialUsageByProjectAsync( projectId ) )
-			.Sum( usage => usage.Costs );
+		var worktypeHours = await GetWorkedHoursByWorktypeAsync( projectId, cancellationToken );
+		var usages = await GetMaterialUsageByProjectAsync( projectId, cancellationToken );
+
+		return BuildCostAllocationByWorktype( worktypeHours, usages, includeHoursInCosts, hourRate );
+	}
+
+	private static List<CostAllocationReportItemModel> BuildCostAllocationByWorktype(
+		IReadOnlyCollection<TimeReportItemModel> worktypeHours,
+		IEnumerable<MaterialUsageModel> usages,
+		bool includeHoursInCosts,
+		double hourRate )
+	{
+		var materialCosts = usages.Sum( usage => usage.Costs );
 
 		if ( worktypeHours.Count == 0 )
 			return [];
@@ -312,9 +423,18 @@ public class TimeRegistrationService : ITimeRegistrationService
 			.ToList();
 	}
 
-	public async Task<List<CostDeclarationReportItemModel>> GetCostDeclarationsAsync( int projectId )
+	public Task<List<CostDeclarationReportItemModel>> GetCostDeclarationsAsync( int projectId ) =>
+		GetCostDeclarationsAsync( projectId, CancellationToken.None );
+
+	public async Task<List<CostDeclarationReportItemModel>> GetCostDeclarationsAsync( int projectId, CancellationToken cancellationToken )
 	{
-		return ( await GetMaterialUsageByProjectAsync( projectId ) )
+		var usages = await GetMaterialUsageByProjectAsync( projectId, cancellationToken );
+		return BuildCostDeclarations( usages );
+	}
+
+	private static List<CostDeclarationReportItemModel> BuildCostDeclarations( IEnumerable<MaterialUsageModel> usages )
+	{
+		return usages
 			.Where( usage => usage.Costs > 0 )
 			.OrderByDescending( usage => usage.UsageDate )
 			.ThenBy( usage => usage.CategoryName )
@@ -332,9 +452,25 @@ public class TimeRegistrationService : ITimeRegistrationService
 			.ToList();
 	}
 
-	public async Task<List<CostReportItemModel>> GetCostDeclarationSummaryAsync( int projectId, bool includeHoursInCosts, double hourRate )
+	public Task<List<CostReportItemModel>> GetCostDeclarationSummaryAsync( int projectId, bool includeHoursInCosts, double hourRate ) =>
+		GetCostDeclarationSummaryAsync( projectId, includeHoursInCosts, hourRate, CancellationToken.None );
+
+	public async Task<List<CostReportItemModel>> GetCostDeclarationSummaryAsync( int projectId, bool includeHoursInCosts, double hourRate, CancellationToken cancellationToken )
 	{
-		var declarations = await GetCostDeclarationsAsync( projectId );
+		var declarations = await GetCostDeclarationsAsync( projectId, cancellationToken );
+		var worktypeHours = includeHoursInCosts
+			? await GetWorkedHoursByWorktypeAsync( projectId, cancellationToken )
+			: [];
+
+		return BuildCostDeclarationSummary( declarations, worktypeHours, includeHoursInCosts, hourRate );
+	}
+
+	private static List<CostReportItemModel> BuildCostDeclarationSummary(
+		IEnumerable<CostDeclarationReportItemModel> declarations,
+		IEnumerable<TimeReportItemModel> worktypeHours,
+		bool includeHoursInCosts,
+		double hourRate )
+	{
 		var items = declarations
 			.GroupBy( item => item.CategoryName )
 			.Select( group => new
@@ -346,7 +482,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 		if ( includeHoursInCosts )
 		{
-			var totalHours = ( await GetWorkedHoursByWorktypeAsync( projectId ) ).Sum( item => item.Hours );
+			var totalHours = worktypeHours.Sum( item => item.Hours );
 			var timeCosts = totalHours * hourRate;
 			if ( timeCosts > 0 )
 				items.Add( new { Name = Lang.TimeRegistrationTimeCostsDescription, TotalCosts = timeCosts } );
@@ -426,7 +562,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 			.ToList();
 	}
 
-	private Task<List<WorktypeModel>> GetWorktypesAsync()
+	private Task<List<WorktypeModel>> GetWorktypesAsync( CancellationToken cancellationToken )
 	{
 		string query =
 			$"SELECT {DBNames.WorktypeFieldNameId}, {DBNames.WorktypeFieldNameParentId}, {DBNames.WorktypeFieldNameName} " +
@@ -437,11 +573,11 @@ public class TimeRegistrationService : ITimeRegistrationService
 			WorktypeId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameId] ),
 			ParentId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameParentId] ),
 			WorktypeName = DatabaseValueConverter.GetString( reader[DBNames.WorktypeFieldNameName] )
-		} );
+		}, null, cancellationToken );
 	}
 
-	private async Task<Dictionary<int, WorktypeModel>> GetWorktypeLookupAsync() =>
-		( await GetWorktypesAsync() )
+	private async Task<Dictionary<int, WorktypeModel>> GetWorktypeLookupAsync( CancellationToken cancellationToken ) =>
+		( await GetWorktypesAsync( cancellationToken ) )
 			.Where( worktype => worktype.WorktypeId > 0 )
 			.ToDictionary( worktype => worktype.WorktypeId );
 
@@ -489,7 +625,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 		return ( rootId * 1000 ) + worktypeId;
 	}
 
-	private async Task EnrichMaterialUsageAsync( List<MaterialUsageModel> usages )
+	private async Task EnrichMaterialUsageAsync( List<MaterialUsageModel> usages, CancellationToken cancellationToken )
 	{
 		int[] productIds = usages
 			.Select( usage => usage.ProductId )
@@ -523,7 +659,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 			Price = DatabaseValueConverter.GetDouble( reader["Price"] ),
 			CategoryId = DatabaseValueConverter.GetInt( reader["CategoryId"] ),
 			CategoryName = DatabaseValueConverter.GetString( reader["CategoryName"] )
-		}, parameters );
+		}, parameters, cancellationToken );
 
 		var metadataByProductId = metadata.ToDictionary( item => item.ProductId );
 		foreach ( MaterialUsageModel usage in usages )

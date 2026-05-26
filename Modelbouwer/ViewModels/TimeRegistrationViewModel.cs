@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class TimeRegistrationViewModel : ObservableObject
+public partial class TimeRegistrationViewModel : AsyncObservableObject
 {
 	private readonly ITimeRegistrationService _timeRegistrationService;
 	private readonly IProjectService _projectService;
@@ -13,6 +13,7 @@ public partial class TimeRegistrationViewModel : ObservableObject
 	private readonly IWorktypeService _worktypeService;
 	private readonly ICategoryService _categoryService;
 	private bool _isSyncingSelectedMaterialUsage;
+	private CancellationTokenSource? _selectedProjectDataCancellationTokenSource;
 	private CultureInfo _displayCulture = CultureInfo.CurrentCulture;
 
 	[ObservableProperty] private ProjectModel? _selectedProject;
@@ -29,6 +30,8 @@ public partial class TimeRegistrationViewModel : ObservableObject
 	[ObservableProperty] private double _hourRate;
 	[ObservableProperty] private bool _hasUnsavedTimeChanges;
 	[ObservableProperty] private bool _hasUnsavedMaterialChanges;
+	[ObservableProperty] private bool _isSavingTimeEntries;
+	[ObservableProperty] private bool _isSavingMaterialUsages;
 	[ObservableProperty] private TimeEntryModel? _selectedTimeEntry;
 	[ObservableProperty] private MaterialUsageModel? _selectedMaterialUsage;
 	[ObservableProperty] private bool _isProductPopupOpen;
@@ -77,10 +80,10 @@ public partial class TimeRegistrationViewModel : ObservableObject
 		_categoryService = categoryService;
 
 		AddTimeEntryCommand = new RelayCommand( AddTimeEntry, CanAddTimeEntry );
-		SaveTimeEntriesCommand = new AsyncRelayCommand( SaveTimeEntriesAsync, () => HasUnsavedTimeChanges );
+		SaveTimeEntriesCommand = new AsyncRelayCommand( SaveTimeEntriesAsync, CanSaveTimeEntries );
 		AddMaterialUsageCommand = new AsyncRelayCommand( AddMaterialUsageAsync, CanAddMaterialUsage );
-		SaveMaterialUsagesCommand = new AsyncRelayCommand( SaveMaterialUsagesAsync, () => HasUnsavedMaterialChanges );
-		RefreshCommand = new AsyncRelayCommand( RefreshSelectedProjectDataAsync );
+		SaveMaterialUsagesCommand = new AsyncRelayCommand( SaveMaterialUsagesAsync, CanSaveMaterialUsages );
+		RefreshCommand = new AsyncRelayCommand( StartRefreshSelectedProjectDataAsync );
 		ToggleWorktypePopupCommand = new RelayCommand( () => IsWorktypePopupOpen = !IsWorktypePopupOpen );
 		ToggleProductPopupCommand = new RelayCommand( () => IsProductPopupOpen = !IsProductPopupOpen );
 		DeleteTimeEntryCommand = new AsyncRelayCommand( DeleteSelectedTimeEntryAsync, () => SelectedTimeEntry != null );
@@ -89,7 +92,7 @@ public partial class TimeRegistrationViewModel : ObservableObject
 		TimeEntries.CollectionChanged += TimeEntries_CollectionChanged;
 		MaterialUsages.CollectionChanged += MaterialUsages_CollectionChanged;
 
-		_ = InitializeAsync();
+		ObserveBackgroundTask( InitializeAsync() );
 	}
 
 	public bool IsProjectSelected => SelectedProject != null;
@@ -109,13 +112,40 @@ public partial class TimeRegistrationViewModel : ObservableObject
 
 	private async Task InitializeAsync()
 	{
-		_displayCulture = await _timeRegistrationService.GetCultureAsync();
-		HourRate = await _timeRegistrationService.GetHourRateAsync();
+		var cultureTask = _timeRegistrationService.GetCultureAsync();
+		var hourRateTask = _timeRegistrationService.GetHourRateAsync();
+		var projectsTask = _projectService.GetAllProjectsAsync();
+		var productsTask = _productService.GetAllProductsAsync();
+		var categoriesTask = _categoryService.GetAllCategorysAsync();
+		var worktypesTask = _worktypeService.GetAllWorkTypesAsync();
 
-		await LoadProjectsAsync();
-		await LoadProductsAsync();
-		await LoadCategoriesAsync();
-		await LoadWorktypesAsync();
+		await PerformanceTrace.MeasureAsync(
+			$"{nameof( TimeRegistrationViewModel )}.{nameof( InitializeAsync )}",
+			() => Task.WhenAll( cultureTask, hourRateTask, projectsTask, productsTask, categoriesTask, worktypesTask ) );
+
+		_displayCulture = await cultureTask;
+		HourRate = await hourRateTask;
+
+		Projects.Clear();
+		foreach ( var project in await projectsTask )
+			Projects.Add( project );
+
+		Products.Clear();
+		foreach ( var product in await productsTask )
+			Products.Add( product );
+
+		Categories.Clear();
+		foreach ( var category in await categoriesTask )
+			Categories.Add( category );
+
+		Worktypes.Clear();
+		foreach ( var worktype in await worktypesTask )
+			Worktypes.Add( worktype );
+
+		WorktypeTree.Clear();
+		foreach ( var root in BuildWorktypeTree( Worktypes ) )
+			WorktypeTree.Add( root );
+
 		BuildProductTree();
 
 		SelectedProject = Projects.OrderByDescending( project => project.ProjectId ).FirstOrDefault();
@@ -123,42 +153,10 @@ public partial class TimeRegistrationViewModel : ObservableObject
 		SelectedWorktype = Worktypes.FirstOrDefault();
 	}
 
-	private async Task LoadProjectsAsync()
-	{
-		Projects.Clear();
-		foreach ( var project in await _projectService.GetAllProjectsAsync() )
-			Projects.Add( project );
-	}
-
-	private async Task LoadProductsAsync()
-	{
-		Products.Clear();
-		foreach ( var product in await _productService.GetAllProductsAsync() )
-			Products.Add( product );
-	}
-
-	private async Task LoadCategoriesAsync()
-	{
-		Categories.Clear();
-		foreach ( var category in await _categoryService.GetAllCategorysAsync() )
-			Categories.Add( category );
-	}
-
-	private async Task LoadWorktypesAsync()
-	{
-		Worktypes.Clear();
-		foreach ( var worktype in await _worktypeService.GetAllWorkTypesAsync() )
-			Worktypes.Add( worktype );
-
-		WorktypeTree.Clear();
-		foreach ( var root in BuildWorktypeTree( Worktypes ) )
-			WorktypeTree.Add( root );
-	}
-
 	partial void OnSelectedProjectChanged( ProjectModel? value )
 	{
 		OnPropertyChanged( nameof( IsProjectSelected ) );
-		_ = RefreshSelectedProjectDataAsync();
+		ObserveBackgroundTask( StartRefreshSelectedProjectDataAsync() );
 		AddTimeEntryCommand.NotifyCanExecuteChanged();
 		AddMaterialUsageCommand.NotifyCanExecuteChanged();
 	}
@@ -199,6 +197,8 @@ public partial class TimeRegistrationViewModel : ObservableObject
 	}
 	partial void OnHasUnsavedTimeChangesChanged( bool value ) => OnPropertyChanged( nameof( HasUnsavedChanges ) );
 	partial void OnHasUnsavedMaterialChangesChanged( bool value ) => OnPropertyChanged( nameof( HasUnsavedChanges ) );
+	partial void OnIsSavingTimeEntriesChanged( bool value ) => SaveTimeEntriesCommand.NotifyCanExecuteChanged();
+	partial void OnIsSavingMaterialUsagesChanged( bool value ) => SaveMaterialUsagesCommand.NotifyCanExecuteChanged();
 	partial void OnSelectedTimeEntryChanged( TimeEntryModel? value )
 	{
 		DeleteTimeEntryCommand.NotifyCanExecuteChanged();
@@ -214,26 +214,53 @@ public partial class TimeRegistrationViewModel : ObservableObject
 		SyncMaterialDetailFields( value );
 	}
 
-	private async Task RefreshSelectedProjectDataAsync()
+	private Task StartRefreshSelectedProjectDataAsync()
 	{
-		if ( SelectedProject == null )
+		_selectedProjectDataCancellationTokenSource?.Cancel();
+		_selectedProjectDataCancellationTokenSource?.Dispose();
+		_selectedProjectDataCancellationTokenSource = new CancellationTokenSource();
+		var cancellationToken = _selectedProjectDataCancellationTokenSource.Token;
+
+		return RefreshSelectedProjectDataAsync( cancellationToken );
+	}
+
+	private async Task RefreshSelectedProjectDataAsync( CancellationToken cancellationToken )
+	{
+		var selectedProject = SelectedProject;
+		if ( selectedProject == null )
 			return;
 
-		await LoadTimeEntriesAsync( SelectedProject.ProjectId );
-		await LoadMaterialUsageAsync( SelectedProject.ProjectId );
+		var timeEntriesTask = _timeRegistrationService.GetTimeEntriesByProjectAsync( selectedProject.ProjectId, cancellationToken );
+		var materialUsagesTask = _timeRegistrationService.GetMaterialUsageByProjectAsync( selectedProject.ProjectId, cancellationToken );
+
+		await PerformanceTrace.MeasureAsync(
+			$"{nameof( TimeRegistrationViewModel )}.{nameof( RefreshSelectedProjectDataAsync )}",
+			() => Task.WhenAll( timeEntriesTask, materialUsagesTask ) );
+		cancellationToken.ThrowIfCancellationRequested();
+
+		ApplyTimeEntries( await timeEntriesTask );
+		ApplyMaterialUsages( await materialUsagesTask );
 
 		HasUnsavedTimeChanges = false;
 		HasUnsavedMaterialChanges = false;
 		RebuildCostLines();
 	}
 
-	private async Task LoadTimeEntriesAsync( int projectId )
+	private async Task LoadTimeEntriesAsync( int projectId, CancellationToken cancellationToken )
+	{
+		var entries = await _timeRegistrationService.GetTimeEntriesByProjectAsync( projectId, cancellationToken );
+		cancellationToken.ThrowIfCancellationRequested();
+
+		ApplyTimeEntries( entries );
+	}
+
+	private void ApplyTimeEntries( IEnumerable<TimeEntryModel> entries )
 	{
 		foreach ( var entry in TimeEntries )
 			entry.PropertyChanged -= TimeEntry_PropertyChanged;
 
 		TimeEntries.Clear();
-		foreach ( var entry in await _timeRegistrationService.GetTimeEntriesByProjectAsync( projectId ) )
+		foreach ( var entry in entries )
 			TimeEntries.Add( entry );
 
 		SortTimeEntries();
@@ -241,13 +268,21 @@ public partial class TimeRegistrationViewModel : ObservableObject
 		RaiseTimeTotals();
 	}
 
-	private async Task LoadMaterialUsageAsync( int projectId )
+	private async Task LoadMaterialUsageAsync( int projectId, CancellationToken cancellationToken )
+	{
+		var usages = await _timeRegistrationService.GetMaterialUsageByProjectAsync( projectId, cancellationToken );
+		cancellationToken.ThrowIfCancellationRequested();
+
+		ApplyMaterialUsages( usages );
+	}
+
+	private void ApplyMaterialUsages( IEnumerable<MaterialUsageModel> usages )
 	{
 		foreach ( var usage in MaterialUsages )
 			usage.PropertyChanged -= MaterialUsage_PropertyChanged;
 
 		MaterialUsages.Clear();
-		foreach ( var usage in await _timeRegistrationService.GetMaterialUsageByProjectAsync( projectId ) )
+		foreach ( var usage in usages )
 			MaterialUsages.Add( usage );
 
 		SortMaterialUsages();
@@ -284,35 +319,46 @@ public partial class TimeRegistrationViewModel : ObservableObject
 
 	private async Task SaveTimeEntriesAsync()
 	{
-		var changedEntries = TimeEntries
-			.Where( e => e.State != TimeEntryModel.RecordState.Unchanged )
-			.ToList();
-
-		if ( changedEntries.Count == 0 )
+		if ( IsSavingTimeEntries )
 			return;
 
-		foreach ( var entry in changedEntries )
+		IsSavingTimeEntries = true;
+		try
 		{
-			if ( !TryValidateTimeInput( entry.WorkDate.Date, entry.StartTime, entry.EndTime, entry, out string validationMessage ) )
-			{
-				MessageBox.Show( validationMessage, Lang.TimeRegistrationTimeRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+			var changedEntries = TimeEntries
+				.Where( e => e.State != TimeEntryModel.RecordState.Unchanged )
+				.ToList();
+
+			if ( changedEntries.Count == 0 )
 				return;
+
+			foreach ( var entry in changedEntries )
+			{
+				if ( !TryValidateTimeInput( entry.WorkDate.Date, entry.StartTime, entry.EndTime, entry, out string validationMessage ) )
+				{
+					MessageBox.Show( validationMessage, Lang.TimeRegistrationTimeRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+					return;
+				}
 			}
-		}
 
-		foreach ( var entry in changedEntries )
+			foreach ( var entry in changedEntries )
+			{
+				if ( entry.State == TimeEntryModel.RecordState.Added )
+					entry.TimeId = await _timeRegistrationService.InsertTimeEntryAsync( entry );
+				else if ( entry.State == TimeEntryModel.RecordState.Modified )
+					await _timeRegistrationService.UpdateTimeEntryAsync( entry );
+
+				entry.State = TimeEntryModel.RecordState.Unchanged;
+			}
+
+			HasUnsavedTimeChanges = false;
+			SaveTimeEntriesCommand.NotifyCanExecuteChanged();
+			await RefreshSelectedProjectDataAsync( CancellationToken.None );
+		}
+		finally
 		{
-			if ( entry.State == TimeEntryModel.RecordState.Added )
-				entry.TimeId = await _timeRegistrationService.InsertTimeEntryAsync( entry );
-			else if ( entry.State == TimeEntryModel.RecordState.Modified )
-				await _timeRegistrationService.UpdateTimeEntryAsync( entry );
-
-			entry.State = TimeEntryModel.RecordState.Unchanged;
+			IsSavingTimeEntries = false;
 		}
-
-		HasUnsavedTimeChanges = false;
-		SaveTimeEntriesCommand.NotifyCanExecuteChanged();
-		await RefreshSelectedProjectDataAsync();
 	}
 
 	public Task SaveTimeEntriesFromViewAsync() => SaveTimeEntriesAsync();
@@ -347,48 +393,61 @@ public partial class TimeRegistrationViewModel : ObservableObject
 
 	private bool CanAddTimeEntry() => SelectedProject != null && SelectedWorktype != null;
 	private bool CanAddMaterialUsage() => SelectedProject != null && SelectedProduct != null && MaterialAmount > 0;
+	private bool CanSaveTimeEntries() => HasUnsavedTimeChanges && !IsSavingTimeEntries;
+	private bool CanSaveMaterialUsages() => HasUnsavedMaterialChanges && !IsSavingMaterialUsages;
 
 	private async Task SaveMaterialUsagesAsync()
 	{
-		var changedUsages = MaterialUsages
-			.Where( usage => usage.State != MaterialUsageModel.RecordState.Unchanged )
-			.ToList();
-
-		if ( changedUsages.Count == 0 )
+		if ( IsSavingMaterialUsages )
 			return;
 
-		foreach ( var usage in changedUsages )
+		IsSavingMaterialUsages = true;
+		try
 		{
-			if ( usage.ProductId <= 0 )
-			{
-				MessageBox.Show( Lang.TimeRegistrationSelectProductWarning, Lang.TimeRegistrationMaterialRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+			var changedUsages = MaterialUsages
+				.Where( usage => usage.State != MaterialUsageModel.RecordState.Unchanged )
+				.ToList();
+
+			if ( changedUsages.Count == 0 )
 				return;
+
+			foreach ( var usage in changedUsages )
+			{
+				if ( usage.ProductId <= 0 )
+				{
+					MessageBox.Show( Lang.TimeRegistrationSelectProductWarning, Lang.TimeRegistrationMaterialRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+					return;
+				}
+
+				if ( usage.Amount <= 0 )
+				{
+					MessageBox.Show( Lang.TimeRegistrationPositiveAmountWarning, Lang.TimeRegistrationMaterialRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+					return;
+				}
 			}
 
-			if ( usage.Amount <= 0 )
+			foreach ( var usage in changedUsages )
 			{
-				MessageBox.Show( Lang.TimeRegistrationPositiveAmountWarning, Lang.TimeRegistrationMaterialRegistrationTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
-				return;
+				if ( usage.State == MaterialUsageModel.RecordState.Added )
+					usage.ProductUsageId = await _timeRegistrationService.InsertMaterialUsageAsync( usage );
+				else if ( usage.State == MaterialUsageModel.RecordState.Modified )
+					await _timeRegistrationService.UpdateMaterialUsageAsync( usage );
+
+				usage.State = MaterialUsageModel.RecordState.Unchanged;
 			}
-		}
 
-		foreach ( var usage in changedUsages )
+			HasUnsavedMaterialChanges = false;
+			SaveMaterialUsagesCommand.NotifyCanExecuteChanged();
+
+			if ( SelectedProject != null )
+				await LoadMaterialUsageAsync( SelectedProject.ProjectId, CancellationToken.None );
+
+			RebuildCostLines();
+		}
+		finally
 		{
-			if ( usage.State == MaterialUsageModel.RecordState.Added )
-				usage.ProductUsageId = await _timeRegistrationService.InsertMaterialUsageAsync( usage );
-			else if ( usage.State == MaterialUsageModel.RecordState.Modified )
-				await _timeRegistrationService.UpdateMaterialUsageAsync( usage );
-
-			usage.State = MaterialUsageModel.RecordState.Unchanged;
+			IsSavingMaterialUsages = false;
 		}
-
-		HasUnsavedMaterialChanges = false;
-		SaveMaterialUsagesCommand.NotifyCanExecuteChanged();
-
-		if ( SelectedProject != null )
-			await LoadMaterialUsageAsync( SelectedProject.ProjectId );
-
-		RebuildCostLines();
 	}
 
 	public void SelectWorktype( WorktypeModel worktype )

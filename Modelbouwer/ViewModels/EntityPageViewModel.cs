@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public abstract partial class EntityPageViewModel<T> : ObservableObject
+public abstract partial class EntityPageViewModel<T> : AsyncObservableObject
 {
 	protected readonly IEntityValidator<T> Validator;
 
@@ -30,6 +30,7 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 				if ( SetProperty( ref field, value ) )
 				{
 					OnSelectedItemChanged( oldValue, value );
+					NotifyDeleteCommandsCanExecuteChanged();
 				}
 			}
 		}
@@ -40,6 +41,7 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	// -----------------------------
 	[ObservableProperty] protected bool _isLoading;
 	[ObservableProperty] protected bool _isSaving;
+	[ObservableProperty] protected bool _isDeleting;
 	[ObservableProperty] protected string _searchText = string.Empty;
 	[ObservableProperty]
 	private bool hasUnsavedChanges;
@@ -61,18 +63,18 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 	// -----------------------------
 	public IRelayCommand AddCommand => _addCommand ??= new RelayCommand( Add );
 	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( Add );
-	public IRelayCommand DeleteCommand => _deleteCommand ??= new RelayCommand( Delete );
-	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( Delete );
-	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync );
-	public IAsyncRelayCommand SaveContactCommand => _saveContactCommand ??= new AsyncRelayCommand( SaveAsync );
+	public IAsyncRelayCommand DeleteCommand => _deleteCommand ??= new AsyncRelayCommand( DeleteCommandAsync, CanDelete );
+	public IAsyncRelayCommand DeleteContactCommand => _deleteContactCommand ??= new AsyncRelayCommand( DeleteCommandAsync, CanDelete );
+	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync, CanSave );
+	public IAsyncRelayCommand SaveContactCommand => _saveContactCommand ??= new AsyncRelayCommand( SaveAsync, CanSave );
 	public IAsyncRelayCommand ReloadCommand => _reloadCommand ??= new AsyncRelayCommand( ReloadAsync );
 	public IAsyncRelayCommand ReloadContactsCommand => _reloadContactsCommand ??= new AsyncRelayCommand( ReloadAsync );
 	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private IRelayCommand? _addCommand;
 	private IRelayCommand? _addContactCommand;
-	private IRelayCommand? _deleteCommand;
-	private IRelayCommand? _deleteContactCommand;
+	private IAsyncRelayCommand? _deleteCommand;
+	private IAsyncRelayCommand? _deleteContactCommand;
 	private IAsyncRelayCommand? _saveCommand;
 	private IAsyncRelayCommand? _saveContactCommand;
 	private IAsyncRelayCommand? _reloadCommand;
@@ -127,6 +129,9 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 
 	private async Task SaveAsync()
 	{
+		if ( IsSaving )
+			return;
+
 		if ( SelectedItem == null )
 			return;
 
@@ -164,12 +169,31 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		HasUnsavedChanges = false;
 	}
 
+	partial void OnIsSavingChanged( bool value ) => NotifySaveCommandsCanExecuteChanged();
+	partial void OnHasUnsavedChangesChanged( bool value ) => NotifySaveCommandsCanExecuteChanged();
+	partial void OnIsDeletingChanged( bool value ) => NotifyDeleteCommandsCanExecuteChanged();
+
+	private bool CanSave() => HasUnsavedChanges && !IsSaving;
+	private bool CanDelete() => SelectedItem != null && !IsDeleting;
+
+	private void NotifySaveCommandsCanExecuteChanged()
+	{
+		_saveCommand?.NotifyCanExecuteChanged();
+		_saveContactCommand?.NotifyCanExecuteChanged();
+	}
+
+	private void NotifyDeleteCommandsCanExecuteChanged()
+	{
+		_deleteCommand?.NotifyCanExecuteChanged();
+		_deleteContactCommand?.NotifyCanExecuteChanged();
+	}
+
 	protected async Task ReloadAsync()
 	{
 		IsLoading = true;
 		try
 		{
-			var items = await LoadItemsAsync();
+			var items = await PerformanceTrace.MeasureAsync( $"{nameof( EntityPageViewModel<T> )}.{nameof( ReloadAsync )}", LoadItemsAsync );
 			Items.Clear();
 			foreach ( var item in items )
 				Items.Add( item );
@@ -185,11 +209,15 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		}
 	}
 
-	private async void Delete()
+	private async Task DeleteCommandAsync()
 	{
+		if ( IsDeleting )
+			return;
+
 		if ( SelectedItem == null )
 			return;
 
+		IsDeleting = true;
 		try
 		{
 			await DeleteAsync( SelectedItem );
@@ -199,6 +227,10 @@ public abstract partial class EntityPageViewModel<T> : ObservableObject
 		{
 			// fallback logging, mocht er toch iets misgaan
 			MessageBox.Show( $"{Lang.generalMessageboxDeleteError}: {ex.Message}" );
+		}
+		finally
+		{
+			IsDeleting = false;
 		}
 	}
 

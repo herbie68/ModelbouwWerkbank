@@ -2,9 +2,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class AboutPageViewModel : ObservableObject
+public partial class AboutPageViewModel : AsyncObservableObject
 {
-	private readonly GitHubReleaseHistoryService _releaseHistoryService;
+	private readonly IGitHubReleaseHistoryService _releaseHistoryService;
 	private int _currentPage;
 
 	public ObservableCollection<ReleaseCommitModel> Commits { get; } = [];
@@ -30,14 +30,14 @@ public partial class AboutPageViewModel : ObservableObject
 	public IAsyncRelayCommand<ReleaseCommitModel> ShowCommitDetailCommand { get; }
 	public IRelayCommand CloseDetailCommand { get; }
 
-	public AboutPageViewModel( GitHubReleaseHistoryService releaseHistoryService )
+	public AboutPageViewModel( IGitHubReleaseHistoryService releaseHistoryService )
 	{
 		_releaseHistoryService = releaseHistoryService;
 		LoadMoreCommand = new AsyncRelayCommand( LoadMoreAsync, () => !IsLoading );
 		ShowCommitDetailCommand = new AsyncRelayCommand<ReleaseCommitModel>( ShowCommitDetailAsync );
 		CloseDetailCommand = new RelayCommand( () => IsDetailOpen = false );
 
-		_ = LoadMoreAsync();
+		ObserveBackgroundTask( LoadMoreAsync() );
 	}
 
 	private async Task LoadMoreAsync()

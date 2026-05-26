@@ -32,8 +32,7 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadCurrenciesAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	// Override SelectedItem changed om DefaultCurrency te zetten
@@ -50,16 +49,6 @@ public partial class CurrencyPageViewModel : EntityPageViewModel<CurrencyModel>
 		OnPropertyChanged( nameof( SelectedCurrency.CurrencyId ) );
 		OnPropertyChanged( nameof( SelectedCurrency.CurrencySymbol ) );
 		OnPropertyChanged( nameof( SelectedCurrency.CurrencyConversionRate ) );
-	}
-
-	// Async currencies laden
-	private async Task LoadCurrenciesAsync()
-	{
-		var currencyList = await _dataService.GetAllCurrenciesAsync();
-
-		Currencies.Clear();
-		foreach ( var c in currencyList )
-			Currencies.Add( c );
 	}
 
 	// Properties voor UI binding

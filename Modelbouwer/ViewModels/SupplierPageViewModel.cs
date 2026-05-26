@@ -29,10 +29,9 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		_contactService = contactService ?? throw new ArgumentNullException( nameof( contactService ) );
 		_contactTypeService = contactTypeService ?? throw new ArgumentNullException( nameof( contactTypeService ) );
 
-		_ = LoadComboBoxesContentAsync();
-		_ = LoadContactsAndFunctionsAsync();
-
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( LoadComboBoxesContentAsync() );
+		ObserveBackgroundTask( LoadContactsAndFunctionsAsync() );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	#region Collections & Selected Items
@@ -105,13 +104,18 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 		SupplierCountry.Clear();
 		SupplierCurrency.Clear();
 
-		var countries = await _countryService.GetAllCountriesAsync();
+		var countriesTask = _countryService.GetAllCountriesAsync();
+		var currenciesTask = _currencyService.GetAllCurrenciesAsync();
+
+		await Task.WhenAll( countriesTask, currenciesTask );
+
+		var countries = await countriesTask;
 		foreach ( var country in countries )
 		{
 			SupplierCountry.Add( country );
 		}
 
-		var currencies = await _currencyService.GetAllCurrenciesAsync();
+		var currencies = await currenciesTask;
 		foreach ( var currency in currencies )
 		{
 			SupplierCurrency.Add( currency );
@@ -120,14 +124,17 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	private async Task LoadContactsAndFunctionsAsync()
 	{
-		// Load contact types
-		var types = await _contactTypeService.GetAllContactTypesAsync();
+		var contactTypesTask = _contactTypeService.GetAllContactTypesAsync();
+		var contactsTask = _contactService.GetAllContactsAsync();
+
+		await Task.WhenAll( contactTypesTask, contactsTask );
+
+		var types = await contactTypesTask;
 		SupplierContactFunctions.Clear();
 		foreach ( var t in types )
 			SupplierContactFunctions.Add( t );
 
-		// Load all contacts
-		var allContacts = await _contactService.GetAllContactsAsync();
+		var allContacts = await contactsTask;
 		Contacts.Clear();
 		foreach ( var c in allContacts )
 			Contacts.Add( c );

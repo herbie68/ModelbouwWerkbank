@@ -4,7 +4,7 @@ using Syncfusion.UI.Xaml.TreeGrid;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class CategoryPickerViewModel : ObservableObject
+public partial class CategoryPickerViewModel : AsyncObservableObject
 {
 	private readonly ICategoryService _categoryService;
 
@@ -42,7 +42,7 @@ public partial class CategoryPickerViewModel : ObservableObject
 		ExpandAllCommand = new RelayCommand<object>( OnExpandAll );
 		CollapseAllCommand = new RelayCommand<object>( OnCollapseAll );
 
-		_ = LoadAsync( currentSelection );
+		ObserveBackgroundTask( LoadAsync( currentSelection ) );
 	}
 
 	private async Task LoadAsync( CategoryModel? currentSelection )

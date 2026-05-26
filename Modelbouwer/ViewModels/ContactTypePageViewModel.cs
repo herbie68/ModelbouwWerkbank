@@ -29,8 +29,7 @@ public class ContactTypePageViewModel : EntityPageViewModel<ContactTypeModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadContactTypesAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	// Override SelectedItem changed om DefaultContactType te zetten
@@ -44,16 +43,6 @@ public class ContactTypePageViewModel : EntityPageViewModel<ContactTypeModel>
 		OnPropertyChanged( nameof( SelectedContactType ) );
 		OnPropertyChanged( nameof( SelectedContactType.ContactTypeName ) );
 		OnPropertyChanged( nameof( SelectedContactType.ContactTypeId ) );
-	}
-
-	// Async contacttypes laden
-	private async Task LoadContactTypesAsync()
-	{
-		var contacttypeList = await _dataService.GetAllContactTypesAsync();
-
-		ContactTypes.Clear();
-		foreach ( var c in contacttypeList )
-			ContactTypes.Add( c );
 	}
 
 	// Properties voor UI binding

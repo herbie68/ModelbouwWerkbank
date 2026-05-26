@@ -57,6 +57,51 @@ public class SupplierPageViewModelTests
 	}
 
 	[TestMethod]
+	public async Task Constructor_WhenSupplierLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load suppliers." );
+		var supplierService = new Mock<ISupplierService>();
+		supplierService
+			.Setup( service => service.GetAllSuppliersAsync() )
+			.Returns( Task.FromException<List<SupplierModel>>( expected ) );
+
+		var viewModel = CreateViewModel( supplierService: supplierService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
+	public async Task Constructor_WhenCountryLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load countries." );
+		var countryService = new Mock<ICountryService>();
+		countryService
+			.Setup( service => service.GetAllCountriesAsync() )
+			.Returns( Task.FromException<List<CountryModel>>( expected ) );
+
+		var viewModel = CreateViewModel( countryService: countryService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
+	public async Task Constructor_WhenContactTypeLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load contact types." );
+		var contactTypeService = new Mock<IContactTypeService>();
+		contactTypeService
+			.Setup( service => service.GetAllContactTypesAsync() )
+			.Returns( Task.FromException<List<ContactTypeModel>>( expected ) );
+
+		var viewModel = CreateViewModel( contactTypeService: contactTypeService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
 	public void Suppliers_ReturnsItemsCollection()
 	{
 		// Assert
@@ -467,5 +512,94 @@ public class SupplierPageViewModelTests
 
 		// Assert
 		Assert.IsTrue( propertyChanged );
+	}
+
+	[TestMethod]
+	public void SupplierPageViewModel_LoadComboBoxesStartsIndependentServiceCallsBeforeAwaiting()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "SupplierPageViewModel.cs" );
+
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var countriesTask = _countryService.GetAllCountriesAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var currenciesTask = _currencyService.GetAllCurrenciesAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "await Task.WhenAll( countriesTask, currenciesTask );" );
+	}
+
+	[TestMethod]
+	public void SupplierPageViewModel_LoadContactsAndFunctionsStartsIndependentServiceCallsBeforeAwaiting()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "SupplierPageViewModel.cs" );
+
+		AssertMethodContains( source, "private async Task LoadContactsAndFunctionsAsync()", "var contactTypesTask = _contactTypeService.GetAllContactTypesAsync();" );
+		AssertMethodContains( source, "private async Task LoadContactsAndFunctionsAsync()", "var contactsTask = _contactService.GetAllContactsAsync();" );
+		AssertMethodContains( source, "private async Task LoadContactsAndFunctionsAsync()", "await Task.WhenAll( contactTypesTask, contactsTask );" );
+	}
+
+	private static SupplierPageViewModel CreateViewModel(
+		ISupplierService? supplierService = null,
+		ICountryService? countryService = null,
+		ICurrencyService? currencyService = null,
+		IContactService? contactService = null,
+		IContactTypeService? contactTypeService = null )
+	{
+		var defaultSupplierService = new Mock<ISupplierService>();
+		var defaultCountryService = new Mock<ICountryService>();
+		var defaultCurrencyService = new Mock<ICurrencyService>();
+		var defaultContactService = new Mock<IContactService>();
+		var defaultContactTypeService = new Mock<IContactTypeService>();
+		var validator = new Mock<IEntityValidator<SupplierModel>>();
+
+		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
+		defaultCountryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [] );
+		defaultCurrencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [] );
+		defaultContactService.Setup( service => service.GetAllContactsAsync() ).ReturnsAsync( [] );
+		defaultContactTypeService.Setup( service => service.GetAllContactTypesAsync() ).ReturnsAsync( [] );
+
+		return new SupplierPageViewModel(
+			supplierService ?? defaultSupplierService.Object,
+			countryService ?? defaultCountryService.Object,
+			currencyService ?? defaultCurrencyService.Object,
+			contactService ?? defaultContactService.Object,
+			contactTypeService ?? defaultContactTypeService.Object,
+			validator.Object );
+	}
+
+	private static string LoadSource( params string[] relativeSegments )
+	{
+		var directory = AppContext.BaseDirectory;
+		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )
+		{
+			directory = Directory.GetParent( directory )?.FullName;
+		}
+
+		var repositoryRoot = directory ?? throw new DirectoryNotFoundException( "Could not locate repository root." );
+		var path = Path.Combine( [ repositoryRoot, .. relativeSegments ] );
+
+		return File.ReadAllText( path );
+	}
+
+	private static void AssertMethodContains( string source, string methodSignature, string expectedContent )
+	{
+		var methodStart = source.IndexOf( methodSignature, StringComparison.Ordinal );
+		Assert.IsTrue( methodStart >= 0, $"Method '{methodSignature}' was not found." );
+
+		var nextMethod = source.IndexOf( "\n\tprivate ", methodStart + methodSignature.Length, StringComparison.Ordinal );
+		if ( nextMethod < 0 )
+			nextMethod = source.Length;
+
+		var methodBody = source.Substring( methodStart, nextMethod - methodStart );
+		StringAssert.Contains( methodBody, expectedContent );
+	}
+
+	private static async Task WaitUntilAsync( Func<bool> condition )
+	{
+		using var timeout = new CancellationTokenSource( TimeSpan.FromSeconds( 2 ) );
+
+		while ( !condition() )
+		{
+			if ( timeout.IsCancellationRequested )
+				Assert.Fail( "Condition was not met before timeout." );
+
+			await Task.Delay( 10 );
+		}
 	}
 }

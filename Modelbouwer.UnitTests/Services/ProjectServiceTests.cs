@@ -269,60 +269,42 @@ public class ProjectServiceTests
 	[TestMethod]
 	public async Task NameExistsAsync_WithExistingName_ReturnsTrue()
 	{
-		// Arrange
-		var existingProjects = new List<ProjectModel>
-		{
-			new ProjectModel { ProjectId = 1, ProjectName = "Existing Project" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProjectModel>>() ) )
-			.ReturnsAsync( existingProjects );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 1 );
 
-		// Act
 		var result = await _project_service.NameExistsAsync("Existing Project");
 
-		// Assert
 		Assert.IsTrue( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, ProjectModel>>() ), Times.Never );
 	}
 
 	[TestMethod]
 	public async Task NameExistsAsync_WithNonExistingName_ReturnsFalse()
 	{
-		// Arrange
-		var existingProjects = new List<ProjectModel>
-		{
-			new ProjectModel { ProjectId = 1, ProjectName = "Project A" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProjectModel>>() ) )
-			.ReturnsAsync( existingProjects );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 0 );
 
-		// Act
 		var result = await _project_service.NameExistsAsync("Project B");
 
-		// Assert
 		Assert.IsFalse( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, ProjectModel>>() ), Times.Never );
 	}
 
 	[TestMethod]
 	public async Task NameExistsAsync_IsCaseInsensitive()
 	{
-		// Arrange
-		var existingProjects = new List<ProjectModel>
-		{
-			new ProjectModel { ProjectId = 1, ProjectName = "Test Project" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, ProjectModel>>() ) )
-			.ReturnsAsync( existingProjects );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.Is<string>( query => query.Contains( "LOWER(" ) ), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 1 );
 
-		// Act
 		var result = await _project_service.NameExistsAsync("TEST PROJECT");
 
-		// Assert
 		Assert.IsTrue( result );
 	}
 

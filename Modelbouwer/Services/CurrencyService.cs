@@ -48,12 +48,12 @@ public class CurrencyService : ICurrencyService
 	public string CurrencyCodeExistsQuery =
 		$"SELECT COUNT({DBNames.CurrencyFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.CurrencyTable} " +
-		$"WHERE {DBNames.CurrencyFieldNameCode} = @{DBNames.CurrencyFieldNameCode}";
+		$"WHERE LOWER({DBNames.CurrencyFieldNameCode}) = LOWER(@{DBNames.CurrencyFieldNameCode})";
 
 	public string CurrencyNameExistsQuery =
 		$"SELECT COUNT({DBNames.CurrencyFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.CurrencyTable} " +
-		$"WHERE {DBNames.CurrencyFieldNameName} = @{DBNames.CurrencyFieldNameName}";
+		$"WHERE LOWER({DBNames.CurrencyFieldNameName}) = LOWER(@{DBNames.CurrencyFieldNameName})";
 
 	public string CurrencyUsedQuery = $"SELECT COUNT({DBNames.CurrencyFieldNameId}) FROM {DBNames.Database}.{DBNames.CurrencyTable} WHERE {DBNames.CurrencyFieldNameId} = @CurrencyId";
 	#endregion
@@ -138,10 +138,13 @@ public class CurrencyService : ICurrencyService
 		if ( string.IsNullOrWhiteSpace( currencyCode ) )
 			return false;
 
-		var countries = await GetAllCurrenciesAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.CurrencyFieldNameCode}", currencyCode.Trim() }
+		};
 
-		return countries.Any( c =>
-			string.Equals( c.CurrencyCode, currencyCode, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( CurrencyCodeExistsQuery, parameters );
+		return count > 0;
 	}
 
 	public async Task<bool> NameExistsAsync( string? currencyName )
@@ -149,9 +152,12 @@ public class CurrencyService : ICurrencyService
 		if ( string.IsNullOrWhiteSpace( currencyName ) )
 			return false;
 
-		var countries = await GetAllCurrenciesAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.CurrencyFieldNameName}", currencyName.Trim() }
+		};
 
-		return countries.Any( c =>
-			string.Equals( c.CurrencyName, currencyName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( CurrencyNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

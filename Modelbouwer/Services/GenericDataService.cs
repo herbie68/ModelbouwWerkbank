@@ -8,7 +8,7 @@ namespace Modelbouwer.Services;
 
 public class GenericDataService
 {
-	private readonly MySqlConnection _connection;
+	private readonly string _connectionString;
 
 	#region Database query's
 	public string GetLastInsertIdQuery = "SELECT LAST_INSERT_ID();";
@@ -16,13 +16,18 @@ public class GenericDataService
 
 	public GenericDataService()
 	{
-		_connection = new MySqlConnection( DBConnect.ConnectionString );
+		_connectionString = DBConnect.ConnectionString;
 	}
 
 	#region General Get statenents
 	public virtual async Task<uint> GetLastInsertIdAsync()
 	{
-		return await ExecuteScalarAsync<uint>( GetLastInsertIdQuery );
+		return await GetLastInsertIdAsync( CancellationToken.None );
+	}
+
+	public virtual async Task<uint> GetLastInsertIdAsync( CancellationToken cancellationToken )
+	{
+		return await ExecuteScalarAsync<uint>( GetLastInsertIdQuery, cancellationToken );
 	}
 	#endregion
 
@@ -31,10 +36,19 @@ public class GenericDataService
 	Func<DbDataReader, T> mapFunc,
 	Dictionary<string, object>? parameters = null )
 	{
+		return await ExecuteQueryAsync( query, mapFunc, parameters, CancellationToken.None );
+	}
+
+	public virtual async Task<List<T>> ExecuteQueryAsync<T>(
+		string? query,
+	Func<DbDataReader, T> mapFunc,
+	Dictionary<string, object>? parameters,
+	CancellationToken cancellationToken )
+	{
 		List<T> results = [];
 
-		await using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		await using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
 
 		using MySqlCommand cmd = new(query, connection);
 
@@ -46,9 +60,9 @@ public class GenericDataService
 			}
 		}
 
-		using DbDataReader reader = await cmd.ExecuteReaderAsync();
+		using DbDataReader reader = await cmd.ExecuteReaderAsync( cancellationToken );
 
-		while ( await reader.ReadAsync() )
+		while ( await reader.ReadAsync( cancellationToken ) )
 		{
 			results.Add( mapFunc( reader ) );
 		}
@@ -60,8 +74,16 @@ public class GenericDataService
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
-		await using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		return await ExecuteNonQueryAsync( query, parameters, CancellationToken.None );
+	}
+
+	public virtual async Task<int> ExecuteNonQueryAsync(
+	string? query,
+	Dictionary<string, object>? parameters,
+	CancellationToken cancellationToken )
+	{
+		await using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
 
 		using MySqlCommand cmd = new(query, connection);
 
@@ -73,15 +95,30 @@ public class GenericDataService
 			}
 		}
 
-		return await cmd.ExecuteNonQueryAsync();
+		return await cmd.ExecuteNonQueryAsync( cancellationToken );
 	}
 
 	public virtual async Task<T?> ExecuteScalarAsync<T>(
 	string? query,
 	Dictionary<string, object>? parameters = null )
 	{
-		await using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		return await ExecuteScalarAsync<T>( query, parameters, CancellationToken.None );
+	}
+
+	public virtual Task<T?> ExecuteScalarAsync<T>(
+	string? query,
+	CancellationToken cancellationToken )
+	{
+		return ExecuteScalarAsync<T>( query, null, cancellationToken );
+	}
+
+	public virtual async Task<T?> ExecuteScalarAsync<T>(
+	string? query,
+	Dictionary<string, object>? parameters,
+	CancellationToken cancellationToken )
+	{
+		await using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
 
 		await using MySqlCommand command = new(query, connection);
 
@@ -93,7 +130,7 @@ public class GenericDataService
 			}
 		}
 
-		object? result = await command.ExecuteScalarAsync();
+		object? result = await command.ExecuteScalarAsync( cancellationToken );
 
 		if ( result == null || result == DBNull.Value )
 			return default;
@@ -107,7 +144,7 @@ public class GenericDataService
 
 	public virtual T? ExecuteScalarQuery<T>( string? sql, Dictionary<string, object> parameters )
 	{
-		using var connection = new MySqlConnection(_connection.ConnectionString);
+		using var connection = new MySqlConnection(_connectionString);
 		using var command = new MySqlCommand(sql, connection);
 
 		foreach ( var param in parameters )
@@ -134,8 +171,15 @@ public class GenericDataService
 		string? sql,
 		Func<DbDataReader, Task> map )
 	{
-		// Redirect to the overload with parameters = null
-		await ExecuteReaderAsync( sql, map, null );
+		await ExecuteReaderAsync( sql, map, null, CancellationToken.None );
+	}
+
+	public virtual async Task ExecuteReaderAsync(
+		string? sql,
+		Func<DbDataReader, Task> map,
+		CancellationToken cancellationToken )
+	{
+		await ExecuteReaderAsync( sql, map, null, cancellationToken );
 	}
 
 	public virtual async Task ExecuteReaderAsync(
@@ -143,8 +187,17 @@ public class GenericDataService
 		Func<DbDataReader, Task> map,
 		Dictionary<string, object>? parameters )
 	{
-		using var connection = new MySqlConnection(_connection.ConnectionString);
-		await connection.OpenAsync();
+		await ExecuteReaderAsync( sql, map, parameters, CancellationToken.None );
+	}
+
+	public virtual async Task ExecuteReaderAsync(
+		string? sql,
+		Func<DbDataReader, Task> map,
+		Dictionary<string, object>? parameters,
+		CancellationToken cancellationToken )
+	{
+		using var connection = new MySqlConnection(_connectionString);
+		await connection.OpenAsync( cancellationToken );
 
 		using var cmd = new MySqlCommand(sql, connection);
 
@@ -157,7 +210,7 @@ public class GenericDataService
 			}
 		}
 
-		using var reader = await cmd.ExecuteReaderAsync();
+		using var reader = await cmd.ExecuteReaderAsync( cancellationToken );
 
 		// Execute the reader callback
 		await map( reader );
@@ -168,8 +221,17 @@ public class GenericDataService
 	Dictionary<string, object>? parameters = null )
 	where T : class, new()
 	{
-		using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		return await ExecuteSingleAsync<T>( query, parameters, CancellationToken.None );
+	}
+
+	public virtual async Task<T?> ExecuteSingleAsync<T>(
+	string query,
+	Dictionary<string, object>? parameters,
+	CancellationToken cancellationToken )
+	where T : class, new()
+	{
+		using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
 
 		using MySqlCommand cmd = new(query, connection);
 
@@ -181,9 +243,9 @@ public class GenericDataService
 			}
 		}
 
-		using var reader = await cmd.ExecuteReaderAsync();
+		using var reader = await cmd.ExecuteReaderAsync( cancellationToken );
 
-		if ( !await reader.ReadAsync() )
+		if ( !await reader.ReadAsync( cancellationToken ) )
 			return null;
 
 		T result = new();
@@ -211,22 +273,27 @@ public class GenericDataService
 
 	public virtual async Task ExecuteInTransactionAsync( Func<MySqlConnection, MySqlTransaction, Task> operation )
 	{
-		await using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		await ExecuteInTransactionAsync( operation, CancellationToken.None );
+	}
 
-		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+	public virtual async Task ExecuteInTransactionAsync( Func<MySqlConnection, MySqlTransaction, Task> operation, CancellationToken cancellationToken )
+	{
+		await using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync( cancellationToken );
 		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
 
 		try
 		{
 			await operation( connection, transaction );
-			await transaction.CommitAsync();
+			await transaction.CommitAsync( cancellationToken );
 		}
 		catch
 		{
 			try
 			{
-				await transaction.RollbackAsync();
+				await transaction.RollbackAsync( cancellationToken );
 			}
 			catch
 			{
@@ -239,23 +306,28 @@ public class GenericDataService
 
 	public virtual async Task<T> ExecuteInTransactionAsync<T>( Func<MySqlConnection, MySqlTransaction, Task<T>> operation )
 	{
-		await using MySqlConnection connection = new(_connection.ConnectionString);
-		await connection.OpenAsync();
+		return await ExecuteInTransactionAsync( operation, CancellationToken.None );
+	}
 
-		DbTransaction dbTransaction = await connection.BeginTransactionAsync();
+	public virtual async Task<T> ExecuteInTransactionAsync<T>( Func<MySqlConnection, MySqlTransaction, Task<T>> operation, CancellationToken cancellationToken )
+	{
+		await using MySqlConnection connection = new(_connectionString);
+		await connection.OpenAsync( cancellationToken );
+
+		DbTransaction dbTransaction = await connection.BeginTransactionAsync( cancellationToken );
 		MySqlTransaction transaction = ( MySqlTransaction ) dbTransaction;
 
 		try
 		{
 			T result = await operation( connection, transaction );
-			await transaction.CommitAsync();
+			await transaction.CommitAsync( cancellationToken );
 			return result;
 		}
 		catch
 		{
 			try
 			{
-				await transaction.RollbackAsync();
+				await transaction.RollbackAsync( cancellationToken );
 			}
 			catch
 			{

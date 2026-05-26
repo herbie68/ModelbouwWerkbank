@@ -46,8 +46,7 @@ public partial class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadCategoriesAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 
 		AddSubCategoryCommand = new RelayCommand( AddSubCategory, () => SelectedItem != null );
 
@@ -72,15 +71,6 @@ public partial class CategoryPageViewModel : EntityPageViewModel<CategoryModel>
 		base.OnSelectedItemChanged( oldValue, newValue );
 
 		AddSubCategoryCommand.NotifyCanExecuteChanged();
-	}
-
-	private async Task LoadCategoriesAsync()
-	{
-		var categoryList = await _dataService.GetAllCategorysAsync();
-
-		Categories.Clear();
-		foreach ( var c in categoryList )
-			Categories.Add( c );
 	}
 
 	public bool FilterCategory( object obj )

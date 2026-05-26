@@ -46,8 +46,7 @@ public partial class WorktypePageViewModel : EntityPageViewModel<WorktypeModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadWorkTypesAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 
 		AddSubWorkTypeCommand = new RelayCommand( AddSubWorkType, () => SelectedItem != null );
 
@@ -71,15 +70,6 @@ public partial class WorktypePageViewModel : EntityPageViewModel<WorktypeModel>
 		base.OnSelectedItemChanged( oldValue, newValue );
 
 		AddSubWorkTypeCommand.NotifyCanExecuteChanged();
-	}
-
-	private async Task LoadWorkTypesAsync()
-	{
-		var worktypeList = await _dataService.GetAllWorkTypesAsync();
-
-		WorkTypes.Clear();
-		foreach ( var c in worktypeList )
-			WorkTypes.Add( c );
 	}
 
 	public bool FilterWorkType( object obj )
@@ -241,7 +231,7 @@ public partial class WorktypePageViewModel : EntityPageViewModel<WorktypeModel>
 	private static Dictionary<string, object?> UpdateParameters( WorktypeModel c ) => new()
 	{
 		{ $"@{DBNames.WorktypeFieldNameId}", c.WorktypeId == 0 ? null : c.WorktypeId },
-		{ $"@{DBNames.WorktypeFieldNameId}", c.ParentId == 0 ? null : c.ParentId },
+		{ $"@{DBNames.WorktypeFieldNameParentId}", c.ParentId == 0 ? null : c.ParentId },
 		{ $"@{DBNames.WorktypeFieldNameName}", c.WorktypeName?.Trim() }
 	};
 }

@@ -7,10 +7,11 @@ using System.Windows.Media;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class ProjectReportsViewModel : ObservableObject
+public partial class ProjectReportsViewModel : AsyncObservableObject
 {
 	private readonly IProjectService _projectService;
 	private readonly ITimeRegistrationService _timeRegistrationService;
+	private CancellationTokenSource? _loadReportsCancellationTokenSource;
 
 	[ObservableProperty] private ProjectModel? _selectedProject;
 	[ObservableProperty] private bool _isLoading;
@@ -58,9 +59,9 @@ public partial class ProjectReportsViewModel : ObservableObject
 	{
 		_projectService = projectService;
 		_timeRegistrationService = timeRegistrationService;
-		RefreshCommand = new AsyncRelayCommand( LoadReportsAsync, () => SelectedProject != null && !IsLoading );
+		RefreshCommand = new AsyncRelayCommand( StartLoadReportsAsync, () => SelectedProject != null && !IsLoading );
 
-		_ = LoadProjectsAsync();
+		ObserveBackgroundTask( LoadProjectsAsync() );
 	}
 
 	public void SelectReportTab( int tabIndex ) => SelectedReportTabIndex = tabIndex;
@@ -68,23 +69,28 @@ public partial class ProjectReportsViewModel : ObservableObject
 	partial void OnSelectedProjectChanged( ProjectModel? value )
 	{
 		RefreshCommand.NotifyCanExecuteChanged();
-		_ = LoadReportsAsync();
+		ObserveBackgroundTask( StartLoadReportsAsync() );
 	}
 
 	partial void OnIsLoadingChanged( bool value ) => RefreshCommand.NotifyCanExecuteChanged();
 
-	partial void OnIncludeHoursInCostsChanged( bool value ) => _ = LoadReportsAsync();
+	partial void OnIncludeHoursInCostsChanged( bool value ) => ObserveBackgroundTask( StartLoadReportsAsync() );
 
 	private async Task LoadProjectsAsync()
 	{
 		IsLoading = true;
 		try
 		{
+			var projectsTask = _projectService.GetAllProjectsAsync();
+			var hourRateTask = _timeRegistrationService.GetHourRateAsync();
+
+			await Task.WhenAll( projectsTask, hourRateTask );
+
 			Projects.Clear();
-			foreach ( var project in await _projectService.GetAllProjectsAsync() )
+			foreach ( var project in await projectsTask )
 				Projects.Add( project );
 
-			HourRate = await _timeRegistrationService.GetHourRateAsync();
+			HourRate = await hourRateTask;
 			OnPropertyChanged( nameof( HourRateDisplay ) );
 			SelectedProject = Projects.FirstOrDefault();
 		}
@@ -94,27 +100,45 @@ public partial class ProjectReportsViewModel : ObservableObject
 		}
 	}
 
-	private async Task LoadReportsAsync()
+	private Task StartLoadReportsAsync()
 	{
-		if ( SelectedProject == null )
+		_loadReportsCancellationTokenSource?.Cancel();
+		_loadReportsCancellationTokenSource?.Dispose();
+		_loadReportsCancellationTokenSource = new CancellationTokenSource();
+		var cancellationToken = _loadReportsCancellationTokenSource.Token;
+
+		return LoadReportsAsync( cancellationToken );
+	}
+
+	private async Task LoadReportsAsync( CancellationToken cancellationToken )
+	{
+		var selectedProject = SelectedProject;
+		if ( selectedProject == null )
 			return;
 
 		IsLoading = true;
 		try
 		{
-			await ReplaceItemsAsync( WeekdayHours, () => _timeRegistrationService.GetWorkedHoursByWeekdayAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( MonthHours, () => _timeRegistrationService.GetWorkedHoursByMonthAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( YearHours, () => _timeRegistrationService.GetWorkedHoursByYearAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( MonthYearHours, () => _timeRegistrationService.GetWorkedHoursByMonthYearAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( WorktypeHours, () => _timeRegistrationService.GetWorkedHoursByWorktypeAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( CostAllocationLines, () => _timeRegistrationService.GetCostAllocationByWorktypeAsync( SelectedProject.ProjectId, IncludeHoursInCosts, HourRate ) );
-			await ReplaceItemsAsync( CostDeclarationLines, () => _timeRegistrationService.GetCostDeclarationsAsync( SelectedProject.ProjectId ) );
-			await ReplaceItemsAsync( CostDeclarationSummary, () => _timeRegistrationService.GetCostDeclarationSummaryAsync( SelectedProject.ProjectId, IncludeHoursInCosts, HourRate ) );
+			var reports = await PerformanceTrace.MeasureAsync(
+				$"{nameof( ProjectReportsViewModel )}.{nameof( LoadReportsAsync )}",
+				() => _timeRegistrationService.GetProjectReportsAsync( selectedProject.ProjectId, IncludeHoursInCosts, HourRate, cancellationToken ) );
+			cancellationToken.ThrowIfCancellationRequested();
+
+			ReplaceItems( WeekdayHours, reports.WeekdayHours );
+			ReplaceItems( MonthHours, reports.MonthHours );
+			ReplaceItems( YearHours, reports.YearHours );
+			ReplaceItems( MonthYearHours, reports.MonthYearHours );
+			ReplaceItems( WorktypeHours, reports.WorktypeHours );
+			ReplaceItems( CostAllocationLines, reports.CostAllocationLines );
+			ReplaceItems( CostDeclarationLines, reports.CostDeclarationLines );
+			ReplaceItems( CostDeclarationSummary, reports.CostDeclarationSummary );
 			BuildCharts();
 		}
 		finally
 		{
-			IsLoading = false;
+			if ( !cancellationToken.IsCancellationRequested )
+				IsLoading = false;
+
 			OnPropertyChanged( nameof( TotalHours ) );
 			OnPropertyChanged( nameof( TotalMaterialCosts ) );
 			OnPropertyChanged( nameof( TotalReportCosts ) );
@@ -122,10 +146,10 @@ public partial class ProjectReportsViewModel : ObservableObject
 		}
 	}
 
-	private static async Task ReplaceItemsAsync<T>( ObservableCollection<T> target, Func<Task<List<T>>> load )
+	private static void ReplaceItems<T>( ObservableCollection<T> target, IEnumerable<T> items )
 	{
 		target.Clear();
-		foreach ( var item in await load() )
+		foreach ( var item in items )
 			target.Add( item );
 	}
 

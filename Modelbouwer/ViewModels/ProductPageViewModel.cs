@@ -36,12 +36,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	/// supplier, it would mark the entire product as having unsaved changes,
 	/// which is not ideal UX
 	/// </summary>
-	private bool _hasUnsavedSupplierChanges;
-	public bool HasUnsavedSupplierChanges
-	{
-		get => _hasUnsavedSupplierChanges;
-		set => SetProperty( ref _hasUnsavedSupplierChanges, value );
-	}
+	[ObservableProperty] private bool _hasUnsavedSupplierChanges;
+	[ObservableProperty] private bool _isSavingSupplier;
 
 	private void UpdateSelectedStorageLocationFromProduct()
 	{
@@ -91,25 +87,22 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		OpenCategoryPickerCommand = new AsyncRelayCommand( OpenCategoryPickerAsync );
 		OpenStorageLocationPickerCommand = new AsyncRelayCommand( OpenStorageLocationPickerAsync );
 
-		_ = InitializeAsync();
+		ObserveBackgroundTask( InitializeAsync() );
 	}
 
 	private async Task InitializeAsync()
 	{
-		try
-		{
-			await LoadComboBoxesContentAsync();
+		await LoadComboBoxesContentAsync();
 
-			await LoadSuppliersAsync();
-			await LoadProductSuppliersAsync();
+		var suppliersTask = _supplierService.GetAllSuppliersAsync();
+		var productSuppliersTask = _supplierService.GetAllProductSuppliersAsync();
 
-			// Then load products (this will trigger OnSelectedItemChanged with populated combo boxes)
-			await ReloadCommand.ExecuteAsync( null );
-		}
-		catch ( Exception ex )
-		{
-			MessageBox.Show( ex.ToString() );
-		}
+		await Task.WhenAll( suppliersTask, productSuppliersTask );
+		ApplySuppliers( await suppliersTask );
+		ApplyProductSuppliers( await productSuppliersTask );
+
+		// Then load products (this will trigger OnSelectedItemChanged with populated combo boxes)
+		await ReloadAsync();
 	}
 	#region Collections & Selected Items
 	public ObservableCollection<BrandModel> ProductBrand { get; } = [ ];
@@ -248,26 +241,33 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		ProductCategory.Clear();
 		ProductStorageLocation.Clear();
 
-		var brands = await _brandService.GetAllBrandsAsync();
+		var brandsTask = _brandService.GetAllBrandsAsync();
+		var unitsTask = _unitService.GetAllUnitsAsync();
+		var categoriesTask = _categoryService.GetAllCategorysAsync();
+		var storageLocationsTask = _storageLocationService.GetAllStorageLocationsAsync();
+
+		await Task.WhenAll( brandsTask, unitsTask, categoriesTask, storageLocationsTask );
+
+		var brands = await brandsTask;
 		foreach ( var brand in brands )
 		{
 			ProductBrand.Add( brand );
 		}
 
-		var units = await _unitService.GetAllUnitsAsync();
+		var units = await unitsTask;
 		foreach ( var unit in units )
 		{
 			ProductUnit.Add( unit );
 		}
 
-		var categories = await _categoryService.GetAllCategorysAsync();
+		var categories = await categoriesTask;
 		AllCategories = categories;
 		foreach ( var category in categories )
 		{
 			ProductCategory.Add( category );
 		}
 
-		var storageLocations = await _storageLocationService.GetAllStorageLocationsAsync();
+		var storageLocations = await storageLocationsTask;
 		AllStorageLocations = storageLocations;
 		foreach ( var location in storageLocations )
 		{
@@ -301,9 +301,12 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	private IRelayCommand? _addSupplierCommand;
 	public IRelayCommand AddSupplierCommand => _addSupplierCommand ??= new RelayCommand( AddSupplier );
 	private IAsyncRelayCommand? _saveSupplierCommand;
-	public IAsyncRelayCommand SaveSupplierCommand => _saveSupplierCommand ??= new AsyncRelayCommand( SaveSupplierAsync );
+	public IAsyncRelayCommand SaveSupplierCommand => _saveSupplierCommand ??= new AsyncRelayCommand( SaveSupplierAsync, CanSaveSupplier );
 	private IRelayCommand? _deleteSupplierCommand;
 	public IRelayCommand DeleteSupplierCommand => _deleteSupplierCommand ??= new RelayCommand( DeleteSupplier );
+
+	partial void OnIsSavingSupplierChanged( bool value ) => SaveSupplierCommand.NotifyCanExecuteChanged();
+	partial void OnHasUnsavedSupplierChangesChanged( bool value ) => SaveSupplierCommand.NotifyCanExecuteChanged();
 
 	#region Relay command for going to the supplier website
 	[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]
@@ -378,20 +381,33 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 
 	private async Task SaveSupplierAsync()
 	{
+		if ( IsSavingSupplier )
+			return;
+
 		if ( SelectedItem == null || SelectedSupplier == null || SelectedSupplier.SupplierId <= 0 )
 			return;
 
-		SelectedSupplier.ProductId = SelectedItem.ProductId;
-		SelectedSupplier.ProductName ??= string.Empty;
-		SelectedSupplier.ProductNumber ??= string.Empty;
-		SelectedSupplier.URL ??= string.Empty;
+		IsSavingSupplier = true;
+		try
+		{
+			SelectedSupplier.ProductId = SelectedItem.ProductId;
+			SelectedSupplier.ProductName ??= string.Empty;
+			SelectedSupplier.ProductNumber ??= string.Empty;
+			SelectedSupplier.URL ??= string.Empty;
 
-		var id = await _supplierService.UpsertProductSupplierAsync( SelectedSupplier );
-		SelectedSupplier.ProductSupplierId = id;
-		HasUnsavedSupplierChanges = false;
+			var id = await _supplierService.UpsertProductSupplierAsync( SelectedSupplier );
+			SelectedSupplier.ProductSupplierId = id;
+			HasUnsavedSupplierChanges = false;
 
-		RaiseSupplierCounters();
+			RaiseSupplierCounters();
+		}
+		finally
+		{
+			IsSavingSupplier = false;
+		}
 	}
+
+	private bool CanSaveSupplier() => HasUnsavedSupplierChanges && !IsSavingSupplier;
 
 	private void UpdateFilteredSuppliers()
 	{
@@ -444,7 +460,7 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 	// Commands
 
 
-	public async Task OpenCategoryPickerAsync()
+	public Task OpenCategoryPickerAsync()
 	{
 		var vm = new CategoryPickerViewModel(_categoryService, SelectedCategory);
 
@@ -455,9 +471,11 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			SelectedCategory = vm.SelectedCategory;
 		}
+
+		return Task.CompletedTask;
 	}
 
-	public async Task OpenStorageLocationPickerAsync()
+	public Task OpenStorageLocationPickerAsync()
 	{
 		var vm = new StorageLocationPickerViewModel(_storageLocationService, SelectedStorageLocation);
 
@@ -468,6 +486,8 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		{
 			SelectedStorageLocation = vm.SelectedStorageLocation;
 		}
+
+		return Task.CompletedTask;
 	}
 
 	// Override SelectedItem changed om DefaultProduct te zetten
@@ -631,19 +651,16 @@ public partial class ProductPageViewModel : EntityPageViewModel<ProductModel>
 		SelectedItem.ProductImageRotationAngle = 0;
 	}
 
-	private async Task LoadSuppliersAsync()
+	private void ApplySuppliers( IEnumerable<SupplierModel> allSuppliers )
 	{
-		var allSuppliers = await _supplierService.GetAllSuppliersAsync();
 		Suppliers.Clear();
 		foreach ( var c in allSuppliers )
 			Suppliers.Add( c );
 		UpdateAvailableSuppliers();
 	}
 
-	private async Task LoadProductSuppliersAsync()
+	private void ApplyProductSuppliers( IEnumerable<ProductSupplierModel> allProductSuppliers )
 	{
-		// Load contact types
-		var allProductSuppliers = await _supplierService.GetAllProductSuppliersAsync();
 		ProductSuppliers.Clear();
 		foreach ( var c in allProductSuppliers )
 		{

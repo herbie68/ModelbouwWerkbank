@@ -60,6 +60,16 @@ public class AsyncSafetySourceTests
 	}
 
 	[TestMethod]
+	public void AsyncViewEventHandlers_AreGuardedWithTryCatch()
+	{
+		var aboutView = LoadSource( "Modelbouwer", "Views", "AboutView.xaml.cs" );
+		AssertMethodContains( aboutView, "private async void CommitGrid_SelectionChanged", "try" );
+
+		var timeRegistrationView = LoadSource( "Modelbouwer", "Views", "TimeRegistrationView.xaml.cs" );
+		AssertMethodContains( timeRegistrationView, "private async void SaveTimeEntriesButton_Click", "try" );
+	}
+
+	[TestMethod]
 	public void ExportServices_UseAwaitedDispatcherCallsForSuccessMessages()
 	{
 		var csvExportService = LoadSource( "Modelbouwer", "Services", "CsvExportService.cs" );

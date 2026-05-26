@@ -61,9 +61,30 @@ public static class CsvImportService
 		// Ignore first column (Id)
 		int idIndex = 0;
 
-		var uniquePropInfo = typeof(T).GetProperty(uniqueProperty, BindingFlags.Public | BindingFlags.Instance);
+		var properties = typeof( T )
+			.GetProperties( BindingFlags.Public | BindingFlags.Instance )
+			.Where( p => p.CanRead && p.CanWrite )
+			.ToArray();
+
+		var propertiesByName = properties.ToDictionary( p => p.Name, StringComparer.OrdinalIgnoreCase );
+
+		if ( !propertiesByName.TryGetValue( uniqueProperty, out var uniquePropInfo ) )
+		{
+			uniquePropInfo = typeof(T).GetProperty(uniqueProperty, BindingFlags.Public | BindingFlags.Instance);
+		}
+
 		if ( uniquePropInfo == null )
 			throw new Exception( $"Unique property '{uniqueProperty}' not found on type {typeof( T ).Name}" );
+
+		var existingByUniqueValue = existingRecords
+			.Select( r => new
+			{
+				Value = uniquePropInfo.GetValue( r ),
+				Record = r
+			} )
+			.Where( x => x.Value != null )
+			.GroupBy( x => x.Value! )
+			.ToDictionary( g => g.Key, g => g.First().Record );
 
 		// Iterate over data rows
 		for ( int i = 1; i < lines.Count; i++ )
@@ -81,36 +102,40 @@ public static class CsvImportService
 				if ( propName == null )
 					continue;
 
-				var prop = typeof(T).GetProperty(propName, BindingFlags.Public | BindingFlags.Instance);
-				if ( prop == null )
+				if ( !propertiesByName.TryGetValue( propName, out var prop ) )
 					continue;
 
-				try
+				var rawValue = col < row.Length
+					? row[col]
+					: string.Empty;
+
+				if ( TryConvertValue( rawValue, prop.PropertyType, out var value ) )
 				{
-					object value = Convert.ChangeType(row[col], prop.PropertyType);
 					prop.SetValue( record, value );
-				}
-				catch
-				{
-					prop.SetValue( record, row [ col ] ); // fallback as string
 				}
 			}
 
 			// Check for existing record by unique property
 			var uniqueValue = uniquePropInfo.GetValue(record);
-			var existing = existingRecords.FirstOrDefault(r =>
-				uniquePropInfo.GetValue(r)?.Equals(uniqueValue) == true);
+			var existing = uniqueValue != null && existingByUniqueValue.TryGetValue( uniqueValue, out var matchedRecord )
+				? matchedRecord
+				: null;
 
 			if ( existing == null )
 			{
 				existingRecords.Add( record );
+				if ( uniqueValue != null )
+				{
+					existingByUniqueValue[uniqueValue] = record;
+				}
+
 				result.Imported++;
 			}
 			else
 			{
 				// Compare all properties
 				bool isEqual = true;
-				foreach ( var prop in typeof( T ).GetProperties( BindingFlags.Public | BindingFlags.Instance ) )
+				foreach ( var prop in properties )
 				{
 					var newVal = prop.GetValue(record);
 					var oldVal = prop.GetValue(existing);
@@ -128,7 +153,7 @@ public static class CsvImportService
 				else
 				{
 					// Update existing record
-					foreach ( var prop in typeof( T ).GetProperties( BindingFlags.Public | BindingFlags.Instance ) )
+					foreach ( var prop in properties )
 					{
 						var newVal = prop.GetValue(record);
 						prop.SetValue( existing, newVal );
@@ -151,5 +176,29 @@ public static class CsvImportService
 				);
 		}
 		return result;
+	}
+
+	private static bool TryConvertValue( string value, Type propertyType, out object? convertedValue )
+	{
+		var targetType = Nullable.GetUnderlyingType( propertyType ) ?? propertyType;
+
+		if ( string.IsNullOrEmpty( value ) )
+		{
+			convertedValue = propertyType == typeof( string )
+				? string.Empty
+				: null;
+			return !targetType.IsValueType || Nullable.GetUnderlyingType( propertyType ) != null;
+		}
+
+		try
+		{
+			convertedValue = Convert.ChangeType( value, targetType );
+			return true;
+		}
+		catch
+		{
+			convertedValue = null;
+			return false;
+		}
 	}
 }

@@ -257,6 +257,25 @@ public class StockOrderViewModelTests
 	}
 
 	[TestMethod]
+	public async Task InitializeAsync_WithCancellationToken_PassesTokenToStockOrderService()
+	{
+		using var cts = new CancellationTokenSource();
+
+		_mockStockOrderService
+			.Setup( s => s.GetAllOrdersAsync( cts.Token ) )
+			.ReturnsAsync( new List<StockOrderModel>
+			{
+				new() { Id = 25, SupplierId = 11, OrderNumber = "SO-025" }
+			} );
+
+		await _viewModel.InitializeAsync( cts.Token );
+
+		_mockStockOrderService.Verify( s => s.GetAllOrdersAsync( cts.Token ), Times.Once );
+		Assert.AreEqual( 1, _viewModel.Orders.Count );
+		Assert.AreEqual( 25, _viewModel.Orders[ 0 ].Id );
+	}
+
+	[TestMethod]
 	public async Task SearchText_FiltersAvailableProductsByCodeAndName()
 	{
 		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>
@@ -334,6 +353,57 @@ public class StockOrderViewModelTests
 		Assert.IsFalse( _viewModel.IsNewOrder );
 		Assert.IsNotNull( _viewModel.SelectedOrder );
 		Assert.AreEqual( 25, _viewModel.SelectedOrder.Id );
+	}
+
+	[TestMethod]
+	public async Task SaveOrderAsync_WithCancellationToken_PassesTokenToStockOrderService()
+	{
+		using var cts = new CancellationTokenSource();
+
+		_viewModel.EditableOrder.SupplierId = 11;
+		_viewModel.EditableOrder.CurrencyId = 2;
+		_viewModel.EditableOrder.OrderNumber = "SO-025";
+		_viewModel.EditableOrder.OrderDate = DateTime.Today;
+
+		_viewModel.PendingOrderLines.Add( new StockOrderLineModel
+		{
+			ProductId = 5,
+			SupplierId = 11,
+			Amount = 3,
+			OpenAmount = 3,
+			Price = 12.5,
+			RealRowTotal = 37.5
+		} );
+
+		_mockStockOrderService
+			.Setup( s => s.InsertOrderWithLinesAsync(
+				It.IsAny<StockOrderModel>(),
+				It.IsAny<IEnumerable<StockOrderLineModel>>(),
+				cts.Token ) )
+			.ReturnsAsync( 25 );
+
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 25, cts.Token ) )
+			.ReturnsAsync( new List<StockOrderLineModel>
+			{
+				new() { Id = 40, SupplyOrderId = 25, ProductId = 5, Amount = 3, OpenAmount = 3, Price = 12.5, RealRowTotal = 37.5 }
+			} );
+
+		_mockStockOrderService
+			.Setup( s => s.GetAllOrdersAsync( cts.Token ) )
+			.ReturnsAsync( new List<StockOrderModel>
+			{
+				new() { Id = 25, SupplierId = 11, CurrencyId = 2, OrderNumber = "SO-025", OrderDate = DateTime.Today }
+			} );
+
+		await _viewModel.SaveOrderAsync( cts.Token );
+
+		_mockStockOrderService.Verify( s => s.InsertOrderWithLinesAsync(
+			It.IsAny<StockOrderModel>(),
+			It.IsAny<IEnumerable<StockOrderLineModel>>(),
+			cts.Token ), Times.Once );
+		_mockStockOrderService.Verify( s => s.GetOrderLinesAsync( 25, cts.Token ), Times.Once );
+		_mockStockOrderService.Verify( s => s.GetAllOrdersAsync( cts.Token ), Times.Once );
 	}
 
 	[TestMethod]
@@ -508,6 +578,21 @@ public class StockOrderViewModelTests
 		Assert.AreEqual( 2, _viewModel.EditableOrder.Id );
 		Assert.AreEqual( "SO-2", _viewModel.EditableOrder.OrderNumber );
 		Assert.AreEqual( 20, _viewModel.OrderLines[ 0 ].Id );
+	}
+
+	[TestMethod]
+	public async Task SelectedOrder_WhenBackgroundLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "order lines failed" );
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 25 ) )
+			.ThrowsAsync( expected );
+
+		_viewModel.SelectedOrder = new StockOrderModel { Id = 25, SupplierId = 11, OrderNumber = "SO-025" };
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, _viewModel.LastAsyncError ) );
+
+		Assert.AreSame( expected, _viewModel.LastAsyncError );
 	}
 
 	[TestMethod]
@@ -914,6 +999,48 @@ public class StockOrderViewModelTests
 		Assert.AreEqual( 0, _viewModel.EditableOrder.Id );
 	}
 
+	[TestMethod]
+	public void StockOrderViewModel_SaveOrderCommandIsGuardedAgainstParallelExecution()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "StockOrderViewModel.cs" );
+
+		StringAssert.Contains( source, "[ObservableProperty] private bool _isSavingOrder;" );
+		StringAssert.Contains( source, "SaveOrderCommand = new AsyncRelayCommand( cancellationToken => SaveOrderAsync( cancellationToken ), CanSaveOrder );" );
+		StringAssert.Contains( source, "partial void OnIsSavingOrderChanged( bool value ) => SaveOrderCommand.NotifyCanExecuteChanged();" );
+		StringAssert.Contains( source, "private bool CanSaveOrder() => !IsSavingOrder;" );
+		AssertMethodContains( source, "private async Task SaveOrderCoreAsync", "if ( IsSavingOrder )" );
+		AssertMethodContains( source, "private async Task SaveOrderCoreAsync", "IsSavingOrder = true;" );
+		AssertMethodContains( source, "private async Task SaveOrderCoreAsync", "finally" );
+	}
+
+	[TestMethod]
+	public void StockOrderViewModel_LoadReferenceDataStartsIndependentServiceCallsBeforeAwaiting()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "StockOrderViewModel.cs" );
+
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "var inventoryTask = _stockService.GetCompleteInventoryAsync();" );
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "var productsTask = _productService.GetAllProductsAsync();" );
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "var suppliersTask = _supplierService.GetAllSuppliersAsync();" );
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "var currenciesTask = _supplierService.GetAllCurrenciesAsync();" );
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "PerformanceTrace.MeasureAsync(" );
+		AssertMethodContains( source, "private async Task LoadReferenceDataAsync()", "Task.WhenAll( inventoryTask, productsTask, suppliersTask, currenciesTask )" );
+	}
+
+	[TestMethod]
+	public void StockOrderViewModel_OrderLineCommandsAreGuardedAgainstParallelExecution()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "StockOrderViewModel.cs" );
+
+		StringAssert.Contains( source, "[ObservableProperty] private bool _isEditingOrderLine;" );
+		StringAssert.Contains( source, "partial void OnIsEditingOrderLineChanged( bool value ) => NotifyOrderLineCommandsCanExecuteChanged();" );
+		StringAssert.Contains( source, "private bool CanEditOrderLineCommand() => CanEditOrder && !IsEditingOrderLine;" );
+		AssertMethodContains( source, "public async Task AddSelectedProductAsync()", "if ( IsEditingOrderLine )" );
+		AssertMethodContains( source, "public async Task AddSelectedProductAsync()", "IsEditingOrderLine = true;" );
+		AssertMethodContains( source, "private async Task EditSelectedOrderLineAsync()", "if ( IsEditingOrderLine )" );
+		AssertMethodContains( source, "private async Task DeleteSelectedOrderLineAsync()", "if ( IsEditingOrderLine )" );
+		AssertMethodContains( source, "private async Task DeleteSelectedOrderLineAsync()", "finally" );
+	}
+
 	private static async Task WaitUntilAsync( Func<bool> condition )
 	{
 		for ( int attempt = 0; attempt < 40; attempt++ )
@@ -925,5 +1052,32 @@ public class StockOrderViewModelTests
 		}
 
 		Assert.Fail( "Condition was not met before the timeout." );
+	}
+
+	private static string LoadSource( params string[] relativeSegments )
+	{
+		var directory = AppContext.BaseDirectory;
+		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )
+		{
+			directory = Directory.GetParent( directory )?.FullName;
+		}
+
+		var repositoryRoot = directory ?? throw new DirectoryNotFoundException( "Could not locate repository root." );
+		var path = Path.Combine( [ repositoryRoot, .. relativeSegments ] );
+
+		return File.ReadAllText( path );
+	}
+
+	private static void AssertMethodContains( string source, string methodSignature, string expectedContent )
+	{
+		var methodStart = source.IndexOf( methodSignature, StringComparison.Ordinal );
+		Assert.IsTrue( methodStart >= 0, $"Method '{methodSignature}' was not found." );
+
+		var nextMethod = source.IndexOf( "\n\tprivate ", methodStart + methodSignature.Length, StringComparison.Ordinal );
+		if ( nextMethod < 0 )
+			nextMethod = source.Length;
+
+		var methodBody = source.Substring( methodStart, nextMethod - methodStart );
+		StringAssert.Contains( methodBody, expectedContent );
 	}
 }

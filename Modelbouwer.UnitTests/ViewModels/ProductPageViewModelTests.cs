@@ -53,6 +53,52 @@ public class ProductPageViewModelTests
 	}
 
 	[TestMethod]
+	public async Task Constructor_WhenBrandLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load brands." );
+		var brandService = new Mock<IBrandService>();
+		brandService
+			.Setup( service => service.GetAllBrandsAsync() )
+			.Returns( Task.FromException<List<BrandModel>>( expected ) );
+
+		var viewModel = CreateViewModel( brandService: brandService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
+	public async Task Constructor_WhenProductSupplierLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load product suppliers." );
+		var supplierService = new Mock<ISupplierService>();
+		supplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
+		supplierService
+			.Setup( service => service.GetAllProductSuppliersAsync() )
+			.Returns( Task.FromException<List<Modelbouwer.Model.ProductSupplierModel>>( expected ) );
+
+		var viewModel = CreateViewModel( supplierService: supplierService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
+	public async Task Constructor_WhenProductLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "Unable to load products." );
+		var productService = new Mock<IProductService>();
+		productService
+			.Setup( service => service.GetAllProductsAsync() )
+			.Returns( Task.FromException<List<ProductModel>>( expected ) );
+
+		var viewModel = CreateViewModel( productService: productService.Object );
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, viewModel.LastAsyncError ) );
+		Assert.AreSame( expected, viewModel.LastAsyncError );
+	}
+
+	[TestMethod]
 	public void Products_ReturnsItemsCollection()
 	{
 		// Assert
@@ -410,5 +456,129 @@ public class ProductPageViewModelTests
 		Assert.AreSame( availableSuppliers, _viewModel.AvailableSuppliers );
 		Assert.AreEqual( supplier.Id, selectedProductSupplier.SupplierId );
 		Assert.AreEqual( supplier.Name, selectedProductSupplier.SupplierName );
+	}
+
+	[TestMethod]
+	public void ProductPageViewModel_SaveSupplierCommandIsGuardedAgainstParallelExecution()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "ProductPageViewModel.cs" );
+
+		StringAssert.Contains( source, "[ObservableProperty] private bool _isSavingSupplier;" );
+		StringAssert.Contains( source, "new AsyncRelayCommand( SaveSupplierAsync, CanSaveSupplier )" );
+		StringAssert.Contains( source, "private bool CanSaveSupplier() => HasUnsavedSupplierChanges && !IsSavingSupplier;" );
+		StringAssert.Contains( source, "partial void OnIsSavingSupplierChanged( bool value ) => SaveSupplierCommand.NotifyCanExecuteChanged();" );
+		StringAssert.Contains( source, "partial void OnHasUnsavedSupplierChangesChanged( bool value ) => SaveSupplierCommand.NotifyCanExecuteChanged();" );
+		AssertMethodContains( source, "private async Task SaveSupplierAsync()", "if ( IsSavingSupplier )" );
+		AssertMethodContains( source, "private async Task SaveSupplierAsync()", "IsSavingSupplier = true;" );
+		AssertMethodContains( source, "private async Task SaveSupplierAsync()", "finally" );
+	}
+
+	[TestMethod]
+	public void ProductPageViewModel_LoadComboBoxesStartsIndependentServiceCallsBeforeAwaiting()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "ProductPageViewModel.cs" );
+
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var brandsTask = _brandService.GetAllBrandsAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var unitsTask = _unitService.GetAllUnitsAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var categoriesTask = _categoryService.GetAllCategorysAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "var storageLocationsTask = _storageLocationService.GetAllStorageLocationsAsync();" );
+		AssertMethodContains( source, "private async Task LoadComboBoxesContentAsync()", "await Task.WhenAll( brandsTask, unitsTask, categoriesTask, storageLocationsTask );" );
+	}
+
+	[TestMethod]
+	public void ProductPageViewModel_InitializeStartsSupplierServiceCallsBeforeAwaiting()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "ProductPageViewModel.cs" );
+
+		AssertMethodContains( source, "private async Task InitializeAsync()", "var suppliersTask = _supplierService.GetAllSuppliersAsync();" );
+		AssertMethodContains( source, "private async Task InitializeAsync()", "var productSuppliersTask = _supplierService.GetAllProductSuppliersAsync();" );
+		AssertMethodContains( source, "private async Task InitializeAsync()", "await Task.WhenAll( suppliersTask, productSuppliersTask );" );
+		AssertMethodContains( source, "private async Task InitializeAsync()", "ApplySuppliers( await suppliersTask );" );
+		AssertMethodContains( source, "private async Task InitializeAsync()", "ApplyProductSuppliers( await productSuppliersTask );" );
+	}
+
+	[TestMethod]
+	public void ProductPageViewModel_PickerMethodsAvoidUnnecessaryAsyncStateMachine()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "ProductPageViewModel.cs" );
+
+		AssertMethodContains( source, "public Task OpenCategoryPickerAsync()", "return Task.CompletedTask;" );
+		AssertMethodContains( source, "public Task OpenStorageLocationPickerAsync()", "return Task.CompletedTask;" );
+		Assert.IsFalse( source.Contains( "public async Task OpenCategoryPickerAsync()", StringComparison.Ordinal ) );
+		Assert.IsFalse( source.Contains( "public async Task OpenStorageLocationPickerAsync()", StringComparison.Ordinal ) );
+	}
+
+	private static ProductPageViewModel CreateViewModel(
+		IProductService? productService = null,
+		IUnitService? unitService = null,
+		IBrandService? brandService = null,
+		ICategoryService? categoryService = null,
+		IStorageLocationService? storageLocationService = null,
+		ISupplierService? supplierService = null )
+	{
+		var defaultProductService = new Mock<IProductService>();
+		var defaultUnitService = new Mock<IUnitService>();
+		var defaultBrandService = new Mock<IBrandService>();
+		var defaultCategoryService = new Mock<ICategoryService>();
+		var defaultStorageLocationService = new Mock<IStorageLocationService>();
+		var defaultSupplierService = new Mock<ISupplierService>();
+		var validator = new Mock<IEntityValidator<ProductModel>>();
+
+		defaultProductService.Setup( service => service.GetAllProductsAsync() ).ReturnsAsync( [] );
+		defaultUnitService.Setup( service => service.GetAllUnitsAsync() ).ReturnsAsync( [] );
+		defaultBrandService.Setup( service => service.GetAllBrandsAsync() ).ReturnsAsync( [] );
+		defaultCategoryService.Setup( service => service.GetAllCategorysAsync() ).ReturnsAsync( [] );
+		defaultStorageLocationService.Setup( service => service.GetAllStorageLocationsAsync() ).ReturnsAsync( [] );
+		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
+		defaultSupplierService.Setup( service => service.GetAllProductSuppliersAsync() ).ReturnsAsync( [] );
+
+		return new ProductPageViewModel(
+			productService ?? defaultProductService.Object,
+			unitService ?? defaultUnitService.Object,
+			brandService ?? defaultBrandService.Object,
+			categoryService ?? defaultCategoryService.Object,
+			storageLocationService ?? defaultStorageLocationService.Object,
+			supplierService ?? defaultSupplierService.Object,
+			validator.Object );
+	}
+
+	private static string LoadSource( params string[] relativeSegments )
+	{
+		var directory = AppContext.BaseDirectory;
+		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )
+		{
+			directory = Directory.GetParent( directory )?.FullName;
+		}
+
+		var repositoryRoot = directory ?? throw new DirectoryNotFoundException( "Could not locate repository root." );
+		var path = Path.Combine( [ repositoryRoot, .. relativeSegments ] );
+
+		return File.ReadAllText( path );
+	}
+
+	private static void AssertMethodContains( string source, string methodSignature, string expectedContent )
+	{
+		var methodStart = source.IndexOf( methodSignature, StringComparison.Ordinal );
+		Assert.IsTrue( methodStart >= 0, $"Method '{methodSignature}' was not found." );
+
+		var nextMethod = source.IndexOf( "\n\tprivate ", methodStart + methodSignature.Length, StringComparison.Ordinal );
+		if ( nextMethod < 0 )
+			nextMethod = source.Length;
+
+		var methodBody = source.Substring( methodStart, nextMethod - methodStart );
+		StringAssert.Contains( methodBody, expectedContent );
+	}
+
+	private static async Task WaitUntilAsync( Func<bool> condition )
+	{
+		using var timeout = new CancellationTokenSource( TimeSpan.FromSeconds( 2 ) );
+
+		while ( !condition() )
+		{
+			if ( timeout.IsCancellationRequested )
+				Assert.Fail( "Condition was not met before timeout." );
+
+			await Task.Delay( 10 );
+		}
 	}
 }

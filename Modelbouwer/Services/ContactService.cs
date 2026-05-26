@@ -49,7 +49,7 @@ public class ContactService : IContactService
 	public string ContactNameExistsQuery =
 		$"SELECT COUNT({DBNames.SupplierContactFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.SupplierContactTable} " +
-		$"WHERE {DBNames.SupplierContactFieldNameName} = @{DBNames.SupplierContactFieldNameName}";
+		$"WHERE LOWER({DBNames.SupplierContactFieldNameName}) = LOWER(@{DBNames.SupplierContactFieldNameName})";
 
 	public Task<List<SupplierContactModel>> GetAllContactsAsync()
 	{
@@ -121,10 +121,13 @@ public class ContactService : IContactService
 		if ( string.IsNullOrWhiteSpace( contactName ) )
 			return false;
 
-		var contacts = await GetAllContactsAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.SupplierContactFieldNameName}", contactName.Trim() }
+		};
 
-		return contacts.Any( c =>
-			string.Equals( c.Name, contactName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( ContactNameExistsQuery, parameters );
+		return count > 0;
 	}
 
 }

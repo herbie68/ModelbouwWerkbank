@@ -29,8 +29,7 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadBrandsAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	// Override SelectedItem changed om DefaultBrand te zetten
@@ -44,16 +43,6 @@ public class BrandPageViewModel : EntityPageViewModel<BrandModel>
 		OnPropertyChanged( nameof( SelectedBrand ) );
 		OnPropertyChanged( nameof( SelectedBrand.BrandName ) );
 		OnPropertyChanged( nameof( SelectedBrand.BrandId ) );
-	}
-
-	// Async brands laden
-	private async Task LoadBrandsAsync()
-	{
-		var brandList = await _dataService.GetAllBrandsAsync();
-
-		Brands.Clear();
-		foreach ( var c in brandList )
-			Brands.Add( c );
 	}
 
 	// Properties voor UI binding

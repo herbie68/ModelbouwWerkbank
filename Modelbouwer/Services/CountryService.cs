@@ -41,6 +41,16 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		$"SELECT COUNT({DBNames.SupplierFieldNameCountryId}) " +
 		$"FROM {DBNames.Database}.{DBNames.SupplierTable} " +
 		$"WHERE {DBNames.SupplierFieldNameCountryId} = @CountryId";
+
+	public string CountryCodeExistsQuery =
+		$"SELECT COUNT({DBNames.CountryFieldNameId}) " +
+		$"FROM {DBNames.Database}.{DBNames.CountryTable} " +
+		$"WHERE LOWER({DBNames.CountryFieldNameCode}) = LOWER(@{DBNames.CountryFieldNameCode})";
+
+	public string CountryNameExistsQuery =
+		$"SELECT COUNT({DBNames.CountryFieldNameId}) " +
+		$"FROM {DBNames.Database}.{DBNames.CountryTable} " +
+		$"WHERE LOWER({DBNames.CountryFieldNameName}) = LOWER(@{DBNames.CountryFieldNameName})";
 	#endregion
 
 	public Task<List<CountryModel>> GetAllCountriesAsync()
@@ -124,10 +134,13 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		if ( string.IsNullOrWhiteSpace( countryCode ) )
 			return false;
 
-		var countries = await GetAllCountriesAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.CountryFieldNameCode}", countryCode.Trim() }
+		};
 
-		return countries.Any( c =>
-			string.Equals( c.CountryCode, countryCode, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( CountryCodeExistsQuery, parameters );
+		return count > 0;
 	}
 
 	public async Task<bool> NameExistsAsync( string? countryName )
@@ -135,9 +148,12 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		if ( string.IsNullOrWhiteSpace( countryName ) )
 			return false;
 
-		var countries = await GetAllCountriesAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.CountryFieldNameName}", countryName.Trim() }
+		};
 
-		return countries.Any( c =>
-			string.Equals( c.CountryName, countryName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( CountryNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

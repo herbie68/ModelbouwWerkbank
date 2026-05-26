@@ -11,6 +11,7 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	private readonly IProjectService _dataService;
 
 	private int? _lastSelectedProjectId;
+	private int _workStatsLoadVersion;
 
 	public ProjectModel? SelectedProject
 	{
@@ -46,7 +47,7 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 	{
 		_dataService = dataService;
 
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	// Override SelectedItem changed om DefaultProject te zetten
@@ -72,7 +73,10 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 
 		// Laad nieuwe workstats en recalc expected end date
 		if ( newValue != null )
-			_ = LoadWorkStatsAsync();
+		{
+			var loadVersion = ++_workStatsLoadVersion;
+			ObserveBackgroundTask( LoadWorkStatsAsync( newValue, loadVersion ) );
+		}
 	}
 
 	private void SelectedProject_PropertyChanged( object? sender, PropertyChangedEventArgs e )
@@ -85,8 +89,12 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 				break;
 
 			case nameof( ProjectModel.ProjectClosed ):
-				_ = HandleProjectClosedChangedAsync();
-				_ = LoadWorkStatsAsync();
+				ObserveBackgroundTask( HandleProjectClosedChangedAsync() );
+				if ( SelectedProject != null )
+				{
+					var loadVersion = ++_workStatsLoadVersion;
+					ObserveBackgroundTask( LoadWorkStatsAsync( SelectedProject, loadVersion ) );
+				}
 				RaiseProjectStateProperties();
 				break;
 		}
@@ -290,12 +298,14 @@ public partial class ProjectPageViewModel : EntityPageViewModel<ProjectModel>
 
 	private ProjectWorkStats? _currentWorkStats;
 
-	private async Task LoadWorkStatsAsync()
+	private async Task LoadWorkStatsAsync( ProjectModel project, int loadVersion )
 	{
-		if ( SelectedProject == null )
+		var workStats = await _dataService.GetProjectWorkStatsAsync( project.ProjectId );
+
+		if ( loadVersion != _workStatsLoadVersion || !ReferenceEquals( SelectedProject, project ) )
 			return;
 
-		_currentWorkStats = await _dataService.GetProjectWorkStatsAsync( SelectedProject.ProjectId );
+		_currentWorkStats = workStats;
 
 		RecalculateExpectedEndDate();
 	}

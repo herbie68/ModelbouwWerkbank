@@ -21,7 +21,7 @@ public partial class StockManagementPageViewModel : EntityPageViewModel<StockMan
 		DataGridSaveSettingsCommand = new RelayCommand( SaveGridLayout );
 		DataGridResetSettingsCommand = new RelayCommand( ResetGridLayout );
 
-		_ = ReloadAsync();
+		ObserveBackgroundTask( ReloadAsync() );
 
 		// Hook collection changes to monitor new items
 		Items.CollectionChanged += Items_CollectionChanged;
@@ -170,6 +170,7 @@ public partial class StockManagementPageViewModel : EntityPageViewModel<StockMan
 		}
 		catch ( Exception ex )
 		{
+			SetLastAsyncError( ex );
 			Debug.WriteLine( $"Error handling inventory change: {ex}" );
 		}
 	}

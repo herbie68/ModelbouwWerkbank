@@ -11,11 +11,33 @@ public class StockReceiptViewModelTests
 	{
 		_mockStockOrderService = new Mock<IStockOrderService>();
 		_mockStockOrderService.Setup( s => s.GetAllOrdersAsync() ).ReturnsAsync( new List<StockOrderModel>() );
+		_mockStockOrderService.Setup( s => s.GetAllOrdersAsync( It.IsAny<CancellationToken>() ) ).ReturnsAsync( new List<StockOrderModel>() );
 		_mockStockOrderService.Setup( s => s.GetOrderLinesAsync( It.IsAny<int>() ) ).ReturnsAsync( new List<StockOrderLineModel>() );
+		_mockStockOrderService.Setup( s => s.GetOrderLinesAsync( It.IsAny<int>(), It.IsAny<CancellationToken>() ) ).ReturnsAsync( new List<StockOrderLineModel>() );
 		_mockStockOrderService.Setup( s => s.RegisterReceiptAsync( It.IsAny<StockOrderLineModel>(), It.IsAny<double>(), It.IsAny<DateTime?>() ) ).Returns( Task.CompletedTask );
+		_mockStockOrderService.Setup( s => s.RegisterReceiptAsync( It.IsAny<StockOrderLineModel>(), It.IsAny<double>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>() ) ).Returns( Task.CompletedTask );
 		_mockStockOrderService.Setup( s => s.UpdateOrderAsync( It.IsAny<StockOrderModel>() ) ).Returns( Task.CompletedTask );
+		_mockStockOrderService.Setup( s => s.UpdateOrderAsync( It.IsAny<StockOrderModel>(), It.IsAny<CancellationToken>() ) ).Returns( Task.CompletedTask );
 
 		_viewModel = new StockReceiptViewModel( _mockStockOrderService.Object );
+	}
+
+	[TestMethod]
+	public async Task InitializeAsync_WithCancellationToken_PassesTokenToStockOrderService()
+	{
+		using var cts = new CancellationTokenSource();
+		_mockStockOrderService
+			.Setup( s => s.GetAllOrdersAsync( cts.Token ) )
+			.ReturnsAsync( new List<StockOrderModel>
+			{
+				new() { Id = 25, OrderNumber = "SO-025" }
+			} );
+
+		await _viewModel.InitializeAsync( cts.Token );
+
+		_mockStockOrderService.Verify( s => s.GetAllOrdersAsync( cts.Token ), Times.Once );
+		Assert.AreEqual( 1, _viewModel.Orders.Count );
+		Assert.AreEqual( 25, _viewModel.Orders[0].Id );
 	}
 
 	[TestMethod]
@@ -49,6 +71,21 @@ public class StockReceiptViewModelTests
 
 		Assert.AreEqual( 2, _viewModel.OpenOrderLines.Count );
 		Assert.IsTrue( _viewModel.OpenOrderLines.All( line => line.Closed ) );
+	}
+
+	[TestMethod]
+	public async Task SelectedOrder_WhenBackgroundLoadFails_StoresAsyncError()
+	{
+		var expected = new InvalidOperationException( "receipt lines failed" );
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 25 ) )
+			.ThrowsAsync( expected );
+
+		_viewModel.SelectedOrder = new StockOrderModel { Id = 25, OrderNumber = "SO-025" };
+
+		await WaitUntilAsync( () => ReferenceEquals( expected, _viewModel.LastAsyncError ) );
+
+		Assert.AreSame( expected, _viewModel.LastAsyncError );
 	}
 
 	[TestMethod]
@@ -121,6 +158,50 @@ public class StockReceiptViewModelTests
 			2d,
 			new DateTime( 2026, 5, 4 ) ),
 			Times.Once );
+	}
+
+	[TestMethod]
+	public async Task EditSelectedOrderLineAsync_WithCancellationToken_PassesTokenToStockOrderService()
+	{
+		using var cts = new CancellationTokenSource();
+		var order = new StockOrderModel { Id = 25, OrderNumber = "SO-025" };
+		var line = new StockOrderLineModel
+		{
+			Id = 40,
+			SupplyOrderId = 25,
+			ProductId = 5,
+			ProductCode = "P-005",
+			ProductName = "Wheel Set",
+			SupplierProductName = "Supplier Wheel Set",
+			Amount = 5,
+			OpenAmount = 3,
+			Received = 2,
+			Closed = false
+		};
+
+		_mockStockOrderService
+			.Setup( s => s.RegisterReceiptAsync( It.IsAny<StockOrderLineModel>(), 2d, new DateTime( 2026, 5, 4 ), cts.Token ) )
+			.Returns( Task.CompletedTask );
+		_mockStockOrderService
+			.Setup( s => s.GetOrderLinesAsync( 25, cts.Token ) )
+			.ReturnsAsync( new List<StockOrderLineModel> { line } );
+		_viewModel.ApplySelectedOrder( order, new List<StockOrderLineModel> { line } );
+		_viewModel.SelectedOrderLine = line;
+		_viewModel.ShowReceiptDialog = vm =>
+		{
+			vm.Model.ReceivedAmount = 4;
+			vm.Model.DeliveryDate = new DateTime( 2026, 5, 4 );
+			return true;
+		};
+
+		await _viewModel.EditSelectedOrderLineAsync( cts.Token );
+
+		_mockStockOrderService.Verify( s => s.RegisterReceiptAsync(
+			It.Is<StockOrderLineModel>( updated => updated.Id == 40 ),
+			2d,
+			new DateTime( 2026, 5, 4 ),
+			cts.Token ), Times.Once );
+		_mockStockOrderService.Verify( s => s.GetOrderLinesAsync( 25, cts.Token ), Times.Once );
 	}
 
 	[TestMethod]
@@ -400,5 +481,58 @@ public class StockReceiptViewModelTests
 				updated.Closed &&
 				updated.ClosedDate == new DateTime( 2026, 5, 6 ) ) ),
 			Times.Once );
+	}
+
+	[TestMethod]
+	public void StockReceiptViewModel_EditReceiptCommandIsGuardedAgainstParallelExecution()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "StockReceiptViewModel.cs" );
+
+		StringAssert.Contains( source, "[ObservableProperty] private bool _isEditingReceipt;" );
+		StringAssert.Contains( source, "EditReceiptCommand = new AsyncRelayCommand( () => EditSelectedOrderLineAsync(), () => !IsEditingReceipt );" );
+		StringAssert.Contains( source, "partial void OnIsEditingReceiptChanged( bool value ) => EditReceiptCommand.NotifyCanExecuteChanged();" );
+		AssertMethodContains( source, "private async Task EditSelectedOrderLineCoreAsync", "if ( IsEditingReceipt )" );
+		AssertMethodContains( source, "private async Task EditSelectedOrderLineCoreAsync", "IsEditingReceipt = true;" );
+		AssertMethodContains( source, "private async Task EditSelectedOrderLineCoreAsync", "finally" );
+	}
+
+	private static string LoadSource( params string[] relativeSegments )
+	{
+		var directory = AppContext.BaseDirectory;
+		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )
+		{
+			directory = Directory.GetParent( directory )?.FullName;
+		}
+
+		var repositoryRoot = directory ?? throw new DirectoryNotFoundException( "Could not locate repository root." );
+		var path = Path.Combine( [ repositoryRoot, .. relativeSegments ] );
+
+		return File.ReadAllText( path );
+	}
+
+	private static void AssertMethodContains( string source, string methodSignature, string expectedContent )
+	{
+		var methodStart = source.IndexOf( methodSignature, StringComparison.Ordinal );
+		Assert.IsTrue( methodStart >= 0, $"Method '{methodSignature}' was not found." );
+
+		var nextMethod = source.IndexOf( "\n\tprivate ", methodStart + methodSignature.Length, StringComparison.Ordinal );
+		if ( nextMethod < 0 )
+			nextMethod = source.Length;
+
+		var methodBody = source.Substring( methodStart, nextMethod - methodStart );
+		StringAssert.Contains( methodBody, expectedContent );
+	}
+
+	private static async Task WaitUntilAsync( Func<bool> condition )
+	{
+		for ( int attempt = 0; attempt < 40; attempt++ )
+		{
+			if ( condition() )
+				return;
+
+			await Task.Delay( 25 );
+		}
+
+		Assert.Fail( "Condition was not met before the timeout." );
 	}
 }

@@ -173,6 +173,11 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 
 	public Task<List<StockOrderModel>> GetAllOrdersAsync()
 	{
+		return GetAllOrdersAsync( CancellationToken.None );
+	}
+
+	public Task<List<StockOrderModel>> GetAllOrdersAsync( CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteQueryAsync( CompleteOrderListQuery, reader =>
 		{
 			return new StockOrderModel
@@ -191,10 +196,15 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 				Memo = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameOrderMemo] ),
 				HasStockLog = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameHasStockLog] ) == 1
 			};
-		}, null );
+		}, null, cancellationToken );
 	}
 
 	public Task<List<StockOrderLineModel>> GetOrderLinesAsync( int orderId )
+	{
+		return GetOrderLinesAsync( orderId, CancellationToken.None );
+	}
+
+	public Task<List<StockOrderLineModel>> GetOrderLinesAsync( int orderId, CancellationToken cancellationToken )
 	{
 		return _dataService.ExecuteQueryAsync(
 			OrderLinesQuery,
@@ -217,49 +227,75 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 				Closed = DatabaseValueConverter.GetSByte( reader[DBNames.OrderLineViewFieldNameClosed] ) == 1,
 				ClosedDate = GetNullableDateTime( reader[DBNames.OrderLineViewFieldNameClosedDate] )
 			},
-			new Dictionary<string, object> { { "@OrderId", orderId } } );
+			new Dictionary<string, object> { { "@OrderId", orderId } },
+			cancellationToken );
 	}
 
 	public async Task<int> InsertOrderAsync( StockOrderModel order )
 	{
-		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertOrderQuery, BuildOrderParameters( order, includeId: false ) );
+		return await InsertOrderAsync( order, CancellationToken.None );
+	}
+
+	public async Task<int> InsertOrderAsync( StockOrderModel order, CancellationToken cancellationToken )
+	{
+		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertOrderQuery, BuildOrderParameters( order, includeId: false ), cancellationToken );
 		return ( int ) newId;
 	}
 
 	public Task<int> InsertOrderWithLinesAsync( StockOrderModel order, IEnumerable<StockOrderLineModel> lines )
 	{
+		return InsertOrderWithLinesAsync( order, lines, CancellationToken.None );
+	}
+
+	public Task<int> InsertOrderWithLinesAsync( StockOrderModel order, IEnumerable<StockOrderLineModel> lines, CancellationToken cancellationToken )
+	{
 		List<StockOrderLineModel> lineList = lines.ToList();
 
 		return _dataService.ExecuteInTransactionAsync<int>( async ( connection, transaction ) =>
 		{
-			uint orderId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderQuery, BuildOrderParameters( order, includeId: false ) );
+			uint orderId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderQuery, BuildOrderParameters( order, includeId: false ), cancellationToken );
 
 			foreach ( var line in lineList )
 			{
 				line.SupplyOrderId = ( int ) orderId;
-				uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
+				uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ), cancellationToken );
 				line.Id = ( int ) lineId;
-				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, ( int ) orderId, ( int ) lineId, line.Amount );
+				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, ( int ) orderId, ( int ) lineId, line.Amount, cancellationToken );
 			}
 
 			return ( int ) orderId;
-		} );
+		}, cancellationToken );
 	}
 
 	public Task UpdateOrderAsync( StockOrderModel order )
 	{
-		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderQuery, BuildOrderParameters( order, includeId: true ) );
+		return UpdateOrderAsync( order, CancellationToken.None );
+	}
+
+	public Task UpdateOrderAsync( StockOrderModel order, CancellationToken cancellationToken )
+	{
+		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderQuery, BuildOrderParameters( order, includeId: true ), cancellationToken );
 	}
 
 	public Task DeleteOrderAsync( int orderId )
 	{
+		return DeleteOrderAsync( orderId, CancellationToken.None );
+	}
+
+	public Task DeleteOrderAsync( int orderId, CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteScalarAsync<uint>( DeleteOrderQuery, new Dictionary<string, object>
 		{
 			{ $"@{DBNames.OrderFieldNameId}", orderId }
-		} );
+		}, cancellationToken );
 	}
 
 	public Task DeleteOrderWithLinesAsync( int orderId, IEnumerable<StockOrderLineModel> lines )
+	{
+		return DeleteOrderWithLinesAsync( orderId, lines, CancellationToken.None );
+	}
+
+	public Task DeleteOrderWithLinesAsync( int orderId, IEnumerable<StockOrderLineModel> lines, CancellationToken cancellationToken )
 	{
 		List<StockOrderLineModel> lineList = lines.ToList();
 
@@ -272,77 +308,112 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 					await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderLineQuery, new Dictionary<string, object>
 					{
 						{ $"@{DBNames.OrderLineFieldNameId}", line.Id }
-					} );
+					}, cancellationToken );
 				}
 
-				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, orderId, line.Id, -line.Amount );
+				await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, orderId, line.Id, -line.Amount, cancellationToken );
 			}
 
 			await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderQuery, new Dictionary<string, object>
 			{
 				{ $"@{DBNames.OrderFieldNameId}", orderId }
-			} );
-		} );
+			}, cancellationToken );
+		}, cancellationToken );
 	}
 
 	public async Task<int> InsertOrderLineAsync( StockOrderLineModel line )
 	{
-		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
+		return await InsertOrderLineAsync( line, CancellationToken.None );
+	}
+
+	public async Task<int> InsertOrderLineAsync( StockOrderLineModel line, CancellationToken cancellationToken )
+	{
+		uint newId = await _dataService.ExecuteScalarAsync<uint>( InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ), cancellationToken );
 		return ( int ) newId;
 	}
 
 	public Task<int> InsertOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
 	{
+		return InsertOrderLineWithStockCorrectionAsync( line, stockCorrection, CancellationToken.None );
+	}
+
+	public Task<int> InsertOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection, CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteInTransactionAsync<int>( async ( connection, transaction ) =>
 		{
-			uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ) );
+			uint lineId = await ExecuteScalarInTransactionAsync<uint>( connection, transaction, InsertOrderLineQuery, BuildOrderLineParameters( line, includeId: false ), cancellationToken );
 			line.Id = ( int ) lineId;
-			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, ( int ) lineId, stockCorrection );
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, ( int ) lineId, stockCorrection, cancellationToken );
 			return ( int ) lineId;
-		} );
+		}, cancellationToken );
 	}
 
 	public Task UpdateOrderLineAsync( StockOrderLineModel line )
 	{
-		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
+		return UpdateOrderLineAsync( line, CancellationToken.None );
+	}
+
+	public Task UpdateOrderLineAsync( StockOrderLineModel line, CancellationToken cancellationToken )
+	{
+		return _dataService.ExecuteScalarAsync<uint>( UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ), cancellationToken );
 	}
 
 	public Task UpdateOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
 	{
+		return UpdateOrderLineWithStockCorrectionAsync( line, stockCorrection, CancellationToken.None );
+	}
+
+	public Task UpdateOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection, CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
 		{
-			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
-			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection );
-		} );
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ), cancellationToken );
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection, cancellationToken );
+		}, cancellationToken );
 	}
 
 	public Task RegisterReceiptAsync( StockOrderLineModel line, double receivedAmount, DateTime? deliveryDate )
 	{
+		return RegisterReceiptAsync( line, receivedAmount, deliveryDate, CancellationToken.None );
+	}
+
+	public Task RegisterReceiptAsync( StockOrderLineModel line, double receivedAmount, DateTime? deliveryDate, CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
 		{
-			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ) );
-			await InsertStocklogReceiptAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, receivedAmount, deliveryDate );
-		} );
+			await ExecuteNonQueryInTransactionAsync( connection, transaction, UpdateOrderLineQuery, BuildOrderLineParameters( line, includeId: true ), cancellationToken );
+			await InsertStocklogReceiptAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, receivedAmount, deliveryDate, cancellationToken );
+		}, cancellationToken );
 	}
 
 	public Task DeleteOrderLineAsync( int lineId )
 	{
+		return DeleteOrderLineAsync( lineId, CancellationToken.None );
+	}
+
+	public Task DeleteOrderLineAsync( int lineId, CancellationToken cancellationToken )
+	{
 		return _dataService.ExecuteScalarAsync<uint>( DeleteOrderLineQuery, new Dictionary<string, object>
 		{
 			{ $"@{DBNames.OrderLineFieldNameId}", lineId }
-		} );
+		}, cancellationToken );
 	}
 
 	public Task DeleteOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection )
+	{
+		return DeleteOrderLineWithStockCorrectionAsync( line, stockCorrection, CancellationToken.None );
+	}
+
+	public Task DeleteOrderLineWithStockCorrectionAsync( StockOrderLineModel line, double stockCorrection, CancellationToken cancellationToken )
 	{
 		return _dataService.ExecuteInTransactionAsync( async ( connection, transaction ) =>
 		{
 			await ExecuteNonQueryInTransactionAsync( connection, transaction, DeleteOrderLineQuery, new Dictionary<string, object>
 			{
 				{ $"@{DBNames.OrderLineFieldNameId}", line.Id }
-			} );
-			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection );
-		} );
+			}, cancellationToken );
+			await InsertStocklogCorrectionAsync( connection, transaction, line.ProductId, line.SupplyOrderId, line.Id, stockCorrection, cancellationToken );
+		}, cancellationToken );
 	}
 
 	private Dictionary<string, object> BuildOrderParameters( StockOrderModel order, bool includeId )
@@ -398,7 +469,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			: Convert.ToDateTime( value );
 	}
 
-	private static async Task<T> ExecuteScalarInTransactionAsync<T>( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters )
+	private static async Task<T> ExecuteScalarInTransactionAsync<T>( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters, CancellationToken cancellationToken )
 	{
 		await using MySqlCommand command = new(query, connection, transaction);
 
@@ -407,7 +478,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			command.Parameters.AddWithValue( parameter.Key, parameter.Value ?? DBNull.Value );
 		}
 
-		object? result = await command.ExecuteScalarAsync();
+		object? result = await command.ExecuteScalarAsync( cancellationToken );
 
 		if ( result == null || result == DBNull.Value )
 			return default!;
@@ -417,7 +488,7 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 		return ( T ) converted;
 	}
 
-	private static async Task ExecuteNonQueryInTransactionAsync( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters )
+	private static async Task ExecuteNonQueryInTransactionAsync( MySqlConnection connection, MySqlTransaction transaction, string query, Dictionary<string, object> parameters, CancellationToken cancellationToken )
 	{
 		await using MySqlCommand command = new(query, connection, transaction);
 
@@ -426,10 +497,10 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			command.Parameters.AddWithValue( parameter.Key, parameter.Value ?? DBNull.Value );
 		}
 
-		await command.ExecuteNonQueryAsync();
+		await command.ExecuteNonQueryAsync( cancellationToken );
 	}
 
-	private Task InsertStocklogCorrectionAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double correctionAmount )
+	private Task InsertStocklogCorrectionAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double correctionAmount, CancellationToken cancellationToken )
 	{
 		if ( productId <= 0 || correctionAmount == 0d )
 			return Task.CompletedTask;
@@ -440,10 +511,10 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			{ $"@{DBNames.StocklogFieldNameSupplyOrderId}", supplyOrderId > 0 ? supplyOrderId : DBNull.Value },
 			{ $"@{DBNames.StocklogFieldNameSupplyOrderlineId}", supplyOrderLineId > 0 ? supplyOrderLineId : DBNull.Value },
 			{ $"@{DBNames.StocklogFieldNameAmountCorrection}", correctionAmount }
-		} );
+		}, cancellationToken );
 	}
 
-	private Task InsertStocklogReceiptAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double receivedAmount, DateTime? deliveryDate )
+	private Task InsertStocklogReceiptAsync( MySqlConnection connection, MySqlTransaction transaction, int productId, int supplyOrderId, int supplyOrderLineId, double receivedAmount, DateTime? deliveryDate, CancellationToken cancellationToken )
 	{
 		if ( productId <= 0 || receivedAmount == 0d )
 			return Task.CompletedTask;
@@ -455,6 +526,6 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			{ $"@{DBNames.StocklogFieldNameSupplyOrderlineId}", supplyOrderLineId > 0 ? supplyOrderLineId : DBNull.Value },
 			{ $"@{DBNames.StocklogFieldNameAmountReceived}", receivedAmount },
 			{ $"@{DBNames.StocklogFieldNameLogDate}", deliveryDate is DateTime date ? date : DateTime.Today }
-		} );
+		}, cancellationToken );
 	}
 }

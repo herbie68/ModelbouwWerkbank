@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Modelbouwer.Services;
 
-public class GitHubReleaseHistoryService
+public class GitHubReleaseHistoryService : IGitHubReleaseHistoryService
 {
 	private const string Owner = "hnsoftwaredevelopment";
 	private const string Repository = "ModelbouwWerkbank";

@@ -41,7 +41,7 @@ namespace Modelbouwer.Services;
 	public string ContactTypeNameExistsQuery =
 		$"SELECT COUNT({DBNames.ContactTypeFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.ContactTypeTable} " +
-		$"WHERE {DBNames.ContactTypeFieldNameName} = @{DBNames.ContactTypeFieldNameName}";
+		$"WHERE LOWER({DBNames.ContactTypeFieldNameName}) = LOWER(@{DBNames.ContactTypeFieldNameName})";
 
 	public string ContactTypeUsedQuery = $"SELECT COUNT({DBNames.SupplierContactFieldNameTypeId}) FROM {DBNames.Database}.{DBNames.SupplierTable} WHERE {DBNames.SupplierContactFieldNameTypeId} = @ContactTypeId";
 	#endregion
@@ -118,9 +118,12 @@ namespace Modelbouwer.Services;
 		if ( string.IsNullOrWhiteSpace( contacttypeName ) )
 			return false;
 
-		var contacttypes = await GetAllContactTypesAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.ContactTypeFieldNameName}", contacttypeName.Trim() }
+		};
 
-		return contacttypes.Any( c =>
-			string.Equals( c.ContactTypeName, contacttypeName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( ContactTypeNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

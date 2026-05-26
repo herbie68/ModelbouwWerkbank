@@ -41,7 +41,7 @@ public class BrandService : IBrandService
 	public string BrandNameExistsQuery =
 		$"SELECT COUNT({DBNames.BrandFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.BrandTable} " +
-		$"WHERE {DBNames.BrandFieldNameName} = @{DBNames.BrandFieldNameName}";
+		$"WHERE LOWER({DBNames.BrandFieldNameName}) = LOWER(@{DBNames.BrandFieldNameName})";
 
 	public string BrandUsedQuery = $"SELECT COUNT({DBNames.ProductFieldNameBrandId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.ProductFieldNameBrandId} = @BrandId";
 	#endregion
@@ -118,9 +118,12 @@ public class BrandService : IBrandService
 		if ( string.IsNullOrWhiteSpace( brandName ) )
 			return false;
 
-		var brands = await GetAllBrandsAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.BrandFieldNameName}", brandName.Trim() }
+		};
 
-		return brands.Any( c =>
-			string.Equals( c.BrandName, brandName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( BrandNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

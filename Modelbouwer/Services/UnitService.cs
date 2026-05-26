@@ -41,7 +41,7 @@ public class UnitService : IUnitService
 	public string UnitNameExistsQuery =
 		$"SELECT COUNT({DBNames.UnitFieldNameUnitId}) " +
 		$"FROM {DBNames.Database}.{DBNames.UnitTable} " +
-		$"WHERE {DBNames.UnitFieldNameUnitName} = @{DBNames.UnitFieldNameUnitName}";
+		$"WHERE LOWER({DBNames.UnitFieldNameUnitName}) = LOWER(@{DBNames.UnitFieldNameUnitName})";
 
 	public string UnitUsedQuery = $"SELECT COUNT({DBNames.ProductFieldNameUnitId}) FROM {DBNames.Database}.{DBNames.ProductTable} WHERE {DBNames.ProductFieldNameUnitId} = @UnitId";
 	#endregion
@@ -132,9 +132,12 @@ public class UnitService : IUnitService
 		if ( string.IsNullOrWhiteSpace( unitName ) )
 			return false;
 
-		var units = await GetAllUnitsAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.UnitFieldNameUnitName}", unitName.Trim() }
+		};
 
-		return units.Any( c =>
-			string.Equals( c.UnitName, unitName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( UnitNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

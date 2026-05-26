@@ -70,7 +70,7 @@ public class ProjectService : IProjectService
 	public string ProjectNameExistsQuery =
 		$"SELECT COUNT({DBNames.ProjectFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.ProjectTable} " +
-		$"WHERE {DBNames.ProjectFieldNameName} = @{DBNames.ProjectFieldNameName}";
+		$"WHERE LOWER({DBNames.ProjectFieldNameName}) = LOWER(@{DBNames.ProjectFieldNameName})";
 
 	public string LastWorkDateOnProjectQuery =
 		$"SELECT MAX( {DBNames.TimeFieldNameWorkDate} ) " +
@@ -212,10 +212,13 @@ public class ProjectService : IProjectService
 		if ( string.IsNullOrWhiteSpace( projectName ) )
 			return false;
 
-		var projects = await GetAllProjectsAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.ProjectFieldNameName}", projectName.Trim() }
+		};
 
-		return projects.Any( c =>
-			string.Equals( c.ProjectName, projectName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( ProjectNameExistsQuery, parameters );
+		return count > 0;
 	}
 
 	public async Task<ProjectWorkStats?> GetProjectWorkStatsAsync( int projectId )

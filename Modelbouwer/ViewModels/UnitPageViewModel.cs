@@ -29,8 +29,7 @@ public class UnitPageViewModel : EntityPageViewModel<UnitModel>
 	{
 		_dataService = dataService;
 
-		_ = LoadUnitsAsync();
-		_ = ReloadCommand.ExecuteAsync( null );
+		ObserveBackgroundTask( ReloadAsync() );
 	}
 
 	// Override SelectedItem changed om DefaultUnit te zetten
@@ -44,16 +43,6 @@ public class UnitPageViewModel : EntityPageViewModel<UnitModel>
 		OnPropertyChanged( nameof( SelectedUnit ) );
 		OnPropertyChanged( nameof( SelectedUnit.UnitName ) );
 		OnPropertyChanged( nameof( SelectedUnit.UnitId ) );
-	}
-
-	// Async units laden
-	private async Task LoadUnitsAsync()
-	{
-		var unitList = await _dataService.GetAllUnitsAsync();
-
-		Units.Clear();
-		foreach ( var c in unitList )
-			Units.Add( c );
 	}
 
 	// Properties voor UI binding

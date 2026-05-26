@@ -112,7 +112,7 @@ public class ProductService : IProductService
 	public string ProductNameExistsQuery =
 		$"SELECT COUNT({DBNames.ProductFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.ProductTable} " +
-		$"WHERE {DBNames.ProductFieldNameName} = @{DBNames.ProductFieldNameName}";
+		$"WHERE LOWER({DBNames.ProductFieldNameName}) = LOWER(@{DBNames.ProductFieldNameName})";
 
 	public string ProductUsedQuery = $"" +
 		$"SELECT" +
@@ -302,9 +302,12 @@ public class ProductService : IProductService
 		if ( string.IsNullOrWhiteSpace( productName ) )
 			return false;
 
-		var products = await GetAllProductsAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.ProductFieldNameName}", productName.Trim() }
+		};
 
-		return products.Any( c =>
-			string.Equals( c.Name, productName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( ProductNameExistsQuery, parameters );
+		return count > 0;
 	}
 }

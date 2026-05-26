@@ -2,9 +2,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class SettingsPageViewModel : ObservableObject
+public partial class SettingsPageViewModel : AsyncObservableObject
 {
-	private readonly SettingsService _settingsService;
+	private readonly ISettingsService _settingsService;
 	private bool _isLoading;
 
 	public ObservableCollection<SettingsOption> RegionOptions { get; } = [];
@@ -21,7 +21,7 @@ public partial class SettingsPageViewModel : ObservableObject
 	public IAsyncRelayCommand SaveSettingsCommand { get; }
 	public IAsyncRelayCommand ReloadSettingsCommand { get; }
 
-	public SettingsPageViewModel( SettingsService settingsService )
+	public SettingsPageViewModel( ISettingsService settingsService )
 	{
 		_settingsService = settingsService;
 
@@ -33,10 +33,10 @@ public partial class SettingsPageViewModel : ObservableObject
 		LanguageOptions.Add( new SettingsOption { DisplayName = Lang.SettingsLanguageEnglish, Value = "EN" } );
 		LanguageOptions.Add( new SettingsOption { DisplayName = Lang.SettingsLanguageGerman, Value = "DE" } );
 
-		SaveSettingsCommand = new AsyncRelayCommand( SaveSettingsAsync );
+		SaveSettingsCommand = new AsyncRelayCommand( SaveSettingsAsync, CanSaveSettings );
 		ReloadSettingsCommand = new AsyncRelayCommand( LoadSettingsAsync );
 
-		_ = LoadSettingsAsync();
+		ObserveBackgroundTask( LoadSettingsAsync() );
 	}
 
 	private async Task LoadSettingsAsync()
@@ -61,6 +61,9 @@ public partial class SettingsPageViewModel : ObservableObject
 
 	private async Task SaveSettingsAsync()
 	{
+		if ( IsSaving )
+			return;
+
 		IsSaving = true;
 		try
 		{
@@ -99,6 +102,10 @@ public partial class SettingsPageViewModel : ObservableObject
 	partial void OnSelectedLanguageChanged( string value ) => MarkDirty();
 	partial void OnHourRateChanged( double value ) => MarkDirty();
 	partial void OnHourRateTextChanged( string value ) => MarkDirty();
+	partial void OnIsSavingChanged( bool value ) => SaveSettingsCommand.NotifyCanExecuteChanged();
+	partial void OnHasUnsavedChangesChanged( bool value ) => SaveSettingsCommand.NotifyCanExecuteChanged();
+
+	private bool CanSaveSettings() => HasUnsavedChanges && !IsSaving;
 
 	private void MarkDirty()
 	{

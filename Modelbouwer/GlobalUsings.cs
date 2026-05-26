@@ -22,6 +22,7 @@ global using Modelbouwer.Exceptions;
 global using Modelbouwer.Helpers;
 global using Modelbouwer.Interfaces;
 global using Modelbouwer.Models;
+global using Modelbouwer.Diagnostics;
 global using Modelbouwer.Views;
 global using Modelbouwer.ViewModels;
 global using Modelbouwer.Services;

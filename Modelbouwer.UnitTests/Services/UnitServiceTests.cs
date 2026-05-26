@@ -201,42 +201,31 @@ public class UnitServiceTests
 	[TestMethod]
 	public async Task NameExistsAsync_WhenUnitNameExists_IgnoresCase()
 	{
-		// Arrange
-		var units = new List<UnitModel>
-		{
-			new UnitModel { UnitId = 1, UnitName = "Piece" },
-			new UnitModel { UnitId = 2, UnitName = "Meter" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, UnitModel>>() ) )
-			.ReturnsAsync( units );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 1 );
 
-		// Act
 		var result = await _unitService.NameExistsAsync( "piece" );
 
-		// Assert
 		Assert.IsTrue( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, UnitModel>>() ), Times.Never );
 	}
 
 	[TestMethod]
 	public async Task NameExistsAsync_WhenUnitNameDoesNotExist_ReturnsFalse()
 	{
-		// Arrange
-		var units = new List<UnitModel>
-		{
-			new UnitModel { UnitId = 1, UnitName = "Piece" }
-		};
-
 		_mockDataService
-			.Setup( s => s.ExecuteQueryAsync( It.IsAny<string>(), It.IsAny<Func<System.Data.Common.DbDataReader, UnitModel>>() ) )
-			.ReturnsAsync( units );
+			.Setup( s => s.ExecuteScalarAsync<int>( It.IsAny<string>(), It.IsAny<Dictionary<string, object>>() ) )
+			.ReturnsAsync( 0 );
 
-		// Act
 		var result = await _unitService.NameExistsAsync( "Meter" );
 
-		// Assert
 		Assert.IsFalse( result );
+		_mockDataService.Verify( s => s.ExecuteQueryAsync(
+			It.IsAny<string>(),
+			It.IsAny<Func<System.Data.Common.DbDataReader, UnitModel>>() ), Times.Never );
 	}
 
 	private static Dictionary<string, object?> CreateUnitParameters( int unitId = 1, string unitName = "Piece" )

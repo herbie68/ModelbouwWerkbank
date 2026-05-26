@@ -103,12 +103,14 @@ public partial class App : Application
 		services.AddScoped<IContactTypeService, ContactTypeService>();
 		services.AddScoped<ICountryService, CountryService>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
+		services.AddSingleton<IGitHubReleaseHistoryService>( provider => provider.GetRequiredService<GitHubReleaseHistoryService>() );
 		services.AddScoped<IProductService, ProductService>();
 		services.AddScoped<IProjectService, ProjectService>();
 		services.AddScoped<IStockService, StockService>();
 		services.AddScoped<IStockOrderService, StockOrderService>();
 		services.AddScoped<IStorageLocationService, StorageLocationService>();
 		services.AddScoped<ISupplierService, SupplierService>();
+		services.AddSingleton<ISettingsService>( provider => provider.GetRequiredService<SettingsService>() );
 		services.AddScoped<ITimeRegistrationService, TimeRegistrationService>();
 		services.AddScoped<IUnitService, UnitService>();
 		services.AddScoped<IWorktypeService, WorktypeService>();

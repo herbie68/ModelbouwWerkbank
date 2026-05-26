@@ -22,10 +22,17 @@ public partial class TimeRegistrationView : UserControl
 
 	private async void SaveTimeEntriesButton_Click( object sender, RoutedEventArgs e )
 	{
-		Keyboard.ClearFocus();
-		await Dispatcher.InvokeAsync( () => { }, System.Windows.Threading.DispatcherPriority.Background );
+		try
+		{
+			Keyboard.ClearFocus();
+			await Dispatcher.InvokeAsync( () => { }, System.Windows.Threading.DispatcherPriority.Background );
 
-		if ( DataContext is TimeRegistrationViewModel viewModel )
-			await viewModel.SaveTimeEntriesFromViewAsync();
+			if ( DataContext is TimeRegistrationViewModel viewModel )
+				await viewModel.SaveTimeEntriesFromViewAsync();
+		}
+		catch ( Exception ex )
+		{
+			MessageBox.Show( ex.Message, Lang.ExportGeneralFailedMessageboxTitle, MessageBoxButton.OK, MessageBoxImage.Error );
+		}
 	}
 }

@@ -183,7 +183,7 @@ public class SupplierService : ISupplierService
 	public string SupplierNameExistsQuery =
 		$"SELECT COUNT({DBNames.SupplierFieldNameId}) " +
 		$"FROM {DBNames.Database}.{DBNames.SupplierTable} " +
-		$"WHERE {DBNames.SupplierFieldNameName} = @{DBNames.SupplierFieldNameName}";
+		$"WHERE LOWER({DBNames.SupplierFieldNameName}) = LOWER(@{DBNames.SupplierFieldNameName})";
 
 	public string SupplierUsedQuery = $"" +
 		$"SELECT" +
@@ -386,10 +386,13 @@ public class SupplierService : ISupplierService
 		if ( string.IsNullOrWhiteSpace( supplierName ) )
 			return false;
 
-		var suppliers = await GetAllSuppliersAsync();
+		var parameters = new Dictionary<string, object>
+		{
+			{ $"@{DBNames.SupplierFieldNameName}", supplierName.Trim() }
+		};
 
-		return suppliers.Any( c =>
-			string.Equals( c.Name, supplierName, StringComparison.OrdinalIgnoreCase ) );
+		var count = await _dataService.ExecuteScalarAsync<int>( SupplierNameExistsQuery, parameters );
+		return count > 0;
 	}
 
 	private static ProductSupplierModel MapProductSupplier( System.Data.Common.DbDataReader reader )

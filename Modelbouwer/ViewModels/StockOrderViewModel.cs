@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Modelbouwer.ViewModels;
 
-public partial class StockOrderViewModel : ObservableObject
+public partial class StockOrderViewModel : AsyncObservableObject
 {
 	private readonly IStockOrderService _stockOrderService;
 	private readonly IProductService _productService;
@@ -34,6 +34,8 @@ public partial class StockOrderViewModel : ObservableObject
 	[ObservableProperty] private CurrencyModel? _selectedCurrency;
 	[ObservableProperty] private bool _isNewOrder;
 	[ObservableProperty] private bool _hasUnsavedChanges;
+	[ObservableProperty] private bool _isSavingOrder;
+	[ObservableProperty] private bool _isEditingOrderLine;
 	[ObservableProperty] private bool _enableSupplierOrderFilter;
 	[ObservableProperty] private bool _showClosedOrders;
 	[ObservableProperty] private string? _searchText;
@@ -63,14 +65,14 @@ public partial class StockOrderViewModel : ObservableObject
 		_supplierService = supplierService;
 
 		NewOrderCommand = new RelayCommand( BeginNewOrder );
-		SaveOrderCommand = new AsyncRelayCommand( SaveOrderAsync );
+		SaveOrderCommand = new AsyncRelayCommand( cancellationToken => SaveOrderAsync( cancellationToken ), CanSaveOrder );
 		DeleteOrderCommand = new AsyncRelayCommand( DeleteOrderAsync );
-		AddProductToOrderCommand = new AsyncRelayCommand( AddSelectedProductAsync );
-		EditOrderLineCommand = new AsyncRelayCommand( EditSelectedOrderLineAsync );
-		DeleteOrderLineCommand = new AsyncRelayCommand( DeleteSelectedOrderLineAsync );
+		AddProductToOrderCommand = new AsyncRelayCommand( AddSelectedProductAsync, CanEditOrderLineCommand );
+		EditOrderLineCommand = new AsyncRelayCommand( EditSelectedOrderLineAsync, CanEditOrderLineCommand );
+		DeleteOrderLineCommand = new AsyncRelayCommand( DeleteSelectedOrderLineAsync, CanEditOrderLineCommand );
 
 		BeginNewOrder();
-		_ = InitializeAsync();
+		ObserveBackgroundTask( InitializeAsync() );
 	}
 
 	partial void OnSelectedOrderChanged( StockOrderModel? value )
@@ -79,7 +81,7 @@ public partial class StockOrderViewModel : ObservableObject
 			return;
 
 		int loadVersion = ++_selectionLoadVersion;
-		_ = LoadSelectedOrderAsync( value, loadVersion );
+		ObserveBackgroundTask( LoadSelectedOrderAsync( value, loadVersion ) );
 	}
 
 	partial void OnEditableOrderChanged( StockOrderModel value )
@@ -109,10 +111,19 @@ public partial class StockOrderViewModel : ObservableObject
 		ApplyProductSearchFilter();
 	}
 
+	partial void OnIsSavingOrderChanged( bool value ) => SaveOrderCommand.NotifyCanExecuteChanged();
+	partial void OnIsEditingOrderLineChanged( bool value ) => NotifyOrderLineCommandsCanExecuteChanged();
+
 	public async Task InitializeAsync()
 	{
 		await LoadReferenceDataAsync();
 		await LoadOrdersAsync();
+	}
+
+	public async Task InitializeAsync( CancellationToken cancellationToken )
+	{
+		await LoadReferenceDataAsync();
+		await LoadOrdersAsync( cancellationToken );
 	}
 
 	public void BeginNewOrder()
@@ -182,6 +193,19 @@ public partial class StockOrderViewModel : ObservableObject
 
 	public async Task SaveOrderAsync()
 	{
+		await SaveOrderCoreAsync( null );
+	}
+
+	public async Task SaveOrderAsync( CancellationToken cancellationToken )
+	{
+		await SaveOrderCoreAsync( cancellationToken );
+	}
+
+	private async Task SaveOrderCoreAsync( CancellationToken? cancellationToken )
+	{
+		if ( IsSavingOrder )
+			return;
+
 		var validationMessage = ValidateOrderForSave();
 		if ( validationMessage != null )
 		{
@@ -189,41 +213,59 @@ public partial class StockOrderViewModel : ObservableObject
 			return;
 		}
 
-		if ( IsNewOrder )
+		IsSavingOrder = true;
+		try
 		{
-			List<StockOrderLineModel> pendingLines = PendingOrderLines.ToList();
-			var newOrderId = await _stockOrderService.InsertOrderWithLinesAsync( EditableOrder, pendingLines );
-			EditableOrder.Id = newOrderId;
-			foreach ( var line in pendingLines )
+			if ( IsNewOrder )
 			{
-				ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
+				List<StockOrderLineModel> pendingLines = PendingOrderLines.ToList();
+				var newOrderId = await InsertOrderWithLinesAsync( EditableOrder, pendingLines, cancellationToken );
+				EditableOrder.Id = newOrderId;
+				foreach ( var line in pendingLines )
+				{
+					ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
+				}
+
+				var lines = await GetOrderLinesAsync( newOrderId, cancellationToken );
+				await LoadOrdersAsync( cancellationToken );
+
+				var reloadedOrder = Orders.FirstOrDefault( o => o.Id == newOrderId ) ?? new StockOrderModel
+				{
+					Id = EditableOrder.Id,
+					SupplierId = EditableOrder.SupplierId,
+					CurrencyId = EditableOrder.CurrencyId,
+					OrderNumber = EditableOrder.OrderNumber,
+					OrderDate = EditableOrder.OrderDate
+				};
+
+				ApplySelectedOrder( reloadedOrder, lines );
+				return;
 			}
 
-			var lines = await _stockOrderService.GetOrderLinesAsync( newOrderId );
-			await LoadOrdersAsync();
+			await UpdateOrderAsync( EditableOrder, cancellationToken );
+			await LoadOrdersAsync( cancellationToken );
 
-			var reloadedOrder = Orders.FirstOrDefault( o => o.Id == newOrderId ) ?? new StockOrderModel
+			if ( SelectedOrder != null )
 			{
-				Id = EditableOrder.Id,
-				SupplierId = EditableOrder.SupplierId,
-				CurrencyId = EditableOrder.CurrencyId,
-				OrderNumber = EditableOrder.OrderNumber,
-				OrderDate = EditableOrder.OrderDate
-			};
-
-			ApplySelectedOrder( reloadedOrder, lines );
-			return;
+				var lines = await GetOrderLinesAsync( SelectedOrder.Id, cancellationToken );
+				var reloadedOrder = Orders.FirstOrDefault( o => o.Id == SelectedOrder.Id ) ?? SelectedOrder;
+				ApplySelectedOrder( reloadedOrder, lines );
+			}
 		}
-
-		await _stockOrderService.UpdateOrderAsync( EditableOrder );
-		await LoadOrdersAsync();
-
-		if ( SelectedOrder != null )
+		finally
 		{
-			var lines = await _stockOrderService.GetOrderLinesAsync( SelectedOrder.Id );
-			var reloadedOrder = Orders.FirstOrDefault( o => o.Id == SelectedOrder.Id ) ?? SelectedOrder;
-			ApplySelectedOrder( reloadedOrder, lines );
+			IsSavingOrder = false;
 		}
+	}
+
+	private bool CanSaveOrder() => !IsSavingOrder;
+	private bool CanEditOrderLineCommand() => CanEditOrder && !IsEditingOrderLine;
+
+	private void NotifyOrderLineCommandsCanExecuteChanged()
+	{
+		AddProductToOrderCommand.NotifyCanExecuteChanged();
+		EditOrderLineCommand.NotifyCanExecuteChanged();
+		DeleteOrderLineCommand.NotifyCanExecuteChanged();
 	}
 
 	public string? ValidateOrderForSave()
@@ -267,10 +309,19 @@ public partial class StockOrderViewModel : ObservableObject
 
 	private async Task LoadReferenceDataAsync()
 	{
-		var inventory = await _stockService.GetCompleteInventoryAsync();
+		var inventoryTask = _stockService.GetCompleteInventoryAsync();
+		var productsTask = _productService.GetAllProductsAsync();
+		var suppliersTask = _supplierService.GetAllSuppliersAsync();
+		var currenciesTask = _supplierService.GetAllCurrenciesAsync();
+
+		await PerformanceTrace.MeasureAsync(
+			$"{nameof( StockOrderViewModel )}.{nameof( LoadReferenceDataAsync )}",
+			() => Task.WhenAll( inventoryTask, productsTask, suppliersTask, currenciesTask ) );
+
+		var inventory = await inventoryTask;
 		_inventoryByProductId = inventory.ToDictionary( item => item.ProductId );
 
-		var products = await _productService.GetAllProductsAsync();
+		var products = await productsTask;
 		_allAvailableProducts = products;
 		foreach ( var product in _allAvailableProducts )
 		{
@@ -278,14 +329,14 @@ public partial class StockOrderViewModel : ObservableObject
 		}
 		ApplyProductSearchFilter();
 
-		var suppliers = await _supplierService.GetAllSuppliersAsync();
+		var suppliers = await suppliersTask;
 		Suppliers.Clear();
 		foreach ( var supplier in suppliers )
 		{
 			Suppliers.Add( supplier );
 		}
 
-		var currencies = await _supplierService.GetAllCurrenciesAsync();
+		var currencies = await currenciesTask;
 		Currencies.Clear();
 		foreach ( var currency in currencies )
 		{
@@ -297,7 +348,19 @@ public partial class StockOrderViewModel : ObservableObject
 
 	private async Task LoadOrdersAsync()
 	{
-		_allOrders = await _stockOrderService.GetAllOrdersAsync();
+		_allOrders = await PerformanceTrace.MeasureAsync(
+			$"{nameof( StockOrderViewModel )}.{nameof( LoadOrdersAsync )}",
+			() => _stockOrderService.GetAllOrdersAsync() );
+		ApplyOrderFilters();
+	}
+
+	private async Task LoadOrdersAsync( CancellationToken? cancellationToken )
+	{
+		_allOrders = await PerformanceTrace.MeasureAsync(
+			$"{nameof( StockOrderViewModel )}.{nameof( LoadOrdersAsync )}",
+			() => cancellationToken.HasValue
+				? _stockOrderService.GetAllOrdersAsync( cancellationToken.Value )
+				: _stockOrderService.GetAllOrdersAsync() );
 		ApplyOrderFilters();
 	}
 
@@ -309,6 +372,27 @@ public partial class StockOrderViewModel : ObservableObject
 			return;
 
 		ApplySelectedOrder( order, lines );
+	}
+
+	private Task<int> InsertOrderWithLinesAsync( StockOrderModel order, IEnumerable<StockOrderLineModel> lines, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.InsertOrderWithLinesAsync( order, lines, cancellationToken.Value )
+			: _stockOrderService.InsertOrderWithLinesAsync( order, lines );
+	}
+
+	private Task<List<StockOrderLineModel>> GetOrderLinesAsync( int orderId, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.GetOrderLinesAsync( orderId, cancellationToken.Value )
+			: _stockOrderService.GetOrderLinesAsync( orderId );
+	}
+
+	private Task UpdateOrderAsync( StockOrderModel order, CancellationToken? cancellationToken )
+	{
+		return cancellationToken.HasValue
+			? _stockOrderService.UpdateOrderAsync( order, cancellationToken.Value )
+			: _stockOrderService.UpdateOrderAsync( order );
 	}
 
 	private SupplierModel? GetEditableOrderSupplier()
@@ -404,6 +488,7 @@ public partial class StockOrderViewModel : ObservableObject
 		OnPropertyChanged( nameof( IsClosedOrder ) );
 		OnPropertyChanged( nameof( CanEditOrder ) );
 		OnPropertyChanged( nameof( VisibleOrderLines ) );
+		NotifyOrderLineCommandsCanExecuteChanged();
 	}
 
 	public void ReplaceOrdersForTest( IEnumerable<StockOrderModel> orders )
@@ -441,135 +526,168 @@ public partial class StockOrderViewModel : ObservableObject
 
 	public async Task AddSelectedProductAsync()
 	{
+		if ( IsEditingOrderLine )
+			return;
+
 		if ( !CanEditOrder || SelectedProduct == null )
 			return;
 
-		var supplier = GetEditableOrderSupplier();
-		if ( supplier == null )
+		IsEditingOrderLine = true;
+		try
 		{
-			MessageBox.Show( "Selecteer eerst een leverancier.", Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
-			return;
+			var supplier = GetEditableOrderSupplier();
+			if ( supplier == null )
+			{
+				MessageBox.Show( "Selecteer eerst een leverancier.", Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+				return;
+			}
+
+			var existingProductSupplier = await _supplierService.GetProductSupplierAsync( supplier.Id, SelectedProduct.ProductId );
+			var dialogModel = StockOrderProductDialogModel.Create( SelectedProduct, supplier, existingProductSupplier );
+			dialogModel.Amount = GetDefaultOrderAmount( SelectedProduct.ProductId );
+			var dialogVm = new StockOrderProductDialogViewModel( dialogModel );
+			var confirmed = ShowProductDialog?.Invoke( dialogVm ) ?? ShowProductDialogWindow( dialogVm );
+
+			if ( !confirmed )
+				return;
+
+			await UpsertProductSupplierAsync( dialogVm.Model );
+
+			var line = new StockOrderLineModel
+			{
+				SupplyOrderId = EditableOrder.Id,
+				SupplierId = supplier.Id,
+				ProductId = SelectedProduct.ProductId,
+				ProductCode = SelectedProduct.ProductCode,
+				ProductName = SelectedProduct.ProductName,
+				SupplierProductName = dialogVm.Model.SupplierProductName,
+				Amount = dialogVm.Model.Amount,
+				OpenAmount = dialogVm.Model.Amount,
+				Price = dialogVm.Model.UnitPrice,
+				RealRowTotal = dialogVm.Model.RowTotal
+			};
+
+			if ( IsNewOrder )
+			{
+				PendingOrderLines.Add( line );
+			}
+			else
+			{
+				line.Id = await _stockOrderService.InsertOrderLineWithStockCorrectionAsync( line, line.Amount );
+				OrderLines.Add( line );
+				ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
+			}
+
+			RecalculateTotals();
+			HasUnsavedChanges = true;
+			OnPropertyChanged( nameof( VisibleOrderLines ) );
 		}
-
-		var existingProductSupplier = await _supplierService.GetProductSupplierAsync( supplier.Id, SelectedProduct.ProductId );
-		var dialogModel = StockOrderProductDialogModel.Create( SelectedProduct, supplier, existingProductSupplier );
-		dialogModel.Amount = GetDefaultOrderAmount( SelectedProduct.ProductId );
-		var dialogVm = new StockOrderProductDialogViewModel( dialogModel );
-		var confirmed = ShowProductDialog?.Invoke( dialogVm ) ?? ShowProductDialogWindow( dialogVm );
-
-		if ( !confirmed )
-			return;
-
-		await UpsertProductSupplierAsync( dialogVm.Model );
-
-		var line = new StockOrderLineModel
+		finally
 		{
-			SupplyOrderId = EditableOrder.Id,
-			SupplierId = supplier.Id,
-			ProductId = SelectedProduct.ProductId,
-			ProductCode = SelectedProduct.ProductCode,
-			ProductName = SelectedProduct.ProductName,
-			SupplierProductName = dialogVm.Model.SupplierProductName,
-			Amount = dialogVm.Model.Amount,
-			OpenAmount = dialogVm.Model.Amount,
-			Price = dialogVm.Model.UnitPrice,
-			RealRowTotal = dialogVm.Model.RowTotal
-		};
-
-		if ( IsNewOrder )
-		{
-			PendingOrderLines.Add( line );
+			IsEditingOrderLine = false;
 		}
-		else
-		{
-			line.Id = await _stockOrderService.InsertOrderLineWithStockCorrectionAsync( line, line.Amount );
-			OrderLines.Add( line );
-			ApplyLocalInventoryCorrection( line.ProductId, line.Amount, line.OpenAmount );
-		}
-
-		RecalculateTotals();
-		HasUnsavedChanges = true;
-		OnPropertyChanged( nameof( VisibleOrderLines ) );
 	}
 
 	private async Task EditSelectedOrderLineAsync()
 	{
+		if ( IsEditingOrderLine )
+			return;
+
 		if ( !CanEditOrder || SelectedOrderLine == null )
 			return;
 
-		var supplier = GetEditableOrderSupplier();
-		if ( supplier == null )
+		IsEditingOrderLine = true;
+		try
 		{
-			MessageBox.Show( "Selecteer eerst een leverancier.", Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
-			return;
+			var supplier = GetEditableOrderSupplier();
+			if ( supplier == null )
+			{
+				MessageBox.Show( "Selecteer eerst een leverancier.", Lang.generalMessageboxWarningTitle, MessageBoxButton.OK, MessageBoxImage.Warning );
+				return;
+			}
+
+			var line = SelectedOrderLine;
+			double originalAmount = line.Amount;
+			double originalOpenAmount = line.OpenAmount;
+			ProductModel product = BuildProductForLine( line );
+			var existingProductSupplier = await _supplierService.GetProductSupplierAsync( supplier.Id, line.ProductId );
+			var dialogModel = StockOrderProductDialogModel.Create( product, supplier, existingProductSupplier );
+
+			dialogModel.SupplierProductName = line.SupplierProductName;
+			dialogModel.Amount = line.Amount;
+			dialogModel.UnitPrice = line.Price;
+
+			var dialogVm = new StockOrderProductDialogViewModel( dialogModel );
+			var confirmed = ShowProductDialog?.Invoke( dialogVm ) ?? ShowProductDialogWindow( dialogVm );
+			if ( !confirmed )
+				return;
+
+			await UpsertProductSupplierAsync( dialogVm.Model );
+
+			line.SupplierProductName = dialogVm.Model.SupplierProductName;
+			line.Amount = dialogVm.Model.Amount;
+			line.Price = dialogVm.Model.UnitPrice;
+			line.RealRowTotal = dialogVm.Model.RowTotal;
+
+			if ( IsNewOrder || line.Id <= 0 )
+			{
+				line.OpenAmount = dialogVm.Model.Amount;
+			}
+			else
+			{
+				line.OpenAmount = Math.Max( dialogVm.Model.Amount - line.Received, 0d );
+				double stockCorrection = dialogVm.Model.Amount - originalAmount;
+				await _stockOrderService.UpdateOrderLineWithStockCorrectionAsync( line, stockCorrection );
+				ApplyLocalInventoryCorrection( line.ProductId, stockCorrection, line.OpenAmount - originalOpenAmount );
+			}
+
+			RecalculateTotals();
+			HasUnsavedChanges = true;
+			OnPropertyChanged( nameof( VisibleOrderLines ) );
 		}
-
-		var line = SelectedOrderLine;
-		double originalAmount = line.Amount;
-		double originalOpenAmount = line.OpenAmount;
-		ProductModel product = BuildProductForLine( line );
-		var existingProductSupplier = await _supplierService.GetProductSupplierAsync( supplier.Id, line.ProductId );
-		var dialogModel = StockOrderProductDialogModel.Create( product, supplier, existingProductSupplier );
-
-		dialogModel.SupplierProductName = line.SupplierProductName;
-		dialogModel.Amount = line.Amount;
-		dialogModel.UnitPrice = line.Price;
-
-		var dialogVm = new StockOrderProductDialogViewModel( dialogModel );
-		var confirmed = ShowProductDialog?.Invoke( dialogVm ) ?? ShowProductDialogWindow( dialogVm );
-		if ( !confirmed )
-			return;
-
-		await UpsertProductSupplierAsync( dialogVm.Model );
-
-		line.SupplierProductName = dialogVm.Model.SupplierProductName;
-		line.Amount = dialogVm.Model.Amount;
-		line.Price = dialogVm.Model.UnitPrice;
-		line.RealRowTotal = dialogVm.Model.RowTotal;
-
-		if ( IsNewOrder || line.Id <= 0 )
+		finally
 		{
-			line.OpenAmount = dialogVm.Model.Amount;
+			IsEditingOrderLine = false;
 		}
-		else
-		{
-			line.OpenAmount = Math.Max( dialogVm.Model.Amount - line.Received, 0d );
-			double stockCorrection = dialogVm.Model.Amount - originalAmount;
-			await _stockOrderService.UpdateOrderLineWithStockCorrectionAsync( line, stockCorrection );
-			ApplyLocalInventoryCorrection( line.ProductId, stockCorrection, line.OpenAmount - originalOpenAmount );
-		}
-
-		RecalculateTotals();
-		HasUnsavedChanges = true;
-		OnPropertyChanged( nameof( VisibleOrderLines ) );
 	}
 
 	private async Task DeleteSelectedOrderLineAsync()
 	{
+		if ( IsEditingOrderLine )
+			return;
+
 		if ( !CanEditOrder || SelectedOrderLine == null )
 			return;
 
-		var line = SelectedOrderLine;
-
-		if ( line.Id > 0 )
+		IsEditingOrderLine = true;
+		try
 		{
-			await _stockOrderService.DeleteOrderLineWithStockCorrectionAsync( line, -line.Amount );
-			ApplyLocalInventoryCorrection( line.ProductId, -line.Amount, -line.OpenAmount );
-		}
+			var line = SelectedOrderLine;
 
-		if ( PendingOrderLines.Contains( line ) )
-		{
-			PendingOrderLines.Remove( line );
-		}
-		else
-		{
-			OrderLines.Remove( line );
-		}
+			if ( line.Id > 0 )
+			{
+				await _stockOrderService.DeleteOrderLineWithStockCorrectionAsync( line, -line.Amount );
+				ApplyLocalInventoryCorrection( line.ProductId, -line.Amount, -line.OpenAmount );
+			}
 
-		SelectedOrderLine = null;
-		RecalculateTotals();
-		HasUnsavedChanges = true;
-		OnPropertyChanged( nameof( VisibleOrderLines ) );
+			if ( PendingOrderLines.Contains( line ) )
+			{
+				PendingOrderLines.Remove( line );
+			}
+			else
+			{
+				OrderLines.Remove( line );
+			}
+
+			SelectedOrderLine = null;
+			RecalculateTotals();
+			HasUnsavedChanges = true;
+			OnPropertyChanged( nameof( VisibleOrderLines ) );
+		}
+		finally
+		{
+			IsEditingOrderLine = false;
+		}
 	}
 
 	private void ApplyInventorySnapshotToProduct( ProductModel product )

@@ -1,6 +1,6 @@
 ﻿namespace Modelbouwer.Services;
 
-public class SettingsService
+public class SettingsService : ISettingsService
 {
 	private static readonly CultureInfo SettingsNumberCulture = new("nl-NL");
 	string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -8,18 +8,21 @@ public class SettingsService
 	public event EventHandler? SettingsChanged;
 	public SettingsService() { }
 
-	public async Task LoadSettingsAsync()
+	public Task LoadSettingsAsync() =>
+		LoadSettingsAsync( CancellationToken.None );
+
+	public async Task LoadSettingsAsync( CancellationToken cancellationToken )
 	{
 		string downloadsPath = Path.Combine(userProfile, "Downloads");
 
 		var SqlQuery = $"SELECT * FROM {DBNames.Database}.{DBNames.SettingsTable}";
 		using var connection = new MySqlConnection(DBConnect.ConnectionString);
-		await connection.OpenAsync();
+		await connection.OpenAsync( cancellationToken );
 
-		var command = new MySqlCommand(SqlQuery, connection);
-		using var reader = await command.ExecuteReaderAsync();
+		using var command = new MySqlCommand(SqlQuery, connection);
+		using var reader = await command.ExecuteReaderAsync( cancellationToken );
 
-		while ( await reader.ReadAsync() )
+		while ( await reader.ReadAsync( cancellationToken ) )
 		{
 			var key = reader.GetString("Key");
 			var value = reader.GetString("Value");
@@ -49,53 +52,62 @@ public class SettingsService
 		}
 	}
 
-	public async Task<string?> GetSettingsAsync( string key )
+	public Task<string?> GetSettingsAsync( string key ) =>
+		GetSettingsAsync( key, CancellationToken.None );
+
+	public async Task<string?> GetSettingsAsync( string key, CancellationToken cancellationToken )
 	{
 		if ( key == null )
 			return null;
 
 		using var connection = new MySqlConnection(DBConnect.ConnectionString);
-		await connection.OpenAsync();
+		await connection.OpenAsync( cancellationToken );
 
-		var command = new MySqlCommand(
+		using var command = new MySqlCommand(
 		$"SELECT `Value` FROM {DBNames.Database}.{DBNames.SettingsTable} WHERE `Key` = @key",
 		connection);
 
 		command.Parameters.AddWithValue( "@key", key );
 
-		var result = await command.ExecuteScalarAsync();
+		var result = await command.ExecuteScalarAsync( cancellationToken );
 
 		return result?.ToString();
 	}
 
-	public async Task ResetSettingsAsync( string key )
+	public Task ResetSettingsAsync( string key ) =>
+		ResetSettingsAsync( key, CancellationToken.None );
+
+	public async Task ResetSettingsAsync( string key, CancellationToken cancellationToken )
 	{
 		if ( key == null )
 			return;
 
 		using var connection = new MySqlConnection(DBConnect.ConnectionString);
-		await connection.OpenAsync();
+		await connection.OpenAsync( cancellationToken );
 
-		var command = new MySqlCommand(
+		using var command = new MySqlCommand(
 		$"DELETE FROM {DBNames.Database}.{DBNames.SettingsTable} WHERE `Key` = @key",
 		connection);
 
 		command.Parameters.AddWithValue( "@key", key );
 
-		await command.ExecuteNonQueryAsync();
+		await command.ExecuteNonQueryAsync( cancellationToken );
 	}
 
-	public async Task SaveSettingAsync( string key, string value )
+	public Task SaveSettingAsync( string key, string value ) =>
+		SaveSettingAsync( key, value, CancellationToken.None );
+
+	public async Task SaveSettingAsync( string key, string value, CancellationToken cancellationToken )
 	{
 		using var connection = new MySqlConnection(DBConnect.ConnectionString);
-		await connection.OpenAsync();
+		await connection.OpenAsync( cancellationToken );
 
-		var command = new MySqlCommand(
+		using var command = new MySqlCommand(
 			$"INSERT INTO {DBNames.Database}.{DBNames.SettingsTable}(`Key`,`Value`) VALUES(@key,@value) " +
 			$"ON DUPLICATE KEY UPDATE `Value` = @value", connection);
 		command.Parameters.AddWithValue( "@key", key );
 		command.Parameters.AddWithValue( "@value", value );
-		await command.ExecuteNonQueryAsync();
+		await command.ExecuteNonQueryAsync( cancellationToken );
 	}
 
 	public static string FormatSettingsDouble( double value ) =>
