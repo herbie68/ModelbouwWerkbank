@@ -182,13 +182,13 @@ public partial class SupplierPageViewModel : EntityPageViewModel<SupplierModel>
 
 	#region CRUD Contacts
 	private IRelayCommand? _addContactCommand;
-	public new IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( AddContact );
+	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( AddContact );
 
 	private IRelayCommand? _deleteContactCommand;
-	public new IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( DeleteContact, () => SelectedContact != null );
+	public IRelayCommand DeleteContactCommand => _deleteContactCommand ??= new RelayCommand( DeleteContact, () => SelectedContact != null );
 
 	private IRelayCommand? _saveContactCommand;
-	public new IRelayCommand SaveContactCommand => _saveContactCommand ??= new RelayCommand( SaveContact );
+	public IRelayCommand SaveContactCommand => _saveContactCommand ??= new RelayCommand( SaveContact );
 
 	#region Relay command for going to the supplier website
 	[RelayCommand( CanExecute = nameof( CanOpenWebsite ) )]

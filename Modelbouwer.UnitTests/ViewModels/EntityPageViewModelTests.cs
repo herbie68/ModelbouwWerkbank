@@ -29,6 +29,15 @@ public class EntityPageViewModelTests
 		AssertMethodContains( source, "private async Task DeleteCommandAsync()", "finally" );
 	}
 
+	[TestMethod]
+	public void EntityPageViewModel_ProvidesDefaultImportStatusBindingsForSharedEntityViews()
+	{
+		var source = LoadSource( "Modelbouwer", "ViewModels", "EntityPageViewModel.cs" );
+
+		StringAssert.Contains( source, "[ObservableProperty] protected bool _isImporting;" );
+		StringAssert.Contains( source, "[ObservableProperty] protected string _importStatus = string.Empty;" );
+	}
+
 	private static string LoadSource( params string[] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;

@@ -42,7 +42,9 @@ public abstract partial class EntityPageViewModel<T> : AsyncObservableObject
 	[ObservableProperty] protected bool _isLoading;
 	[ObservableProperty] protected bool _isSaving;
 	[ObservableProperty] protected bool _isDeleting;
+	[ObservableProperty] protected bool _isImporting;
 	[ObservableProperty] protected string _searchText = string.Empty;
+	[ObservableProperty] protected string _importStatus = string.Empty;
 	[ObservableProperty]
 	private bool hasUnsavedChanges;
 
@@ -62,21 +64,15 @@ public abstract partial class EntityPageViewModel<T> : AsyncObservableObject
 	// Commands
 	// -----------------------------
 	public IRelayCommand AddCommand => _addCommand ??= new RelayCommand( Add );
-	public IRelayCommand AddContactCommand => _addContactCommand ??= new RelayCommand( Add );
 	public IAsyncRelayCommand DeleteCommand => _deleteCommand ??= new AsyncRelayCommand( DeleteCommandAsync, CanDelete );
-	public IAsyncRelayCommand DeleteContactCommand => _deleteContactCommand ??= new AsyncRelayCommand( DeleteCommandAsync, CanDelete );
 	public IAsyncRelayCommand SaveCommand => _saveCommand ??= new AsyncRelayCommand( SaveAsync, CanSave );
-	public IAsyncRelayCommand SaveContactCommand => _saveContactCommand ??= new AsyncRelayCommand( SaveAsync, CanSave );
 	public IAsyncRelayCommand ReloadCommand => _reloadCommand ??= new AsyncRelayCommand( ReloadAsync );
 	public IAsyncRelayCommand ReloadContactsCommand => _reloadContactsCommand ??= new AsyncRelayCommand( ReloadAsync );
 	public IRelayCommand ClearSearchCommand => _clearSearchCommand ??= new RelayCommand( () => SearchText = string.Empty );
 
 	private IRelayCommand? _addCommand;
-	private IRelayCommand? _addContactCommand;
 	private IAsyncRelayCommand? _deleteCommand;
-	private IAsyncRelayCommand? _deleteContactCommand;
 	private IAsyncRelayCommand? _saveCommand;
-	private IAsyncRelayCommand? _saveContactCommand;
 	private IAsyncRelayCommand? _reloadCommand;
 	private IAsyncRelayCommand? _reloadContactsCommand;
 	private IRelayCommand? _clearSearchCommand;
@@ -179,13 +175,11 @@ public abstract partial class EntityPageViewModel<T> : AsyncObservableObject
 	private void NotifySaveCommandsCanExecuteChanged()
 	{
 		_saveCommand?.NotifyCanExecuteChanged();
-		_saveContactCommand?.NotifyCanExecuteChanged();
 	}
 
 	private void NotifyDeleteCommandsCanExecuteChanged()
 	{
 		_deleteCommand?.NotifyCanExecuteChanged();
-		_deleteContactCommand?.NotifyCanExecuteChanged();
 	}
 
 	protected async Task ReloadAsync()

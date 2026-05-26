@@ -57,6 +57,14 @@ public class SupplierPageViewModelTests
 	}
 
 	[TestMethod]
+	public void SupplierPageViewModel_CommandPropertiesAreNotAmbiguousForReflection()
+	{
+		Assert.IsNotNull( typeof( SupplierPageViewModel ).GetProperty( nameof( SupplierPageViewModel.AddContactCommand ) ) );
+		Assert.IsNotNull( typeof( SupplierPageViewModel ).GetProperty( nameof( SupplierPageViewModel.DeleteContactCommand ) ) );
+		Assert.IsNotNull( typeof( SupplierPageViewModel ).GetProperty( nameof( SupplierPageViewModel.SaveContactCommand ) ) );
+	}
+
+	[TestMethod]
 	public async Task Constructor_WhenSupplierLoadFails_StoresAsyncError()
 	{
 		var expected = new InvalidOperationException( "Unable to load suppliers." );
