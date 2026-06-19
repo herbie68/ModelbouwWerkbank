@@ -36,15 +36,15 @@ public partial class TimeRegistrationViewModel : AsyncObservableObject
 	[ObservableProperty] private MaterialUsageModel? _selectedMaterialUsage;
 	[ObservableProperty] private bool _isProductPopupOpen;
 
-	public ObservableCollection<ProjectModel> Projects { get; } = [];
-	public ObservableCollection<ProductModel> Products { get; } = [];
-	public ObservableCollection<CategoryModel> Categories { get; } = [];
-	public ObservableCollection<ProductSelectionNodeModel> ProductTree { get; } = [];
-	public ObservableCollection<WorktypeModel> Worktypes { get; } = [];
-	public ObservableCollection<WorktypeModel> WorktypeTree { get; } = [];
-	public ObservableCollection<TimeEntryModel> TimeEntries { get; } = [];
-	public ObservableCollection<MaterialUsageModel> MaterialUsages { get; } = [];
-	public ObservableCollection<ProjectCostLineModel> CostLines { get; } = [];
+	public ObservableCollection<ProjectModel> Projects { get; } = [ ];
+	public ObservableCollection<ProductModel> Products { get; } = [ ];
+	public ObservableCollection<CategoryModel> Categories { get; } = [ ];
+	public ObservableCollection<ProductSelectionNodeModel> ProductTree { get; } = [ ];
+	public ObservableCollection<WorktypeModel> Worktypes { get; } = [ ];
+	public ObservableCollection<WorktypeModel> WorktypeTree { get; } = [ ];
+	public ObservableCollection<TimeEntryModel> TimeEntries { get; } = [ ];
+	public ObservableCollection<MaterialUsageModel> MaterialUsages { get; } = [ ];
+	public ObservableCollection<ProjectCostLineModel> CostLines { get; } = [ ];
 
 	public IRelayCommand AddTimeEntryCommand { get; }
 	public IAsyncRelayCommand SaveTimeEntriesCommand { get; }

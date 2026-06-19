@@ -52,9 +52,9 @@ public class StockOrderServiceTests
 		var result = await _service.GetAllOrdersAsync();
 
 		Assert.AreEqual( 1, result.Count );
-		Assert.AreEqual( 9, result[ 0 ].Id );
-		Assert.AreEqual( "SO-9", result[ 0 ].OrderNumber );
-		Assert.IsTrue( result[ 0 ].Closed );
+		Assert.AreEqual( 9, result [ 0 ].Id );
+		Assert.AreEqual( "SO-9", result [ 0 ].OrderNumber );
+		Assert.IsTrue( result [ 0 ].Closed );
 	}
 
 	[TestMethod]
@@ -315,7 +315,7 @@ public class StockOrderServiceTests
 		_mockDataService.Verify( s => s.ExecuteInTransactionAsync( It.IsAny<Func<MySqlConnection, MySqlTransaction, Task>>(), CancellationToken.None ), Times.Once );
 	}
 
-	private static void AssertHasCancellationTokenOverload( MethodInfo[] methods, string methodName, int parameterCount )
+	private static void AssertHasCancellationTokenOverload( MethodInfo [ ] methods, string methodName, int parameterCount )
 	{
 		var hasOverload = methods.Any( method =>
 		{

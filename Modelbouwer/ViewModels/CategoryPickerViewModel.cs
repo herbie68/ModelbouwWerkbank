@@ -145,4 +145,3 @@ public partial class CategoryPickerViewModel : AsyncObservableObject
 	}
 	#endregion
 }
-

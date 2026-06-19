@@ -210,8 +210,8 @@ public class StockOrderViewModelTests
 		}
 
 		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
-		Assert.AreEqual( 6d, _viewModel.AvailableProducts[ 0 ].CurrentInventory );
-		Assert.AreEqual( 3d, _viewModel.AvailableProducts[ 0 ].InOrder );
+		Assert.AreEqual( 6d, _viewModel.AvailableProducts [ 0 ].CurrentInventory );
+		Assert.AreEqual( 3d, _viewModel.AvailableProducts [ 0 ].InOrder );
 	}
 
 	[TestMethod]
@@ -250,10 +250,10 @@ public class StockOrderViewModelTests
 		await _viewModel.InitializeAsync();
 
 		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
-		Assert.AreEqual( 6d, _viewModel.AvailableProducts[ 0 ].CurrentInventory );
-		Assert.AreEqual( 3d, _viewModel.AvailableProducts[ 0 ].InOrder );
-		Assert.AreEqual( 10d, _viewModel.AvailableProducts[ 0 ].ProductMinimalStock );
-		Assert.AreEqual( 4d, _viewModel.AvailableProducts[ 0 ].ProductStandardQuantity );
+		Assert.AreEqual( 6d, _viewModel.AvailableProducts [ 0 ].CurrentInventory );
+		Assert.AreEqual( 3d, _viewModel.AvailableProducts [ 0 ].InOrder );
+		Assert.AreEqual( 10d, _viewModel.AvailableProducts [ 0 ].ProductMinimalStock );
+		Assert.AreEqual( 4d, _viewModel.AvailableProducts [ 0 ].ProductStandardQuantity );
 	}
 
 	[TestMethod]
@@ -272,7 +272,7 @@ public class StockOrderViewModelTests
 
 		_mockStockOrderService.Verify( s => s.GetAllOrdersAsync( cts.Token ), Times.Once );
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.AreEqual( 25, _viewModel.Orders[ 0 ].Id );
+		Assert.AreEqual( 25, _viewModel.Orders [ 0 ].Id );
 	}
 
 	[TestMethod]
@@ -290,12 +290,12 @@ public class StockOrderViewModelTests
 		_viewModel.SearchText = "BR";
 
 		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
-		Assert.AreEqual( "BR-006", _viewModel.AvailableProducts[ 0 ].ProductCode );
+		Assert.AreEqual( "BR-006", _viewModel.AvailableProducts [ 0 ].ProductCode );
 
 		_viewModel.SearchText = "wheel";
 
 		Assert.AreEqual( 1, _viewModel.AvailableProducts.Count );
-		Assert.AreEqual( "Wheel Set", _viewModel.AvailableProducts[ 0 ].ProductName );
+		Assert.AreEqual( "Wheel Set", _viewModel.AvailableProducts [ 0 ].ProductName );
 	}
 
 	[TestMethod]
@@ -454,10 +454,10 @@ public class StockOrderViewModelTests
 		await _viewModel.AddSelectedProductAsync();
 
 		Assert.AreEqual( 1, _viewModel.PendingOrderLines.Count );
-		Assert.AreEqual( "Wheel Set", _viewModel.PendingOrderLines[ 0 ].SupplierProductName );
-		Assert.AreEqual( 4d, _viewModel.PendingOrderLines[ 0 ].Amount );
-		Assert.AreEqual( 4d, _viewModel.PendingOrderLines[ 0 ].OpenAmount );
-		Assert.AreEqual( 50d, _viewModel.PendingOrderLines[ 0 ].RealRowTotal );
+		Assert.AreEqual( "Wheel Set", _viewModel.PendingOrderLines [ 0 ].SupplierProductName );
+		Assert.AreEqual( 4d, _viewModel.PendingOrderLines [ 0 ].Amount );
+		Assert.AreEqual( 4d, _viewModel.PendingOrderLines [ 0 ].OpenAmount );
+		Assert.AreEqual( 50d, _viewModel.PendingOrderLines [ 0 ].RealRowTotal );
 		_mockSupplierService.Verify( s => s.UpsertProductSupplierAsync(
 			It.Is<Modelbouwer.Model.ProductSupplierModel>( ps => ps.SupplierId == 11 && ps.ProductId == 5 ) ),
 			Times.Once );
@@ -509,8 +509,8 @@ public class StockOrderViewModelTests
 
 		await _viewModel.AddSelectedProductAsync();
 
-		Assert.AreEqual( 1d, _viewModel.PendingOrderLines[ 0 ].Amount );
-		Assert.AreEqual( 12.5d, _viewModel.PendingOrderLines[ 0 ].RealRowTotal );
+		Assert.AreEqual( 1d, _viewModel.PendingOrderLines [ 0 ].Amount );
+		Assert.AreEqual( 12.5d, _viewModel.PendingOrderLines [ 0 ].RealRowTotal );
 	}
 
 	[TestMethod]
@@ -526,7 +526,7 @@ public class StockOrderViewModelTests
 		_viewModel.EnableSupplierOrderFilter = true;
 
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.AreEqual( 5, _viewModel.Orders[ 0 ].SupplierId );
+		Assert.AreEqual( 5, _viewModel.Orders [ 0 ].SupplierId );
 	}
 
 	[TestMethod]
@@ -546,7 +546,7 @@ public class StockOrderViewModelTests
 		_viewModel.EditableOrder.SupplierId = 8;
 
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.AreEqual( 8, _viewModel.Orders[ 0 ].SupplierId );
+		Assert.AreEqual( 8, _viewModel.Orders [ 0 ].SupplierId );
 	}
 
 	[TestMethod]
@@ -577,7 +577,7 @@ public class StockOrderViewModelTests
 
 		Assert.AreEqual( 2, _viewModel.EditableOrder.Id );
 		Assert.AreEqual( "SO-2", _viewModel.EditableOrder.OrderNumber );
-		Assert.AreEqual( 20, _viewModel.OrderLines[ 0 ].Id );
+		Assert.AreEqual( 20, _viewModel.OrderLines [ 0 ].Id );
 	}
 
 	[TestMethod]
@@ -605,7 +605,7 @@ public class StockOrderViewModelTests
 		} );
 
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.IsFalse( _viewModel.Orders[ 0 ].Closed );
+		Assert.IsFalse( _viewModel.Orders [ 0 ].Closed );
 
 		_viewModel.ShowClosedOrders = true;
 
@@ -1054,7 +1054,7 @@ public class StockOrderViewModelTests
 		Assert.Fail( "Condition was not met before the timeout." );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

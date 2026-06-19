@@ -14,8 +14,8 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		$"{DBNames.CountryFieldNameCode} AS {DBNames.CountryFieldNameCode}, " +
 		$"{DBNames.CountryFieldNameName} AS {DBNames.CountryFieldNameName}, " +
 		$"{DBNames.CountryFieldNameCurrencyId} AS {DBNames.CountryFieldNameCurrencyId}, " +
-		$"{DBNames.CountryFieldNameCurrencySymbol} AS {DBNames.CountryFieldNameCurrencySymbol} " + 
-        $"FROM {DBNames.Database}.{DBNames.CountryTable};";
+		$"{DBNames.CountryFieldNameCurrencySymbol} AS {DBNames.CountryFieldNameCurrencySymbol} " +
+		$"FROM {DBNames.Database}.{DBNames.CountryTable};";
 
 	public string AddNewCountryQuery =
 		$"INSERT INTO {DBNames.Database}.{DBNames.CountryTable} " +
@@ -30,8 +30,8 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		$"{DBNames.CountryFieldNameCode} = @{DBNames.CountryFieldNameCode}, " +
 		$"{DBNames.CountryFieldNameCurrencyId} = @{DBNames.CountryFieldNameCurrencyId}, " +
 		$"{DBNames.CountryFieldNameCurrencySymbol} = @{DBNames.CountryFieldNameCurrencySymbol}, " +
-		$"{DBNames.CountryFieldNameName} = @{DBNames.CountryFieldNameName} " + 
-        $"WHERE {DBNames.CountryFieldNameId} = @{DBNames.CountryFieldNameId};";
+		$"{DBNames.CountryFieldNameName} = @{DBNames.CountryFieldNameName} " +
+		$"WHERE {DBNames.CountryFieldNameId} = @{DBNames.CountryFieldNameId};";
 
 	public string DeleteCountryQuery =
 		$"DELETE FROM {DBNames.Database}.{DBNames.CountryTable} " +
@@ -80,7 +80,7 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 
 		uint newId = await _dataService.ExecuteScalarAsync<uint>( AddNewCountryQuery, parameters );
 
-		return (int)newId;
+		return ( int ) newId;
 	}
 
 	public async Task UpdateCountryAsync( Dictionary<string, object?> queryParameters )
@@ -97,8 +97,8 @@ public class CountryService( GenericDataService dataService ) : ICountryService
 		await _dataService.ExecuteScalarAsync<uint>( UpdateCountryQuery, parameters );
 	}
 
-	public async Task DeleteCountryAsync( int countryId ) 
-	{ 
+	public async Task DeleteCountryAsync( int countryId )
+	{
 		var parameters = new Dictionary<string, object>
 		{
 			{ $"@{DBNames.CountryFieldNameId}", countryId }

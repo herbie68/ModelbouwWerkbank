@@ -11,7 +11,7 @@ public class WorktypePageViewModelTests
 		var worktypeService = new Mock<IWorktypeService>();
 		worktypeService
 			.Setup( service => service.GetAllWorkTypesAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( worktypeService.Object );
 

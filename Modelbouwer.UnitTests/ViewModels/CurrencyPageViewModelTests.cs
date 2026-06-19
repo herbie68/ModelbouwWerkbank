@@ -9,7 +9,7 @@ public class CurrencyPageViewModelTests
 		var currencyService = new Mock<ICurrencyService>();
 		currencyService
 			.Setup( service => service.GetAllCurrenciesAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( currencyService.Object );
 

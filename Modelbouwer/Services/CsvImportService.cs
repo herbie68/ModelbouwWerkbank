@@ -70,7 +70,7 @@ public static class CsvImportService
 
 		if ( !propertiesByName.TryGetValue( uniqueProperty, out var uniquePropInfo ) )
 		{
-			uniquePropInfo = typeof(T).GetProperty(uniqueProperty, BindingFlags.Public | BindingFlags.Instance);
+			uniquePropInfo = typeof( T ).GetProperty( uniqueProperty, BindingFlags.Public | BindingFlags.Instance );
 		}
 
 		if ( uniquePropInfo == null )
@@ -126,7 +126,7 @@ public static class CsvImportService
 				existingRecords.Add( record );
 				if ( uniqueValue != null )
 				{
-					existingByUniqueValue[uniqueValue] = record;
+					existingByUniqueValue [ uniqueValue ] = record;
 				}
 
 				result.Imported++;

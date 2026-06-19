@@ -1,5 +1,6 @@
-using MySql.Data.MySqlClient;
 using System.Reflection;
+
+using MySql.Data.MySqlClient;
 
 namespace Modelbouwer.UnitTests.Services;
 
@@ -59,7 +60,7 @@ public class GenericDataServiceTests
 		StringAssert.Contains( source, "RollbackAsync( cancellationToken )" );
 	}
 
-	private static void AssertHasCancellationTokenOverload( MethodInfo[] methods, string methodName, int parameterCount )
+	private static void AssertHasCancellationTokenOverload( MethodInfo [ ] methods, string methodName, int parameterCount )
 	{
 		var hasOverload = methods.Any( method =>
 		{

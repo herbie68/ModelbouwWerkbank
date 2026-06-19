@@ -8,8 +8,8 @@ public class CountryPageViewModelTests
 	{
 		var countryService = new Mock<ICountryService>();
 		var currencyService = new Mock<ICurrencyService>();
-		countryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [] );
-		currencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [] );
+		countryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [ ] );
+		currencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( countryService.Object, currencyService.Object );
 
@@ -54,8 +54,8 @@ public class CountryPageViewModelTests
 		var defaultCurrencyService = new Mock<ICurrencyService>();
 		var validator = new Mock<IEntityValidator<CountryModel>>();
 
-		defaultCountryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [] );
-		defaultCurrencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [] );
+		defaultCountryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [ ] );
+		defaultCurrencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [ ] );
 
 		return new CountryPageViewModel(
 			countryService ?? defaultCountryService.Object,

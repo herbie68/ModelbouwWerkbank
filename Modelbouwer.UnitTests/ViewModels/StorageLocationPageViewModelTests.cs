@@ -11,7 +11,7 @@ public class StorageLocationPageViewModelTests
 		var storageLocationService = new Mock<IStorageLocationService>();
 		storageLocationService
 			.Setup( service => service.GetAllStorageLocationsAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( storageLocationService.Object );
 

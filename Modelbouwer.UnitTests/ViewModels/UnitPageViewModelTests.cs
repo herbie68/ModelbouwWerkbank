@@ -9,7 +9,7 @@ public class UnitPageViewModelTests
 		var unitService = new Mock<IUnitService>();
 		unitService
 			.Setup( service => service.GetAllUnitsAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( unitService.Object );
 

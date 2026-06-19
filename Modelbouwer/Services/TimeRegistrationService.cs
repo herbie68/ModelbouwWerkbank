@@ -32,15 +32,15 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 			return new TimeEntryModel
 			{
-				TimeId = DatabaseValueConverter.GetInt( reader[DBNames.TimeViewFieldNameId] ),
-				ProjectId = DatabaseValueConverter.GetInt( reader[DBNames.TimeViewFieldNameProjectId] ),
-				ProjectName = DatabaseValueConverter.GetString( reader[DBNames.TimeViewFieldNameProjectName] ),
-				WorktypeId = DatabaseValueConverter.GetInt( reader[DBNames.TimeViewFieldNameWorktypeId] ),
-				WorktypeName = DatabaseValueConverter.GetString( reader[DBNames.TimeViewFieldNameWorktypeName] ),
+				TimeId = DatabaseValueConverter.GetInt( reader [ DBNames.TimeViewFieldNameId ] ),
+				ProjectId = DatabaseValueConverter.GetInt( reader [ DBNames.TimeViewFieldNameProjectId ] ),
+				ProjectName = DatabaseValueConverter.GetString( reader [ DBNames.TimeViewFieldNameProjectName ] ),
+				WorktypeId = DatabaseValueConverter.GetInt( reader [ DBNames.TimeViewFieldNameWorktypeId ] ),
+				WorktypeName = DatabaseValueConverter.GetString( reader [ DBNames.TimeViewFieldNameWorktypeName ] ),
 				WorkDate = workDate == default ? DateTime.Today : workDate,
 				StartTime = NormalizeTime( startTime ),
 				EndTime = NormalizeTime( endTime ),
-				Comment = DatabaseValueConverter.GetString( reader[DBNames.TimeViewFieldNameComment] ),
+				Comment = DatabaseValueConverter.GetString( reader [ DBNames.TimeViewFieldNameComment ] ),
 				State = TimeEntryModel.RecordState.Unchanged
 			};
 		}, new Dictionary<string, object> { { "@ProjectId", projectId } }, cancellationToken );
@@ -116,13 +116,13 @@ public class TimeRegistrationService : ITimeRegistrationService
 				var usageDate = GetDateTime( reader[5] );
 				usages.Add( new MaterialUsageModel
 				{
-					ProductUsageId = DatabaseValueConverter.GetInt( reader[0] ),
-					ProjectId = DatabaseValueConverter.GetInt( reader[1] ),
-					ProductId = DatabaseValueConverter.GetInt( reader[2] ),
-					ProductName = DatabaseValueConverter.GetString( reader[3] ),
+					ProductUsageId = DatabaseValueConverter.GetInt( reader [ 0 ] ),
+					ProjectId = DatabaseValueConverter.GetInt( reader [ 1 ] ),
+					ProductId = DatabaseValueConverter.GetInt( reader [ 2 ] ),
+					ProductName = DatabaseValueConverter.GetString( reader [ 3 ] ),
 					UsageDate = usageDate == default ? DateTime.Today : usageDate,
-					Amount = DatabaseValueConverter.GetDouble( reader[4] ),
-					Comment = DatabaseValueConverter.GetString( reader[6] ),
+					Amount = DatabaseValueConverter.GetDouble( reader [ 4 ] ),
+					Comment = DatabaseValueConverter.GetString( reader [ 6 ] ),
 					State = MaterialUsageModel.RecordState.Unchanged
 				} );
 			}
@@ -396,7 +396,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 		var materialCosts = usages.Sum( usage => usage.Costs );
 
 		if ( worktypeHours.Count == 0 )
-			return [];
+			return [ ];
 
 		return worktypeHours
 			.Select( worktype =>
@@ -570,9 +570,9 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 		return _dataService.ExecuteQueryAsync( query, reader => new WorktypeModel
 		{
-			WorktypeId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameId] ),
-			ParentId = DatabaseValueConverter.GetInt( reader[DBNames.WorktypeFieldNameParentId] ),
-			WorktypeName = DatabaseValueConverter.GetString( reader[DBNames.WorktypeFieldNameName] )
+			WorktypeId = DatabaseValueConverter.GetInt( reader [ DBNames.WorktypeFieldNameId ] ),
+			ParentId = DatabaseValueConverter.GetInt( reader [ DBNames.WorktypeFieldNameParentId ] ),
+			WorktypeName = DatabaseValueConverter.GetString( reader [ DBNames.WorktypeFieldNameName ] )
 		}, null, cancellationToken );
 	}
 
@@ -651,7 +651,7 @@ public class TimeRegistrationService : ITimeRegistrationService
 
 		Dictionary<string, object> parameters = [];
 		for ( int i = 0; i < productIds.Length; i++ )
-			parameters.Add( parameterNames[i], productIds[i] );
+			parameters.Add( parameterNames [ i ], productIds [ i ] );
 
 		var metadata = await _dataService.ExecuteQueryAsync( query, reader => new
 		{

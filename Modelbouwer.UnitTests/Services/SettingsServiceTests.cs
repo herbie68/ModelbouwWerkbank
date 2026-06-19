@@ -41,7 +41,7 @@ public class SettingsServiceTests
 		StringAssert.Contains( source, "ExecuteNonQueryAsync( cancellationToken )" );
 	}
 
-	private static void AssertHasCancellationTokenOverload( MethodInfo[] methods, string methodName, int parameterCount )
+	private static void AssertHasCancellationTokenOverload( MethodInfo [ ] methods, string methodName, int parameterCount )
 	{
 		var hasOverload = methods.Any( method =>
 		{
@@ -56,7 +56,7 @@ public class SettingsServiceTests
 		Assert.IsTrue( hasOverload, $"{methodName} should expose a {parameterCount}-parameter overload ending in CancellationToken." );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

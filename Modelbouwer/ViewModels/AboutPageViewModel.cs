@@ -7,7 +7,7 @@ public partial class AboutPageViewModel : AsyncObservableObject
 	private readonly IGitHubReleaseHistoryService _releaseHistoryService;
 	private int _currentPage;
 
-	public ObservableCollection<ReleaseCommitModel> Commits { get; } = [];
+	public ObservableCollection<ReleaseCommitModel> Commits { get; } = [ ];
 
 	[ObservableProperty] private ReleaseCommitModel? selectedCommit;
 	[ObservableProperty] private bool isLoading;

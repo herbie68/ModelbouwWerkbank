@@ -24,7 +24,7 @@ public class AboutPageViewModelTests
 		var viewModel = new AboutPageViewModel( releaseHistoryService.Object );
 
 		await WaitUntilAsync( () => viewModel.Commits.Count == 1 );
-		Assert.AreSame( commits[0], viewModel.Commits[0] );
+		Assert.AreSame( commits [ 0 ], viewModel.Commits [ 0 ] );
 		Assert.AreEqual( string.Empty, viewModel.StatusMessage );
 	}
 
@@ -49,7 +49,7 @@ public class AboutPageViewModelTests
 		var releaseHistoryService = new Mock<IGitHubReleaseHistoryService>();
 		releaseHistoryService
 			.Setup( service => service.GetCommitsAsync( 1, It.IsAny<CancellationToken>() ) )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 		releaseHistoryService
 			.Setup( service => service.GetCommitMessageAsync( commit.Sha, It.IsAny<CancellationToken>() ) )
 			.ThrowsAsync( new InvalidOperationException( "Commit unavailable." ) );

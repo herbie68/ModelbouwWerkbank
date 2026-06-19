@@ -1,9 +1,11 @@
-using CommunityToolkit.Mvvm.Input;
-using Syncfusion.UI.Xaml.Charts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+
+using CommunityToolkit.Mvvm.Input;
+
+using Syncfusion.UI.Xaml.Charts;
 
 namespace Modelbouwer.ViewModels;
 
@@ -30,15 +32,15 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 	[ObservableProperty] private ChartSeriesCollection _costAllocationStackedSeries = [];
 	[ObservableProperty] private ChartSeriesCollection _costDeclarationStackedSeries = [];
 
-	public ObservableCollection<ProjectModel> Projects { get; } = [];
-	public ObservableCollection<TimeReportItemModel> WeekdayHours { get; } = [];
-	public ObservableCollection<TimeReportItemModel> MonthHours { get; } = [];
-	public ObservableCollection<TimeReportItemModel> YearHours { get; } = [];
-	public ObservableCollection<TimeReportItemModel> MonthYearHours { get; } = [];
-	public ObservableCollection<TimeReportItemModel> WorktypeHours { get; } = [];
-	public ObservableCollection<CostAllocationReportItemModel> CostAllocationLines { get; } = [];
-	public ObservableCollection<CostDeclarationReportItemModel> CostDeclarationLines { get; } = [];
-	public ObservableCollection<CostReportItemModel> CostDeclarationSummary { get; } = [];
+	public ObservableCollection<ProjectModel> Projects { get; } = [ ];
+	public ObservableCollection<TimeReportItemModel> WeekdayHours { get; } = [ ];
+	public ObservableCollection<TimeReportItemModel> MonthHours { get; } = [ ];
+	public ObservableCollection<TimeReportItemModel> YearHours { get; } = [ ];
+	public ObservableCollection<TimeReportItemModel> MonthYearHours { get; } = [ ];
+	public ObservableCollection<TimeReportItemModel> WorktypeHours { get; } = [ ];
+	public ObservableCollection<CostAllocationReportItemModel> CostAllocationLines { get; } = [ ];
+	public ObservableCollection<CostDeclarationReportItemModel> CostDeclarationLines { get; } = [ ];
+	public ObservableCollection<CostReportItemModel> CostDeclarationSummary { get; } = [ ];
 
 	public IAsyncRelayCommand RefreshCommand { get; }
 
@@ -183,13 +185,13 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 
 		var colors = GetChartColors();
 		var series = new ChartSeriesCollection();
-		foreach ( var ( month, index ) in Enumerable.Range( 1, 12 ).Where( month => rows.Any( item => item.Month == month ) ).Select( ( month, index ) => ( month, index ) ) )
+		foreach ( var (month, index) in Enumerable.Range( 1, 12 ).Where( month => rows.Any( item => item.Month == month ) ).Select( ( month, index ) => (month, index) ) )
 		{
 			var label = monthNames.TryGetValue( month, out var monthName ) ? monthName : month.ToString( CultureInfo.CurrentCulture );
 			var points = years
 				.Select( year => CreateHoursChartPoint( year.ToString( CultureInfo.CurrentCulture ), rows.Where( item => item.Year == year && item.Month == month ).Sum( item => item.Hours ) ) )
 				.ToList();
-			series.Add( CreateColumnSeries( label, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( label, points, colors [ index % colors.Length ] ) );
 		}
 
 		return series;
@@ -215,14 +217,14 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 
 		var colors = GetChartColors();
 		var series = new ChartSeriesCollection();
-		foreach ( var ( worktype, index ) in worktypes.Select( ( worktype, index ) => ( worktype, index ) ) )
+		foreach ( var (worktype, index) in worktypes.Select( ( worktype, index ) => (worktype, index) ) )
 		{
 			var points = groups
 				.Select( group => CreateHoursChartPoint( group, rows
 					.Where( item => item.Name == worktype && ( string.IsNullOrWhiteSpace( item.WorktypeGroupName ) ? item.Name : item.WorktypeGroupName ) == group )
 					.Sum( item => item.Hours ) ) )
 				.ToList();
-			series.Add( CreateColumnSeries( worktype, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( worktype, points, colors [ index % colors.Length ] ) );
 		}
 
 		return series;
@@ -279,12 +281,12 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 
 		var colors = GetChartColors();
 		var series = new ChartSeriesCollection();
-		foreach ( var ( product, index ) in topProducts.Select( ( product, index ) => ( product, index ) ) )
+		foreach ( var (product, index) in topProducts.Select( ( product, index ) => (product, index) ) )
 		{
 			var points = categories
 				.Select( category => CreateCurrencyChartPoint( category, rows.Where( item => item.CategoryName == category && item.ProductName == product ).Sum( item => item.TotalCosts ) ) )
 				.ToList();
-			series.Add( CreateColumnSeries( product, points, colors[index % colors.Length] ) );
+			series.Add( CreateColumnSeries( product, points, colors [ index % colors.Length ] ) );
 		}
 
 		var otherValues = categories
@@ -293,7 +295,7 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 
 		if ( otherValues.Any( value => value > 0 ) )
 		{
-			series.Add( CreateColumnSeries( "Overig", categories.Select( ( category, index ) => CreateCurrencyChartPoint( category, otherValues[index] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
+			series.Add( CreateColumnSeries( "Overig", categories.Select( ( category, index ) => CreateCurrencyChartPoint( category, otherValues [ index ] ) ).ToList(), Color.FromRgb( 111, 125, 142 ) ) );
 		}
 
 		return series;
@@ -348,7 +350,7 @@ public partial class ProjectReportsViewModel : AsyncObservableObject
 		return new DataTemplate { VisualTree = border };
 	}
 
-	private static Color[] GetChartColors() =>
+	private static Color [ ] GetChartColors() =>
 	[
 		Color.FromRgb( 47, 128, 237 ),
 		Color.FromRgb( 39, 174, 96 ),

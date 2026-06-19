@@ -7,8 +7,8 @@ public partial class SettingsPageViewModel : AsyncObservableObject
 	private readonly ISettingsService _settingsService;
 	private bool _isLoading;
 
-	public ObservableCollection<SettingsOption> RegionOptions { get; } = [];
-	public ObservableCollection<SettingsOption> LanguageOptions { get; } = [];
+	public ObservableCollection<SettingsOption> RegionOptions { get; } = [ ];
+	public ObservableCollection<SettingsOption> LanguageOptions { get; } = [ ];
 
 	[ObservableProperty] private string selectedRegion = "nl-NL";
 	[ObservableProperty] private string selectedLanguage = "NL";

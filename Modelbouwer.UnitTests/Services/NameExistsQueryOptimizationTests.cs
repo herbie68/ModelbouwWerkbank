@@ -30,7 +30,7 @@ public class NameExistsQueryOptimizationTests
 		Assert.IsFalse( method.Contains( "GetAll", StringComparison.Ordinal ), $"{serviceFileName} {methodSignature} should not load full lists for existence checks." );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

@@ -7,7 +7,8 @@ public class IpHelper
 
 	public static string GetIP( string _forcelocal = "" )
 	{
-		if ( _forcelocal.Equals( "local", StringComparison.CurrentCultureIgnoreCase ) ) { return "localhost"; }
+		if ( _forcelocal.Equals( "local", StringComparison.CurrentCultureIgnoreCase ) )
+		{ return "localhost"; }
 		int[] ipPart = new int[4];
 		if ( !File.Exists( filePath ) )
 		{

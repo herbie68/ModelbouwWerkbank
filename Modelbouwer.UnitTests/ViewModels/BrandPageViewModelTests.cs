@@ -9,7 +9,7 @@ public class BrandPageViewModelTests
 		var brandService = new Mock<IBrandService>();
 		brandService
 			.Setup( service => service.GetAllBrandsAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( brandService.Object );
 
@@ -44,7 +44,7 @@ public class BrandPageViewModelTests
 		var brandService = new Mock<IBrandService>();
 		brandService
 			.Setup( service => service.GetAllBrandsAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 		var viewModel = CreateViewModel( brandService.Object );
 
 		Assert.IsInstanceOfType( viewModel.DeleteBrandCommand, typeof( CommunityToolkit.Mvvm.Input.IAsyncRelayCommand ) );

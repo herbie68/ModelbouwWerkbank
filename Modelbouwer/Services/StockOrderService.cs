@@ -182,19 +182,19 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 		{
 			return new StockOrderModel
 			{
-				Id = DatabaseValueConverter.GetInt( reader[DBNames.OrderViewFieldNameId] ),
-				SupplierId = DatabaseValueConverter.GetInt( reader[DBNames.OrderViewFieldNameSupplierId] ),
-				SupplierName = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameSupplierName] ),
-				CurrencyId = DatabaseValueConverter.GetInt( reader[DBNames.OrderViewFieldNameCurrencyId] ),
-				CurrencySymbol = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameCurrencySymbol] ),
-				OrderNumber = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameOrderNumber] ),
-				OrderDate = GetNullableDateTime( reader[DBNames.OrderViewFieldNameOrderDate] ),
-				ShippingCosts = DatabaseValueConverter.GetDouble( reader[DBNames.OrderViewFieldNameOrderShippingCosts] ),
-				OrderCosts = DatabaseValueConverter.GetDouble( reader[DBNames.OrderViewFieldNameOrderOrderCosts] ),
-				Closed = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameClosed] ) == 1,
-				ClosedDate = GetNullableDateTime( reader[DBNames.OrderViewFieldNameClosedDate] ),
-				Memo = DatabaseValueConverter.GetString( reader[DBNames.OrderViewFieldNameOrderMemo] ),
-				HasStockLog = DatabaseValueConverter.GetSByte( reader[DBNames.OrderViewFieldNameHasStockLog] ) == 1
+				Id = DatabaseValueConverter.GetInt( reader [ DBNames.OrderViewFieldNameId ] ),
+				SupplierId = DatabaseValueConverter.GetInt( reader [ DBNames.OrderViewFieldNameSupplierId ] ),
+				SupplierName = DatabaseValueConverter.GetString( reader [ DBNames.OrderViewFieldNameSupplierName ] ),
+				CurrencyId = DatabaseValueConverter.GetInt( reader [ DBNames.OrderViewFieldNameCurrencyId ] ),
+				CurrencySymbol = DatabaseValueConverter.GetString( reader [ DBNames.OrderViewFieldNameCurrencySymbol ] ),
+				OrderNumber = DatabaseValueConverter.GetString( reader [ DBNames.OrderViewFieldNameOrderNumber ] ),
+				OrderDate = GetNullableDateTime( reader [ DBNames.OrderViewFieldNameOrderDate ] ),
+				ShippingCosts = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderViewFieldNameOrderShippingCosts ] ),
+				OrderCosts = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderViewFieldNameOrderOrderCosts ] ),
+				Closed = DatabaseValueConverter.GetSByte( reader [ DBNames.OrderViewFieldNameClosed ] ) == 1,
+				ClosedDate = GetNullableDateTime( reader [ DBNames.OrderViewFieldNameClosedDate ] ),
+				Memo = DatabaseValueConverter.GetString( reader [ DBNames.OrderViewFieldNameOrderMemo ] ),
+				HasStockLog = DatabaseValueConverter.GetSByte( reader [ DBNames.OrderViewFieldNameHasStockLog ] ) == 1
 			};
 		}, null, cancellationToken );
 	}
@@ -210,22 +210,22 @@ INSERT INTO {DBNames.Database}.{DBNames.StocklogTable} (
 			OrderLinesQuery,
 			reader => new StockOrderLineModel
 			{
-				Id = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineFieldNameId] ),
-				SupplyOrderId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameOrderId] ),
-				SupplierId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameSupplierId] ),
-				ProductId = DatabaseValueConverter.GetInt( reader[DBNames.OrderLineViewFieldNameProductId] ),
-				ProductCode = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductCode] ),
-				ProductName = DatabaseValueConverter.GetString( reader[DBNames.OrderLineViewFieldNameProductName] ),
-				SupplierProductNumber = DatabaseValueConverter.GetString( reader[DBNames.ProductSupplierFieldNameProductNumber] ),
-				SupplierProductName = DatabaseValueConverter.GetString( reader[DBNames.OrderLineFieldNameSupplierProductName] ),
-				Amount = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNameAmount] ),
-				OpenAmount = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNameOpenAmount] ),
-				Price = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNamePrice] ),
-				RealRowTotal = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineFieldNameRealRowTotal] ),
-				Received = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineViewFieldNameReceived] ),
-				Expected = DatabaseValueConverter.GetDouble( reader[DBNames.OrderLineViewFieldNameExpected] ),
-				Closed = DatabaseValueConverter.GetSByte( reader[DBNames.OrderLineViewFieldNameClosed] ) == 1,
-				ClosedDate = GetNullableDateTime( reader[DBNames.OrderLineViewFieldNameClosedDate] )
+				Id = DatabaseValueConverter.GetInt( reader [ DBNames.OrderLineFieldNameId ] ),
+				SupplyOrderId = DatabaseValueConverter.GetInt( reader [ DBNames.OrderLineViewFieldNameOrderId ] ),
+				SupplierId = DatabaseValueConverter.GetInt( reader [ DBNames.OrderLineViewFieldNameSupplierId ] ),
+				ProductId = DatabaseValueConverter.GetInt( reader [ DBNames.OrderLineViewFieldNameProductId ] ),
+				ProductCode = DatabaseValueConverter.GetString( reader [ DBNames.OrderLineViewFieldNameProductCode ] ),
+				ProductName = DatabaseValueConverter.GetString( reader [ DBNames.OrderLineViewFieldNameProductName ] ),
+				SupplierProductNumber = DatabaseValueConverter.GetString( reader [ DBNames.ProductSupplierFieldNameProductNumber ] ),
+				SupplierProductName = DatabaseValueConverter.GetString( reader [ DBNames.OrderLineFieldNameSupplierProductName ] ),
+				Amount = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineFieldNameAmount ] ),
+				OpenAmount = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineFieldNameOpenAmount ] ),
+				Price = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineFieldNamePrice ] ),
+				RealRowTotal = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineFieldNameRealRowTotal ] ),
+				Received = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineViewFieldNameReceived ] ),
+				Expected = DatabaseValueConverter.GetDouble( reader [ DBNames.OrderLineViewFieldNameExpected ] ),
+				Closed = DatabaseValueConverter.GetSByte( reader [ DBNames.OrderLineViewFieldNameClosed ] ) == 1,
+				ClosedDate = GetNullableDateTime( reader [ DBNames.OrderLineViewFieldNameClosedDate ] )
 			},
 			new Dictionary<string, object> { { "@OrderId", orderId } },
 			cancellationToken );

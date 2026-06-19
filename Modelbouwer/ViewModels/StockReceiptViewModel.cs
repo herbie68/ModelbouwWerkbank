@@ -8,8 +8,8 @@ public partial class StockReceiptViewModel : AsyncObservableObject
 	private bool _suppressSelectedOrderChange;
 	private List<StockOrderModel> _allOrders = [];
 
-	public ObservableCollection<StockOrderModel> Orders { get; } = [];
-	public ObservableCollection<StockOrderLineModel> OpenOrderLines { get; } = [];
+	public ObservableCollection<StockOrderModel> Orders { get; } = [ ];
+	public ObservableCollection<StockOrderLineModel> OpenOrderLines { get; } = [ ];
 
 	[ObservableProperty] private StockOrderModel? _selectedOrder;
 	[ObservableProperty] private StockOrderLineModel? _selectedOrderLine;

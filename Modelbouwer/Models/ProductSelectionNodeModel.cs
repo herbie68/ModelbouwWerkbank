@@ -8,5 +8,5 @@ public partial class ProductSelectionNodeModel : ObservableObject
 
 	public bool IsProduct => Product != null;
 	public bool IsCategory => Product == null;
-	public ObservableCollection<ProductSelectionNodeModel> Children { get; } = [];
+	public ObservableCollection<ProductSelectionNodeModel> Children { get; } = [ ];
 }

@@ -16,21 +16,21 @@ public class ProductPageViewModelTests
 	public void Setup()
 	{
 		_mockProductService = new Mock<IProductService>();
-    	_mockUnitService = new Mock<IUnitService>();
-    	_mockBrandService = new Mock<IBrandService>();
-    	_mockCategoryService = new Mock<ICategoryService>();
-    	_mockStorageLocationService = new Mock<IStorageLocationService>();
-    	_mockSupplierService = new Mock<ISupplierService>();
-    	_mockValidator = new Mock<IEntityValidator<ProductModel>>();
+		_mockUnitService = new Mock<IUnitService>();
+		_mockBrandService = new Mock<IBrandService>();
+		_mockCategoryService = new Mock<ICategoryService>();
+		_mockStorageLocationService = new Mock<IStorageLocationService>();
+		_mockSupplierService = new Mock<ISupplierService>();
+		_mockValidator = new Mock<IEntityValidator<ProductModel>>();
 
 		// Setup default returns for async methods
-		_mockProductService.Setup(s => s.GetAllProductsAsync()).ReturnsAsync(new List<ProductModel>());
-    	_mockUnitService.Setup(s => s.GetAllUnitsAsync()).ReturnsAsync(new List<UnitModel>());
-   		_mockBrandService.Setup(s => s.GetAllBrandsAsync()).ReturnsAsync(new List<BrandModel>());
-		_mockCategoryService.Setup(s => s.GetAllCategorysAsync()).ReturnsAsync(new List<CategoryModel>());
-		_mockStorageLocationService.Setup(s => s.GetAllStorageLocationsAsync()).ReturnsAsync(new List<StorageLocationModel>());
-		_mockSupplierService.Setup(s => s.GetAllSuppliersAsync()).ReturnsAsync(new List<SupplierModel>());
-		_mockSupplierService.Setup(s => s.GetAllProductSuppliersAsync()).ReturnsAsync(new List<Modelbouwer.Model.ProductSupplierModel>());
+		_mockProductService.Setup( s => s.GetAllProductsAsync() ).ReturnsAsync( new List<ProductModel>() );
+		_mockUnitService.Setup( s => s.GetAllUnitsAsync() ).ReturnsAsync( new List<UnitModel>() );
+		_mockBrandService.Setup( s => s.GetAllBrandsAsync() ).ReturnsAsync( new List<BrandModel>() );
+		_mockCategoryService.Setup( s => s.GetAllCategorysAsync() ).ReturnsAsync( new List<CategoryModel>() );
+		_mockStorageLocationService.Setup( s => s.GetAllStorageLocationsAsync() ).ReturnsAsync( new List<StorageLocationModel>() );
+		_mockSupplierService.Setup( s => s.GetAllSuppliersAsync() ).ReturnsAsync( new List<SupplierModel>() );
+		_mockSupplierService.Setup( s => s.GetAllProductSuppliersAsync() ).ReturnsAsync( new List<Modelbouwer.Model.ProductSupplierModel>() );
 
 		_viewModel = new ProductPageViewModel(
 			_mockProductService.Object,
@@ -39,7 +39,7 @@ public class ProductPageViewModelTests
 			_mockCategoryService.Object,
 			_mockStorageLocationService.Object,
 			_mockSupplierService.Object,
-			_mockValidator.Object);
+			_mockValidator.Object );
 	}
 
 	[TestMethod]
@@ -72,7 +72,7 @@ public class ProductPageViewModelTests
 	{
 		var expected = new InvalidOperationException( "Unable to load product suppliers." );
 		var supplierService = new Mock<ISupplierService>();
-		supplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
+		supplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [ ] );
 		supplierService
 			.Setup( service => service.GetAllProductSuppliersAsync() )
 			.Returns( Task.FromException<List<Modelbouwer.Model.ProductSupplierModel>>( expected ) );
@@ -524,13 +524,13 @@ public class ProductPageViewModelTests
 		var defaultSupplierService = new Mock<ISupplierService>();
 		var validator = new Mock<IEntityValidator<ProductModel>>();
 
-		defaultProductService.Setup( service => service.GetAllProductsAsync() ).ReturnsAsync( [] );
-		defaultUnitService.Setup( service => service.GetAllUnitsAsync() ).ReturnsAsync( [] );
-		defaultBrandService.Setup( service => service.GetAllBrandsAsync() ).ReturnsAsync( [] );
-		defaultCategoryService.Setup( service => service.GetAllCategorysAsync() ).ReturnsAsync( [] );
-		defaultStorageLocationService.Setup( service => service.GetAllStorageLocationsAsync() ).ReturnsAsync( [] );
-		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
-		defaultSupplierService.Setup( service => service.GetAllProductSuppliersAsync() ).ReturnsAsync( [] );
+		defaultProductService.Setup( service => service.GetAllProductsAsync() ).ReturnsAsync( [ ] );
+		defaultUnitService.Setup( service => service.GetAllUnitsAsync() ).ReturnsAsync( [ ] );
+		defaultBrandService.Setup( service => service.GetAllBrandsAsync() ).ReturnsAsync( [ ] );
+		defaultCategoryService.Setup( service => service.GetAllCategorysAsync() ).ReturnsAsync( [ ] );
+		defaultStorageLocationService.Setup( service => service.GetAllStorageLocationsAsync() ).ReturnsAsync( [ ] );
+		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [ ] );
+		defaultSupplierService.Setup( service => service.GetAllProductSuppliersAsync() ).ReturnsAsync( [ ] );
 
 		return new ProductPageViewModel(
 			productService ?? defaultProductService.Object,
@@ -542,7 +542,7 @@ public class ProductPageViewModelTests
 			validator.Object );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

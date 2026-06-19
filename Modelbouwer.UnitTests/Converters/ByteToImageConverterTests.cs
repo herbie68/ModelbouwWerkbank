@@ -22,6 +22,6 @@ public class ByteToImageConverterTests
 
 		var result = ByteToImageConverter.GetDecodableImageBytes( imageData );
 
-		CollectionAssert.AreEqual( new byte[] { 0xFF, 0xD8, 0xFF, 0xE0, 0x01 }, result );
+		CollectionAssert.AreEqual( new byte [ ] { 0xFF, 0xD8, 0xFF, 0xE0, 0x01 }, result );
 	}
 }

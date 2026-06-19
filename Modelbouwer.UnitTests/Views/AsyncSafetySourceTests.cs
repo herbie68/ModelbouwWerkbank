@@ -92,7 +92,7 @@ public class AsyncSafetySourceTests
 		StringAssert.Contains( methodBody, expectedContent );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var root = FindSolutionRoot();
 		var path = Path.Combine( [ root, .. relativeSegments ] );

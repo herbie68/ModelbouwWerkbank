@@ -82,7 +82,7 @@ public class TimeRegistrationServiceTests
 		AssertMethodContains( source, "public async Task<ProjectReportsDataModel> GetProjectReportsAsync", "await Task.WhenAll( entriesTask, usagesTask, cultureTask, worktypesTask );" );
 	}
 
-	private static void AssertHasCancellationTokenOverload( MethodInfo[] methods, string methodName, int parameterCount )
+	private static void AssertHasCancellationTokenOverload( MethodInfo [ ] methods, string methodName, int parameterCount )
 	{
 		var hasOverload = methods.Any( method =>
 		{
@@ -112,7 +112,7 @@ public class TimeRegistrationServiceTests
 		StringAssert.Contains( methodBody, expectedContent );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

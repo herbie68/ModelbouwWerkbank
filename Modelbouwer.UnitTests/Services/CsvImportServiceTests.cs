@@ -32,8 +32,8 @@ public class CsvImportServiceTests
 			// Assert
 			Assert.AreEqual( 1, result.TotalRows );
 			Assert.AreEqual( 1, result.Imported );
-			Assert.AreEqual( "ABC", records[0].Code );
-			Assert.AreEqual( string.Empty, records[0].Name );
+			Assert.AreEqual( "ABC", records [ 0 ].Code );
+			Assert.AreEqual( string.Empty, records [ 0 ].Name );
 		}
 		finally
 		{
@@ -72,7 +72,7 @@ public class CsvImportServiceTests
 			Assert.AreEqual( 0, result.Imported );
 			Assert.AreEqual( 1, result.Updated );
 			Assert.AreEqual( 1, records.Count );
-			Assert.AreEqual( "Updated", records[0].Name );
+			Assert.AreEqual( "Updated", records [ 0 ].Name );
 		}
 		finally
 		{
@@ -106,7 +106,7 @@ public class CsvImportServiceTests
 
 			// Assert
 			Assert.AreEqual( 1, result.Imported );
-			Assert.AreEqual( 0, records[0].Quantity );
+			Assert.AreEqual( 0, records [ 0 ].Quantity );
 		}
 		finally
 		{

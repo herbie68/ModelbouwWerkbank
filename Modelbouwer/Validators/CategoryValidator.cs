@@ -24,7 +24,7 @@ public class CategoryValidator : IEntityValidator<CategoryModel>
 			result.Errors.Add( Lang.ExportValidationMessageNameLength );
 		}
 
-		if ( await _dataService.NameExistsAsync(category.CategoryName, category.ParentId ) )
+		if ( await _dataService.NameExistsAsync( category.CategoryName, category.ParentId ) )
 		{
 			result.Errors.Add( Lang.ExportValidationCategoryNameExists );
 		}

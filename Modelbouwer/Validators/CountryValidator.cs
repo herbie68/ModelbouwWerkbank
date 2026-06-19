@@ -46,4 +46,3 @@ public class CountryValidator : IEntityValidator<CountryModel>
 		return result;
 	}
 }
-

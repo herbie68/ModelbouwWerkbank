@@ -1,15 +1,16 @@
 ﻿namespace Modelbouwer.Helpers;
+
 public static class DatabaseValueConverter
 {
 	public static string GetString( object value ) =>
 		value == null || value == DBNull.Value ? string.Empty : value.ToString() ?? string.Empty;
 
-	public static byte[]? GetBytes( object value )
+	public static byte [ ]? GetBytes( object value )
 	{
 		if ( value == null || value == DBNull.Value )
 			return null;
 
-		if ( value is byte[] bytes )
+		if ( value is byte [ ] bytes )
 			return bytes;
 
 		if ( value is ReadOnlyMemory<byte> readOnlyMemory )

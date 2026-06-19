@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Modelbouwer.Validators
 {
-    public class ContactTypeValidator : IEntityValidator<ContactTypeModel>
+	public class ContactTypeValidator : IEntityValidator<ContactTypeModel>
 	{
 		private readonly IContactTypeService _dataService;
 

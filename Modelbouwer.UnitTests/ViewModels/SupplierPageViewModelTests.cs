@@ -556,11 +556,11 @@ public class SupplierPageViewModelTests
 		var defaultContactTypeService = new Mock<IContactTypeService>();
 		var validator = new Mock<IEntityValidator<SupplierModel>>();
 
-		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [] );
-		defaultCountryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [] );
-		defaultCurrencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [] );
-		defaultContactService.Setup( service => service.GetAllContactsAsync() ).ReturnsAsync( [] );
-		defaultContactTypeService.Setup( service => service.GetAllContactTypesAsync() ).ReturnsAsync( [] );
+		defaultSupplierService.Setup( service => service.GetAllSuppliersAsync() ).ReturnsAsync( [ ] );
+		defaultCountryService.Setup( service => service.GetAllCountriesAsync() ).ReturnsAsync( [ ] );
+		defaultCurrencyService.Setup( service => service.GetAllCurrenciesAsync() ).ReturnsAsync( [ ] );
+		defaultContactService.Setup( service => service.GetAllContactsAsync() ).ReturnsAsync( [ ] );
+		defaultContactTypeService.Setup( service => service.GetAllContactTypesAsync() ).ReturnsAsync( [ ] );
 
 		return new SupplierPageViewModel(
 			supplierService ?? defaultSupplierService.Object,
@@ -571,7 +571,7 @@ public class SupplierPageViewModelTests
 			validator.Object );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

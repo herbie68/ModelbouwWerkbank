@@ -11,7 +11,7 @@ public class CategoryPageViewModelTests
 		var categoryService = new Mock<ICategoryService>();
 		categoryService
 			.Setup( service => service.GetAllCategorysAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( categoryService.Object );
 

@@ -52,7 +52,7 @@ public class ProjectReportsViewModelTests
 	private static ProjectReportsViewModel CreateViewModel( IProjectService? projectService = null, ITimeRegistrationService? timeRegistrationService = null )
 	{
 		var defaultProjectService = new Mock<IProjectService>();
-		defaultProjectService.Setup( service => service.GetAllProjectsAsync() ).ReturnsAsync( [] );
+		defaultProjectService.Setup( service => service.GetAllProjectsAsync() ).ReturnsAsync( [ ] );
 
 		var defaultTimeRegistrationService = new Mock<ITimeRegistrationService>();
 		defaultTimeRegistrationService.Setup( service => service.GetHourRateAsync() ).ReturnsAsync( 0 );
@@ -62,7 +62,7 @@ public class ProjectReportsViewModelTests
 			timeRegistrationService ?? defaultTimeRegistrationService.Object );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

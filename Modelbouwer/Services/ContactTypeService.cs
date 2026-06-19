@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Modelbouwer.Services;
 
-    public class ContactTypeService: IContactTypeService
-    {
+public class ContactTypeService : IContactTypeService
+{
 	private readonly GenericDataService _dataService;
 	public bool ContactTypeUsed { get; set; } = false;
 

@@ -17,7 +17,7 @@ public class DependencyInjectionRegistrationTests
 			"services.AddSingleton<IGitHubReleaseHistoryService>( provider => provider.GetRequiredService<GitHubReleaseHistoryService>() );" );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var root = FindSolutionRoot();
 		var path = Path.Combine( [ root, .. relativeSegments ] );

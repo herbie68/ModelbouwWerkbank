@@ -9,7 +9,7 @@ public class ProjectPageViewModelTests
 		var projectService = new Mock<IProjectService>();
 		projectService
 			.Setup( service => service.GetAllProjectsAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( projectService.Object );
 
@@ -69,7 +69,7 @@ public class ProjectPageViewModelTests
 		return new ProjectPageViewModel( projectService, validator.Object );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

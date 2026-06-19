@@ -37,7 +37,7 @@ public class StockReceiptViewModelTests
 
 		_mockStockOrderService.Verify( s => s.GetAllOrdersAsync( cts.Token ), Times.Once );
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.AreEqual( 25, _viewModel.Orders[0].Id );
+		Assert.AreEqual( 25, _viewModel.Orders [ 0 ].Id );
 	}
 
 	[TestMethod]
@@ -53,7 +53,7 @@ public class StockReceiptViewModelTests
 		_viewModel.ApplySelectedOrder( order, lines );
 
 		Assert.AreEqual( 1, _viewModel.OpenOrderLines.Count );
-		Assert.AreEqual( 40, _viewModel.OpenOrderLines[ 0 ].Id );
+		Assert.AreEqual( 40, _viewModel.OpenOrderLines [ 0 ].Id );
 	}
 
 	[TestMethod]
@@ -339,8 +339,8 @@ public class StockReceiptViewModelTests
 		await _viewModel.EditReceiptCommand.ExecuteAsync( null );
 
 		Assert.AreEqual( 1, _viewModel.Orders.Count );
-		Assert.IsTrue( _viewModel.Orders[ 0 ].Closed );
-		Assert.AreEqual( new DateTime( 2026, 5, 4 ), _viewModel.Orders[ 0 ].ClosedDate );
+		Assert.IsTrue( _viewModel.Orders [ 0 ].Closed );
+		Assert.AreEqual( new DateTime( 2026, 5, 4 ), _viewModel.Orders [ 0 ].ClosedDate );
 	}
 
 	[TestMethod]
@@ -496,7 +496,7 @@ public class StockReceiptViewModelTests
 		AssertMethodContains( source, "private async Task EditSelectedOrderLineCoreAsync", "finally" );
 	}
 
-	private static string LoadSource( params string[] relativeSegments )
+	private static string LoadSource( params string [ ] relativeSegments )
 	{
 		var directory = AppContext.BaseDirectory;
 		while ( directory != null && !File.Exists( Path.Combine( directory, "ModelbouwWerkbank.slnx" ) ) )

@@ -9,7 +9,7 @@ public class ContactTypePageViewModelTests
 		var contactTypeService = new Mock<IContactTypeService>();
 		contactTypeService
 			.Setup( service => service.GetAllContactTypesAsync() )
-			.ReturnsAsync( [] );
+			.ReturnsAsync( [ ] );
 
 		_ = CreateViewModel( contactTypeService.Object );
 

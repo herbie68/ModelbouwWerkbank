@@ -80,8 +80,8 @@ public class SupplierServiceTests
 		_mockDataService.Verify( s => s.ExecuteScalarAsync<uint>(
 			It.Is<string>( q => q != null && q.Contains( "INSERT INTO" ) ),
 			It.Is<Dictionary<string, object>>( p =>
-				( int ) p[DBNames.ProductSupplierFieldNameProductId] == 5 &&
-				( int ) p[DBNames.ProductSupplierFieldNameSupplierId] == 11 &&
+				( int ) p [ DBNames.ProductSupplierFieldNameProductId ] == 5 &&
+				( int ) p [ DBNames.ProductSupplierFieldNameSupplierId ] == 11 &&
 				!p.ContainsKey( DBNames.ProductSupplierFieldNameCurrencyId ) &&
 				!p.ContainsKey( DBNames.ProductSupplierFieldNameDefaultSupplier ) ) ),
 			Times.Once );
